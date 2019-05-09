@@ -3,137 +3,137 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.example.com/tags/github/</loc>
+    <loc>https://xdhuxc.github.io/tags/github/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/hugo/</loc>
+    <loc>https://xdhuxc.github.io/tags/hugo/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/</loc>
+    <loc>https://xdhuxc.github.io/post/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/</loc>
+    <loc>https://xdhuxc.github.io/tags/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/</loc>
+    <loc>https://xdhuxc.github.io/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/github_hugo/</loc>
+    <loc>https://xdhuxc.github.io/post/github_hugo/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/jmx/</loc>
+    <loc>https://xdhuxc.github.io/tags/jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/springboot/</loc>
+    <loc>https://xdhuxc.github.io/tags/springboot/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/springboot-jmx/</loc>
+    <loc>https://xdhuxc.github.io/post/springboot-jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/database/</loc>
+    <loc>https://xdhuxc.github.io/tags/database/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/mongodb/</loc>
+    <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/mongodb-simple-use/</loc>
+    <loc>https://xdhuxc.github.io/post/mongodb-simple-use/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/linux/</loc>
+    <loc>https://xdhuxc.github.io/tags/linux/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/linux-shell-execute/</loc>
+    <loc>https://xdhuxc.github.io/post/linux-shell-execute/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/shell/</loc>
+    <loc>https://xdhuxc.github.io/tags/shell/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/centos7/</loc>
+    <loc>https://xdhuxc.github.io/tags/centos7/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/centos7-install-mongodb/</loc>
+    <loc>https://xdhuxc.github.io/post/centos7-install-mongodb/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/ansible-simple-use/</loc>
+    <loc>https://xdhuxc.github.io/post/ansible-simple-use/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/devops/</loc>
-    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.example.com/tags/it/</loc>
+    <loc>https://xdhuxc.github.io/tags/devops/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/tags/ansible/</loc>
+    <loc>https://xdhuxc.github.io/tags/it/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.example.com/post/ansible-common-model/</loc>
+    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
+    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/ansible-common-model/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/contact/</loc>
+    <loc>https://xdhuxc.github.io/contact/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.example.com/topics/</loc>
+    <loc>https://xdhuxc.github.io/topics/</loc>
     <priority>0</priority>
   </url>
   

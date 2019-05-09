@@ -21,13 +21,13 @@
   <!--<![endif]-->
 
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://www.example.com/css/side-menu-old-ie.css">
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://www.example.com/css/side-menu.css">
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
   <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://www.example.com/css/blackburn.css">
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
 
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,7 +50,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
   
 
-  <link rel="shortcut icon" href="https://www.example.com/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
 
   
   
@@ -69,7 +69,7 @@
 <div id="menu">
 
   
-  <a class="pure-menu-heading brand" href="https://www.example.com/">xdhuxc</a>
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
 
 
   <div class="pure-menu">
@@ -77,25 +77,25 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://www.example.com/"><i class='fa fa-home fa-fw'></i>主页</a>
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://www.example.com/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://www.example.com/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://www.example.com/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
       
         </li>
       
@@ -165,9 +165,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://www.example.com/tags/github">GitHub</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://www.example.com/tags/hugo">Hugo</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
     
   </div>
   
@@ -424,7 +424,94 @@ Total in 98 ms
 
 <p>4、将 <code>public</code> 目录添加为子模块，与 <code>xdhuxc.github.io</code> 同步</p>
 
-<pre><code class="language-markdown">git submodule add git@github.com:xdhuxc/xdhuxc.github.io.git public
+<pre><code class="language-markdown">wanghuans-MBP:blog wanghuan$ rm -rf public/
+wanghuans-MBP:blog wanghuan$ git submodule add git@github.com:xdhuxc/xdhuxc.github.io.git public
+</code></pre>
+
+<p>5、编译并推送至仓库 xdhuxc.github.io</p>
+
+<pre><code class="language-markdown">wanghuans-MBP:blog wanghuan$ hugo
+
+                   | EN  
++------------------+----+
+  Pages            | 40  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     |  8  
+  Processed images |  0  
+  Aliases          |  1  
+  Sitemaps         |  1  
+  Cleaned          |  0  
+
+Total in 33 ms
+wanghuans-MBP:blog wanghuan$ cd public/
+wanghuans-MBP:public wanghuan$ ls
+README.md       css             index.html      js              page            sitemap.xml     topics
+contact         img             index.xml       media           post            tags
+wanghuans-MBP:public wanghuan$ git add -A
+wanghuans-MBP:public wanghuan$ git commit -m &quot;initial the xdhuxc website&quot;
+[master a3a6a28] initial the xdhuxc website
+ 49 files changed, 9972 insertions(+)
+ create mode 100644 contact/index.html
+ create mode 100644 css/blackburn.css
+ create mode 100644 css/side-menu-old-ie.css
+ create mode 100644 css/side-menu.css
+ create mode 100644 img/favicon.ico
+ create mode 100644 index.html
+ create mode 100644 index.xml
+ create mode 100644 js/menus.js
+ create mode 100644 js/ui.js
+ create mode 100644 media/disqus.png
+ create mode 100644 page/1/index.html
+ create mode 100644 post/ansible-common-model/index.html
+ create mode 100644 post/ansible-simple-use/index.html
+ create mode 100644 post/centos7-install-mongodb/index.html
+ create mode 100644 post/github_hugo/index.html
+ create mode 100644 post/index.html
+ create mode 100644 post/index.xml
+ create mode 100644 post/linux-shell-execute/index.html
+ create mode 100644 post/mongodb-simple-use/index.html
+ create mode 100644 post/springboot-jmx/index.html
+ create mode 100644 sitemap.xml
+ create mode 100644 tags/ansible/index.html
+ create mode 100644 tags/ansible/index.xml
+ create mode 100644 tags/centos7/index.html
+ create mode 100644 tags/centos7/index.xml
+ create mode 100644 tags/database/index.html
+ create mode 100644 tags/database/index.xml
+ create mode 100644 tags/devops/index.html
+ create mode 100644 tags/devops/index.xml
+ create mode 100644 tags/github/index.html
+ create mode 100644 tags/github/index.xml
+ create mode 100644 tags/hugo/index.html
+ create mode 100644 tags/hugo/index.xml
+ create mode 100644 tags/index.html
+ create mode 100644 tags/index.xml
+ create mode 100644 tags/it/index.html
+ create mode 100644 tags/it/index.xml
+ create mode 100644 tags/jmx/index.html
+ create mode 100644 tags/jmx/index.xml
+ create mode 100644 tags/linux/index.html
+ create mode 100644 tags/linux/index.xml
+ create mode 100644 tags/mongodb/index.html
+ create mode 100644 tags/mongodb/index.xml
+ create mode 100644 tags/shell/index.html
+ create mode 100644 tags/shell/index.xml
+ create mode 100644 tags/springboot/index.html
+ create mode 100644 tags/springboot/index.xml
+ create mode 100644 topics/index.html
+ create mode 100644 topics/index.xml
+wanghuans-MBP:public wanghuan$ git push origin master
+Enumerating objects: 81, done.
+Counting objects: 100% (81/81), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (68/68), done.
+Writing objects: 100% (80/80), 179.84 KiB | 396.00 KiB/s, done.
+Total 80 (delta 34), reused 0 (delta 0)
+remote: Resolving deltas: 100% (34/34), done.
+To github.com:xdhuxc/xdhuxc.github.io.git
+   07acdac..a3a6a28  master -&gt; master
+wanghuans-MBP:public wanghuan$ 
 </code></pre>
 
 <h3 id="加入网站统计功能">加入网站统计功能。</h3>
@@ -442,13 +529,13 @@ Total in 98 ms
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://www.example.com/post/springboot-jmx/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/springboot-jmx/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://www.example.com/post/springboot-jmx/">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</a>
+      <a href="https://xdhuxc.github.io/post/springboot-jmx/">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</a>
     </nav>
     
   </div>
@@ -489,8 +576,8 @@ Total in 98 ms
 
 </div>
 </div>
-<script src="https://www.example.com/js/ui.js"></script>
-<script src="https://www.example.com/js/menus.js"></script>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
 
 
 <script>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Database on xdhuxc</title>
-    <link>https://www.example.com/tags/database/</link>
+    <link>https://xdhuxc.github.io/tags/database/</link>
     <description>Recent content in Database on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
     <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.example.com/tags/database/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xdhuxc.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MongoDB 数据库初步使用</title>
-      <link>https://www.example.com/post/mongodb-simple-use/</link>
+      <link>https://xdhuxc.github.io/post/mongodb-simple-use/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/post/mongodb-simple-use/</guid>
+      <guid>https://xdhuxc.github.io/post/mongodb-simple-use/</guid>
       <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。
 配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 /etc/mongod.conf 文件中的 127.0.0.1 为本机IP地址。比如，修改127.0.0.1 为本虚拟机IP地址 192.168.91.128，连接端口保持默认的 27017 即可，如下所示：
 # network interfaces net: port: 27017 bindIp: 192.168.91.128 # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.  使用 MongoDB shell 操作数据库 连接 MongoDB 数据库 使用的命令为：
@@ -25,10 +25,10 @@ mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # �
     
     <item>
       <title>在 CentOS 7 上安装 MongoDB 数据库</title>
-      <link>https://www.example.com/post/centos7-install-mongodb/</link>
+      <link>https://xdhuxc.github.io/post/centos7-install-mongodb/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/post/centos7-install-mongodb/</guid>
+      <guid>https://xdhuxc.github.io/post/centos7-install-mongodb/</guid>
       <description>MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。
 MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。
 准备工作 （1）在 /etc/yum.repos.d 目录下创建文件 mongodb-org-4.0.repo，内容为：

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IT on xdhuxc</title>
-    <link>https://www.example.com/tags/it/</link>
+    <link>https://xdhuxc.github.io/tags/it/</link>
     <description>Recent content in IT on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
     <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.example.com/tags/it/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xdhuxc.github.io/tags/it/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ansible 学习之简单入门</title>
-      <link>https://www.example.com/post/ansible-simple-use/</link>
+      <link>https://xdhuxc.github.io/post/ansible-simple-use/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/post/ansible-simple-use/</guid>
+      <guid>https://xdhuxc.github.io/post/ansible-simple-use/</guid>
       <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。
 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个关键模块构建。
 Ansible 特点  部署简单，只需要在主控端部署 ansible 环境，被控端无需做任何操作。 默认使用 SSH（Secure Shell）协议对设备进行管理。 主从集中化管理。 配置简单，功能强大，扩展性强。 支持 API 及自定义模块，可通过 Python 轻松扩展。 通过 Playbooks 来定制强大的配置，状态管理。 对云计算平台，大数据都有很好的支持。 提供一个功能强大、操作性强的 Web 管理界面和 REST API 接口&amp;mdash; AWX 平台。  Ansible 与 SaltStack 相同点 都具备功能强大、灵活的系统管理、状态配置，都使用 YAML 格式来描述配置，两者都提供丰富的模板及 API，对云计算和大数据都有很好的支持。
@@ -27,10 +27,10 @@ yum install -y ansible  ansible 配置文件 ansible 的配置文件在 /etc/ans
     
     <item>
       <title>Ansible 学习之常用模块</title>
-      <link>https://www.example.com/post/ansible-common-model/</link>
+      <link>https://xdhuxc.github.io/post/ansible-common-model/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/post/ansible-common-model/</guid>
+      <guid>https://xdhuxc.github.io/post/ansible-common-model/</guid>
       <description>模块相关命令 （1）列出 ansible 支持的模块
 ansible-doc -l  （2）查看该模块的帮助信息
 ansible-doc ping # 查看 ping 模块的帮助信息   以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件中配置如下：

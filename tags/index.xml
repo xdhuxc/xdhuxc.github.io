@@ -2,120 +2,120 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on xdhuxc</title>
-    <link>https://www.example.com/tags/</link>
+    <link>https://xdhuxc.github.io/tags/</link>
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
     <lastBuildDate>Thu, 09 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GitHub</title>
-      <link>https://www.example.com/tags/github/</link>
+      <link>https://xdhuxc.github.io/tags/github/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/github/</guid>
+      <guid>https://xdhuxc.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://www.example.com/tags/hugo/</link>
+      <link>https://xdhuxc.github.io/tags/hugo/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/hugo/</guid>
+      <guid>https://xdhuxc.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>JMX</title>
-      <link>https://www.example.com/tags/jmx/</link>
+      <link>https://xdhuxc.github.io/tags/jmx/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/jmx/</guid>
+      <guid>https://xdhuxc.github.io/tags/jmx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SpringBoot</title>
-      <link>https://www.example.com/tags/springboot/</link>
+      <link>https://xdhuxc.github.io/tags/springboot/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/springboot/</guid>
+      <guid>https://xdhuxc.github.io/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Database</title>
-      <link>https://www.example.com/tags/database/</link>
+      <link>https://xdhuxc.github.io/tags/database/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/database/</guid>
+      <guid>https://xdhuxc.github.io/tags/database/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MongoDB</title>
-      <link>https://www.example.com/tags/mongodb/</link>
+      <link>https://xdhuxc.github.io/tags/mongodb/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/mongodb/</guid>
+      <guid>https://xdhuxc.github.io/tags/mongodb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://www.example.com/tags/linux/</link>
+      <link>https://xdhuxc.github.io/tags/linux/</link>
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/linux/</guid>
+      <guid>https://xdhuxc.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Shell</title>
-      <link>https://www.example.com/tags/shell/</link>
+      <link>https://xdhuxc.github.io/tags/shell/</link>
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/shell/</guid>
+      <guid>https://xdhuxc.github.io/tags/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CentOS7</title>
-      <link>https://www.example.com/tags/centos7/</link>
+      <link>https://xdhuxc.github.io/tags/centos7/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/centos7/</guid>
+      <guid>https://xdhuxc.github.io/tags/centos7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DevOps</title>
-      <link>https://www.example.com/tags/devops/</link>
+      <link>https://xdhuxc.github.io/tags/devops/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/devops/</guid>
+      <guid>https://xdhuxc.github.io/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IT</title>
-      <link>https://www.example.com/tags/it/</link>
+      <link>https://xdhuxc.github.io/tags/it/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/it/</guid>
+      <guid>https://xdhuxc.github.io/tags/it/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ansible</title>
-      <link>https://www.example.com/tags/ansible/</link>
+      <link>https://xdhuxc.github.io/tags/ansible/</link>
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/tags/ansible/</guid>
+      <guid>https://xdhuxc.github.io/tags/ansible/</guid>
       <description></description>
     </item>
     

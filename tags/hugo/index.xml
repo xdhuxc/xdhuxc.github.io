@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on xdhuxc</title>
-    <link>https://www.example.com/tags/hugo/</link>
+    <link>https://xdhuxc.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
     <lastBuildDate>Thu, 09 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.example.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xdhuxc.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站</title>
-      <link>https://www.example.com/post/github_hugo/</link>
+      <link>https://xdhuxc.github.io/post/github_hugo/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.example.com/post/github_hugo/</guid>
+      <guid>https://xdhuxc.github.io/post/github_hugo/</guid>
       <description>Hugo 的安装的基本使用 1、准备工作，创建工作目录 blog
 wanghuans-MacBook-Pro:~ wanghuan$ mkdir blog wanghuans-MacBook-Pro:blog wanghuan$ pwd /Users/wanghuan/blog  2、安装 Hugo
 wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Homebrew... ==&amp;gt; Auto-updated Homebrew! Updated 1 tap (homebrew/core). ==&amp;gt; Updated Formulae allure ==&amp;gt; Downloading https://homebrew.bintray.com/bottles/hugo-0.55.5.mojave.bottle.tar.gz ==&amp;gt; Downloading from https://akamai.bintray.com/2c/2c88f996c36157b5e451274663b867ad4e1c3f6f04c57d1d43cdd8c631a5b209?__gda__=exp=1557368278~hmac=afe54c6d07b0ae0a78089e030533b7dae7 ######################################################################## 100.0% ==&amp;gt; Pouring hugo-0.55.5.mojave.bottle.tar.gz ==&amp;gt; Caveats Bash completion has been installed to: /usr/local/etc/bash_completion.d ==&amp;gt; Summary 🍺 /usr/local/Cellar/hugo/0.55.5: 31 files, 40.7MB ==&amp;gt; `brew cleanup` has not been run in 30 days, running now.</description>
