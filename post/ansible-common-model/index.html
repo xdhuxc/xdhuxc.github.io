@@ -951,7 +951,7 @@ ansible Client -m user -a &quot;name=wang state=absent remove=yes&quot; # 删除
     &quot;uid&quot;: 1001
 }
 [root@xdhuxc ~]# cat /etc/passwd | grep wang
-wang:x:1001:1001:user wang:/home/wang:/bin/bash
+wang❌1001:1001:user wang:/home/wang:/bin/bash
 [root@xdhuxc ~]# ansible Client -m user -a &quot;name=wang state=absent remove=yes&quot;  # 删除用户 wang
 192.168.91.128 | SUCCESS =&gt; {
     &quot;changed&quot;: true,

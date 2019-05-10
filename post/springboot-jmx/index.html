@@ -176,7 +176,12 @@
 </div>
 
 
-  <p>使用 <code>Spring Boot</code> 编写的Java 程序，其 <code>pom.xml</code>文件内容为：</p>
+  <p>本篇文章介绍了使用 <code>Spring Boot</code> 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：</p>
+
+<pre><code class="language-markdown">AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
+</code></pre>
+
+<p>使用 <code>Spring Boot</code> 编写的Java 程序，其 <code>pom.xml</code>文件内容为：</p>
 
 <pre><code>	&lt;parent&gt;
 		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
@@ -237,7 +242,6 @@
 <p>终于可以正常启动 <code>Spring Boot</code> 程序了！</p>
 
 <p>这应该是 <code>Spring Boot</code> <code>1.5.12.RELEASE</code> 的一个bug。</p>
-
 
   
 <div id="disqus_thread"></div>

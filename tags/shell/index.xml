@@ -17,12 +17,7 @@
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux-shell-execute/</guid>
-      <description>在 Linux 系统中，Shell 脚本的执行方式通常有如下三种：
-通过解释器 bash 或 sh 执行 通过解释器时的命令格式为：
-bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh shell-script-name # 通过 sh 解释器来执行 shell 脚本。  当脚本文件本身没有可执行权限（即文件权限属性 x 位为：“-”）时经常使用的方式；或者脚本文件开头没有指定解释器时，需要使用这种方法。使用起来比较方便，操作时节省了为文件添加执行权限的步骤。当然，也可以选择其他类型的解释器，比如ksh，csh，zsh等。
-（1）创建文件abc.sh
-[root@xdhuxc ~]# touch abc.sh [root@xdhuxc ~]# ls abc.sh [root@xdhuxc ~]#  （2）写入要执行的命令：
-[root@xdhuxc ~]# cat &amp;gt;&amp;gt; abc.sh &amp;lt;&amp;lt; EOF # 向 abc.sh 中追加内容。 &amp;gt; #!/usr/bin/env bash &amp;gt; echo &amp;quot;Hello Shell.&amp;quot; &amp;gt; EOF [root@xdhuxc ~]# cat abc.sh # 显示 abc.</description>
+      <description>在 Linux 系统中，Shell 脚本的执行方式通常有如下三种： 通过解释器 bash 或 sh 执行 通过解释器时的命令格式为： bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh shell-script-name # 通</description>
     </item>
     
   </channel>
