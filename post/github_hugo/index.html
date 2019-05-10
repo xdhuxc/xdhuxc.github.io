@@ -113,13 +113,13 @@
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-gitlab fa-fw"></i>JianShu</a>
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
     </li>
     
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-gitlab fa-fw"></i>WeChat</a>
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
     </li>
     
 
@@ -516,8 +516,7 @@ wanghuans-MBP:public wanghuan$
 <pre><code class="language-markdown">disqusShortname = &quot;yourdisqusShortname&quot;
 </code></pre>
 
-<p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。
-<img src="http://pr9wm50t1.bkt.clouddn.com/disqus.png" alt="image" /></p>
+<p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。</p>
 
 <p>但是在本地无法测试该功能，需要上线到 github 进行测试。</p>
 
@@ -526,6 +525,24 @@ wanghuans-MBP:public wanghuan$
 <p>使用 Google 的网站分析功能，登录 <a href="https://marketingplatform.google.com/about/，注册账号，获取">https://marketingplatform.google.com/about/，注册账号，获取</a> Track ID，填写到 config.toml 中 <code>[params]</code> 下 <code>googleAnalytics</code> 的值处。</p>
 
 <h3 id="其他事项">其他事项</h3>
+
+<h4 id="菜单栏图标修改">菜单栏图标修改</h4>
+
+<p>我们在左侧菜单部分去除了默认含有的 Twitter，Facebook等，新加了微信和简书，但是其使用的图标却不是图片，而是使用 CSS 渲染出来的，在 <a href="https://fontawesome.com/">https://fontawesome.com/</a> 上搜索图标，找到微信的图标所对应的 CSS class，</p>
+
+<pre><code class="language-markdown">&lt;i class=&quot;fab fa-weixin&quot;&gt;&lt;/i&gt;
+</code></pre>
+
+<p>将其修改至 <code>layouts/partials/social.html</code> 中如下部分：</p>
+
+<pre><code class="language-markdown">{{ with .Site.Social.wechat }}
+    &lt;li class=&quot;pure-menu-item&quot;&gt;
+      &lt;a class=&quot;pure-menu-link&quot; href=&quot;https://github.com/{{ . }}&quot; rel=&quot;me&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fa fa-weixin fa-fw&quot;&gt;&lt;/i&gt;微信&lt;/a&gt;
+    &lt;/li&gt;
+{{ end }}
+</code></pre>
+
+<p>该网站上没有简书的图标，可以随便找一个图标填充之。</p>
 
 <h4 id="博客的时间格式优化">博客的时间格式优化，</h4>
 
