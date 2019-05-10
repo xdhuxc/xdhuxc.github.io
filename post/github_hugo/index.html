@@ -505,6 +505,8 @@ To github.com:xdhuxc/xdhuxc.github.io.git
 wanghuans-MBP:public wanghuan$ 
 </code></pre>
 
+<p>6、此时，访问 <code>https://xdhuxc.github.io/</code>，即可看到我们的网站。</p>
+
 <h3 id="评论和网站统计功能">评论和网站统计功能</h3>
 
 <h4 id="增加评论功能">增加评论功能</h4>
@@ -515,7 +517,7 @@ wanghuans-MBP:public wanghuan$
 </code></pre>
 
 <p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。
-<img src="../../static/media/disqus.png" alt="image" /></p>
+<img src="http://pr9wm50t1.bkt.clouddn.com/disqus.png" alt="image" /></p>
 
 <p>但是在本地无法测试该功能，需要上线到 github 进行测试。</p>
 
@@ -563,6 +565,45 @@ wanghuans-MBP:public wanghuan$
 
 <pre><code class="language-markdown">{{ range .Data.Pages.GroupByDate &quot;2006-01&quot; }}
 </code></pre>
+
+<h4 id="自动化部署">自动化部署</h4>
+
+<p>编写脚本 <code>deploy.sh</code>（需要给脚本添加执行权限） 部署我们的网站，脚本内容如下：</p>
+
+<pre><code class="language-markdown">#!/usr/bin/env bash
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Commit changes.
+msg=&quot;change the website's domain when it compiling&quot;
+if [[ &quot;$#&quot; -eq 1 ]]; then
+    msg=&quot;$1&quot;
+fi
+
+# Push Hugo content
+git add -A
+git commit -m &quot;$msg&quot;
+git push origin master
+
+
+# Build the project.
+hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add .
+
+
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back up to the Project Root
+cd ..
+</code></pre>
+
+<p>本地编写 markdown 文件完成后，执行 <code>./deploy.sh</code> 脚本即可完成部署工作。</p>
 
 <h3 id="参考资料">参考资料</h3>
 
