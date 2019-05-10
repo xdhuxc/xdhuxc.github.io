@@ -6,7 +6,7 @@
     <description>Recent content in DevOps on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/ansible-simple-use/</link>
-      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/ansible-simple-use/</guid>
       <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。

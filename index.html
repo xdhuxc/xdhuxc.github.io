@@ -160,7 +160,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>09 May 2019, 00:00</time>
+    <time>2019-05-09</time>
   </div>
 
   
@@ -183,6 +183,7 @@
 
 </div>
 
+
   </header>
 
   <p>
@@ -193,7 +194,7 @@ wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Ho
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/github_hugo/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/github_hugo/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -207,7 +208,7 @@ wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Ho
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>25 Oct 2018, 00:00</time>
+    <time>2018-10-25</time>
   </div>
 
   
@@ -230,6 +231,7 @@ wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Ho
 
 </div>
 
+
   </header>
 
   <p>
@@ -240,55 +242,7 @@ wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Ho
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/springboot-jmx/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/mongodb-simple-use/">MongoDB 数据库初步使用</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>20 Sep 2018, 00:00</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/database">Database</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mongodb">MongoDB</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。
-配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 /etc/mongod.conf 文件中的 127.0.0.1 为本机IP地址。比如，修改127.0.0.1 为本虚拟机IP地址 192.168.91.128，连接端口保持默认的 27017 即可，如下所示：
-# network interfaces net: port: 27017 bindIp: 192.168.91.128 # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.  使用 MongoDB shell 操作数据库 连接 MongoDB 数据库 使用的命令为：
-mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。  如下所示：
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/mongodb-simple-use/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/springboot-jmx/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -302,7 +256,7 @@ mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # �
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>13 Aug 2018, 00:00</time>
+    <time>2018-08-13</time>
   </div>
 
   
@@ -325,6 +279,7 @@ mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # �
 
 </div>
 
+
   </header>
 
   <p>
@@ -338,7 +293,56 @@ bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh s
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/linux-shell-execute/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/linux-shell-execute/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="https://xdhuxc.github.io/post/mongodb-simple-use/">MongoDB 数据库初步使用</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2018-07-20</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/database">Database</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mongodb">MongoDB</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  </header>
+
+  <p>
+  安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。
+配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 /etc/mongod.conf 文件中的 127.0.0.1 为本机IP地址。比如，修改127.0.0.1 为本虚拟机IP地址 192.168.91.128，连接端口保持默认的 27017 即可，如下所示：
+# network interfaces net: port: 27017 bindIp: 192.168.91.128 # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.  使用 MongoDB shell 操作数据库 连接 MongoDB 数据库 使用的命令为：
+mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。  如下所示：
+  </p>
+
+  
+  <footer>
+    <a href="https://xdhuxc.github.io/post/mongodb-simple-use/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -352,7 +356,7 @@ bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh s
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>06 Jul 2018, 00:00</time>
+    <time>2018-07-06</time>
   </div>
 
   
@@ -377,6 +381,7 @@ bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh s
 
 </div>
 
+
   </header>
 
   <p>
@@ -397,7 +402,7 @@ systemctl restart mongod  4、启动 MongoDB shell
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/centos7-install-mongodb/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/centos7-install-mongodb/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -411,7 +416,7 @@ systemctl restart mongod  4、启动 MongoDB shell
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>04 Jun 2018, 00:00</time>
+    <time>2018-05-14</time>
   </div>
 
   
@@ -435,6 +440,7 @@ systemctl restart mongod  4、启动 MongoDB shell
   
 
 </div>
+
 
   </header>
 
@@ -449,7 +455,7 @@ yum install -y ansible  ansible 配置文件 ansible 的配置文件在 /etc/ans
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/ansible-simple-use/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/ansible-simple-use/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -463,7 +469,7 @@ yum install -y ansible  ansible 配置文件 ansible 的配置文件在 /etc/ans
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>02 May 2018, 00:00</time>
+    <time>2018-05-02</time>
   </div>
 
   
@@ -488,6 +494,7 @@ yum install -y ansible  ansible 配置文件 ansible 的配置文件在 /etc/ans
 
 </div>
 
+
   </header>
 
   <p>
@@ -499,7 +506,7 @@ ansible-doc ping # 查看 ping 模块的帮助信息   以下实验均是在 IP 
 
   
   <footer>
-    <a href="https://xdhuxc.github.io/post/ansible-common-model/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+    <a href="https://xdhuxc.github.io/post/ansible-common-model/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>
@@ -525,7 +532,7 @@ ansible-doc ping # 查看 ping 模块的帮助信息   以下实验均是在 IP 
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'Your Google Analytics tracking ID', 'auto');
+    ga('create', 'UA-139962821-1', 'auto');
     ga('send', 'pageview');
   }
 </script>

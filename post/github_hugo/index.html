@@ -152,7 +152,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>09 May 2019, 00:00</time>
+    <time>2019-05-09</time>
   </div>
 
   
@@ -174,6 +174,7 @@
   
 
 </div>
+
 
   
 
@@ -363,18 +364,9 @@ categories = [
 +++
 </code></pre>
 
-<p>5、增加评论功能
-Hugo 默认支持 <a href="https://disqus.com/">Disqus</a> 的评论，并且已经在模板中添加好了，需要我们去 Disqus 注册一个账号，然后在 <code>config.toml</code> 中加入如下内容：</p>
+<p>baseurl 的值在本地测试时无关紧要，但是当部署到 GitHub 上时，需要将其配置为 xdhuxc.github.io 这样的域名。另外，如果使用自有域名，还需要在 GitHub 上进行关联，具体方法可参考：<a href="https://help.github.com/en/articles/using-a-custom-domain-with-github-pages">https://help.github.com/en/articles/using-a-custom-domain-with-github-pages</a></p>
 
-<pre><code class="language-markdown">disqusShortname = &quot;yourdisqusShortname&quot;
-</code></pre>
-
-<p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。
-<img src="../../static/media/disqus.png" alt="image" /></p>
-
-<p>但是在本地无法测试该功能，需要上线到 github 进行测试。</p>
-
-<p>6、启动网站</p>
+<p>5、启动网站</p>
 
 <pre><code>hugo server --buildDrafts -w
 </code></pre>
@@ -385,7 +377,6 @@ Hugo 默认支持 <a href="https://disqus.com/">Disqus</a> 的评论，并且已
 <li>-w：监视文件内容的变化，如果此后修改了网站的内容，会直接显示在浏览器的页面上，不需要重新启动 hugo 进程，方便我们进行修改，但是不能监测 config.toml 文件中的参数变化。</li>
 <li>&ndash;buildDrafts：生成被标记为草稿的页面。</li>
 <li>-t hyde：使用 hyde 主题。</li>
-<li></li>
 </ul>
 
 <h3 id="使用-github-pages-托管网站">使用 GitHub Pages 托管网站</h3>
@@ -514,7 +505,64 @@ To github.com:xdhuxc/xdhuxc.github.io.git
 wanghuans-MBP:public wanghuan$ 
 </code></pre>
 
-<h3 id="加入网站统计功能">加入网站统计功能。</h3>
+<h3 id="评论和网站统计功能">评论和网站统计功能</h3>
+
+<h4 id="增加评论功能">增加评论功能</h4>
+
+<p>Hugo 默认支持 <a href="https://disqus.com/">Disqus</a> 的评论，并且已经在模板中添加好了，需要我们去 Disqus 注册一个账号，然后在 <code>config.toml</code> 中加入如下内容：</p>
+
+<pre><code class="language-markdown">disqusShortname = &quot;yourdisqusShortname&quot;
+</code></pre>
+
+<p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。
+<img src="../../static/media/disqus.png" alt="image" /></p>
+
+<p>但是在本地无法测试该功能，需要上线到 github 进行测试。</p>
+
+<h4 id="网站统计功能">网站统计功能</h4>
+
+<p>使用 Google 的网站分析功能，登录 <a href="https://marketingplatform.google.com/about/，注册账号，获取">https://marketingplatform.google.com/about/，注册账号，获取</a> Track ID，填写到 config.toml 中 <code>[params]</code> 下 <code>googleAnalytics</code> 的值处。</p>
+
+<h3 id="其他事项">其他事项</h3>
+
+<h4 id="博客的时间格式优化">博客的时间格式优化，</h4>
+
+<p>1、默认情况下，首页中博客的时间格式是这样的：</p>
+
+<pre><code class="language-markdown">25 Oct 2018, 00:00
+</code></pre>
+
+<p>包含英文，不易为国人识别，我们可以将其改造为常用的日期格式，修改 <code>layouts/partials/post_meta.html</code> 文件中如下内容：</p>
+
+<pre><code class="language-markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format &quot;02 Jan 2006, 15:04&quot; }}{{ end }}&lt;/time&gt;
+</code></pre>
+
+<p>改为</p>
+
+<pre><code class="language-markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format &quot;2006-01-02&quot; }}{{ else }}{{ .Date.Format &quot;2006-01-02&quot; }}{{ end }}&lt;/time&gt;
+</code></pre>
+
+<p>如果需要时分秒，可以改为如下格式：</p>
+
+<pre><code class="language-markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format &quot;2006-01-02 15:04:05&quot; }}{{ else }}{{ .Date.Format &quot;2006-01-02 15:04:05&quot; }}{{ end }}&lt;/time&gt;
+</code></pre>
+
+<p>2、菜单 <code>博客</code> 中的博客列表中的时间默认情况下的格式为：</p>
+
+<pre><code class="language-markdown">25 Oct 2018, 00:00
+</code></pre>
+
+<p>在 config.toml 中将 <code>dateFormat</code> 的值由 <code>02 Jan 2006, 15:04</code> 修改为：<code>2006-01-02</code>，则其日期显示就变为：<code>2019-05-09</code></p>
+
+<p>3、如果想在 <code>博客</code> 菜单中按照月份显示自己的博客列表，可以对 <code>layouts/post/post.html</code> 进行修改，将</p>
+
+<pre><code class="language-markdown">{{ range .Data.Pages.GroupByDate &quot;2006&quot; }}
+</code></pre>
+
+<p>改为</p>
+
+<pre><code class="language-markdown">{{ range .Data.Pages.GroupByDate &quot;2006-01&quot; }}
+</code></pre>
 
 <h3 id="参考资料">参考资料</h3>
 
@@ -523,6 +571,30 @@ wanghuans-MBP:public wanghuan$
 <p><a href="https://jimmysong.io/posts/building-github-pages-with-hugo/">https://jimmysong.io/posts/building-github-pages-with-hugo/</a></p>
 
 <p><a href="https://www.jianshu.com/p/e68fba58f75c">https://www.jianshu.com/p/e68fba58f75c</a></p>
+
+<p><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a></p>
+
+<p><a href="https://gohugo.io/templates/internal/#google-analytics">https://gohugo.io/templates/internal/#google-analytics</a></p>
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'xdhuxc';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
   
@@ -552,26 +624,6 @@ wanghuans-MBP:public wanghuan$
 
 
 
-  
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'xdhuxc';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-
 </div>
 
 </div>
@@ -588,7 +640,7 @@ wanghuans-MBP:public wanghuan$
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'Your Google Analytics tracking ID', 'auto');
+    ga('create', 'UA-139962821-1', 'auto');
     ga('send', 'pageview');
   }
 </script>

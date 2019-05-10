@@ -4,10 +4,10 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
+  <meta name="description" content="关于作者和此网站">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Shell &middot; xdhuxc</title>
+  <title>关于 &middot; xdhuxc</title>
 
   
   
@@ -39,9 +39,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/shell/index.xml' />
   
 
   
@@ -146,62 +143,12 @@
 
 
 <div class="header">
-  <h1>Shell</h1>
+  <h1>关于</h1>
+  <h2>关于作者和此网站</h2>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a></h2>
+  <p>此网站用于展示技术博客和个人文章！</p>
 
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-08-13</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/linux">Linux</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/shell">Shell</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  在 Linux 系统中，Shell 脚本的执行方式通常有如下三种：
-通过解释器 bash 或 sh 执行 通过解释器时的命令格式为：
-bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh shell-script-name # 通过 sh 解释器来执行 shell 脚本。  当脚本文件本身没有可执行权限（即文件权限属性 x 位为：“-”）时经常使用的方式；或者脚本文件开头没有指定解释器时，需要使用这种方法。使用起来比较方便，操作时节省了为文件添加执行权限的步骤。当然，也可以选择其他类型的解释器，比如ksh，csh，zsh等。
-（1）创建文件abc.sh
-[root@xdhuxc ~]# touch abc.sh [root@xdhuxc ~]# ls abc.sh [root@xdhuxc ~]#  （2）写入要执行的命令：
-[root@xdhuxc ~]# cat &gt;&gt; abc.sh &lt;&lt; EOF # 向 abc.sh 中追加内容。 &gt; #!/usr/bin/env bash &gt; echo &quot;Hello Shell.&quot; &gt; EOF [root@xdhuxc ~]# cat abc.sh # 显示 abc.
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/linux-shell-execute/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -244,3 +191,4 @@ bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh s
 
 </body>
 </html>
+

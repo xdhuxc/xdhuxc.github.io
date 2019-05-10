@@ -33,6 +33,11 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/about/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/github_hugo/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
   </url>
@@ -55,23 +60,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/database/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/post/mongodb-simple-use/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/linux/</loc>
     <lastmod>2018-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -89,6 +77,23 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/database/</loc>
+    <lastmod>2018-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
+    <lastmod>2018-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mongodb-simple-use/</loc>
+    <lastmod>2018-07-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/centos7/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -101,24 +106,24 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/ansible-simple-use/</loc>
-    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/devops/</loc>
-    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/it/</loc>
-    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/ansible/</loc>
-    <lastmod>2018-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

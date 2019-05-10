@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>关于</title>
+      <link>https://xdhuxc.github.io/about/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/about/</guid>
+      <description>此网站用于展示技术博客和个人文章！</description>
+    </item>
+    
+    <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站</title>
       <link>https://xdhuxc.github.io/post/github_hugo/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
@@ -34,18 +43,6 @@ wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo # 安装 hugo Updating Ho
     </item>
     
     <item>
-      <title>MongoDB 数据库初步使用</title>
-      <link>https://xdhuxc.github.io/post/mongodb-simple-use/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/mongodb-simple-use/</guid>
-      <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。
-配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 /etc/mongod.conf 文件中的 127.0.0.1 为本机IP地址。比如，修改127.0.0.1 为本虚拟机IP地址 192.168.91.128，连接端口保持默认的 27017 即可，如下所示：
-# network interfaces net: port: 27017 bindIp: 192.168.91.128 # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.  使用 MongoDB shell 操作数据库 连接 MongoDB 数据库 使用的命令为：
-mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。  如下所示：</description>
-    </item>
-    
-    <item>
       <title>Linux 中 Shell 脚本执行的三种方式</title>
       <link>https://xdhuxc.github.io/post/linux-shell-execute/</link>
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
@@ -57,6 +54,18 @@ bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh s
 （1）创建文件abc.sh
 [root@xdhuxc ~]# touch abc.sh [root@xdhuxc ~]# ls abc.sh [root@xdhuxc ~]#  （2）写入要执行的命令：
 [root@xdhuxc ~]# cat &amp;gt;&amp;gt; abc.sh &amp;lt;&amp;lt; EOF # 向 abc.sh 中追加内容。 &amp;gt; #!/usr/bin/env bash &amp;gt; echo &amp;quot;Hello Shell.&amp;quot; &amp;gt; EOF [root@xdhuxc ~]# cat abc.sh # 显示 abc.</description>
+    </item>
+    
+    <item>
+      <title>MongoDB 数据库初步使用</title>
+      <link>https://xdhuxc.github.io/post/mongodb-simple-use/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mongodb-simple-use/</guid>
+      <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。
+配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 /etc/mongod.conf 文件中的 127.0.0.1 为本机IP地址。比如，修改127.0.0.1 为本虚拟机IP地址 192.168.91.128，连接端口保持默认的 27017 即可，如下所示：
+# network interfaces net: port: 27017 bindIp: 192.168.91.128 # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.  使用 MongoDB shell 操作数据库 连接 MongoDB 数据库 使用的命令为：
+mongo --host 192.168.91.128 --port 27017 或者 mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。  如下所示：</description>
     </item>
     
     <item>
@@ -83,7 +92,7 @@ systemctl restart mongod  4、启动 MongoDB shell</description>
     <item>
       <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/ansible-simple-use/</link>
-      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/ansible-simple-use/</guid>
       <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。
