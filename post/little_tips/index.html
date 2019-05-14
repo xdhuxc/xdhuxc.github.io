@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Tags &middot; xdhuxc</title>
+  <title>写作时实用输入小技巧 &middot; xdhuxc</title>
 
   
   
@@ -39,9 +39,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/index.xml' />
   
 
   
@@ -146,83 +143,115 @@
 
 
 <div class="header">
-  <h1>Tags</h1>
+  <h1>写作时实用输入小技巧</h1>
+  <h2></h2>
 </div>
 <div class="content">
-  <ul>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-05-14</time>
+  </div>
+
+  
+
+  
+
   
   
-    <li>
-      <a href="ansible">ansible</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="database">database</a>
-      <span>&#40;2&#41;</span>
-    </li>
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/%E6%8A%80%E5%B7%A7">技巧</a>
+    
+  </div>
   
-    <li>
-      <a href="devops">devops</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="github">github</a>
-      <span>&#40;2&#41;</span>
-    </li>
+
+</div>
+
+
+  <p>摘要：</p>
+
+<p>　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。</p>
+
+<h3 id="在-markdown-中首段缩进两个汉字">在 markdown 中首段缩进两个汉字</h3>
+
+<p>　　由于 markdown 标记语言是外国人发明的，英文写作首段不空字符，而我们使用 <code>markdown</code> 标记语言进行中文写作时，一般首段都要缩进两个汉字。于是，我们就有了这样一个需求，在使用 <code>markdown</code> 进行中文写作时，在首段缩进两个汉字的长度，但是由于 markdown 本身的特性，直接按空格键是不行的，需要采用特殊的方式才能实现。</p>
+
+<p>以下我们介绍两种方法</p>
+
+<p>1、使用 <code>&amp;nbsp;</code> 来实现，由于 markdown 最终是被转换成 HTML 来显示的，而且其本身也兼容 HTML，所以我们可以使用 HTML 中的 <code>&amp;nbsp;</code> 来实现缩进效果，大体上来看，8 个 <code>&amp;nbsp;</code> 可以实现两个汉字缩进的效果，如下所示：</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;乾坤（<code>乾坤</code> 前面有 8 个 <code>&amp;nbsp;</code>）</p>
+
+<p>天人合一（已经左端对齐）</p>
+
+<p>这种方法比较麻烦，每段开头都要有　8 个 <code>&amp;nbsp;</code>，但是显示效果有保证。</p>
+
+<p>2、将输入法切换为　<code>全角</code>，然后使用空格键，按两次空格键，可以直接实现两个汉字的缩进效果，主要不要使用　Tab 键进行操作，可自行测试观察效果。这种方法比第一种方法简洁方便，但是有时效果不太理想。</p>
+
+<h3 id="在句子中插入中-号">在句子中插入中 <code>·</code> 号</h3>
+
+<p>　　在文档中书写外国人名或者书名时，经常会用到中 <code>·</code> 号，但是键盘上 <code>1</code> 前面的中 <code>·</code> 需要使用快捷键配合打出，有时可能无法使用。这时，我们可以在中文输入法下，输入 <code>dian</code>，如下图所示：</p>
+
+<p><center>
+<img src="http://pr9wm50t1.bkt.clouddn.com/point.png" width="800px" height="300px" />
+图 1 · 输入中 <code>·</code> 号
+</center></p>
+
+<p>然后选择中 <code>·</code> 前的数字序号 5，就可以很方便地输入中<code>·</code>号了。</p>
+
   
-    <li>
-      <a href="hugo">hugo</a>
-      <span>&#40;2&#41;</span>
-    </li>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'xdhuxc';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
   
-    <li>
-      <a href="it">it</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mongodb">mongodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="centos7">centos7</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="jmx">jmx</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="linux">linux</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shell">shell</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="springboot">springboot</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E4%BA%BA%E9%97%B4%E4%B8%96">人间世</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E6%8A%80%E5%B7%A7">技巧</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/github_hugo_1/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -265,3 +294,4 @@
 
 </body>
 </html>
+

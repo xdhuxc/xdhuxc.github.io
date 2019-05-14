@@ -5,11 +5,22 @@
     <link>https://xdhuxc.github.io/</link>
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc All rights reserved.</copyright>
-    <lastBuildDate>Thu, 09 May 2019 00:00:00 +0000</lastBuildDate>
+    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>写作时实用输入小技巧</title>
+      <link>https://xdhuxc.github.io/post/little_tips/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/little_tips/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+
+&lt;p&gt;　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>关于</title>
@@ -21,12 +32,32 @@
     </item>
     
     <item>
-      <title>基于 Hugo 和 GitHub 搭建个人网站</title>
-      <link>https://xdhuxc.github.io/post/github_hugo/</link>
+      <title>基于 Hugo 和 GitHub 搭建个人网站（一）</title>
+      <link>https://xdhuxc.github.io/post/github_hugo_1/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/github_hugo/</guid>
+      <guid>https://xdhuxc.github.io/post/github_hugo_1/</guid>
       <description>&lt;p&gt;本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
+      <link>https://xdhuxc.github.io/unfinished/github_hugo_2/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/github_hugo_2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>人间世·杂三</title>
+      <link>https://xdhuxc.github.io/post/human-world-mixed-three/</link>
+      <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/human-world-mixed-three/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+
+&lt;p&gt;　　本篇文章是对最近社会讨论的 996.icu 问题的扩展，如果该问题继续被讨论下去，可能会涉及到这些问题。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -93,6 +124,30 @@
       
       <guid>https://xdhuxc.github.io/contact/</guid>
       <description>姓名 电子邮箱 城市 提交</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://xdhuxc.github.io/unfinished/mermaid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/mermaid/</guid>
+      <description>mermaid 简介 mermaid，一个简单的类似于 markdown 的脚本语言，可以用类似于 markdown 的方式从文本中生成图表和流程图。
+mermaid 使用 1、安装 mermaid，使用如下命令安装 mermaid
+ 参考资料 https://mermaidjs.github.io/
+https://github.com/knsv/mermaid</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://xdhuxc.github.io/unfinished/nodejs_yarn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/nodejs_yarn/</guid>
+      <description>yarn 简介 yarn 使用 1、安装 yarn，在 Mac 上，使用如下命令安装 yarn：
+brew install yarn  其他平台的安装，可参考 官方文档
+参考资料 https://yarnpkg.com/en/docs/install
+https://segmentfault.com/a/1190000007189426</description>
     </item>
     
   </channel>

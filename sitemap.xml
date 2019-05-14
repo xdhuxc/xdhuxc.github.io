@@ -3,6 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/little_tips/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/github/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -15,19 +44,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
+    <loc>https://xdhuxc.github.io/unfinished/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -38,8 +55,24 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/github_hugo/</loc>
+    <loc>https://xdhuxc.github.io/post/github_hugo_1/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/unfinished/github_hugo_2/</loc>
+    <lastmod>2019-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <lastmod>2019-04-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/human-world-mixed-three/</loc>
+    <lastmod>2019-04-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -135,6 +168,16 @@
   <url>
     <loc>https://xdhuxc.github.io/contact/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/unfinished/mermaid/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/unfinished/nodejs_yarn/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
