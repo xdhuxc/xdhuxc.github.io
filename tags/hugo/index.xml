@@ -6,10 +6,21 @@
     <description>Recent content in Hugo on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 09 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
+      <link>https://xdhuxc.github.io/post/github_hugo_2/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/github_hugo_2/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+
+&lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站（一）</title>
@@ -18,16 +29,6 @@
       
       <guid>https://xdhuxc.github.io/post/github_hugo_1/</guid>
       <description>&lt;p&gt;本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
-      <link>https://xdhuxc.github.io/unfinished/github_hugo_2/</link>
-      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/unfinished/github_hugo_2/</guid>
-      <description>&lt;p&gt;摘要：
-　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计等功能。&lt;/p&gt;</description>
     </item>
     
   </channel>

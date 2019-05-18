@@ -161,11 +161,10 @@
       <span>创建于 2019-05-14</span> |
       <span>修改于 2019-05-14</span> |
       <span>总字数 627</span> |
-      <span>阅读时长 2 分钟</span> |
-      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次
+      <span>预估阅读时长 2 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
-</span>
 </div>
 <div class="content">
 
@@ -227,23 +226,28 @@
 <p>然后选择中 <code>·</code> 前的数字序号 5，就可以很方便地输入中<code>·</code>号了。</p>
 
   
-<div id="disqus_thread"></div>
+  
+<span id="/post/little_tips/" class="leancloud_visitors" data-flag-title="写作时实用输入小技巧">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 <script type="text/javascript">
-
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'xdhuxc';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 
   
@@ -265,8 +269,14 @@
   </div>
   <div class="pure-u-10-24">
     
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a>
+    </nav>
+    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/github_hugo_2/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
@@ -281,6 +291,21 @@
 <script src="https://xdhuxc.github.io/js/menus.js"></script>
 
 
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
 <script>
   
   if (window.location.hostname != "localhost") {
@@ -295,7 +320,7 @@
 </script>
 
 
-
+    
 
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -310,6 +335,7 @@
   })();
 </script>
 <noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
 
 
 
