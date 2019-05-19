@@ -6,10 +6,21 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript 中的日期和时间格式化</title>
+      <link>https://xdhuxc.github.io/post/javascript_date_time/</link>
+      <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/javascript_date_time/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+
+&lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
