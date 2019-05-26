@@ -6,10 +6,21 @@
     <description>Recent content in Posts on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Sun, 19 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue 集成 CodeMirror</title>
+      <link>https://xdhuxc.github.io/post/vue-codemirror/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+
+&lt;p&gt;　　当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>JavaScript 中的日期和时间格式化</title>
@@ -63,6 +74,15 @@
       <description>&lt;p&gt;摘要：&lt;/p&gt;
 
 &lt;p&gt;　　本篇文章是对最近社会讨论的 996.icu 问题的扩展，如果该问题继续被讨论下去，可能会涉及到这些问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>人间世·前言</title>
+      <link>https://xdhuxc.github.io/post/human-world-preface/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/human-world-preface/</guid>
+      <description>已经有很长一段时间了，我的头脑中再也没有出现过新的东西了，这是一件令人沮丧的事情！ 我注意到，很多人的头脑和意识都在固化甚至僵化。每当谈起一些</description>
     </item>
     
     <item>

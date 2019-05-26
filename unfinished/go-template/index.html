@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Posts &middot; xdhuxc</title>
+  <title>Go Template 的使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/post/index.xml' />
   
 
   
@@ -157,84 +154,45 @@
 
 
 <div class="header">
-  <h1>Posts</h1>
+  <h1>Go Template 的使用</h1>
+  <h2></h2>
 </div>
 <div class="content">
   
-  <h2>2019-05</h2>
-  <ul>
-  
-    <li><time>2019-05-24</time> - <a href="https://xdhuxc.github.io/post/vue-codemirror/">Vue 集成 CodeMirror</a></li>
 
-  
-    <li><time>2019-05-19</time> - <a href="https://xdhuxc.github.io/post/javascript_date_time/">JavaScript 中的日期和时间格式化</a></li>
+<h3 id="go-template">Go Template</h3>
 
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/little_tips/">写作时实用输入小技巧</a></li>
+<h3 id="if-else-语句">if-else 语句</h3>
 
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a></li>
+<p>在模板渲染中，使用 if-else 语句的时候，当需要判断和某个字符串相等的时候，不能使用常用的 <code>==</code>，而是要使用 <code>eq</code> 函数，编写模板如下：</p>
 
-  
-    <li><time>2019-05-09</time> - <a href="https://xdhuxc.github.io/post/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a></li>
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager_yaml/receivers/*&quot;}}{{$item := json .Value}}
+{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}
+{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}
+{{end}}
+</code></pre>
 
-  
-  </ul>
-  
-  <h2>2019-04</h2>
-  <ul>
-  
-    <li><time>2019-04-13</time> - <a href="https://xdhuxc.github.io/post/human-world-mixed-three/">人间世·杂三</a></li>
+<p>另外，这种写法可读性好，但是渲染后会多出来空行，改为如下模板即可：</p>
 
-  
-  </ul>
-  
-  <h2>2019-01</h2>
-  <ul>
-  
-    <li><time>2019-01-01</time> - <a href="https://xdhuxc.github.io/post/human-world-preface/">人间世·前言</a></li>
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager_yaml/receivers/*&quot;}}{{$item := json .Value}}{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}{{end}}
+</code></pre>
 
-  
-  </ul>
-  
-  <h2>2018-10</h2>
-  <ul>
-  
-    <li><time>2018-10-25</time> - <a href="https://xdhuxc.github.io/post/springboot-jmx/">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-08</h2>
-  <ul>
-  
-    <li><time>2018-08-13</time> - <a href="https://xdhuxc.github.io/post/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-07</h2>
-  <ul>
-  
-    <li><time>2018-07-20</time> - <a href="https://xdhuxc.github.io/post/mongodb-simple-use/">MongoDB 数据库初步使用</a></li>
-
-  
-    <li><time>2018-07-06</time> - <a href="https://xdhuxc.github.io/post/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-05</h2>
-  <ul>
-  
-    <li><time>2018-05-14</time> - <a href="https://xdhuxc.github.io/post/ansible-simple-use/">Ansible 学习之简单入门</a></li>
-
-  
-    <li><time>2018-05-02</time> - <a href="https://xdhuxc.github.io/post/ansible-common-model/">Ansible 学习之常用模块</a></li>
-
-  
-  </ul>
-  
 </div>
 
 </div>
