@@ -6,15 +6,33 @@
     <description>Recent content in Posts on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>JavaScript 中的真值和假值问题</title>
+      <link>https://xdhuxc.github.io/post/javascript-true-false/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/javascript-true-false/</guid>
+      <description>&lt;p&gt;JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue &#43; Element-UI 表单校验功能的总结</title>
+      <link>https://xdhuxc.github.io/post/vue-element-ui-verify/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue-element-ui-verify/</guid>
+      <description>&lt;p&gt;使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>记一次 HTTP PUT/POST 请求 406 错误</title>
       <link>https://xdhuxc.github.io/post/http-406-not-acceptable/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/http-406-not-acceptable/</guid>
       <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>

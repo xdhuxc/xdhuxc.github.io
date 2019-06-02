@@ -6,15 +6,51 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Element-UI</title>
+      <link>https://xdhuxc.github.io/tags/element-ui/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/element-ui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://xdhuxc.github.io/tags/javascript/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://xdhuxc.github.io/tags/vue/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>表单校验</title>
+      <link>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>406</title>
       <link>https://xdhuxc.github.io/tags/406/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/406/</guid>
       <description></description>
@@ -23,36 +59,18 @@
     <item>
       <title>HTTP</title>
       <link>https://xdhuxc.github.io/tags/http/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Vue</title>
-      <link>https://xdhuxc.github.io/tags/vue/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/vue/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>axios</title>
       <link>https://xdhuxc.github.io/tags/axios/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/axios/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>表单</title>
-      <link>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95/</link>
-      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95/</guid>
       <description></description>
     </item>
     
@@ -89,15 +107,6 @@
       <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/date/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://xdhuxc.github.io/tags/javascript/</link>
-      <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     

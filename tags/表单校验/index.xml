@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vue on xdhuxc</title>
-    <link>https://xdhuxc.github.io/tags/vue/</link>
-    <description>Recent content in Vue on xdhuxc</description>
+    <title>表单校验 on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</link>
+    <description>Recent content in 表单校验 on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
     <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://xdhuxc.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://xdhuxc.github.io/post/vue-element-ui-verify/</guid>
       <description>&lt;p&gt;使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Vue 集成 CodeMirror</title>
-      <link>https://xdhuxc.github.io/post/vue-codemirror/</link>
-      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
-      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
   </channel>

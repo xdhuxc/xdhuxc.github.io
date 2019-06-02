@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Tags &middot; xdhuxc</title>
+  <title>JavaScript 中的真值和假值问题 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/index.xml' />
   
 
   
@@ -157,143 +154,151 @@
 
 
 <div class="header">
-  <h1>Tags</h1>
+  <h1>JavaScript 中的真值和假值问题</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-06-02</span> |
+      <span>修改于 2019-06-02</span> |
+      <span>总字数 438</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  <ul>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-06-02</time>
+  </div>
+
+  
+
+  
+
   
   
-    <li>
-      <a href="ansible">ansible</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="database">database</a>
-      <span>&#40;2&#41;</span>
-    </li>
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/javascript">JavaScript</a>
+    
+  </div>
   
-    <li>
-      <a href="devops">devops</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="github">github</a>
-      <span>&#40;2&#41;</span>
-    </li>
+
+</div>
+
+
+  <p>JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。</p>
+
+<h3 id="javascript-中的真值">JavaScript 中的真值</h3>
+
+<p>在 JavaScript 中，真值指的是在布尔值上下文中转换后的值为真的值。</p>
+
+<p>所有值都是真值，除非它们被定义为假值，即被定义为<code>false</code>，<code>0</code>，<code>&quot;&quot;</code>，<code>null</code>，<code>undefined</code>，<code>NaN</code>。</p>
+
+<p>JavaScript 在布尔值上下文中使用强制类型转换。</p>
+
+<p>JavaScript 中的真值示例如下（将被转换为 true，if后的代码段将被执行）</p>
+
+<pre><code class="language-markdown">if (true)
+if ({})
+if ([])
+if (42)
+if (&quot;foo&quot;)
+if (new Date())
+if (-42)
+if (3.14)
+if (-3.14)
+if (Infinity)
+if (-Infinity)  
+</code></pre>
+
+<h3 id="javascript-中的假值">JavaScript 中的假值</h3>
+
+<p>在 JavaScript 中，假值是在布尔值上下文中已认定可转换为假的值。</p>
+
+<p>JavaScript 在需要用到布尔类型值得上下文中使用强制类型转换将值转换为布尔值，比如在条件语句或者循环语句中。</p>
+
+<p>JavaScript 中的假值示例如下（通过 if 代码段将 falsy 值转换为 false）：</p>
+
+<pre><code class="language-markdown">if (false)
+if (null)
+if (undefined)
+if (0)
+if (NaN)
+if ('')
+if (&quot;&quot;)
+if (document.all)
+</code></pre>
+
+<p>document.all 在过去被用于浏览器检测，是 HTML 规范在此定义了故意与 ECMAScript 标准相违背的，以保持与历史代码得兼容性。</p>
+
+<p>document.all 虽然是一个对象，但其转换为布尔值后是 false。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy</a></p>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy</a></p>
+
   
-    <li>
-      <a href="hugo">hugo</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="it">it</a>
-      <span>&#40;2&#41;</span>
-    </li>
+<span id="/post/javascript-true-false/" class="leancloud_visitors" data-flag-title="JavaScript 中的真值和假值问题">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
   
-    <li>
-      <a href="javascript">javascript</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mongodb">mongodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="vue">vue</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E4%BA%BA%E9%97%B4%E4%B8%96">人间世</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="406">406</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="axios">axios</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="centos7">centos7</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="codemirror">codemirror</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="date">date</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="element-ui">element-ui</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="go">go</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="http">http</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="jmx">jmx</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="linux">linux</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shell">shell</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="springboot">springboot</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="template">template</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="time">time</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E6%8A%80%E5%B7%A7">技巧</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/vue-element-ui-verify/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/vue-element-ui-verify/">Vue &#43; Element-UI 表单校验功能的总结</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -352,3 +357,4 @@
 
 </body>
 </html>
+
