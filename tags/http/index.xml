@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/http/</link>
+    <description>Recent content in HTTP on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>记一次 HTTP PUT/POST 请求 406 错误</title>
+      <link>https://xdhuxc.github.io/post/http-406-not-acceptable/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/http-406-not-acceptable/</guid>
+      <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

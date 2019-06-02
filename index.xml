@@ -6,10 +6,28 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue 表单校验功能的总结</title>
+      <link>https://xdhuxc.github.io/unfinished/vue-verify/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/vue-verify/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次 HTTP PUT/POST 请求 406 错误</title>
+      <link>https://xdhuxc.github.io/post/http-406-not-acceptable/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/http-406-not-acceptable/</guid>
+      <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Vue 集成 CodeMirror</title>
@@ -17,9 +35,7 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
-      <description>&lt;p&gt;摘要：&lt;/p&gt;
-
-&lt;p&gt;　　当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -167,6 +183,15 @@
       
       <guid>https://xdhuxc.github.io/contact/</guid>
       <description>姓名 电子邮箱 城市 提交</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://xdhuxc.github.io/unfinished/go-vue-cors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/go-vue-cors/</guid>
+      <description>Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210528534&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the wildcard &#39;*&#39; when the request&#39;s credentials mode is &#39;include&#39;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.  Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210155487&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The &#39;Access-Control-Allow-Origin&#39; header contains the invalid value &#39;127.</description>
     </item>
     
     <item>

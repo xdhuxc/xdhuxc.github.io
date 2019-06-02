@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>CodeMirror &middot; xdhuxc</title>
+  <title> &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/codemirror/index.xml' />
   
 
   
@@ -157,57 +154,34 @@
 
 
 <div class="header">
-  <h1>CodeMirror</h1>
+  <h1></h1>
+  <h2></h2>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/vue-codemirror/">Vue 集成 CodeMirror</a></h2>
+  <pre><code class="language-markdown">Access to XMLHttpRequest at 'http://localhost:8088/echo/hello/info?t=1559210528534' from origin 'http://localhost:9528' has been blocked by CORS policy: The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.
+</code></pre>
 
-    <div class="post-meta">
+<pre><code class="language-markdown">Access to XMLHttpRequest at 'http://localhost:8088/echo/hello/info?t=1559210155487' from origin 'http://localhost:9528' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header contains the invalid value '127.0.0.1'.
+</code></pre>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-24</time>
-  </div>
+<pre><code class="language-markdown">Access to XMLHttpRequest at 'http://localhost:8088/apps/info?t=1559212707044' from origin 'http://localhost:9528' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+</code></pre>
 
-  
+<pre><code class="language-markdown">	// 添加过滤器以允许 COTS
+	cors := restful.CrossOriginResourceSharing{
+		AllowedDomains: []string{},
+		AllowedHeaders: []string{&quot;Upgrade&quot;, &quot;Sec-WebSocket-Version&quot;, &quot;Sec-WebSocket-Key&quot;, &quot;Sec-WebSocket-Extensions&quot;, &quot;Connection&quot;, &quot;Accept&quot;, &quot;Content-Type&quot;, &quot;Content-Length&quot;, &quot;Accept-Encoding&quot;, &quot;X-CSRF-Token&quot;, &quot;Authorization&quot;},
+		AllowedMethods: []string{&quot;GET&quot;, &quot;POST&quot;, &quot;OPTIONS&quot;, &quot;DELETE&quot;, &quot;PUT&quot;},
+		CookiesAllowed: false,
+		Container: container,
+	}
 
-  
+	container.Filter(cors.Filter)
+	container.Filter(container.OPTIONSFilter)
+</code></pre>
 
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/codemirror">CodeMirror</a>
-    
-  </div>
-  
-  
+<p>AllowedDomains 字段为空，表示允许所有的域。</p>
 
-</div>
-
-
-  </header>
-
-  <p>
-  <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/vue-codemirror/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -266,3 +240,4 @@
 
 </body>
 </html>
+

@@ -6,10 +6,19 @@
     <description>Recent content in Vue on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue 表单校验功能的总结</title>
+      <link>https://xdhuxc.github.io/unfinished/vue-verify/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/vue-verify/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Vue 集成 CodeMirror</title>
@@ -17,9 +26,7 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
-      <description>&lt;p&gt;摘要：&lt;/p&gt;
-
-&lt;p&gt;　　当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
   </channel>

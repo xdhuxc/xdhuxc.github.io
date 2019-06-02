@@ -6,10 +6,19 @@
     <description>Recent content in Posts on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>记一次 HTTP PUT/POST 请求 406 错误</title>
+      <link>https://xdhuxc.github.io/post/http-406-not-acceptable/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/http-406-not-acceptable/</guid>
+      <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Vue 集成 CodeMirror</title>
@@ -17,9 +26,7 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
-      <description>&lt;p&gt;摘要：&lt;/p&gt;
-
-&lt;p&gt;　　当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
     <item>

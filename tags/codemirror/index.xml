@@ -17,9 +17,7 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/vue-codemirror/</guid>
-      <description>&lt;p&gt;摘要：&lt;/p&gt;
-
-&lt;p&gt;　　当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
   </channel>
