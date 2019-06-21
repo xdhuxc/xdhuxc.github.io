@@ -6,10 +6,37 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Tue, 11 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/git_questions_and_solutions/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git_questions_and_solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录一些 git 使用过程中常见的问题及其解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitHub 上 fork 项目后同步原项目</title>
+      <link>https://xdhuxc.github.io/post/github-sync-master-branch/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/github-sync-master-branch/</guid>
+      <description>&lt;p&gt;在 GitHub 上 fork 其他项目后，过一段时间后，自己账户下的项目就会和原项目主分支差异比较大，提交 Pull Requests 时就会产生冲突，此时就需要和主分支同步代码。操作如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mac 功能指南</title>
+      <link>https://xdhuxc.github.io/post/mac-tips/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mac-tips/</guid>
+      <description>&lt;p&gt;本篇博客记录一些 Mac 下常用的操作或功能，以备后需。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用 GORM 操作 MySQL 常见问题及解决</title>
@@ -228,6 +255,17 @@
       
       <guid>https://xdhuxc.github.io/unfinished/go-vue-cors/</guid>
       <description>Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210528534&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the wildcard &#39;*&#39; when the request&#39;s credentials mode is &#39;include&#39;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.  Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210155487&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The &#39;Access-Control-Allow-Origin&#39; header contains the invalid value &#39;127.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://xdhuxc.github.io/unfinished/javascript_array_traverse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/javascript_array_traverse/</guid>
+      <description> JavaScript 中的数组遍历方式
+ 遍历删除 在遍历的过程中删除元素时，会因为删除元素而导致数组索引变化，删除了错误的元素
+var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;] for (let i = 0; i &amp;lt; a.length; i++) { if (a[i] === &#39;c&#39;) { a.splice(i, 1) i-- } }  </description>
     </item>
     
     <item>

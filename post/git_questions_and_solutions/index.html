@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>使用 GORM 操作 MySQL 常见问题及解决 &middot; xdhuxc</title>
+  <title>Git 常见问题及解决 &middot; xdhuxc</title>
 
   
   
@@ -154,13 +154,13 @@
 
 
 <div class="header">
-  <h1>使用 GORM 操作 MySQL 常见问题及解决</h1>
+  <h1>Git 常见问题及解决</h1>
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-06-11</span> |
-      <span>修改于 2019-06-11</span> |
-      <span>总字数 878</span> |
+      <span>创建于 2019-06-19</span> |
+      <span>修改于 2019-06-19</span> |
+      <span>总字数 806</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -172,7 +172,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-11</time>
+    <time>2019-06-19</time>
   </div>
 
   
@@ -185,11 +185,11 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mysql">MySQL</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gorm">GORM</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gitlab">GitLab</a>
     
   </div>
   
@@ -198,129 +198,133 @@
 </div>
 
 
-  <p>本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。</p>
+  <p>本篇博客记录一些 git 使用过程中常见的问题及其解决方法。</p>
 
-<h3 id="error-1062-duplicate-entry-viewer-for-key-name">Error 1062: Duplicate entry &lsquo;viewer&rsquo; for key &lsquo;name&rsquo;</h3>
+<p>1、使用 git 拉取大工程时，报错如下：</p>
 
-<p>为数据模型中的 name 字段加上了 unique 修饰，</p>
-
-<pre><code class="language-markdown"># create the table role
-CREATE TABLE IF NOT EXISTS `role` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(50) NOT NULL,
-    `description` varchar(125) DEFAULT NULL,
-    `create_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `update_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `name` (`name`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+<pre><code>xdhuxc@DESKTOP-AFGTEDSW MINGW64 /d/PycharmProject
+$ git clone -b private git@github.com:xdhuxc/xpython.git                                                                                                               .git
+Cloning into 'xpython'...
+remote: Counting objects: 4608, done.
+remote: Compressing objects: 100% (71/71), done.
+fatal: pack has bad object at offset 10852763787: inflate returned 1
+fatal: index-pack failed
 </code></pre>
 
-<p>但是更新该字段的值时，却报错如下：</p>
+<p>解决方法如下：</p>
 
-<pre><code class="language-markdown">{
- &quot;code&quot;: 50002,
- &quot;result&quot;: &quot;Error 1062: Duplicate entry 'viewer' for key 'name'&quot;
-}
+<pre><code>$ git clone -b private --depth=1 git@github.com:xdhuxc/xpython.git
+Cloning into 'xpython'...
+remote: Counting objects: 913, done.
+remote: Compressing objects: 100% (756/756), done.
+remote: Total 913 (delta 143), reused 819 (delta 101)
+Receiving objects: 100% (913/913), 1.79 GiB | 10.33 MiB/s, done.
+Resolving deltas: 100% (143/143), done.
+Checking out files: 100% (798/798), done.
 </code></pre>
 
-<p>后台代码使用 Golang 编写，数据模型为：</p>
+<p>2、使用 IDEA 复制 GitHub 上的代码时，提示错误如下：</p>
 
-<pre><code class="language-markdown">type Role struct {
-	ID          int       `json:&quot;id&quot; gorm:&quot;id&quot;`
-	Name        string    `json:&quot;name&quot; gorm:&quot;name&quot;`
-	Description string    `json:&quot;description&quot; gorm:&quot;description&quot;`
-	CreateTime  time.Time `json:&quot;create_time&quot; gorm:&quot;create_time&quot;`
-	UpdateTime  time.Time `json:&quot;update_time&quot; gorm:&quot;update_time&quot;`
-}
+<pre><code>Fetch failed: Could not read from remote repository.
 </code></pre>
 
-<p>更新代码的方法为：</p>
+<p>在 IDEA 中，点击 “File”，选择 “Settings”，找到 “Version Control”，选择 “Git”，修改 “SSH executable” 为 “Native”，重新拉取代码即可。</p>
 
-<pre><code class="language-markdown">// Update updates the information of specified role
-func (rs *roleService) Update(role model.Role) (*model.Role, error) {
-	if err := role.Validate(); err != nil {
-		return &amp;role, err
-	}
+<p>3、git 添加远程仓库时报错</p>
 
-	role.UpdateTime = time.Now()
-
-	if err := rs.db.Model(&amp;models.Role{}).Update(map[string]interface{}{
-		&quot;name&quot;:        role.Name,
-		&quot;description&quot;: role.Description,
-		&quot;update_time&quot;: role.UpdateTime,
-	}).Error; err != nil {
-		return &amp;role, err
-	}
-
-	return &amp;role, nil
-}
+<pre><code>wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote add origin git@github.com:xdhuxc/xpython.git
+fatal: remote origin already exists.
+wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote rm origin
+wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote add origin git@github.com:xdhuxc/xpython.git
 </code></pre>
 
-<p>修改为如下方式时，却可以更新成功</p>
+<p>解决：先删除远程 Git 仓库，然后再添加远程 Git 仓库。</p>
 
-<pre><code class="language-markdown">// Update updates the information of specified role
-func (rs *roleService) Update(role model.Role) (*model.Role, error) {
-	if err := role.Validate(); err != nil {
-		return &amp;role, err
-	}
+<p>4、拉取代码时，报错如下：</p>
 
-	role.UpdateTime = time.Now()
-
-	if err := rs.db.Model(&amp;role).Update(map[string]interface{}{
-		&quot;name&quot;:        role.Name,
-		&quot;description&quot;: role.Description,
-		&quot;update_time&quot;: role.UpdateTime,
-	}).Error; err != nil {
-		return &amp;role, err
-	}
-
-	return &amp;role, nil
-}
+<pre><code>wanghuans-MacBook-Pro:k8s wanghuan$ git pull
+fatal: refusing to merge unrelated histories
 </code></pre>
 
-<p>将 db.Model(value interface{}) 中的接口类型参数由 &amp;models.Role{} 修改为 &amp;role，居然就可以更新成功了。</p>
+<p>原因：本地仓库和远程仓库实际上是两个独立的仓库，可以在 <code>pull</code> 命令中加入 <code>--allow-unrelated-history</code> 选项来解决该问题，该选项可以合并两个独立创建的仓库的历史。
+命令为：</p>
 
-<p>查看该方法的<a href="https://github.com/jinzhu/gorm/main.go">源代码</a>，如下：</p>
-
-<pre><code class="language-markdown">// Model specify the model you would like to run db operations
-//    // update all users's name to `hello`
-//    db.Model(&amp;User{}).Update(&quot;name&quot;, &quot;hello&quot;)
-//    // if user's primary key is non-blank, will use it as condition, then will only update the user's name to `hello`
-//    db.Model(&amp;user).Update(&quot;name&quot;, &quot;hello&quot;)
-func (s *DB) Model(value interface{}) *DB {
-	c := s.clone()
-	c.Value = value
-	return c
-}
+<pre><code>wanghuans-MacBook-Pro:k8s wanghuan$ git pull origin master --allow-unrelated-histories
+From gitlab.ushareit.me:sgt/devops/k8s
+ * branch            master     -&gt; FETCH_HEAD
+Already up to date!
+Merge made by the 'recursive' strategy.
 </code></pre>
 
-<p>从该方法的注释来看，如果使用 &amp;User{}，那么将会更新数据库的所有记录的相同字段为同样的值，如果设置某个字段为 unique，那么当记录数超过一条时，肯定会产生重复的字段值从而导致错误。而实际上，我们的目的是第二种，使用 &amp;user，以主键作为条件更新一条记录。所以，使用 GORM 的 Update 方法时，不要传入指向结构体的指针，而应该传入指向结构体变量的指针。</p>
+<p>5、使用eclipse，选取指定分支，拉取代码，报错如下：</p>
 
-<h3 id="desc-是-mysql-关键字">desc 是 MySQL 关键字</h3>
-
-<p>更新数据时，后台 API 返回的错误为：</p>
-
-<pre><code class="language-markdown"> &quot;result&quot;: &quot;Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?' at line 1&quot;
+<pre><code>Git repository clone failed.
+Java heap space
 </code></pre>
 
-<p>实际上使用的 SQL 语句为：</p>
+<p>解决：修改 <code>eclipse</code> 安装目录下的 <code>eclipse.ini</code> 文件中如下参数的值：</p>
 
-<pre><code class="language-markdown">UPDATE sgt_aksk SET iam = ?, desc = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?&quot;, g.Iam, g.Desc, g.CloudType, g.Aksks, g.UpdateTime, g.ID
+<pre><code>-Xms1024m
+-Xmx5120m
 </code></pre>
 
-<p>之所以出现上面的错误，是因为 desc 为 MySQL 数据库关键字，导致该 SQL 语句错误。</p>
+<p>在 <code>IDEA</code> 中，参照修改安装目录 <code>bin</code> 下的 <code>idea.exe.vmoptions</code> 或 <code>idea64.exe.vmoptions</code> 文件。</p>
 
-<p>改为如下形式即可：</p>
+<p>6、拉取 github 上的代码时，报错如下：</p>
 
-<pre><code class="language-markdown">UPDATE sgt_aksk SET iam = ?, `desc` = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?&quot;, g.Iam, g.Desc, g.CloudType, g.Aksks, g.UpdateTime, g.ID
+<pre><code>warning: no common commits
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:xdhuxc/checklist
+ * branch            HEAD       -&gt; FETCH_HEAD
+fatal: refusing to merge unrelated histories
 </code></pre>
 
-<p>当然，设计数据库字段名称时，最好不要和 MySQL 数据库关键字冲突，但是如果已经使用了 MySQL 数据库关键字，可以使用反引号将该字段名称括起来，这样也可以操作成功。</p>
+<p>添加参数<code>--allow-unrelated-histories</code>后重新拉取</p>
+
+<pre><code>git pull --allow-unrelated-histories git@github.com:xdhuxc/checklist.git
+</code></pre>
+
+<p>6、本地修改文件后，拉取 gitlab 上的代码时，报错如下：</p>
+
+<pre><code>bash-3.2$ git pull origin master --allow-unrelated-histories -f
+From gitlab.ushareit.me:sgt/devops/share-ikc
+ * branch            master     -&gt; FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+  .gitignore .idea/workspace.xml
+</code></pre>
+
+<p>解决方法：</p>
+
+<pre><code>git stash
+git pull origin master
+git stash pop
+</code></pre>
+
+<p>使用以上命令保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修改的代码将会被暂时封存起来</p>
+
+<p>7、克隆代码时，报错如下：</p>
+
+<pre><code>wanghuans-MacBook-Pro:PycharmProjects wanghuan$ git clone git@github.com:jumpserver/jumpserver.git
+Cloning into 'jumpserver'...
+remote: Enumerating objects: 83, done.
+remote: Counting objects: 100% (83/83), done.
+remote: Compressing objects: 100% (68/68), done.
+fatal: the remote end hung up unexpectedly55 MiB | 0 bytes/s
+fatal: early EOF
+Connection to github.com closed by remote host.
+fatal: index-pack failed
+</code></pre>
+
+<p>解决方法：</p>
+
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:~ wanghuan$ git config --global http.postBuffer 1048576000
+</code></pre>
 
   
   
-<span id="/post/mysql-questions/" class="leancloud_visitors" data-flag-title="使用 GORM 操作 MySQL 常见问题及解决">
+<span id="/post/git_questions_and_solutions/" class="leancloud_visitors" data-flag-title="Git 常见问题及解决">
     <span class="post-meta-item-text">文章阅读量 </span>
     <span class="leancloud-visitors-count"></span>
     <p></p>
@@ -347,13 +351,13 @@ func (s *DB) Model(value interface{}) *DB {
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/javascript-true-false/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/github-sync-master-branch/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/javascript-true-false/">JavaScript 中的真值和假值问题</a>
+      <a href="https://xdhuxc.github.io/post/github-sync-master-branch/">GitHub 上 fork 项目后同步原项目</a>
     </nav>
     
   </div>
@@ -362,14 +366,8 @@ func (s *DB) Model(value interface{}) *DB {
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/mac-tips/">Mac 功能指南</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/mac-tips/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
