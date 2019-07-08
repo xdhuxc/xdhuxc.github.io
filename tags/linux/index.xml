@@ -13,10 +13,10 @@
     
     <item>
       <title>Linux 中 Shell 脚本执行的三种方式</title>
-      <link>https://xdhuxc.github.io/post/linux-shell-execute/</link>
+      <link>https://xdhuxc.github.io/post/linux/linux-shell-execute/</link>
       <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux-shell-execute/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-shell-execute/</guid>
       <description>在 Linux 系统中，Shell 脚本的执行方式通常有如下三种： 通过解释器 bash 或 sh 执行 通过解释器时的命令格式为： bash shell-script-name # 通过 bash 解释器来执行 shell 脚本。 或 sh shell-script-name # 通</description>
     </item>
     

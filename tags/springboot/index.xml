@@ -13,10 +13,10 @@
     
     <item>
       <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>
-      <link>https://xdhuxc.github.io/post/springboot-jmx/</link>
+      <link>https://xdhuxc.github.io/post/java/springboot-jmx/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/springboot-jmx/</guid>
+      <guid>https://xdhuxc.github.io/post/java/springboot-jmx/</guid>
       <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown

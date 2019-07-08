@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>Vue 集成 CodeMirror &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>Vue 集成 CodeMirror</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-05-24</span> |
+      <span>修改于 2019-05-26</span> |
+      <span>总字数 1544</span> |
+      <span>阅读时长 4 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-05-24</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/codemirror">CodeMirror</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
+
+<h3 id="codemirror-简介">CodeMirror 简介</h3>
+
+<p>CodeMirror 是一个用于编辑文本框代码高亮的 JavaScript 插件，为各种编程语言实现关键字、函数、变量等代码高亮，丰富的 API 和可扩展功能以及多个主题样式、可以基本满足各种项目的需求。</p>
+
+<p>CodeMirror 支持各种编程语言、标记语言的语法高亮，包括 C、C++、Java、PHP、JavaScript、Python、Go、Ruby、SQL等，以及 LaTex、wiki、Markdown等，同时也支持 JSON、YAML、TOML等配置文件常用格式。此外，CodeMirror 还支持代码自动补全、搜索、替换、HTML预览、显示行号、选择/搜索结果高亮等功能。</p>
+
+<p>CodeMirror 目前已经被集成进各种应用程序中，例如 Adobe Brackets、Light Table等开发环境，经常被用于各种 SQL、JavaScript、JSON、YAML 等的在线编辑器的基础库来使用。</p>
+
+<h3 id="原生方式使用-codemirror">原生方式使用 CodeMirror</h3>
+
+<p>本部分内容介绍如何使用 CodeMirror 插件。</p>
+
+<p>1、引入核心文件</p>
+
+<pre><code class="language-markdown">&lt;script src=&quot;lib/codemirror.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;lib/codemirror.css&quot;&gt;
+&lt;script src=&quot;mode/javascript/javascript.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>codemirror.js 和 codemirror.css 是 CodeMirror 插件的核心文件，无论要高亮的代码是何种语言，都需要引入这两个文件。</p>
+
+<p>引入 mode/javascript/javascript.js 用于支持对 JavaScript 的语法高亮。</p>
+
+<p>2、创建编辑器</p>
+
+<pre><code class="language-markdown">&lt;html&gt;
+    &lt;body&gt;
+        &lt;textarea id=&quot;code&quot; name=&quot;code&quot;&gt;&lt;/textarea&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>创建 HTML 文本框元素，用于存放需要高亮显示的代码。</p>
+
+<p>在 JavaScript 代码中</p>
+
+<pre><code class="language-markdown">&lt;script&gt;
+    var editor = CodeMirror.fromTextArea(
+    document.getElementById(&quot;code&quot;), // 获取文本框元素
+    {
+        lineNumbers: true,
+        mode: 'text/x-yaml',
+        gutters: ['CodeMirror-lint-markers'],
+        theme: 'rubyblue',
+    });                             //设置选项参数
+&lt;/script&gt;
+</code></pre>
+
+<p>使用文本框元素和参数对象来创建 CodeMirror 对象，</p>
+
+<p>选项参数含义说明如下：</p>
+
+<ul>
+<li>lineNumbers：为 true 时在左侧显示行号，为 false 时不显示行号。</li>
+<li>mode：显示模式，也就是需要高亮显示的语言的标示，例如 text/x-yaml 表示将高亮显示 YAML 语言的内容。</li>
+<li>gutters：用来添加额外的 gutter，值为 CSS 名称数组，每一项定义了用于绘制 gutter 背景的宽度。</li>
+<li>theme：显示的主题，详情可参考：<a href="https://codemirror.net/demo/theme.html。">https://codemirror.net/demo/theme.html。</a></li>
+</ul>
+
+<p>3、获取及填充值</p>
+
+<p>使用如下方法获取 CodeMirror 的值</p>
+
+<pre><code class="language-markdown">editor.getValue() # 获取经过转义的数据
+editor.getTextArea().value # 获取未经过转义的数据
+</code></pre>
+
+<p>使用如下方法为 CodeMirror 赋值</p>
+
+<pre><code class="language-markdown">editor.setValue(&quot;Hello, World!&quot;)
+</code></pre>
+
+<p>4、设置文本框尺寸及选项</p>
+
+<p>可通过如下方法设置文本框尺寸</p>
+
+<pre><code class="language-markdown">editor.setSize(&quot;600px&quot;, &quot;800px&quot;);
+</code></pre>
+
+<p>可在代码中通过如下方式设置 CodeMirror 属性</p>
+
+<pre><code class="language-markdown">editor.setOption(&quot;readOnly&quot;, true);
+</code></pre>
+
+<h3 id="vue-中集成-codemirror">Vue 中集成 CodeMirror</h3>
+
+<p>当我们使用 Vue 来做我们的前端项目时，可以使用基于 CodeMirror 的 vue-codemirror 来完成 Web 代码编辑器。</p>
+
+<p>1、安装插件</p>
+
+<pre><code class="language-markdown"># 安装 codemirror 插件
+npm install codemirror
+# 安装 vue-codemirror 插件
+npm install vue-codemirror
+</code></pre>
+
+<p>2、挂载 VueCodeMirror，在 main.js 中加入如下代码：</p>
+
+<pre><code class="language-markdown">import VueCodemirror from 'vue-codemirror';
+import 'codemirror/lib/codemirror.css';
+
+Vue.use(VueCodemirror);
+
+new Vue({
+  el: '#app',
+  router,
+  store,
+  i18n,
+  render: h =&gt; h(App),
+});
+</code></pre>
+
+<p>3、在其他页面中使用该组件</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+    &lt;el-dialog
+        :visible.sync=&quot;dialogViewVisible&quot;
+        :title=&quot;CodeMirror&quot;
+        :show-close=&quot;true&quot;
+        :close-on-click-modal=&quot;false&quot;
+        :close-on-press-escape=&quot;false&quot;
+        width=&quot;620px&quot;&gt;
+        &lt;codemirror v-model=&quot;codeMirrorContent&quot; :options=&quot;cmOptions&quot; class=&quot;json-editor&quot;&gt;&lt;/codemirror&gt;
+    &lt;/el-dialog&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { codemirror } from 'vue-codemirror';
+import 'codemirror/addon/lint/lint.css';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/rubyblue.css';
+require('script-loader!jsonlint');
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/addon/lint/lint';
+import 'codemirror/addon/lint/json-lint';
+
+export default {
+  name: 'CodeMirror',
+  data() {
+    return {
+      codeMirrorContent: '',
+      dialogViewVisible: false,
+      cmOptions: {
+        lineNumbers: true,
+        mode: 'text/x-yaml',
+        gutters: ['CodeMirror-lint-markers'],
+        theme: 'rubyblue',
+        lint: true
+      }
+    };
+  },
+  methods: {
+      // 处理点击事件
+      handleView(index, app) {
+            this.codeMirrorContent = app.yaml;
+            this.dialogViewVisible = true;
+      }
+  }
+&lt;/script&gt;
+</code></pre>
+
+<p>注意：</p>
+
+<ul>
+<li>mode 用来指定显示代码的格式，可以是JSON，YAML，SQL等，详情可参考：<a href="https://codemirror.net/mode/index.html。">https://codemirror.net/mode/index.html。</a></li>
+<li>codeMirrorContent 是字符串格式的内容，如果后台传递过来的数据不是字符串格式，需要转换为字符串格式，否则会出错。</li>
+<li>theme 是显示主题，可以显示不同的背景色，详细可参考：<a href="https://codemirror.net/demo/theme.html。">https://codemirror.net/demo/theme.html。</a></li>
+</ul>
+
+<p>选项参数含义说明如下：</p>
+
+<ul>
+<li>lineNumbers：为 true 时在左侧显示行号，为 false 时不显示行号。</li>
+<li>mode：显示模式，也就是需要高亮显示的语言的标示，例如 text/x-yaml 表示将高亮显示 YAML 语言的内容。</li>
+<li>gutters：用来添加额外的 gutter，值为 CSS 名称数组，每一项定义了用于绘制 gutter 背景的宽度。</li>
+<li>theme：显示的主题，详情可参考：<a href="https://codemirror.net/demo/theme.html。">https://codemirror.net/demo/theme.html。</a></li>
+</ul>
+
+<h3 id="常见问题及解决">常见问题及解决</h3>
+
+<p>1、页面中报错如下：</p>
+
+<pre><code class="language-markdown">Error: Parse error on line 1:
+
+^
+Expecting 'STRING', 'NUMBER', 'NULL', 'TRUE', 'FALSE', '{', '[', got 'EOF'
+</code></pre>
+
+<p>可能的一种情况是：</p>
+
+<p>字符串内容为 YAML 格式，但是 mode 却为：<code>text/x-json</code>，将其改为：<code>text/x-yaml</code> 试下。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://codemirror.net/">https://codemirror.net/</a></p>
+
+<p><a href="https://www.itread01.com/content/1540634681.html">https://www.itread01.com/content/1540634681.html</a></p>
+
+<p><a href="https://www.cnblogs.com/onlyonely/p/4450029.html">https://www.cnblogs.com/onlyonely/p/4450029.html</a></p>
+
+  
+  
+<span id="/post/vue/vue-codemirror/" class="leancloud_visitors" data-flag-title="Vue 集成 CodeMirror">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/">记一次 HTTP PUT/POST 请求 406 错误</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

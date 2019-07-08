@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>Vue &#43; Element-UI 表单校验功能的总结 &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>Vue &#43; Element-UI 表单校验功能的总结</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-06-02</span> |
+      <span>修改于 2019-06-02</span> |
+      <span>总字数 1497</span> |
+      <span>阅读时长 3 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-06-02</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/element-ui">Element-UI</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。</p>
+
+<h3 id="普通输入框的校验">普通输入框的校验</h3>
+
+<p>普通输入框的校验，可以直接使用默认的校验器进行校验，示例如下：</p>
+
+<p>1）对数据模型添加 rules 规则</p>
+
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;app-container&quot;&gt;
+    &lt;el-dialog
+      :visible.sync=&quot;dialogFormVisible&quot;
+      :title=&quot;$t('business.businessApplicationMonitor')&quot;
+      :show-close=&quot;false&quot;
+      :close-on-click-modal=&quot;false&quot;
+      :close-on-press-escape=&quot;false&quot;
+      width=&quot;620px&quot;&gt;
+      &lt;el-form ref=&quot;businessForm&quot; :model=&quot;temp&quot; :rules=&quot;businessVerifyRules&quot; label-width=&quot;120px&quot; label-position=&quot;left&quot;&gt;
+          &lt;el-form-item :label=&quot;$t('business.regionName')&quot; prop=&quot;region_name&quot;&gt;
+            &lt;el-select v-model=&quot;temp.region_name&quot; :placeholder=&quot;$t('business.placeholder')&quot;&gt;
+              &lt;el-option v-for=&quot;region in regions&quot; :key=&quot;region.value&quot; :label=&quot;region.label&quot; :value=&quot;region.value&quot;&gt;&lt;/el-option&gt;
+            &lt;/el-select&gt;
+          &lt;/el-form-item&gt;
+          &lt;el-form-item :label=&quot;$t('business.name')&quot; prop=&quot;name&quot;&gt;
+            &lt;el-input v-model=&quot;temp.name&quot; :clearable=&quot;true&quot; style=&quot;width: 400px&quot;/&gt;
+          &lt;/el-form-item&gt;
+      &lt;/el-form&gt;
+      &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+          &lt;el-button @click=&quot;onCancel&quot;&gt; {{ $t('business.cancel') }} &lt;/el-button&gt;
+          &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt; {{ $t('business.confirm') }} &lt;/el-button&gt;
+      &lt;/div&gt;
+    &lt;/el-dialog&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p><code>:rules=&quot;businessVerifyRules&quot;</code> 为该表单添加验证规则，每一个表单项的 prop 属性将作为表单校验的属性名称，需要指定。</p>
+
+<p>2）编写 rules 规则</p>
+
+<pre><code>export default {
+  name: 'Business',
+  data() {
+    return {
+      businessVerifyRules: {
+        region_name: [{
+          required: true, trigger: ['blur', 'change'], message: this.$t('confirm.nullWarning')
+        }],
+        name: [{
+          required: true, trigger: 'blur', message: this.$t('confirm.nullWarning')
+        }]
+      }
+    };
+  }
+</code></pre>
+
+<p>在数据部分编写校验规则，name，port等表示被校验属性，需要和表单项中的 prop 属性指定的属性名称保持一致，否则无法完成校验功能。</p>
+
+<p>其内置的校验器类型还包括：</p>
+
+<ul>
+<li>string：必须是字符串类型，这也是默认的类型。</li>
+<li>number：必须是数值类型。</li>
+<li>boolean：必须是布尔类型。</li>
+<li>method：必须是函数类型。</li>
+<li>regexp: 必须是 RegExp 的实例或者一个可以无异常地创建 RegExp 实例的字符串。</li>
+<li>integer：必须是数值类型和整数。</li>
+<li>float：必须是数值类型和一个浮点数。</li>
+<li>array：必须是由 Array.isArray 确定的数组。</li>
+<li>object：必须是一个对象类型，并且不是 Array.isArray。</li>
+<li>enum：值必须存在于 enum 中。</li>
+<li>date：值必须由 Date 确定有效。</li>
+<li>url：必须是一个 url 类型。</li>
+<li>hex：必须是一个 hex 类型。</li>
+<li>email：必须是一个 email 类型。</li>
+</ul>
+
+<h4 id="数值类型的校验">数值类型的校验</h4>
+
+<p>对于数值类型的校验，可以使用默认的 <code>number</code> 类型校验，但是我们的数值在业务逻辑上有其特殊性，其实是个端口号，所以就有以下要求：</p>
+
+<ul>
+<li>用户必须输入数值，不能提交空字符串。</li>
+<li>用户的输入必须是可解析为数值的字符串，不能是其他的字符串。</li>
+<li>用户输入的数值必须在 1024~65535 之间，不能超出这个范围。</li>
+</ul>
+
+<p>为了同时满足以上要求，我们可以编写自定义的校验函数，将校验逻辑写在校验函数中，校验通过则放行，不通过则返回明确的错误提示。</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div class=&quot;app-container&quot;&gt;
+    &lt;el-dialog
+      :visible.sync=&quot;dialogFormVisible&quot;
+      :title=&quot;$t('business.businessApplicationMonitor')&quot;
+      :show-close=&quot;false&quot;
+      :close-on-click-modal=&quot;false&quot;
+      :close-on-press-escape=&quot;false&quot;
+      width=&quot;620px&quot;&gt;
+      &lt;el-form ref=&quot;businessForm&quot; :model=&quot;temp&quot; :rules=&quot;businessVerifyRules&quot; label-width=&quot;80px&quot;&gt;
+        &lt;el-form-item :label=&quot;$t('business.port')&quot; prop=&quot;port&quot;&gt;
+          &lt;el-input v-model=&quot;temp.port&quot; :clearable=&quot;true&quot; style=&quot;width: 400px&quot;/&gt;
+        &lt;/el-form-item&gt;
+      &lt;/el-form&gt;
+      &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+        &lt;el-button @click=&quot;onCancel&quot;&gt; {{ $t('business.cancel') }}&lt;/el-button&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt; {{ $t('business.confirm') }}&lt;/el-button&gt;
+      &lt;/div&gt;
+    &lt;/el-dialog&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: 'Business',
+  data() {
+    const validatePort = (rule, value, callback) =&gt; {
+      this.$refs['businessForm'].clearValidate();
+      if (value) {
+        const port = parseInt(value);
+        // 判断是否为数字
+        if (isNaN(port)) {
+          return callback(new Error(this.$t('business.validateNumber')));
+        }
+        if (port &lt;= 1024 || port &gt; 65535) {
+          return callback(new Error(this.$t('business.validateRange')));
+        }
+        return callback();
+      } else {
+        return callback(new Error(this.$t('business.nullWarning')));
+      }
+    };
+    return {
+      businesses: [],
+      temp: {
+        id: 0,
+        gid: 0,
+        name: '',
+        prome_id: 0,
+        labels: [],
+        port: 10106
+      },
+      businessVerifyRules: {
+        port: [{
+          required: true, trigger: 'blur', message: this.$t('confirm.nullWarning')
+        }, {
+          validator: validatePort, trigger: 'blur'
+        }]
+      }
+    };
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>在 businessVerifyRules 中添加自定义校验器</p>
+
+<pre><code class="language-markdown">businessVerifyRules: {
+        port: [{
+          validator: validatePort, trigger: 'blur'
+        }]
+      }
+</code></pre>
+
+<p>通过 validator 字段指定自定义校验函数 validatePort，触发条件为：blur。</p>
+
+<h4 id="复杂数据结构的校验">复杂数据结构的校验</h4>
+
+<p>对于复杂数据结构的校验，采取的方式是编写自定义的校验函数，将校验逻辑封装到校验函数中，校验通过则放行，不通过则返回错误提示，但是需要注意的是，每次执行校验函数时，需要先清除上次的校验结果，否则校验效果就比较滑稽了。</p>
+
+<p>比如我们的项目中，需要校验键值对，采用了如下的方式：</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div class=&quot;app-container&quot;&gt;
+    &lt;el-dialog
+      :visible.sync=&quot;dialogFormVisible&quot;
+      :title=&quot;$t('business.businessApplicationMonitor')&quot;
+      :show-close=&quot;false&quot;
+      :close-on-click-modal=&quot;false&quot;
+      :close-on-press-escape=&quot;false&quot;
+      width=&quot;620px&quot;&gt;
+      &lt;el-form ref=&quot;businessForm&quot; :model=&quot;temp&quot; :rules=&quot;businessVerifyRules&quot; label-width=&quot;80px&quot;&gt;
+        &lt;el-form-item :label=&quot;$t('business.label')&quot; prop=&quot;label&quot;&gt;
+          &lt;span&gt;
+            &lt;el-input value=&quot;&quot; style=&quot;width: 400px&quot; type=&quot;hidden&quot;/&gt;
+          &lt;/span&gt;
+        &lt;/el-form-item&gt;
+        &lt;el-form-item
+          v-for=&quot;(label, index) in temp.labels&quot;
+          :key=&quot;'label' + index&quot;
+          prop=&quot;labels&quot;&gt;
+          &lt;span&gt;
+            &lt;el-input v-model=&quot;label.key&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-input v-model=&quot;label.value&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-button
+              v-if=&quot;temp.labels.length !== 1&quot;
+              type=&quot;danger&quot;
+              size=&quot;mini&quot;
+              icon=&quot;el-icon-delete&quot;
+              circle
+              @click.prevent=&quot;removeLabel(index)&quot;/&gt;
+            &lt;el-button
+              v-if=&quot;index === temp.labels.length - 1&quot;
+              type=&quot;primary&quot;
+              size=&quot;mini&quot;
+              icon=&quot;el-icon-plus&quot;
+              circle
+              @click.prevent=&quot;addLabel&quot;/&gt;
+          &lt;/span&gt;
+        &lt;/el-form-item&gt;
+      &lt;/el-form&gt;
+      &lt;div slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;
+        &lt;el-button @click=&quot;onCancel&quot;&gt; {{ $t('business.cancel') }}&lt;/el-button&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit&quot;&gt; {{ $t('business.confirm') }}&lt;/el-button&gt;
+      &lt;/div&gt;
+    &lt;/el-dialog&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: 'Business',
+  data() {
+    const validateLabels = (rule, value, callback) =&gt; {
+      this.$refs['businessForm'].clearValidate();
+      if (value) {
+        if (value.length &gt; 0) {
+          for (let i = 0; i &lt; value.length; i++) {
+            if (value[i].key === '' || value[i].value === '') {
+              return callback(new Error(this.$t('business.validateLabel')));
+            }
+          }
+          return callback();
+        } else {
+          return callback(new Error(this.$t('business.nullWarning')));
+        }
+      } else {
+        return callback(new Error(this.$t('business.nullWarning')));
+      }
+    };
+    return {
+      businesses: [],
+      temp: {
+        id: 0,
+        gid: 0,
+        name: '',
+        prome_id: 0,
+        labels: [],
+        port: 10106
+      },
+      label: {
+        key: '',
+        value: ''
+      },
+      businessVerifyRules: {
+        labels: [{
+          validator: validateLabels, trigger: ['blur', 'change']
+        }]
+      }
+    };
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>弹出框中是一个表单，表单中有个标签项，每项均是键值对，需要每项同时都配置键值对，如果没有同时配置，需要在页面给出提示，可以在并列显示的标签后面点击按钮删除当前标签。我们将校验逻辑写在自定义校验函数中，然后加入到校验规则里，就可以起作用了。</p>
+
+<p>需要注意的是，每次校验前，需要使用表单的 clearValidate() 函数清理上次的校验结果，如果没有这一步，表单校验的结果就会显得错乱。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://github.com/yiminghe/async-validator">https://github.com/yiminghe/async-validator</a></p>
+
+  
+  
+<span id="/post/vue/vue-element-ui-verify/" class="leancloud_visitors" data-flag-title="Vue &#43; Element-UI 表单校验功能的总结">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/">记一次 HTTP PUT/POST 请求 406 错误</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/">JavaScript 中的真值和假值问题</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

@@ -84,6 +84,16 @@ https://segmentfault.com/a/1190000007189426</description>
     
     <item>
       <title></title>
+      <link>https://xdhuxc.github.io/unfinished/python_logging_basic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/python_logging_basic/</guid>
+      <description>###
+import logging as log log.basicConfig(level=log.INFO, filename=&#39;dingtalk_callback.log&#39;, filemode=&#39;a&#39;, datefmt=&#39;%Y/%m/%d %H:%M:%S&#39;, format=&#39;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&#39;)  参考资料 https://cuiqingcai.com/6080.html</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://xdhuxc.github.io/unfinished/web-terminal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

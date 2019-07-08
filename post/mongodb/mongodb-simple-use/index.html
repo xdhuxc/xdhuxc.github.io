@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>MongoDB 数据库初步使用 &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>MongoDB 数据库初步使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-07-20</span> |
+      <span>修改于 2019-05-16</span> |
+      <span>总字数 1399</span> |
+      <span>阅读时长 3 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2018-07-20</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/database">Database</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mongodb">MongoDB</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  
+
+<p>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。</p>
+
+<h3 id="配置文件参数修改">配置文件参数修改</h3>
+
+<p>MongoDB 数据库的配置文件为：<code>/etc/mongod.conf</code>。
+为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 <code>/etc/mongod.conf</code> 文件中的 <code>127.0.0.1</code> 为本机IP地址。比如，修改<code>127.0.0.1</code> 为本虚拟机IP地址 <code>192.168.91.128</code>，连接端口保持默认的 <code>27017</code> 即可，如下所示：</p>
+
+<pre><code># network interfaces
+net:
+  port: 27017
+  bindIp: 192.168.91.128  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+</code></pre>
+
+<h3 id="使用-mongodb-shell-操作数据库">使用 MongoDB shell 操作数据库</h3>
+
+<h5 id="连接-mongodb-数据库">连接 MongoDB 数据库</h5>
+
+<p>使用的命令为：</p>
+
+<pre><code>mongo --host 192.168.91.128 --port 27017
+或者
+mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。
+</code></pre>
+
+<p>如下所示：</p>
+
+<pre><code>[root@xdhuxc ~]# mongo --host 192.168.91.128 -p 27017
+MongoDB shell version v3.7.9-27-g793e59f
+connecting to: mongodb://192.168.91.128:27017/
+MongoDB server version: 3.7.9-27-g793e59f
+Server has startup warnings:
+2018-05-30T21:51:01.053+0800 I CONTROL  [initandlisten]
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten] ** NOTE: This is a development version (3.7.9-27-g793e59f) of MongoDB.
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten] **       Not recommended for production.
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten]
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-05-30T21:51:01.069+0800 I CONTROL  [initandlisten]
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten]
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten]
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2018-05-30T21:51:01.092+0800 I CONTROL  [initandlisten]
+&gt;
+</code></pre>
+
+<h5 id="创建数据库">创建数据库</h5>
+
+<p>使用如下命令创建数据库：</p>
+
+<pre><code>use database_name
+</code></pre>
+
+<p>具体操作如下所示：</p>
+
+<pre><code>&gt; show dbs       # 显示数据库列表。
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+&gt; use xdhuxc     # 创建数据库并切换至该数据库。
+switched to db xdhuxc
+&gt; show dbs       # 再次显示数据库列表，却发现创建的数据库 xdhuxc 不在列表中。要显示新建的数据库，需要至少插入一个文档，空的数据库是不显示出来的。
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+&gt; db             # 显示当前数据库。
+xdhuxc
+</code></pre>
+
+<p>在 MongoDB 中，默认的数据库是 <code>test</code>，如果没有创建任何数据库，那么创建的集合和文档将存储在 <code>test</code> 数据库中。</p>
+
+<h5 id="创建集合">创建集合</h5>
+
+<p>在创建的 <code>xdhuxc</code> 数据库中创建 <code>person</code> 集合，如下所示：</p>
+
+<pre><code>&gt; use xdhuxc
+switched to db xdhuxc
+&gt; db                            # 显示当前数据库。
+xdhuxc
+&gt; db.createCollection(&quot;person&quot;) # 在数据库 xdhuxc 中创建集合 person。
+{ &quot;ok&quot; : 1 }
+&gt; show collections              # 显示当前数据库中的集合。
+person
+&gt;
+</code></pre>
+
+<h5 id="插入数据">插入数据</h5>
+
+<p>要将数据插入到 MongoDB 集合中，可以使用 MongoDB 的 <code>insert()</code> 方法，其基本语法如下：</p>
+
+<pre><code>db.collection_name.insert(document)
+</code></pre>
+
+<p>向 <code>xdhuxc</code> 数据库的 <code>person</code> 集合中插入数据，如下所示：</p>
+
+<pre><code>&gt; db.person.insert({              # 插入一条记录，文档以json的格式定义。
+     name : &quot;xiaoming&quot;,
+     age : &quot;24&quot;,
+     company : &quot;xdhuxc company&quot;
+})
+WriteResult({ &quot;nInserted&quot; : 1 })
+</code></pre>
+
+<p><code>person</code> 为集合的名称，如果集合中不存在 <code>person</code> 集合，那么 MongoDB 将创建该集合，然后将文档插入该集合中。
+在插入的文档中，如果不指定_id参数，那么MongoDB会为此文档分配一个唯一的ObjectId。_id为集合中每个文档唯一的12个字节的十六进制数，12个字节划分如下：</p>
+
+<pre><code>_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id,
+   3 bytes incrementer)
+</code></pre>
+
+<p>查询所有文档，将以非结构化方式显示所有文档。</p>
+
+<pre><code>&gt; db.person.find()
+{ &quot;_id&quot; : ObjectId(&quot;5b0f384f244fc0152ed71f5f&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : &quot;24&quot;, &quot;company&quot; : &quot;xdhuxc company&quot; }
+</code></pre>
+
+<p>再插入一条数据</p>
+
+<pre><code>&gt; db.person.insert({
+     name : &quot;dalong&quot;,
+     age : &quot;29&quot;,
+     company : &quot;Apple company&quot;
+})
+WriteResult({ &quot;nInserted&quot; : 1 })
+&gt; db.person.find()
+{ &quot;_id&quot; : ObjectId(&quot;5b0f384f244fc0152ed71f5f&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : &quot;24&quot;, &quot;company&quot; : &quot;xdhuxc company&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5b0f3aa0244fc0152ed71f60&quot;), &quot;name&quot; : &quot;dalong&quot;, &quot;age&quot; : &quot;29&quot;, &quot;company&quot; : &quot;Apple company&quot; }
+</code></pre>
+
+<p>接下来，插入一条结构不相同的数据</p>
+
+<pre><code>&gt; db.person.insert({
+     name : &quot;dalong&quot;,
+     age : &quot;29&quot;,
+     company : &quot;Apple company&quot;,
+     address : &quot;Beijing&quot;
+})
+WriteResult({ &quot;nInserted&quot; : 1 })
+&gt; db.person.find()
+{ &quot;_id&quot; : ObjectId(&quot;5b0f384f244fc0152ed71f5f&quot;), &quot;name&quot; : &quot;xiaoming&quot;, &quot;age&quot; : &quot;24&quot;, &quot;company&quot; : &quot;xdhuxc company&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5b0f3aa0244fc0152ed71f60&quot;), &quot;name&quot; : &quot;dalong&quot;, &quot;age&quot; : &quot;29&quot;, &quot;company&quot; : &quot;Apple company&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5b0f3aeb244fc0152ed71f61&quot;), &quot;name&quot; : &quot;dalong&quot;, &quot;age&quot; : &quot;29&quot;, &quot;company&quot; : &quot;Apple company&quot;, &quot;address&quot; : &quot;Beijing&quot; }
+</code></pre>
+
+<p>可以看出，在 MongoDB 中，是以文档的形式来组织非结构化数据的，文档的结构可由使用者自己定义，和 关系型数据库有很大的区别。</p>
+
+<h5 id="删除文档">删除文档</h5>
+
+<p>使用如下命令删除文档：</p>
+
+<pre><code>&gt; db.person.remove({})            # 删除集合 person 中的所有文档
+WriteResult({ &quot;nRemoved&quot; : 3 })
+&gt; db.person.find()                # 再次查询所有文档，已经在上一步全部删除了，所以没有结果返回。
+&gt;
+</code></pre>
+
+<h5 id="删除数据库">删除数据库</h5>
+
+<p>① 切换到待删除数据库</p>
+
+<pre><code>&gt; show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+xdhuxc  0.000GB
+&gt; use xdhuxc
+switched to db xdhuxc
+&gt; db
+xdhuxc
+</code></pre>
+
+<p>② 删除当前数据库</p>
+
+<pre><code>&gt; db.dropDatabase()
+{ &quot;dropped&quot; : &quot;xdhuxc&quot;, &quot;ok&quot; : 1 }
+</code></pre>
+
+<p>③ 查看删除结果</p>
+
+<pre><code>&gt; show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+</code></pre>
+
+<p>可以看到，数据库 xdhuxc 已经被删除。</p>
+
+<h3 id="官方文档">官方文档</h3>
+
+<p>MongoDB 的官方文档网址：<a href="http://www.mongoing.com/docs/mongo.html">http://www.mongoing.com/docs/mongo.html</a></p>
+
+<p>更多详细的有关 MongoDB的知识，大家可以去 MongoDB 的官方网站学习。</p>
+
+
+  
+  
+<span id="/post/mongodb/mongodb-simple-use/" class="leancloud_visitors" data-flag-title="MongoDB 数据库初步使用">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

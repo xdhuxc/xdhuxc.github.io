@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>基于 Hugo 和 GitHub 搭建个人网站（二） &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>基于 Hugo 和 GitHub 搭建个人网站（二）</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-05-14</span> |
+      <span>修改于 2019-05-14</span> |
+      <span>总字数 2441</span> |
+      <span>阅读时长 5 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-05-14</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>摘要：</p>
+
+<p>　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。</p>
+
+<h3 id="图片存储">图片存储</h3>
+
+<p>随着我们撰写的博客篇数的增多，博客中的图片也可能会相应的增加。本地存储图片对我们而言，不仅占用本地磁盘存储空间，而且还可能因磁盘损坏而丢失。此时，我们可以选择使用云端存储来保存我们博客中使用的图片，将图片上传到云服务商提供的云端存储后，在我们的 markdown 文档中，只需要引入其外部链接即可显示图片。</p>
+
+<p>使用 <a href="https://portal.qiniu.com/signup?code=3lcz1eyk5rq6q">七牛云</a> 的对象存储来存放我们的图片，然后将图片的外部链接写在 markdown 文档之中，如下所示：</p>
+
+<pre><code class="language-markdown">&lt;center&gt;
+&lt;img src=&quot;http://pr9wm50t1.bkt.clouddn.com/image/png/point.png&quot; width=&quot;800px&quot; height=&quot;300px&quot; /&gt;
+图 1 · 输入中 `·` 号 （图注）
+&lt;/center&gt;
+</code></pre>
+
+<p>需要注册 <a href="https://portal.qiniu.com/signup?code=3lcz1eyk5rq6q">七牛云</a> 账户，并使用身份证信息实名认证。</p>
+
+<p>为什么使用 <a href="https://portal.qiniu.com/signup?code=3lcz1eyk5rq6q">七牛云</a>的对象存储呢？因为其免费提供 10G 存储空间，足够我们使用了。</p>
+
+<h3 id="添加评论功能">添加评论功能</h3>
+
+<h4 id="基于-disqus-实现评论功能">基于 Disqus 实现评论功能</h4>
+
+<p>Hugo 默认支持 <a href="https://disqus.com/">Disqus</a> 的评论，并且已经在模板中添加好了，需要我们去 Disqus 注册一个账号，然后进行配置</p>
+
+<p>在 <code>config.toml</code> 中加入如下内容：</p>
+
+<pre><code class="language-markdown">disqusShortname = &quot;yourdisqusShortname&quot;
+</code></pre>
+
+<p>yourdisqusShortname 就是 disqus 个人主页下的 Account 部分的 Username 的值。</p>
+
+<p>但是在本地无法测试该功能，需要上线到 github 进行测试。</p>
+
+<p>遗憾的是，Disqus 最近似乎出问题了，该功能实际不可用。</p>
+
+<h4 id="基于-valine-实现评论功能">基于 Valine 实现评论功能</h4>
+
+<p>有关 Valine 的详细信息，参考 <a href="https://valine.js.org/">Valine 官方网站</a></p>
+
+<p><a href="https://valine.js.org/">Valine</a> 评论系统依赖于 <a href="https://leancloud.cn/">Leancloud</a>，需要先在 <a href="https://leancloud.cn/">Leancloud</a> 中进行相关的准备工作。</p>
+
+<p>① 创建 <code>开发版应用</code> HugoComment，点击该应用，点击左侧菜单 <code>设置</code>，点击 <code>应用 Key</code>，可以看到 <code>App ID</code> 和 <code>App Key</code>，后面需要用到 <code>App ID</code> 和 <code>App Key</code>。</p>
+
+<p>② 创建存储 Class comment，用于储存评论内容。</p>
+
+<p>③ 在 <code>设置</code> 的 <code>安全中心</code> 里，将自己网站的域名保存到 Web 安全域名中。</p>
+
+<p>此处假定一个互联网用户可以无障碍地完成上述准备工作。</p>
+
+<p>1、在 <code>config.toml</code> 中添加配置</p>
+
+<pre><code class="language-markdown">[params]
+  [params.valine]
+    # 控制开启此评论系统
+    enable = true
+    # LeanCloud 的 AppID
+    appId = 'the AppID of LeanCloud'
+    # LeanCloud 的 AppKey
+    appKey = 'the AppKey of LeanCloud'
+    # 用于控制是否开启邮件通知功能
+    notify = false
+    # 用于控制是否开启评论验证码功能
+    verify = false
+    # 用于配置评论项中用户头像样式，有多种选择：mm, identicon, monsterid, wavatar, retro, hide
+    avatar = 'identicon'
+    # 评论框的提示符
+    placeholder = '说点什么吧...'
+    # 控制是否开启文章阅读数的统计功能
+    visitor = true
+</code></pre>
+
+<p>2、创建 <code>layouts/partials/comment.html</code> 文件，加入如下内容：</p>
+
+<pre><code class="language-markdown">{{ if .Site.Params.valine.enable }}
+&lt;span id=&quot;{{ .Permalink | relURL }}&quot; class=&quot;leancloud_visitors&quot; data-flag-title=&quot;{{ .Title }}&quot;&gt;
+    &lt;span class=&quot;post-meta-item-text&quot;&gt;文章阅读量 &lt;/span&gt;
+    &lt;span class=&quot;leancloud-visitors-count&quot;&gt;&lt;/span&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/span&gt;
+&lt;div id=&quot;vcomments&quot;&gt;&lt;/div&gt;
+&lt;script src=&quot;//cdn1.lncld.net/static/js/3.0.4/av-min.js&quot;&gt;&lt;/script&gt;
+&lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    new Valine({
+        el: '#vcomments' ,
+        appId: '{{ .Site.Params.valine.appId }}',
+        appKey: '{{ .Site.Params.valine.appKey }}',
+        notify: '{{ .Site.Params.valine.notify }}',
+        verify: '{{ .Site.Params.valine.verify }}',
+        avatar:'{{ .Site.Params.valine.avatar }}',
+        placeholder: '{{ .Site.Params.valine.placeholder }}',
+        visitor: '{{ .Site.Params.valine.visitor }}'
+    });
+&lt;/script&gt;
+{{ end }}
+</code></pre>
+
+<p>注意，不要把 <code>if</code> 改成 <code>with</code>，否则会出现解析不了模板的问题。</p>
+
+<p>3、在 <code>layouts/post/single.html</code> 文件中加入如下内容：</p>
+
+<pre><code class="language-markdown">&lt;div class=&quot;content&quot;&gt;
+  &lt;!--
+  {{ partial &quot;disqus.html&quot; . }}
+  --&gt;
+  {{ partial &quot;comment.html&quot; . }}
+&lt;/div&gt;
+</code></pre>
+
+<p>4、评论功能效果如下图所示：
+<center>
+<img src="http://pr9wm50t1.bkt.clouddn.com/image/png/comment_result.png" width="800px" height="300px" />
+图 1 · 评论功能效果
+</center></p>
+
+<p>5、可以在 <a href="https://leancloud.cn/">Leancloud</a> 的 <code>HugoComment</code> 中的存储 <code>Comment</code> 中看到提交的评论信息。</p>
+
+<h3 id="添加网站统计功能">添加网站统计功能</h3>
+
+<p>我们可以使用 google 统计或者百度统计来统计我们网站相关的数据，比如浏览量、访客数、平均访问时长等。</p>
+
+<h4 id="google-analytics">Google Analytics</h4>
+
+<p>使用 Google 的网站分析功能，登录 <a href="https://marketingplatform.google.com/about/">Google Analytics</a>，注册账号，获取 Track ID，填写到 config.toml 中 <code>[params]</code> 下 <code>googleAnalytics</code> 的值处。</p>
+
+<p>Hugo 默认支持 Google Analytics，但是 Google Analytics 有些复杂，后续再研究其使用方法。</p>
+
+<h4 id="百度统计">百度统计</h4>
+
+<p>使用百度统计来做网站分析，一则使用方法相对简单，数据可以满足我们的需求，二则不需要考虑翻墙。</p>
+
+<p>1、注册 <a href="https://tongji.baidu.com/web/welcome/login">百度统计</a> 账号，在 <code>管理</code>，<code>代码管理</code>，<code>代码获取</code> 下获取到如下代码：</p>
+
+<pre><code class="language-markdown">&lt;script&gt;
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement(&quot;script&quot;);
+  hm.src = &quot;https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135&quot;;
+  var s = document.getElementsByTagName(&quot;script&quot;)[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+&lt;/script&gt;
+</code></pre>
+
+<p>注意，该代码中包含特殊的字符串 <code>ad57771d1b8d25cbd18d12f67bc32135</code>，仅供本网站使用，其他网站使用无效。</p>
+
+<p>2、在 <code>config.toml</code> 文件中添加如下内容：</p>
+
+<pre><code class="language-markdown">[params]
+  [params.baidu]
+    enable = true
+</code></pre>
+
+<p>3、在 <code>layouts/partials/</code> 目录下创建 <code>baidu_analytics.html</code> 文件，内容如下：</p>
+
+<pre><code class="language-markdown">{{ if .Site.Params.baidu.enable }}
+&lt;script&gt;
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement(&quot;script&quot;);
+        hm.src = &quot;https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135&quot;;
+        var s = document.getElementsByTagName(&quot;script&quot;)[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+&lt;/script&gt;
+{{ end }}
+</code></pre>
+
+<p>4、在 <code>layouts/partials/footer.html</code> 中添加如下内容：</p>
+
+<pre><code class="language-markdown">{{ if not .Site.IsServer  }}
+    {{ partial &quot;baidu_analytics.html&quot; . }}
+{{ end }}
+</code></pre>
+
+<p>注意，为了避免在本地开发时，错误提交和统计，加入了过滤条件。</p>
+
+<p>5、百度统计效果图
+<center>
+<img src="http://pr9wm50t1.bkt.clouddn.com/image/png/baidu_analytics_result.png" width="800px" height="300px" />
+图 2 · 百度统计效果图
+</center></p>
+
+<h3 id="添加阅读数量和-pv-uv-统计功能">添加阅读数量和 PV，UV 统计功能</h3>
+
+<p>统计访问网站的 <code>PV</code> 和 <code>UV</code> 及每篇博客的阅读数也是一件重要的事情，可以直接在页面上看到我们网站的 <code>PV</code> 和 <code>UV</code>及每篇文章的阅读数，我们使用 <a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a> 来实现。</p>
+
+<p>使用 <a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a> 时，首先需要引用 <a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a> 的 <code>JavaScript</code> 探针脚本。</p>
+
+<p>在 <code>layouts/partials/head.html</code> 中的 <code>head</code> 标签中加入如下内容：</p>
+
+<pre><code class="language-markdown">&lt;!-- Reading Statistics --&gt;
+&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>然后需要在 <code>HTML</code> 代码中加入显示内容的代码。</p>
+
+<h4 id="pv-uv-统计">PV，UV 统计</h4>
+
+<p>我们将 PV 和 UV 放置在 <code>版权申明</code> 部分，在 <code>layouts/partials/copyright.html</code> 中加入如下内容：</p>
+
+<pre><code class="language-markdown">&lt;div class=&quot;small-print&quot;&gt;
+    &lt;small id=&quot;busuanzi_container_site_pv&quot; style='display:none'&gt; 访问量 &lt;span id=&quot;busuanzi_value_site_pv&quot;&gt;&lt;/span&gt; 次&lt;/small&gt;
+    &lt;br&gt;
+    &lt;small id=&quot;busuanzi_container_site_uv&quot; style='display:none'&gt; 访客数 &lt;span id=&quot;busuanzi_value_site_uv&quot;&gt;&lt;/span&gt; 人次 &lt;/small&gt;
+&lt;/div&gt;    
+</code></pre>
+
+<p>注意，要确保 <code>id</code> 是正确的，才能正常计数。</p>
+
+<p>另外，本地测试时，显示的 <code>PV</code> 和 <code>UV</code> 数据非常惊人。加入官方网站提供的 QQ 群后提问该问题，答案是：由于网络上大量用户使用 <a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子</a>，本地主机都是 <code>localhost</code> 和 <code>127.0.0.1</code>，本地 JavaScript 可能是以 当前机器 IP 地址或主机名为键，获取 <code>PV</code> 和 <code>UV</code> 并上传到云端的，也就说，此时的 <code>PV</code> 和 <code>UV</code> 是使用不蒜子的所有 <code>localhost</code> 的总数。</p>
+
+<p>但是不必担心，当网站上传到 GitHub 上之后，统计数据就正常了。</p>
+
+<h4 id="阅读数量统计">阅读数量统计</h4>
+
+<p>我们将阅读数量的统计显示在博客详情页面中大标题的下方。</p>
+
+<p>在 <code>layouts/post/single.html</code> 中加入如下内容：</p>
+
+<pre><code class="language-markdown">&lt;div class=&quot;header&quot;&gt;
+  &lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+  &lt;h2&gt;{{ .Description }}&lt;/h2&gt;
+  &lt;div&gt;
+    &lt;font style=&quot;font-family: 'STKaiti';&quot;&gt;
+      &lt;span id=&quot;busuanzi_container_page_pv&quot;&gt; 阅读量 &lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt; 次&lt;/span&gt;
+    &lt;/font&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>注意，要确保 <code>id</code> 是正确的。</p>
+
+<h3 id="博客字数和阅读时长统计">博客字数和阅读时长统计</h3>
+
+<p>Hugo 内置了博客字数统计和阅读时长统计功能，我们将其添加到博客详情页即可。</p>
+
+<p>1、在 config.toml 中添加如下内容：</p>
+
+<pre><code class="language-markdown">hasCJKLanguage = true # 设置为 true，则会在内容中自动检测中文/日文/韩文语言，这将使得 .Summary 和 .WordCount 在 CJK 语言中正常工作。
+
+</code></pre>
+
+<p>2、在 <code>layouts/post/single.html</code> 中加入如下内容：</p>
+
+<pre><code class="language-markdown">&lt;div class=&quot;header&quot;&gt;
+  &lt;h1&gt;{{ .Title }}&lt;/h1&gt;
+  &lt;h2&gt;{{ .Description }}&lt;/h2&gt;
+  &lt;div&gt;
+    &lt;font style=&quot;font-family: 'STKaiti';&quot;&gt;
+      &lt;span&gt;创建于 {{ .Date.Format &quot;2006-01-02&quot; }}&lt;/span&gt; |
+      &lt;span&gt;修改于 {{ .Lastmod.Format &quot;2006-01-02&quot; }}&lt;/span&gt; |
+      &lt;span&gt;总字数 {{ .WordCount }}&lt;/span&gt; |
+      &lt;span&gt;预估阅读时长 {{ .ReadingTime }} 分钟&lt;/span&gt; |
+    &lt;/font&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>说明：</p>
+
+<ul>
+<li>.Date：数据取自博客顶端的配置 <code>date</code> 字段的值，使用 <code>2006-01-02</code> 格式进行格式化。</li>
+<li>.Lastmod：如果在博客顶端的配置中设置 <code>lastmod</code> 字段，则数据取自 <code>lastmod</code> 字段的值，使用 <code>2006-01-02</code> 格式进行格式化。</li>
+<li>.WordCount：文章中的字数。</li>
+<li>.ReadingTime：预估的阅读时长，以分钟为单位。</li>
+</ul>
+
+<p>3、博客字数和阅读时长统计显示效果如下图所示：
+<center>
+<img src="http://pr9wm50t1.bkt.clouddn.com/image/png/word_count.png" width="800px" height="300px" />
+图 3 · 博客字数和阅读时长统计显示效果
+</center></p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://ibruce.info/2015/04/04/busuanzi/">http://ibruce.info/2015/04/04/busuanzi/</a></p>
+
+<p><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+
+<p><a href="https://www.smslit.top/2018/07/08/hugo-valine/">https://www.smslit.top/2018/07/08/hugo-valine/</a></p>
+
+<p><a href="https://www.yangcs.net/posts/hugo-add-busuanzi/">https://www.yangcs.net/posts/hugo-add-busuanzi/</a></p>
+
+<p><a href="https://blog.csdn.net/xr469786706/article/details/78166227">https://blog.csdn.net/xr469786706/article/details/78166227</a></p>
+
+<p><a href="http://note.qidong.name/2017/06/24/hugo-word-count/">http://note.qidong.name/2017/06/24/hugo-word-count/</a></p>
+
+<p><a href="https://gohugo.io/content-management/front-matter/">https://gohugo.io/content-management/front-matter/</a></p>
+
+<p><a href="https://github.com/heartnn/hugo-theme-test">https://github.com/heartnn/hugo-theme-test</a></p>
+
+<p><a href="https://gohugo.io/getting-started/configuration/">https://gohugo.io/getting-started/configuration/</a></p>
+
+  
+  
+<span id="/post/others/github_hugo_2/" class="leancloud_visitors" data-flag-title="基于 Hugo 和 GitHub 搭建个人网站（二）">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/others/little_tips/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/others/little_tips/">写作时实用输入小技巧</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

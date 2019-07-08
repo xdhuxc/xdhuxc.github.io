@@ -13,19 +13,19 @@
     
     <item>
       <title>Git 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/git_questions_and_solutions/</link>
+      <link>https://xdhuxc.github.io/post/git/git_questions_and_solutions/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/git_questions_and_solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/git/git_questions_and_solutions/</guid>
       <description>&lt;p&gt;本篇博客记录一些 git 使用过程中常见的问题及其解决方法。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>GitHub 上 fork 项目后同步原项目</title>
-      <link>https://xdhuxc.github.io/post/github-sync-master-branch/</link>
+      <link>https://xdhuxc.github.io/post/git/github-sync-master-branch/</link>
       <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/github-sync-master-branch/</guid>
+      <guid>https://xdhuxc.github.io/post/git/github-sync-master-branch/</guid>
       <description>&lt;p&gt;在 GitHub 上 fork 其他项目后，过一段时间后，自己账户下的项目就会和原项目主分支差异比较大，提交 Pull Requests 时就会产生冲突，此时就需要和主分支同步代码。操作如下：&lt;/p&gt;</description>
     </item>
     
