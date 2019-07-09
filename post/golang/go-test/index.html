@@ -208,7 +208,7 @@
 <p>编写简单的代码说明下单元测试的基本使用方法
 编写主程序文件 test/main.go</p>
 
-<pre><code>package main
+<pre><code class="language-markdown">package main
 
 import &quot;fmt&quot;
 
@@ -224,7 +224,7 @@ func Add(x int, y int) int {
 
 <p>编写单元测试文件 test/main_test.go</p>
 
-<pre><code>package main
+<pre><code class="language-markdown">package main
 
 import &quot;testing&quot;
 
@@ -240,7 +240,7 @@ func TestAdd(t *testing.T) {
 
 <p>运行测试命令</p>
 
-<pre><code>wanghuans-MacBook-Pro:test wanghuan$ pwd
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:test wanghuan$ pwd
 /Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/xgoland/test
 wanghuans-MacBook-Pro:test wanghuan$ go test -v
 === RUN   TestAdd
@@ -267,7 +267,7 @@ ok      github.com/xdhuxc/xgoland/test  0.005s
 
 <p>表组测试指的是一次测试中很多个输入输出场景的测试，例如</p>
 
-<pre><code>func TestAdd(t *testing.T) {
+<pre><code class="language-markdown">func TestAdd(t *testing.T) {
 	sum := Add(10, 20)
 	if sum == 30 {
 		t.Log(&quot;ok&quot;)
