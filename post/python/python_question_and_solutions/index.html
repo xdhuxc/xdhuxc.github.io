@@ -160,7 +160,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-07-08</span> |
       <span>修改于 2018-07-08</span> |
-      <span>总字数 745</span> |
+      <span>总字数 743</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -232,7 +232,7 @@ ModuleNotFoundError: No module named 'Crypto'
 
 <p>python 命令后面加上 <code>-u</code> （unbuffered）参数，强制其标准输出不通过缓存，直接打印到屏幕上。所以，将 <code>Dockerfile</code> 中的 <code>ENTRYPOINT</code> 命令改写为：<code>ENTRYPOINT [&quot;python3&quot;, &quot;-u&quot;, &quot;/usr/local/bin/test.py&quot;]</code></p>
 
-<h3 id="加载sys模块-设置编码的原因">加载sys模块，设置编码的原因</h3>
+<h3 id="加载-sys-模块-设置编码的原因">加载 sys 模块，设置编码的原因</h3>
 
 <p>以下代码中，先重新加载sys模块，再设置编码，而不是先设置编码，再加载sys模块的原因：</p>
 
@@ -247,7 +247,7 @@ sys.setdefaultencoding('utf8')
     del sys.setdefaultencoding
 </code></pre>
 
-<p>在sys模块加载后，setdefaultencoding方法被删除了，所以我们需要通过重新导入sys模块来设置系统编码。</p>
+<p>在sys模块加载后，setdefaultencoding 方法被删除了，所以我们需要通过重新导入sys模块来设置系统编码。</p>
 
 <h3 id="脚本运行时间长">脚本运行时间长</h3>
 
