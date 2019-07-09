@@ -4,8 +4,31 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/programming/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/programming-design-one/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -25,12 +48,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/virtualenv/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -39,12 +56,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/virtualenvwrapper/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -123,7 +134,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/mysql/mysql-questions/</loc>
+    <loc>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
   </url>
   
