@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>使用 GORM 操作 MySQL 常见问题及解决 &middot; xdhuxc</title>
+  <title>Golang 单元测试 &middot; xdhuxc</title>
 
   
   
@@ -154,13 +154,13 @@
 
 
 <div class="header">
-  <h1>使用 GORM 操作 MySQL 常见问题及解决</h1>
+  <h1>Golang 单元测试</h1>
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-06-11</span> |
-      <span>修改于 2019-06-11</span> |
-      <span>总字数 878</span> |
+      <span>创建于 2019-06-02</span> |
+      <span>修改于 2019-06-02</span> |
+      <span>总字数 717</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -172,7 +172,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-11</time>
+    <time>2019-06-02</time>
   </div>
 
   
@@ -185,11 +185,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mysql">MySQL</a>&nbsp;&#47;
-    
       <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gorm">GORM</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/unittest">unittest</a>
     
   </div>
   
@@ -198,129 +196,155 @@
 </div>
 
 
-  <p>本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。</p>
+  <p>本部分内容记录下 golang 中的单元测试的简单用法。</p>
 
-<h3 id="error-1062-duplicate-entry-viewer-for-key-name">Error 1062: Duplicate entry &lsquo;viewer&rsquo; for key &lsquo;name&rsquo;</h3>
+<h3 id="单元测试">单元测试</h3>
 
-<p>为数据模型中的 name 字段加上了 unique 修饰，</p>
+<p>单元测试的重点在于测试代码的逻辑、场景等，以便尽可能地测试全面，保证代码质量。</p>
 
-<pre><code class="language-markdown"># create the table role
-CREATE TABLE IF NOT EXISTS `role` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(50) NOT NULL,
-    `description` varchar(125) DEFAULT NULL,
-    `create_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `update_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `name` (`name`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-</code></pre>
+<h3 id="代码示例">代码示例</h3>
 
-<p>但是更新该字段的值时，却报错如下：</p>
+<blockquote>
+<p>编写简单的代码说明下单元测试的基本使用方法
+编写主程序文件 test/main.go</p>
 
-<pre><code class="language-markdown">{
- &quot;code&quot;: 50002,
- &quot;result&quot;: &quot;Error 1062: Duplicate entry 'viewer' for key 'name'&quot;
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+	sum := Add(10, 20)
+	fmt.Println(sum)
+}
+
+func Add(x int, y int) int {
+	return x + y
 }
 </code></pre>
 
-<p>后台代码使用 Golang 编写，数据模型为：</p>
+<p>编写单元测试文件 test/main_test.go</p>
 
-<pre><code class="language-markdown">type Role struct {
-	ID          int       `json:&quot;id&quot; gorm:&quot;id&quot;`
-	Name        string    `json:&quot;name&quot; gorm:&quot;name&quot;`
-	Description string    `json:&quot;description&quot; gorm:&quot;description&quot;`
-	CreateTime  time.Time `json:&quot;create_time&quot; gorm:&quot;create_time&quot;`
-	UpdateTime  time.Time `json:&quot;update_time&quot; gorm:&quot;update_time&quot;`
+<pre><code>package main
+
+import &quot;testing&quot;
+
+func TestAdd(t *testing.T) {
+	sum := Add(10, 20)
+	if sum == 30 {
+		t.Log(&quot;ok&quot;)
+	} else {
+		t.Error(&quot;error&quot;)
+	}
 }
 </code></pre>
 
-<p>更新代码的方法为：</p>
+<p>运行测试命令</p>
 
-<pre><code class="language-markdown">// Update updates the information of specified role
-func (rs *roleService) Update(role model.Role) (*model.Role, error) {
-	if err := role.Validate(); err != nil {
-		return &amp;role, err
+<pre><code>wanghuans-MacBook-Pro:test wanghuan$ pwd
+/Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/xgoland/test
+wanghuans-MacBook-Pro:test wanghuan$ go test -v
+=== RUN   TestAdd
+--- PASS: TestAdd (0.00s)
+    main_test.go:8: ok
+PASS
+ok      github.com/xdhuxc/xgoland/test  0.005s
+</code></pre>
+</blockquote>
+
+<h3 id="golang-单元测试使用规则">Golang 单元测试使用规则</h3>
+
+<p>1、含有单元测试代码的 go 文件必须以 <code>_test.go</code> 结尾，比如测试 <code>main.go</code> 的单元测试文件命名为 <code>main_test.go</code> ，Go 语言测试工具只认符合该规则的文件。</p>
+
+<p>2、单元测试文件名 <code>_test.go</code> 前面的部分最好是被测试的方法所在 go 文件的文件名，比如 <code>main_test.go</code>，因为我们要测试的 Add 函数在 <code>main.go</code> 文件里</p>
+
+<p>3、单元测试的函数名必须以 <code>Test</code> 开头，是可导出的公共函数。</p>
+
+<p>4、测试函数的签名必须接收一个指向 testing.T 类型的指针，并且不能返回任何值。</p>
+
+<p>5、函数名建议命名为 Test 加要测试的方法函数名，表示要测试该函数。</p>
+
+<h3 id="表组测试">表组测试</h3>
+
+<p>表组测试指的是一次测试中很多个输入输出场景的测试，例如</p>
+
+<pre><code>func TestAdd(t *testing.T) {
+	sum := Add(10, 20)
+	if sum == 30 {
+		t.Log(&quot;ok&quot;)
+	} else {
+		t.Error(&quot;error&quot;)
 	}
 
-	role.UpdateTime = time.Now()
-
-	if err := rs.db.Model(&amp;models.Role{}).Update(map[string]interface{}{
-		&quot;name&quot;:        role.Name,
-		&quot;description&quot;: role.Description,
-		&quot;update_time&quot;: role.UpdateTime,
-	}).Error; err != nil {
-		return &amp;role, err
+	sum = Add(1024, 2048)
+	if sum == 3072 {
+		t.Log(&quot;ok&quot;)
+	} else {
+		t.Error(&quot;error&quot;)
 	}
-
-	return &amp;role, nil
 }
 </code></pre>
 
-<p>修改为如下方式时，却可以更新成功</p>
+<p>我们为待测试函数 Add() 准备了两组测试数据 10、20 和 1024、2048，这样就可以测试多个输入场景下的测试效果了。</p>
 
-<pre><code class="language-markdown">// Update updates the information of specified role
-func (rs *roleService) Update(role model.Role) (*model.Role, error) {
-	if err := role.Validate(); err != nil {
-		return &amp;role, err
+<h3 id="模型层数据测试">模型层数据测试</h3>
+
+<p>将各个测试函数共用的变量定义为全局变量，在 init() 函数中进行初始化，在各个测试函数中进行使用。</p>
+
+<p>编写测试代码如下：user_test.go</p>
+
+<pre><code class="language-markdown">import (
+	&quot;fmt&quot;
+	&quot;testing&quot;
+
+	&quot;github.com/jinzhu/gorm&quot;
+	_ &quot;github.com/jinzhu/gorm/dialects/mysql&quot; # 如果没有导入此句，会报错。
+
+	&quot;gitlab.ushareit.me/sgt/devops/cmdb-user/src/models&quot;
+)
+
+var db *gorm.DB
+var us *userService
+
+func init() {
+    uri := fmt.Sprintf(&quot;%s:%s@tcp(%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;,
+    		&quot;root&quot;,
+    		&quot;abcd@#129&quot;,
+    		&quot;127.0.0.9&quot;,
+    		&quot;user&quot;)
+    db, _ := gorm.Open(&quot;mysql&quot;, uri)
+    db.Debug()
+    us := newUserService(db)
+}
+
+func Test_UserService_List(t *testing.T) {
+	count, users, err := us.List(models.Page{ # List 为分页方法
+		Offset:   0,
+		PageSize: 30,
+	})
+	if err != nil {
+		t.Error(err)
+	} else {
+		t.Log(count)
+		for _, user := range users {
+			fmt.Println(user.String())
+		}
 	}
-
-	role.UpdateTime = time.Now()
-
-	if err := rs.db.Model(&amp;role).Update(map[string]interface{}{
-		&quot;name&quot;:        role.Name,
-		&quot;description&quot;: role.Description,
-		&quot;update_time&quot;: role.UpdateTime,
-	}).Error; err != nil {
-		return &amp;role, err
-	}
-
-	return &amp;role, nil
 }
 </code></pre>
 
-<p>将 db.Model(value interface{}) 中的接口类型参数由 &amp;models.Role{} 修改为 &amp;role，居然就可以更新成功了。</p>
+<p>跳转至 user_test.go 脚本目录下，执行如下命令：</p>
 
-<p>查看该方法的<a href="https://github.com/jinzhu/gorm/main.go">源代码</a>，如下：</p>
-
-<pre><code class="language-markdown">// Model specify the model you would like to run db operations
-//    // update all users's name to `hello`
-//    db.Model(&amp;User{}).Update(&quot;name&quot;, &quot;hello&quot;)
-//    // if user's primary key is non-blank, will use it as condition, then will only update the user's name to `hello`
-//    db.Model(&amp;user).Update(&quot;name&quot;, &quot;hello&quot;)
-func (s *DB) Model(value interface{}) *DB {
-	c := s.clone()
-	c.Value = value
-	return c
-}
+<pre><code class="language-markdown">go test --run Test_UserService_List
 </code></pre>
 
-<p>从该方法的注释来看，如果使用 &amp;User{}，那么将会更新数据库的所有记录的相同字段为同样的值，如果设置某个字段为 unique，那么当记录数超过一条时，肯定会产生重复的字段值从而导致错误。而实际上，我们的目的是第二种，使用 &amp;user，以主键作为条件更新一条记录。所以，使用 GORM 的 Update 方法时，不要传入指向结构体的指针，而应该传入指向结构体变量的指针。</p>
+<h3 id="参考资料">参考资料</h3>
 
-<h3 id="desc-是-mysql-关键字">desc 是 MySQL 关键字</h3>
-
-<p>更新数据时，后台 API 返回的错误为：</p>
-
-<pre><code class="language-markdown"> &quot;result&quot;: &quot;Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?' at line 1&quot;
-</code></pre>
-
-<p>实际上使用的 SQL 语句为：</p>
-
-<pre><code class="language-markdown">UPDATE sgt_aksk SET iam = ?, desc = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?&quot;, g.Iam, g.Desc, g.CloudType, g.Aksks, g.UpdateTime, g.ID
-</code></pre>
-
-<p>之所以出现上面的错误，是因为 desc 为 MySQL 数据库关键字，导致该 SQL 语句错误。</p>
-
-<p>改为如下形式即可：</p>
-
-<pre><code class="language-markdown">UPDATE sgt_aksk SET iam = ?, `desc` = ?, cloud_type = ?, aksks = ?, update_time = ? WHERE id = ?&quot;, g.Iam, g.Desc, g.CloudType, g.Aksks, g.UpdateTime, g.ID
-</code></pre>
-
-<p>当然，设计数据库字段名称时，最好不要和 MySQL 数据库关键字冲突，但是如果已经使用了 MySQL 数据库关键字，可以使用反引号将该字段名称括起来，这样也可以操作成功。</p>
+<p><a href="https://www.jianshu.com/p/1adc69468b6f">https://www.jianshu.com/p/1adc69468b6f</a>
+<a href="https://www.flysnow.org/2017/05/16/go-in-action-go-unit-test.html">https://www.flysnow.org/2017/05/16/go-in-action-go-unit-test.html</a></p>
 
   
   
-<span id="/post/mysql/mysql-golang-questions-and-solutions/" class="leancloud_visitors" data-flag-title="使用 GORM 操作 MySQL 常见问题及解决">
+<span id="/post/golang/go-test/" class="leancloud_visitors" data-flag-title="Golang 单元测试">
     <span class="post-meta-item-text">文章阅读量 </span>
     <span class="leancloud-visitors-count"></span>
     <p></p>
@@ -347,13 +371,13 @@ func (s *DB) Model(value interface{}) *DB {
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/golang/go-test/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/golang/go-test/">Golang 单元测试</a>
+      <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/">JavaScript 中的真值和假值问题</a>
     </nav>
     
   </div>
@@ -363,13 +387,13 @@ func (s *DB) Model(value interface{}) *DB {
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://xdhuxc.github.io/post/others/mac-tips/">Mac 功能指南</a>
+      <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://xdhuxc.github.io/post/others/mac-tips/"><i class="fa fa-chevron-right"></i></a>
+    <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Tags &middot; xdhuxc</title>
+  <title>Go Template 的使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/index.xml' />
   
 
   
@@ -157,213 +154,143 @@
 
 
 <div class="header">
-  <h1>Tags</h1>
+  <h1>Go Template 的使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-05-23</span> |
+      <span>修改于 2019-05-23</span> |
+      <span>总字数 259</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  <ul>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-05-23</time>
+  </div>
+
+  
+
+  
+
   
   
-    <li>
-      <a href="github">github</a>
-      <span>&#40;4&#41;</span>
-    </li>
   
-    <li>
-      <a href="golang">golang</a>
-      <span>&#40;3&#41;</span>
-    </li>
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/template">Template</a>
+    
+  </div>
   
-    <li>
-      <a href="vue">vue</a>
-      <span>&#40;3&#41;</span>
-    </li>
   
-    <li>
-      <a href="ansible">ansible</a>
-      <span>&#40;2&#41;</span>
-    </li>
+
+</div>
+
+
+  <p>本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。</p>
+
+<h3 id="if-else-语句">if-else 语句</h3>
+
+<p>在我们的项目中，需要动态渲染 alertmanager 的配置文件。我们选择了 confd 作为工具来获取后台数据并渲染数据到模板中。</p>
+
+<p>在模板渲染中，使用 if-else 语句的时候，当需要判断和某个字符串相等的时候，不能使用常用的 <code>==</code>，而是要使用 <code>eq</code> 函数，编写模板如下：</p>
+
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .Value}}
+{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}
+{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}
+{{end}}
+</code></pre>
+
+<p>另外，这种写法可读性好，但是渲染后会多出来一些空行，改为如下模板即可：</p>
+
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .Value}}{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}{{end}}
+</code></pre>
+
+<p>数据部分以 JSON 格式向模板传递。</p>
+
   
-    <li>
-      <a href="database">database</a>
-      <span>&#40;2&#41;</span>
-    </li>
   
-    <li>
-      <a href="devops">devops</a>
-      <span>&#40;2&#41;</span>
-    </li>
+<span id="/post/golang/go-template/" class="leancloud_visitors" data-flag-title="Go Template 的使用">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
   
-    <li>
-      <a href="git">git</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="hugo">hugo</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="it">it</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="javascript">javascript</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mongodb">mongodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="python">python</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E4%BA%BA%E9%97%B4%E4%B8%96">人间世</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="406">406</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="axios">axios</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="centos7">centos7</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="codemirror">codemirror</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="date">date</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="docker">docker</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="dockerfile">dockerfile</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="element-ui">element-ui</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gitlab">gitlab</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="go">go</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gorm">gorm</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="http">http</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="jmx">jmx</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="linux">linux</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mac">mac</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mysql">mysql</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="programming">programming</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shell">shell</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shortcut-key">shortcut-key</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="springboot">springboot</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="template">template</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="time">time</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="unittest">unittest</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="virtualenv">virtualenv</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="websocket">websocket</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E6%8A%80%E5%B7%A7">技巧</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/">Vue 集成 CodeMirror</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -422,3 +349,4 @@
 
 </body>
 </html>
+

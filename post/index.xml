@@ -93,6 +93,15 @@
     </item>
     
     <item>
+      <title>Golang 单元测试</title>
+      <link>https://xdhuxc.github.io/post/golang/go-test/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/golang/go-test/</guid>
+      <description>&lt;p&gt;本部分内容记录下 golang 中的单元测试的简单用法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>JavaScript 中的真值和假值问题</title>
       <link>https://xdhuxc.github.io/post/javascript/javascript-true-false/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
@@ -126,6 +135,15 @@
       
       <guid>https://xdhuxc.github.io/post/vue/vue-codemirror/</guid>
       <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go Template 的使用</title>
+      <link>https://xdhuxc.github.io/post/golang/go-template/</link>
+      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/golang/go-template/</guid>
+      <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
     <item>

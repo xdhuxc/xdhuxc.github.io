@@ -31,11 +31,11 @@
     
     <item>
       <title>Golang 单元测试</title>
-      <link>https://xdhuxc.github.io/unfinished/go-test/</link>
+      <link>https://xdhuxc.github.io/post/golang/go-test/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/unfinished/go-test/</guid>
-      <description>单元测试 单元测试的重点在于测试代码的逻辑、场景等，以便尽可能地测试全面，保证代码质量。 将各个测试函数共用的变量定义为全局变量，在 init() 函数中进行</description>
+      <guid>https://xdhuxc.github.io/post/golang/go-test/</guid>
+      <description>&lt;p&gt;本部分内容记录下 golang 中的单元测试的简单用法。&lt;/p&gt;</description>
     </item>
     
   </channel>
