@@ -309,7 +309,7 @@
       
       <guid>https://xdhuxc.github.io/post/linux/alpine_tips/</guid>
       <description> 在 alpine 中安装 telnet 执行以下命令安装 telnet
-apk add busybox-extras  </description>
+apk add busybox-extras  在 debain 中安装 nc 命令 apt-get/apt install netcat  </description>
     </item>
     
     <item>
