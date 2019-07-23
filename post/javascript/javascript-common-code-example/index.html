@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Posts &middot; xdhuxc</title>
+  <title>JavaScript 常用代码示例 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/post/index.xml' />
   
 
   
@@ -157,153 +154,194 @@
 
 
 <div class="header">
-  <h1>Posts</h1>
+  <h1>JavaScript 常用代码示例</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-07-23</span> |
+      <span>修改于 2019-07-23</span> |
+      <span>总字数 333</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  
-  <h2>2019-07</h2>
-  <ul>
-  
-    <li><time>2019-07-23</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/">JavaScript 常用代码示例</a></li>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-07-23</time>
+  </div>
 
   
-    <li><time>2019-07-22</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript_array_traverse/">JavaScript 中的数组遍历方式</a></li>
 
   
-    <li><time>2019-07-10</time> - <a href="https://xdhuxc.github.io/post/message/message_queue/">消息队列（一）</a></li>
 
   
-    <li><time>2019-07-09</time> - <a href="https://xdhuxc.github.io/post/programming/programming-design-one/">程序设计（一）</a></li>
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/javascript">JavaScript</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>JavaScript 开始时常用代码示例，方便自己查找。</p>
+
+<h3 id="数组和对象相互转换">数组和对象相互转换</h3>
+
+<p>在开发中，我们经常需要将如下所示的对象</p>
+
+<pre><code class="language-markdown">{
+  key1: value1,
+  key2: value2,
+  key3: value3
+}
+</code></pre>
+
+<p>转换成如下形式的数组</p>
+
+<pre><code class="language-markdown">[
+    {
+        key: key1,
+        value: value1
+    },
+    {
+        key: key2,
+        value: value2
+    },
+    {
+        key: key3,
+        value: value3
+    }
+]
+</code></pre>
+
+<p>或者反过来转换，我们可以编写公用函数来完成这个功能。</p>
+
+<p>1、将数组转换为对象</p>
+
+<pre><code class="language-markdown">export function convertArray2Object(source) {
+  const len = source.length;
+  const target = {};
+  for (let i = 0; i &lt; len; i++) {
+    target[source[i].key] = source[i].value;
+  }
+  return target;
+}
+</code></pre>
+
+<p>2、将对象转换为数组</p>
+
+<pre><code class="language-markdown">export function convertObject2Array(source) {
+  const target = [];
+  for (const k in source) {
+    const temp = {
+      key: k,
+      value: source[k]
+    };
+    target.push(temp);
+  }
+  return target;
+}
+</code></pre>
+
+<h3 id="删除对象的属性">删除对象的属性</h3>
+
+<p>可以使用 delete 操作符来删除对象的属性</p>
+
+<pre><code class="language-markdown">const a = {
+    name: 'hulk',
+    env: 'prod',
+    image: 'nginx'
+}
+// 删除 a 对象的属性 env
+delete a.env 
+</code></pre>
+
+<h3 id="设置-cookie-的过期时间">设置 cookie 的过期时间</h3>
+
+<pre><code>import Cookies from 'js-cookie';
+const expires = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
+  return Cookies.set(TokenKey, token, {
+    expires: expires
+  });
+</code></pre>
+
+<h3 id="获取当前语言">获取当前语言</h3>
+
+<pre><code>this.$i18n.locale;
+</code></pre>
+
+<h3 id="刷新当前页面">刷新当前页面</h3>
+
+<pre><code>this.$router.go(0);
+</code></pre>
+
+<p>router.go(n)</p>
+
+<p>此方法的参数是一个整数，表示在 history 记录中向前或者后退多少步，类似 window.history.go(n)。</p>
 
   
-    <li><time>2019-07-09</time> - <a href="https://xdhuxc.github.io/post/others/shortcut_key/">常用快捷键</a></li>
+  
+<span id="/post/javascript/javascript-common-code-example/" class="leancloud_visitors" data-flag-title="JavaScript 常用代码示例">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
 
   
-    <li><time>2019-07-08</time> - <a href="https://xdhuxc.github.io/post/python/python_question_and_solutions/">Python 常见问题及解决</a></li>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript_array_traverse/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript_array_traverse/">JavaScript 中的数组遍历方式</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
 
-  
-    <li><time>2019-07-08</time> - <a href="https://xdhuxc.github.io/post/python/python_virtualenv/">Python virtualenv 的使用</a></li>
 
-  
-    <li><time>2019-07-03</time> - <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/">Docker 合并多条 COPY 命令</a></li>
 
-  
-  </ul>
-  
-  <h2>2019-06</h2>
-  <ul>
-  
-    <li><time>2019-06-19</time> - <a href="https://xdhuxc.github.io/post/git/git_questions_and_solutions/">Git 常见问题及解决</a></li>
-
-  
-    <li><time>2019-06-17</time> - <a href="https://xdhuxc.github.io/post/others/mac-tips/">Mac 功能指南</a></li>
-
-  
-    <li><time>2019-06-17</time> - <a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">GitHub 上 fork 项目后同步原项目</a></li>
-
-  
-    <li><time>2019-06-11</time> - <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/vue/vue-element-ui-verify/">Vue &#43; Element-UI 表单校验功能的总结</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/">JavaScript 中的真值和假值问题</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/golang/go-test/">Golang 单元测试</a></li>
-
-  
-    <li><time>2019-06-01</time> - <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/">记一次 HTTP PUT/POST 请求 406 错误</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-05</h2>
-  <ul>
-  
-    <li><time>2019-05-24</time> - <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/">Vue 集成 CodeMirror</a></li>
-
-  
-    <li><time>2019-05-23</time> - <a href="https://xdhuxc.github.io/post/golang/go-template/">Go Template 的使用</a></li>
-
-  
-    <li><time>2019-05-19</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a></li>
-
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/others/little_tips/">写作时实用输入小技巧</a></li>
-
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/others/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a></li>
-
-  
-    <li><time>2019-05-09</time> - <a href="https://xdhuxc.github.io/post/others/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-04</h2>
-  <ul>
-  
-    <li><time>2019-04-13</time> - <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-three/">人间世·杂三</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-01</h2>
-  <ul>
-  
-    <li><time>2019-01-01</time> - <a href="https://xdhuxc.github.io/post/human-world/human-world-preface/">人间世·前言</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-10</h2>
-  <ul>
-  
-    <li><time>2018-10-25</time> - <a href="https://xdhuxc.github.io/post/java/springboot-jmx/">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-08</h2>
-  <ul>
-  
-    <li><time>2018-08-13</time> - <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-07</h2>
-  <ul>
-  
-    <li><time>2018-07-20</time> - <a href="https://xdhuxc.github.io/post/mongodb/mongodb-simple-use/">MongoDB 数据库初步使用</a></li>
-
-  
-    <li><time>2018-07-06</time> - <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-05</h2>
-  <ul>
-  
-    <li><time>2018-05-14</time> - <a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/">Ansible 学习之简单入门</a></li>
-
-  
-    <li><time>2018-05-02</time> - <a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">Ansible 学习之常用模块</a></li>
-
-  
-  </ul>
-  
-  <h2>0001-01</h2>
-  <ul>
-  
-    <li><time>0001-01-01</time> - <a href="https://xdhuxc.github.io/post/linux/alpine_tips/"></a></li>
-
-  
-  </ul>
-  
 </div>
 
 </div>

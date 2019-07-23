@@ -3,31 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/javascript/</loc>
+    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/javascript/javascript-common-code-example/</loc>
+    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/javascript/javascript_array_traverse/</loc>
+    <lastmod>2019-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/message-queue/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/rabbitmq/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -192,12 +208,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/golang/go-test/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/javascript/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -440,11 +450,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/unfinished/go-vue-cors/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/javascript_array_traverse/</loc>
     <priority>0</priority>
   </url>
   
