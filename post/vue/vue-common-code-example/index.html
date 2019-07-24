@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>xdhuxc</title>
+  <title>Vue 开发常用代码 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/index.xml' />
   
 
   
@@ -157,21 +154,25 @@
 
 
 <div class="header">
-  <h1>xdhuxc</h1>
-  <h2>技术 - 文章</h2>
+  <h1>Vue 开发常用代码</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-07-24</span> |
+      <span>修改于 2019-07-24</span> |
+      <span>总字数 369</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">Ansible 学习之常用模块</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-05-02</time>
+    <time>2019-07-24</time>
   </div>
 
   
@@ -184,11 +185,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/ansible">ansible</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/javascript">JavaScript</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/devops">DevOps</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/it">IT</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>
     
   </div>
   
@@ -197,64 +196,188 @@
 </div>
 
 
-  </header>
+  <p>在使用 Vue 和 Element-UI 进行开发时的常用代码，方便后续使用。</p>
 
-  <p>
-  模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件
-  </p>
+<h3 id="获取当前语言">获取当前语言</h3>
+
+<pre><code>this.$i18n.locale;
+</code></pre>
+
+<h3 id="刷新当前页面">刷新当前页面</h3>
+
+<pre><code>this.$router.go(0);
+</code></pre>
+
+<p>router.go(n)</p>
+
+<p>此方法的参数是一个整数，表示在 history 记录中向前或者后退多少步，类似 window.history.go(n)。</p>
+
+<h3 id="键值对数组增删">键值对数组增删</h3>
+
+<p>一个可以动态删减的键值对数组，可以用于各种键值对类型的数据的动态删减，比如环境变量，标签等。</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div class=&quot;app-container&quot;&gt;
+    &lt;el-form&gt;
+      &lt;el-form-item
+        v-for=&quot;(label, labelIndex) in labels&quot;
+        :key=&quot;'label' + labelIndex&quot;&gt;
+        &lt;span&gt;
+          &lt;el-input v-model=&quot;label.key&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+          &lt;el-input v-model=&quot;label.value&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+          &lt;el-button
+            v-if=&quot;labels.length !== 1&quot;
+            type=&quot;danger&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-delete&quot;
+            circle
+            @click.prevent=&quot;removeLabel(labelIndex)&quot;/&gt;
+          &lt;el-button
+            v-if=&quot;argIndex === labels.length - 1&quot;
+            type=&quot;primary&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-plus&quot;
+            circle
+            @click.prevent=&quot;addLabel()&quot;/&gt;
+        &lt;/span&gt;
+      &lt;/el-form-item&gt;
+    &lt;/el-form&gt;
+    &lt;el-button @click=&quot;onSubmit&quot;&gt; Submit &lt;/el-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      labels: [{
+        key: '',
+        value: ''
+      }]
+    }
+  },
+  methods: {
+    addLabel() {
+      this.labels.push({
+         key: '',
+         value: ''
+       })
+    },
+    removeLabel(index) {
+      this.labels.splice(index, 1)
+    },
+    onSubmit() {
+      console.log(this.labels)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<h3 id="动态数组增删">动态数组增删</h3>
+
+<p>一个可以动态增减的字符串数组，可用于一些场景下的参数增删，比如 kubernetes 中容器的命令和其参数的前端表单的开发</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div class=&quot;app-container&quot;&gt;
+    &lt;el-form&gt;
+      &lt;el-form-item
+        v-for=&quot;(arg, argIndex) in args&quot;
+        :key=&quot;'arg' + argIndex&quot;&gt;
+        &lt;span&gt;
+          &lt;el-input v-model=&quot;args[argIndex]&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+          &lt;el-button
+            v-if=&quot;args.length !== 1&quot;
+            type=&quot;danger&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-delete&quot;
+            circle
+            @click.prevent=&quot;removeArg(argIndex)&quot;/&gt;
+          &lt;el-button
+            v-if=&quot;argIndex === args.length - 1&quot;
+            type=&quot;primary&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-plus&quot;
+            circle
+            @click.prevent=&quot;addArg()&quot;/&gt;
+        &lt;/span&gt;
+      &lt;/el-form-item&gt;
+    &lt;/el-form&gt;
+    &lt;el-button @click=&quot;onSubmit&quot;&gt; Submit &lt;/el-button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      args: ['']
+    }
+  },
+  methods: {
+    addArg() {
+      this.args.push('')
+    },
+    removeArg(index) {
+      this.args.splice(index, 1)
+    },
+    onSubmit() {
+      console.log(this.args)
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
   
-</article>
+<span id="/post/vue/vue-common-code-example/" class="leancloud_visitors" data-flag-title="Vue 开发常用代码">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
 
   
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/linux/alpine_tips/"></a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>0001-01-01</time>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/"><i class="fa fa-chevron-left"></i></a>
+    
   </div>
-
-  
-
-  
-
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/">JavaScript 常用代码</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
-
-
-  </header>
-
-  <p>
-   在 alpine 中安装 telnet 执行以下命令安装 telnet
-apk add busybox-extras  在 debain 中安装 nc 命令 apt-get update &amp;&amp; install netcat  在 debain 中安装 ps 命令 apt-get update &amp;&amp; apt-get install procps  在 debain 中安装 curl 命令 apt-get update &amp;&amp; apt-get install curl  
-  </p>
-
-  
-</article>
-
-  
-
-  
-
-
-<nav class="pagination" role="pagination">
-  
-  <a href="https://xdhuxc.github.io/page/3/"><i class="fa fa-chevron-left"></i></a>
-  
-  <span>&nbsp;4 / 4&nbsp;</span>
-  
-  <i class="fa fa-chevron-right"></i>
-  
-</nav>
 
 
 

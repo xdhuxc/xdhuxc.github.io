@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>JavaScript 常用代码示例 &middot; xdhuxc</title>
+  <title>JavaScript 常用代码 &middot; xdhuxc</title>
 
   
   
@@ -154,13 +154,13 @@
 
 
 <div class="header">
-  <h1>JavaScript 常用代码示例</h1>
+  <h1>JavaScript 常用代码</h1>
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-07-23</span> |
       <span>修改于 2019-07-23</span> |
-      <span>总字数 333</span> |
+      <span>总字数 265</span> |
       <span>阅读时长 1 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -194,7 +194,7 @@
 </div>
 
 
-  <p>JavaScript 开始时常用代码示例，方便自己查找。</p>
+  <p>JavaScript 开发时的常用代码，方便自己查找。</p>
 
 <h3 id="数组和对象相互转换">数组和对象相互转换</h3>
 
@@ -269,30 +269,16 @@ delete a.env
 
 <h3 id="设置-cookie-的过期时间">设置 cookie 的过期时间</h3>
 
-<pre><code>import Cookies from 'js-cookie';
+<pre><code class="language-markdown">import Cookies from 'js-cookie';
 const expires = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
   return Cookies.set(TokenKey, token, {
     expires: expires
-  });
+});
 </code></pre>
-
-<h3 id="获取当前语言">获取当前语言</h3>
-
-<pre><code>this.$i18n.locale;
-</code></pre>
-
-<h3 id="刷新当前页面">刷新当前页面</h3>
-
-<pre><code>this.$router.go(0);
-</code></pre>
-
-<p>router.go(n)</p>
-
-<p>此方法的参数是一个整数，表示在 history 记录中向前或者后退多少步，类似 window.history.go(n)。</p>
 
   
   
-<span id="/post/javascript/javascript-common-code-example/" class="leancloud_visitors" data-flag-title="JavaScript 常用代码示例">
+<span id="/post/javascript/javascript-common-code-example/" class="leancloud_visitors" data-flag-title="JavaScript 常用代码">
     <span class="post-meta-item-text">文章阅读量 </span>
     <span class="leancloud-visitors-count"></span>
     <p></p>
@@ -334,8 +320,14 @@ const expires = new Date(new Date().getTime() + 8 * 60 * 60 * 1000);
   </div>
   <div class="pure-u-10-24">
     
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/vue/vue-common-code-example/">Vue 开发常用代码</a>
+    </nav>
+    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-common-code-example/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
