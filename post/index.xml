@@ -294,6 +294,15 @@
     </item>
     
     <item>
+      <title>Redis 概述</title>
+      <link>https://xdhuxc.github.io/post/redis/redis_summary/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/redis/redis_summary/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/devops/ansible-simple-use/</link>
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>

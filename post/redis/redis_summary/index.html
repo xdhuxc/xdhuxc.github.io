@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Posts &middot; xdhuxc</title>
+  <title>Redis 概述 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/post/index.xml' />
   
 
   
@@ -157,167 +154,148 @@
 
 
 <div class="header">
-  <h1>Posts</h1>
+  <h1>Redis 概述</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-06-27</span> |
+      <span>修改于 2018-06-27</span> |
+      <span>总字数 734</span> |
+      <span>阅读时长 2 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  
-  <h2>2019-07</h2>
-  <ul>
-  
-    <li><time>2019-07-27</time> - <a href="https://xdhuxc.github.io/post/python/python_programming_hole/">Python 常见的坑及其解决方法</a></li>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2018-06-27</time>
+  </div>
 
   
-    <li><time>2019-07-24</time> - <a href="https://xdhuxc.github.io/post/vue/vue-common-code-example/">Vue 开发常用代码</a></li>
 
   
-    <li><time>2019-07-23</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/">JavaScript 常用代码</a></li>
 
   
-    <li><time>2019-07-22</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript_array_traverse/">JavaScript 中的数组遍历方式</a></li>
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。</p>
+
+<h3 id="redis-简介">Redis 简介</h3>
+
+<p>REmote DIctionary Server，缩写为：Redis，是一个高性能的 key-value 数据库。</p>
+
+<p>Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存、也可持久化的日志型、Key-Value 数据库，并提供多种编程语言的 API。</p>
+
+<p>它通常被称为数据结构服务器，因为值可以是字符串，哈希表，列表， 集合和有序集合等类型。</p>
+
+<h3 id="redis-特点">Redis 特点</h3>
+
+<p>Redis 与其他 key - value 缓存产品有以下三个特点：</p>
+
+<ul>
+<li><p>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。</p></li>
+
+<li><p>Redis不仅仅支持简单的 key-value 类型的数据，同时还提供 list、set、zset、hash 等数据结构的存储。</p></li>
+
+<li><p>Redis 支持数据的备份，即 master-slave 模式的数据备份。</p></li>
+</ul>
+
+<h3 id="redis-优势">Redis 优势</h3>
+
+<p>Redis 的优势包括：</p>
+
+<ul>
+<li><p>性能极高：Redis能读的速度是 110000 次/s，写的速度是 81000 次/s。</p></li>
+
+<li><p>丰富的数据类型：Redis支持字符串、列表、哈希表、 集合及有序集合等大多数数据类型操作。</p></li>
+
+<li><p>原子性：Redis 的所有操作都是原子性的，同时 Redis 还支持对几个操作全并后的原子性执行。</p></li>
+
+<li><p>丰富的特性：Redis 还支持发布/订阅，通知，键过期等特性。</p></li>
+</ul>
+
+<h3 id="redis-与其他键值数据库的区别">Redis 与其他键值数据库的区别：</h3>
+
+<ul>
+<li><p>Redis 有着更为复杂的数据结构并且提供对它们的原子性操作，这是一个不同于其他键值数据库的进化路径。Redis 的数据类型都是基于基本数据结构的同时对程序员透明，无需进行额外的抽象。</p></li>
+
+<li><p>Redis 运行在内存中，但是可以持久化到磁盘，所以在对不同数据集进行高速读写时需要权衡内存，因为数据量不能大于硬件内存。在内存数据库方面的另一个优点是，相比在磁盘上相同的复杂的数据结构，在内存中操作起来非常简单，这样 Redis 可以做很多内部复杂性很强的事情。同时，在磁盘格式方面它们是紧凑的以追加的方式产生的，因为他们并不需要进行随机访问。</p></li>
+</ul>
 
   
-    <li><time>2019-07-10</time> - <a href="https://xdhuxc.github.io/post/message/message_queue/">消息队列（一）</a></li>
+  
+<span id="/post/redis/redis_summary/" class="leancloud_visitors" data-flag-title="Redis 概述">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
 
   
-    <li><time>2019-07-09</time> - <a href="https://xdhuxc.github.io/post/programming/programming-design-one/">程序设计（一）</a></li>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/">Ansible 学习之简单入门</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
 
-  
-    <li><time>2019-07-09</time> - <a href="https://xdhuxc.github.io/post/others/shortcut_key/">常用快捷键</a></li>
 
-  
-    <li><time>2019-07-08</time> - <a href="https://xdhuxc.github.io/post/python/python_question_and_solutions/">Python 常见问题及解决</a></li>
 
-  
-    <li><time>2019-07-08</time> - <a href="https://xdhuxc.github.io/post/python/python_virtualenv/">Python virtualenv 的使用</a></li>
-
-  
-    <li><time>2019-07-03</time> - <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/">Docker 合并多条 COPY 命令</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-06</h2>
-  <ul>
-  
-    <li><time>2019-06-19</time> - <a href="https://xdhuxc.github.io/post/git/git_questions_and_solutions/">Git 常见问题及解决</a></li>
-
-  
-    <li><time>2019-06-17</time> - <a href="https://xdhuxc.github.io/post/others/mac-tips/">Mac 功能指南</a></li>
-
-  
-    <li><time>2019-06-17</time> - <a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">GitHub 上 fork 项目后同步原项目</a></li>
-
-  
-    <li><time>2019-06-11</time> - <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/vue/vue-element-ui-verify/">Vue &#43; Element-UI 表单校验功能的总结</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript-true-false/">JavaScript 中的真值和假值问题</a></li>
-
-  
-    <li><time>2019-06-02</time> - <a href="https://xdhuxc.github.io/post/golang/go-test/">Golang 单元测试</a></li>
-
-  
-    <li><time>2019-06-01</time> - <a href="https://xdhuxc.github.io/post/web/http-406-not-acceptable/">记一次 HTTP PUT/POST 请求 406 错误</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-05</h2>
-  <ul>
-  
-    <li><time>2019-05-24</time> - <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/">Vue 集成 CodeMirror</a></li>
-
-  
-    <li><time>2019-05-23</time> - <a href="https://xdhuxc.github.io/post/golang/go-template/">Go Template 的使用</a></li>
-
-  
-    <li><time>2019-05-19</time> - <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a></li>
-
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/others/little_tips/">写作时实用输入小技巧</a></li>
-
-  
-    <li><time>2019-05-14</time> - <a href="https://xdhuxc.github.io/post/others/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a></li>
-
-  
-    <li><time>2019-05-09</time> - <a href="https://xdhuxc.github.io/post/others/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-04</h2>
-  <ul>
-  
-    <li><time>2019-04-13</time> - <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-three/">人间世·杂三</a></li>
-
-  
-  </ul>
-  
-  <h2>2019-01</h2>
-  <ul>
-  
-    <li><time>2019-01-01</time> - <a href="https://xdhuxc.github.io/post/human-world/human-world-preface/">人间世·前言</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-10</h2>
-  <ul>
-  
-    <li><time>2018-10-25</time> - <a href="https://xdhuxc.github.io/post/java/springboot-jmx/">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-08</h2>
-  <ul>
-  
-    <li><time>2018-08-13</time> - <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-07</h2>
-  <ul>
-  
-    <li><time>2018-07-20</time> - <a href="https://xdhuxc.github.io/post/mongodb/mongodb-simple-use/">MongoDB 数据库初步使用</a></li>
-
-  
-    <li><time>2018-07-06</time> - <a href="https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-06</h2>
-  <ul>
-  
-    <li><time>2018-06-27</time> - <a href="https://xdhuxc.github.io/post/redis/redis_summary/">Redis 概述</a></li>
-
-  
-  </ul>
-  
-  <h2>2018-05</h2>
-  <ul>
-  
-    <li><time>2018-05-14</time> - <a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/">Ansible 学习之简单入门</a></li>
-
-  
-    <li><time>2018-05-02</time> - <a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">Ansible 学习之常用模块</a></li>
-
-  
-  </ul>
-  
-  <h2>0001-01</h2>
-  <ul>
-  
-    <li><time>0001-01-01</time> - <a href="https://xdhuxc.github.io/post/linux/alpine_tips/"></a></li>
-
-  
-  </ul>
-  
 </div>
 
 </div>

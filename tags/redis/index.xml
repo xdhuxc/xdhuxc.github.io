@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/redis/</link>
+    <description>Recent content in Redis on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <lastBuildDate>Wed, 27 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis 概述</title>
+      <link>https://xdhuxc.github.io/post/redis/redis_summary/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/redis/redis_summary/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
