@@ -160,7 +160,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-07-08</span> |
       <span>修改于 2018-07-08</span> |
-      <span>总字数 743</span> |
+      <span>总字数 713</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -232,23 +232,6 @@ ModuleNotFoundError: No module named 'Crypto'
 
 <p>python 命令后面加上 <code>-u</code> （unbuffered）参数，强制其标准输出不通过缓存，直接打印到屏幕上。所以，将 <code>Dockerfile</code> 中的 <code>ENTRYPOINT</code> 命令改写为：<code>ENTRYPOINT [&quot;python3&quot;, &quot;-u&quot;, &quot;/usr/local/bin/test.py&quot;]</code></p>
 
-<h3 id="加载-sys-模块-设置编码的原因">加载 sys 模块，设置编码的原因</h3>
-
-<p>以下代码中，先重新加载sys模块，再设置编码，而不是先设置编码，再加载sys模块的原因：</p>
-
-<pre><code class="language-markdown">import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-</code></pre>
-
-<p>因为 python 运行的时候首先加载了 Lib/site.py，而在 site.py 文件中有如下代码：</p>
-
-<pre><code class="language-markdown">if hasattr(sys, &quot;setdefaultencoding&quot;):
-    del sys.setdefaultencoding
-</code></pre>
-
-<p>在sys模块加载后，setdefaultencoding 方法被删除了，所以我们需要通过重新导入sys模块来设置系统编码。</p>
-
 <h3 id="脚本运行时间长">脚本运行时间长</h3>
 
 <p>python 程序运行时间特别长，一个脚本运行了一个小时才出结果，使用 line_profiler 进行分析，发现在迭代时使用了 hasattr() 进行属性存在判断，导致占用时间特别长。</p>
@@ -268,6 +251,20 @@ ValueError: embedded null byte
 </code></pre>
 
 <p>检查一下代码，可能是函数中调用了函数自身。</p>
+
+<h3 id="xe8-xb4-xbe-xe5-xbf-x97-xe7-x8c-x9b">\xe8\xb4\xbe\xe5\xbf\x97\xe7\x8c\x9b</h3>
+
+<p>使用 pymysql 连接数据库时，取回的数据中的中文不是 unicode 码，而是如下的乱码。</p>
+
+<pre><code class="language-markdown">'\xe8\xb4\xbe\xe5\xbf\x97\xe7\x8c\x9b'
+</code></pre>
+
+<p>创建数据库连接时，原来没有指定字符集，默认的字符集是从文件 <code>/etc/my.cnf</code> 中的 <code>default-character-set</code> 配置项读取而来，如果没有该文件或者该配置项，则默认的字符集为：<code>utf8mb4</code></p>
+
+<p>解决：创建数据库连接时，显式指定字符集为 utf8</p>
+
+<pre><code class="language-markdown">db = pymysql.connect('127.0.0.1', 'root', 'Xdhuxc375', 'xdhuxc', charset='utf8')
+</code></pre>
 
   
   

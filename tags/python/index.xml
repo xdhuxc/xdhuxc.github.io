@@ -6,10 +6,19 @@
     <description>Recent content in Python on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Mon, 08 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python 常见的坑及其解决方法</title>
+      <link>https://xdhuxc.github.io/post/python/python_programming_hole/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/python/python_programming_hole/</guid>
+      <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python virtualenv 的使用</title>
