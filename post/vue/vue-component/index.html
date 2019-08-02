@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>Vue 组件封装 &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>Vue 组件封装</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-07-30</span> |
+      <span>修改于 2019-07-30</span> |
+      <span>总字数 1070</span> |
+      <span>阅读时长 3 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-07-30</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>本部分内容记录下 Vue 中组件封装的使用方法，可以使用一些组件，实现代码和逻辑抽象。</p>
+
+<h3 id="动态数组组件">动态数组组件</h3>
+
+<p>这是一个动态数组组件，从父组件传入一个字符串数组，通过在页面点击按钮，实现对数组元素的动态增删，可用于类似 Kubernetes Deployment 的容器启动参数和启动命令这样的数组结构。</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form&gt;
+      &lt;el-form-item :label=&quot;label&quot;/&gt;
+      &lt;el-form-item
+        v-for=&quot;(item, index) in items&quot;           // 数据渲染
+        :key=&quot;'item' + index&quot;&gt;
+        &lt;span&gt;
+          &lt;el-input v-model=&quot;items[index]&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;/&gt;
+          &lt;el-button
+            v-if=&quot;items.length &gt; 0&quot;
+            type=&quot;danger&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-delete&quot;
+            circle
+            @click.prevent=&quot;removeItem(index)&quot;/&gt; // 删除按钮，在每一个数组元素显示的输入框之后，用于删除当前元素。
+        &lt;/span&gt;
+      &lt;/el-form-item&gt;
+      &lt;span style=&quot;margin-left: 203px&quot;&gt;
+        &lt;el-button
+          type=&quot;primary&quot;
+          size=&quot;mini&quot;
+          icon=&quot;el-icon-plus&quot;
+          circle
+          @click.prevent=&quot;addItem()&quot;/&gt;           // 增加按钮，单独设置在底部，可以从 0 开始增加，用于增加一个元素。
+      &lt;/span&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'DunamicArrays',  // 组件名称
+  props: {
+    items: {              // 从父组件传递过来的数据名称，在父组件中为这个名称赋予数据
+      type: Array,        // 数据类型，可以为 Array，Number，String，Object等，如果传递过来的数据类型不对，直接报错
+      required: true,     // 是否必须
+      default() {         // 数据默认值
+        return [];
+      }
+    },
+    label: {              // 标签，可选项，用于表明数组含义
+      type: String,
+      default() {
+        return '';
+      }
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {             // 定义对数据的操作函数 
+    addItem() {
+      this.items.push('');
+    },
+    removeItem(index) {
+      this.items.splice(index, 1);
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+
+<h3 id="动态键值数组组件">动态键值数组组件</h3>
+
+<p>这是一个动态键值对数组组件，从父组件传入一个键值对数组，通过在页面点击按钮，实现对键值对的动态增删，可用于类似 Kubernetes Deployment 的标签、环境变量等键值对数组结构。</p>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div&gt;
+    &lt;div v-if=&quot;arrayType === 'key-value'&quot;&gt; // 数组类型，表示键值对数组中的键值是 key-value 类型的还是 name-value 类型的
+      &lt;el-form&gt;
+        &lt;el-form-item :label=&quot;label&quot;/&gt;     // 标签，可选项，用于表明数组含义
+        &lt;el-form-item
+          v-for=&quot;(item, index) in items&quot;   // 数据渲染
+          :key=&quot;'item' + index&quot;&gt;
+          &lt;span&gt;
+            &lt;el-input v-model=&quot;item.key&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-input v-model=&quot;item.value&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-button
+              v-if=&quot;items.length &gt; 0&quot;
+              type=&quot;danger&quot;
+              size=&quot;mini&quot;
+              icon=&quot;el-icon-delete&quot;
+              circle
+              @click.prevent=&quot;removeItem(index)&quot;/&gt;
+          &lt;/span&gt;
+        &lt;/el-form-item&gt;
+        &lt;span style=&quot;margin-left: 406px&quot;&gt;
+          &lt;el-button
+            type=&quot;primary&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-plus&quot;
+            circle
+            @click.prevent=&quot;addItem(arrayType)&quot;/&gt;
+        &lt;/span&gt;
+      &lt;/el-form&gt;
+    &lt;/div&gt;
+    &lt;div v-else&gt;
+      &lt;el-form&gt;
+        &lt;el-form-item :label=&quot;label&quot;/&gt;
+        &lt;el-form-item
+          v-for=&quot;(item, index) in items&quot;
+          :key=&quot;'item' + index&quot;&gt;
+          &lt;span&gt;
+            &lt;el-input v-model=&quot;item.name&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-input v-model=&quot;item.value&quot; :clearable=&quot;true&quot; style=&quot;width: 199px&quot;&gt;&lt;/el-input&gt;
+            &lt;el-button
+              v-if=&quot;items.length &gt; 0&quot;
+              type=&quot;danger&quot;
+              size=&quot;mini&quot;
+              icon=&quot;el-icon-delete&quot;
+              circle
+              @click.prevent=&quot;removeItem(index)&quot;/&gt;
+          &lt;/span&gt;
+        &lt;/el-form-item&gt;
+        &lt;span style=&quot;margin-left: 406px&quot;&gt;
+          &lt;el-button
+            type=&quot;primary&quot;
+            size=&quot;mini&quot;
+            icon=&quot;el-icon-plus&quot;
+            circle
+            @click.prevent=&quot;addItem(arrayType)&quot;/&gt;
+        &lt;/span&gt;
+      &lt;/el-form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'DynamicKeyValueArrays',    // 组件名称 
+  props: {
+    items: {                        // 从父组件传递过来的数据名称，在父组件中为这个名称赋予数据 
+      type: Array,                  // 数据类型，可以为 Array，Number，String，Object等，如果传递过来的数据类型不对，直接报错
+      required: true,               // 是否必须，如果为 true，而实际没有传值，则会报错
+      default() {                   // 数据默认值
+        return [];
+      }
+    },
+    label: {
+      type: String,
+      default() {
+        return '';
+      }
+    },
+    arrayType: {
+      type: String,
+      required: true,
+      default() {
+        return 'key-value'; // also support name-value
+      }
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {                // 定义对数据的操作函数 
+    addItem(arrayType) {
+      if (arrayType === 'key-value') {
+        this.items.push({
+          key: '',
+          value: ''
+        });
+      } else if (arrayType === 'name-value') {
+        this.items.push({
+          name: '',
+          value: ''
+        });
+      }
+    },
+    removeItem(index) {
+      this.items.splice(index, 1);
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+
+<h3 id="使用组件">使用组件</h3>
+
+<pre><code class="language-markdown">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form ref=&quot;arrayForm&quot; :rules=&quot;arrayVerifyRules&quot;&gt;
+      &lt;el-form-item prop=&quot;items&quot;&gt;
+        &lt;dynamic-arrays :items=&quot;command&quot;&gt;&lt;/dynamic-arrays&gt; // 通过 :items 定义响应式属性
+      &lt;/el-form-item&gt;
+      &lt;span&gt;
+        ------------华丽丽的的分割线-------------
+      &lt;/span&gt;
+      &lt;el-form-item&gt;
+        &lt;dynamic-key-value-arrays :items=&quot;labels&quot; array-type=&quot;name-value&quot;&gt;&lt;/dynamic-key-value-arrays&gt;  // 在父组件中使用自定义组件
+      &lt;/el-form-item&gt;
+
+      &lt;el-button @click=&quot;onSubmit&quot;&gt; Submit &lt;/el-button&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import DynamicArrays from '@/components/DynamicArrays/index'                  // 导入自定义组件
+
+import DynamicKeyValueArrays from '@/components/DynamicKeyValueArrays/index'  // 导入自定义组件
+
+export default {
+  components: {                                                               // 在父组件中引用子组件
+    'dynamic-arrays': DynamicArrays,
+    'dynamic-key-value-arrays': DynamicKeyValueArrays
+  },
+  data() {
+    return {
+      command: [],
+      labels: [],
+      keyValueType: 'name-value',
+    }
+  },
+  mounted() {},
+  methods: {
+    onSubmit() {
+      console.log('call component')
+      console.log(this.command)
+      console.log(this.labels)
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+
+<p>对于数组和对象这种引用类型的数据，在子组件中改变值后，其父组件中对应的数据也将改变。</p>
+
+  
+  
+<span id="/post/vue/vue-component/" class="leancloud_visitors" data-flag-title="Vue 组件封装">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/python/python_programming_hole/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/python/python_programming_hole/">Python 常见的坑及其解决方法</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/golang/go-json-serialize/">Go JSON 序列化和反序列化</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/golang/go-json-serialize/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

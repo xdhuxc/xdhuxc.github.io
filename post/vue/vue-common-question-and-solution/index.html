@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Go &middot; xdhuxc</title>
+  <title>Vue 常见问题及解决 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/go/index.xml' />
   
 
   
@@ -157,20 +154,25 @@
 
 
 <div class="header">
-  <h1>Go</h1>
+  <h1>Vue 常见问题及解决</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-08-02</span> |
+      <span>修改于 2019-08-02</span> |
+      <span>总字数 214</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/golang/go-json-serialize/">Go JSON 序列化和反序列化</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-01</time>
+    <time>2019-08-02</time>
   </div>
 
   
@@ -183,9 +185,7 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/json">JSON</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>
     
   </div>
   
@@ -194,66 +194,101 @@
 </div>
 
 
-  </header>
+  <p>本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。</p>
 
-  <p>
-  <p>本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。</p>
-  </p>
+<h3 id="通过父组件向子组件传值时-报错如下">通过父组件向子组件传值时，报错如下</h3>
+
+<pre><code class="language-markdown">vue.runtime.esm.js:587 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: &quot;pods&quot;
+</code></pre>
+
+<p>父组件中引用该组件的方式如下：</p>
+
+<pre><code class="language-markdown">&lt;instances :pods=&quot;pods&quot;&gt;&lt;/instances&gt;
+</code></pre>
+
+<p>解决方法：在父组件中，改写代码如下：</p>
+
+<pre><code class="language-markdown">&lt;instances :pods.sync=&quot;pods&quot;&gt;&lt;/instances&gt;
+</code></pre>
+
+<p>在父组件中改变 pods 数据时，就像平时一样直接改变即可。</p>
+
+<p>子组件中，代码改写如下：</p>
+
+<pre><code class="language-markdown">export default {
+  name: 'Instances',
+  props: {
+    pods: {
+      type: Array,
+      default() {
+        return [];
+      }
+    }
+  },
+  data() {
+    return {};
+  }
+}
+
+</code></pre>
+
+<p>子组件中改变数据的代码部分不能采用直接赋值，而要改为：</p>
+
+<pre><code class="language-markdown"> this.$emit('update:pods', pods);
+</code></pre>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/golang/go-json-serialize/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
   
-</article>
+<span id="/post/vue/vue-common-question-and-solution/" class="leancloud_visitors" data-flag-title="Vue 常见问题及解决">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
 
   
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/golang/go-template/">Go Template 的使用</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-23</time>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/golang/go-json-serialize/"><i class="fa fa-chevron-left"></i></a>
+    
   </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+  <div class="pure-u-10-24">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/template">Template</a>
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/golang/go-json-serialize/">Go JSON 序列化和反序列化</a>
+    </nav>
     
   </div>
-  
-  
-
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/golang/go-template/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -312,3 +347,4 @@
 
 </body>
 </html>
+

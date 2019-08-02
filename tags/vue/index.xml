@@ -6,10 +6,28 @@
     <description>Recent content in Vue on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Wed, 24 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue 组件封装</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-component/</link>
+      <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-component/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 中组件封装的使用方法，可以使用一些组件，实现代码和逻辑抽象。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Vue 开发常用代码</title>

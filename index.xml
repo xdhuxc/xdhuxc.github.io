@@ -6,10 +6,37 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go JSON 序列化和反序列化</title>
+      <link>https://xdhuxc.github.io/post/golang/go-json-serialize/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/golang/go-json-serialize/</guid>
+      <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue 组件封装</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-component/</link>
+      <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-component/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 中组件封装的使用方法，可以使用一些组件，实现代码和逻辑抽象。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python 常见的坑及其解决方法</title>

@@ -6,10 +6,37 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Sat, 27 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue</title>
+      <link>https://xdhuxc.github.io/tags/vue/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://xdhuxc.github.io/tags/go/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JSON</title>
+      <link>https://xdhuxc.github.io/tags/json/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/json/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Python</title>
@@ -26,15 +53,6 @@
       <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vue</title>
-      <link>https://xdhuxc.github.io/tags/vue/</link>
-      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/vue/</guid>
       <description></description>
     </item>
     
@@ -233,15 +251,6 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/codemirror/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go</title>
-      <link>https://xdhuxc.github.io/tags/go/</link>
-      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/go/</guid>
       <description></description>
     </item>
     
