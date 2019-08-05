@@ -160,7 +160,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-06-05</span> |
       <span>修改于 2019-06-05</span> |
-      <span>总字数 1108</span> |
+      <span>总字数 1150</span> |
       <span>阅读时长 3 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -258,6 +258,12 @@ receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .V
   email_configs:
   - send_resolved: {{$item.resolved}}
     to: {{$item.url}}{{end}}{{end}}
+</code></pre>
+
+<p>在本地启动 DynamoDB 数据库实例，配置如下环境变量：（confd 需要使用这些环境变量）</p>
+
+<pre><code class="language-angular2html">export AWS_REGION=ap-southeast-1
+export DYNAMODB_LOCAL=http://localhost:8000
 </code></pre>
 
 <p>存储在 DynamoDB 中的数据格式为：</p>
