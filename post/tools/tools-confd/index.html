@@ -160,7 +160,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-06-05</span> |
       <span>修改于 2019-06-05</span> |
-      <span>总字数 1150</span> |
+      <span>总字数 1145</span> |
       <span>阅读时长 3 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -204,7 +204,7 @@
 
 <p>下载二进制安装文件并复制到 PATH 目录下</p>
 
-<pre><code class="language-angular2html"># 下载二进制文件
+<pre><code class="language-markdown"># 下载二进制文件
 wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
 # 重命名该文件
 mv confd-0.16.0-linux-amd64 confd
@@ -218,7 +218,7 @@ cp confd /usr/bin/
 
 <p>1、创建 confdir，用于存放 confd 的配置文件和模板文件</p>
 
-<pre><code class="language-angular2html">mkdir -p /etc/confd/conf.d    // 存放 confd 使用的配置文件
+<pre><code class="language-markdown">mkdir -p /etc/confd/conf.d    // 存放 confd 使用的配置文件
 mkdir -p /etc/confd/templates // 用于存放模板文件，生成最终的配置文件
 </code></pre>
 
@@ -262,7 +262,7 @@ receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .V
 
 <p>在本地启动 DynamoDB 数据库实例，配置如下环境变量：（confd 需要使用这些环境变量）</p>
 
-<pre><code class="language-angular2html">export AWS_REGION=ap-southeast-1
+<pre><code class="language-markdown">export AWS_REGION=ap-southeast-1
 export DYNAMODB_LOCAL=http://localhost:8000
 </code></pre>
 
@@ -340,7 +340,7 @@ receivers:
 
 <p>以 Linux 系统服务方式部署 confd，每 5 分钟拉取一次配置文件，confd.service 文件内容为：（/usr/lib/systemd/system/confd.service）</p>
 
-<pre><code>[Unit]
+<pre><code class="language-markdown">[Unit]
 Description=confd
 Documentation=http://www.confd.io/
 After=network.target
@@ -359,12 +359,15 @@ WantedBy=multi-user.target
 
 <p>以上使用 AWS DynamoDB 数据源作为示例，其他数据源可参考 <a href="https://github.com/kelseyhightower/confd/blob/master/docs/configuration-guide.md">confd 配置指南</a> 修改环境变量和启动命令</p>
 
-<p>命令说明：
-* &ndash;backend：指明数据源，默认为 etcd
-* -table：当数据源为 DynamoDB 时，指定 DynamoDB 表，仅用于数据源为 DynamoDB 时
-* &ndash;interval：后台轮询间隔，以秒为单位，默认值为：600
-* &ndash;profile：在使用 DynamoDB 作为数据源时，使用 AWS AccessKey 和 Secret Key 的 profile，防止和其他程序使用的 AccessKey 和 Secret Key 冲突，源代码中没有此选项，此处使用的是改造过的<a href="https://github.com/xdhuxc/confd">代码</a>
-* &ndash;log-level：confd 日志级别，默认为： info</p>
+<p>命令说明：</p>
+
+<ul>
+<li>&ndash;backend：指明数据源，默认为 etcd</li>
+<li>-table：当数据源为 DynamoDB 时，指定 DynamoDB 表，仅用于数据源为 DynamoDB 时</li>
+<li>&ndash;interval：后台轮询间隔，以秒为单位，默认值为：600</li>
+<li>&ndash;profile：在使用 DynamoDB 作为数据源时，使用 AWS AccessKey 和 Secret Key 的 profile，防止和其他程序使用的 AccessKey 和 Secret Key 冲突，源代码中没有此选项，此处使用的是改造过的<a href="https://github.com/xdhuxc/confd">代码</a></li>
+<li>&ndash;log-level：confd 日志级别，默认为： info</li>
+</ul>
 
 <p>添加如下 profile 到 ~/.aws/credentials 文件中</p>
 
