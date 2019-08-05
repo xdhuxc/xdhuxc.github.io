@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/aws/</link>
+    <description>Recent content in AWS on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <lastBuildDate>Sun, 02 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS DynamoDB 简单实用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 AWS DynamoDB 过程中用到的一些知识和技术点，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

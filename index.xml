@@ -165,12 +165,30 @@
     </item>
     
     <item>
+      <title>配置拉取工具 confd 的使用及说明</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-confd/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-confd/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>WebSocket 的使用</title>
       <link>https://xdhuxc.github.io/unfinished/vue-go-websocket/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/unfinished/vue-go-websocket/</guid>
       <description>&lt;p&gt;最近项目中使用到了 WebSocket，&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AWS DynamoDB 简单实用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 AWS DynamoDB 过程中用到的一些知识和技术点，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -438,10 +456,10 @@ import logging as log log.basicConfig(level=log.INFO, filename=&#39;dingtalk_cal
     
     <item>
       <title></title>
-      <link>https://xdhuxc.github.io/unfinished/web-terminal/</link>
+      <link>https://xdhuxc.github.io/unfinished/vue-web-terminal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/unfinished/web-terminal/</guid>
+      <guid>https://xdhuxc.github.io/unfinished/vue-web-terminal/</guid>
       <description>1、不换行
 2、上下和左右滑动问题
 3、去除上方的黑框框和W字符

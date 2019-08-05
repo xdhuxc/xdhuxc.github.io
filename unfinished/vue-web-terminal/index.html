@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>JavaScript 中的数组遍历方式 &middot; xdhuxc</title>
+  <title> &middot; xdhuxc</title>
 
   
   
@@ -154,155 +154,19 @@
 
 
 <div class="header">
-  <h1>JavaScript 中的数组遍历方式</h1>
+  <h1></h1>
   <h2></h2>
-  <div>
-    <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-07-22</span> |
-      <span>修改于 2019-07-22</span> |
-      <span>总字数 377</span> |
-      <span>阅读时长 1 分钟</span> |
-      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
-    </font>
-  </div>
 </div>
 <div class="content">
+  <p>1、不换行</p>
 
-  <div class="post-meta">
+<p>2、上下和左右滑动问题</p>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-07-22</time>
-  </div>
+<p>3、去除上方的黑框框和W字符</p>
 
-  
+<p>4、心跳</p>
 
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/javascript">JavaScript</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  <p>JavaScript 中数组遍历的几种方式，都是一般的方法，但是在遍历数组的同时删除元素的方法需要稍微注意下。</p>
-
-<h3 id="javascript-中的数组遍历方式">JavaScript 中的数组遍历方式</h3>
-
-<p>1、标准 for 循环方式</p>
-
-<pre><code class="language-markdown">var a = ['a', 'b', 'c', 'd']
-for (let i = 0; i &lt; a.length; i++) {
-    console.log(a[i]);
-}
-</code></pre>
-
-<p>2、for-in 语句</p>
-
-<pre><code class="language-markdown">var a =  {
-    name: 'hulk',
-    env: 'prod',
-    project: 'x-role'
-}
-for (var key in a) {
-    console.log(a[key]);
-}
-</code></pre>
-
-<p>一般使用 for-in 语句来遍历对象的属性，但是对象的属性需要是可枚举的，才能被读取到，非整数类型的名称和继承的那些原型链上面的属性也能被遍历。</p>
-
-<p>for-in 在遍历的过程中还会遍历继承链，这是其效率比较低的原因。</p>
-
-<h3 id="在遍历的过程中删除元素">在遍历的过程中删除元素</h3>
-
-<p>在遍历的过程中删除元素时，会因为删除元素而导致数组索引变化，删除了错误的元素</p>
-
-<pre><code class="language-markdown">var a = ['a', 'b', 'c', 'd', 'e', 'f']
-for (let i = 0; i &lt; a.length; i++) {
-    if (i === 3) {
-        a.splice(i, 1); // 删除索引号为 3 的元素
-    }
-    
-}
-</code></pre>
-
-<p>如果需要在遍历数组的过程中删除数组元素，那么我们可以在删除之后调整索引，从而保证下一个操作时索引的正确性</p>
-
-<pre><code class="language-markdown">var a = ['a', 'b', 'c', 'd']
-for (let i = 0; i &lt; a.length; i++) {
-    if (a[i] === 'c') {
-        a.splice(i, 1);
-        i--;             // 索引调整
-    }
-}
-</code></pre>
-
-  
-  
-<span id="/post/javascript/javascript_array_traverse/" class="leancloud_visitors" data-flag-title="JavaScript 中的数组遍历方式">
-    <span class="post-meta-item-text">文章阅读量 </span>
-    <span class="leancloud-visitors-count"></span>
-    <p></p>
-</span>
-<div id="vcomments"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script type="text/javascript">
-    new Valine({
-        el: '#vcomments' ,
-        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
-        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
-        notify: 'false',
-        verify: 'false',
-        avatar:'identicon',
-        placeholder: '说点什么吧...',
-        visitor: 'true'
-    });
-</script>
-
-
-
-  
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://xdhuxc.github.io/post/message/message_queue/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/message/message_queue/">消息队列（一）</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/">JavaScript 常用代码</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/javascript/javascript-common-code-example/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
+<p>5、切换选项时去除上次的内容</p>
 
 </div>
 

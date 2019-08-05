@@ -160,8 +160,8 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-02</span> |
       <span>修改于 2019-08-02</span> |
-      <span>总字数 493</span> |
-      <span>阅读时长 1 分钟</span> |
+      <span>总字数 524</span> |
+      <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -293,7 +293,7 @@ vue.runtime.esm.js:1737 TypeError: Cannot read property 'clearValidate' of undef
 }
 </code></pre>
 
-<p><code>this.dialogDeploymentVisible = true</code> 执行后，才会创建表单 deploymentForm，正是因为执行 <code>this.$refs['deploymentForm'].clearValidate()</code> 时，<code>this.dialogDeploymentVisible = true</code> 还没有执行，表单还没有创建，所以才会抛出上面的错误。</p>
+<p>原因是，<code>this.dialogDeploymentVisible = true</code> 执行后，才会创建表单 deploymentForm，正是因为执行 <code>this.$refs['deploymentForm'].clearValidate()</code> 时，<code>this.dialogDeploymentVisible = true</code> 还没有执行，表单还没有创建，所以才会抛出上面的错误。</p>
 
   
   

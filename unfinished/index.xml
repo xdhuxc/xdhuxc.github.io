@@ -65,10 +65,10 @@ import logging as log log.basicConfig(level=log.INFO, filename=&#39;dingtalk_cal
     
     <item>
       <title></title>
-      <link>https://xdhuxc.github.io/unfinished/web-terminal/</link>
+      <link>https://xdhuxc.github.io/unfinished/vue-web-terminal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/unfinished/web-terminal/</guid>
+      <guid>https://xdhuxc.github.io/unfinished/vue-web-terminal/</guid>
       <description>1、不换行
 2、上下和左右滑动问题
 3、去除上方的黑框框和W字符

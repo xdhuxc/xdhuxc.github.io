@@ -165,6 +165,24 @@
     </item>
     
     <item>
+      <title>配置拉取工具 confd 的使用及说明</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-confd/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-confd/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AWS DynamoDB 简单实用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 AWS DynamoDB 过程中用到的一些知识和技术点，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Golang 单元测试</title>
       <link>https://xdhuxc.github.io/post/golang/go-test/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>配置拉取工具 confd 的使用及说明 &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>配置拉取工具 confd 的使用及说明</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-06-05</span> |
+      <span>修改于 2019-06-05</span> |
+      <span>总字数 1108</span> |
+      <span>阅读时长 3 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-06-05</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/confd">confd</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/dynamodb">DynamoDB</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。</p>
+
+<p>confd 可以从后台数据源拉取数据，以 golang 模板的方式编写配置文件，渲染到本地文件，这对于一些需要动态或定时更改配置文件的程序非常方便。但是，有些数据源具有发布/订阅的特性，可以向 confd 推送数据，另外一些，就只能采用定时拉取的方式了。</p>
+
+<h3 id="confd-安装">confd 安装</h3>
+
+<p>下载二进制安装文件并复制到 PATH 目录下</p>
+
+<pre><code class="language-angular2html"># 下载二进制文件
+wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
+# 重命名该文件
+mv confd-0.16.0-linux-amd64 confd
+# 移动至 PATH 路径下
+cp confd /usr/bin/
+</code></pre>
+
+<p>也可自行根据 <a href="https://github.com/kelseyhightower/confd">confd 源码</a> 构建</p>
+
+<h3 id="confd-配置及运行">confd 配置及运行</h3>
+
+<p>1、创建 confdir，用于存放 confd 的配置文件和模板文件</p>
+
+<pre><code class="language-angular2html">mkdir -p /etc/confd/conf.d    // 存放 confd 使用的配置文件
+mkdir -p /etc/confd/templates // 用于存放模板文件，生成最终的配置文件
+</code></pre>
+
+<p>2、创建模板文件及其 confd 配置文件</p>
+
+<p>模板文件 /etc/confd/templates/alertmanager.yaml.tmpl</p>
+
+<pre><code class="language-markdown">global:
+  resolve_timeout: 5m
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 15m
+  receiver: send_to_dingding_ai
+
+  routes:{{range gets &quot;/alertmanager/routes/*&quot;}}{{$item := json .Value}} # 渲染 JSON 格式数据
+  - match_re: {{range $key, $value := json $item.match_re}}
+      {{$key}}: &quot;{{$value}}&quot;{{end}}
+    continue: true  
+    receiver: {{$item.receiver}}{{end}} # {{end}} 写在行尾，处理多余的空行，否则生成的文件中会有多余的空行
+    # continue: true # 注意，continue 写在此处，会将数据渲染完毕后，只有一个 continue
+
+inhibit_rules:
+- source_match:
+    severity: 'critical'
+  target_match:
+    severity: 'warning'
+  equal: ['alertname']
+
+receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .Value}}{{ if eq $item.type &quot;dingtalk&quot; }} # 条件判断
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}{{end}}
+</code></pre>
+
+<p>存储在 DynamoDB 中的数据格式为：</p>
+
+<pre><code class="language-markdown">{
+  &quot;key&quot;: &quot;/xdhuxc/alertmanager/receivers/10&quot;,
+  &quot;value&quot;: &quot;{\&quot;name\&quot;:\&quot;send_to_dingding_bigdata\&quot;,\&quot;resolved\&quot;:false,\&quot;type\&quot;:\&quot;dingtalk\&quot;,\&quot;url\&quot;:\&quot;https://oapi.dingtalk.com/robot/send?access_token=238c10a8984980a1f34228cab29cbbdaaaceb80ef82ee125c96e3166628e2c44\&quot;}&quot;
+}
+</code></pre>
+
+<pre><code class="language-markdown">{
+  &quot;key&quot;: &quot;/xdhuxc/alertmanager/routes/25&quot;,
+  &quot;value&quot;: &quot;{\&quot;receiver\&quot;:\&quot;send_to_dingding_business\&quot;,\&quot;match_re\&quot;:\&quot;{\\\&quot;namespace\\\&quot;: \\\&quot;business\\\&quot;}\&quot;}&quot;
+}
+</code></pre>
+
+<p>这些数据由页面加入，以结构化数据存储到 mysql 中，再组织成 key-value 格式存储到 DynamoDB 中。</p>
+
+<p>此处要特别注意 key 的组成方式和获取值得方式。key 由配置文件中的 tamplate 部分的 prefix + 模板中的前缀路径 + 记录在数据库中的 ID 组成</p>
+
+<p>配置文件 /etc/confd/conf.d/alertmanager.yaml.toml</p>
+
+<pre><code class="language-markdown">[template]
+prefix = &quot;/xdhuxc&quot;
+src = &quot;alertmanager.yaml.tmpl&quot;
+dest = &quot;/tmp/alertmanager.yaml&quot;
+keys = [
+    &quot;/alertmanager&quot;  # 需要获取数据的键
+]
+nodes = [
+    &quot;&quot;
+]
+
+reload_cmd = &quot;curl -X POST http://localhost:9093/-/reload&quot; # 更新配置文件后重启进程的命令
+</code></pre>
+
+<p>3、启动 confd 进程</p>
+
+<pre><code class="language-markdown">confd -onetime -backend dynamodb -node http://localhost:8000 -table xdhuxc --log-level debug
+</code></pre>
+
+<p>4、最终渲染出来的配置文件内容为：</p>
+
+<pre><code class="language-markdown">global:
+  resolve_timeout: 5m
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 15m
+  receiver: send_to_dingding_ai
+
+  routes:
+  - match_re:
+      namespace: &quot;business&quot;
+    continue: true
+    receiver: send_to_dingding_business
+
+inhibit_rules:
+- source_match:
+    severity: 'critical'
+  target_match:
+    severity: 'warning'
+  equal: ['alertname']
+
+receivers:
+- name: send_to_dingding_bigdata
+  dingtalk_configs:
+  - send_resolved: false
+    webhook_url: https://oapi.dingtalk.com/robot/send?access_token=238c10a8984980a1f34228cab29cbbdaaaceb80ef82ee125c96e3166628e2c44
+</code></pre>
+
+<h3 id="以-linux-系统服务方式运行-confd">以 Linux 系统服务方式运行 confd</h3>
+
+<p>以 Linux 系统服务方式部署 confd，每 5 分钟拉取一次配置文件，confd.service 文件内容为：（/usr/lib/systemd/system/confd.service）</p>
+
+<pre><code>[Unit]
+Description=confd
+Documentation=http://www.confd.io/
+After=network.target
+
+[Service]
+Type=simple
+Environment=&quot;AWS_REGION=ap-southeast-1&quot;
+Environment=&quot;DYNAMODB_LOCAL=&quot;
+Environment=&quot;HOME=/root&quot;
+ExecStart=/usr/bin/confd -backend dynamodb -table xdhuxc --interval 300 --profile xdhuxc --log-level debug
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>以上使用 AWS DynamoDB 数据源作为示例，其他数据源可参考 <a href="https://github.com/kelseyhightower/confd/blob/master/docs/configuration-guide.md">confd 配置指南</a> 修改环境变量和启动命令</p>
+
+<p>命令说明：
+* &ndash;backend：指明数据源，默认为 etcd
+* -table：当数据源为 DynamoDB 时，指定 DynamoDB 表，仅用于数据源为 DynamoDB 时
+* &ndash;interval：后台轮询间隔，以秒为单位，默认值为：600
+* &ndash;profile：在使用 DynamoDB 作为数据源时，使用 AWS AccessKey 和 Secret Key 的 profile，防止和其他程序使用的 AccessKey 和 Secret Key 冲突，源代码中没有此选项，此处使用的是改造过的<a href="https://github.com/xdhuxc/confd">代码</a>
+* &ndash;log-level：confd 日志级别，默认为： info</p>
+
+<p>添加如下 profile 到 ~/.aws/credentials 文件中</p>
+
+<pre><code class="language-markdown">[xdhuxc]
+aws_access_key_id = '${AWS_ACCESS_KEY_ID}'
+aws_secret_access_key = '${AWS_SECRET_ACCESS_KEY}'
+</code></pre>
+
+<p>该 profile 需要有读 AWS DynamoDB 的权限。</p>
+
+<p>启动命令为：</p>
+
+<pre><code class="language-markdown">systemctl daemon-reload
+systemctl restart confd
+</code></pre>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://github.com/kelseyhightower/confd">https://github.com/kelseyhightower/confd</a></p>
+
+  
+  
+<span id="/post/tools/tools-confd/" class="leancloud_visitors" data-flag-title="配置拉取工具 confd 的使用及说明">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/">AWS DynamoDB 简单实用</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+
