@@ -226,17 +226,17 @@ region = ap-southeast-1
 
 <p>1、显示所有数据库表</p>
 
-<pre><code class="language-angular2html">aws dynamodb list-tables --endpoint-url http://localhost:8000
+<pre><code class="language-markdown">aws dynamodb list-tables --endpoint-url http://localhost:8000
 </code></pre>
 
 <p>2、显示特定表信息</p>
 
-<pre><code class="language-angular2html">aws dynamodb describe-table --table-name xdhuxc --endpoint-url http://localhost:8000
+<pre><code class="language-markdown">aws dynamodb describe-table --table-name xdhuxc --endpoint-url http://localhost:8000
 </code></pre>
 
 <p>3、创建表</p>
 
-<pre><code class="language-angular2html">aws dynamodb create-table \
+<pre><code class="language-markdown">aws dynamodb create-table \
     --table-name xdhuxc \
     --attribute-definitions \
         AttributeName=key,AttributeType=S \
