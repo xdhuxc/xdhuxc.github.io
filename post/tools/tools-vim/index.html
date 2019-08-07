@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Linux &middot; xdhuxc</title>
+  <title>Vim 常用命令及技巧 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/linux/index.xml' />
   
 
   
@@ -157,20 +154,25 @@
 
 
 <div class="header">
-  <h1>Linux</h1>
+  <h1>Vim 常用命令及技巧</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-08-07</span> |
+      <span>修改于 2019-08-07</span> |
+      <span>总字数 65</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/linux/linux-cronjob/">Linux 中 crontab 的使用</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-09-07</time>
+    <time>2019-08-07</time>
   </div>
 
   
@@ -183,9 +185,7 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/linux">Linux</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/shell">Shell</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vim">Vim</a>
     
   </div>
   
@@ -194,66 +194,72 @@
 </div>
 
 
-  </header>
+  <p>本篇博客主要介绍 Vim 的常用命令及技巧，以备后需。</p>
 
-  <p>
-  <p>我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。</p>
-  </p>
+<h3 id="常用命令">常用命令</h3>
+
+<blockquote>
+<p>以下操作均在命令模式下进行</p>
+</blockquote>
+
+<p>1、显示行号或取消行号</p>
+
+<pre><code class="language-markdown">:set nonumber # 关闭行号
+:set number   # 开启行号
+</code></pre>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/linux/linux-cronjob/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
   
-</article>
+<span id="/post/tools/tools-vim/" class="leancloud_visitors" data-flag-title="Vim 常用命令及技巧">
+    <span class="post-meta-item-text">文章阅读量 </span>
+    <span class="leancloud-visitors-count"></span>
+    <p></p>
+</span>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
+        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
+        notify: 'false',
+        verify: 'false',
+        avatar:'identicon',
+        placeholder: '说点什么吧...',
+        visitor: 'true'
+    });
+</script>
+
+
 
   
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-08-13</time>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/"><i class="fa fa-chevron-left"></i></a>
+    
   </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+  <div class="pure-u-10-24">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/linux">Linux</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/shell">Shell</a>
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/">Golang 常见问题及解决</a>
+    </nav>
     
   </div>
-  
-  
-
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -312,3 +318,4 @@
 
 </body>
 </html>
+

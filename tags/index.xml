@@ -6,10 +6,28 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vim</title>
+      <link>https://xdhuxc.github.io/tags/vim/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://xdhuxc.github.io/tags/golang/</link>
+      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Vue</title>
@@ -161,15 +179,6 @@
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/gorm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://xdhuxc.github.io/tags/golang/</link>
-      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/golang/</guid>
       <description></description>
     </item>
     
@@ -356,7 +365,7 @@
     <item>
       <title>Linux</title>
       <link>https://xdhuxc.github.io/tags/linux/</link>
-      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/linux/</guid>
       <description></description>
@@ -365,7 +374,7 @@
     <item>
       <title>Shell</title>
       <link>https://xdhuxc.github.io/tags/shell/</link>
-      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/shell/</guid>
       <description></description>
