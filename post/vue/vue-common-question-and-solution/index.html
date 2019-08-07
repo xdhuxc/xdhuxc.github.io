@@ -296,29 +296,6 @@ vue.runtime.esm.js:1737 TypeError: Cannot read property 'clearValidate' of undef
 <p>原因是，<code>this.dialogDeploymentVisible = true</code> 执行后，才会创建表单 deploymentForm，正是因为执行 <code>this.$refs['deploymentForm'].clearValidate()</code> 时，<code>this.dialogDeploymentVisible = true</code> 还没有执行，表单还没有创建，所以才会抛出上面的错误。</p>
 
   
-  
-<span id="/post/vue/vue-common-question-and-solution/" class="leancloud_visitors" data-flag-title="Vue 常见问题及解决">
-    <span class="post-meta-item-text">文章阅读量 </span>
-    <span class="leancloud-visitors-count"></span>
-    <p></p>
-</span>
-<div id="vcomments"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<script type="text/javascript">
-    new Valine({
-        el: '#vcomments' ,
-        appId: 'YsFphzyKIQLER09mV5x6wcHp-gzGzoHsz',
-        appKey: '0u59ooH7ebMlKP9lcvWwwEh7',
-        notify: 'false',
-        verify: 'false',
-        avatar:'identicon',
-        placeholder: '说点什么吧...',
-        visitor: 'true'
-    });
-</script>
-
-
 
   
 <div class="prev-next-post pure-g">
