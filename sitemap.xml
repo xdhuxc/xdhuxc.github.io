@@ -32,6 +32,17 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-six/</loc>
+    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/golang/</loc>
     <lastmod>2019-08-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -40,6 +51,11 @@
   <url>
     <loc>https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/</loc>
     <lastmod>2019-08-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-two/</loc>
+    <lastmod>2019-08-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -405,12 +421,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/others/github_hugo_1/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
