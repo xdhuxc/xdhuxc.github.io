@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>unittest &middot; xdhuxc</title>
+  <title>Go JSON 序列化和反序列化 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/unittest/index.xml' />
   
 
   
@@ -157,20 +154,25 @@
 
 
 <div class="header">
-  <h1>unittest</h1>
+  <h1>Go JSON 序列化和反序列化</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-08-01</span> |
+      <span>修改于 2019-08-01</span> |
+      <span>总字数 744</span> |
+      <span>阅读时长 2 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/golang/golang-test/">Golang 单元测试</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-02</time>
+    <time>2019-08-01</time>
   </div>
 
   
@@ -183,9 +185,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/unittest">unittest</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/json">JSON</a>
     
   </div>
   
@@ -194,20 +196,136 @@
 </div>
 
 
-  </header>
+  <p>本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。</p>
 
-  <p>
-  <p>本部分内容记录下 golang 中的单元测试的简单用法。</p>
-  </p>
+<h3 id="序列化为-json">序列化为 JSON</h3>
+
+<p>示例代码如下：</p>
+
+<pre><code class="language-markdown">package main
+
+import (
+	&quot;encoding/json&quot;
+	&quot;fmt&quot;
+)
+
+type User struct {
+	Name string `json:&quot;name&quot;`
+	Addresses []Address `json:&quot;addresses&quot;`
+	Age int `json:&quot;age,omitempty&quot;`
+	Email []string `json:&quot;email&quot;`
+	Department string `json:&quot;department,omitempty&quot;`
+	Province string
+}
+
+type Address struct {
+	Name string `json:&quot;name&quot;`
+}
+
+func (u *User) String() string {
+
+	if bytes, err := json.Marshal(&amp;u); err == nil {
+		return string(bytes)
+	}
+
+	return &quot;&quot;
+}
+
+func main() {
+	u := User{
+		Name: &quot;xdhuxc&quot;,
+		Email: []string{},
+		Age: 20,
+	}
+
+	fmt.Println(u.String())
+}
+</code></pre>
+
+<p>输出的结果为：</p>
+
+<pre><code class="language-markdown">{&quot;name&quot;:&quot;xdhuxc&quot;,&quot;addresses&quot;:null,&quot;age&quot;:20,&quot;email&quot;:[],&quot;Province&quot;:&quot;&quot;}
+</code></pre>
+
+<p>可以看到：</p>
+
+<p>1、数组或者切片如果不初始化，默认情况下将会被序列化为 null，这对前端来说是一个非常难处理的事情。但是，赋予空数组或者空切片之后，将会序列化为 JSON 的空数组，因此，对于服务器端 API 来说，在空值情况下，不能不处理，而是要将其设置成空数组或空切片</p>
+
+<p>2、增加 omitempty 修饰符后，在该字段零值情况下，将会在序列化时去除掉，因此要慎用该选项，最好不用该修饰符，而是采用零值填充，既不泄露信息，同时也保证字段始终存在，方便在系统中各处判断和使用；但这样做会增加网络传输的数据量，因此需要权衡。</p>
+
+<p>3、如果不指定字段的 JSON 标签，默认将使用 golang 字段名称作为 JSON 字段名称，也就是同名迁移。最好为每个字段指定 JSON 标签，在命名上，按照 JSON 字段命名的方式来命名。</p>
+
+<h3 id="解析-json">解析 JSON</h3>
+
+<p>我们可以使用 gjson 来解析 JSON 格式的字符串为 go 中的变量，而不需要将其反序列化为 Golang 中的结构体，这在我们只需要少数几个字段的值时非常方便。
+示例如下：</p>
+
+<pre><code class="language-markdown">{
+  &quot;name&quot;: &quot;xdhuxc&quot;,
+  &quot;age&quot;: 20,
+  &quot;children&quot;: [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]
+}
+</code></pre>
+
+<p>使用如下方式可以获取 name 字段的值</p>
+
+<pre><code class="language-markdown">name := gjson.GetBytes(dataInBytes, &quot;name&quot;).String()
+</code></pre>
+
+<p>可以使用 String()，Bool()，Int()，Float()等方法将获取的值转换为需要的类型</p>
+
+<pre><code class="language-markdown">age := gjson.GetBytes(dataInBytes, &quot;age&quot;).Int()
+</code></pre>
+
+<p>使用如下方式获取 children 的值</p>
+
+<pre><code class="language-markdown">children := gjson.GetBytes(dataInBytes, &quot;children&quot;).Array()
+</code></pre>
+
+<p>当循环获取 children 的值时，
+<code>gjson.Get(children[i].Raw</code> 获取到的字符串是带双引号的，即：&rdquo;B&rdquo;，而 <code>gjson.Get(children[i].String()</code> 获取到的字符串是不带双引号的，即：B，在将其获取到的值作为参数传递时，如果不注意这一点，会出现错误。</p>
+
+<p>另外，根据代码部分的说明，如果数据本身就是字节形式的, <code>GetBytes(json []byte, path string)</code> 方法优于 <code>Get(string(data), path)</code></p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://github.com/tidwall/gjson">https://github.com/tidwall/gjson</a></p>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/golang/golang-test/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
 
   
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-component/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/vue/vue-component/">Vue 组件封装</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/">Vue 常见问题及解决</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -266,3 +384,4 @@
 
 </body>
 </html>
+

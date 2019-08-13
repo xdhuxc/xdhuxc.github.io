@@ -3,14 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/go/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/golang/golang-set/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/golang/golang-glog/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/set/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/glog/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -23,12 +57,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/tools/tools-vim/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -70,13 +98,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/go/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/post/golang/go-json-serialize/</loc>
+    <loc>https://xdhuxc.github.io/post/golang/golang-json-serialize/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -303,7 +325,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/golang/go-test/</loc>
+    <loc>https://xdhuxc.github.io/post/golang/golang-test/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -364,7 +386,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/golang/go-template/</loc>
+    <loc>https://xdhuxc.github.io/post/golang/golang-template/</loc>
     <lastmod>2019-05-23T00:00:00+00:00</lastmod>
   </url>
   

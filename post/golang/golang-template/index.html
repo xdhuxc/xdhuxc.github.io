@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>unittest &middot; xdhuxc</title>
+  <title>Go Template 的使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/unittest/index.xml' />
   
 
   
@@ -157,20 +154,25 @@
 
 
 <div class="header">
-  <h1>unittest</h1>
+  <h1>Go Template 的使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-05-23</span> |
+      <span>修改于 2019-05-23</span> |
+      <span>总字数 259</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/golang/golang-test/">Golang 单元测试</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-02</time>
+    <time>2019-05-23</time>
   </div>
 
   
@@ -183,9 +185,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/unittest">unittest</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/template">Template</a>
     
   </div>
   
@@ -194,20 +196,78 @@
 </div>
 
 
-  </header>
+  <p>本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。</p>
 
-  <p>
-  <p>本部分内容记录下 golang 中的单元测试的简单用法。</p>
-  </p>
+<h3 id="if-else-语句">if-else 语句</h3>
+
+<p>在我们的项目中，需要动态渲染 alertmanager 的配置文件。我们选择了 confd 作为工具来获取后台数据并渲染数据到模板中。</p>
+
+<p>在模板渲染中，使用 if-else 语句的时候，当需要判断和某个字符串相等的时候，不能使用常用的 <code>==</code>，而是要使用 <code>eq</code> 函数，编写模板如下：</p>
+
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .Value}}
+{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}
+{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}
+{{end}}
+</code></pre>
+
+<p>另外，这种写法可读性好，但是渲染后会多出来一些空行，改为如下模板即可：</p>
+
+<pre><code class="language-markdown">receivers:{{range gets &quot;/alertmanager/receivers/*&quot;}}{{$item := json .Value}}{{ if eq $item.type &quot;dingtalk&quot; }}
+- name: {{$item.name}}
+  dingtalk_configs:
+  - send_resolved: {{$item.resolved}}
+    webhook_url: {{$item.url}}{{ else if eq $item.type &quot;email&quot; }}
+- name: {{$item.name}}
+  email_configs:
+  - send_resolved: {{$item.resolved}}
+    to: {{$item.url}}{{end}}{{end}}
+</code></pre>
+
+<p>数据部分以 JSON 格式向模板传递。</p>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/golang/golang-test/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
 
   
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/javascript/javascript_date_time/">JavaScript 中的日期和时间格式化</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/">Vue 集成 CodeMirror</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-codemirror/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -266,3 +326,4 @@
 
 </body>
 </html>
+
