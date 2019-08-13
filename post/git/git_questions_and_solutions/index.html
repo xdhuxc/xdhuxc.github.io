@@ -246,7 +246,7 @@ wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote add origin git@git
 fatal: refusing to merge unrelated histories
 </code></pre>
 
-<p>原因：本地仓库和远程仓库实际上是两个独立的仓库，可以在 <code>pull</code> 命令中加入 <code>--allow-unrelated-history</code> 选项来解决该问题，该选项可以合并两个独立创建的仓库的历史。
+<p>原因：本地仓库和远程仓库实际上是两个独立的仓库，可以在 <code>pull</code> 命令中加入 <code>--allow-unrelated-histories</code> 选项来解决该问题，该选项可以合并两个独立创建的仓库的历史。
 命令为：</p>
 
 <pre><code>wanghuans-MacBook-Pro:k8s wanghuan$ git pull origin master --allow-unrelated-histories
