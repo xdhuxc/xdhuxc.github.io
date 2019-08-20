@@ -13,10 +13,10 @@
     
     <item>
       <title>Go Set 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-set/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-set/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-set/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-set/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。&lt;/p&gt;</description>
     </item>
     

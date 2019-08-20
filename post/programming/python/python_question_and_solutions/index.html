@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.55.5" />
+
+  <title>Python 常见问题及解决 &middot; xdhuxc</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://www.jianshu.com/u/25ff12787f63" rel="me" target="_blank"><i class="fa fa-joomla fa-fw"></i>简书</a>
+    </li>
+    
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="https://github.com/***" rel="me" target="_blank"><i class="fa fa-weixin fa-fw"></i>微信</a>
+    </li>
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small>&copy; 2019. xdhuxc 版权所有。</small>
+  </div>
+  <div class="small-print">
+
+  </div>
+  <div class="small-print">
+    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
+    <br>
+    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
+    <br>
+    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <br>
+    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+<div id="main">
+
+
+<div class="header">
+  <h1>Python 常见问题及解决</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-07-08</span> |
+      <span>修改于 2018-07-08</span> |
+      <span>总字数 784</span> |
+      <span>阅读时长 2 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-07-08</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/python">Python</a>
+    
+  </div>
+  
+  
+
+</div>
+
+
+  <p>本篇博客主要记录一些在使用 Python 语言进行开发的过程中经常遇到的问题及其可能的解决方法，记录下来以备后需。</p>
+
+<h3 id="modulenotfounderror-no-module-named-crypto">ModuleNotFoundError: No module named &lsquo;Crypto&rsquo;</h3>
+
+<p>代码里面从 Crypto 中导入 AES 类，</p>
+
+<pre><code class="language-markdown">from Crypto.Cipher import AES
+</code></pre>
+
+<p>已经安装了 Crypto 包，但是执行时还是报如下错误：</p>
+
+<pre><code class="language-markdown">Traceback (most recent call last):
+  File &quot;/Users/wanghuan/PycharmProjects/scmp-dingtalk-callback/xyzdfg.py&quot;, line 7, in &lt;module&gt;
+    from Crypto.Cipher import AES
+ModuleNotFoundError: No module named 'Crypto'
+</code></pre>
+
+<p>在 python 3 中，包名已经变成了 pycryptodomex 或 pycryptodome，使用如下命令安装 pycryptodomex 包</p>
+
+<pre><code class="language-markdown">pip install pycryptodomex
+</code></pre>
+
+<p>修改导入代码为：</p>
+
+<pre><code class="language-markdown">from Cryptodome.Cipher import AES
+</code></pre>
+
+<h3 id="python-环境的-docker-容器看不到-print-函数的输出">Python 环境的 Docker 容器看不到 print() 函数的输出</h3>
+
+<p>编写 python 脚本，使用 docker 容器运行，启动命令为 <code>ENTRYPOINT [&quot;python3&quot;, &quot;/usr/local/bin/test.py&quot;]</code>，容器启动正常，脚本执行正常，但是使用 <code>docker logs</code> 命令却不见 <code>print()</code> 函数的输出内容。
+原因：</p>
+
+<p>python 的缓存机制，stdout 和 stderr 默认都是指向屏幕的，但 stderr 是无缓存的，程序向 stderr 输出的字符，会直接打印到屏幕上。而 stdout 是有缓存的，只有遇到换行或积累到一定的大小，才会输出到屏幕上。</p>
+
+<p>解决：</p>
+
+<p>python 命令后面加上 <code>-u</code> （unbuffered）参数，强制其标准输出不通过缓存，直接打印到屏幕上。所以，将 <code>Dockerfile</code> 中的 <code>ENTRYPOINT</code> 命令改写为：<code>ENTRYPOINT [&quot;python3&quot;, &quot;-u&quot;, &quot;/usr/local/bin/test.py&quot;]</code></p>
+
+<h3 id="脚本运行时间长">脚本运行时间长</h3>
+
+<p>python 程序运行时间特别长，一个脚本运行了一个小时才出结果，使用 line_profiler 进行分析，发现在迭代时使用了 hasattr() 进行属性存在判断，导致占用时间特别长。</p>
+
+<h3 id="valueerror-embedded-null-byte">ValueError: embedded null byte</h3>
+
+<p>执行脚本时，报错如下：</p>
+
+<pre><code class="language-markdown">Traceback (most recent call last):
+  File &quot;/Users/wanghuan/PycharmProjects/common_test/image_table.py&quot;, line 59, in &lt;module&gt;
+    request_id = request_api(image_bin)
+  File &quot;/Users/wanghuan/PycharmProjects/common_test/image_table.py&quot;, line 20, in request_api
+    image = get_file_content(image_bin)
+  File &quot;/Users/wanghuan/PycharmProjects/common_test/image_table.py&quot;, line 14, in get_file_content
+    with open(file_path, 'rb+') as fp:
+ValueError: embedded null byte
+</code></pre>
+
+<p>检查一下代码，可能是函数中调用了函数自身。</p>
+
+<h3 id="xe8-xb4-xbe-xe5-xbf-x97-xe7-x8c-x9b">\xe8\xb4\xbe\xe5\xbf\x97\xe7\x8c\x9b</h3>
+
+<p>使用 pymysql 连接数据库时，取回的数据中的中文不是 unicode 码，而是如下的乱码。</p>
+
+<pre><code class="language-markdown">'\xe8\xb4\xbe\xe5\xbf\x97\xe7\x8c\x9b'
+</code></pre>
+
+<p>创建数据库连接时，原来没有指定字符集，默认的字符集是从文件 <code>/etc/my.cnf</code> 中的 <code>default-character-set</code> 配置项读取而来，如果没有该文件或者该配置项，则默认的字符集为：<code>utf8mb4</code></p>
+
+<p>解决：创建数据库连接时，显式指定字符集为 utf8</p>
+
+<pre><code class="language-markdown">db = pymysql.connect('127.0.0.1', 'root', 'Xdhuxc375', 'xdhuxc', charset='utf8')
+</code></pre>
+
+<h3 id="ascii-codec-can-t-decode-byte-0xe4-in-position-40-ordinal-not-in-range-128">&lsquo;ascii&rsquo; codec can&rsquo;t decode byte 0xe4 in position 40: ordinal not in range(128)</h3>
+
+<p>使用 Python 开始时，报错如下：</p>
+
+<pre><code class="language-markdown">'ascii' codec can't decode byte 0xe4 in position 40: ordinal not in range(128)
+</code></pre>
+
+<p>解决：在文件代码开头处增加如下代码：</p>
+
+<pre><code class="language-markdown">reload(sys)                      # reload 才能调用 setdefaultencoding 方法
+sys.setdefaultencoding('utf-8')  # 设置 'utf-8'
+</code></pre>
+
+  
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/">Docker 合并多条 COPY 命令</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/programming/python/python_virtualenv/">Python virtualenv 的使用</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/programming/python/python_virtualenv/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+<script src="https://xdhuxc.github.io/js/ui.js"></script>
+<script src="https://xdhuxc.github.io/js/menus.js"></script>
+
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        if (window.location.hostname === "localhost") {
+            return;
+        }
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+<script>
+  
+  if (window.location.hostname != "localhost") {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-139962821-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+    
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/analytics.example.com\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId',  2 ]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+
+
+
+
+</body>
+</html>
+

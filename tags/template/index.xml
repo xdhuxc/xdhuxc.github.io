@@ -13,10 +13,10 @@
     
     <item>
       <title>Go Template 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-template/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-template/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-template/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     

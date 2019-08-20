@@ -13,37 +13,37 @@
     
     <item>
       <title>Go Set 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-set/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-set/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-set/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-set/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go glog 日志包的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-glog/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-glog/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-glog/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-glog/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go JSON 序列化和反序列化</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-json-serialize/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-json-serialize/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go Template 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-template/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-template/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-template/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     

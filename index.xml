@@ -13,28 +13,28 @@
     
     <item>
       <title>sqlite 基本使用</title>
-      <link>https://xdhuxc.github.io/post/mysql/sqlite/sqlite-basic-use/</link>
+      <link>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</link>
       <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/sqlite/sqlite-basic-use/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</guid>
       <description>&lt;p&gt;本篇博客记录了 sqlite 的基本使用方法，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go Set 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-set/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-set/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-set/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-set/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Go glog 日志包的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-glog/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-glog/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-glog/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-glog/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。&lt;/p&gt;</description>
     </item>
     
@@ -58,10 +58,10 @@
     
     <item>
       <title>Golang 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</guid>
       <description>&lt;p&gt;本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -85,10 +85,10 @@
     
     <item>
       <title>Go JSON 序列化和反序列化</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-json-serialize/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-json-serialize/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
@@ -103,10 +103,10 @@
     
     <item>
       <title>Python 常见的坑及其解决方法</title>
-      <link>https://xdhuxc.github.io/post/python/python_programming_hole/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/python/python_programming_hole/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</guid>
       <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。&lt;/p&gt;</description>
     </item>
     
@@ -121,19 +121,19 @@
     
     <item>
       <title>JavaScript 常用代码</title>
-      <link>https://xdhuxc.github.io/post/javascript/javascript-common-code-example/</link>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-common-code-example/</link>
       <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/javascript/javascript-common-code-example/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-common-code-example/</guid>
       <description>&lt;p&gt;JavaScript 开发时的常用代码，方便自己查找。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaScript 中的数组遍历方式</title>
-      <link>https://xdhuxc.github.io/post/javascript/javascript_array_traverse/</link>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript_array_traverse/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/javascript/javascript_array_traverse/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_array_traverse/</guid>
       <description>&lt;p&gt;JavaScript 中数组遍历的几种方式，都是一般的方法，但是在遍历数组的同时删除元素的方法需要稍微注意下。&lt;/p&gt;</description>
     </item>
     
@@ -166,19 +166,19 @@
     
     <item>
       <title>Python virtualenv 的使用</title>
-      <link>https://xdhuxc.github.io/post/python/python_virtualenv/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/python/python_virtualenv/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</guid>
       <description>&lt;p&gt;在 Python 开发时，我们经常需要用到虚拟环境，为各个不同的工程提供指定的运行时环境，提供其需要的隔离的依赖包。使用 virtualenvwrapper 可以很方便地管理不同的虚拟环境。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Python 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/python/python_question_and_solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/python/python_question_and_solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</guid>
       <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中经常遇到的问题及其可能的解决方法，记录下来以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -220,10 +220,10 @@
     
     <item>
       <title>使用 GORM 操作 MySQL 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
     </item>
     
@@ -256,19 +256,19 @@
     
     <item>
       <title>Golang 单元测试</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-test/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-test/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-test/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-test/</guid>
       <description>&lt;p&gt;本部分内容记录下 golang 中的单元测试的简单用法。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaScript 中的真值和假值问题</title>
-      <link>https://xdhuxc.github.io/post/javascript/javascript-true-false/</link>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-true-false/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/javascript/javascript-true-false/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-true-false/</guid>
       <description>&lt;p&gt;JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。&lt;/p&gt;</description>
     </item>
     
@@ -283,10 +283,10 @@
     
     <item>
       <title>记一次 HTTP PUT/POST 请求 406 错误</title>
-      <link>https://xdhuxc.github.io/post/web/http-406-not-acceptable/</link>
+      <link>https://xdhuxc.github.io/post/programming/web/http-406-not-acceptable/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/web/http-406-not-acceptable/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/web/http-406-not-acceptable/</guid>
       <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -301,19 +301,19 @@
     
     <item>
       <title>Go Template 的使用</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-template/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-template/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-template/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>JavaScript 中的日期和时间格式化</title>
-      <link>https://xdhuxc.github.io/post/javascript/javascript_date_time/</link>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</link>
       <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/javascript/javascript_date_time/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
 
 &lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;</description>
@@ -382,10 +382,10 @@
     
     <item>
       <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>
-      <link>https://xdhuxc.github.io/post/java/springboot-jmx/</link>
+      <link>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/java/springboot-jmx/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</guid>
       <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
@@ -412,37 +412,37 @@
     
     <item>
       <title>MySQL 常用命令</title>
-      <link>https://xdhuxc.github.io/post/mysql/mysql-common-command/</link>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</link>
       <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/mysql-common-command/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了一些 MySQL 常用命令，方便查找。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MongoDB 数据库初步使用</title>
-      <link>https://xdhuxc.github.io/post/mongodb/mongodb-simple-use/</link>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</link>
       <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mongodb/mongodb-simple-use/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</guid>
       <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。 配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外</description>
     </item>
     
     <item>
       <title>在 CentOS 7 上安装 MongoDB 数据库</title>
-      <link>https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/</link>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mongodb/centos7-install-mongodb/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</guid>
       <description>MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。 MongoDB 是一个介于关系数据库和非关系数据库</description>
     </item>
     
     <item>
       <title>Redis 概述</title>
-      <link>https://xdhuxc.github.io/post/redis/redis_summary/</link>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis_summary/</link>
       <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/redis/redis_summary/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis_summary/</guid>
       <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
     </item>
     

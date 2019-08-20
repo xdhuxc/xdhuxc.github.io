@@ -13,19 +13,19 @@
     
     <item>
       <title>使用 GORM 操作 MySQL 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>MySQL 常用命令</title>
-      <link>https://xdhuxc.github.io/post/mysql/mysql-common-command/</link>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</link>
       <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/mysql-common-command/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了一些 MySQL 常用命令，方便查找。&lt;/p&gt;</description>
     </item>
     

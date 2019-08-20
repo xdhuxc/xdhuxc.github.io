@@ -13,19 +13,19 @@
     
     <item>
       <title>Golang 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-common-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</guid>
       <description>&lt;p&gt;本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 GORM 操作 MySQL 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mysql/mysql-golang-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
     </item>
     
@@ -40,10 +40,10 @@
     
     <item>
       <title>Golang 单元测试</title>
-      <link>https://xdhuxc.github.io/post/golang/golang-test/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-test/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/golang/golang-test/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-test/</guid>
       <description>&lt;p&gt;本部分内容记录下 golang 中的单元测试的简单用法。&lt;/p&gt;</description>
     </item>
     
