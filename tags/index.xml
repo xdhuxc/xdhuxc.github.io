@@ -6,10 +6,28 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SQL</title>
+      <link>https://xdhuxc.github.io/tags/sql/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/sql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite</title>
+      <link>https://xdhuxc.github.io/tags/sqlite/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/sqlite/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Go</title>
@@ -395,24 +413,6 @@
       <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/shell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>https://xdhuxc.github.io/tags/sql/</link>
-      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/sql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sqlite</title>
-      <link>https://xdhuxc.github.io/tags/sqlite/</link>
-      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/sqlite/</guid>
       <description></description>
     </item>
     
