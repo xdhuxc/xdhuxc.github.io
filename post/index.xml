@@ -384,6 +384,15 @@
     </item>
     
     <item>
+      <title>sqlite 基本使用</title>
+      <link>https://xdhuxc.github.io/post/mysql/sqlite/sqlite-basic-use/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mysql/sqlite/sqlite-basic-use/</guid>
+      <description>&lt;p&gt;本篇博客记录了 sqlite 的基本使用方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MySQL 常用命令</title>
       <link>https://xdhuxc.github.io/post/mysql/mysql-common-command/</link>
       <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>

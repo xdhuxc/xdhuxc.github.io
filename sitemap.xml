@@ -20,7 +20,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -32,7 +32,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -44,7 +44,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -492,6 +492,23 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-shell-execute/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/sql/</loc>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/sqlite/</loc>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mysql/sqlite/sqlite-basic-use/</loc>
+    <lastmod>2019-08-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>

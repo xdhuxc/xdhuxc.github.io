@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Tags &middot; xdhuxc</title>
+  <title>sqlite 基本使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/index.xml' />
   
 
   
@@ -157,273 +154,138 @@
 
 
 <div class="header">
-  <h1>Tags</h1>
+  <h1>sqlite 基本使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-08-13</span> |
+      <span>修改于 2019-08-13</span> |
+      <span>总字数 200</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  <ul>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2018-08-13</time>
+  </div>
+
+  
+
+  
+
   
   
-    <li>
-      <a href="vue">vue</a>
-      <span>&#40;6&#41;</span>
-    </li>
   
-    <li>
-      <a href="javascript">javascript</a>
-      <span>&#40;5&#41;</span>
-    </li>
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/sql">SQL</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/sqlite">sqlite</a>
+    
+  </div>
   
-    <li>
-      <a href="github">github</a>
-      <span>&#40;4&#41;</span>
-    </li>
   
-    <li>
-      <a href="go">go</a>
-      <span>&#40;4&#41;</span>
-    </li>
+
+</div>
+
+
+  <p>本篇博客记录了 sqlite 的基本使用方法，以备后需。</p>
+
+<h3 id="sqlite-安装">sqlite 安装</h3>
+
+<p>Mac 和 Linux 已经默认安装，使用命令 <code>which sqlite3</code> 即可查到安装目录，一般为：</p>
+
+<pre><code class="language-markdown">/usr/bin/sqlite3
+</code></pre>
+
+<h3 id="基本命令">基本命令</h3>
+
+<p>1、创建数据库</p>
+
+<pre><code class="language-markdown">sqlite3 share.db
+</code></pre>
+
+<p>2、查看数据库</p>
+
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:~ wanghuan$ sqlite3 /Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/share/sql/share.db # 打开数据库 share.db
+SQLite version 3.24.0 2018-06-04 14:10:15
+Enter &quot;.help&quot; for usage hints.
+sqlite&gt; .databases
+main: /Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/share/sql/share.db
+sqlite&gt;
+</code></pre>
+
+<p>3、创建数据库表</p>
+
+<pre><code class="language-markdown">sqlite&gt; .tables
+sqlite&gt; CREATE TABLE `xdhuxc` (
+   ...&gt;     `id` INT PRIMARY KEY NOT NULL,
+   ...&gt;     `name` VARCHAR(50) NOT NULL,
+   ...&gt;     `code` CHAR(6) NOT NULL,
+   ...&gt;     `level` CHAR(5) NOT NULL,
+   ...&gt;     `buy_price` REAL NOT NULL,
+   ...&gt;     `sell_price` REAL NOT NULL
+   ...&gt; );
+sqlite&gt; .tables
+share
+</code></pre>
+
+<p>4、退出 sqlite</p>
+
+<pre><code class="language-markdown">sqlite&gt; .exit
+wanghuans-MBP:~ wanghuan$
+</code></pre>
+
+<h3 id="可视化">可视化</h3>
+
+<p>可以使用 DBeaver，TablePlus 等可视化工具操作之。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://www.runoob.com/sqlite/sqlite-create-table.html">https://www.runoob.com/sqlite/sqlite-create-table.html</a></p>
+
   
-    <li>
-      <a href="golang">golang</a>
-      <span>&#40;4&#41;</span>
-    </li>
+
   
-    <li>
-      <a href="%E4%BA%BA%E9%97%B4%E4%B8%96">人间世</a>
-      <span>&#40;4&#41;</span>
-    </li>
-  
-    <li>
-      <a href="python">python</a>
-      <span>&#40;3&#41;</span>
-    </li>
-  
-    <li>
-      <a href="ansible">ansible</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="database">database</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="devops">devops</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="dynamodb">dynamodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="git">git</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="hugo">hugo</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="it">it</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="linux">linux</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mongodb">mongodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mysql">mysql</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shell">shell</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="406">406</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="aws">aws</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="axios">axios</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="centos7">centos7</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="codemirror">codemirror</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="confd">confd</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="date">date</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="docker">docker</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="dockerfile">dockerfile</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="element-ui">element-ui</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gitlab">gitlab</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="glog">glog</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gorm">gorm</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="http">http</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="jmx">jmx</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="json">json</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mac">mac</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="message-queue">message-queue</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="programming">programming</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="rabbitmq">rabbitmq</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="redis">redis</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="set">set</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shortcut-key">shortcut-key</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="springboot">springboot</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="sql">sql</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="sqlite">sqlite</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="template">template</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="time">time</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="unittest">unittest</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="vim">vim</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="virtualenv">virtualenv</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="websocket">websocket</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E6%8A%80%E5%B7%A7">技巧</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/mysql/mysql-common-command/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/mysql/mysql-common-command/">MySQL 常用命令</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/">Linux 中 Shell 脚本执行的三种方式</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/linux/linux-shell-execute/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -482,3 +344,4 @@
 
 </body>
 </html>
+
