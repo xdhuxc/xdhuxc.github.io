@@ -3,19 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <loc>https://xdhuxc.github.io/tags/consul/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/sql/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <loc>https://xdhuxc.github.io/post/storage/consul/consul-simple-use/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-08-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/sql/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -29,12 +46,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
