@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2018-06-28</span> |
       <span>修改于 2018-06-28</span> |
-      <span>总字数 914</span> |
+      <span>总字数 857</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -298,7 +298,7 @@ f5ba4eeb8a53        redis:latest        &quot;docker-entrypoint.sh&quot;   About
     redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>测试Redis Master容器，可以正常使用。</p>
+<p>测试 Redis Master 容器，可以正常使用。</p>
 
 <pre><code class="language-markdown">[root@centos_1 conf]# docker exec -it redis-master /bin/bash
 root@1cc216ffcba8:/data# redis-cli                                                                                        
@@ -313,15 +313,15 @@ OK
 127.0.0.1:6379&gt; 
 </code></pre>
 
-<p>5、Redis Slave配置文件和启动（使用同一个redis-slave.conf）
-复制redis-master.conf为redis-slave.conf，并修改如下配置项：</p>
+<p>5、Redis Slave 配置文件和启动（使用同一个 redis-slave.conf）
+复制 redis-master.conf 为 redis-slave.conf，并修改如下配置项：</p>
 
 <pre><code class="language-markdown">#slaveof &lt;masterip&gt; &lt;masterport&gt; 
 修改为：
 slaveof master 6379
 </code></pre>
 
-<p>启动redis-slave-one容器</p>
+<p>启动 redis-slave-one 容器</p>
 
 <pre><code class="language-markdown">docker run -d \
     --privileged=true \
@@ -332,7 +332,7 @@ slaveof master 6379
     redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>启动redis-slave-two容器</p>
+<p>启动 redis-slave-two 容器</p>
 
 <pre><code class="language-markdown">docker run -d \
     --privileged=true \
