@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>在 CentOS 7 上安装 MongoDB 数据库 &middot; xdhuxc</title>
+  <title>使用 Docker 容器方式部署 Redis &middot; xdhuxc</title>
 
   
   
@@ -144,14 +144,14 @@
 
 
 <div class="header">
-  <h1>在 CentOS 7 上安装 MongoDB 数据库</h1>
+  <h1>使用 Docker 容器方式部署 Redis</h1>
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
-      <span>创建于 2018-07-06</span> |
-      <span>修改于 2018-07-06</span> |
-      <span>总字数 417</span> |
-      <span>阅读时长 1 分钟</span> |
+      <span>创建于 2018-06-28</span> |
+      <span>修改于 2018-06-28</span> |
+      <span>总字数 914</span> |
+      <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -162,7 +162,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-07-06</time>
+    <time>2018-06-28</time>
   </div>
 
   
@@ -175,11 +175,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/centos7">CentOS7</a>&nbsp;&#47;
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>&nbsp;&#47;
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/database">Database</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/mongodb">MongoDB</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/docker">Docker</a>
     
   </div>
   
@@ -188,99 +186,162 @@
 </div>
 
 
-  
+  <p>本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。</p>
 
-<h3 id="mongodb-简介">MongoDB 简介</h3>
+<p>1、最简单的 Redis 容器启动方式</p>
 
-<p><code>MongoDB</code> 是一个基于分布式文件存储的数据库。由 <code>C++</code> 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。</p>
-
-<p><code>MongoDB</code> 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-
-<h3 id="准备工作">准备工作</h3>
-
-<p>（1）在 <code>/etc/yum.repos.d</code> 目录下创建文件 <code>mongodb-org-4.0.repo</code>，内容为：</p>
-
-<pre><code>[mongodb-org-4.0]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/development/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
+<pre><code class="language-markdown">docker run -d --name redis redis:latest 
 </code></pre>
 
-<p>（2）关闭SELinux</p>
+<p>2、以持久化存储方式启动 Redis 容器</p>
 
-<pre><code>setenforce 0
+<pre><code class="language-markdown">docker run -d --name redis redis:latest redis-server --appendonly yes
 </code></pre>
 
-<h3 id="安装mongodb">安装MongoDB</h3>
+<p>3、某个应用连接 Redis</p>
 
-<p>执行如下命令安装MongoDB</p>
-
-<pre><code>yum install -y mongodb-org-unstable.x86_64
+<pre><code class="language-markdown">docker run -d --name some-app --link 
 </code></pre>
 
-<p>MongoDB的配置文件路径为：</p>
+<p>4、使用自定义配置文件启动 Redis 容器</p>
 
-<pre><code>/etc/mongod.conf
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/redis_master.conf:/usr/local/etc/redis/redis.conf \
+    -v /home/xdhuxc/redis/log/redis_master.log:/var/log/redis/redis_master.log \
+    -v /home/xdhuxc/redis/data:/data \
+    --name redis \
+    redis:latest \
+    redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>在该文件中配置有MongoDB的日志文件路径和数据文件路径
-日志文件路径为：</p>
-
-<pre><code>/var/log/mongodb
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    --network host \
+    -v /xdhuxc/docker-compose/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf \
+    --name redis \
+    redis:4.0.9 \
+    redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>数据文件路径为：</p>
+<h3 id="redis主从复制集群">Redis主从复制集群</h3>
 
-<pre><code>/var/lib/mongo
+<p>1、安装并启动 Docker，执行如下命令安装 docker</p>
+
+<pre><code class="language-markdown">yum install -y docker
+systemctl enable docker
+systemctl start docker
 </code></pre>
 
-<p>如果使用其他用户启动 <code>MongoDB</code> 进程，需要确保该用户对 <code>/var/log/mongodb</code>  和<code>/var/lib/mongo</code> 有访问权限。</p>
+<p>2、直接从 dockerhub 官网拉取 Redis镜像</p>
 
-<h3 id="mongodb进程管理命令">MongoDB进程管理命令</h3>
-
-<p>1、查看 <code>MongoDB</code> 的启动状态</p>
-
-<pre><code>systemctl status mongod
+<pre><code class="language-markdown">docker pull redis
 </code></pre>
 
-<p>2、停止 <code>MongoDB</code> 进程</p>
+<p>3、准备配置文件，从官方下载的Redis镜像中没有redis.conf配置文件，因此需要提前准备配置文件。
+从 (Redis官网)[<a href="https://redis.io/">https://redis.io/</a>] 下载最新稳定版 Redis，目前为：redis-4.0.2，下载redis-4.0.2.tar.gz，解压该软件包，获取redis.conf 配置文件</p>
 
-<pre><code>systemctl stop mongod
+<p>4、启动 Redis 主节点</p>
+
+<p>1）修改配置文件</p>
+
+<p>注释掉 bind 127.0.0.1 所在行
+注释掉 protected-mode yes所在行
+注释掉 daemonize no  或者设置为 no 所在行（否则容器启动，加载配置文件后就退出，没有其他提示），报错为：</p>
+
+<pre><code class="language-markdown">[root@store ~]# docker logs redis
+1:C 10 Nov 00:59:40.915 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1:C 10 Nov 00:59:40.916 # Redis version=4.0.2, bits=64, commit=00000000, modified=0, pid=1, just started
+1:C 10 Nov 00:59:40.916 # Configuration loaded
+[root@store ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                          PORTS               NAMES
+f5ba4eeb8a53        redis:latest        &quot;docker-entrypoint.sh&quot;   About a minute ago   Exited (0) About a minute ago                       redis
 </code></pre>
 
-<p>3、重启 <code>MongoDB</code> 进程</p>
+<p>2）启动 Redis Master 容器
+启动命令为：</p>
 
-<pre><code>systemctl restart mongod
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/conf/redis_master.conf:/usr/local/etc/redis/redis.conf \
+    --name redis-master \
+    redis:latest \
+    redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>4、启动 <code>MongoDB</code> shell</p>
-
-<pre><code>mongo --host 127.0.0.1:27017
+<pre><code class="language-markdown">[root@store ~]# docker logs redis-master
+1:C 10 Nov 00:03:25.961 # Fatal error, can't open config file '/usr/local/etc/redis/redis.conf'
 </code></pre>
 
-<p>5、卸载 <code>MongoDB</code></p>
+<p>解决：在启动命令中加入<code>--privileged=true</code>参数</p>
 
-<p>① 停止 <code>MongoDB</code> 进程</p>
+<p>对于挂载的文件，要提前建立好空文件，否则会以文件名为目录名创建目录</p>
 
-<pre><code>systemctl stop mongod
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/redis-master.conf:/usr/local/etc/redis/redis.conf \
+    -v /home/xdhuxc/redis/data:/data
+    -v /hoem/xdhuxc/redis/log/redis-master.log:/var/log/redis/redis-master.log \ #由redis.conf中logfile指定
+    --name redis-master \
+    redis:latest \
+    redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>② 删除 <code>MongoDB</code> 的安装包</p>
+<p>正确的启动命令：（取消logfile参数）</p>
 
-<pre><code>yum erase $(rpm -qa | grep mongodb-org)
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/conf/redis-master.conf:/usr/local/etc/redis/redis.conf \
+    -v /home/xdhuxc/redis/data:/data \
+    --name redis-master \
+    redis:4.0.2 \
+    redis-server /usr/local/etc/redis/redis.conf
 </code></pre>
 
-<p>③ 删除 <code>MongoDB</code> 数据和日志目录</p>
+<p>测试Redis Master容器，可以正常使用。</p>
 
-<pre><code>rm -f /var/log/mongodb
-rm -f /var/lib/mongo
+<pre><code class="language-markdown">[root@centos_1 conf]# docker exec -it redis-master /bin/bash
+root@1cc216ffcba8:/data# redis-cli                                                                                        
+127.0.0.1:6379&gt; set aaa aaa
+OK
+127.0.0.1:6379&gt; get aaa
+&quot;aaa&quot;
+127.0.0.1:6379&gt; set 123 abc
+OK
+127.0.0.1:6379&gt; get 123
+&quot;abc&quot;
+127.0.0.1:6379&gt; 
 </code></pre>
 
-<p>在 <code>Redhat</code> 或者 <code>CentOS</code> 上安装 <code>MongoDB</code> 的官方文档地址：
-<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
+<p>5、Redis Slave配置文件和启动（使用同一个redis-slave.conf）
+复制redis-master.conf为redis-slave.conf，并修改如下配置项：</p>
 
+<pre><code class="language-markdown">#slaveof &lt;masterip&gt; &lt;masterport&gt; 
+修改为：
+slaveof master 6379
+</code></pre>
+
+<p>启动redis-slave-one容器</p>
+
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/conf/redis-slave.conf:/usr/local/etc/redis/redis.conf \
+    --name redis-slave-one \
+    --link redis-master:master \
+    redis:4.0.2 \
+    redis-server /usr/local/etc/redis/redis.conf
+</code></pre>
+
+<p>启动redis-slave-two容器</p>
+
+<pre><code class="language-markdown">docker run -d \
+    --privileged=true \
+    -v /home/xdhuxc/redis/conf/redis-slave.conf:/usr/local/etc/redis/redis.conf \
+    --name redis-slave-two \
+    --link redis-master:master \
+    redis:4.0.2 \
+    redis-server /usr/local/etc/redis/redis.conf
+</code></pre>
 
   
 
@@ -288,13 +349,13 @@ rm -f /var/lib/mongo
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis_docker/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/storage/redis/redis_summary/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/storage/redis/redis_docker/">使用 Docker 容器方式部署 Redis</a>
+      <a href="https://xdhuxc.github.io/post/storage/redis/redis_summary/">Redis 概述</a>
     </nav>
     
   </div>
@@ -304,13 +365,13 @@ rm -f /var/lib/mongo
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/">MongoDB 数据库初步使用</a>
+      <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a>
     </nav>
     
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
     
-    <a href="https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/"><i class="fa fa-chevron-right"></i></a>
+    <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

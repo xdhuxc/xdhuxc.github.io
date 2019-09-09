@@ -573,8 +573,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/redis/</loc>
-    <lastmod>2018-06-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis_docker/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>

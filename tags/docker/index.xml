@@ -20,5 +20,14 @@
       <description>&lt;p&gt;在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>使用 Docker 容器方式部署 Redis</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis_docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis_docker/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

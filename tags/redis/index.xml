@@ -6,10 +6,19 @@
     <description>Recent content in Redis on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Wed, 27 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 Docker 容器方式部署 Redis</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis_docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis_docker/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Redis 概述</title>
