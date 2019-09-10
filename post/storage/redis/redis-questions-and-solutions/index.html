@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Redis &middot; xdhuxc</title>
+  <title>Redis 常见问题及解决 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/redis/index.xml' />
   
 
   
@@ -147,16 +144,21 @@
 
 
 <div class="header">
-  <h1>Redis</h1>
+  <h1>Redis 常见问题及解决</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-06-28</span> |
+      <span>修改于 2018-06-28</span> |
+      <span>总字数 184</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/">Redis 常见问题及解决</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
@@ -182,110 +184,53 @@
 </div>
 
 
-  </header>
-
-  <p>
   <p>本篇博客记录下使用 redis 的过程中出现的问题及解决。</p>
-  </p>
 
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
+<p>1、使用 go-redis 连接 redis，报错如下：</p>
 
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/">使用 Docker 容器方式部署 Redis</a></h2>
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-transform wanghuan$ ./main --config conf.test.yaml
+F0910 14:17:00.304868    2673 router.go:50] ERR SELECT is not allowed in cluster mode
+</code></pre>
 
-    <div class="post-meta">
+<p>在单机模式下，redis.conf 配置文件中默认的数据库数量是 16 个；但在集群模式下，redis 不支持多数据库，只有一个数据库，默认是 select 0。集群从节点默认是不支持读写操作的，但是在执行过 readonly 命令后可以执行读操作。</p>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-28</time>
-  </div>
+<p>所以，将指定 db 的地方指定为 0 即可解决此问题。</p>
 
   
 
   
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/docker">Docker</a>
+    <a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
-  
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/">使用 Docker 容器方式部署 Redis</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-summary/">Redis 概述</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-27</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-summary/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -344,3 +289,4 @@
 
 </body>
 </html>
+

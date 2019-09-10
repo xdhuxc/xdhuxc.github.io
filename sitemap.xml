@@ -578,12 +578,17 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/storage/redis/redis_docker/</loc>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/storage/redis/redis_summary/</loc>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-docker/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-summary/</loc>
     <lastmod>2018-06-27T00:00:00+00:00</lastmod>
   </url>
   
