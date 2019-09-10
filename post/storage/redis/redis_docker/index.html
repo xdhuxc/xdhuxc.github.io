@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2018-06-28</span> |
       <span>修改于 2018-06-28</span> |
-      <span>总字数 857</span> |
+      <span>总字数 820</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -239,7 +239,7 @@ systemctl start docker
 </code></pre>
 
 <p>3、准备配置文件，从官方下载的Redis镜像中没有redis.conf配置文件，因此需要提前准备配置文件。
-从 (Redis官网)[<a href="https://redis.io/">https://redis.io/</a>] 下载最新稳定版 Redis，目前为：redis-4.0.2，下载redis-4.0.2.tar.gz，解压该软件包，获取redis.conf 配置文件</p>
+从 <a href="https://redis.io/">Redis官网</a> 下载最新稳定版 Redis，目前为：redis-4.0.2，下载redis-4.0.2.tar.gz，解压该软件包，获取redis.conf 配置文件</p>
 
 <p>4、启动 Redis 主节点</p>
 
@@ -273,7 +273,7 @@ f5ba4eeb8a53        redis:latest        &quot;docker-entrypoint.sh&quot;   About
 1:C 10 Nov 00:03:25.961 # Fatal error, can't open config file '/usr/local/etc/redis/redis.conf'
 </code></pre>
 
-<p>解决：在启动命令中加入<code>--privileged=true</code>参数</p>
+<p>解决：在启动命令中加入 <code>--privileged=true</code> 参数</p>
 
 <p>对于挂载的文件，要提前建立好空文件，否则会以文件名为目录名创建目录</p>
 
