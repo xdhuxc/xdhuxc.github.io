@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-05</span> |
       <span>修改于 2019-08-05</span> |
-      <span>总字数 143</span> |
+      <span>总字数 247</span> |
       <span>阅读时长 1 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -203,6 +203,21 @@
 </code></pre>
 
 <p>更新 <code>ca-certificates</code> 试试。</p>
+
+<h3 id="make-build-报错">make build 报错</h3>
+
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-transform wanghuan$ make build
+&gt;&gt; go build ...
+build command-line-arguments: cannot load gitlab.xdhuxc.me/sgt/devops/scmp-transform/src/apis: git ls-remote -q ssh://git@gitlab.xdhuxc.me/sgt/devops.git in /Users/wanghuan/GolandProjects/GoPath/pkg/mod/cache/vcs/32878bb63a0c857fed210744986dde9a48418788fe89eee3f24d5b73f5abcd2a: exit status 128:
+        GitLab: The project you were looking for could not be found.
+        fatal: Could not read from remote repository.
+        
+        Please make sure you have the correct access rights
+        and the repository exists.
+make: *** [build] Error 1
+</code></pre>
+
+<p>解决：以前是可以正常构建的，把 go 版本升级到 1.13 后，就变成这样了，回退到 1.12 即可解决问题。</p>
 
   
 
