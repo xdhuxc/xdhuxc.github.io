@@ -148,9 +148,9 @@
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-07-08</span> |
+      <span>创建于 2019-09-25</span> |
       <span>修改于 2018-07-08</span> |
-      <span>总字数 784</span> |
+      <span>总字数 916</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -162,7 +162,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-07-08</time>
+    <time>2019-09-25</time>
   </div>
 
   
@@ -269,19 +269,27 @@ ValueError: embedded null byte
 sys.setdefaultencoding('utf-8')  # 设置 'utf-8'
 </code></pre>
 
+<h3 id="json-dumps-字典数据时出现乱码">json dumps 字典数据时出现乱码</h3>
+
+<pre><code class="language-markdown">{&quot;msg&quot;: &quot;\u5ba2\u6237\u7aef\u8bf7\u6c42\u9519\u8bef\uff0c\u7f3a\u5c11\u67e5\u8be2\u53c2\u6570 secretkey \u6216
+otp\u3002&quot;, &quot;code&quot;: 4}
+</code></pre>
+
+<p>解决：添加 ensure_ascii=False 参数，ensure_ascii=True 保证 dumps() 之后的结果里所有的字符都能够被 ascii 表示，因此经过 dumps() 以后的str里，汉字会变成对应的 unicode，因此，当字典中含有中文时，一定要使用 ensure_ascii=False。</p>
+
   
 
   
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/others/fireworks/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/">Docker 合并多条 COPY 命令</a>
+      <a href="https://xdhuxc.github.io/post/others/fireworks/">Happy 颖</a>
     </nav>
     
   </div>
@@ -290,14 +298,8 @@ sys.setdefaultencoding('utf-8')  # 设置 'utf-8'
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/programming/python/python_virtualenv/">Python virtualenv 的使用</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/programming/python/python_virtualenv/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>
