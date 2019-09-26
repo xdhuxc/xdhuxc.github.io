@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Tags &middot; xdhuxc</title>
+  <title>Go glog 日志包的使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/index.xml' />
   
 
   
@@ -147,283 +144,112 @@
 
 
 <div class="header">
-  <h1>Tags</h1>
+  <h1>Go glog 日志包的使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-09-26</span> |
+      <span>修改于 2019-09-26</span> |
+      <span>总字数 348</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
 <div class="content">
-  <ul>
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>2019-09-26</time>
+  </div>
+
+  
+
+  
+
   
   
-    <li>
-      <a href="vue">vue</a>
-      <span>&#40;6&#41;</span>
-    </li>
   
-    <li>
-      <a href="go">go</a>
-      <span>&#40;5&#41;</span>
-    </li>
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>
+    
+  </div>
   
-    <li>
-      <a href="javascript">javascript</a>
-      <span>&#40;5&#41;</span>
-    </li>
   
-    <li>
-      <a href="%E4%BA%BA%E9%97%B4%E4%B8%96">人间世</a>
-      <span>&#40;5&#41;</span>
-    </li>
+
+</div>
+
+
+  <p>golang 中的所有字符使用 UTF-8 编码，当源文件中包含中文，编码是 GB2312 或 GBK 时，就可以在输出中产生乱码。</p>
+
+<p>由于 golang 中的所有字符使用 UTF-8 编码，当我们处理的文件中包含中文、编码为 GB2312 或 GBK时，输出这些字符串时就会产生乱码，比如从 Windows 上 excel 中导出的 csv 文件，包含的中文用 GB2312 编码，使用 golang 读取时就会产生乱码。此时，我们需要读取数据后，进行转码，以保证输出正确。</p>
+
+<p>示例代码如下所示：</p>
+
+<pre><code class="language-markdown">package main
+
+import (
+&quot;fmt&quot;
+
+&quot;github.com/axgle/mahonia&quot;
+)
+
+func main() {
+
+	decoder := mahonia.NewDecoder(&quot;GBK&quot;)
+	// hello, 涓栫晫
+	fmt.Println(decoder.ConvertString(&quot;hello, 世界&quot;))
+
+	dataInBytes := []byte{0xC4, 0xE3, 0xBA, 0xC3, 0xA3, 0xAC, 0xCA, 0xC0, 0xBD, 0xE7, 0xA3, 0xA1}
+
+	// 你好，世界！
+	fmt.Println(decoder.ConvertString(string(dataInBytes)))
+}
+</code></pre>
+
+<p>注意，GBK 不要写为 GB2312，由于 GBK 兼容 GB2312，所以使用 GB2312 编码的汉字可以直接使用 GBK 进行解码。</p>
+
+<p>不要使用 <code>github.com/djimenez/iconv-go</code> 包，此包中使用了 C 库，在本地（macOS Mojave 10.14.6）可以运行，但在交叉编译时会出问题，其编写的程序到其他平台运行会比较麻烦。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="http://www.haodaquan.com/94">http://www.haodaquan.com/94</a></p>
+
+<p><a href="https://github.com/axgle/mahonia">https://github.com/axgle/mahonia</a></p>
+
   
-    <li>
-      <a href="github">github</a>
-      <span>&#40;4&#41;</span>
-    </li>
+
   
-    <li>
-      <a href="golang">golang</a>
-      <span>&#40;4&#41;</span>
-    </li>
-  
-    <li>
-      <a href="python">python</a>
-      <span>&#40;3&#41;</span>
-    </li>
-  
-    <li>
-      <a href="redis">redis</a>
-      <span>&#40;3&#41;</span>
-    </li>
-  
-    <li>
-      <a href="ansible">ansible</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="database">database</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="devops">devops</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="docker">docker</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="dynamodb">dynamodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="git">git</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="hugo">hugo</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="it">it</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="linux">linux</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mongodb">mongodb</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mysql">mysql</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shell">shell</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="406">406</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="aws">aws</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="axios">axios</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="centos7">centos7</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="codemirror">codemirror</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="confd">confd</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="consul">consul</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="css">css</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="date">date</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="dockerfile">dockerfile</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="element-ui">element-ui</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gitlab">gitlab</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="glog">glog</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="gorm">gorm</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="http">http</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="jmx">jmx</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="json">json</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="mac">mac</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="message-queue">message-queue</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="programming">programming</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="rabbitmq">rabbitmq</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="set">set</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="shortcut-key">shortcut-key</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="springboot">springboot</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="sql">sql</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="sqlite">sqlite</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="template">template</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="time">time</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="unittest">unittest</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="vim">vim</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="virtualenv">virtualenv</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="websocket">websocket</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E6%8A%80%E5%B7%A7">技巧</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/">Python 常见问题及解决</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -482,3 +308,4 @@
 
 </body>
 </html>
+
