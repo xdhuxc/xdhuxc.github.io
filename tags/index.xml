@@ -6,10 +6,19 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 26 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>人间世</title>
+      <link>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</link>
+      <pubDate>Sat, 28 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Go</title>
@@ -35,15 +44,6 @@
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/css/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>人间世</title>
-      <link>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</link>
-      <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</guid>
       <description></description>
     </item>
     

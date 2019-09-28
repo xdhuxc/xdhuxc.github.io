@@ -6,13 +6,22 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 26 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Go glog 日志包的使用</title>
+      <title>人间世·意识·二</title>
+      <link>https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/</link>
+      <pubDate>Sat, 28 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/</link>
       <pubDate>Thu, 26 Sep 2019 00:00:00 +0000</pubDate>
       

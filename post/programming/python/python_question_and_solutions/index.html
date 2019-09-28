@@ -275,7 +275,7 @@ sys.setdefaultencoding('utf-8')  # 设置 'utf-8'
 otp\u3002&quot;, &quot;code&quot;: 4}
 </code></pre>
 
-<p>解决：添加 ensure_ascii=False 参数，ensure_ascii=True 保证 dumps() 之后的结果里所有的字符都能够被 ascii 表示，因此经过 dumps() 以后的str里，汉字会变成对应的 unicode，因此，当字典中含有中文时，一定要使用 ensure_ascii=False。</p>
+<p>解决：添加 ensure_ascii=False 参数，ensure_ascii=True 保证 dumps() 之后的结果里所有的字符都能够被 ascii 表示，因此经过 dumps() 以后的str里，汉字会变成对应的 unicode。因此，当字典中含有中文时，一定要使用 ensure_ascii=False。</p>
 
   
 
@@ -299,7 +299,7 @@ otp\u3002&quot;, &quot;code&quot;: 4}
   <div class="pure-u-10-24">
     
     <nav class="next">
-      <a href="https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/">Go glog 日志包的使用</a>
+      <a href="https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/">Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</a>
     </nav>
     
   </div>
