@@ -6,10 +6,19 @@
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Sat, 28 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang flag 包读取参数怪事</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-args/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-args/</guid>
+      <description>&lt;p&gt;使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的，这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>人间世·意识·二</title>
