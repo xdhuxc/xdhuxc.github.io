@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-02</span> |
       <span>修改于 2019-08-02</span> |
-      <span>总字数 524</span> |
+      <span>总字数 801</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -284,6 +284,57 @@ vue.runtime.esm.js:1737 TypeError: Cannot read property 'clearValidate' of undef
 </code></pre>
 
 <p>原因是，<code>this.dialogDeploymentVisible = true</code> 执行后，才会创建表单 deploymentForm，正是因为执行 <code>this.$refs['deploymentForm'].clearValidate()</code> 时，<code>this.dialogDeploymentVisible = true</code> 还没有执行，表单还没有创建，所以才会抛出上面的错误。</p>
+
+<h3 id="使用-compression-webpack-plugin-压缩文件时报错">使用 compression-webpack-plugin 压缩文件时报错</h3>
+
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-ui wanghuan$ npm run build:prod --report
+
+&gt; cloud-manage-platform@2.0.0 build:prod /Users/wanghuan/WebstormProjects/scmp-ui
+&gt; cross-env NODE_ENV=production env_config=prod node build/build.js
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32
+    throw new ValidationError(ajv.errors, name);
+    ^
+
+ValidationError: Compression Plugin Invalid Options
+
+options should NOT have additional properties
+
+    at validateOptions (/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32:11)
+    at new CompressionPlugin (/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/dist/index.js:40:30)
+    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/scmp-ui/build/webpack.prod.conf.js:145:9)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/scmp-ui/build/build.js:17:19)
+    at Module._compile (internal/modules/cjs/loader.js:689:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:742:12)
+    at startup (internal/bootstrap/node.js:282:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:743:3)
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! cloud-manage-platform@2.0.0 build:prod: `cross-env NODE_ENV=production env_config=prod node build/build.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the cloud-manage-platform@2.0.0 build:prod script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/wanghuan/.npm/_logs/2019-10-08T07_42_00_941Z-debug.log
+</code></pre>
+
+<p>主要问题在于 webpack 和 compression-webpack-plugin 的版本的适配性问题，在不同的版本搭配下，compression-webpack-plugin 的配置写法不同。</p>
+
+<p>原来默认安装的 compression-webpack-plugin 的版本为 3.0.0，降低版本到 1.1.12，即可正常构建。</p>
 
   
 
