@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-06-05</span> |
       <span>修改于 2019-06-05</span> |
-      <span>总字数 1156</span> |
+      <span>总字数 1244</span> |
       <span>阅读时长 3 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -348,6 +348,22 @@ WantedBy=multi-user.target
 </code></pre>
 
 <p>以上使用 AWS DynamoDB 数据源作为示例，其他数据源可参考 <a href="https://github.com/kelseyhightower/confd/blob/master/docs/configuration-guide.md">confd 配置指南</a> 修改环境变量和启动命令</p>
+
+<p>当后端存储为 redis 时，confd.service（/usr/lib/systemd/system/confd.service）文件内容为：：</p>
+
+<pre><code class="language-markdown">[Unit]
+Description=confd
+Documentation=http://www.confd.io/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/confd --backend redis --node 8.8.8.8:6379 --client-key qZ2$0bHBL --interval 300 --log-level debug
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
 
 <p>命令说明：</p>
 

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Golang flag 包读取参数怪事 &middot; xdhuxc</title>
+  <title>Clickhouse &middot; xdhuxc</title>
 
   
   
@@ -42,6 +42,9 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
+  
+  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
+    href='https://xdhuxc.github.io/tags/clickhouse/index.xml' />
   
 
   
@@ -144,25 +147,20 @@
 
 
 <div class="header">
-  <h1>Golang flag 包读取参数怪事</h1>
-  <h2></h2>
-  <div>
-    <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-09-29</span> |
-      <span>修改于 2019-09-29</span> |
-      <span>总字数 602</span> |
-      <span>阅读时长 2 分钟</span> |
-      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
-    </font>
-  </div>
+  <h1>Clickhouse</h1>
 </div>
-<div class="content">
 
-  <div class="post-meta">
+<div class="content">
+  
+    <article>
+  <header>
+    <h2><a href="https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/">使用 Grafana 监控 Clickhouse</a></h2>
+
+    <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-09-29</time>
+    <time>2019-10-10</time>
   </div>
 
   
@@ -175,7 +173,11 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/grafana">Grafana</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/devops">DevOps</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/clickhouse">Clickhouse</a>
     
   </div>
   
@@ -184,138 +186,20 @@
 </div>
 
 
-  <p>使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的，这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。</p>
+  </header>
 
-<p>使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的。这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。</p>
-
-<p>测试使用的系统和 golang 版本如下：</p>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:one wanghuan$ go version
-go version go1.12.9 darwin/amd64
-</code></pre>
-
-<p>测试使用的代码如下：</p>
-
-<pre><code class="language-markdown">package main
-
-import (
-	&quot;flag&quot;
-	&quot;fmt&quot;
-	&quot;os&quot;
-)
-
-var password string
-
-func init() {
-	flag.StringVar(&amp;password, &quot;password&quot;, &quot;&quot;, &quot;the password to authenticate with (only used with vault and etcd backends)&quot;)
-}
-
-func main() {
-	fmt.Printf(&quot;the args is %s\n&quot;, os.Args)
-
-	flag.Parse()
-
-	fmt.Printf(&quot;the password is %s\n&quot;, password)
-
-	if password == &quot;qZ2XisdsdgGiLSf0b$HBL#LDLUG5uUGr8v0&quot; {
-		fmt.Println(true)
-	}
-}
-</code></pre>
-
-<p>测试的结果如下：
-1、$ 在 # 之前</p>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:one wanghuan$ ./flag --password qZ2XisdsdgGiLSf0b$HBL#LDLUG5uUGr8v0
-the args is [./flag --password qZ2Xis#dsdg#Gi#LSf0b#LDLUG5uUGr8v0]
-the password is qZ2XisdsdgGiLSf0b#LDLUG5uUGr8v0
-</code></pre>
-
-<p>对比结果：</p>
-
-<pre><code class="language-markdown">qZ2XisdsdgGiLSf0b$HBL#LDLUG5uUGr8v0
-qZ2XisdsdgGiLSf0b    #LDLUG5uUGr8v0
-</code></pre>
-
-<p>可以看到，去除了 $ 到 # 之间的字符，结果包含 #，不包含 $。</p>
-
-<p>2、$ 在最后一个 # 之后</p>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:one wanghuan$ ./flag --password qZ2XisdsdgGiLSf0bHBL#LDL$UG5uUGr8v0
-the args is [./flag --password qZ2XisdsdgGiLSf0bHBL#LDL]
-the password is qZ2XisdsdgGiLSf0bHBL#LDL
-</code></pre>
-
-<p>对比结果：</p>
-
-<pre><code class="language-markdown">qZ2XisdsdgGiLSf0bHBL#LDL$UG5uUGr8v0
-qZ2XisdsdgGiLSf0bHBL#LDL
-</code></pre>
-
-<p>可以看到，去除了 $ 及其之后的字符串</p>
-
-<p>3、$ 在最后一个 # 之前</p>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:one wanghuan$ ./flag --password qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0
-the args is [./flag --password qZ2Xisdsdg#GiL#Sf0b#LDLUG5u#UGr8v0]
-the password is qZ2Xisdsdg#GiL#Sf0b#LDLUG5u#UGr8v0
-</code></pre>
-
-<p>对比结果</p>
-
-<pre><code class="language-markdown">qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0
-qZ2Xisdsdg#GiL#Sf0b    #LDLUG5u#UGr8v0
-</code></pre>
-
-<p>可以看到，和第一种情况类似，去除了 $ 到其之后的第一个 # 之间的字符</p>
-
-<p>根据以上实验可以看出：
-1）$ 及其之后的字符被 &ldquo;吞&rdquo; 掉了，看起来是 $ 及其之后到第一个 # 之间的字符被 Shell 当做变量解释了。</p>
-
-<p>2）从 args 的值可以看出，在参数进入到 golang 程序之前， $ 及其之后到第一个 # 之间的字符已经被 Shell 当做变量解释完毕。</p>
-
-<p>要解决这个问题，其实很简单，给含 $ 的字符串加上引号（单引号或双引号都可以）就可以了。</p>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:one wanghuan$ ./flag --password 'qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0'
-the args is [./flag --password qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0]
-the password is qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0
-</code></pre>
+  <p>
+  <p>公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。</p>
+  </p>
 
   
+  <footer>
+    <a href="https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
 
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/">人间世·意识·二</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/">使用 Grafana 监控 Clickhouse</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
-
 </div>
 
 </div>
@@ -374,4 +258,3 @@ the password is qZ2Xisdsdg#GiL#Sf0b$HBL#LDLUG5u#UGr8v0
 
 </body>
 </html>
-

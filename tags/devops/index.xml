@@ -6,10 +6,19 @@
     <description>Recent content in DevOps on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Mon, 14 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 Grafana 监控 Clickhouse</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</guid>
+      <description>&lt;p&gt;公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Ansible 学习之简单入门</title>
