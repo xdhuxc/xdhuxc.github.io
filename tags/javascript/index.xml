@@ -6,10 +6,19 @@
     <description>Recent content in JavaScript on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Wed, 24 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript 常用代码</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/</guid>
+      <description>&lt;p&gt;记录下 npm 和 node 的升级方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Vue 开发常用代码</title>

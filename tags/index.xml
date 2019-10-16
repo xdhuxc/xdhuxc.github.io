@@ -6,10 +6,37 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JavaScript</title>
+      <link>https://xdhuxc.github.io/tags/javascript/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Node</title>
+      <link>https://xdhuxc.github.io/tags/node/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/node/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>npm</title>
+      <link>https://xdhuxc.github.io/tags/npm/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/npm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Clickhouse</title>
@@ -152,15 +179,6 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/json/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>JavaScript</title>
-      <link>https://xdhuxc.github.io/tags/javascript/</link>
-      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     
