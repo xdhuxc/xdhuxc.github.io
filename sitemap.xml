@@ -3,6 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/go/</loc>
+    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/golang/golang-excel/</loc>
+    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/javascript/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -20,25 +49,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/npm/</loc>
-    <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -64,12 +75,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/go/</loc>
-    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

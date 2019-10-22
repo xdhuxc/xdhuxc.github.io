@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Go &middot; xdhuxc</title>
+  <title>使用 golang 操作 excel 表格 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/go/index.xml' />
   
 
   
@@ -147,16 +144,21 @@
 
 
 <div class="header">
-  <h1>Go</h1>
+  <h1>使用 golang 操作 excel 表格</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-10-22</span> |
+      <span>修改于 2019-10-22</span> |
+      <span>总字数 999</span> |
+      <span>阅读时长 2 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-excel/">使用 golang 操作 excel 表格</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
@@ -182,292 +184,205 @@
 </div>
 
 
-  </header>
-
-  <p>
   <p>使用 golang 操作 excel 表格，写了些示例代码，封装了几个常用的函数，特此记录，以备后查。</p>
-  </p>
+
+<p>使用 excelize 库 来进行 excel 的操作，项目地址为：<a href="https://github.com/360EntSecGroup-Skylar/excelize">https://github.com/360EntSecGroup-Skylar/excelize</a></p>
+
+<h3 id="示例代码">示例代码</h3>
+
+<p>以下代码演示了创建 excel 表格并向其中添加数据的方法，其中用到的函数见下文。</p>
+
+<pre><code class="language-markdown">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;strconv&quot;
+    &quot;time&quot;
+	
+	&quot;github.com/360EntSecGroup-Skylar/excelize&quot;
+	log &quot;github.com/sirupsen/logrus&quot;
+)
+
+type User struct {
+	ID int `json:&quot;id&quot;`
+	Name string `json:&quot;name&quot;`
+	Address string `json:&quot;address&quot;`
+}
+
+func main() {
+	users := []User{
+		{
+			ID: 1,
+			Name: &quot;孔子&quot;,
+			Address: &quot;山东曲阜&quot;,
+		},
+		{
+			ID: 2,
+			Name: &quot;牛顿&quot;,
+			Address: &quot;英国伦敦&quot;,
+		},
+		{
+			ID: 3,
+			Name: &quot;凯撒&quot;,
+			Address: &quot;罗马&quot;,
+		},
+	}
+
+	f := excelize.NewFile()
+	sheetName := &quot;人物信息&quot;
+	sheet := f.NewSheet(sheetName)
+	f.SetActiveSheet(sheet)
+
+	// 合并单元格
+	err := f.MergeCell(sheetName, &quot;A1&quot;, &quot;A5&quot;)
+
+	header := map[string]interface{}{&quot;A1&quot;: &quot;编号&quot;, &quot;B1&quot;: &quot;姓名&quot;, &quot;C1&quot;:&quot;地址&quot;}
+	data := GenerateData(users, header)
+	err = Write2File(&quot;历史人物&quot;, sheetName, data, true)
+	if err != nil {
+		log.Errorln(err)
+	}
+	
+	Read(&quot;/Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/go-study-notes/历史人物_2019-10-22_.xlsx&quot;)
+}
+</code></pre>
+
+<h3 id="读取-excel-文件">读取 excel 文件</h3>
+
+<p>以下代码为读取 excel 表格的代码，要求：文件路径需要是绝对路径，excel 表格中不包含合并的单元格</p>
+
+<pre><code class="language-markdown">func Read(fileFullPath string) {
+	f, err := excelize.OpenFile(fileFullPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for sheetIndex, sheetName := range f.GetSheetMap() {
+		fmt.Println(sheetIndex, &quot;---&gt;&quot;, sheetName)
+		rows, err := f.Rows(sheetName)
+		if err != nil {
+			log.Errorln(err)
+			continue
+		}
+		for rows.Next() {
+			// 获取一行
+			cols, err := rows.Columns()
+			if err != nil {
+				log.Errorln(err)
+				continue
+			}
+			// 获取行数组中的值
+			for _, colCell := range cols {
+				fmt.Println(colCell)
+			}
+		}
+	}
+}
+</code></pre>
+
+<h3 id="组织数据">组织数据</h3>
+
+<p>我们将数据组织成 map 数组格式，每个数组元素为 excel 表格中的一行，map 中的每个键表示 excel 中的一个位置，比如A1，B2，C3等，其值为需要填充到该单元格中的值，如下所示：</p>
+
+<pre><code class="language-markdown">func GenerateData(users []User, header map[string]interface{}) []map[string]interface{} {
+	var maps []map[string]interface{}
+	var m map[string]interface{}
+
+	maps = append(maps, header)
+	rowCount := 1
+	for _, user := range users {
+		index := strconv.Itoa(rowCount)
+		m = map[string]interface{}{
+			&quot;A&quot;+index: user.ID,
+			&quot;B&quot;+index: user.Name,
+			&quot;C&quot;+index: user.Address,
+		}
+
+		maps = append(maps, m)
+		rowCount = rowCount + 1
+	}
+
+	return maps
+}
+</code></pre>
+
+<h3 id="写-excel-文件">写 excel 文件</h3>
+
+<p>将组织好的 map 数组写入文件中</p>
+
+<pre><code class="language-markdown">// 写数据到 excel 中，每个 map[string]interface{} 为一行数据，键为A1，B2，C3等等
+func Write2File(fileName string, sheetName string, data []map[string]interface{}, dateContaining bool) error {
+	f := excelize.NewFile()
+
+	sheet := f.NewSheet(sheetName)
+	f.SetActiveSheet(sheet)
+
+	for _, item := range data {
+		for k, v := range item {
+			err := f.SetCellValue(sheetName, k, v)
+			if err != nil {
+				log.Errorln(err)
+				continue
+			}
+		}
+	}
+
+	// 删除 Sheet1
+	f.DeleteSheet(&quot;Sheet1&quot;)
+
+	if dateContaining {
+		return f.SaveAs(fileName + &quot;_&quot; + time.Now().Format(&quot;2006-01-02&quot;) + &quot;_&quot; + &quot;.xlsx&quot;)
+	} else {
+		return f.SaveAs(fileName + &quot;.xlsx&quot;)
+	}
+}
+</code></pre>
+
+<h3 id="合并单元格">合并单元格</h3>
+
+<p>使用 MergeCell 方法可以合并单元格</p>
+
+<pre><code class="language-markdown">err := f.MergeCell(sheetName, &quot;A1&quot;, &quot;A5&quot;)
+if err != nil {
+    log.Errorln(err)
+}
+</code></pre>
+
+<p>以上代码将合并 A1~A5 的单元格，并以单元格 A5 的内容填充合并后的单元格。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://github.com/360EntSecGroup-Skylar/excelize">https://github.com/360EntSecGroup-Skylar/excelize</a></p>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-excel/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
 
   
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-args/">Golang flag 包读取参数怪事</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-09-29</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>
+    <a href="https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
-  
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/">JavaScript 常用代码</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的，这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-args/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/">Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-09-26</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>golang 中的所有字符使用 UTF-8 编码，当源文件中包含中文，编码是 GB2312 或 GBK 时，就可以在输出中产生乱码。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-set/">Go Set 的使用</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-09</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/set">Set</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-set/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-glog/">Go glog 日志包的使用</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-09</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/glog">glog</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-glog/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/">Go JSON 序列化和反序列化</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-01</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/json">JSON</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/programming/golang/golang-template/">Go Template 的使用</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-23</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/template">Template</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-template/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -526,3 +441,4 @@
 
 </body>
 </html>
+
