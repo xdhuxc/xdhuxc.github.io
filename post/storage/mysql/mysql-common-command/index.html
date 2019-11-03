@@ -150,8 +150,8 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2018-07-29</span> |
       <span>修改于 2019-07-29</span> |
-      <span>总字数 87</span> |
-      <span>阅读时长 1 分钟</span> |
+      <span>总字数 689</span> |
+      <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -186,6 +186,58 @@
 
   <p>本篇博客记录了一些 MySQL 常用命令，方便查找。</p>
 
+<h3 id="数据库管理命令">数据库管理命令</h3>
+
+<p>1、显示当前 MySQL 的连接数</p>
+
+<pre><code class="language-markdown">show processlist;
+或
+show full processlist;
+</code></pre>
+
+<p>2、显示 MySQL 的环境变量</p>
+
+<pre><code class="language-markdown">show variables;
+</code></pre>
+
+<p>3、查找最大连接数或服务器响应的最大连接数</p>
+
+<pre><code class="language-markdown">show variables like &quot;%conn%&quot;;
+或
+show global status like 'Max_used_connections'; # 查询服务器响应的最大连接数
+</code></pre>
+
+<p>4、临时设置最大连接数</p>
+
+<pre><code class="language-markdown">set global max_connections=200;  # 在 mysql 终端中临时设置最大连接数为：200
+</code></pre>
+
+<p>或者在 /etc/my.cnf 中添加如下内容：</p>
+
+<pre><code class="language-markdown">[mysqld]
+max_connections=200;
+</code></pre>
+
+<p>5、查询缓存的参数说明</p>
+
+<pre><code class="language-markdown">show global variables like &quot;query_cache%&quot;;
+</code></pre>
+
+<p>6、查询 MySQL 运行产生的状态值</p>
+
+<pre><code class="language-markdown">show global status like 'qcache%';
+</code></pre>
+
+<p>7、采用直接重置 autoIncrement 值的方法重置 auto_increment</p>
+
+<pre><code class="language-markdown">alter table marathon auto_increment = 1;
+</code></pre>
+
+<p>8、查询数据库权限</p>
+
+<pre><code class="language-markdown">show grants for 'root'@'localhost';
+</code></pre>
+
 <h3 id="字段操作">字段操作</h3>
 
 <p>1、修改字段类型</p>
@@ -206,6 +258,70 @@
 <p>4、增加新字段</p>
 
 <pre><code class="language-markdown">alter table `users` add `country` varchar(20) NOT NULL;
+</code></pre>
+
+<h3 id="键操作">键操作</h3>
+
+<p>1、查询某张表中存在的键</p>
+
+<pre><code class="language-markdown">select * from INFORMATION_SCHEMA.KEY_COLUMN_USAGE t where t.TABLE_NAME ='sgt_hawkeye_role';
+</code></pre>
+
+<p>2、添加唯一键</p>
+
+<pre><code class="language-markdown">alter table `user` add unique key `name` (`name`);
+</code></pre>
+
+<p>3、删除唯一键</p>
+
+<pre><code class="language-markdown">alter table `user` drop index `_name`;
+</code></pre>
+
+<p>4、添加主键</p>
+
+<pre><code class="language-markdown">alter table `user` add primary key `id` (`id`)
+</code></pre>
+
+<p>5、删除主键</p>
+
+<pre><code class="language-markdown">alter table `user` drop primary key
+</code></pre>
+
+<h3 id="数据导出命令">数据导出命令</h3>
+
+<p>1、导出数据库中的数据表结构及数据</p>
+
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 scmp &gt; /tmp/scmp.sql
+或
+mysqldump -uroot -p scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+或
+mysqldump -uroot scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+</code></pre>
+
+<p>2、导出数据库表结构
+&gt; -d，&ndash;no-data，不导出表数据，只导出表结构。</p>
+
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -d scmp &gt; /tmp/scmp.sql
+或
+mysqldump -uroot -p -d scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+或
+mysqldump -uroot -d scmp &gt; /tmp/scmp.sql
+</code></pre>
+
+<p>3、导出数据库表数据
+&gt; -t，&ndash;no-create-info，不包含创建表的信息，只导出表数据</p>
+
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -t scmp &gt; /tmp/scmp.sql
+或
+mysqldump -uroot -p -t scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+或
+mysqldump -uroot -t scmp &gt; /tmp/scmp.sql
+</code></pre>
+
+<p>4、导出指定表的数据或信息
+&gt; 参考上面的命令，在数据库名称后面加上表名称即可。</p>
+
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369  -t scmp user &gt; /tmp/scmp_user.sql
 </code></pre>
 
   
