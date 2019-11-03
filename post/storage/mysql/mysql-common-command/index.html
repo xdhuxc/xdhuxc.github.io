@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2018-07-29</span> |
       <span>修改于 2019-07-29</span> |
-      <span>总字数 689</span> |
+      <span>总字数 697</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -247,7 +247,7 @@ max_connections=200;
 
 <p>2、修改字段类型</p>
 
-<pre><code class="language-markdown">alter table `users` alter column name set default null;
+<pre><code class="language-markdown">alter table `users` change column name set default null;
 </code></pre>
 
 <p>3、修改字段的数据</p>
@@ -264,64 +264,64 @@ max_connections=200;
 
 <p>1、查询某张表中存在的键</p>
 
-<pre><code class="language-markdown">select * from INFORMATION_SCHEMA.KEY_COLUMN_USAGE t where t.TABLE_NAME ='sgt_hawkeye_role';
+<pre><code class="language-markdown">select * from INFORMATION_SCHEMA.KEY_COLUMN_USAGE t where t.TABLE_NAME ='users';
 </code></pre>
 
 <p>2、添加唯一键</p>
 
-<pre><code class="language-markdown">alter table `user` add unique key `name` (`name`);
+<pre><code class="language-markdown">alter table `users` add unique key `name` (`name`);
 </code></pre>
 
 <p>3、删除唯一键</p>
 
-<pre><code class="language-markdown">alter table `user` drop index `_name`;
+<pre><code class="language-markdown">alter table `users` drop index `_name`;
 </code></pre>
 
 <p>4、添加主键</p>
 
-<pre><code class="language-markdown">alter table `user` add primary key `id` (`id`)
+<pre><code class="language-markdown">alter table `users` add primary key `id` (`id`)
 </code></pre>
 
 <p>5、删除主键</p>
 
-<pre><code class="language-markdown">alter table `user` drop primary key
+<pre><code class="language-markdown">alter table `users` drop primary key
 </code></pre>
 
 <h3 id="数据导出命令">数据导出命令</h3>
 
 <p>1、导出数据库中的数据表结构及数据</p>
 
-<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 scmp &gt; /tmp/scmp.sql
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 xdhuxc &gt; /tmp/xdhuxc.sql
 或
-mysqldump -uroot -p scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+mysqldump -uroot -p xdhuxc &gt; /tmp/xdhuxc.sql，敲回车后，会提示输入密码
 或
-mysqldump -uroot scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+mysqldump -uroot xdhuxc &gt; /tmp/xdhuxc.sql，敲回车后，会提示输入密码
 </code></pre>
 
 <p>2、导出数据库表结构
 &gt; -d，&ndash;no-data，不导出表数据，只导出表结构。</p>
 
-<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -d scmp &gt; /tmp/scmp.sql
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -d xdhuxc &gt; /tmp/xdhuxc.sql
 或
-mysqldump -uroot -p -d scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+mysqldump -uroot -p -d xdhuxc &gt; /tmp/xdhuxc.sql，敲回车后，会提示输入密码
 或
-mysqldump -uroot -d scmp &gt; /tmp/scmp.sql
+mysqldump -uroot -d xdhuxc &gt; /tmp/xdhuxc.sql
 </code></pre>
 
 <p>3、导出数据库表数据
 &gt; -t，&ndash;no-create-info，不包含创建表的信息，只导出表数据</p>
 
-<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -t scmp &gt; /tmp/scmp.sql
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369 -t xdhuxc &gt; /tmp/xdhuxc.sql
 或
-mysqldump -uroot -p -t scmp &gt; /tmp/scmp.sql，敲回车后，会提示输入密码
+mysqldump -uroot -p -t xdhuxc &gt; /tmp/xdhuxc.sql，敲回车后，会提示输入密码
 或
-mysqldump -uroot -t scmp &gt; /tmp/scmp.sql
+mysqldump -uroot -t xdhuxc &gt; /tmp/xdhuxc.sql
 </code></pre>
 
 <p>4、导出指定表的数据或信息
 &gt; 参考上面的命令，在数据库名称后面加上表名称即可。</p>
 
-<pre><code class="language-markdown">mysqldump -uroot -pAdmin369  -t scmp user &gt; /tmp/scmp_user.sql
+<pre><code class="language-markdown">mysqldump -uroot -pAdmin369  -t xdhuxc users &gt; /tmp/xdhuxc_users.sql
 </code></pre>
 
   
