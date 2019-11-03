@@ -150,8 +150,8 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-07</span> |
       <span>修改于 2019-08-07</span> |
-      <span>总字数 65</span> |
-      <span>阅读时长 1 分钟</span> |
+      <span>总字数 586</span> |
+      <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -192,10 +192,52 @@
 <p>以下操作均在命令模式下进行</p>
 </blockquote>
 
-<p>1、显示行号或取消行号</p>
+<p>1、显示行号或取消行号，输入</p>
 
 <pre><code class="language-markdown">:set nonumber # 关闭行号
 :set number   # 开启行号
+</code></pre>
+
+<p>2、查找字符串
+命令模式下，输入<code>/user</code>，则会查找字符串<code>user</code>（<code>/要搜索的字符串或者字符</code>），按下回车之后，可以看到 vim 已经把光标移动到该字符处和高亮了匹配的字符串（vi没高亮，因为它没有颜色）</p>
+
+<p>按下 n(小写n)用于查看下一个匹配；按下N（大写N）查看上一个匹配，可以按下Caps Lock键切换大小写，也可以在小写状态按下Shift + n</p>
+
+<p>使用 <code>?user</code>（<code>?要搜索的字符串或者字符</code>），从文件的结尾处往开始处搜索</p>
+
+<p>2、取消高亮，输入</p>
+
+<pre><code class="language-markdown">:nohlsearch
+:set nohlsearch
+:set noh # 简写
+</code></pre>
+
+<p>3、跳转至文件头部，在命令模式下，按两次<code>g</code>；跳转至文件尾部，在命令模式下，输入<code>G</code></p>
+
+<p>4、删除一行，在命令模式下，按两次<code>d</code></p>
+
+<p>5、替换每一行中所有的 <code>str1</code> 为 <code>str2</code>，在命令模式下，</p>
+
+<pre><code class="language-markdown">:%s/str1/str2/g
+</code></pre>
+
+<p>替换当前行所有的 <code>str1</code> 为 <code>str2</code></p>
+
+<pre><code class="language-markdown">:s/str1/str2/g
+</code></pre>
+
+<p>6、按u可以撤销一次操作</p>
+
+<h3 id="常见问题及解决">常见问题及解决</h3>
+
+<p>1、将复制的代码粘贴到 vim 中时，代码缩进产生了混乱</p>
+
+<p>原因：终端处理粘贴的文本时，会存入键盘缓存。vim 处理时，会把这些内容作为用户键盘输入来处理。如果 vim 开启了自动缩进，那么在遇到换行符时，就会默认把上一行的缩进插入到下一行的开头。</p>
+
+<p>解决：vim 编辑模式中有一个 paste 模式，该模式下，可将文本保持原样粘贴到 vim 中，以避免一些格式错误。在 vim 中输入命令</p>
+
+<pre><code class="language-markdown">:set paste   # 设置粘贴模式
+:set nopaste # 取消粘贴模式
 </code></pre>
 
   

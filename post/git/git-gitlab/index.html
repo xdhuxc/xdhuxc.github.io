@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>GitHub &middot; xdhuxc</title>
+  <title>GitLab 常见问题及解决 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/github/index.xml' />
   
 
   
@@ -147,20 +144,25 @@
 
 
 <div class="header">
-  <h1>GitHub</h1>
+  <h1>GitLab 常见问题及解决</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-07-19</span> |
+      <span>修改于 2018-08-19</span> |
+      <span>总字数 302</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/git/git-questions-and-solutions/">Git 常见问题及解决</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-19</time>
+    <time>2018-07-19</time>
   </div>
 
   
@@ -174,8 +176,6 @@
     <i class="fa fa-tags fa-fw"></i>
     
       <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
     
       <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gitlab">GitLab</a>
     
@@ -186,161 +186,58 @@
 </div>
 
 
-  </header>
+  <p>本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。</p>
 
-  <p>
-  <p>本篇博客记录一些 git 使用过程中常见的问题及其解决方法。</p>
-  </p>
+<h3 id="使用指南">使用指南</h3>
 
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/git/git-questions-and-solutions/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
+<p>1、在 <code>Jenkins</code> 中编写 <code>shell</code> 脚本拉取公司 <code>GitLab</code> 中的代码，会缺少拉取权限，由管理员操作，点击 <code>设置</code> -&gt; <code>仓库</code> -&gt; <code>部署秘钥</code> -&gt; <code>展开</code>，使用 Jenkins 所在机器的 SSH 公钥创建一个 <code>部署秘钥</code>，然后在各工程中启用之，即可获得拉取代码得权限。</p>
 
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">GitHub 上 fork 项目后同步原项目</a></h2>
+<h3 id="常见问题及解决">常见问题及解决</h3>
 
-    <div class="post-meta">
+<p>1、在 <code>GitLab</code> 中某项目的 <code>设置</code> -&gt; <code>集成</code> 中配置 <code>Jenkins webhook</code>，配置完成后点击 <code>Test</code>，报错如下：</p>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-17</time>
-  </div>
+<pre><code>Hook execution failed: URL 'https://jenkins.xdhuxc.me/project/xdhuxc' is blocked: Requests to the local network are not allowed
+</code></pre>
+
+<p>解决：在 <code>管理员区域</code> 中 <code>设置</code> 下，在 <code>Outbound requests</code>部分，选择 <code>Allow requests to the local network from hooks and services</code>，然后保存之。</p>
+
+<p>参考链接：<a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/46490">https://gitlab.com/gitlab-org/gitlab-ce/issues/46490</a></p>
 
   
 
   
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>
+    <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
-  
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/">MongoDB 数据库初步使用</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>在 GitHub 上 fork 其他项目后，过一段时间后，自己账户下的项目就会和原项目主分支差异比较大，提交 Pull Requests 时就会产生冲突，此时就需要和主分支同步代码。操作如下：</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/others/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-14</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>摘要：</p>
-
-<p>　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/others/github_hugo_2/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/others/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-09</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>摘要：
-　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/others/github_hugo_1/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -399,3 +296,4 @@
 
 </body>
 </html>
+

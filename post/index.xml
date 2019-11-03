@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>golang 数值处理</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-number/</link>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-number/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 进行数值处理时可能会用到的一些代码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 golang 操作 excel 表格</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-excel/</link>
       <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
@@ -283,10 +292,10 @@
     
     <item>
       <title>Git 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/git/git_questions_and_solutions/</link>
+      <link>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/git/git_questions_and_solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录一些 git 使用过程中常见的问题及其解决方法。&lt;/p&gt;</description>
     </item>
     
@@ -453,6 +462,24 @@
     </item>
     
     <item>
+      <title>GoTTY 的简单使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-gotty/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-gotty/</guid>
+      <description>&lt;p&gt;本篇博客主要记录下 GoTTY 的简单使用方式，或许以后可以在项目中用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vagrant 常用命令和资料</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-vagrant/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-vagrant/</guid>
+      <description>&lt;p&gt;本篇博客主要记录下 vagrant 常用的命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>
       <link>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
@@ -501,6 +528,15 @@
     </item>
     
     <item>
+      <title>GitLab 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/git/git-gitlab/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git/git-gitlab/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 CentOS 7 上安装 MongoDB 数据库</title>
       <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
@@ -534,6 +570,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-summary/</guid>
       <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 常用命令备忘录</title>
+      <link>https://xdhuxc.github.io/post/git/git-common-command/</link>
+      <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git/git-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些 git 使用过程中常用的命令，方便查看。&lt;/p&gt;</description>
     </item>
     
     <item>

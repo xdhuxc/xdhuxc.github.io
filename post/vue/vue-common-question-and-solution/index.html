@@ -287,13 +287,13 @@ vue.runtime.esm.js:1737 TypeError: Cannot read property 'clearValidate' of undef
 
 <h3 id="使用-compression-webpack-plugin-压缩文件时报错">使用 compression-webpack-plugin 压缩文件时报错</h3>
 
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-ui wanghuan$ npm run build:prod --report
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:xdhuxc-ui wanghuan$ npm run build:prod --report
 
-&gt; cloud-manage-platform@2.0.0 build:prod /Users/wanghuan/WebstormProjects/scmp-ui
+&gt; cloud-manage-platform@2.0.0 build:prod /Users/wanghuan/WebstormProjects/xdhuxc-ui
 &gt; cross-env NODE_ENV=production env_config=prod node build/build.js
 
 Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
-/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32
+/Users/wanghuan/WebstormProjects/xdhuxc-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32
     throw new ValidationError(ajv.errors, name);
     ^
 
@@ -301,9 +301,9 @@ ValidationError: Compression Plugin Invalid Options
 
 options should NOT have additional properties
 
-    at validateOptions (/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32:11)
-    at new CompressionPlugin (/Users/wanghuan/WebstormProjects/scmp-ui/node_modules/compression-webpack-plugin/dist/index.js:40:30)
-    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/scmp-ui/build/webpack.prod.conf.js:145:9)
+    at validateOptions (/Users/wanghuan/WebstormProjects/xdhuxc-ui/node_modules/compression-webpack-plugin/node_modules/schema-utils/src/validateOptions.js:32:11)
+    at new CompressionPlugin (/Users/wanghuan/WebstormProjects/xdhuxc-ui/node_modules/compression-webpack-plugin/dist/index.js:40:30)
+    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/xdhuxc-ui/build/webpack.prod.conf.js:145:9)
     at Module._compile (internal/modules/cjs/loader.js:689:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
     at Module.load (internal/modules/cjs/loader.js:599:32)
@@ -311,7 +311,7 @@ options should NOT have additional properties
     at Function.Module._load (internal/modules/cjs/loader.js:530:3)
     at Module.require (internal/modules/cjs/loader.js:637:17)
     at require (internal/modules/cjs/helpers.js:22:18)
-    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/scmp-ui/build/build.js:17:19)
+    at Object.&lt;anonymous&gt; (/Users/wanghuan/WebstormProjects/xdhuxc-ui/build/build.js:17:19)
     at Module._compile (internal/modules/cjs/loader.js:689:30)
     at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
     at Module.load (internal/modules/cjs/loader.js:599:32)

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>GitHub &middot; xdhuxc</title>
+  <title>GoTTY 的简单使用 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/github/index.xml' />
   
 
   
@@ -147,20 +144,25 @@
 
 
 <div class="header">
-  <h1>GitHub</h1>
+  <h1>GoTTY 的简单使用</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2018-11-09</span> |
+      <span>修改于 2018-11-09</span> |
+      <span>总字数 286</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/git/git-questions-and-solutions/">Git 常见问题及解决</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-19</time>
+    <time>2018-11-09</time>
   </div>
 
   
@@ -173,11 +175,7 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gitlab">GitLab</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/gotty">GoTTY</a>
     
   </div>
   
@@ -186,161 +184,106 @@
 </div>
 
 
-  </header>
+  <p>本篇博客主要记录下 GoTTY 的简单使用方式，或许以后可以在项目中用到。</p>
 
-  <p>
-  <p>本篇博客记录一些 git 使用过程中常见的问题及其解决方法。</p>
-  </p>
+<h3 id="gotty-简介">GoTTY 简介</h3>
+
+<p>GoTTY 是一个简单的命令行工具，可以将 CLI 工具转换为 Web 应用程序，经常被用来实现 Web 终端。</p>
+
+<h3 id="gotty-部署">GoTTY 部署</h3>
+
+<p>1、下载稳定版 gotty 二进制安装文件</p>
+
+<p><a href="https://github.com/yudai/gotty">Gotty - GitHub</a></p>
+
+<p>2、解压安装包</p>
+
+<pre><code class="language-markdown">tar -zxf gotty_2.0.0-alpha.3_linux_amd64.tar.gz
+</code></pre>
+
+<p>3、启动 gotty
+pod 启动方式：</p>
+
+<pre><code class="language-markdown">nohup ./gotty -w -p 9988 --permit-arguments --reconnect kubectl exec -it &amp;
+</code></pre>
+
+<p>容器启动方式：</p>
+
+<pre><code class="language-markdown">nohup ./gotty -w -p 8888 --permit-arguments --reconnect docker exec -it &amp;
+</code></pre>
+
+<p>主机启动方式：</p>
+
+<pre><code class="language-markdown"> nohup ./gotty -w -p 8899 --permit-arguments --reconnect sh &amp;
+</code></pre>
+
+<p>4、在浏览器中访问
+命令为：</p>
+
+<pre><code class="language-markdown">kubectl exec -it nginx-567d57d4c4-5spp9 -n default bash
+</code></pre>
+
+<p>浏览器中访问 pod 的 url</p>
+
+<pre><code class="language-markdown">http://172.20.26.150:8899/?arg=nginx-567d57d4c4-5spp9&amp;arg=-n&amp;arg=default&amp;arg=bash
+</code></pre>
+
+<p>命令为：</p>
+
+<pre><code class="language-markdown">docker exec -it b96f8e834f51 bash
+</code></pre>
+
+<p>浏览器中访问 docker 容器 url</p>
+
+<pre><code class="language-markdown">http://172.20.26.150:8899/?arg=b96f8e834f51&amp;arg=bash
+</code></pre>
+
+<p>浏览器中访问宿主机的 url</p>
+
+<pre><code class="language-markdown">http://172.20.26.150:8899/?
+</code></pre>
+
+<p>需要在每一台机器上都运行一个探针，在一个 gotty 容器中启动三个 gotty 进程，分别在不同的端口监听容器、pod和宿主机的控制台请求。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p><a href="https://blog.csdn.net/cj2580/article/details/79318726">https://blog.csdn.net/cj2580/article/details/79318726</a></p>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/git/git-questions-and-solutions/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
 
   
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">GitHub 上 fork 项目后同步原项目</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-17</time>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/tools/tools-vagrant/"><i class="fa fa-chevron-left"></i></a>
+    
   </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+  <div class="pure-u-10-24">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/tools/tools-vagrant/">Vagrant 常用命令和资料</a>
+    </nav>
     
   </div>
-  
-  
-
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="https://xdhuxc.github.io/post/human-world/human-world-preface/">人间世·前言</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="https://xdhuxc.github.io/post/human-world/human-world-preface/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>在 GitHub 上 fork 其他项目后，过一段时间后，自己账户下的项目就会和原项目主分支差异比较大，提交 Pull Requests 时就会产生冲突，此时就需要和主分支同步代码。操作如下：</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/git/github-sync-master-branch/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/others/github_hugo_2/">基于 Hugo 和 GitHub 搭建个人网站（二）</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-14</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>摘要：</p>
-
-<p>　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/others/github_hugo_2/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/others/github_hugo_1/">基于 Hugo 和 GitHub 搭建个人网站（一）</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-05-09</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/github">GitHub</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/hugo">Hugo</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>摘要：
-　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/others/github_hugo_1/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -399,3 +342,4 @@
 
 </body>
 </html>
+
