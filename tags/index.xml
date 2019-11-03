@@ -6,7 +6,7 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Go</title>
       <link>https://xdhuxc.github.io/tags/go/</link>
-      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://xdhuxc.github.io/tags/redis/</link>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/redis/</guid>
       <description></description>
     </item>
     
@@ -503,15 +512,6 @@
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/centos7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Redis</title>
-      <link>https://xdhuxc.github.io/tags/redis/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/redis/</guid>
       <description></description>
     </item>
     

@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>使用 golang 操作 excel 表格 &middot; xdhuxc</title>
+  <title>golang 操作单点 Redis 代码示例 &middot; xdhuxc</title>
 
   
   
@@ -144,13 +144,13 @@
 
 
 <div class="header">
-  <h1>使用 golang 操作 excel 表格</h1>
+  <h1>golang 操作单点 Redis 代码示例</h1>
   <h2></h2>
   <div>
     <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-10-22</span> |
-      <span>修改于 2019-10-22</span> |
-      <span>总字数 999</span> |
+      <span>创建于 2019-11-03</span> |
+      <span>修改于 2019-11-03</span> |
+      <span>总字数 595</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -162,7 +162,7 @@
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-10-22</time>
+    <time>2019-11-03</time>
   </div>
 
   
@@ -175,7 +175,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/go">Go</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>
     
   </div>
   
@@ -184,175 +186,128 @@
 </div>
 
 
-  <p>使用 golang 操作 excel 表格，写了些示例代码，封装了几个常用的函数，特此记录，以备后查。</p>
+  <p>本篇博客记录了使用 golang 操作单点 redis 时的一些示例代码，可以经过改造应用到程序中去。</p>
 
-<p>使用 excelize 库 来进行 excel 的操作，项目地址为：<a href="https://github.com/360EntSecGroup-Skylar/excelize">https://github.com/360EntSecGroup-Skylar/excelize</a></p>
+<p>我们基于 golang-redis 这个库封装了一些函数，作为代码示例，也方便使用。</p>
 
-<h3 id="示例代码">示例代码</h3>
+<h3 id="创建-redis-客户端">创建 Redis 客户端</h3>
 
-<p>以下代码演示了创建 excel 表格并向其中添加数据的方法，其中用到的函数见下文。</p>
+<p>使用以下代码创建一个 Redis 客户端，需要提供 redis 的地址（IP:Port），密码和数据库索引</p>
 
-<pre><code class="language-markdown">package main
+<pre><code class="language-markdown">func NewRedisClient(address string, password string, index int) (*redis.Client, error) {
+	client := redis.NewClient(&amp;redis.Options{
+		Addr:     address,
+		Password: password,
+		DB:       index,
+	})
 
-import (
-	&quot;fmt&quot;
-	&quot;strconv&quot;
-    &quot;time&quot;
-	
-	&quot;github.com/360EntSecGroup-Skylar/excelize&quot;
-	log &quot;github.com/sirupsen/logrus&quot;
-)
-
-type User struct {
-	ID int `json:&quot;id&quot;`
-	Name string `json:&quot;name&quot;`
-	Address string `json:&quot;address&quot;`
-}
-
-func main() {
-	users := []User{
-		{
-			ID: 1,
-			Name: &quot;孔子&quot;,
-			Address: &quot;山东曲阜&quot;,
-		},
-		{
-			ID: 2,
-			Name: &quot;牛顿&quot;,
-			Address: &quot;英国伦敦&quot;,
-		},
-		{
-			ID: 3,
-			Name: &quot;凯撒&quot;,
-			Address: &quot;罗马&quot;,
-		},
-	}
-
-	f := excelize.NewFile()
-	sheetName := &quot;人物信息&quot;
-	sheet := f.NewSheet(sheetName)
-	f.SetActiveSheet(sheet)
-
-	// 合并单元格
-	err := f.MergeCell(sheetName, &quot;A1&quot;, &quot;A5&quot;)
-
-	header := map[string]interface{}{&quot;A1&quot;: &quot;编号&quot;, &quot;B1&quot;: &quot;姓名&quot;, &quot;C1&quot;:&quot;地址&quot;}
-	data := GenerateData(users, header)
-	err = Write2File(&quot;历史人物&quot;, sheetName, data, true)
-	if err != nil {
-		log.Errorln(err)
-	}
-	
-	Read(&quot;/Users/wanghuan/GolandProjects/GoPath/src/github.com/xdhuxc/go-study-notes/历史人物_2019-10-22_.xlsx&quot;)
+	return client, client.Ping().Err()
 }
 </code></pre>
 
-<h3 id="读取-excel-文件">读取 excel 文件</h3>
+<h3 id="创建键值对">创建键值对</h3>
 
-<p>以下代码为读取 excel 表格的代码，要求：文件路径需要是绝对路径，excel 表格中不包含合并的单元格</p>
+<p>创建永不过期的 key-value</p>
 
-<pre><code class="language-markdown">func Read(fileFullPath string) {
-	f, err := excelize.OpenFile(fileFullPath)
+<pre><code class="language-markdown">func Set(client *redis.Client, key string, value string) error {
+	return client.Set(key, value, 0).Err()
+}
+</code></pre>
+
+<p>创建含过期时间的 key-value</p>
+
+<pre><code class="language-markdown">func SetWithDuration(client *redis.Client, key string, value string, duration time.Duration) error {
+	return client.Set(key, value, duration).Err()
+}
+</code></pre>
+
+<p>对于 redis，创建和更新的操作效果一样</p>
+
+<h3 id="删除键值对">删除键值对</h3>
+
+<p>删除一个 key-value</p>
+
+<pre><code class="language-markdown">func Delete(client *redis.Client, key string) error {
+	return  client.Del(key).Err()
+}
+</code></pre>
+
+<p>删除一组 key-value</p>
+
+<pre><code class="language-markdown">func DeleteKeys(client *redis.Client, keys ...string) error {
+	return client.Del(keys...).Err()
+}
+</code></pre>
+
+<h3 id="删除数据库">删除数据库</h3>
+
+<p>删除 redis 数据库所有数据，使用异步删除，主线程会把删除任务交给异步线程来完成删除任务</p>
+
+<pre><code class="language-markdown">func DeleteDB(client *redis.Client) error {
+	return client.FlushAllAsync().Err()
+}
+</code></pre>
+
+<p>删除当前 redis 数据库，如果想要删除其他的 redis 数据库，需要构造 map 存储各个 redis 数据库的客户端，想删除指定的数据库时，取出其客户端即可</p>
+
+<pre><code class="language-markdown">func DeleteCurrentDB(client *redis.Client) error {
+	return client.FlushDBAsync().Err()
+}
+</code></pre>
+
+<h3 id="查询键值数据">查询键值数据</h3>
+
+<p>获取 key-value</p>
+
+<pre><code class="language-markdown">func Get(client *redis.Client, key string) (string, error) {
+	return client.Get(key).Result()
+}
+</code></pre>
+
+<p>模糊查询 key，此操作有危险性，在数据量大时非常消耗性能</p>
+
+<pre><code class="language-markdown">func GetByKeyName(client *redis.Client, key string) ([]string, error) {
+	var values []string
+	err := client.Keys(fmt.Sprintf(&quot;*%s*&quot;, key)).ScanSlice(&amp;values)
 	if err != nil {
-		log.Fatal(err)
+		return values, err
 	}
 
-	for sheetIndex, sheetName := range f.GetSheetMap() {
-		fmt.Println(sheetIndex, &quot;---&gt;&quot;, sheetName)
-		rows, err := f.Rows(sheetName)
+	return values, nil
+}
+</code></pre>
+
+<p>模糊查询 value，获取所有的 key，然后根据 key 获取 value，再进行筛选，返回由 key-value 组成的 map，此操作会有性能问题，可作为开发和测试环境使用，绝对不能应用于生产环境。</p>
+
+<pre><code class="language-markdown">func GetByValue(client *redis.Client, value string) (map[string]string, error) {
+	var keys []string
+
+	err := client.Keys(&quot;*&quot;).ScanSlice(&amp;keys)
+	if err != nil {
+		return nil, err
+	}
+
+	result := make(map[string]string)
+	for _, k := range keys {
+		v, err := client.Get(k).Result()
 		if err != nil {
-			log.Errorln(err)
 			continue
 		}
-		for rows.Next() {
-			// 获取一行
-			cols, err := rows.Columns()
-			if err != nil {
-				log.Errorln(err)
-				continue
-			}
-			// 获取行数组中的值
-			for _, colCell := range cols {
-				fmt.Println(colCell)
-			}
-		}
-	}
-}
-</code></pre>
+		if strings.Contains(v, value) {
+			result[k] = v
 
-<h3 id="组织数据">组织数据</h3>
-
-<p>我们将数据组织成 map 数组格式，每个数组元素为 excel 表格中的一行，map 中的每个键表示 excel 中的一个位置，比如A1，B2，C3等，其值为需要填充到该单元格中的值，如下所示：</p>
-
-<pre><code class="language-markdown">func GenerateData(users []User, header map[string]interface{}) []map[string]interface{} {
-	var maps []map[string]interface{}
-	var m map[string]interface{}
-
-	maps = append(maps, header)
-	rowCount := 1
-	for _, user := range users {
-		index := strconv.Itoa(rowCount)
-		m = map[string]interface{}{
-			&quot;A&quot;+index: user.ID,
-			&quot;B&quot;+index: user.Name,
-			&quot;C&quot;+index: user.Address,
-		}
-
-		maps = append(maps, m)
-		rowCount = rowCount + 1
-	}
-
-	return maps
-}
-</code></pre>
-
-<h3 id="写-excel-文件">写 excel 文件</h3>
-
-<p>将组织好的 map 数组写入文件中</p>
-
-<pre><code class="language-markdown">// 写数据到 excel 中，每个 map[string]interface{} 为一行数据，键为A1，B2，C3等等
-func Write2File(fileName string, sheetName string, data []map[string]interface{}, dateContaining bool) error {
-	f := excelize.NewFile()
-
-	sheet := f.NewSheet(sheetName)
-	f.SetActiveSheet(sheet)
-
-	for _, item := range data {
-		for k, v := range item {
-			err := f.SetCellValue(sheetName, k, v)
-			if err != nil {
-				log.Errorln(err)
-				continue
-			}
 		}
 	}
 
-	// 删除 Sheet1
-	f.DeleteSheet(&quot;Sheet1&quot;)
-
-	if dateContaining {
-		return f.SaveAs(fileName + &quot;_&quot; + time.Now().Format(&quot;2006-01-02&quot;) + &quot;_&quot; + &quot;.xlsx&quot;)
-	} else {
-		return f.SaveAs(fileName + &quot;.xlsx&quot;)
-	}
+	return result, nil
 }
 </code></pre>
-
-<h3 id="合并单元格">合并单元格</h3>
-
-<p>使用 MergeCell 方法可以合并单元格</p>
-
-<pre><code class="language-markdown">err := f.MergeCell(sheetName, &quot;A1&quot;, &quot;A5&quot;)
-if err != nil {
-    log.Errorln(err)
-}
-</code></pre>
-
-<p>以上代码将合并 A1~A5 的单元格，并以单元格 A5 的内容填充合并后的单元格。</p>
 
 <h3 id="参考资料">参考资料</h3>
 
-<p><a href="https://github.com/360EntSecGroup-Skylar/excelize">https://github.com/360EntSecGroup-Skylar/excelize</a></p>
+<p>官方 Github 仓库地址</p>
+
+<p><a href="https://github.com/go-redis/redis">https://github.com/go-redis/redis</a></p>
 
   
 
@@ -360,13 +315,13 @@ if err != nil {
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/programming/golang/golang-excel/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/">JavaScript 常用代码</a>
+      <a href="https://xdhuxc.github.io/post/programming/golang/golang-excel/">使用 golang 操作 excel 表格</a>
     </nav>
     
   </div>
@@ -375,14 +330,8 @@ if err != nil {
   </div>
   <div class="pure-u-10-24">
     
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/programming/golang/golang-redis/">golang 操作单点 Redis 代码示例</a>
-    </nav>
-    
   </div>
   <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/programming/golang/golang-redis/"><i class="fa fa-chevron-right"></i></a>
     
   </div>
 </div>

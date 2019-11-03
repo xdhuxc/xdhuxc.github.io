@@ -4,25 +4,36 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/go/</loc>
-    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/redis/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/programming/golang/golang-redis/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -629,12 +640,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/redis/</loc>
-    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

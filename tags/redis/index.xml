@@ -6,10 +6,19 @@
     <description>Recent content in Redis on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 28 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang 操作单点 Redis 代码示例</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-redis/</link>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-redis/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 操作单点 redis 时的一些示例代码，可以经过改造应用到程序中去。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Redis 常见问题及解决</title>
