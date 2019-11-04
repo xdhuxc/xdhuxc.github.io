@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-07</span> |
       <span>修改于 2019-08-07</span> |
-      <span>总字数 586</span> |
+      <span>总字数 665</span> |
       <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -212,9 +212,9 @@
 :set noh # 简写
 </code></pre>
 
-<p>3、跳转至文件头部，在命令模式下，按两次<code>g</code>；跳转至文件尾部，在命令模式下，输入<code>G</code></p>
+<p>3、跳转至文件头部，在命令模式下，按两次 <code>g</code>；跳转至文件尾部，在命令模式下，输入 <code>G</code></p>
 
-<p>4、删除一行，在命令模式下，按两次<code>d</code></p>
+<p>4、删除一行，在命令模式下，按两次 <code>d</code></p>
 
 <p>5、替换每一行中所有的 <code>str1</code> 为 <code>str2</code>，在命令模式下，</p>
 
@@ -226,7 +226,23 @@
 <pre><code class="language-markdown">:s/str1/str2/g
 </code></pre>
 
-<p>6、按u可以撤销一次操作</p>
+<p>6、按 <code>u</code> 可以撤销一次操作</p>
+
+<p>7、跳转到指定行</p>
+
+<ul>
+<li><p>打开文件时，使用如下命令打开文件，可直接到指定行</p>
+
+<pre><code class="language-markdown">vim xdhuxc.yaml +25 # 打开文件后光标跳转到第 25 行
+</code></pre>
+
+<ul>
+<li>在命令模式下，直接输入行号，然后回车
+<code>markdown
+:25 # 回车后跳转到第 25 行
+</code></li>
+</ul></li>
+</ul>
 
 <h3 id="常见问题及解决">常见问题及解决</h3>
 
