@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-06-17</span> |
       <span>修改于 2019-06-17</span> |
-      <span>总字数 98</span> |
+      <span>总字数 253</span> |
       <span>阅读时长 1 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -199,6 +199,23 @@ killall Finder
 <pre><code class="language-markdown">defaults write com.apple.finder AppleShowAllFiles -boolean false 
 killall Finder
 </code></pre>
+
+<h3 id="常见问题及解决">常见问题及解决</h3>
+
+<p>1、更新系统之后，使用 <code>make</code> 命令时，报如下错误：</p>
+
+<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-cmdb wanghuan$ make build
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+</code></pre>
+
+<p>解决：在命令行中输入如下命令安装命令行工具</p>
+
+<pre><code class="language-markdown">xcode-select --install
+</code></pre>
+
+<p>2、关闭 MacOS 上的默认启动程序</p>
+
+<p>依次点击 <code>Finder</code> -&gt; <code>System Preferences</code> -&gt; <code>Users &amp; Groups</code>，在弹出的对话框中，点击 <code>Login Items</code>，在下方的列表中删除不需要的自启动程序，再点击左下角的 <code>Click the lock to make changes</code>。</p>
 
   
 
