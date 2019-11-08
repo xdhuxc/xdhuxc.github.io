@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.55.5" />
 
-  <title>Element-UI &middot; xdhuxc</title>
+  <title>Vue Element-UI 开发注意事项 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/element-ui/index.xml' />
   
 
   
@@ -147,16 +144,21 @@
 
 
 <div class="header">
-  <h1>Element-UI</h1>
+  <h1>Vue Element-UI 开发注意事项</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-11-08</span> |
+      <span>修改于 2019-11-08</span> |
+      <span>总字数 383</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/vue/vue-develope-standard/">Vue Element-UI 开发注意事项</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
@@ -184,68 +186,51 @@
 </div>
 
 
-  </header>
-
-  <p>
   <p>本篇博客记录下使用 Vue 和 Element-UI 进行开发时需要注意的一些事项。</p>
-  </p>
 
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/vue/vue-develope-standard/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
+<h3 id="开发建议">开发建议</h3>
 
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/vue/vue-element-ui-verify/">Vue &#43; Element-UI 表单校验功能的总结</a></h2>
+<p>1、对于按钮，一般使用 type=&lsquo;primary&rsquo;，该类型按钮大小固定，且为亮丽的蓝色，与默认的白色按钮相比，可以丰富页面色彩，更加漂亮。</p>
 
-    <div class="post-meta">
+<p>2、固定表格的列，对于含有多个相同元素的表格单元格，比如多个按钮，固定该单元格的长度，使其横向或纵向排开，避免被 element-ui 自动计算导致的挤压。</p>
 
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-06-02</time>
-  </div>
+<p>3、对于表格中含有过长文本的列，使用 :show-overflow-tooltip=&ldquo;true&rdquo; 隐藏部分文本，否则会撑大单元格，导致整个表格被撑大，非常不美观。</p>
+
+<p>4、对于表示时间的列，比如创建时间或更新时间，使用类似 scope.row.update_time | parseTime(&lsquo;{y}-{m}-{d} {h}:{i}:{s}&lsquo;) 的方式格式化，然后设置列宽度为 150px，以避免该列被撑大。</p>
+
+<h3 id="注意事项">注意事项</h3>
+
+<p>1、如果要为 <code>el-select</code> 绑定默认值，需要注意，其 <code>v-model</code> 绑定的是字符值，不能绑定对象类型。如果绑定了对象类型，<code>key-label-value</code> 部分正常的话，可是正常使用，但是实现不了默认值效果。</p>
 
   
 
   
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/vue">Vue</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C">表单校验</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/element-ui">Element-UI</a>
+    <a href="https://xdhuxc.github.io/post/programming/golang/golang-redis/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
-  
-  
-
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/programming/golang/golang-redis/">golang 操作单点 Redis 代码示例</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
 </div>
 
 
-  </header>
 
-  <p>
-  <p>使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/vue/vue-element-ui-verify/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
 </div>
 
 </div>
@@ -304,3 +289,4 @@
 
 </body>
 </html>
+
