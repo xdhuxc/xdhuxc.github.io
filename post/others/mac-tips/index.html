@@ -150,8 +150,8 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-06-17</span> |
       <span>修改于 2019-06-17</span> |
-      <span>总字数 253</span> |
-      <span>阅读时长 1 分钟</span> |
+      <span>总字数 595</span> |
+      <span>阅读时长 2 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -215,7 +215,17 @@ xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools
 
 <p>2、关闭 MacOS 上的默认启动程序</p>
 
-<p>依次点击 <code>Finder</code> -&gt; <code>System Preferences</code> -&gt; <code>Users &amp; Groups</code>，在弹出的对话框中，点击 <code>Login Items</code>，在下方的列表中删除不需要的自启动程序，再点击左下角的 <code>Click the lock to make changes</code>。</p>
+<p>解决：依次点击 <code>Finder</code> -&gt; <code>System Preferences</code> -&gt; <code>Users &amp; Groups</code>，在弹出的对话框中，点击 <code>Login Items</code>，在下方的列表中删除不需要的自启动程序，再点击左下角的 <code>Click the lock to make changes</code>。</p>
+
+<p>3、Mac 系统将 <code>bash</code> 更换为 <code>zsh</code> 后，原来配置的很多环境变量不见了，程序运行出错。</p>
+
+<p>Mac 系统的环境变量，加载顺序为：<code>/etc/profile</code>，<code>/etc/paths</code>，<code>~/.bash_profile</code>， <code>~/.bash_login</code>， <code>~/.profile</code>， <code>~/.bashrc</code>，其中，<code>/etc/profile</code> 和 <code>/etc/paths</code> 是系统级别的，系统启动时就会自动加载，其他几个是当前用户的环境变量。</p>
+
+<p><code>~/.bash_profile</code>, <code>~/.bash_login</code>，<code>~/.profile</code> 按照从前往后的顺序读取，如果 <code>~/.bash_profile</code> 文件存在，则后面几个文件就会被忽略；如果 <code>~/.bash_profile</code> 文件不存在，才会读取后面的文件，以此类推。<code>~/.bashrc</code> 没有上述规则，它是 <code>bash</code> <code>shell</code> 打开的时候载入的。</p>
+
+<p>解决：</p>
+
+<p>使用 <code>zsh</code> 后，我们在 ~/.zshrc 文件中写入环境变量，关闭当前终端，重新打开新的终端，即可看到写入的环境变量。</p>
 
   
 
@@ -223,13 +233,13 @@ xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools
 <div class="prev-next-post pure-g">
   <div class="pure-u-1-24" style="text-align: left;">
     
-    <a href="https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/"><i class="fa fa-chevron-left"></i></a>
+    <a href="https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/"><i class="fa fa-chevron-left"></i></a>
     
   </div>
   <div class="pure-u-10-24">
     
     <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a>
+      <a href="https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/">使用 GORM 操作 MySQL 常见问题及解决</a>
     </nav>
     
   </div>

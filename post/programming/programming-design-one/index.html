@@ -150,8 +150,8 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-07-09</span> |
       <span>修改于 2019-07-09</span> |
-      <span>总字数 1112</span> |
-      <span>阅读时长 3 分钟</span> |
+      <span>总字数 1538</span> |
+      <span>阅读时长 4 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
   </div>
@@ -242,7 +242,7 @@
 
 <p>系统开发一段时间后，逐渐地，测试环境和生产环境产生了分离，其实主要是后台数据库数据的差异（完全的前后端分离架构），导致一些线上环境中产生的错误，无法在测试环境中复现或修改后也无法在测试环境中进行测试，从而往往会在生产环境中进行小测试，如之奈何？</p>
 
-<p>1、将生产数据库中除真实用户信息之外的其他数据每隔一段时间复制到测试数据库中</p>
+<p>1、将生产数据库中除用户信息之外的其他数据每隔一段时间复制到测试数据库中</p>
 
 <p>2、在测试环境中使用生产环境的 API 接口。</p>
 
@@ -251,6 +251,20 @@
 <ul>
 <li>好的架构不是设计出来的，是演进出来的。</li>
 </ul>
+
+<h3 id="待考虑问题">待考虑问题</h3>
+
+<h4 id="2019年11月15日">2019年11月15日</h4>
+
+<p>1、设置 <code>GitLab</code> 保护，禁止向工程的 <code>master</code> 分支直接推送代码，只能从其他分支合并到 <code>master</code> 分支。</p>
+
+<p>2、考虑到将 <code>DDL</code> 和 <code>DML</code> 写在一个文件中时，在一些 SQL 管理工具中打开整个文件后不小心执行了整个文件，可能会造成不良后果。建议工程的根目录下建立 <code>sql</code> 目录，内含 <code>工程名_ddl.sql</code> 和 <code>工程名_dml.sql</code> 两个文件，要求 <code>工程名_ddl.sql</code> 可以直接整个文件执行，平时进行的 DML 语句写在 <code>工程名_dml.sql</code> 中。</p>
+
+<p>3、考虑到这样一种常用的使用场景，也是我们自己最常用的新应用部署场景，将 <code>Deployment</code>、<code>Service</code>、<code>ConfigMap</code> 全部写在一个文件 <code>mainfest.yaml</code> 中，使用 <code>kubectl create -f mainfest.yaml</code> 来创建该应用及相关常用资源，完善新应用部署功能。目前只能部署单独的 <code>Deployment</code>，配置其相应的 <code>Service</code>。</p>
+
+<p>4、已有 <code>ConfigMap</code> 落库问题，目前只有通过页面增加的 <code>ConfigMap</code> 落库，其他已经手工创建的 <code>ConfigMap</code> 尚未落库，也不能在页面中修改。</p>
+
+<p>5、<code>Deployment</code>，<code>Service</code>，<code>ConfigMap</code> 等资源定期落库。</p>
 
   
 

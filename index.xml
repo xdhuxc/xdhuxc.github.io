@@ -337,10 +337,10 @@
     
     <item>
       <title>使用 GORM 操作 MySQL 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</link>
       <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-golang-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
     </item>
     
