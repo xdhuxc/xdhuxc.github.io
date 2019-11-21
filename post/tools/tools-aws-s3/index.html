@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.59.1" />
 
-  <title>Consul &middot; xdhuxc</title>
+  <title>aws-cli 常用命令归集 &middot; xdhuxc</title>
 
   
   
@@ -42,9 +42,6 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/tags/consul/index.xml' />
   
 
   
@@ -147,20 +144,25 @@
 
 
 <div class="header">
-  <h1>Consul</h1>
+  <h1>aws-cli 常用命令归集</h1>
+  <h2></h2>
+  <div>
+    <font style="font-family: 'STKaiti';">
+      <span>创建于 2019-11-21</span> |
+      <span>修改于 2019-11-21</span> |
+      <span>总字数 310</span> |
+      <span>阅读时长 1 分钟</span> |
+      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+    </font>
+  </div>
 </div>
-
 <div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/consul/consul-simple-use/">Consul 的基本使用</a></h2>
 
-    <div class="post-meta">
+  <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-20</time>
+    <time>2019-11-21</time>
   </div>
 
   
@@ -173,7 +175,7 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/consul">Consul</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/aws">AWS</a>
     
   </div>
   
@@ -182,20 +184,79 @@
 </div>
 
 
-  </header>
+  <p>本篇博客记录下使用 aws-cli 的用法，AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接使用了。</p>
 
-  <p>
-  
-  </p>
+<h3 id="安装-aws-cli-和配置认证信息">安装 aws-cli 和配置认证信息</h3>
+
+<h4 id="安装-aws-cli">安装 aws-cli</h4>
+
+<p>使用 <code>pip</code> 安装 <code>aws-cli</code>，命令如下：</p>
+
+<pre><code class="language-markdown">pip install -y awscli
+</code></pre>
+
+<h4 id="配置认证信息">配置认证信息</h4>
+
+<p>执行 <code>aws</code> 命令前，需要在 <code>~/.aws/credentials</code> 中配置访问 <code>AWS</code> 的 <code>Access Key</code> 和 <code>Secret Key</code>，如下所示：</p>
+
+<pre><code class="language-markdown">[default]
+aws_access_key_id = ${aws_access_key_id}
+aws_secret_access_key = ${aws_access_key_id}
+</code></pre>
+
+<p>在 ~/.aws/config 中配置区域，如下所示：</p>
+
+<pre><code class="language-markdown">[default]
+region = ap-southeast-1
+</code></pre>
+
+<p>注意，需要给该 <code>Access Key</code> 赋予访问要访问资源的权限。</p>
+
+<h3 id="使用-aws-cli-操作-s3">使用 AWS-CLI 操作 S3</h3>
+
+<p>1、从一个桶里复制目录到另外一个桶里的目录</p>
+
+<pre><code class="language-markdown"># 将 S3 桶 bucket1 中的所有对象复制到 S3 桶 expire.backup.xdhuxc 的 bucket1 目录下
+aws s3 cp s3://bucket1/ s3://expire.backup.xdhuxc/bucket1/ --recursive 2&gt;./copys3_bucket1_error.log 1&gt;/dev/null
+</code></pre>
+
+<p>由于复制的对象中包含目录，需要使用 <code>--recursive</code> 进行递归复制；在测试时，还可以使用 <code>--dryrun</code> 参数，只展示输出结果，不实际执行。另外，我们将错误日记记录下来，舍弃标准输出。</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p>AWS CLI S3 复制对象命令</p>
+
+<p><a href="https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html">https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html</a></p>
 
   
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/consul/consul-simple-use/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
 
   
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="https://xdhuxc.github.io/post/vue/vue-develope-standard/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="https://xdhuxc.github.io/post/vue/vue-develope-standard/">Vue Element-UI 开发注意事项</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+  </div>
+</div>
+
+
+
 </div>
 
 </div>
@@ -254,3 +315,4 @@
 
 </body>
 </html>
+

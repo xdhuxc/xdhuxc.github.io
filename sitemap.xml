@@ -1,29 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/element-ui/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://xdhuxc.github.io/tags/aws/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/tools/tools-aws-s3/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/element-ui/</loc>
     <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/vue/</loc>
     <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -32,21 +43,8 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2019-11-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/golang/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/redis/</loc>
-    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -60,9 +58,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/redis/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -78,7 +80,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/javascript/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -89,31 +90,26 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/node/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/npm/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/clickhouse/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/devops/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/grafana/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -139,7 +135,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/python/</loc>
     <lastmod>2018-07-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -150,7 +145,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/css/</loc>
     <lastmod>2019-09-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -166,7 +160,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/consul/</loc>
     <lastmod>2019-08-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -177,13 +170,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/sql/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/sqlite/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -192,7 +183,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/golang/golang-set/</loc>
+    <loc>https://xdhuxc.github.io/tags/glog/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -202,21 +193,18 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/set/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/golang/golang-set/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/glog/</loc>
+    <loc>https://xdhuxc.github.io/tags/set/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/vim/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -252,7 +240,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/json/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -283,13 +270,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/message-queue/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/rabbitmq/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -300,13 +285,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/programming/</loc>
     <lastmod>2019-07-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/shortcut-key/</loc>
     <lastmod>2019-07-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -327,13 +310,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/virtualenv/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/docker/</loc>
     <lastmod>2018-07-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -344,13 +325,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/dockerfile/</loc>
     <lastmod>2018-07-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/git/</loc>
     <lastmod>2019-06-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -361,13 +340,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/github/</loc>
     <lastmod>2019-06-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/gitlab/</loc>
     <lastmod>2019-06-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -378,7 +355,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/mac/</loc>
     <lastmod>2019-06-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -389,13 +365,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/gorm/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/mysql/</loc>
     <lastmod>2019-07-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -404,15 +378,13 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/dynamodb/</loc>
+    <loc>https://xdhuxc.github.io/tags/confd/</loc>
     <lastmod>2019-06-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/confd/</loc>
+    <loc>https://xdhuxc.github.io/tags/dynamodb/</loc>
     <lastmod>2019-06-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -423,24 +395,16 @@
   <url>
     <loc>https://xdhuxc.github.io/unfinished/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/websocket/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/unfinished/vue-go-websocket/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/aws/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -459,38 +423,33 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/unittest/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/vue/vue-element-ui-verify/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/unittest/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/406/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/http/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/axios/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/http/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -501,7 +460,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/codemirror/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -517,13 +475,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/template/</loc>
     <lastmod>2019-05-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/date/</loc>
     <lastmod>2019-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -534,13 +490,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/time/</loc>
     <lastmod>2019-05-19T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/hugo/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -556,7 +510,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -582,7 +535,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/gotty/</loc>
     <lastmod>2018-11-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -593,7 +545,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/vagrant/</loc>
     <lastmod>2018-11-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -604,13 +555,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/springboot/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -621,7 +570,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/linux/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -632,7 +580,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/shell/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -648,13 +595,11 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/database/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -670,7 +615,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/centos7/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -699,6 +643,11 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/devops/ansible-simple-use/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
   </url>
@@ -706,13 +655,6 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/it/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
-    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -757,7 +699,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/topics/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

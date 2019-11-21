@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on xdhuxc</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 08 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AWS</title>
+      <link>https://xdhuxc.github.io/tags/aws/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Element-UI</title>
@@ -156,20 +165,20 @@
     </item>
     
     <item>
-      <title>Set</title>
-      <link>https://xdhuxc.github.io/tags/set/</link>
-      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/set/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>glog</title>
       <link>https://xdhuxc.github.io/tags/glog/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/glog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Set</title>
+      <link>https://xdhuxc.github.io/tags/set/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/set/</guid>
       <description></description>
     </item>
     
@@ -309,15 +318,6 @@
     </item>
     
     <item>
-      <title>DynamoDB</title>
-      <link>https://xdhuxc.github.io/tags/dynamodb/</link>
-      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/dynamodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>confd</title>
       <link>https://xdhuxc.github.io/tags/confd/</link>
       <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
@@ -327,20 +327,20 @@
     </item>
     
     <item>
+      <title>DynamoDB</title>
+      <link>https://xdhuxc.github.io/tags/dynamodb/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/dynamodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>WebSocket</title>
       <link>https://xdhuxc.github.io/tags/websocket/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/websocket/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AWS</title>
-      <link>https://xdhuxc.github.io/tags/aws/</link>
-      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
@@ -372,20 +372,20 @@
     </item>
     
     <item>
-      <title>HTTP</title>
-      <link>https://xdhuxc.github.io/tags/http/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/http/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>axios</title>
       <link>https://xdhuxc.github.io/tags/axios/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/axios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://xdhuxc.github.io/tags/http/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/http/</guid>
       <description></description>
     </item>
     
@@ -525,20 +525,20 @@
     </item>
     
     <item>
-      <title>IT</title>
-      <link>https://xdhuxc.github.io/tags/it/</link>
-      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/it/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ansible</title>
       <link>https://xdhuxc.github.io/tags/ansible/</link>
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IT</title>
+      <link>https://xdhuxc.github.io/tags/it/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/it/</guid>
       <description></description>
     </item>
     

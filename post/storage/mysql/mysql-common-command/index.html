@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.5" />
+  <meta name="generator" content="Hugo 0.59.1" />
 
   <title>MySQL 常用命令 &middot; xdhuxc</title>
 
@@ -242,50 +242,50 @@ max_connections=200
 
 <p>1、修改字段类型</p>
 
-<pre><code class="language-markdown">alter table `users` modify column name varchar(30)
+<pre><code class="language-markdown">ALTER TABLE `users` MODIFY COLUMN name varchar(30)
 </code></pre>
 
 <p>2、修改字段类型</p>
 
-<pre><code class="language-markdown">alter table `users` change column name set default null
+<pre><code class="language-markdown">ALTER TABLE `users` CHANGE COLUME name SET DEFAULT NULL
 </code></pre>
 
 <p>3、修改字段的数据</p>
 
-<pre><code class="language-markdown">update `users` set name='wangxin', age=24 where user_id=13
+<pre><code class="language-markdown">UPDATE `users` SET name='wangxin', age=24 WHERE user_id=13
 </code></pre>
 
 <p>4、增加新字段</p>
 
-<pre><code class="language-markdown">alter table `users` add `country` varchar(20) NOT NULL
+<pre><code class="language-markdown">ALTER TABLE `users` ADD `country` varchar(20) NOT NULL
 </code></pre>
 
 <h3 id="键操作">键操作</h3>
 
 <p>1、查询某张表中存在的键</p>
 
-<pre><code class="language-markdown">select * from INFORMATION_SCHEMA.KEY_COLUMN_USAGE t where t.TABLE_NAME ='users'
+<pre><code class="language-markdown">SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE t WHERE t.TABLE_NAME ='users'
 </code></pre>
 
 <p>2、添加唯一键</p>
 
-<pre><code class="language-markdown">alter table `users` add unique key `name` (`name`)
+<pre><code class="language-markdown">ALTER TABLE `users` ADD UNIQUE KEY `name` (`name`)
 </code></pre>
 
 <p>3、删除唯一键</p>
 
-<pre><code class="language-markdown">alter table `users` drop index `name`
-ALTER TABLE `sgt_aksk` ADD UNIQUE INDEX iam_cloud_uk (`iam`, `cloud_type`) # 注意，主键名中不能包含中划线
+<pre><code class="language-markdown">ALTER TABLE `users` DROP INDEX `name`
+ALTER TABLE `users` ADD UNIQUE INDEX iam_cloud_uk (`name`, `display_name`) # 注意，主键名中不能包含中划线
 </code></pre>
 
 <p>4、添加主键</p>
 
-<pre><code class="language-markdown">alter table `users` add primary key `id` (`id`)
+<pre><code class="language-markdown">ALTER TABLE `users` ADD PRIMARY KEY `id` (`id`)
 </code></pre>
 
 <p>5、删除主键</p>
 
-<pre><code class="language-markdown">alter table `users` drop primary key
+<pre><code class="language-markdown">ALTER TABLE `users` DROP PRIMARY KEY
 </code></pre>
 
 <h3 id="数据导出命令">数据导出命令</h3>
