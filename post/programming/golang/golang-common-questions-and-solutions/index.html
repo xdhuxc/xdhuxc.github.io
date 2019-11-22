@@ -150,7 +150,7 @@
     <font style="font-family: 'STKaiti';">
       <span>创建于 2019-08-05</span> |
       <span>修改于 2019-08-05</span> |
-      <span>总字数 254</span> |
+      <span>总字数 354</span> |
       <span>阅读时长 1 分钟</span> |
       <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
     </font>
@@ -218,6 +218,12 @@ make: *** [build] Error 1
 </code></pre>
 
 <p>解决：以前是可以正常构建的，把 go 版本升级到 1.13 后，就变成这样了，该版本有问题，回退到 1.12 即可解决问题。</p>
+
+<h3 id="向-map-中写入键值对时-报错-panic-assignment-to-entry-in-nil-map">向 map 中写入键值对时，报错 <code>panic：assignment to entry in nil map</code></h3>
+
+<p>因为该 map 的初始化方式不对，当仅写 <code>var map[keyType]ValueType</code> 时，会得到 nil map，此时向 map 中插入键值对时，会报上述错误。</p>
+
+<p>一旦使用 make() 函数进行初始化，就不是 nil map 了。</p>
 
   
 
