@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.59.1" />
 
-  <title>Golang 常见问题及解决 &middot; xdhuxc</title>
+  <title>DNS &middot; xdhuxc</title>
 
   
   
@@ -42,6 +42,9 @@
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
  
+  
+  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
+    href='https://xdhuxc.github.io/tags/dns/index.xml' />
   
 
   
@@ -144,25 +147,20 @@
 
 
 <div class="header">
-  <h1>Golang 常见问题及解决</h1>
-  <h2></h2>
-  <div>
-    <font style="font-family: 'STKaiti';">
-      <span>创建于 2019-08-05</span> |
-      <span>修改于 2019-08-05</span> |
-      <span>总字数 511</span> |
-      <span>阅读时长 2 分钟</span> |
-      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
-    </font>
-  </div>
+  <h1>DNS</h1>
 </div>
-<div class="content">
 
-  <div class="post-meta">
+<div class="content">
+  
+    <article>
+  <header>
+    <h2><a href="https://xdhuxc.github.io/post/common/common-dns/">DNS 学习笔记（一）</a></h2>
+
+    <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>2019-08-05</time>
+    <time>2019-11-22</time>
   </div>
 
   
@@ -175,7 +173,9 @@
   <div>
     <i class="fa fa-tags fa-fw"></i>
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/golang">Golang</a>&nbsp;&#47;
+    
+      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/dns">DNS</a>
     
   </div>
   
@@ -184,121 +184,16 @@
 </div>
 
 
-  <p>本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。</p>
+  </header>
 
-<h3 id="x509-certificate-signed-by-unknown-authority">x509: certificate signed by unknown authority</h3>
-
-<p>编写代码请求华为云 API，使用 docker 容器部署，基础镜像为 <code>geekidea/alpine-a:3.9</code>，执行 do 方法时报错如下：</p>
-
-<pre><code class="language-markdown">E0807 05:11:19.285019       1 elb_job.go:67] Get https://elb.ap-southeast-3.myhuaweicloud.com/v2.0/lbaas/loadbalancers: x509: certificate signed by unknown authority
-</code></pre>
-
-<p>在 Dockerfile 中加入如下内容：</p>
-
-<pre><code class="language-markdown">RUN apk update \
-        &amp;&amp; apk upgrade \
-        &amp;&amp; apk add --no-cache \
-        ca-certificates \
-        &amp;&amp; update-ca-certificates 2&gt;/dev/null || true
-</code></pre>
-
-<p>更新 <code>ca-certificates</code> 试试。</p>
-
-<h3 id="make-build-报错">make build 报错</h3>
-
-<pre><code class="language-markdown">wanghuans-MacBook-Pro:scmp-transform wanghuan$ make build
-&gt;&gt; go build ...
-build command-line-arguments: cannot load gitlab.xdhuxc.me/sgt/devops/scmp-transform/src/apis: git ls-remote -q ssh://git@gitlab.xdhuxc.me/sgt/devops.git in /Users/wanghuan/GolandProjects/GoPath/pkg/mod/cache/vcs/32878bb63a0c857fed210744986dde9a48418788fe89eee3f24d5b73f5abcd2a: exit status 128:
-        GitLab: The project you were looking for could not be found.
-        fatal: Could not read from remote repository.
-        
-        Please make sure you have the correct access rights
-        and the repository exists.
-make: *** [build] Error 1
-</code></pre>
-
-<p>解决：以前是可以正常构建的，把 go 版本升级到 1.13 后，就变成这样了，该版本有问题，回退到 1.12 即可解决问题。</p>
-
-<h3 id="向-map-中写入键值对时-报错-panic-assignment-to-entry-in-nil-map">向 map 中写入键值对时，报错 <code>panic：assignment to entry in nil map</code></h3>
-
-<p>因为该 map 的初始化方式不对，当仅写 <code>var map[keyType]ValueType</code> 时，会得到 nil map，此时向 map 中插入键值对时，会报上述错误。</p>
-
-<p>一旦使用 make() 函数进行初始化，就不是 nil map 了。</p>
-
-<h3 id="都是标签惹的祸">都是标签惹的祸</h3>
-
-<p>在进行 JSON 序列化时，如果给结构体中某两个字段定义了相同的标签值，则这两个字段在序列化后的 JSON 体中都将会被去掉。</p>
-
-<p>比如，如下的结构体：</p>
-
-<pre><code class="language-markdown">package main
-
-import (
-	&quot;encoding/json&quot;
-	&quot;fmt&quot;
-)
-
-type User struct {
-	ID string `json:&quot;id&quot;`
-	Name string `json:&quot;name&quot;`
-	Address string  `json:&quot;address&quot;`
-	Password string `json:&quot;name&quot;`
-}
-
-func main() {
-	user := User{
-		ID: &quot;abc&quot;,
-		Name: &quot;xdhuxc&quot;,
-		Address: &quot;s&quot;,
-		Password: &quot;073#asd&quot;,
-	}
-	dataInBytes, _ := json.Marshal(&amp;user)
-	fmt.Println(string(dataInBytes))
-}
-</code></pre>
-
-<p>输出结果如下：</p>
-
-<pre><code class="language-markdown">{&quot;id&quot;:&quot;abc&quot;,&quot;address&quot;:&quot;s&quot;}
-</code></pre>
-
-<p>将字段 Name 和 Password 的 JSON 标签设置为相同的后，两个字段在序列化后直接被去掉了。</p>
+  <p>
+  <p>本篇博客记录下 DNS 的知识点。</p>
+  </p>
 
   
+</article>
 
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-two/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-two/">人间世·杂二</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-six/">人间世·杂六</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/human-world/human-world-mixed-six/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
-</div>
-
-
-
 </div>
 
 </div>
@@ -357,4 +252,3 @@ func main() {
 
 </body>
 </html>
-

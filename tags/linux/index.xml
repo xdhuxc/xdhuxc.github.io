@@ -6,10 +6,19 @@
     <description>Recent content in Linux on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 07 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux 其他发行版中安装工具包</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</guid>
+      <description>&lt;p&gt;本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Linux 中 crontab 的使用</title>

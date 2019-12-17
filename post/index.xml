@@ -6,10 +6,19 @@
     <description>Recent content in Posts on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DNS 学习笔记（一）</title>
+      <link>https://xdhuxc.github.io/post/common/common-dns/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/common-dns/</guid>
+      <description>&lt;p&gt;本篇博客记录下 DNS 的知识点。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>aws-cli 常用命令归集</title>
@@ -519,12 +528,30 @@
     </item>
     
     <item>
+      <title>Linux 其他发行版中安装工具包</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</guid>
+      <description>&lt;p&gt;本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 中 crontab 的使用</title>
       <link>https://xdhuxc.github.io/post/linux/linux-cronjob/</link>
       <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux/linux-cronjob/</guid>
       <description>&lt;p&gt;我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</link>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 Kubernetes 中常用的命令，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -624,16 +651,6 @@
       
       <guid>https://xdhuxc.github.io/post/devops/ansible-common-model/</guid>
       <description>模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://xdhuxc.github.io/post/linux/alpine_tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/linux/alpine_tips/</guid>
-      <description> 在 alpine 中安装 telnet 执行以下命令安装 telnet
-apk add busybox-extras  在 debain 中安装 nc 命令 apt-get update &amp;amp;&amp;amp; install netcat  在 debain 中安装 ps 命令 apt-get update &amp;amp;&amp;amp; apt-get install procps  在 debain 中安装 curl 命令 apt-get update &amp;amp;&amp;amp; apt-get install curl  </description>
     </item>
     
   </channel>
