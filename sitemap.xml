@@ -135,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/javascript/</loc>
+    <loc>https://xdhuxc.github.io/tags/javascript/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/javascript/</loc>
+    <loc>https://xdhuxc.github.io/categories/javascript/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -233,13 +233,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/devops/</loc>
-    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/devops/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -247,7 +240,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/grafana/</loc>
+    <loc>https://xdhuxc.github.io/categories/devops/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -255,6 +248,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/grafana/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/categories/grafana/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/css/</loc>
+    <loc>https://xdhuxc.github.io/categories/css/</loc>
     <lastmod>2019-09-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/css/</loc>
+    <loc>https://xdhuxc.github.io/tags/css/</loc>
     <lastmod>2019-09-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -359,13 +359,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/sql/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/sql/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -373,7 +366,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/sqlite/</loc>
+    <loc>https://xdhuxc.github.io/categories/sql/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -387,6 +380,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/sqlite/</loc>
+    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -394,14 +394,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/glog/</loc>
+    <loc>https://xdhuxc.github.io/tags/glog/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/glog/</loc>
+    <loc>https://xdhuxc.github.io/categories/glog/</loc>
     <lastmod>2019-08-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -555,14 +555,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/rabbitmq/</loc>
+    <loc>https://xdhuxc.github.io/categories/rabbitmq/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/rabbitmq/</loc>
+    <loc>https://xdhuxc.github.io/tags/rabbitmq/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -639,14 +639,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/docker/</loc>
+    <loc>https://xdhuxc.github.io/tags/docker/</loc>
     <lastmod>2018-07-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/docker/</loc>
+    <loc>https://xdhuxc.github.io/categories/docker/</loc>
     <lastmod>2018-07-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -730,14 +730,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/gorm/</loc>
+    <loc>https://xdhuxc.github.io/tags/gorm/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/gorm/</loc>
+    <loc>https://xdhuxc.github.io/categories/gorm/</loc>
     <lastmod>2019-06-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -863,13 +863,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</loc>
-    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/categories/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -877,7 +870,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/406/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -885,6 +878,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/categories/406/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/406/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -905,14 +905,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/http/</loc>
+    <loc>https://xdhuxc.github.io/tags/http/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/http/</loc>
+    <loc>https://xdhuxc.github.io/categories/http/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -982,14 +982,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/time/</loc>
+    <loc>https://xdhuxc.github.io/tags/time/</loc>
     <lastmod>2019-05-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/time/</loc>
+    <loc>https://xdhuxc.github.io/categories/time/</loc>
     <lastmod>2019-05-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1087,13 +1087,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/jmx/</loc>
-    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/categories/jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1101,7 +1094,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/springboot/</loc>
+    <loc>https://xdhuxc.github.io/tags/jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1109,6 +1102,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/springboot/</loc>
+    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/categories/springboot/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1150,14 +1150,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/shell/</loc>
+    <loc>https://xdhuxc.github.io/categories/shell/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/shell/</loc>
+    <loc>https://xdhuxc.github.io/tags/shell/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1192,13 +1192,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/database/</loc>
-    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/database/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1206,7 +1199,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
+    <loc>https://xdhuxc.github.io/categories/database/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1214,6 +1207,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/categories/mongodb/</loc>
+    <lastmod>2019-05-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/mongodb/</loc>
     <lastmod>2019-05-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1290,14 +1290,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/ansible/</loc>
+    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
+    <loc>https://xdhuxc.github.io/categories/ansible/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
