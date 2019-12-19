@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CodeMirror on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/codemirror/</link>
+    <description>Recent content in CodeMirror on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/codemirror/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vue 集成 CodeMirror</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-codemirror/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-codemirror/</guid>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

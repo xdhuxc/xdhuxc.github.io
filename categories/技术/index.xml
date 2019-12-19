@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术 on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 技术 on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DNS 学习笔记（一）</title>
+      <link>https://xdhuxc.github.io/unfinished/common-dns/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/common-dns/</guid>
+      <description>&lt;p&gt;本篇博客记录下 DNS 的知识点。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>aws-cli 常用命令归集</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-aws-s3/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-aws-s3/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 aws-cli 的用法，AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接使用了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>golang 操作单点 Redis 代码示例</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-redis/</link>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-redis/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 操作单点 redis 时的一些示例代码，可以经过改造应用到程序中去。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>golang 数值处理</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-number/</link>
+      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-number/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 进行数值处理时可能会用到的一些代码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go Set 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-set/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-set/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Golang 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</link>
+      <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</link>
+      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录一些 git 使用过程中常见的问题及其解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>AWS DynamoDB 简单使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 AWS DynamoDB 过程中用到的一些知识和技术点，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Golang 单元测试</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-test/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-test/</guid>
+      <description>&lt;p&gt;本部分内容记录下 golang 中的单元测试的简单用法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go Template 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
+      <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-template/</guid>
+      <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GoTTY 的简单使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-gotty/</link>
+      <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-gotty/</guid>
+      <description>&lt;p&gt;本篇博客主要记录下 GoTTY 的简单使用方式，或许以后可以在项目中用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vagrant 常用命令和资料</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-vagrant/</link>
+      <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-vagrant/</guid>
+      <description>&lt;p&gt;本篇博客主要记录下 vagrant 常用的命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 其他发行版中安装工具包</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</guid>
+      <description>&lt;p&gt;本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</link>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 Kubernetes 中常用的命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitLab 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/git/git-gitlab/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git/git-gitlab/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 常用命令备忘录</title>
+      <link>https://xdhuxc.github.io/post/git/git-common-command/</link>
+      <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/git/git-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些 git 使用过程中常用的命令，方便查看。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

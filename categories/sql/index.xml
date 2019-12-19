@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/sql/</link>
+    <description>Recent content in SQL on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Fri, 16 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sqlite 基本使用</title>
+      <link>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</guid>
+      <description>&lt;p&gt;本篇博客记录了 sqlite 的基本使用方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

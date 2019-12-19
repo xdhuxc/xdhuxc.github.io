@@ -5,7 +5,8 @@
     <link>https://xdhuxc.github.io/tags/devops/</link>
     <description>Recent content in DevOps on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
     <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml" />
@@ -35,7 +36,7 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible-common-model/</guid>
-      <description>模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件</description>
+      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
     </item>
     
   </channel>

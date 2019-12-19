@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>glog on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/glog/</link>
+    <description>Recent content in glog on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/glog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go glog 日志包的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-glog/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-glog/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

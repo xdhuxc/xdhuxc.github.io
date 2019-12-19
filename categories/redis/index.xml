@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/redis/</link>
+    <description>Recent content in Redis on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Thu, 28 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 redis 的过程中出现的问题及解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 Docker 容器方式部署 Redis</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 概述</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-summary/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-summary/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

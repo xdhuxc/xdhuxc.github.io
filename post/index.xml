@@ -5,20 +5,12 @@
     <link>https://xdhuxc.github.io/post/</link>
     <description>Recent content in Posts on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
-    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>DNS 学习笔记（一）</title>
-      <link>https://xdhuxc.github.io/post/common/common-dns/</link>
-      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/common/common-dns/</guid>
-      <description>&lt;p&gt;本篇博客记录下 DNS 的知识点。&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>aws-cli 常用命令归集</title>
@@ -134,7 +126,7 @@
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/others/fireworks/</guid>
-      <description>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs</description>
+      <description></description>
     </item>
     
     <item>
@@ -323,7 +315,7 @@
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</guid>
-      <description>&lt;p&gt;在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在编写 &lt;code&gt;Dockerfile&lt;/code&gt; 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -441,7 +433,6 @@
       
       <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;</description>
     </item>
     
@@ -452,7 +443,6 @@
       
       <guid>https://xdhuxc.github.io/post/others/github_hugo_2/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
     </item>
     
@@ -463,7 +453,6 @@
       
       <guid>https://xdhuxc.github.io/post/others/little_tips/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。&lt;/p&gt;</description>
     </item>
     
@@ -484,7 +473,6 @@
       
       <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-three/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇文章是对最近社会讨论的 996.icu 问题的扩展，如果该问题继续被讨论下去，可能会涉及到这些问题。&lt;/p&gt;</description>
     </item>
     
@@ -522,9 +510,15 @@
       
       <guid>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</guid>
       <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -650,7 +644,7 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible-common-model/</guid>
-      <description>模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件</description>
+      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
     </item>
     
   </channel>

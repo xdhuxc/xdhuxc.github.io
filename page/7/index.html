@@ -1,535 +1,408 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-cn">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.55.5" />
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
-  <!--<![endif]-->
 
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
+<meta name="author" content="xdhuxc" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
 
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-  
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
- 
-  
-  <link rel="alternate" type="application/rss+xml" title="xdhuxc"
-    href='https://xdhuxc.github.io/index.xml' />
-  
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
 
-  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
 
-  
-  
+<link rel="canonical" href="https://xdhuxc.github.io/" />
+  <link href="https://xdhuxc.github.io/index.xml" rel="alternate" type="application/rss+xml" title="xdhuxc" />
+  <link href="https://xdhuxc.github.io/index.xml" rel="feed" type="application/rss+xml" title="xdhuxc" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="xdhuxc" />
+<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://xdhuxc.github.io/" />
+<meta property="og:updated_time" content="2019-11-22T00:00:00+00:00" />
+<meta itemprop="name" content="xdhuxc">
+<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="xdhuxc"/>
+<meta name="twitter:description" content="Hugo theme even example site."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
 
 </head>
-
-
 <body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
-      
-        </li>
-      
-    </ul>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
   </div>
-
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
   </ul>
-</div>
-
-
-  <div>
-  <div class="small-print">
-    <small>&copy; 2019. xdhuxc 版权所有。</small>
-  </div>
-  <div class="small-print">
-
-  </div>
-  <div class="small-print">
-    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
-    <br>
-    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
-    <br>
-    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <br>
-    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-<div id="main">
-
-
-<div class="header">
-  <h1>xdhuxc</h1>
-  <h2>技术 - 文章</h2>
-</div>
-
-<div class="content">
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/">Redis 常见问题及解决</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-28</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客记录下使用 redis 的过程中出现的问题及解决。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/">使用 Docker 容器方式部署 Redis</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-28</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/docker">Docker</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-docker/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/storage/redis/redis-summary/">Redis 概述</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-27</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/redis">Redis</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/storage/redis/redis-summary/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/git/git-common-command/">Git 常用命令备忘录</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-06-19</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/git">Git</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  <p>本篇博客记录了一些 git 使用过程中常用的命令，方便查看。</p>
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/git/git-common-command/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/">Ansible 学习之简单入门</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-05-14</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/ansible">ansible</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/devops">DevOps</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/it">IT</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/devops/ansible-simple-use/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">Ansible 学习之常用模块</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-05-02</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/ansible">ansible</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/devops">DevOps</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/it">IT</a>
-    
-  </div>
-  
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-  模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件
-  </p>
-
-  
-  <footer>
-    <a href="https://xdhuxc.github.io/post/devops/ansible-common-model/">阅读更多<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://xdhuxc.github.io/post/linux/alpine_tips/"></a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>0001-01-01</time>
-  </div>
-
-  
-
-  
-
-  
-
-</div>
-
-
-  </header>
-
-  <p>
-   在 alpine 中安装 telnet 执行以下命令安装 telnet
-apk add busybox-extras  在 debain 中安装 nc 命令 apt-get update &amp;&amp; install netcat  在 debain 中安装 ps 命令 apt-get update &amp;&amp; apt-get install procps  在 debain 中安装 curl 命令 apt-get update &amp;&amp; apt-get install curl  
-  </p>
-
-  
-</article>
-
-  
-
-  
-
-
-<nav class="pagination" role="pagination">
-  
-  <a href="https://xdhuxc.github.io/page/6/"><i class="fa fa-chevron-left"></i></a>
-  
-  <span>&nbsp;7 / 7&nbsp;</span>
-  
-  <i class="fa fa-chevron-right"></i>
-  
 </nav>
-
-
-
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
 </div>
 
-</div>
-</div>
-<script src="https://xdhuxc.github.io/js/ui.js"></script>
-<script src="https://xdhuxc.github.io/js/menus.js"></script>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
-
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-        if (window.location.hostname === "localhost") {
-            return;
-        }
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-    
-<script>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/storage/mongodb/mongodb-simple-use/">MongoDB 数据库初步使用</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-07-20 </span>
+      <div class="post-category">
+          <a href="/categories/database/"> Database </a>
+          <a href="/categories/mongodb/"> MongoDB </a>
+          </div>
+        <span class="more-meta"> 约 1498 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
   
-  if (window.location.hostname != "localhost") {
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <div class="post-content">
+    <div class="post-summary">
+      安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。 配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外
+    </div>
+    <div class="read-more">
+      <a href="/post/storage/mongodb/mongodb-simple-use/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
 
-    ga('create', 'UA-139962821-1', 'auto');
-    ga('send', 'pageview');
-  }
-</script>
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/git/git-gitlab/">GitLab 常见问题及解决</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-07-19 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          </div>
+        <span class="more-meta"> 约 303 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/git/git-gitlab/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
 
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/storage/mongodb/centos7-install-mongodb/">在 CentOS 7 上安装 MongoDB 数据库</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-07-06 </span>
+      <div class="post-category">
+          <a href="/categories/centos7/"> CentOS7 </a>
+          <a href="/categories/database/"> Database </a>
+          <a href="/categories/mongodb/"> MongoDB </a>
+          </div>
+        <span class="more-meta"> 约 436 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。 MongoDB 是一个介于关系数据库和非关系数据库
+    </div>
+    <div class="read-more">
+      <a href="/post/storage/mongodb/centos7-install-mongodb/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
 
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/storage/redis/redis-questions-and-solutions/">Redis 常见问题及解决</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-06-28 </span>
+      <div class="post-category">
+          <a href="/categories/redis/"> Redis </a>
+          </div>
+        <span class="more-meta"> 约 186 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本篇博客记录下使用 redis 的过程中出现的问题及解决。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/storage/redis/redis-questions-and-solutions/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/storage/redis/redis-docker/">使用 Docker 容器方式部署 Redis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-06-28 </span>
+      <div class="post-category">
+          <a href="/categories/redis/"> Redis </a>
+          <a href="/categories/docker/"> Docker </a>
+          </div>
+        <span class="more-meta"> 约 900 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/storage/redis/redis-docker/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/storage/redis/redis-summary/">Redis 概述</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-06-27 </span>
+      <div class="post-category">
+          <a href="/categories/redis/"> Redis </a>
+          </div>
+        <span class="more-meta"> 约 734 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/storage/redis/redis-summary/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/git/git-common-command/">Git 常用命令备忘录</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-06-19 </span>
+      <div class="post-category">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          </div>
+        <span class="more-meta"> 约 1099 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本篇博客记录了一些 git 使用过程中常用的命令，方便查看。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/git/git-common-command/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/devops/ansible-simple-use/">Ansible 学习之简单入门</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-14 </span>
+      <div class="post-category">
+          <a href="/categories/ansible/"> ansible </a>
+          <a href="/categories/devops/"> DevOps </a>
+          </div>
+        <span class="more-meta"> 约 1112 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个
+    </div>
+    <div class="read-more">
+      <a href="/post/devops/ansible-simple-use/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/devops/ansible-common-model/">Ansible 学习之常用模块</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-05-02 </span>
+      <div class="post-category">
+          <a href="/categories/ansible/"> ansible </a>
+          <a href="/categories/devops/"> DevOps </a>
+          </div>
+        <span class="more-meta"> 约 3799 字 </span>
+        <span class="more-meta"> 预计阅读 8 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts
+    </div>
+    <div class="read-more">
+      <a href="/post/devops/ansible-common-model/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    </section>
+  
+  <nav class="pagination">
+    <a class="prev" href="/page/6/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text">上一页</span>
+      </a>
     
+  </nav>
+        </div>
+        
 
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="\/\/analytics.example.com\/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId',  2 ]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
 
 
 
 
 </body>
 </html>
-

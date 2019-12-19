@@ -1,417 +1,489 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-cn">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 中 Shell 脚本执行的三种方式 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  <title>Linux 中 Shell 脚本执行的三种方式 &middot; xdhuxc</title>
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-  
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
-  <!--<![endif]-->
 
-  <!--[if lte IE 8]>
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu-old-ie.css">
-  <![endif]-->
-  <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/side-menu.css">
-  <!--<![endif]-->
+<meta name="author" content="xdhuxc" /><meta name="description" content="在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。
+" /><meta name="keywords" content="Hugo, theme, even" />
 
-  <link rel="stylesheet" href="https://xdhuxc.github.io/css/blackburn.css">
 
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-  
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
- 
-  
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
 
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
-  
-  <script>hljs.initHighlightingOnLoad();</script>
-  
 
-  <link rel="shortcut icon" href="https://xdhuxc.github.io/img/favicon.ico" type="image/x-icon" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-shell-execute/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
-  
-  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Linux 中 Shell 脚本执行的三种方式" />
+<meta property="og:description" content="在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/linux/linux-shell-execute/" />
+<meta property="article:published_time" content="2018-08-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-07T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 中 Shell 脚本执行的三种方式">
+<meta itemprop="description" content="在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。">
+<meta itemprop="datePublished" content="2018-08-13T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1335">
+
+
+
+<meta itemprop="keywords" content="Linux,Shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 中 Shell 脚本执行的三种方式"/>
+<meta name="twitter:description" content="在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
 
 </head>
-
-
 <body>
-<div id="layout">
-
-  
-<a href="#menu" id="menuLink" class="menu-link">
-  
-  <span></span>
-</a>
-<div id="menu">
-
-  
-  <a class="pure-menu-heading brand" href="https://xdhuxc.github.io/">xdhuxc</a>
-
-
-  <div class="pure-menu">
-    <ul class="pure-menu-list">
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/"><i class='fa fa-home fa-fw'></i>主页</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/post/"><i class='fa fa-list fa-fw'></i>博客</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/about/"><i class='fa fa-user fa-fw'></i>关于</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://xdhuxc.github.io/contact/"><i class='fa fa-phone fa-fw'></i>联系作者</a>
-      
-        </li>
-      
-    </ul>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
   </div>
-
-  <div class="pure-menu social">
-  <ul class="pure-menu-list">
-
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://github.com/xdhuxc" rel="me" target="_blank"><i class="fa fa-github-square fa-fw"></i>GitHub</a>
-    </li>
-    
-
-    
-
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
   </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
 </div>
 
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
 
-  <div>
-  <div class="small-print">
-    <small>&copy; 2019. xdhuxc 版权所有。</small>
-  </div>
-  <div class="small-print">
-
-  </div>
-  <div class="small-print">
-    <small id="busuanzi_container_site_pv" style='display:none'> 访问量 <span id="busuanzi_value_site_pv"></span> 次</small>
-    <br>
-    <small id="busuanzi_container_site_uv" style='display:none'> 访客数 <span id="busuanzi_value_site_uv"></span> 人次 </small>
-    <br>
-    <small>构建&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
-    <br>
-    <small>主题&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
-  </div>
-</div>
-
-</div>
-
-<div id="main">
-
-
-<div class="header">
-  <h1>Linux 中 Shell 脚本执行的三种方式</h1>
-  <h2></h2>
-  <div>
-    <font style="font-family: 'STKaiti';">
-      <span>创建于 2018-08-13</span> |
-      <span>修改于 2018-09-07</span> |
-      <span>总字数 1270</span> |
-      <span>阅读时长 3 分钟</span> |
-      <span id="busuanzi_container_page_pv"> 阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
-    </font>
-  </div>
-</div>
-<div class="content">
-
-  <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>2018-08-13</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/linux">Linux</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://xdhuxc.github.io/tags/shell">Shell</a>
-    
+    <header class="post-header">
+      <h1 class="post-title">Linux 中 Shell 脚本执行的三种方式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-13 </span>
+        <div class="post-category">
+            <a href="/categories/linux/"> Linux </a>
+            <a href="/categories/shell/"> Shell </a>
+            </div>
+          <span class="more-meta"> 约 1335 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
-  
-  
-
 </div>
-
-
-  <p>在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。</p>
-
+    <div class="post-content">
+      <p>在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。</p>
 <p>在 Linux 系统中，Shell 脚本的执行方式通常有如下三种：</p>
-
-<h4 id="通过解释器-bash-或-sh-执行">通过解释器 <code>bash</code> 或 <code>sh</code> 执行</h4>
-
+<h4 id="-bash--sh-">通过解释器 <code>bash</code> 或 <code>sh</code> 执行</h4>
 <p>通过解释器时的命令格式为：</p>
-
-<pre><code>bash shell-script-name  # 通过 bash 解释器来执行 shell 脚本。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">bash shell-script-name  # 通过 bash 解释器来执行 shell 脚本。
 或
 sh shell-script-name    # 通过 sh 解释器来执行 shell 脚本。
-</code></pre>
-
-<p>当脚本文件本身没有可执行权限（即文件权限属性 <code>x</code> 位为：“-”）时经常使用的方式；或者脚本文件开头没有指定解释器时，需要使用这种方法。使用起来比较方便，操作时节省了为文件添加执行权限的步骤。当然，也可以选择其他类型的解释器，比如ksh，csh，zsh等。</p>
-
+</code></pre></td></tr></table>
+</div>
+</div><p>当脚本文件本身没有可执行权限（即文件权限属性 <code>x</code> 位为：“-”）时经常使用的方式；或者脚本文件开头没有指定解释器时，需要使用这种方法。使用起来比较方便，操作时节省了为文件添加执行权限的步骤。当然，也可以选择其他类型的解释器，比如ksh，csh，zsh等。</p>
 <p>（1）创建文件abc.sh</p>
-
-<pre><code>[root@xdhuxc ~]# touch abc.sh
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# touch abc.sh
 [root@xdhuxc ~]# ls
 abc.sh
 [root@xdhuxc ~]#
-</code></pre>
-
-<p>（2）写入要执行的命令：</p>
-
-<pre><code>[root@xdhuxc ~]# cat &gt;&gt; abc.sh &lt;&lt; EOF           # 向 abc.sh 中追加内容。
-&gt; #!/usr/bin/env bash
-&gt; echo &quot;Hello Shell.&quot;
+</code></pre></td></tr></table>
+</div>
+</div><p>（2）写入要执行的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># cat &gt;&gt; abc.sh &lt;&lt; EOF           # 向 abc.sh 中追加内容。</span>
+&gt; <span class="c1">#!/usr/bin/env bash</span>
+&gt; <span class="nb">echo</span> <span class="s2">&#34;Hello Shell.&#34;</span>
 &gt; EOF
-[root@xdhuxc ~]# cat abc.sh                     # 显示 abc.sh 文件中的内容。
-#!/usr/bin/env bash
-echo &quot;Hello Shell.&quot;
-[root@xdhuxc ~]# ll
-total 8
--rw-r--r-- 1 root root  40 Jun  3 10:12 abc.sh  # abc.sh 没有可执行权限。
-</code></pre>
-
-<p>（3）执行该脚本</p>
-
-<pre><code>[root@xdhuxc ~]# bash abc.sh
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># cat abc.sh                     # 显示 abc.sh 文件中的内容。</span>
+<span class="c1">#!/usr/bin/env bash</span>
+<span class="nb">echo</span> <span class="s2">&#34;Hello Shell.&#34;</span>
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># ll</span>
+total <span class="m">8</span>
+-rw-r--r-- <span class="m">1</span> root root  <span class="m">40</span> Jun  <span class="m">3</span> 10:12 abc.sh  <span class="c1"># abc.sh 没有可执行权限。</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>（3）执行该脚本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# bash abc.sh
 Hello Shell.
 [root@xdhuxc ~]# sh abc.sh
 Hello Shell.
-</code></pre>
-
-<p>可以看出，命令已经成功执行。</p>
-
-<h4 id="指定路径执行">指定路径执行</h4>
-
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看出，命令已经成功执行。</p>
+<h4 id="heading">指定路径执行</h4>
 <p>指定路径执行 shell 脚本时的命令格式如下：</p>
-
-<pre><code>absolute-path/shell-script-name  # 通过指定绝对路径来执行 shell 脚本。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">absolute-path/shell-script-name  # 通过指定绝对路径来执行 shell 脚本。
 或
 ./shell-script-name              # 通过指定相对路径来执行 shell 脚本，根据当前路径指定要执行的脚本的路径。
-</code></pre>
-
-<p>在当前路径下执行脚本，需要脚本有执行权限，将脚本文件的的权限改为可执行（即文件权限属性 <code>x</code> 位为：“x”），使用的命令为：<code>chmod +x shell-script-name</code>，然后就可以通过绝对路径或者相对路径来执行脚本了。</p>
-
+</code></pre></td></tr></table>
+</div>
+</div><p>在当前路径下执行脚本，需要脚本有执行权限，将脚本文件的的权限改为可执行（即文件权限属性 <code>x</code> 位为：“x”），使用的命令为：<code>chmod +x shell-script-name</code>，然后就可以通过绝对路径或者相对路径来执行脚本了。</p>
 <p>（1）给 <code>abc.sh</code> 添加执行权限</p>
-
-<pre><code>[root@xdhuxc ~]# chmod +x abc.sh                # 为 abc.sh 添加执行权限。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# chmod +x abc.sh                # 为 abc.sh 添加执行权限。
 [root@xdhuxc ~]# ll
 total 8
 -rwxr-xr-x 1 root root  40 Jun  3 10:12 abc.sh  # abc.sh 已经有了可执行权限。
-</code></pre>
-
-<p>（2）以绝对路径方式执行 abc.sh</p>
-
-<pre><code>[root@xdhuxc ~]# pwd
+</code></pre></td></tr></table>
+</div>
+</div><p>（2）以绝对路径方式执行 abc.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# pwd
 /root
 [root@xdhuxc ~]# ls
 abc.sh
 [root@xdhuxc ~]# /root/abc.sh
 Hello Shell.
-</code></pre>
-
-<p>（3）以相对路径方式执行 abc.sh</p>
-
-<pre><code>[root@xdhuxc ~]# ls
+</code></pre></td></tr></table>
+</div>
+</div><p>（3）以相对路径方式执行 abc.sh</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# ls
 abc.sh
 [root@xdhuxc ~]# ./abc.sh
 Hello Shell.
-</code></pre>
-
-<p>可以看出，两种方式都能正确执行脚本。在实际脚本的编写过程中，一般都是使用相对路径来执行脚本，这样写成的脚本作为一个整体的程序，可以复制到其他目录或者机器上直接运行，而不必担心脚本内部调用的路径问题。因此，一般要先给脚本添加执行权限，然后使用相对路径的方式来执行。</p>
-
-<h4 id="source-或者-执行脚本">source 或者 &ldquo;.&rdquo; 执行脚本</h4>
-
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看出，两种方式都能正确执行脚本。在实际脚本的编写过程中，一般都是使用相对路径来执行脚本，这样写成的脚本作为一个整体的程序，可以复制到其他目录或者机器上直接运行，而不必担心脚本内部调用的路径问题。因此，一般要先给脚本添加执行权限，然后使用相对路径的方式来执行。</p>
+<h4 id="source---">source 或者 &ldquo;.&rdquo; 执行脚本</h4>
 <p>source 或者 &ldquo;.&rdquo; 执行 shell 脚本时的命令格式为：</p>
-
-<pre><code>source shell-script-name
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">source shell-script-name
 或
 . shell-script-name
-</code></pre>
-
-<p>source 或者 “.” 命令的功能是：读入shell脚本并执行脚本，即在当前 shell 中执行 source 或 “.”加载并执行相关脚本文件中的命令及语句。</p>
-
+</code></pre></td></tr></table>
+</div>
+</div><p>source 或者 “.” 命令的功能是：读入shell脚本并执行脚本，即在当前 shell 中执行 source 或 “.”加载并执行相关脚本文件中的命令及语句。</p>
 <p>（1）使用 source 和 “.” 命令执行 abc.sh</p>
-
-<pre><code>[root@xdhuxc ~]# ls
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# ls
 abc.sh
 [root@xdhuxc ~]# . abc.sh            # 以 “.” 命令方式执行 abc.sh。
 Hello Shell.
 [root@xdhuxc ~]# source abc.sh       # 以 source 方式执行 abc.sh。
 Hello Shell.
 [root@xdhuxc ~]#
-</code></pre>
-
-<p>这种方式是在当前 shell 中加载并执行脚本中的命令及语句，而不是产生一个子 shell 来执行脚本文件中的命令，这是与其他几种方式最大的不同。因此，在脚本中定义的变量，在终端中可以直接使用。</p>
-
-<pre><code>[root@xdhuxc ~]# ls
+</code></pre></td></tr></table>
+</div>
+</div><p>这种方式是在当前 shell 中加载并执行脚本中的命令及语句，而不是产生一个子 shell 来执行脚本文件中的命令，这是与其他几种方式最大的不同。因此，在脚本中定义的变量，在终端中可以直接使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># ls</span>
 abc.sh
-[root@xdhuxc ~]# echo &quot;password=123&quot; &gt;&gt; abc.sh  # 向 abc.sh 中追加字符串 password=123。
-[root@xdhuxc ~]# cat abc.sh                     # 查看 abc.sh 文件的内容。
-#!/usr/bin/env bash
-echo &quot;Hello Shell.&quot;
-password=123
-[root@xdhuxc ~]# source abc.sh                  # 以 source 方式执行 abc.sh。
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># echo &#34;password=123&#34; &gt;&gt; abc.sh  # 向 abc.sh 中追加字符串 password=123。</span>
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># cat abc.sh                     # 查看 abc.sh 文件的内容。</span>
+<span class="c1">#!/usr/bin/env bash</span>
+<span class="nb">echo</span> <span class="s2">&#34;Hello Shell.&#34;</span>
+<span class="nv">password</span><span class="o">=</span><span class="m">123</span>
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># source abc.sh                  # 以 source 方式执行 abc.sh。</span>
 Hello Shell.
-[root@xdhuxc ~]# echo ${password}               # 在终端输出 abc.sh 中定义的变量。
-123
-</code></pre>
-
-<p>前两种方式是产生了一个子进程 shell 来执行脚本，因此，脚本中的变量在终端中是获取不到的，因为终端中的操作还在父 shell 中。</p>
-
-<pre><code>[root@xdhuxc ~]# echo &quot;username=root&quot; &gt;&gt; abc.sh
+<span class="o">[</span>root@xdhuxc ~<span class="o">]</span><span class="c1"># echo ${password}               # 在终端输出 abc.sh 中定义的变量。</span>
+<span class="m">123</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>前两种方式是产生了一个子进程 shell 来执行脚本，因此，脚本中的变量在终端中是获取不到的，因为终端中的操作还在父 shell 中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# echo &#34;username=root&#34; &gt;&gt; abc.sh
 [root@xdhuxc ~]# ./abc.sh
 Hello Shell.
 [root@xdhuxc ~]# echo ${username}
 
 [root@xdhuxc ~]#
-</code></pre>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到，获取不到 username 的值，因为以相对路径执行脚本是在子 shell 进程中的，而获取  username 值的命令是在父 shell 中执行的。</p>
+    </div>
 
-<p>可以看到，获取不到 username 的值，因为以相对路径执行脚本是在子 shell 进程中的，而获取  username 值的命令是在父 shell 中执行的。</p>
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-09-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/linux/">Linux</a>
+          <a href="/tags/shell/">Shell</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/kubernetes/kubernetes-common-command/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Kubernetes 常用命令总结</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/storage/mysql/mysql-common-command/">
+            <span class="next-text nav-default">MySQL 常用命令</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
 
   
 
   
-<div class="prev-next-post pure-g">
-  <div class="pure-u-1-24" style="text-align: left;">
-    
-    <a href="https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/"><i class="fa fa-chevron-left"></i></a>
-    
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="prev">
-      <a href="https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/">MySQL 常用命令</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-2-24">
-    &nbsp;
-  </div>
-  <div class="pure-u-10-24">
-    
-    <nav class="next">
-      <a href="https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/">Kubernetes 常用命令总结</a>
-    </nav>
-    
-  </div>
-  <div class="pure-u-1-24" style="text-align: right;">
-    
-    <a href="https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/"><i class="fa fa-chevron-right"></i></a>
-    
-  </div>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
 
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
 
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
 </div>
+    </footer>
 
-</div>
-</div>
-<script src="https://xdhuxc.github.io/js/ui.js"></script>
-<script src="https://xdhuxc.github.io/js/menus.js"></script>
-
-
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-        if (window.location.hostname === "localhost") {
-            return;
-        }
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?ad57771d1b8d25cbd18d12f67bc32135";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-    
-<script>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
   
-  if (window.location.hostname != "localhost") {
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
 
-    ga('create', 'UA-139962821-1', 'auto');
-    ga('send', 'pageview');
-  }
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-    
 
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="\/\/analytics.example.com\/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId',  2 ]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//analytics.example.com/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
 
 
 
 
 </body>
 </html>
-

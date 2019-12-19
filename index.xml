@@ -5,18 +5,28 @@
     <link>https://xdhuxc.github.io/</link>
     <description>Recent content on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
     <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>关于</title>
+      <link>https://xdhuxc.github.io/about/</link>
+      <pubDate>Sun, 20 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/about/</guid>
+      <description>此网站用于展示技术博客和个人文章！</description>
+    </item>
+    
+    <item>
       <title>DNS 学习笔记（一）</title>
-      <link>https://xdhuxc.github.io/post/common/common-dns/</link>
+      <link>https://xdhuxc.github.io/unfinished/common-dns/</link>
       <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/common/common-dns/</guid>
+      <guid>https://xdhuxc.github.io/unfinished/common-dns/</guid>
       <description>&lt;p&gt;本篇博客记录下 DNS 的知识点。&lt;/p&gt;</description>
     </item>
     
@@ -134,7 +144,7 @@
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/others/fireworks/</guid>
-      <description>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs</description>
+      <description></description>
     </item>
     
     <item>
@@ -323,7 +333,7 @@
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</guid>
-      <description>&lt;p&gt;在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在编写 &lt;code&gt;Dockerfile&lt;/code&gt; 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -450,7 +460,6 @@
       
       <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;</description>
     </item>
     
@@ -461,7 +470,6 @@
       
       <guid>https://xdhuxc.github.io/post/others/github_hugo_2/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
     </item>
     
@@ -472,17 +480,7 @@
       
       <guid>https://xdhuxc.github.io/post/others/little_tips/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>https://xdhuxc.github.io/about/</link>
-      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/about/</guid>
-      <description>此网站用于展示技术博客和个人文章！</description>
     </item>
     
     <item>
@@ -502,7 +500,6 @@
       
       <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-three/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇文章是对最近社会讨论的 996.icu 问题的扩展，如果该问题继续被讨论下去，可能会涉及到这些问题。&lt;/p&gt;</description>
     </item>
     
@@ -540,9 +537,15 @@
       
       <guid>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</guid>
       <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -668,16 +671,7 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible-common-model/</guid>
-      <description>模块相关命令 （1）列出 ansible 支持的模块 ansible-doc -l （2）查看该模块的帮助信息 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts 文件</description>
-    </item>
-    
-    <item>
-      <title>联系</title>
-      <link>https://xdhuxc.github.io/contact/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/contact/</guid>
-      <description>姓名 电子邮箱 城市 提交</description>
+      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
     </item>
     
     <item>
@@ -686,7 +680,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/unfinished/go-vue-cors/</guid>
-      <description>Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210528534&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The value of the &#39;Access-Control-Allow-Origin&#39; header in the response must not be the wildcard &#39;*&#39; when the request&#39;s credentials mode is &#39;include&#39;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.  Access to XMLHttpRequest at &#39;http://localhost:8088/echo/hello/info?t=1559210155487&#39; from origin &#39;http://localhost:9528&#39; has been blocked by CORS policy: The &#39;Access-Control-Allow-Origin&#39; header contains the invalid value &#39;127.</description>
+      <description>1  Access to XMLHttpRequest at &amp;#39;http://localhost:8088/echo/hello/info?t=1559210528534&amp;#39; from origin &amp;#39;http://localhost:9528&amp;#39; has been blocked by CORS policy: The value of the &amp;#39;Access-Control-Allow-Origin&amp;#39; header in the response must not be the wildcard &amp;#39;*&amp;#39; when the request&amp;#39;s credentials mode is &amp;#39;include&amp;#39;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.   1  Access to XMLHttpRequest at &amp;#39;http://localhost:8088/echo/hello/info?t=1559210155487&amp;#39; from origin &amp;#39;http://localhost:9528&amp;#39; has been blocked by CORS policy: The &amp;#39;Access-Control-Allow-Origin&amp;#39; header contains the invalid value &amp;#39;127.</description>
     </item>
     
     <item>
@@ -697,7 +691,7 @@
       <guid>https://xdhuxc.github.io/unfinished/mermaid/</guid>
       <description>mermaid 简介 mermaid，一个简单的类似于 markdown 的脚本语言，可以用类似于 markdown 的方式从文本中生成图表和流程图。
 mermaid 使用 1、安装 mermaid，使用如下命令安装 mermaid
- 参考资料 https://mermaidjs.github.io/
+1    参考资料 https://mermaidjs.github.io/
 https://github.com/knsv/mermaid、</description>
     </item>
     
@@ -708,7 +702,7 @@ https://github.com/knsv/mermaid、</description>
       
       <guid>https://xdhuxc.github.io/unfinished/nodejs_yarn/</guid>
       <description>yarn 简介 yarn 使用 1、安装 yarn，在 Mac 上，使用如下命令安装 yarn：
-brew install yarn  其他平台的安装，可参考 官方文档
+1  brew install yarn   其他平台的安装，可参考 官方文档
 参考资料 https://yarnpkg.com/en/docs/install
 https://segmentfault.com/a/1190000007189426</description>
     </item>
@@ -719,8 +713,7 @@ https://segmentfault.com/a/1190000007189426</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/unfinished/python_logging_basic/</guid>
-      <description>###
-import logging as log log.basicConfig(level=log.INFO, filename=&#39;dingtalk_callback.log&#39;, filemode=&#39;a&#39;, datefmt=&#39;%Y/%m/%d %H:%M:%S&#39;, format=&#39;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&#39;)  参考资料 https://cuiqingcai.com/6080.html</description>
+      <description>1 2 3 4 5 6  import logging as log log.basicConfig(level=log.INFO, filename=&amp;#39;dingtalk_callback.log&amp;#39;, filemode=&amp;#39;a&amp;#39;, datefmt=&amp;#39;%Y/%m/%d %H:%M:%S&amp;#39;, format=&amp;#39;%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s&amp;#39;)   参考资料 https://cuiqingcai.com/6080.html</description>
     </item>
     
     <item>

@@ -5,7 +5,8 @@
     <link>https://xdhuxc.github.io/tags/</link>
     <description>Recent content in Tags on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
     <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -260,15 +261,6 @@
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dockerfile</title>
-      <link>https://xdhuxc.github.io/tags/dockerfile/</link>
-      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/tags/dockerfile/</guid>
       <description></description>
     </item>
     

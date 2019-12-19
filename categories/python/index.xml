@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on xdhuxc</title>
+    <link>https://xdhuxc.github.io/categories/python/</link>
+    <description>Recent content in Python on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</guid>
+      <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中经常遇到的问题及其可能的解决方法，记录下来以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 常见的坑及其解决方法</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</guid>
+      <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python virtualenv 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</guid>
+      <description>&lt;p&gt;在 Python 开发时，我们经常需要用到虚拟环境，为各个不同的工程提供指定的运行时环境，提供其需要的隔离的依赖包。使用 virtualenvwrapper 可以很方便地管理不同的虚拟环境。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

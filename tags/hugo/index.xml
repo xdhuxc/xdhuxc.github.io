@@ -5,7 +5,8 @@
     <link>https://xdhuxc.github.io/tags/hugo/</link>
     <description>Recent content in Hugo on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>&amp;copy; 2019. xdhuxc 版权所有。</copyright>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
     <lastBuildDate>Tue, 14 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +19,6 @@
       
       <guid>https://xdhuxc.github.io/post/others/github_hugo_2/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
-
 &lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
     </item>
     
