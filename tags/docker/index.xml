@@ -14,10 +14,10 @@
     
     <item>
       <title>Docker 合并多条 COPY 命令</title>
-      <link>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</link>
+      <link>https://xdhuxc.github.io/post/docker/docker-copy-file-or-folder-one-command/</link>
       <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</guid>
+      <guid>https://xdhuxc.github.io/post/docker/docker-copy-file-or-folder-one-command/</guid>
       <description>&lt;p&gt;在编写 &lt;code&gt;Dockerfile&lt;/code&gt; 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
     </item>
     
@@ -28,6 +28,24 @@
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
       <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker 常用命令</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-common-command/</link>
+      <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Git 使用命令总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-practical-command/</link>
+      <pubDate>Sun, 18 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-practical-command/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
     </item>
     
   </channel>
