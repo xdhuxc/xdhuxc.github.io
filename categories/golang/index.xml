@@ -7,64 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>使用 golang 操作 excel 表格</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-excel/</link>
-      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-excel/</guid>
-      <description>&lt;p&gt;使用 golang 操作 excel 表格，写了些示例代码，封装了几个常用的函数，特此记录，以备后查。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Golang flag 包读取参数怪事</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-args/</link>
-      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-args/</guid>
-      <description>&lt;p&gt;使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的，这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/</link>
-      <pubDate>Thu, 26 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/</guid>
-      <description>&lt;p&gt;golang 中的所有字符使用 UTF-8 编码，当源文件中包含中文，编码是 GB2312 或 GBK 时，就可以在输出中产生乱码。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Go glog 日志包的使用</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-glog/</link>
-      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-glog/</guid>
-      <description>&lt;p&gt;本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Go JSON 序列化和反序列化</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</guid>
-      <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>使用 GORM 操作 MySQL 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</link>
-      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</guid>
-      <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>WebSocket 的使用</title>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Fri, 16 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sqlite 基本使用</title>
+      <link>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</guid>
+      <description>&lt;p&gt;本篇博客记录了 sqlite 的基本使用方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 常用命令</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</link>
+      <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些 MySQL 常用命令，方便查找。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MongoDB 数据库初步使用</title>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</guid>
+      <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。 配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外</description>
+    </item>
+    
+    <item>
+      <title>在 CentOS 7 上安装 MongoDB 数据库</title>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</guid>
+      <description>MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。 MongoDB 是一个介于关系数据库和非关系数据库</description>
+    </item>
+    
+    <item>
+      <title>Redis 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 redis 的过程中出现的问题及解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 Docker 容器方式部署 Redis</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 概述</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-summary/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-summary/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

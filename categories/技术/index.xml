@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>Vue Element-UI 开发注意事项</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-develope-standard/</link>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-develope-standard/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 Vue 和 Element-UI 进行开发时需要注意的一些事项。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>golang 操作单点 Redis 代码示例</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-redis/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
@@ -49,12 +58,111 @@
     </item>
     
     <item>
+      <title>使用 golang 操作 excel 表格</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-excel/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-excel/</guid>
+      <description>&lt;p&gt;使用 golang 操作 excel 表格，写了些示例代码，封装了几个常用的函数，特此记录，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 常用代码</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/</link>
+      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-node-npm/</guid>
+      <description>&lt;p&gt;记录下 npm 和 node 的升级方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 Grafana 监控 Clickhouse</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</guid>
+      <description>&lt;p&gt;公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Golang flag 包读取参数怪事</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-args/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-args/</guid>
+      <description>&lt;p&gt;使用 golang 的 flag 包读取命令行参数，然而，奇怪的事情发生了，读取到的 redis 密码是错误的，这很奇怪，本地验证 redis 密码没有问题，但是代码中就是认证失败，于是研究了一下，特此记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/</link>
+      <pubDate>Thu, 26 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/</guid>
+      <description>&lt;p&gt;golang 中的所有字符使用 UTF-8 编码，当源文件中包含中文，编码是 GB2312 或 GBK 时，就可以在输出中产生乱码。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</guid>
+      <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中经常遇到的问题及其可能的解决方法，记录下来以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Happy 颖</title>
+      <link>https://xdhuxc.github.io/post/others/fireworks/</link>
+      <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/others/fireworks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Consul 的基本使用</title>
+      <link>https://xdhuxc.github.io/post/storage/consul/consul-simple-use/</link>
+      <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/consul/consul-simple-use/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sqlite 基本使用</title>
+      <link>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</guid>
+      <description>&lt;p&gt;本篇博客记录了 sqlite 的基本使用方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go glog 日志包的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-glog/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-glog/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Go Set 的使用</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-set/</link>
       <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/programming/golang/golang-set/</guid>
       <description>&lt;p&gt;本篇博客记录下在 golang 中进行集合操作的方式，在一些项目中可能会用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vim 常用命令及技巧</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-vim/</link>
+      <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-vim/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Vim 的常用命令及技巧，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,12 +175,165 @@
     </item>
     
     <item>
+      <title>Vue 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go JSON 序列化和反序列化</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-json-serialize/</guid>
+      <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue 组件封装</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-component/</link>
+      <pubDate>Tue, 30 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-component/</guid>
+      <description>&lt;p&gt;本部分内容记录下 Vue 中组件封装的使用方法，可以使用一些组件，实现代码和逻辑抽象。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 常见的坑及其解决方法</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</link>
+      <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</guid>
+      <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue 开发常用代码</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-common-code-example/</link>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-common-code-example/</guid>
+      <description>&lt;p&gt;在使用 Vue 和 Element-UI 进行开发时的常用代码，方便后续使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 常用代码</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-common-code-example/</link>
+      <pubDate>Tue, 23 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-common-code-example/</guid>
+      <description>&lt;p&gt;JavaScript 开发时的常用代码，方便自己查找。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 中的数组遍历方式</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript_array_traverse/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_array_traverse/</guid>
+      <description>&lt;p&gt;JavaScript 中数组遍历的几种方式，都是一般的方法，但是在遍历数组的同时删除元素的方法需要稍微注意下。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>消息队列（一）</title>
+      <link>https://xdhuxc.github.io/post/message/message_queue/</link>
+      <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/message/message_queue/</guid>
+      <description>&lt;p&gt;本部分内容为学习消息队列所做的笔记。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>常用快捷键</title>
+      <link>https://xdhuxc.github.io/post/others/shortcut_key/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/others/shortcut_key/</guid>
+      <description>&lt;p&gt;本部分内容记录了一些常用的快捷键，便于查询使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序设计（一）</title>
+      <link>https://xdhuxc.github.io/post/programming/programming-design-one/</link>
+      <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/programming-design-one/</guid>
+      <description>&lt;p&gt;本篇博客记录一些在软件开发过程中遇到的问题及思考，持续更新。。。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python virtualenv 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</guid>
+      <description>&lt;p&gt;在 Python 开发时，我们经常需要用到虚拟环境，为各个不同的工程提供指定的运行时环境，提供其需要的隔离的依赖包。使用 virtualenvwrapper 可以很方便地管理不同的虚拟环境。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker 合并多条 COPY 命令</title>
+      <link>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker_copy_file_or_folder_one_command/</guid>
+      <description>&lt;p&gt;在编写 &lt;code&gt;Dockerfile&lt;/code&gt; 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Git 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/tools/git/git-questions-and-solutions/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/git/git-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/tools/git/git-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录一些 git 使用过程中常见的问题及其解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GitHub 上 fork 项目后同步原项目</title>
+      <link>https://xdhuxc.github.io/post/tools/git/github-sync-master-branch/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/git/github-sync-master-branch/</guid>
+      <description>&lt;p&gt;在 GitHub 上 fork 其他项目后，过一段时间后，自己账户下的项目就会和原项目主分支差异比较大，提交 Pull Requests 时就会产生冲突，此时就需要和主分支同步代码。操作如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Mac 功能指南</title>
+      <link>https://xdhuxc.github.io/post/others/mac-tips/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/others/mac-tips/</guid>
+      <description>&lt;p&gt;本篇博客记录一些 Mac 下常用的操作或功能，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 GORM 操作 MySQL 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</link>
+      <pubDate>Tue, 11 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>配置拉取工具 confd 的使用及说明</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-confd/</link>
+      <pubDate>Wed, 05 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-confd/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WebSocket 的使用</title>
+      <link>https://xdhuxc.github.io/unfinished/vue-go-websocket/</link>
+      <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/vue-go-websocket/</guid>
+      <description>&lt;p&gt;最近项目中使用到了 WebSocket，&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -94,12 +355,78 @@
     </item>
     
     <item>
+      <title>JavaScript 中的真值和假值问题</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript-true-false/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript-true-false/</guid>
+      <description>&lt;p&gt;JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue &#43; Element-UI 表单校验功能的总结</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-element-ui-verify/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-element-ui-verify/</guid>
+      <description>&lt;p&gt;使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>记一次 HTTP PUT/POST 请求 406 错误</title>
+      <link>https://xdhuxc.github.io/post/programming/web/http-406-not-acceptable/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/web/http-406-not-acceptable/</guid>
+      <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue 集成 CodeMirror</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-codemirror/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-codemirror/</guid>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Go Template 的使用</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/programming/golang/golang-template/</guid>
       <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 中的日期和时间格式化</title>
+      <link>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</link>
+      <pubDate>Sun, 19 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/javascript/javascript_date_time/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+&lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
+      <link>https://xdhuxc.github.io/post/others/github_hugo_2/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/others/github_hugo_2/</guid>
+      <description>&lt;p&gt;摘要：&lt;/p&gt;
+&lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 Hugo 和 GitHub 搭建个人网站（一）</title>
+      <link>https://xdhuxc.github.io/post/others/github_hugo_1/</link>
+      <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/others/github_hugo_1/</guid>
+      <description>&lt;p&gt;摘要：
+　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -121,12 +448,39 @@
     </item>
     
     <item>
+      <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>
+      <link>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</guid>
+      <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 其他发行版中安装工具包</title>
       <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</guid>
       <description>&lt;p&gt;本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中 crontab 的使用</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-cronjob/</link>
+      <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-cronjob/</guid>
+      <description>&lt;p&gt;我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -139,21 +493,102 @@
     </item>
     
     <item>
+      <title>Linux 中 Shell 脚本执行的三种方式</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-shell-execute/</link>
+      <pubDate>Mon, 13 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-shell-execute/</guid>
+      <description>&lt;p&gt;在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 常用命令</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</link>
+      <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些 MySQL 常用命令，方便查找。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MongoDB 数据库初步使用</title>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/</guid>
+      <description>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。 配置文件参数修改 MongoDB 数据库的配置文件为：/etc/mongod.conf。 为了使外</description>
+    </item>
+    
+    <item>
       <title>GitLab 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/git/git-gitlab/</link>
+      <link>https://xdhuxc.github.io/post/tools/git/git-gitlab/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/git/git-gitlab/</guid>
+      <guid>https://xdhuxc.github.io/post/tools/git/git-gitlab/</guid>
       <description>&lt;p&gt;本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>在 CentOS 7 上安装 MongoDB 数据库</title>
+      <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</guid>
+      <description>MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。 MongoDB 是一个介于关系数据库和非关系数据库</description>
+    </item>
+    
+    <item>
+      <title>Redis 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录下使用 redis 的过程中出现的问题及解决。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 Docker 容器方式部署 Redis</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 概述</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-summary/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-summary/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Git 常用命令备忘录</title>
-      <link>https://xdhuxc.github.io/post/git/git-common-command/</link>
+      <link>https://xdhuxc.github.io/post/tools/git/git-common-command/</link>
       <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/git/git-common-command/</guid>
+      <guid>https://xdhuxc.github.io/post/tools/git/git-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了一些 git 使用过程中常用的命令，方便查看。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ansible 学习之简单入门</title>
+      <link>https://xdhuxc.github.io/post/devops/ansible-simple-use/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/ansible-simple-use/</guid>
+      <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个</description>
+    </item>
+    
+    <item>
+      <title>Ansible 学习之常用模块</title>
+      <link>https://xdhuxc.github.io/post/devops/ansible-common-model/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/ansible-common-model/</guid>
+      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
     </item>
     
   </channel>
