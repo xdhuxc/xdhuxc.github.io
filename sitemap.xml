@@ -79,7 +79,21 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/cli/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/s3/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -128,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
