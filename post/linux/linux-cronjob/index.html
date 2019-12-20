@@ -49,7 +49,7 @@
 <meta itemprop="description" content="我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。">
 <meta itemprop="datePublished" content="2018-09-07T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1048">
+<meta itemprop="wordCount" content="1090">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1048 字 </span>
+          <span class="more-meta"> 约 1090 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -249,7 +249,25 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">30 12 <span class="ge">* *</span> 6,0
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">30 12 <span class="ge">* *</span> 6,0 command
+</code></pre></td></tr></table>
+</div>
+</div><p>6、每隔 60 分钟执行一次</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">*/60 <span class="ge">* *</span> * * command
+</code></pre></td></tr></table>
+</div>
+</div><p>7、整点执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">0 <span class="ge">* *</span> * * command # 将在每个整点执行 command
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="heading-2">注意事项</h3>
@@ -311,7 +329,7 @@
       <nav class="post-nav">
         <a class="prev" href="/post/linux/linux-alpine_tips/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Linux 其他发行版中安装工具包</span>
+            <span class="prev-text nav-default">Linux 发行版中安装工具包</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/kubernetes/kubernetes-common-command/">
