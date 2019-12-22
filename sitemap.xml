@@ -142,13 +142,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
-    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -156,7 +149,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-five/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/human/human-world-mixed-five/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -240,7 +240,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-consciousness-two/</loc>
     <lastmod>2019-09-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -275,14 +275,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/fireworks/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/fireworks/</loc>
     <lastmod>2019-09-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-seven/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-mixed-seven/</loc>
     <lastmod>2019-09-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -366,7 +366,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-six/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-mixed-six/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -380,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-two/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-mixed-two/</loc>
     <lastmod>2019-08-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -464,7 +464,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/shortcut_key/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/shortcut_key/</loc>
     <lastmod>2019-07-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -569,7 +569,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/mac-tips/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/mac-tips/</loc>
     <lastmod>2019-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -730,14 +730,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/github_hugo_2/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/github_hugo_2/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/little_tips/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/little_tips/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -751,22 +751,43 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/others/github_hugo_1/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/github_hugo_1/</loc>
     <lastmod>2019-05-09T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-mixed-three/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-mixed-three/</loc>
     <lastmod>2019-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/human-world/human-world-preface/</loc>
+    <loc>https://xdhuxc.github.io/post/human/human-world-preface/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/kubernetes/</loc>
+    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-questions-and-solutions/</loc>
+    <lastmod>2018-11-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</loc>
+    <lastmod>2018-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -849,15 +870,8 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/kubernetes/</loc>
-    <lastmod>2018-09-07T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</loc>
-    <lastmod>2018-09-07T00:00:00+00:00</lastmod>
+    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-ingress-access/</loc>
+    <lastmod>2018-08-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -865,6 +879,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-shell-execute/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</loc>
+    <lastmod>2018-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -892,6 +913,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/tools/git/git-gitlab/</loc>
+    <lastmod>2018-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-common-operations/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -961,7 +989,49 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</loc>
+    <lastmod>2018-03-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</loc>
+    <lastmod>2017-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</loc>
+    <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-common-command/</loc>
+    <lastmod>2017-09-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-dockerfile/</loc>
+    <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/docker/docker-common-command/</loc>
+    <lastmod>2017-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-practical-command/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

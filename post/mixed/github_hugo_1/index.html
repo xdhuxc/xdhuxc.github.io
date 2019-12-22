@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基于 Hugo 和 GitHub 搭建个人网站（一） - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="摘要： 本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/mixed/github_hugo_1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="基于 Hugo 和 GitHub 搭建个人网站（一）" />
+<meta property="og:description" content="摘要：
+　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/mixed/github_hugo_1/" />
+<meta property="article:published_time" content="2019-05-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-05-09T00:00:00+00:00" />
+<meta itemprop="name" content="基于 Hugo 和 GitHub 搭建个人网站（一）">
+<meta itemprop="description" content="摘要：
+　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。">
+<meta itemprop="datePublished" content="2019-05-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3103">
+
+
+
+<meta itemprop="keywords" content="GitHub,Hugo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于 Hugo 和 GitHub 搭建个人网站（一）"/>
+<meta name="twitter:description" content="摘要：
+　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">基于 Hugo 和 GitHub 搭建个人网站（一）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 3103 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hugo-">Hugo 的安装的基本使用</a></li>
+        <li><a href="#-github-pages-">使用 GitHub Pages 托管网站</a></li>
+        <li><a href="#heading">优化</a></li>
+        <li><a href="#heading-4">参考资料</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>摘要：
+　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。</p>
+<h3 id="hugo-">Hugo 的安装的基本使用</h3>
+<p>1、准备工作，创建工作目录 <code>blog</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ mkdir blog
+wanghuans-MacBook-Pro:blog wanghuan$ pwd
+/Users/wanghuan/blog
+</code></pre></td></tr></table>
+</div>
+</div><p>2、安装 Hugo</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:blog wanghuan$ brew install hugo   # 安装 hugo
+Updating Homebrew...
+==&gt; Auto-updated Homebrew!
+Updated 1 tap (homebrew/core).
+==&gt; Updated Formulae
+allure
+
+==&gt; Downloading https://homebrew.bintray.com/bottles/hugo-0.55.5.mojave.bottle.tar.gz
+==&gt; Downloading from https://akamai.bintray.com/2c/2c88f996c36157b5e451274663b867ad4e1c3f6f04c57d1d43cdd8c631a5b209?__gda__=exp=1557368278~hmac=afe54c6d07b0ae0a78089e030533b7dae7
+<span class="gu">######################################################################## 100.0%
+</span><span class="gu"></span>==&gt; Pouring hugo-0.55.5.mojave.bottle.tar.gz
+==&gt; Caveats
+Bash completion has been installed to:
+  /usr/local/etc/bash_completion.d
+==&gt; Summary
+🍺  /usr/local/Cellar/hugo/0.55.5: 31 files, 40.7MB
+==&gt; <span class="sb">`brew cleanup`</span> has not been run in 30 days, running now...
+Removing: /Users/wanghuan/Library/Caches/Homebrew/dep--0.5.0.mojave.bottle.tar.gz... (3.2MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/gettext--0.19.8.1.high_sierra.bottle.tar.gz... (7.8MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/libunistring--0.9.10.mojave.bottle.tar.gz... (1.4MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/nginx--1.15.8.mojave.bottle.3.tar.gz... (1.2MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/openssl--1.0.2q.mojave.bottle.tar.gz... (3.7MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/pcre2--10.32.high_sierra.bottle.tar.gz... (1.8MB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/telnet--60.mojave.bottle.tar.gz... (52.5KB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/tree--1.8.0.high_sierra.bottle.tar.gz... (50.5KB)
+Removing: /Users/wanghuan/Library/Caches/Homebrew/portable-ruby-2.3.7.leopard_64.bottle.tar.gz... (12.4MB)
+Removing: /Users/wanghuan/Library/Logs/Homebrew/ucl... (64B)
+Removing: /Users/wanghuan/Library/Logs/Homebrew/upx... (64B)
+Removing: /Users/wanghuan/Library/Logs/Homebrew/nginx... (64B)
+Removing: /Users/wanghuan/Library/Logs/Homebrew/pcre... (64B)
+wanghuans-MacBook-Pro:Blog wanghuan$ hugo version   # 查看 hugo 的版本
+Hugo Static Site Generator v0.55.5/extended darwin/amd64 BuildDate: unknown
+</code></pre></td></tr></table>
+</div>
+</div><p>3、创建网站</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:blog wanghuan$ hugo new site xdhuxc
+Congratulations! Your new Hugo site is created in /Users/wanghuan/blog/xdhuxc.
+
+Just a few more steps and you&#39;re ready to go:
+
+<span class="k">1.</span> Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the &#34;hugo new theme &lt;THEMENAME&gt;&#34; command.
+<span class="k">2.</span> Perhaps you want to add some content. You can add single files
+   with &#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;.
+<span class="k">3.</span> Start the built-in live server via &#34;hugo server&#34;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+</code></pre></td></tr></table>
+</div>
+</div><p>4、安装主题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:blog wanghuan$ cd xdhuxc/themes/
+wanghuans-MacBook-Pro:themes wanghuan$ git clone https://github.com/yoshiharuyamashita/blackburn.git
+Cloning into &#39;blackburn&#39;...
+remote: Enumerating objects: 25, done.
+remote: Counting objects: 100% (25/25), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 908 (delta 14), reused 17 (delta 11), pack-reused 883
+Receiving objects: 100% (908/908), 469.15 KiB | 53.00 KiB/s, done.
+Resolving deltas: 100% (563/563), done.
+wanghuans-MacBook-Pro:xdhuxc wanghuan$ pwd
+/Users/wanghuan/blog/xdhuxc
+wanghuans-MacBook-Pro:xdhuxc wanghuan$ ls
+archetypes	config.toml	content		data		layouts		static		themes
+</code></pre></td></tr></table>
+</div>
+</div><p>目录及文件说明：</p>
+<ul>
+<li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置。</li>
+<li>content：包括网站内容，全部使用 markdown 格式。</li>
+<li>layouts：包括了网站的模板，决定内容如何呈现。</li>
+<li>static：包括了 css，js，fonts，media 等，决定网站的外观。</li>
+<li>themes：保存下载的网站主题。</li>
+<li>config.toml：网站的配置文件，包括 baseurl，title，copyright 等网站参数。</li>
+</ul>
+<p>在 <code>config.toml</code> 中加入如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">baseurl = &#34;https://xdhuxc.github.io/&#34; # Make sure to end baseurl with a &#39;/&#39;
+title = &#34;xdhuxc&#34;
+author = &#34;xdhuxc&#34;
+<span class="gh"># Shown in the side menu
+</span><span class="gh"></span>copyright = &#34;&amp;copy; 2019. xdhuxc All rights reserved.&#34;
+canonifyurls = true
+paginate = 10
+
+[indexes]
+  tag = &#34;tags&#34;
+  topic = &#34;topics&#34;
+
+[params]
+  # Shown in the home page
+  subtitle = &#34;技术 - 文章&#34;
+  brand = &#34;xdhuxc&#34;
+  googleAnalytics = &#34;Your Google Analytics tracking ID&#34;
+  disqus = &#34;Your Disqus shortname&#34;
+  # CSS name for highlight.js
+  highlightjs = &#34;androidstudio&#34;
+  highlightjs_extra_languages = [&#34;yaml&#34;]
+  dateFormat = &#34;02 Jan 2006, 15:04&#34;
+  # Include any custom CSS and/or JS files
+  # (relative to /static folder)
+  # custom_css = [&#34;css/my.css&#34;]
+  # custom_js = [&#34;js/my.js&#34;]
+
+  [params.piwikAnalytics]
+    siteid = 2
+    piwikroot = &#34;//analytics.example.com/&#34;
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = &#34;主页&#34;
+    pre = &#34;&lt;i class=&#39;fa fa-home fa-fw&#39;&gt;&lt;/i&gt;&#34;
+    weight = 1
+    identifier = &#34;home&#34;
+    url = &#34;/&#34;
+  [[menu.main]]
+    name = &#34;博客&#34;
+    pre = &#34;&lt;i class=&#39;fa fa-list fa-fw&#39;&gt;&lt;/i&gt;&#34;
+    weight = 2
+    identifier = &#34;post&#34;
+    url = &#34;/post/&#34;
+  [[menu.main]]
+    name = &#34;关于&#34;
+    pre = &#34;&lt;i class=&#39;fa fa-user fa-fw&#39;&gt;&lt;/i&gt;&#34;
+    weight = 3
+    identifier = &#34;about&#34;
+    url = &#34;/about/&#34;
+  [[menu.main]]
+    name = &#34;联系作者&#34;
+    pre = &#34;&lt;i class=&#39;fa fa-phone fa-fw&#39;&gt;&lt;/i&gt;&#34;
+    weight = 4
+    url = &#34;/contact/&#34;
+
+[social]
+  # Link your social networking accounts to the side menu
+  # by entering your username or ID.
+  # Techie
+  github = &#34;xdhuxc&#34;
+  gitlab = &#34;*&#34;
+  bitbucket = &#34;*&#34;
+  stackoverflow = &#34;*&#34;
+  serverfault = &#34;*&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：</p>
+<p><code>[social]</code> 部分的键值将渲染到 <code>layouts/partials/social.html</code> 文件中，和各种网站的域名组合起来，作为作者本人在各种网站中的主页的路径；在该文件中删除无用的网站信息，只保留作者自己有效地网站主页。</p>
+<p>将 <code>themes/blackburn</code> 目录下的 <code>static</code> 和 <code>layouts</code> 目录中的内容复制到 <code>xdhuxc</code> 目录下的同名目录中。</p>
+<p>在 <code>content/post</code> 目录中撰写 <code>markdown</code> 格式的文档，在每个 <code>.md</code> 文档的最上方加入类似如下内容，用于设置文章属性：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">+++
+title = &#34;Ansible 学习之常用模块&#34;     # 文章标题。
+linktitle = &#34;Ansible 学习之常用模块&#34;
+date = &#34;2018-05-02&#34;                # 在菜单 &#34;博客&#34; 中，文章按时间顺序排列，会自动增加时间标签，页面上默认显示n篇最新的文章。
+draft = false                      # 设置为 false 的时候会被编译为 HTML，设置为 true 则不会被编译和发表。
+description = &#34;&#34;
+tags = [                           
+    &#34;ansible&#34;,
+    &#34;DevOps&#34;,
+    &#34;IT&#34;
+]                                  # 文章的标签，可以设置多个，用逗号分隔开，Hugo 会自动在博客主页下生成标签的子 URL，通过这个 URL，可以看到所有具有该标签的文章。
+categories = [
+    &#34;ansible&#34;,
+    &#34;DevOps&#34;,
+]                                  # 文章分类。
++++
+</code></pre></td></tr></table>
+</div>
+</div><p>baseurl 的值在本地测试时无关紧要，但是当部署到 GitHub 上时，需要将其配置为 xdhuxc.github.io 这样的域名。另外，如果使用自有域名，还需要在 GitHub 上进行关联，具体方法可参考：https://help.github.com/en/articles/using-a-custom-domain-with-github-pages</p>
+<p>5、启动网站</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">hugo server --buildDrafts -w
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明：</p>
+<ul>
+<li>-w：监视文件内容的变化，如果此后修改了网站的内容，会直接显示在浏览器的页面上，不需要重新启动 hugo 进程，方便我们进行修改，但是不能监测 config.toml 文件中的参数变化。</li>
+<li>&ndash;buildDrafts：生成被标记为草稿的页面。</li>
+<li>-t hyde：使用 hyde 主题。</li>
+</ul>
+<h3 id="-github-pages-">使用 GitHub Pages 托管网站</h3>
+<p>1、在 GitHub 上创建代码仓库，托管 Hugo 的输入文件，将 blog 目录下的所有文件存储到该仓库中，在 <code>.gitignore</code> 文件中写入如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">.idea
+.DS_Store
+public/*
+</code></pre></td></tr></table>
+</div>
+</div><p>2、在 GitHub 上创建代码仓库，用于托管 public 目录，此处仓库的名称一定要用自己的用户名，例如 xdhuxc.github.io，只有这样，才会被 GitHub 当做是个人主页。</p>
+<p>3、编译 blog 工程，生成 public 目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MBP:blog wanghuan$ pwd
+/Users/wanghuan/WebstormProjects/blog
+wanghuans-MBP:blog wanghuan$ ls
+README.md       config.toml     data            layouts         resources       themes
+archetypes      content         images          public          static
+wanghuans-MBP:blog wanghuan$ hugo
+
+                   | EN  
++------------------+----+
+  Pages            | 40  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     |  8  
+  Processed images |  0  
+  Aliases          |  1  
+  Sitemaps         |  1  
+  Cleaned          |  0  
+
+Total in 98 ms
+</code></pre></td></tr></table>
+</div>
+</div><p>4、将 <code>public</code> 目录添加为子模块，与 <code>xdhuxc.github.io</code> 同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MBP:blog wanghuan$ rm -rf public/
+wanghuans-MBP:blog wanghuan$ git submodule add git@github.com:xdhuxc/xdhuxc.github.io.git public
+</code></pre></td></tr></table>
+</div>
+</div><p>5、编译并推送至仓库 xdhuxc.github.io</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MBP:blog wanghuan$ hugo
+
+                   | EN  
++------------------+----+
+  Pages            | 40  
+  Paginator pages  |  0  
+  Non-page files   |  0  
+  Static files     |  8  
+  Processed images |  0  
+  Aliases          |  1  
+  Sitemaps         |  1  
+  Cleaned          |  0  
+
+Total in 33 ms
+wanghuans-MBP:blog wanghuan$ cd public/
+wanghuans-MBP:public wanghuan$ ls
+README.md       css             index.html      js              page            sitemap.xml     topics
+contact         img             index.xml       media           post            tags
+wanghuans-MBP:public wanghuan$ git add -A
+wanghuans-MBP:public wanghuan$ git commit -m &#34;initial the xdhuxc website&#34;
+[master a3a6a28] initial the xdhuxc website
+ 49 files changed, 9972 insertions(+)
+ create mode 100644 contact/index.html
+ create mode 100644 css/blackburn.css
+ create mode 100644 css/side-menu-old-ie.css
+ create mode 100644 css/side-menu.css
+ create mode 100644 img/favicon.ico
+ create mode 100644 index.html
+ create mode 100644 index.xml
+ create mode 100644 js/menus.js
+ create mode 100644 js/ui.js
+ create mode 100644 media/disqus.png
+ create mode 100644 page/1/index.html
+ create mode 100644 post/ansible-common-model/index.html
+ create mode 100644 post/ansible-simple-use/index.html
+ create mode 100644 post/centos7-install-mongodb/index.html
+ create mode 100644 post/github_hugo/index.html
+ create mode 100644 post/index.html
+ create mode 100644 post/index.xml
+ create mode 100644 post/linux-shell-execute/index.html
+ create mode 100644 post/mongodb-simple-use/index.html
+ create mode 100644 post/springboot-jmx/index.html
+ create mode 100644 sitemap.xml
+ create mode 100644 tags/ansible/index.html
+ create mode 100644 tags/ansible/index.xml
+ create mode 100644 tags/centos7/index.html
+ create mode 100644 tags/centos7/index.xml
+ create mode 100644 tags/database/index.html
+ create mode 100644 tags/database/index.xml
+ create mode 100644 tags/devops/index.html
+ create mode 100644 tags/devops/index.xml
+ create mode 100644 tags/github/index.html
+ create mode 100644 tags/github/index.xml
+ create mode 100644 tags/hugo/index.html
+ create mode 100644 tags/hugo/index.xml
+ create mode 100644 tags/index.html
+ create mode 100644 tags/index.xml
+ create mode 100644 tags/it/index.html
+ create mode 100644 tags/it/index.xml
+ create mode 100644 tags/jmx/index.html
+ create mode 100644 tags/jmx/index.xml
+ create mode 100644 tags/linux/index.html
+ create mode 100644 tags/linux/index.xml
+ create mode 100644 tags/mongodb/index.html
+ create mode 100644 tags/mongodb/index.xml
+ create mode 100644 tags/shell/index.html
+ create mode 100644 tags/shell/index.xml
+ create mode 100644 tags/springboot/index.html
+ create mode 100644 tags/springboot/index.xml
+ create mode 100644 topics/index.html
+ create mode 100644 topics/index.xml
+wanghuans-MBP:public wanghuan$ git push origin master
+Enumerating objects: 81, done.
+Counting objects: 100% (81/81), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (68/68), done.
+Writing objects: 100% (80/80), 179.84 KiB | 396.00 KiB/s, done.
+Total 80 (delta 34), reused 0 (delta 0)
+remote: Resolving deltas: 100% (34/34), done.
+To github.com:xdhuxc/xdhuxc.github.io.git
+   07acdac..a3a6a28  master -&gt; master
+wanghuans-MBP:public wanghuan$ 
+</code></pre></td></tr></table>
+</div>
+</div><p>6、此时，访问 <code>https://xdhuxc.github.io/</code>，即可看到我们的网站。</p>
+<h3 id="heading">优化</h3>
+<h4 id="heading-1">菜单栏图标修改</h4>
+<p>我们在左侧菜单部分去除了默认含有的 Twitter，Facebook等，新加了微信和简书，但是其使用的图标却不是图片，而是使用 CSS 渲染出来的。在 <a href="https://fontawesome.com/">https://fontawesome.com/</a> 上搜索图标，找到微信的图标所对应的 CSS class，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;i class=&#34;fab fa-weixin&#34;&gt;&lt;/i&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>将其修改至 <code>layouts/partials/social.html</code> 中如下部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{ with .Site.Social.wechat }}
+    &lt;li class=&#34;pure-menu-item&#34;&gt;
+      &lt;a class=&#34;pure-menu-link&#34; href=&#34;https://github.com/{{ . }}&#34; rel=&#34;me&#34; target=&#34;_blank&#34;&gt;&lt;i class=&#34;fa fa-weixin fa-fw&#34;&gt;&lt;/i&gt;微信&lt;/a&gt;
+    &lt;/li&gt;
+{{ end }}
+</code></pre></td></tr></table>
+</div>
+</div><p>该网站上没有简书的图标，可以随便找一个图标填充之。</p>
+<h4 id="heading-2">博客的时间格式优化，</h4>
+<p>1、默认情况下，首页中博客的时间格式是这样的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">25 Oct 2018, 00:00
+</code></pre></td></tr></table>
+</div>
+</div><p>包含英文，不易为国人识别，我们可以将其改造为常用的日期格式，修改 <code>layouts/partials/post_meta.html</code> 文件中如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format . }}{{ else }}{{ .Date.Format &#34;02 Jan 2006, 15:04&#34; }}{{ end }}&lt;/time&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format &#34;2006-01-02&#34; }}{{ else }}{{ .Date.Format &#34;2006-01-02&#34; }}{{ end }}&lt;/time&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>如果需要时分秒，可以改为如下格式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;time&gt;{{ with .Site.Params.dateFormat }}{{ $.Date.Format &#34;2006-01-02 15:04:05&#34; }}{{ else }}{{ .Date.Format &#34;2006-01-02 15:04:05&#34; }}{{ end }}&lt;/time&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>2、菜单 <code>博客</code> 中的博客列表中的时间默认情况下的格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">25 Oct 2018, 00:00
+</code></pre></td></tr></table>
+</div>
+</div><p>在 config.toml 中将 <code>dateFormat</code> 的值由 <code>02 Jan 2006, 15:04</code> 修改为：<code>2006-01-02</code>，则其日期显示就变为：<code>2019-05-09</code></p>
+<p>3、如果想在 <code>博客</code> 菜单中按照月份显示自己的博客列表，可以对 <code>layouts/post/post.html</code> 进行修改，将</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{ range .Data.Pages.GroupByDate &#34;2006&#34; }}
+</code></pre></td></tr></table>
+</div>
+</div><p>改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{ range .Data.Pages.GroupByDate &#34;2006-01&#34; }}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="heading-3">自动化部署</h4>
+<p>编写脚本 <code>deploy.sh</code>（需要给脚本添加执行权限） 部署我们的网站，脚本内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>echo -e &#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;
+
+<span class="gh"># Commit changes.
+</span><span class="gh"></span>msg=&#34;change the website&#39;s domain when it compiling&#34;
+if [[ &#34;$#&#34; -eq 1 ]]; then
+    msg=&#34;$1&#34;
+fi
+
+<span class="gh"># Push Hugo content
+</span><span class="gh"></span>git add -A
+git commit -m &#34;$msg&#34;
+git push origin master
+
+
+<span class="gh"># Build the project.
+</span><span class="gh"></span>hugo # if using a theme, replace with <span class="sb">`hugo -t &lt;YOURTHEME&gt;`</span>
+
+<span class="gh"># Go To Public folder
+</span><span class="gh"></span>cd public
+<span class="gh"># Add changes to git.
+</span><span class="gh"></span>git add .
+
+
+git commit -m &#34;$msg&#34;
+
+<span class="gh"># Push source and build repos.
+</span><span class="gh"></span>git push origin master
+
+<span class="gh"># Come Back up to the Project Root
+</span><span class="gh"></span>cd ..
+</code></pre></td></tr></table>
+</div>
+</div><p>本地编写 markdown 文件完成后，执行 <code>./deploy.sh</code> 脚本即可完成部署工作。</p>
+<h3 id="heading-4">参考资料</h3>
+<p><a href="http://nanshu.wang/post/2015-01-31/">http://nanshu.wang/post/2015-01-31/</a></p>
+<p><a href="https://jimmysong.io/posts/building-github-pages-with-hugo/">https://jimmysong.io/posts/building-github-pages-with-hugo/</a></p>
+<p><a href="https://www.jianshu.com/p/e68fba58f75c">https://www.jianshu.com/p/e68fba58f75c</a></p>
+<p><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a></p>
+<p><a href="https://gohugo.io/templates/internal/#google-analytics">https://gohugo.io/templates/internal/#google-analytics</a></p>
+<p><a href="https://blog.olowolo.com/post/hugo-quick-start/">https://blog.olowolo.com/post/hugo-quick-start/</a></p>
+<p><a href="https://blog.pytool.com/language/golang/hugo/hugo/">https://blog.pytool.com/language/golang/hugo/hugo/</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/github/">GitHub</a>
+          <a href="/tags/hugo/">Hugo</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/mixed/little_tips/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">写作时实用输入小技巧</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/human/human-world-mixed-three/">
+            <span class="next-text nav-default">人间世·杂三</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

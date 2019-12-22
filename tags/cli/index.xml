@@ -18,7 +18,7 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/tools/tools-aws-s3/</guid>
-      <description>&lt;p&gt;本篇博客记录下使用 aws-cli 的用法，AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接使用了。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客记录了使用 aws-cli 来操作 S3 桶的用法，尽管 AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接复制使用了。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -21,5 +21,14 @@
       <description>&lt;p&gt;在编写 &lt;code&gt;Dockerfile&lt;/code&gt; 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Dockerfile 知识点总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-dockerfile/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
+      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

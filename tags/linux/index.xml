@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>Linux 发行版中安装工具包</title>
+      <title>在 Linux 发行版中安装工具包</title>
       <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -37,6 +37,60 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-shell-execute/</guid>
       <description>&lt;p&gt;在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用知识总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</link>
+      <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux 系统的常用知识。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用操作总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-operations/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-operations/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux 系统中的常用操作，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中 Shell 脚本示例</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</link>
+      <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-command/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常用的命令，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 实用命令总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-practical-command/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-practical-command/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
     </item>
     
   </channel>

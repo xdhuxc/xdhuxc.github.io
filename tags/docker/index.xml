@@ -31,12 +31,21 @@
     </item>
     
     <item>
+      <title>Dockerfile 知识点总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-dockerfile/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
+      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker 常用命令</title>
       <link>https://xdhuxc.github.io/post/docker/docker-common-command/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker-common-command/</guid>
-      <description>&lt;p&gt;本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>

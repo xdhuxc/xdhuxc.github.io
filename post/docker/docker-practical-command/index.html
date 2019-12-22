@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。">
 <meta itemprop="datePublished" content="2017-06-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-06-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="660">
+<meta itemprop="wordCount" content="216">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 660 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 216 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -153,164 +153,7 @@
     <div class="post-content">
       <p>本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。</p>
 <h3 id="heading">常用命令</h3>
-<p>1、在容器中运行“echo”命令，输出“hello world”</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run nginx echo &#34;hello world&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>2、交互式进入容器中 <a href="http://blog.csdn.net/alen_xiaoxin/article/details/54694051">http://blog.csdn.net/alen_xiaoxin/article/details/54694051</a></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run -i -t nginx /bin/bash
-</code></pre></td></tr></table>
-</div>
-</div><p>3、在容器中安装新的程序</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run nginx apt-get install -y wget
-</code></pre></td></tr></table>
-</div>
-</div><p>4、列出当前所有正在运行的容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps
-</code></pre></td></tr></table>
-</div>
-</div><p>5、查看容器</p>
-<p>1）查看所有的容器，包括已经停止的</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps -a
-</code></pre></td></tr></table>
-</div>
-</div><p>2）查看启动的容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps
-</code></pre></td></tr></table>
-</div>
-</div><p>3）列出最近一次启动的容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps -l（L的小写）
-</code></pre></td></tr></table>
-</div>
-</div><p>6、列出最近一次启动的容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps -l（L的小写）
-</code></pre></td></tr></table>
-</div>
-</div><p>7、保存对容器的修改</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker commit 8fd1ffefe8c7 x-nginx
-</code></pre></td></tr></table>
-</div>
-</div><p>8、删除容器</p>
-<p>1）删除所有容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rm $(docker ps -a -q)
-</code></pre></td></tr></table>
-</div>
-</div><p>2）删除单个容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rm nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>9、停止一个容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker stop nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>10、启动一个容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker start nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>11、杀死一个容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker kill nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>12、从一个容器中读取日志</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker logs -f nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>13、列出一个容器里面被改变的文件或者目录</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker diff nginx/980cfa7fa636 #list会罗列出三种事件：
-A，增加的；D，删除的；C，被改变的
-</code></pre></td></tr></table>
-</div>
-</div><p>14、显示一个运行的容器里面的进程信息</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker top nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>15、从容器里面复制文件或目录到本地的某个路径</p>
+<p>1、从容器里面复制文件或目录到本地的某个路径</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -323,25 +166,7 @@ A，增加的；D，删除的；C，被改变的
 docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 </code></pre></td></tr></table>
 </div>
-</div><p>16、重启一个正在运行的容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker restart nginx/980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>17、附加到一个运行的容器上面</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker attach 980cfa7fa636
-</code></pre></td></tr></table>
-</div>
-</div><p>18、查看容器的root用户密码</p>
+</div><p>2、查看容器的root用户密码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -350,33 +175,6 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker logs nginx/980cfa7fa636 2&gt;&amp;1 | grep &#39;^User:&#39;|tail -n1 
 # Docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了
-</code></pre></td></tr></table>
-</div>
-</div><p>19、创建一个容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker create -it nginx:1.9.1
-</code></pre></td></tr></table>
-</div>
-</div><p>20、导出容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker export 980cfa7fa636/nginx &gt; ***.tar
-</code></pre></td></tr></table>
-</div>
-</div><p>21、导入容器</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker import ***.tat xdhuxc/nginx:1.91
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="heading-1">常用组合命令</h3>
@@ -421,9 +219,9 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
           <a href="/tags/docker/">Docker</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/docker/docker-common-command/">
+        <a class="prev" href="/post/linux/linux-practical-command/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Docker 常用命令</span>
+            <span class="prev-text nav-default">Linux 实用命令总结</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         

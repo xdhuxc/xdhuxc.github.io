@@ -36,7 +36,7 @@
       <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/tools/tools-aws-s3/</guid>
-      <description>&lt;p&gt;本篇博客记录下使用 aws-cli 的用法，AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接使用了。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客记录了使用 aws-cli 来操作 S3 桶的用法，尽管 AWS 有非常详尽的文档，但我们记录下来后，下次就可以直接复制使用了。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -68,10 +68,10 @@
     
     <item>
       <title>人间世·杂五</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-mixed-five/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-mixed-five/</link>
       <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-five/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-mixed-five/</guid>
       <description></description>
     </item>
     
@@ -113,10 +113,10 @@
     
     <item>
       <title>人间世·意识·二</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-consciousness-two/</link>
       <pubDate>Sat, 28 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-consciousness-two/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-consciousness-two/</guid>
       <description></description>
     </item>
     
@@ -140,19 +140,19 @@
     
     <item>
       <title>Happy 颖</title>
-      <link>https://xdhuxc.github.io/post/others/fireworks/</link>
+      <link>https://xdhuxc.github.io/post/mixed/fireworks/</link>
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/fireworks/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/fireworks/</guid>
       <description>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs</description>
     </item>
     
     <item>
       <title>人间世·杂七</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-mixed-seven/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-mixed-seven/</link>
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-seven/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-mixed-seven/</guid>
       <description></description>
     </item>
     
@@ -203,10 +203,10 @@
     
     <item>
       <title>人间世·杂六</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-mixed-six/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-mixed-six/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-six/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-mixed-six/</guid>
       <description></description>
     </item>
     
@@ -221,10 +221,10 @@
     
     <item>
       <title>人间世·杂二</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-mixed-two/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-mixed-two/</link>
       <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-two/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-mixed-two/</guid>
       <description></description>
     </item>
     
@@ -302,10 +302,10 @@
     
     <item>
       <title>常用快捷键</title>
-      <link>https://xdhuxc.github.io/post/others/shortcut_key/</link>
+      <link>https://xdhuxc.github.io/post/mixed/shortcut_key/</link>
       <pubDate>Tue, 09 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/shortcut_key/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/shortcut_key/</guid>
       <description>&lt;p&gt;本部分内容记录了一些常用的快捷键，便于查询使用。&lt;/p&gt;</description>
     </item>
     
@@ -356,10 +356,10 @@
     
     <item>
       <title>Mac 功能指南</title>
-      <link>https://xdhuxc.github.io/post/others/mac-tips/</link>
+      <link>https://xdhuxc.github.io/post/mixed/mac-tips/</link>
       <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/mac-tips/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/mac-tips/</guid>
       <description>&lt;p&gt;本篇博客记录一些 Mac 下常用的操作或功能，以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -465,51 +465,68 @@
     
     <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
-      <link>https://xdhuxc.github.io/post/others/github_hugo_2/</link>
+      <link>https://xdhuxc.github.io/post/mixed/github_hugo_2/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/github_hugo_2/</guid>
-      <description>&lt;p&gt;摘要：&lt;/p&gt;
-&lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
+      <guid>https://xdhuxc.github.io/post/mixed/github_hugo_2/</guid>
+      <description>&lt;p&gt;　　本篇博客主要介绍了使用 Hugo 和 GitHub搭建个人网站的一些高级功能，包括在云端存储图片、评论功能、网站统计、阅读数量统计、文字统计和阅读时长预估等功能。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>写作时实用输入小技巧</title>
-      <link>https://xdhuxc.github.io/post/others/little_tips/</link>
+      <link>https://xdhuxc.github.io/post/mixed/little_tips/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/little_tips/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/little_tips/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
 &lt;p&gt;　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站（一）</title>
-      <link>https://xdhuxc.github.io/post/others/github_hugo_1/</link>
+      <link>https://xdhuxc.github.io/post/mixed/github_hugo_1/</link>
       <pubDate>Thu, 09 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/others/github_hugo_1/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/github_hugo_1/</guid>
       <description>&lt;p&gt;摘要：
 　　本篇文章介绍了基于 GitHub 和 Hugo 搭建个人网站的具体操作过程，其中有诸多的注意事项，另外，对原有的模板和配置进行了一些改动，还附加了很多可以优化的地方。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>人间世·杂三</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-mixed-three/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-mixed-three/</link>
       <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-mixed-three/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-mixed-three/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
 &lt;p&gt;　　本篇文章是对最近社会讨论的 996.icu 问题的扩展，如果该问题继续被讨论下去，可能会涉及到这些问题。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>人间世·前言</title>
-      <link>https://xdhuxc.github.io/post/human-world/human-world-preface/</link>
+      <link>https://xdhuxc.github.io/post/human/human-world-preface/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/human-world/human-world-preface/</guid>
+      <guid>https://xdhuxc.github.io/post/human/human-world-preface/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-questions-and-solutions/</link>
+      <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Kubernetes 中常用的命令，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -549,7 +566,7 @@
     </item>
     
     <item>
-      <title>Linux 发行版中安装工具包</title>
+      <title>在 Linux 发行版中安装工具包</title>
       <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -567,12 +584,12 @@
     </item>
     
     <item>
-      <title>Kubernetes 常用命令总结</title>
-      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</link>
-      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      <title>Kubernetes 中使用 Ingress 时的访问链路</title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-ingress-access/</link>
+      <pubDate>Fri, 17 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</guid>
-      <description>&lt;p&gt;本篇博客记录下在 Kubernetes 中常用的命令，以备后需。&lt;/p&gt;</description>
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-ingress-access/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 Kubernetes 的 Ingress 时，应用的访问链路，这可以为应用访问不通时排查问题提供帮助。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -582,6 +599,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-shell-execute/</guid>
       <description>&lt;p&gt;在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用知识总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</link>
+      <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux 系统的常用知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -609,6 +635,15 @@
       
       <guid>https://xdhuxc.github.io/post/tools/git/git-gitlab/</guid>
       <description>&lt;p&gt;本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用操作总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-operations/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-operations/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux 系统中的常用操作，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -675,12 +710,66 @@
     </item>
     
     <item>
+      <title>使用 kubeadmin 安装 Kubernetes </title>
+      <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</link>
+      <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</guid>
+      <description>&lt;p&gt;本篇博客记录了分别使用 kubeadmin 安装 Kubernetes 的详细过程，还记录了安装过程中可能出现的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中 Shell 脚本示例</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</link>
+      <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-common-command/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-common-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常用的命令，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dockerfile 知识点总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-dockerfile/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
+      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker 常用命令</title>
       <link>https://xdhuxc.github.io/post/docker/docker-common-command/</link>
       <pubDate>Sat, 19 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker-common-command/</guid>
-      <description>&lt;p&gt;本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 实用命令总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-practical-command/</link>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-practical-command/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
     </item>
     
     <item>

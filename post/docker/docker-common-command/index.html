@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -40,22 +40,22 @@
 
 
 <meta property="og:title" content="Docker 常用命令" />
-<meta property="og:description" content="本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。" />
+<meta property="og:description" content="本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xdhuxc.github.io/post/docker/docker-common-command/" />
 <meta property="article:published_time" content="2017-08-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-08-19T00:00:00+00:00" />
 <meta itemprop="name" content="Docker 常用命令">
-<meta itemprop="description" content="本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。">
+<meta itemprop="description" content="本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。">
 <meta itemprop="datePublished" content="2017-08-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="6041">
+<meta itemprop="wordCount" content="5699">
 
 
 
 <meta itemprop="keywords" content="Docker," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Docker 常用命令"/>
-<meta name="twitter:description" content="本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。"/>
+<meta name="twitter:description" content="本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 6041 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 5699 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -140,7 +140,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#docker">Docker信息</a></li>
+    <li><a href="#docker-">Docker 信息</a></li>
     <li><a href="#heading">容器生命周期管理</a>
       <ul>
         <li><a href="#run">run</a></li>
@@ -165,7 +165,7 @@
         <li><a href="#port">port</a></li>
       </ul>
     </li>
-    <li><a href="#rootfs">容器rootfs命令</a>
+    <li><a href="#-rootfs-">容器 rootfs 命令</a>
       <ul>
         <li><a href="#commit">commit</a></li>
         <li><a href="#cp">cp</a></li>
@@ -189,12 +189,6 @@
         <li><a href="#history">history</a></li>
         <li><a href="#save">save</a></li>
         <li><a href="#import">import</a></li>
-        <li><a href="#heading-85">容器操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#docker-run">（一）docker run</a>
-      <ul>
-        <li><a href="#heading-86">语法</a></li>
       </ul>
     </li>
   </ul>
@@ -202,8 +196,8 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客记录在使用 docker 的过程中经常使用的一些命令，以备后需。</p>
-<h2 id="docker">Docker信息</h2>
+      <p>本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。</p>
+<h2 id="docker-">Docker 信息</h2>
 <p>1、显示 docker 版本信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -381,7 +375,7 @@ docker restart [options] container [container...]
 <blockquote>
 <p>docker kill 用于杀死一个运行中的容器</p>
 </blockquote>
-<h5 id="heading-6">语法</h5>
+<h4 id="heading-6">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -390,7 +384,7 @@ docker restart [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker kill [options] container [container...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-7">选项说明</h5>
+</div><h4 id="heading-7">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -399,7 +393,7 @@ docker restart [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">-s：向容器发送一个信号
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-8">示例</h5>
+</div><h4 id="heading-8">示例</h4>
 <p>1、杀掉运行中的容器xdhuxc</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -413,7 +407,7 @@ docker restart [options] container [container...]
 <blockquote>
 <p>docker rm 用于删除一个或多个容器</p>
 </blockquote>
-<h5 id="heading-9">语法</h5>
+<h4 id="heading-9">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -422,7 +416,7 @@ docker restart [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rm [options] container [container...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-10">选项说明</h5>
+</div><h4 id="heading-10">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -435,7 +429,7 @@ docker restart [options] container [container...]
 -v：删除与容器关联的卷；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-11">示例</h5>
+</div><h4 id="heading-11">示例</h4>
 <p>1、强制删除容器xdhuxc_1、xdhuxc_2</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -470,7 +464,7 @@ docker restart [options] container [container...]
 <blockquote>
 <p>docker unpause命令用于恢复容器中的所有进程</p>
 </blockquote>
-<h5 id="heading-12">语法</h5>
+<h4 id="heading-12">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -481,7 +475,7 @@ docker restart [options] container [container...]
 docker unpause [options] container [container...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-13">示例</h5>
+</div><h4 id="heading-13">示例</h4>
 <p>1、暂停数据库容器db_one提供的服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -504,7 +498,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker create 命令用于创建一个新的容器但不启动它</p>
 </blockquote>
-<h5 id="heading-14">语法</h5>
+<h4 id="heading-14">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -513,7 +507,7 @@ docker unpause [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker create [options] image [command] [args...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-15">示例</h5>
+</div><h4 id="heading-15">示例</h4>
 <p>1、使用镜像nginx:latest创建一个容器,并将容器命名为xnginx</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -527,7 +521,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker exec 命令用于在运行的容器中执行命令</p>
 </blockquote>
-<h5 id="heading-16">语法</h5>
+<h4 id="heading-16">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -536,7 +530,7 @@ docker unpause [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker exec [options] container command [arg...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-17">选项说明</h5>
+</div><h4 id="heading-17">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -549,7 +543,7 @@ docker unpause [options] container [container...]
 -t：分配一个伪终端；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-18"></h5>
+</div><h4 id="heading-18">示例</h4>
 <p>1、在容器xnginx中以交互模式执行容器内/root/startup.sh脚本</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -573,7 +567,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker ps 命令用于显示容器</p>
 </blockquote>
-<h5 id="heading-20">语法</h5>
+<h4 id="heading-20">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -582,7 +576,7 @@ docker unpause [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps [options]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-21">选项说明</h5>
+</div><h4 id="heading-21">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -605,7 +599,7 @@ docker unpause [options] container [container...]
 -s：显示总的文件大小；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-22">示例</h5>
+</div><h4 id="heading-22">示例</h4>
 <p>1、列出所有正在运行的容器的信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -637,7 +631,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker inspect 命令用于获取容器或镜像的元数据</p>
 </blockquote>
-<h5 id="heading-23">语法</h5>
+<h4 id="heading-23">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -646,7 +640,7 @@ docker unpause [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker inspect [options] name|id [name|id...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-24">选项说明</h5>
+</div><h4 id="heading-24">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -659,7 +653,7 @@ docker unpause [options] container [container...]
 --type：为指定类型返回JSON；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-25">示例</h5>
+</div><h4 id="heading-25">示例</h4>
 <p>1、获取镜像mysql:5.7的元数据信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -682,7 +676,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker top 命令用于查看容器中运行的进程信息，支持ps命令参数。容器运行时不一定有/bin/bash终端来交互执行top命令，而且容器还不一定有top命令，可以使用docker top来实现查看container中正在运行的进程。</p>
 </blockquote>
-<h5 id="heading-26">语法</h5>
+<h4 id="heading-26">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -691,7 +685,7 @@ docker unpause [options] container [container...]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker top [options] container [ps options]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-27">示例</h5>
+</div><h4 id="heading-27">示例</h4>
 <p>1、查看容器mysql的进程信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -714,7 +708,7 @@ docker unpause [options] container [container...]
 <blockquote>
 <p>docker attach 命令用于连接到正在运行中的容器</p>
 </blockquote>
-<h5 id="heading-28">语法</h5>
+<h4 id="heading-28">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -725,7 +719,7 @@ docker unpause [options] container [container...]
 </div>
 </div><p>要attach上去的容器必须正在运行，可以同时连接上同一个容器来共享屏幕。
 attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运行bash，CTRL-C自然是当前行的输入，没有退出；如果容器当前正在前台运行进程，如输出nginx的access.log日志，CTRL-C不仅会导致退出容器，而且还停止了。这不是我们想要的，detach的意思按理应该是脱离容器终端，但容器依然运行。好在attach是可以带上&ndash;sig-proxy=false来确保CTRL-D或CTRL-C不会关闭容器。</p>
-<h5 id="heading-29">示例</h5>
+<h4 id="heading-29">示例</h4>
 <p>1、容器nginx将访问日志定向到标准输出，连接到容器查看访问信息。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -739,7 +733,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker events 命令用于从服务器获取实时事件</p>
 </blockquote>
-<h5 id="heading-30">语法</h5>
+<h4 id="heading-30">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -748,7 +742,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker events [options]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-31">选项说明</h5>
+</div><h4 id="heading-31">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -761,7 +755,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 --until：流水时间显示到指定的时间为止；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-32">示例</h5>
+</div><h4 id="heading-32">示例</h4>
 <p>1、显示 docker 2016年7月1日后的所有事件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -785,7 +779,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker logs用于获取容器的日志</p>
 </blockquote>
-<h5 id="heading-33">语法</h5>
+<h4 id="heading-33">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -794,7 +788,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker logs [options] container
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-34">选项说明</h5>
+</div><h4 id="heading-34">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -809,7 +803,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 --tail：仅列出最新N条容器日志；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-35">示例</h5>
+</div><h4 id="heading-35">示例</h4>
 <p>1、跟踪查看容器nginx的日志输出</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -832,7 +826,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker wait 命令用于阻塞运行直到容器停止，然后打印出它的退出代码</p>
 </blockquote>
-<h5 id="heading-36">语法</h5>
+<h4 id="heading-36">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -841,7 +835,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker wait [options] container [container...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-37">示例</h5>
+</div><h4 id="heading-37">示例</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -854,7 +848,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker export 命令用于将文件系统作为一个tar归档文件导出到STDOUT</p>
 </blockquote>
-<h5 id="heading-38">语法</h5>
+<h4 id="heading-38">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -863,7 +857,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker export [options] container
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-39">选项说明</h5>
+</div><h4 id="heading-39">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -872,7 +866,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">-o：将输入内容写到文件
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-40">示例</h5>
+</div><h4 id="heading-40">示例</h4>
 <p>1、将ID为a404c6c174a2的容器按日期保存为tar文件。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -886,7 +880,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker port 命令用于列出指定的容器的端口映射，或者查找将PRIVATE_PORT NAT到面向公众的端口</p>
 </blockquote>
-<h5 id="heading-41">语法</h5>
+<h4 id="heading-41">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -895,7 +889,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker port [options] container [private_port[/proto]]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-42">示例</h5>
+</div><h4 id="heading-42">示例</h4>
 <p>1、查看容器nginx的端口映射情况</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -905,12 +899,12 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker port nginx
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="rootfs">容器rootfs命令</h2>
+</div><h2 id="-rootfs-">容器 rootfs 命令</h2>
 <h3 id="commit">commit</h3>
 <blockquote>
 <p>docker commit命令用于从容器创建一个新的镜像</p>
 </blockquote>
-<h5 id="heading-43">语法</h5>
+<h4 id="heading-43">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -919,7 +913,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker commit [options] container [repository][:tag]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-44">选项说明</h5>
+</div><h4 id="heading-44">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -934,7 +928,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 -p：在commit时，将容器暂停；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-45">示例</h5>
+</div><h4 id="heading-45">示例</h4>
 <p>1、将容器a404c6c174a2 保存为新的镜像，并添加提交人信息和说明信息。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -948,7 +942,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 <blockquote>
 <p>docker cp 命令用于容器与主机之间的数据复制</p>
 </blockquote>
-<h5 id="heading-46">语法</h5>
+<h4 id="heading-46">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -959,7 +953,7 @@ attach后可以通过CTRL-C来detach，但实际上，如果容器当前在运�
 docker cp [options] src_path|- container:dest_path
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-47">选项说明</h5>
+</div><h4 id="heading-47">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -968,7 +962,7 @@ docker cp [options] src_path|- container:dest_path
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">-L：保持源目标中的链接
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-48">示例</h5>
+</div><h4 id="heading-48">示例</h4>
 <p>1、将主机/www/run目录复制到容器96f7f14e99ab的/www目录下。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1000,7 +994,7 @@ docker cp [options] src_path|- container:dest_path
 <blockquote>
 <p>docker diff 命令用于检查容器里文件结构的更改</p>
 </blockquote>
-<h5 id="heading-49">语法</h5>
+<h4 id="heading-49">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1009,7 +1003,7 @@ docker cp [options] src_path|- container:dest_path
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker diff [options] container
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-50">示例</h5>
+</div><h4 id="heading-50">示例</h4>
 <p>1、查看容器mysql的文件结构更改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1027,7 +1021,7 @@ docker cp [options] src_path|- container:dest_path
 <blockquote>
 <p>docker logout 命令用于退出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub。</p>
 </blockquote>
-<h5 id="heading-52">语法</h5>
+<h4 id="heading-52">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1038,7 +1032,7 @@ docker cp [options] src_path|- container:dest_path
 docker logout [options] [server]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-53">选项说明</h5>
+</div><h4 id="heading-53">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1049,7 +1043,7 @@ docker logout [options] [server]
 -p：登陆的密码；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-54">示例</h5>
+</div><h4 id="heading-54">示例</h4>
 <p>1、登陆到Docker Hub</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1072,7 +1066,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker pull 命令用于从镜像仓库中拉取或者更新指定镜像</p>
 </blockquote>
-<h5 id="heading-55">语法</h5>
+<h4 id="heading-55">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1081,7 +1075,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker pull [options] name[:tag|@DIGEST]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-56">选项说明</h5>
+</div><h4 id="heading-56">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1092,7 +1086,7 @@ docker logout [options] [server]
 --disable-content-trust：忽略镜像的校验,默认开启；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-57">示例</h5>
+</div><h4 id="heading-57">示例</h4>
 <p>1、从 Docker Hub 下载java最新版镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1115,7 +1109,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker push 命令用于将本地的镜像上传到镜像仓库，要先登陆到镜像仓库</p>
 </blockquote>
-<h5 id="heading-58">语法</h5>
+<h4 id="heading-58">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1124,7 +1118,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker push [options] name[:tag]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-59">选项说明</h5>
+</div><h4 id="heading-59">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1133,7 +1127,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">--disable-content-trust：忽略镜像的校验,默认开启
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-60">示例</h5>
+</div><h4 id="heading-60">示例</h4>
 <p>1、上传本地镜像apache:latest到镜像仓库中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1147,7 +1141,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker search 命令用于从 Docker Hub 中查找镜像</p>
 </blockquote>
-<h5 id="heading-61">语法</h5>
+<h4 id="heading-61">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1156,7 +1150,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker search [options] term
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-62">选项说明</h5>
+</div><h4 id="heading-62">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1169,7 +1163,7 @@ docker logout [options] [server]
 -s：列出收藏数不小于指定值的镜像；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-63">示例</h5>
+</div><h4 id="heading-63">示例</h4>
 <p>1、从 Docker Hub 上查找所有镜像名中包含java，并且收藏数大于10的镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1184,7 +1178,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker images 命令用于列出本地镜像</p>
 </blockquote>
-<h5 id="heading-65">语法</h5>
+<h4 id="heading-65">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1193,7 +1187,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker images [options] [repository[:tag]]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-66">选项说明</h5>
+</div><h4 id="heading-66">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1212,7 +1206,7 @@ docker logout [options] [server]
 -q：只显示镜像ID；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-67">示例</h5>
+</div><h4 id="heading-67">示例</h4>
 <p>1、查看本地镜像列表</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1235,7 +1229,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker rmi 命令用于删除本地一个或多个镜像</p>
 </blockquote>
-<h5 id="heading-68">语法</h5>
+<h4 id="heading-68">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1244,7 +1238,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rmi [options] image [image...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-69">选项说明</h5>
+</div><h4 id="heading-69">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1255,8 +1249,8 @@ docker logout [options] [server]
 --no-prune：不移除该镜像的过程镜像，默认移除；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-70">示例</h5>
-<p>1、强制删除本地镜像 nginx:latest</p>
+</div><h4 id="heading-70">示例</h4>
+<p>1、强制删除本地镜像 <code>nginx:latest</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1269,7 +1263,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker tag命令用于标记本地镜像，将其归入某一仓库</p>
 </blockquote>
-<h5 id="heading-71">语法</h5>
+<h4 id="heading-71">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1278,8 +1272,8 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker tag [options] image[:tag] [registry host/][username/]name[:tag]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-72">示例</h5>
-<p>1、将镜像ubuntu:15.10标记为 xdhuxc/ubuntu:v3 镜像</p>
+</div><h4 id="heading-72">示例</h4>
+<p>1、将镜像 <code>ubuntu:15.10</code> 标记为 <code>xdhuxc/ubuntu:v3</code> 镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1292,7 +1286,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker build 命令用于使用Dockerfile创建镜像</p>
 </blockquote>
-<h5 id="heading-73">语法</h5>
+<h4 id="heading-73">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1301,7 +1295,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker build [options] path|url|-
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-74">选项说明</h5>
+</div><h4 id="heading-74">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1346,8 +1340,8 @@ docker logout [options] [server]
 --ulimit：Ulimit配置。
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-75">示例</h5>
-<p>1、使用当前目录的Dockerfile创建镜像</p>
+</div><h4 id="heading-75">示例</h4>
+<p>1、使用当前目录的 <code>Dockerfile</code> 创建镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1356,7 +1350,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker build -t xdhuxc/mysql:5.7 .
 </code></pre></td></tr></table>
 </div>
-</div><p>2、使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像</p>
+</div><p>2、使用 URL <code>github.com/creack/docker-firefox</code> 的 <code>Dockerfile</code> 创建镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1369,7 +1363,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker history 命令用于查看指：定镜像的创建历史</p>
 </blockquote>
-<h5 id="heading-76">语法</h5>
+<h4 id="heading-76">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1378,7 +1372,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker history [options] image
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-77">选项说明</h5>
+</div><h4 id="heading-77">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1391,8 +1385,8 @@ docker logout [options] [server]
 -q：仅列出提交记录ID；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-78">示例</h5>
-<p>1、查看本地镜像xdhuxc/mysql:5.7的创建历史</p>
+</div><h4 id="heading-78">示例</h4>
+<p>1、查看本地镜像 <code>xdhuxc/mysql:5.7</code> 的创建历史</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1405,7 +1399,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker save 命令用于将指定的镜像保存成tar归档文件</p>
 </blockquote>
-<h5 id="heading-79">语法</h5>
+<h4 id="heading-79">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1414,7 +1408,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker save [options] image [image...]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-80">选项说明</h5>
+</div><h4 id="heading-80">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1423,8 +1417,8 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">-o：输出到的文件
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-81">示例</h5>
-<p>1、将镜像xdhuxc/mysql:5.7保存为mysql.tar</p>
+</div><h4 id="heading-81">示例</h4>
+<p>1、将镜像 <code>xdhuxc/mysql:5.7</code> 保存为 <code>mysql.tar</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1437,7 +1431,7 @@ docker logout [options] [server]
 <blockquote>
 <p>docker import 命令用于从归档文件中创建镜像</p>
 </blockquote>
-<h5 id="heading-82">语法</h5>
+<h4 id="heading-82">语法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1446,7 +1440,7 @@ docker logout [options] [server]
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker import [options] file|URL|- [repository[:tag]]
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-83">选项说明</h5>
+</div><h4 id="heading-83">选项说明</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1457,131 +1451,14 @@ docker logout [options] [server]
 -m：提交时的说明文字；
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-84">示例</h5>
-<p>1、从镜像归档文件mysql.tar创建镜像，命名为xdhuxc/mysql:5.7</p>
+</div><h4 id="heading-84">示例</h4>
+<p>1、从镜像归档文件 <code>mysql.tar</code> 创建镜像，命名为 <code>xdhuxc/mysql:5.7</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">docker import mysql.tar xdhuxc/mysql:5.7
-</code></pre></td></tr></table>
-</div>
-</div><p>1、搜索镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker search image_name
-</code></pre></td></tr></table>
-</div>
-</div><p>2、拉取镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker pull image_name:tag
-</code></pre></td></tr></table>
-</div>
-</div><p>3、列出镜像列表</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker images
-</code></pre></td></tr></table>
-</div>
-</div><p>4、删除镜像</p>
-<p>1）删除一个或多个镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rmi image_name
-</code></pre></td></tr></table>
-</div>
-</div><p>2）删除所有镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker rmi $(docker images | grep none | awk &#39;{print $3}&#39;| sort -r)
-</code></pre></td></tr></table>
-</div>
-</div><p>5、显示一个镜像的历史</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker history image_name
-</code></pre></td></tr></table>
-</div>
-</div><p>6、保存和加载镜像</p>
-<blockquote>
-<p>当需要把一台机器上的镜像迁移到另一台机器的时候，需要保存镜像与加载镜像。</p>
-</blockquote>
-<p>1）保存镜像到一个tar包</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker save image_name -o destination_path
-或
-docker save image_name &gt; /home/xdhuxc.tar
-</code></pre></td></tr></table>
-</div>
-</div><p>2）加载一个tar包格式的镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker load -i source_path
-或
-docker load &lt; /home/xdhuxc.tar
-</code></pre></td></tr></table>
-</div>
-</div><p>7、推送镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker push image_name
-</code></pre></td></tr></table>
-</div>
-</div><p>8、构建自己的镜像</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker build -t image_name dockerfile_path .
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="heading-85">容器操作</h3>
-<h2 id="docker-run">（一）docker run</h2>
-<blockquote>
-<p>创建一个新的容器并运行一个命令</p>
-</blockquote>
-<h3 id="heading-86">语法</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker run [options] image [command] [arg...]
 </code></pre></td></tr></table>
 </div>
 </div>
@@ -1607,13 +1484,13 @@ docker load &lt; /home/xdhuxc.tar
           <a href="/tags/docker/">Docker</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/devops/ansible-common-model/">
+        <a class="prev" href="/post/docker/docker-dockerfile/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Ansible 学习之常用模块</span>
+            <span class="prev-text nav-default">Dockerfile 知识点总结</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/docker/docker-practical-command/">
-            <span class="next-text nav-default">Docker 实用命令总结</span>
+        <a class="next" href="/post/linux/linux-practical-command/">
+            <span class="next-text nav-default">Linux 实用命令总结</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
