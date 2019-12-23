@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -758,6 +758,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/programming/golang/golang-command/</loc>
+    <lastmod>2019-08-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/human/human-world-mixed-three/</loc>
     <lastmod>2019-04-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -767,6 +774,27 @@
   <url>
     <loc>https://xdhuxc.github.io/post/human/human-world-preface/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/java/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/common/common-knowledge/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -816,13 +844,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/tools/tools-vagrant/</loc>
     <lastmod>2018-11-07T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/java/</loc>
-    <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -989,6 +1010,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-code-example/</loc>
+    <lastmod>2018-04-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</loc>
     <lastmod>2018-03-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -998,6 +1026,34 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</loc>
     <lastmod>2017-12-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2018-01-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/common/regular-expression/</loc>
+    <lastmod>2018-01-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/windows-command-line/</loc>
+    <lastmod>2017-11-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/windows/</loc>
+    <lastmod>2017-11-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1033,6 +1089,34 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-practical-command/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</loc>
+    <lastmod>2017-08-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-network-mode/</loc>
+    <lastmod>2017-08-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/harbor/</loc>
+    <lastmod>2017-08-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-registry-harbor/</loc>
+    <lastmod>2017-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

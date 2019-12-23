@@ -138,5 +138,14 @@
       <description>&lt;p&gt;本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Golang 常用命令</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-command/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-command/</guid>
+      <description>&lt;p&gt;本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

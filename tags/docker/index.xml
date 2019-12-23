@@ -49,6 +49,33 @@
     </item>
     
     <item>
+      <title>Linux 命名空间和 cgroup 在 docker 中的使用</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker 容器网络模式总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-network-mode/</link>
+      <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-network-mode/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Docker 的四种网络模式，在使用 docker 容器时，必须知道容器是以哪种网络模式启动，这对于访问容器中的应用和排查问题都非常重要。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Harbor 镜像仓库的安装和使用</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-registry-harbor/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-registry-harbor/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Harbor 的安装，配置和使用过程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker 实用命令总结</title>
       <link>https://xdhuxc.github.io/post/docker/docker-practical-command/</link>
       <pubDate>Sun, 18 Jun 2017 00:00:00 +0000</pubDate>

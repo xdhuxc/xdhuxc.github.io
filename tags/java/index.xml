@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一些计算机科学和技术中的概念区分</title>
+      <link>https://xdhuxc.github.io/post/common/common-knowledge/</link>
+      <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/common-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客记录了些计算机科学和技术中常见的概念的差别，属于基础知识。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</guid>
+      <description>&lt;p&gt;本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>

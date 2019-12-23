@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些使用 GORM 操作 MySQL 数据库时常见的问题及解决方法，可以给其他人遇到同样问题解决时提供参考。">
 <meta itemprop="datePublished" content="2019-06-11T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-11T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1277">
+<meta itemprop="wordCount" content="1667">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1277 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1667 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -145,6 +145,9 @@
         <li><a href="#error-1062-duplicate-entry-viewer-for-key-name">Error 1062: Duplicate entry &lsquo;viewer&rsquo; for key &lsquo;name&rsquo;</a></li>
         <li><a href="#desc--mysql-">desc 是 MySQL 关键字</a></li>
         <li><a href="#count-">Count 方法的使用</a></li>
+        <li><a href="#-restfulrequestreadentity--json-">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</a></li>
+        <li><a href="#range-">range 的数据复制</a></li>
+        <li><a href="#gorm-">GORM 注意事项</a></li>
       </ul>
     </li>
   </ul>
@@ -434,7 +437,80 @@ func (s *DB) Model(value interface{}) *DB {
 [4 rows affected or returned ] 
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="-restfulrequestreadentity--json-">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">json: cannot unmarshal string into Go struct field Receiver.resolved of type bool
+</code></pre></td></tr></table>
 </div>
+</div><p>原因：输入格式有错误，将 JSON 格式中 bool 值写成了 字符串 true，改为 JSON 格式的 bool 值即可解决该问题。</p>
+<h3 id="range-">range 的数据复制</h3>
+<p>对关联的数据模型进行操作时，使用如下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">var ug []models.UserGroup
+for _, user := range ug {
+  var role models.Role
+  if result := ugs.db.Model(&amp;models.Role{}).
+    Where(&#34;id = ?&#34;, user.RoleID).
+    Select([]string{&#34;id&#34;, &#34;name&#34;}).
+    First(&amp;role); result.Error != nil {
+    continue
+  }
+  user.RoleName = role.Name
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>则对 user.RoleName 的赋值，只在大括号中有效，而使用下面的代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ugLength := len(ug)
+for i := 0; i &lt; ugLength; i++ {
+  var role models.Role
+  if result := ugs.db.Model(&amp;models.Role{}).
+    Where(&#34;id = ?&#34;, ug[i].RoleID).
+    Select([]string{&#34;id&#34;, &#34;name&#34;}).
+    First(&amp;role); result.Error != nil {
+    continue
+  }
+  ug[i].RoleName = role.Name
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>则对 <code>user.RoleName</code> 的赋值在大括号外也有效。
+原因：使用 <code>range</code> 循环非指针型数组时，实际上是执行了深拷贝，在遍历复制出来的数据，原来的数据并没有改变。</p>
+<h3 id="gorm-">GORM 注意事项</h3>
+<p>1、如果数据记录不存在，使用 Delete() 方法删除该记录，result.Error 返回值为 nil。</p>
+<p>2、GORM 中默认使用 id 为主键进行删除和修改，如果自定义数据库主键名称，可能会导致删除和修改操作失败。</p>
     </div>
 
     <div class="post-copyright">

@@ -493,6 +493,15 @@
     </item>
     
     <item>
+      <title>Golang 常用命令</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-command/</link>
+      <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-command/</guid>
+      <description>&lt;p&gt;本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>人间世·杂三</title>
       <link>https://xdhuxc.github.io/post/human/human-world-mixed-three/</link>
       <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
@@ -509,6 +518,24 @@
       
       <guid>https://xdhuxc.github.io/post/human/human-world-preface/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>一些计算机科学和技术中的概念区分</title>
+      <link>https://xdhuxc.github.io/post/common/common-knowledge/</link>
+      <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/common-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客记录了些计算机科学和技术中常见的概念的差别，属于基础知识。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</guid>
+      <description>&lt;p&gt;本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -710,6 +737,15 @@
     </item>
     
     <item>
+      <title>Python 常用代码示例</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-code-example/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-code-example/</guid>
+      <description>&lt;p&gt;本篇博客记录些在 Python 开发中经常会用到的代码，下次使用时就可以直接愉快地复制粘贴了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 kubeadmin 安装 Kubernetes </title>
       <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</link>
       <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
@@ -725,6 +761,24 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</guid>
       <description>&lt;p&gt;本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序设计（一）</title>
+      <link>https://xdhuxc.github.io/post/programming/common/regular-expression/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/common/regular-expression/</guid>
+      <description>&lt;p&gt;本篇博客记录了下正则表达式的常用规则，并收集些常用的正则表达式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/mixed/windows-command-line/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/windows-command-line/</guid>
+      <description>&lt;p&gt;本篇博客记录了些 &lt;code&gt;Windows&lt;/code&gt; 系统中常用的命令，在 &lt;code&gt;Windows&lt;/code&gt; 系统中进行命令行操作时，会用到。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -770,6 +824,33 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-practical-command/</guid>
       <description>&lt;p&gt;本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 命名空间和 cgroup 在 docker 中的使用</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker 容器网络模式总结</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-network-mode/</link>
+      <pubDate>Sat, 15 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-network-mode/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Docker 的四种网络模式，在使用 docker 容器时，必须知道容器是以哪种网络模式启动，这对于访问容器中的应用和排查问题都非常重要。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Harbor 镜像仓库的安装和使用</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-registry-harbor/</link>
+      <pubDate>Mon, 10 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-registry-harbor/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Harbor 的安装，配置和使用过程。&lt;/p&gt;</description>
     </item>
     
     <item>

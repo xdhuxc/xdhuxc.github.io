@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。">
 <meta itemprop="datePublished" content="2017-10-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-10-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="181">
+<meta itemprop="wordCount" content="284">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 181 字 </span>
+          <span class="more-meta"> 约 284 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -181,7 +181,28 @@ PubkeyAuthentication yes
 nameserver 8.8.4.4 <span class="ni">#google域名服务器</span>
 </code></pre></td></tr></table>
 </div>
+</div><p>3、使用 <code>Linux</code> 服务启动 <code>confd</code> 进程，启动时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">Mar 18 02:26:38 ip-172-27-124-70.ap-southeast-1.compute.internal confd[28240]: 2019-03-18T02:26:38Z ip-172-27-124-70.ap-southeast-1.compute.internal /usr/bin/confd[28240]: FATAL UserHomeNotFound: user home directory not found.
+</code></pre></td></tr></table>
 </div>
+</div><p>解决：
+在 <code>confd.service</code> （<code>/usr/lib/systemd/system/confd.service</code>）中加入如下环境变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Service]
+Environment=&#34;HOME=/root&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>重启 <code>confd</code> 服务即可。</p>
     </div>
 
     <div class="post-copyright">
@@ -204,9 +225,9 @@ nameserver 8.8.4.4 <span class="ni">#google域名服务器</span>
           <a href="/tags/linux/">Linux</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/linux/linux-shell-code-example/">
+        <a class="prev" href="/post/mixed/windows-command-line/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Linux 中 Shell 脚本示例</span>
+            <span class="prev-text nav-default">Java 常见问题及解决</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/linux/linux-common-command/">

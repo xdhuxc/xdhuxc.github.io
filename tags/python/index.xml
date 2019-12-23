@@ -39,5 +39,14 @@
       <description>&lt;p&gt;在 Python 开发时，我们经常需要用到虚拟环境，为各个不同的工程提供指定的运行时环境，提供其需要的隔离的依赖包。使用 virtualenvwrapper 可以很方便地管理不同的虚拟环境。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Python 常用代码示例</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-code-example/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-code-example/</guid>
+      <description>&lt;p&gt;本篇博客记录些在 Python 开发中经常会用到的代码，下次使用时就可以直接愉快地复制粘贴了。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

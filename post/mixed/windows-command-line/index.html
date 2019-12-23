@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Java 常见问题及解决 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了些 Windows 系统中常用的命令，在 Windows 系统中进行命令行操作时，会用到。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/mixed/windows-command-line/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Java 常见问题及解决" />
+<meta property="og:description" content="本篇博客记录了些 Windows 系统中常用的命令，在 Windows 系统中进行命令行操作时，会用到。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/mixed/windows-command-line/" />
+<meta property="article:published_time" content="2017-11-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-11-26T00:00:00+00:00" />
+<meta itemprop="name" content="Java 常见问题及解决">
+<meta itemprop="description" content="本篇博客记录了些 Windows 系统中常用的命令，在 Windows 系统中进行命令行操作时，会用到。">
+<meta itemprop="datePublished" content="2017-11-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-11-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="592">
+
+
+
+<meta itemprop="keywords" content="Windows," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java 常见问题及解决"/>
+<meta name="twitter:description" content="本篇博客记录了些 Windows 系统中常用的命令，在 Windows 系统中进行命令行操作时，会用到。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Java 常见问题及解决</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-11-22 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 592 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客记录了些 <code>Windows</code> 系统中常用的命令，在 <code>Windows</code> 系统中进行命令行操作时，会用到。</p>
+<p>1、查看系统 <code>BIOS</code> 创建时间：<code>WMIC BIOS get releasedate</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ WMIC BIOS get releasedate
+ReleaseDate
+20140210000000.000000+000
+</code></pre></td></tr></table>
+</div>
+</div><p>2、调出Windows服务窗口：<code>services.msc</code></p>
+<p>3、使用Windows自带的计算器：<code>calc</code></p>
+<p>4、Windows自带的远程桌面连接命令：<code>mstsc</code></p>
+<p>5、查看本机IP地址和MAC地址：<code>ipconfig /all</code></p>
+<p>6、查看当前正在运行的进程：<code>tasklist</code></p>
+<p>7、强制杀死进程ID为process_id的进程：<code>taskkill /pid process_id -f</code></p>
+<p>8、命令行启动或停止服务：<code>net start/stop service_name</code>
+例如，启动 <code>MySQL</code> 服务，使用命令为：<code>net start mysql57</code></p>
+<p>9、查看端口占用：<code>netstat -ano|findstr &quot;8080&quot;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ netstat -ano|findstr &#34;8080&#34;
+  TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       8552
+  TCP    10.4.100.48:49235      192.168.8.81:8080      CLOSE_WAIT      1584
+  TCP    10.4.100.48:49653      10.10.24.177:8080      ESTABLISHED     7428
+  TCP    10.4.100.48:49655      10.10.24.177:8080      ESTABLISHED     7428
+  TCP    10.4.100.48:49657      10.10.24.177:8080      ESTABLISHED     7428
+  TCP    [::]:8080              [::]:0                 LISTENING       8552
+  TCP    [::1]:51102            [::1]:8080             TIME_WAIT       0
+</code></pre></td></tr></table>
+</div>
+</div><p>10、查找某个进程：<code>tasklist|findstr &quot;bash.exe&quot;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ tasklist|findstr &#34;bash&#34;
+git-bash.exe                  9820 Console                    1      2,912 K
+bash.exe                     10064 Console                    1      8,784 K
+bash.exe                      7736 Console                    1      6,100 K
+bash.exe                      9400 Console                    1      6,068 K
+</code></pre></td></tr></table>
+</div>
+</div><p>11、查看Windows版本和激活的过期时间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">slmgr.vbs -xpr
+</code></pre></td></tr></table>
+</div>
+</div><p>12、下载文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">start powershell
+$client = new-object System.Net.WebClient
+$client.DownloadFile(&#39;http://101.36.79.71:8081/IXC3470347d25cba57732165d795bb3beb6/sw-search-sp/software/1334d9c2b2fb7/ChromeStandalone_66.0.3359.139_Setup.exe&#39;, &#39;C:\Users\wanghuan\Desktop\ChromeStandalone_66.0.3359.139_Setup.exe&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>13、删除命令</p>
+<ul>
+<li>del /S abc：递归地删除文件夹 abc 及其之下的文件，但是删除每个文件时均需要确认。</li>
+<li>del abc.txt：删除文件 abc.txt。</li>
+<li>del /Q：删除文件时采用安静模式。删除全局通配符时，不要求确认。</li>
+<li>rd abc：删除空文件夹 abc</li>
+<li>rd /s abc：删除文件夹 abc 及其所有子文件夹和文件</li>
+<li>rd /s/q abc：强制删除文件夹及所有子文件夹和文件，不需要确认。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-11-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/windows/">Windows</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/programming/common/regular-expression/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">程序设计（一）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/linux/linux-questions-and-solution/">
+            <span class="next-text nav-default">Linux 中常见问题及解决</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
