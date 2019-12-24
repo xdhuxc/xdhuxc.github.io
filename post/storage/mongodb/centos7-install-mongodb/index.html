@@ -167,7 +167,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[mongodb-org-4.0]
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[mongodb-org-4.0]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/development/x86_64/
 gpgcheck=1
@@ -181,7 +181,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">setenforce 0
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">setenforce 0
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="mongodb">安装MongoDB</h3>
@@ -191,7 +191,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum install -y mongodb-org-unstable.x86_64
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y mongodb-org-unstable.x86_64
 </code></pre></td></tr></table>
 </div>
 </div><p>MongoDB的配置文件路径为：</p>
@@ -200,7 +200,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/mongod.conf
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/etc/mongod.conf
 </code></pre></td></tr></table>
 </div>
 </div><p>在该文件中配置有MongoDB的日志文件路径和数据文件路径
@@ -210,7 +210,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/var/log/mongodb
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/var/log/mongodb
 </code></pre></td></tr></table>
 </div>
 </div><p>数据文件路径为：</p>
@@ -219,7 +219,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">/var/lib/mongo
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/var/lib/mongo
 </code></pre></td></tr></table>
 </div>
 </div><p>如果使用其他用户启动 <code>MongoDB</code> 进程，需要确保该用户对 <code>/var/log/mongodb</code>  和<code>/var/lib/mongo</code> 有访问权限。</p>
@@ -230,7 +230,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">systemctl status mongod
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl status mongod
 </code></pre></td></tr></table>
 </div>
 </div><p>2、停止 <code>MongoDB</code> 进程</p>
@@ -239,7 +239,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">systemctl stop mongod
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl stop mongod
 </code></pre></td></tr></table>
 </div>
 </div><p>3、重启 <code>MongoDB</code> 进程</p>
@@ -248,7 +248,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">systemctl restart mongod
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart mongod
 </code></pre></td></tr></table>
 </div>
 </div><p>4、启动 <code>MongoDB</code> shell</p>
@@ -257,7 +257,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">mongo --host 127.0.0.1:27017
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mongo --host 127.0.0.1:27017
 </code></pre></td></tr></table>
 </div>
 </div><p>5、卸载 <code>MongoDB</code></p>
@@ -267,7 +267,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">systemctl stop mongod
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl stop mongod
 </code></pre></td></tr></table>
 </div>
 </div><p>② 删除 <code>MongoDB</code> 的安装包</p>
@@ -276,7 +276,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum erase $(rpm -qa | grep mongodb-org)
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum erase $(rpm -qa | grep mongodb-org)
 </code></pre></td></tr></table>
 </div>
 </div><p>③ 删除 <code>MongoDB</code> 数据和日志目录</p>
@@ -286,7 +286,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">rm -f /var/log/mongodb
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rm -f /var/log/mongodb
 rm -f /var/lib/mongo
 </code></pre></td></tr></table>
 </div>

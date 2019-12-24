@@ -22,6 +22,24 @@
     </item>
     
     <item>
+      <title>Prometheus 和 AlertManager 配合使用</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Prometheus 和 AlertManager 配合使用时的配置方式，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用原生方式和基于 docker 容器方式部署 prometheus</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</link>
+      <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</guid>
+      <description>&lt;p&gt;本篇博客分别介绍了使用原生方式和基于 docker 容器方式部署 prometheus 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/devops/ansible-simple-use/</link>
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>

@@ -22,6 +22,51 @@
     </item>
     
     <item>
+      <title>基于 binlog 的 MySQL 主从复制</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 binlog 的 MySQL 主从复制集群的搭建过程，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 GTID 的 MySQL 主从复制</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 GTID 的 MySQL 主从复制的过程，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 配置文件详解</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</guid>
+      <description>&lt;p&gt;本篇博客记录了 MySQL 配置文件中各个参数的含义，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 常用操作</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-questions-and-solutions/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些使用 MySQL 过程中常见的问题及解决方式，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MySQL 常用命令</title>
       <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-command/</link>
       <pubDate>Sun, 29 Jul 2018 00:00:00 +0000</pubDate>

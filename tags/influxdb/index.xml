@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>InfluxDB on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/influxdb/</link>
+    <description>Recent content in InfluxDB on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Wed, 29 Aug 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/influxdb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于 docker 方式部署 infludb</title>
+      <link>https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 influxdb 的详细过程。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

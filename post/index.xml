@@ -319,6 +319,15 @@
     </item>
     
     <item>
+      <title>部署 clickhouse_exporter</title>
+      <link>https://xdhuxc.github.io/post/storage/clickhouse/clickhouse-exporter/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/clickhouse/clickhouse-exporter/</guid>
+      <description>&lt;p&gt;本篇博客记录下部署 ClickHouse Exporter 的过程，使用 prometheus 监控 ClickHouse 时会用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Git 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/tools/git/git-questions-and-solutions/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
@@ -437,6 +446,15 @@
     </item>
     
     <item>
+      <title>Prometheus 和 AlertManager 配合使用</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</link>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Prometheus 和 AlertManager 配合使用时的配置方式，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>基于 Hugo 和 GitHub 搭建个人网站（二）</title>
       <link>https://xdhuxc.github.io/post/mixed/github_hugo_2/</link>
       <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
@@ -453,6 +471,15 @@
       <guid>https://xdhuxc.github.io/post/mixed/little_tips/</guid>
       <description>&lt;p&gt;摘要：&lt;/p&gt;
 &lt;p&gt;　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用原生方式和基于 docker 容器方式部署 prometheus</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</link>
+      <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</guid>
+      <description>&lt;p&gt;本篇博客分别介绍了使用原生方式和基于 docker 容器方式部署 prometheus 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -494,12 +521,48 @@
     </item>
     
     <item>
+      <title>ElasticSearch 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-questions-and-solutions/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 ElasticSearch 的过程中常见的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>人间世·前言</title>
       <link>https://xdhuxc.github.io/post/human/human-world-preface/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/human/human-world-preface/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>基于 binlog 的 MySQL 主从复制</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</link>
+      <pubDate>Sat, 22 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 binlog 的 MySQL 主从复制集群的搭建过程，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 GTID 的 MySQL 主从复制</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</link>
+      <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 GTID 的 MySQL 主从复制的过程，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BIND 的安装和配置</title>
+      <link>https://xdhuxc.github.io/post/common/dns-bind/</link>
+      <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/dns-bind/</guid>
+      <description>&lt;p&gt;本篇博客记录下 Bind 的安装和配置，以备后查。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -539,6 +602,24 @@
     </item>
     
     <item>
+      <title>dnsmasq 的配置和使用</title>
+      <link>https://xdhuxc.github.io/post/common/dns-dnsmasq/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/dns-dnsmasq/</guid>
+      <description>&lt;p&gt;本篇博客记录了 dnsmasq 的配置和使用，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>消息队列简介</title>
+      <link>https://xdhuxc.github.io/post/message/message-queue-model/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/message/message-queue-model/</guid>
+      <description>&lt;p&gt;本篇博客简单介绍下消息中间件，其特点及消息传递模型。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>GoTTY 的简单使用</title>
       <link>https://xdhuxc.github.io/post/tools/tools-gotty/</link>
       <pubDate>Fri, 09 Nov 2018 00:00:00 +0000</pubDate>
@@ -575,6 +656,15 @@
     </item>
     
     <item>
+      <title>MySQL 配置文件详解</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</link>
+      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</guid>
+      <description>&lt;p&gt;本篇博客记录了 MySQL 配置文件中各个参数的含义，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 Linux 发行版中安装工具包</title>
       <link>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
@@ -590,6 +680,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-cronjob/</guid>
       <description>&lt;p&gt;我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 docker 方式部署 infludb</title>
+      <link>https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/</link>
+      <pubDate>Wed, 29 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 influxdb 的详细过程。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -611,12 +710,30 @@
     </item>
     
     <item>
+      <title>MySQL 常用操作</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</link>
+      <pubDate>Thu, 09 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 常用知识总结</title>
       <link>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</link>
       <pubDate>Fri, 03 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</guid>
       <description>&lt;p&gt;本篇博客记录了些 Linux 系统的常用知识。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-questions-and-solutions/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些使用 MySQL 过程中常见的问题及解决方式，留作后查。&lt;/p&gt;</description>
     </item>
     
     <item>

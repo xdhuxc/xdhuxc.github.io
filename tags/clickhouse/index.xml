@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>clickhouse on xdhuxc</title>
+    <title>ClickHouse on xdhuxc</title>
     <link>https://xdhuxc.github.io/tags/clickhouse/</link>
-    <description>Recent content in clickhouse on xdhuxc</description>
+    <description>Recent content in ClickHouse on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
@@ -19,6 +19,15 @@
       
       <guid>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</guid>
       <description>&lt;p&gt;公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>部署 clickhouse_exporter</title>
+      <link>https://xdhuxc.github.io/post/storage/clickhouse/clickhouse-exporter/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/clickhouse/clickhouse-exporter/</guid>
+      <description>&lt;p&gt;本篇博客记录下部署 ClickHouse Exporter 的过程，使用 prometheus 监控 ClickHouse 时会用到。&lt;/p&gt;</description>
     </item>
     
   </channel>

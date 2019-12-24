@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MySQL 常用操作 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="MySQL 常用操作" />
+<meta property="og:description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/" />
+<meta property="article:published_time" content="2018-08-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-03-19T00:00:00+00:00" />
+<meta itemprop="name" content="MySQL 常用操作">
+<meta itemprop="description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。">
+<meta itemprop="datePublished" content="2018-08-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="622">
+
+
+
+<meta itemprop="keywords" content="MySQL,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL 常用操作"/>
+<meta name="twitter:description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MySQL 常用操作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 622 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">赋权操作</a></li>
+        <li><a href="#heading-1">忘记密码修改密码</a></li>
+        <li><a href="#heading-2">修改默认时区</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。</p>
+<h3 id="heading">赋权操作</h3>
+<p>1、创建只读账户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; grant select on <span class="ge">*.*</span> to &#39;xdhuxc&#39;@&#39;%&#39; identified by &#39;Xdhuxc163&#39;;  # 创建只读账户xdhuxc，密码为：Xdhuxc63
+mysql&gt; flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><p>查看其权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; show grants for &#39;xdhuxc&#39;@&#39;%&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>2、授予权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">grant select, insert, update, delete on &#39;user.*&#39; to &#39;xdhuxc&#39;@&#39;%&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-1">忘记密码修改密码</h3>
+<h4 id="linux-">Linux 系统</h4>
+<p>1、停止数据库服务。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl stop mysqld
+</code></pre></td></tr></table>
+</div>
+</div><p>2、向 /etc/my.cnf 中添加如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[mysqld]
+skip-grant-tables
+</code></pre></td></tr></table>
+</div>
+</div><p>3、重启 mysql 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart mysqld
+</code></pre></td></tr></table>
+</div>
+</div><p>4、修改密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; use mysql;
+mysql&gt; update user set authentication_string=password(&#39;Xdhuxc163&#39;) where user=&#39;root&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre></td></tr></table>
+</div>
+</div><p>5、注释掉 skip-grant-tables，重启 mysqld 服务。</p>
+<h4 id="windows-">Windows 系统</h4>
+<p>1、关闭MySQL服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">net stop mysql57
+</code></pre></td></tr></table>
+</div>
+</div><p>2、进入 MySQL 的 bin 目录下，执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysqld --default-file=&#34;E:\Work\MySQL\MySQL Server 5.7 Data\my.ini&#34; --console --skip-grant-tables
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<ul>
+<li>&ndash;default-file：启动 MySQL 服务时的配置文件；</li>
+<li>&ndash;skip-grant-tables：启动 MySQL 服务的时候跳过权限表认证；</li>
+</ul>
+<p>3、新打开DOS窗口，进入MySQL的bin目录下，执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql -uroot -p # 回车后，让输入密码，直接回车
+</code></pre></td></tr></table>
+</div>
+</div><p>4、更改root用户密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># MySQL 5.7以前
+</span><span class="gh"></span>update mysql.user
+set password=password(&#39;123456&#39;)
+ where user=&#39;root&#39;;
+<span class="gh"># MySQL 5.7
+</span><span class="gh"></span>update mysql.user
+set authentication_string=password(&#39;123456&#39;)
+ where user=&#39;root&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>5、更新权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><p>6、退出当前MySQL回话并启动MySQL服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">net start mysql57
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-2">修改默认时区</h3>
+<h4 id="heading-3">方法一</h4>
+<p>1、查看 mysql 系统时间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; show variables like &#39;%time_zone%&#39;;
++------------------+--------+
+| Variable_name    | Value  |
++------------------+--------+
+| system_time_zone | UTC    |
+| time_zone        | +08:00 |
++------------------+--------+
+2 rows in set
+
+mysql&gt; select now();
++---------------------+
+| now()               |
++---------------------+
+| 2018-07-09 13:59:16 |
++---------------------+
+1 row in set
+</code></pre></td></tr></table>
+</div>
+</div><p>mysql 的系统时区已经是东八区，系统时间也是当前时间了，</p>
+<p>2、设置时区为东八区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">set global time_zone = &#39;+8:00&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>3、刷新权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="heading-4">方法二</h4>
+<p>或者直接在 my.cnf 文件中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[mysqld]
+default-time_zone = &#39;+8:00&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启 mysql 服务</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-03-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mysql/">MySQL</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux/linux-shell-execute/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux 中 Shell 脚本执行的三种方式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/linux/linux-common-knowledge/">
+            <span class="next-text nav-default">Linux 常用知识总结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

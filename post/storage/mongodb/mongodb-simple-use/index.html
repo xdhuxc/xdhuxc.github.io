@@ -163,8 +163,8 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"># network interfaces
-net:
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># network interfaces
+</span><span class="gh"></span>net:
   port: 27017
   bindIp: 192.168.91.128  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
 </code></pre></td></tr></table>
@@ -179,7 +179,7 @@ net:
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">mongo --host 192.168.91.128 --port 27017
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mongo --host 192.168.91.128 --port 27017
 或者
 mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略对端口的指定。
 </code></pre></td></tr></table>
@@ -209,7 +209,7 @@ mongo --host 192.168.91.128 # 由于使用 mongodb的默认端口，可以省略
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@xdhuxc ~]# mongo --host 192.168.91.128 -p 27017
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# mongo --host 192.168.91.128 -p 27017
 MongoDB shell version v3.7.9-27-g793e59f
 connecting to: mongodb://192.168.91.128:27017/
 MongoDB server version: 3.7.9-27-g793e59f
@@ -238,7 +238,7 @@ Server has startup warnings:
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">use database_name
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">use database_name
 </code></pre></td></tr></table>
 </div>
 </div><p>具体操作如下所示：</p>
@@ -258,18 +258,18 @@ Server has startup warnings:
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; show dbs       # 显示数据库列表。
-admin   0.000GB
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">show dbs       # 显示数据库列表。
+</span><span class="ge"></span>admin   0.000GB
 config  0.000GB
 local   0.000GB
-&gt; use xdhuxc     # 创建数据库并切换至该数据库。
-switched to db xdhuxc
-&gt; show dbs       # 再次显示数据库列表，却发现创建的数据库 xdhuxc 不在列表中。要显示新建的数据库，需要至少插入一个文档，空的数据库是不显示出来的。
-admin   0.000GB
+<span class="k">&gt; </span><span class="ge">use xdhuxc     # 创建数据库并切换至该数据库。
+</span><span class="ge"></span>switched to db xdhuxc
+<span class="k">&gt; </span><span class="ge">show dbs       # 再次显示数据库列表，却发现创建的数据库 xdhuxc 不在列表中。要显示新建的数据库，需要至少插入一个文档，空的数据库是不显示出来的。
+</span><span class="ge"></span>admin   0.000GB
 config  0.000GB
 local   0.000GB
-&gt; db             # 显示当前数据库。
-xdhuxc
+<span class="k">&gt; </span><span class="ge">db             # 显示当前数据库。
+</span><span class="ge"></span>xdhuxc
 </code></pre></td></tr></table>
 </div>
 </div><p>在 MongoDB 中，默认的数据库是 <code>test</code>，如果没有创建任何数据库，那么创建的集合和文档将存储在 <code>test</code> 数据库中。</p>
@@ -288,14 +288,14 @@ xdhuxc
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; use xdhuxc
-switched to db xdhuxc
-&gt; db                            # 显示当前数据库。
-xdhuxc
-&gt; db.createCollection(&#34;person&#34;) # 在数据库 xdhuxc 中创建集合 person。
-{ &#34;ok&#34; : 1 }
-&gt; show collections              # 显示当前数据库中的集合。
-person
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">use xdhuxc
+</span><span class="ge"></span>switched to db xdhuxc
+<span class="k">&gt; </span><span class="ge">db                            # 显示当前数据库。
+</span><span class="ge"></span>xdhuxc
+<span class="k">&gt; </span><span class="ge">db.createCollection(&#34;person&#34;) # 在数据库 xdhuxc 中创建集合 person。
+</span><span class="ge"></span>{ &#34;ok&#34; : 1 }
+<span class="k">&gt; </span><span class="ge">show collections              # 显示当前数据库中的集合。
+</span><span class="ge"></span>person
 &gt;
 </code></pre></td></tr></table>
 </div>
@@ -306,7 +306,7 @@ person
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">db.collection_name.insert(document)
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">db.collection_name.insert(document)
 </code></pre></td></tr></table>
 </div>
 </div><p>向 <code>xdhuxc</code> 数据库的 <code>person</code> 集合中插入数据，如下所示：</p>
@@ -320,8 +320,8 @@ person
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.person.insert({              # 插入一条记录，文档以json的格式定义。
-     name : &#34;xiaoming&#34;,
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.person.insert({              # 插入一条记录，文档以json的格式定义。
+</span><span class="ge"></span>     name : &#34;xiaoming&#34;,
      age : &#34;24&#34;,
      company : &#34;xdhuxc company&#34;
 })
@@ -336,7 +336,7 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id,
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id,
    3 bytes incrementer)
 </code></pre></td></tr></table>
 </div>
@@ -347,8 +347,8 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.person.find()
-{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.person.find()
+</span><span class="ge"></span>{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
 </code></pre></td></tr></table>
 </div>
 </div><p>再插入一条数据</p>
@@ -365,14 +365,14 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.person.insert({
-     name : &#34;dalong&#34;,
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.person.insert({
+</span><span class="ge"></span>     name : &#34;dalong&#34;,
      age : &#34;29&#34;,
      company : &#34;Apple company&#34;
 })
 WriteResult({ &#34;nInserted&#34; : 1 })
-&gt; db.person.find()
-{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
+<span class="k">&gt; </span><span class="ge">db.person.find()
+</span><span class="ge"></span>{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
 { &#34;_id&#34; : ObjectId(&#34;5b0f3aa0244fc0152ed71f60&#34;), &#34;name&#34; : &#34;dalong&#34;, &#34;age&#34; : &#34;29&#34;, &#34;company&#34; : &#34;Apple company&#34; }
 </code></pre></td></tr></table>
 </div>
@@ -392,15 +392,15 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.person.insert({
-     name : &#34;dalong&#34;,
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.person.insert({
+</span><span class="ge"></span>     name : &#34;dalong&#34;,
      age : &#34;29&#34;,
      company : &#34;Apple company&#34;,
      address : &#34;Beijing&#34;
 })
 WriteResult({ &#34;nInserted&#34; : 1 })
-&gt; db.person.find()
-{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
+<span class="k">&gt; </span><span class="ge">db.person.find()
+</span><span class="ge"></span>{ &#34;_id&#34; : ObjectId(&#34;5b0f384f244fc0152ed71f5f&#34;), &#34;name&#34; : &#34;xiaoming&#34;, &#34;age&#34; : &#34;24&#34;, &#34;company&#34; : &#34;xdhuxc company&#34; }
 { &#34;_id&#34; : ObjectId(&#34;5b0f3aa0244fc0152ed71f60&#34;), &#34;name&#34; : &#34;dalong&#34;, &#34;age&#34; : &#34;29&#34;, &#34;company&#34; : &#34;Apple company&#34; }
 { &#34;_id&#34; : ObjectId(&#34;5b0f3aeb244fc0152ed71f61&#34;), &#34;name&#34; : &#34;dalong&#34;, &#34;age&#34; : &#34;29&#34;, &#34;company&#34; : &#34;Apple company&#34;, &#34;address&#34; : &#34;Beijing&#34; }
 </code></pre></td></tr></table>
@@ -416,10 +416,10 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.person.remove({})            # 删除集合 person 中的所有文档
-WriteResult({ &#34;nRemoved&#34; : 3 })
-&gt; db.person.find()                # 再次查询所有文档，已经在上一步全部删除了，所以没有结果返回。
-&gt;
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.person.remove({})            # 删除集合 person 中的所有文档
+</span><span class="ge"></span>WriteResult({ &#34;nRemoved&#34; : 3 })
+<span class="k">&gt; </span><span class="ge">db.person.find()                # 再次查询所有文档，已经在上一步全部删除了，所以没有结果返回。
+</span><span class="ge"></span>&gt;
 </code></pre></td></tr></table>
 </div>
 </div><h5 id="heading-5">删除数据库</h5>
@@ -437,15 +437,15 @@ WriteResult({ &#34;nRemoved&#34; : 3 })
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; show dbs
-admin   0.000GB
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">show dbs
+</span><span class="ge"></span>admin   0.000GB
 config  0.000GB
 local   0.000GB
 xdhuxc  0.000GB
-&gt; use xdhuxc
-switched to db xdhuxc
-&gt; db
-xdhuxc
+<span class="k">&gt; </span><span class="ge">use xdhuxc
+</span><span class="ge"></span>switched to db xdhuxc
+<span class="k">&gt; </span><span class="ge">db
+</span><span class="ge"></span>xdhuxc
 </code></pre></td></tr></table>
 </div>
 </div><p>② 删除当前数据库</p>
@@ -455,8 +455,8 @@ xdhuxc
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; db.dropDatabase()
-{ &#34;dropped&#34; : &#34;xdhuxc&#34;, &#34;ok&#34; : 1 }
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">db.dropDatabase()
+</span><span class="ge"></span>{ &#34;dropped&#34; : &#34;xdhuxc&#34;, &#34;ok&#34; : 1 }
 </code></pre></td></tr></table>
 </div>
 </div><p>③ 查看删除结果</p>
@@ -468,8 +468,8 @@ xdhuxc
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt; show dbs
-admin   0.000GB
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">&gt; </span><span class="ge">show dbs
+</span><span class="ge"></span>admin   0.000GB
 config  0.000GB
 local   0.000GB
 </code></pre></td></tr></table>
