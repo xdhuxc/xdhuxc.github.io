@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -730,6 +730,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/markdown/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/mixed/github_hugo_2/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -738,13 +745,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/mixed/little_tips/</loc>
-    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
