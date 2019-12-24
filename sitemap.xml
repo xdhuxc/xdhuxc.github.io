@@ -772,6 +772,34 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/cookie/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/localstorage/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/sessionstorage/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/web/sessionstorage-localstorage-cookie/</loc>
+    <lastmod>2019-06-02T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/human/human-world-preface/</loc>
     <lastmod>2019-08-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>

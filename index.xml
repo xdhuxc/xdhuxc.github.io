@@ -512,6 +512,15 @@
     </item>
     
     <item>
+      <title>sessionStorage，localStorage 和 Cookie 的异同</title>
+      <link>https://xdhuxc.github.io/post/programming/web/sessionstorage-localstorage-cookie/</link>
+      <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/web/sessionstorage-localstorage-cookie/</guid>
+      <description>&lt;p&gt;本篇博客记录下在 Web 开发过程中常用的存储客户端数据的 SessionStorage，LocalStorage 和 Cookie 的异同，对于我们存储客户端数据时的选型很有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>人间世·前言</title>
       <link>https://xdhuxc.github.io/post/human/human-world-preface/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
