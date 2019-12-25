@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ClickHouse on xdhuxc</title>
+    <title>clickhouse on xdhuxc</title>
     <link>https://xdhuxc.github.io/tags/clickhouse/</link>
-    <description>Recent content in ClickHouse on xdhuxc</description>
+    <description>Recent content in clickhouse on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>

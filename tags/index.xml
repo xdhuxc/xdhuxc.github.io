@@ -130,7 +130,7 @@
     </item>
     
     <item>
-      <title>ClickHouse</title>
+      <title>clickhouse</title>
       <link>https://xdhuxc.github.io/tags/clickhouse/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
@@ -495,6 +495,15 @@
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pinpoint</title>
+      <link>https://xdhuxc.github.io/tags/pinpoint/</link>
+      <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/pinpoint/</guid>
       <description></description>
     </item>
     

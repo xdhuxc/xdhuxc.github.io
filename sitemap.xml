@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -457,7 +457,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/message/message_queue/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/message/message_queue/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -856,6 +856,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/pinpoint/</loc>
+    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/pinpoint/pinpoint-install-and-basic-usage/</loc>
+    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -940,7 +954,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/message/message-queue-model/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue-model/</loc>
     <lastmod>2018-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
