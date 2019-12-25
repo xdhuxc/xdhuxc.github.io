@@ -548,6 +548,15 @@
     </item>
     
     <item>
+      <title>使用 prometheus 监控 etcd</title>
+      <link>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 prometheus 监控 etcd 的配置方法，还包括在 grafana 中显示 etcd 指标图标，以及基于 AlertManager 的报警配置。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>ElasticSearch 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-questions-and-solutions/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
@@ -581,6 +590,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</guid>
       <description>&lt;p&gt;本篇博客记录了基于 binlog 的 MySQL 主从复制集群的搭建过程，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>calico 架构和网络通信模型介绍</title>
+      <link>https://xdhuxc.github.io/post/mixed/calico/calico-theory-and-architecture/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/calico/calico-theory-and-architecture/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 calico 的架构和网络通信模型。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -629,12 +647,39 @@
     </item>
     
     <item>
+      <title>Calico 常用命令</title>
+      <link>https://xdhuxc.github.io/post/mixed/calico/calico-command/</link>
+      <pubDate>Thu, 15 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/calico/calico-command/</guid>
+      <description>&lt;p&gt;本篇博客记录下 calico 常用的命令。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Kubernetes 常用命令总结</title>
       <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</link>
       <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Kubernetes 中常用的命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 docker 方式部署 etcd</title>
+      <link>https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/</link>
+      <pubDate>Sun, 11 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/</guid>
+      <description>&lt;p&gt;本篇博客介绍了基于 docker 容器部署 etcd。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Calico 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/mixed/calico/calico-questions-and-solutions/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/calico/calico-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录下在使用 calico 的过程中常见的问题及解决方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -923,6 +968,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>配置 SSH 免密登录</title>
+      <link>https://xdhuxc.github.io/post/common/ssh-no-password-login/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/ssh-no-password-login/</guid>
+      <description>&lt;p&gt;本篇博客记录了配置多台机器 SSH 免密登录的详细过程，在管理多台服务器时会很有用。&lt;/p&gt;</description>
     </item>
     
     <item>

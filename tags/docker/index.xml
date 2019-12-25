@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>基于 docker 方式部署 etcd</title>
+      <link>https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/</link>
+      <pubDate>Sun, 11 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/</guid>
+      <description>&lt;p&gt;本篇博客介绍了基于 docker 容器部署 etcd。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 Docker 容器方式部署 Redis</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>

@@ -490,6 +490,15 @@
     </item>
     
     <item>
+      <title>etcd</title>
+      <link>https://xdhuxc.github.io/tags/etcd/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ElasticSearch</title>
       <link>https://xdhuxc.github.io/tags/elasticsearch/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
@@ -504,6 +513,15 @@
       <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/pinpoint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>calico</title>
+      <link>https://xdhuxc.github.io/tags/calico/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/calico/</guid>
       <description></description>
     </item>
     
@@ -639,6 +657,15 @@
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSH</title>
+      <link>https://xdhuxc.github.io/tags/ssh/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/ssh/</guid>
       <description></description>
     </item>
     

@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -507,7 +507,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/docker/</loc>
-    <lastmod>2018-07-03T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -835,6 +835,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/etcd/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</loc>
+    <lastmod>2019-09-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/elasticsearch/</loc>
     <lastmod>2019-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -871,6 +885,20 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-binlog/</loc>
+    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/calico/</loc>
+    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/calico/calico-theory-and-architecture/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -933,7 +961,28 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/mixed/calico/calico-command/</loc>
+    <lastmod>2018-11-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/</loc>
+    <lastmod>2018-11-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/</loc>
+    <lastmod>2019-01-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/calico/calico-questions-and-solutions/</loc>
     <lastmod>2018-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1236,6 +1285,20 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/ssh/</loc>
+    <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/common/ssh-no-password-login/</loc>
+    <lastmod>2018-01-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
