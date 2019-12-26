@@ -14,28 +14,28 @@
     
     <item>
       <title>Prometheus 和 AlertManager 配合使用</title>
-      <link>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</link>
+      <link>https://xdhuxc.github.io/post/devops/prometheus/prometheus-alertmanager/</link>
       <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</guid>
+      <guid>https://xdhuxc.github.io/post/devops/prometheus/prometheus-alertmanager/</guid>
       <description>&lt;p&gt;本篇博客介绍了 Prometheus 和 AlertManager 配合使用时的配置方式，以备后需。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用原生方式和基于 docker 容器方式部署 prometheus</title>
-      <link>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</link>
+      <link>https://xdhuxc.github.io/post/devops/prometheus/prometheus-native-docker-install/</link>
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</guid>
+      <guid>https://xdhuxc.github.io/post/devops/prometheus/prometheus-native-docker-install/</guid>
       <description>&lt;p&gt;本篇博客分别介绍了使用原生方式和基于 docker 容器方式部署 prometheus 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 prometheus 监控 etcd</title>
-      <link>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</link>
+      <link>https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/</link>
       <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</guid>
+      <guid>https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/</guid>
       <description>&lt;p&gt;本篇博客介绍了使用 prometheus 监控 etcd 的配置方法，还包括在 grafana 中显示 etcd 指标图标，以及基于 AlertManager 的报警配置。&lt;/p&gt;</description>
     </item>
     

@@ -14,10 +14,10 @@
     
     <item>
       <title>使用 Grafana 监控 Clickhouse</title>
-      <link>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</link>
+      <link>https://xdhuxc.github.io/post/devops/prometheus/prometheus-grafana-clickhouse/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</guid>
+      <guid>https://xdhuxc.github.io/post/devops/prometheus/prometheus-grafana-clickhouse/</guid>
       <description>&lt;p&gt;公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。&lt;/p&gt;</description>
     </item>
     

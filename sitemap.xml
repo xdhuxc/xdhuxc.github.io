@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -226,7 +226,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/prometheus-grafana-clickhouse/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/prometheus/prometheus-grafana-clickhouse/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -569,6 +569,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/jenkins/</loc>
+    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/mac/</loc>
     <lastmod>2019-06-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -578,6 +585,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/mixed/mac-tips/</loc>
     <lastmod>2019-06-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/jenkins/jenkins-gitlab-trigger/</loc>
+    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -744,7 +758,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/prometheus-alertmanager/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/prometheus/prometheus-alertmanager/</loc>
     <lastmod>2019-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -779,7 +793,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/prometheus-native-docker-install/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/prometheus/prometheus-native-docker-install/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -842,7 +856,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/</loc>
     <lastmod>2019-09-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1220,14 +1234,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/ansible-simple-use/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/ansible/ansible-simple-use/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/devops/ansible-common-model/</loc>
+    <loc>https://xdhuxc.github.io/post/devops/ansible/ansible-common-model/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -14,10 +14,10 @@
     
     <item>
       <title>使用 prometheus 监控 etcd</title>
-      <link>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</link>
+      <link>https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/</link>
       <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/devops/prometheus-monitor-etcd/</guid>
+      <guid>https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/</guid>
       <description>&lt;p&gt;本篇博客介绍了使用 prometheus 监控 etcd 的配置方法，还包括在 grafana 中显示 etcd 指标图标，以及基于 AlertManager 的报警配置。&lt;/p&gt;</description>
     </item>
     
