@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown - xdhuxc</title>
+  <title>etcd 常用命令总结 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇文章介绍了使用 Spring Boot 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：
-1  AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown   " /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 etcd 中常用的命令的用法。
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.61.0 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/programming/java/java-springboot-jmx/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/storage/etcd/etcd-command/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,50 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown" />
-<meta property="og:description" content="本篇文章介绍了使用 Spring Boot 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：
-
-
-1
-
-
-AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-
-
-" />
+<meta property="og:title" content="etcd 常用命令总结" />
+<meta property="og:description" content="本篇博客介绍了 etcd 中常用的命令的用法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/programming/java/java-springboot-jmx/" />
-<meta property="article:published_time" content="2018-10-25T00:00:00+00:00" />
-<meta property="article:modified_time" content="2018-10-25T00:00:00+00:00" />
-<meta itemprop="name" content="SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown">
-<meta itemprop="description" content="本篇文章介绍了使用 Spring Boot 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：
-
-
-1
-
-
-AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-
-
-">
-<meta itemprop="datePublished" content="2018-10-25T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-10-25T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="510">
+<meta property="og:url" content="https://xdhuxc.github.io/post/storage/etcd/etcd-command/" />
+<meta property="article:published_time" content="2018-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-11-20T00:00:00+00:00" />
+<meta itemprop="name" content="etcd 常用命令总结">
+<meta itemprop="description" content="本篇博客介绍了 etcd 中常用的命令的用法。">
+<meta itemprop="datePublished" content="2018-10-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-11-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="165">
 
 
 
-<meta itemprop="keywords" content="SpringBoot,Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown"/>
-<meta name="twitter:description" content="本篇文章介绍了使用 Spring Boot 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：
-
-
-1
-
-
-AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-
-
-"/>
+<meta itemprop="keywords" content="etcd," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="etcd 常用命令总结"/>
+<meta name="twitter:description" content="本篇博客介绍了 etcd 中常用的命令的用法。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -149,15 +122,15 @@ AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</h1>
+      <h1 class="post-title">etcd 常用命令总结</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-10-25 </span>
+        <span class="post-time"> 2018-10-15 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 510 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 165 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -169,109 +142,8 @@ AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
   </div>
 </div>
     <div class="post-content">
-      <p>本篇文章介绍了使用 <code>Spring Boot</code> 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
-</code></pre></td></tr></table>
-</div>
-</div><p>使用 <code>Spring Boot</code> 编写的Java 程序，其 <code>pom.xml</code>文件内容为：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">	&lt;parent&gt;
-		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-		&lt;version&gt;1.5.13.RELEASE&lt;/version&gt;
-	&lt;/parent&gt;
-	&lt;dependencies&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId&gt;spring-boot-starter-data-mongodb&lt;/artifactId&gt;
-		&lt;/dependency&gt;
-	&lt;/dependencies&gt;
-</code></pre></td></tr></table>
-</div>
-</div><p>运行该程序时，报错如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  .   ____          _            __ _ _
- /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  &#39;  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::       (v1.5.13.RELEASE)
-
-2018-05-19 16:34:04.386  INFO 3332 --- [           main] com.xdhuxc.cloud.MongodbApp              : Starting MongodbApp on DESKTOP-OC6TL9S with PID 3332 (E:\eclipse-workspace\xdhuxc-mongodb\target\classes started by wanghuan in E:\eclipse-workspace\xdhuxc-mongodb)
-2018-05-19 16:34:04.389  INFO 3332 --- [           main] com.xdhuxc.cloud.MongodbApp              : No active profile set, falling back to default profiles: default
-2018-05-19 16:34:04.430  INFO 3332 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@7b227d8d: startup date [Sat May 19 16:34:04 CST 2018]; root of context hierarchy
-2018-05-19 16:34:06.069  INFO 3332 --- [           main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[192.168.91.128:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout=&#39;30000 ms&#39;, maxWaitQueueSize=500}
-2018-05-19 16:34:06.536  INFO 3332 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2018-05-19 16:34:06.545  INFO 3332 --- [           main] com.xdhuxc.cloud.MongodbApp              : Started MongodbApp in 2.436 seconds (JVM running for 2.755)
-2018-05-19 16:34:06.545  INFO 3332 --- [       Thread-2] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@7b227d8d: startup date [Sat May 19 16:34:04 CST 2018]; root of context hierarchy
-2018-05-19 16:34:06.546  INFO 3332 --- [       Thread-2] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
-</code></pre></td></tr></table>
-</div>
-</div><p>使用搜索引擎搜索 <code>Unregistering JMX-exposed beans on shutdown</code>，
-提出的方案基本都是显式添加 <code>tomcat</code> 的依赖，向 <code>pom.xml</code> 文件中加入如下内容：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;dependency&gt;
-	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-	&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre></td></tr></table>
-</div>
-</div><p>但是很遗憾，并没有起多大作用，还是报同样的错误。
-最后，尝试着修改了一下 <code>Spring Boot</code> 的版本，降级试试，于是，修改 <code>pom.xml</code> 文件为：</p>
+      <p>本篇博客介绍了 etcd 中常用的命令的用法。</p>
+<p>1、设置键值对</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -281,15 +153,79 @@ AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;parent&gt;
-	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-	&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-	&lt;version&gt;1.5.12.RELEASE&lt;/version&gt;
-&lt;/parent&gt;
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">etcdctl set xdhuxc adobe
+或
+etcdctl set /xdhuxc adobe
+或
+curl -X PUT http://10.10.24.75:2379/v2/keys/xdhuxc -d value=&#34;adobe&#34;
 </code></pre></td></tr></table>
 </div>
-</div><p>终于可以正常启动 <code>Spring Boot</code> 程序了！</p>
-<p>这应该是 <code>Spring Boot</code> <code>1.5.12.RELEASE</code> 的一个bug。</p>
+</div><p>2、获取所有的key</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">curl -s http://10.10.24.75:2379/v2/keys | python -m json.tool
+</code></pre></td></tr></table>
+</div>
+</div><p>3、获取键值对</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">etcdctl get xdhuxc
+或
+etcdctl get /xdhuxc
+或
+curl -s http://10.10.24.75:2379/v2/keys/xdhuxc | python -m json.tool
+</code></pre></td></tr></table>
+</div>
+</div><p>4、删除键值对</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">etcdctl rm xdhuxc
+或
+etcdctl rm /xdhuxc
+或
+curl -X –s DELETE http://127.0.0.1:2379/v2/keys/xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><p>5、查看当前集群中的节点和leader节点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">etcdctl member list
+或
+curl -s http://172.20.26.149:2379/v2/members|python -m json.tool
+</code></pre></td></tr></table>
+</div>
+</div><p>6、查看etcd节点状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">etcdctl cluster-health
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -300,7 +236,7 @@ AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2018-10-25
+        2018-11-20
         
     </span>
   </p>
@@ -309,17 +245,16 @@ AnnotationMBeanExporter : Unregistering JMX-exposed beans on shutdown
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/springboot/">SpringBoot</a>
-          <a href="/tags/java/">Java</a>
+          <a href="/tags/etcd/">etcd</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/tools/tools-vagrant/">
+        <a class="prev" href="/post/programming/java/java-springboot-jmx/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Vagrant 常用命令和资料</span>
+            <span class="prev-text nav-default">SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/storage/etcd/etcd-command/">
-            <span class="next-text nav-default">etcd 常用命令总结</span>
+        <a class="next" href="/post/storage/mysql/mysql-configuration/">
+            <span class="next-text nav-default">MySQL 配置文件详解</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
