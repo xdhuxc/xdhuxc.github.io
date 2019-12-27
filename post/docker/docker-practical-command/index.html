@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。">
 <meta itemprop="datePublished" content="2017-06-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-06-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="216">
+<meta itemprop="wordCount" content="242">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 216 字 </span>
+          <span class="more-meta"> 约 242 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -161,7 +161,7 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker cp nginx:/xdhuxc/a.html ./a.html
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker cp nginx:/xdhuxc/a.html ./a.html
 或
 docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 </code></pre></td></tr></table>
@@ -173,9 +173,9 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker logs nginx/980cfa7fa636 2&gt;&amp;1 | grep &#39;^User:&#39;|tail -n1 
-# Docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker logs nginx/980cfa7fa636 2&gt;&amp;1 | grep &#39;^User:&#39;|tail -n1 
+<span class="gh"># Docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="heading-1">常用组合命令</h3>
 <p>1、删除所有 docker 镜像</p>
@@ -184,7 +184,7 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker ps -a | awk &#39;NR &gt; 1 { print $1 }&#39; | xargs docker rm
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker ps -a | awk &#39;NR &gt; 1 { print $1 }&#39; | xargs docker rm
 </code></pre></td></tr></table>
 </div>
 </div><p>2、删除为 none 的镜像</p>
@@ -193,7 +193,16 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback"> docker images | grep none | awk &#39;{ print $3 }&#39;| xargs docker rmi -f
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"> docker images | grep none | awk &#39;{ print $3 }&#39;| xargs docker rmi -f
+</code></pre></td></tr></table>
+</div>
+</div><p>3、删除已经退出的docker容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker ps -a|grep Exited|awk &#39;{print $1}&#39;|xargs docker rm
 </code></pre></td></tr></table>
 </div>
 </div>

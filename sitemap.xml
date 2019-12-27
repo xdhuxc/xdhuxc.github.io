@@ -1059,7 +1059,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-springboot-jmx/</loc>
     <lastmod>2018-10-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1199,6 +1199,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-pip/</loc>
+    <lastmod>2018-04-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1297,7 +1304,21 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</loc>
+    <loc>https://xdhuxc.github.io/tags/iptables/</loc>
+    <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-firewall/</loc>
+    <lastmod>2017-12-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

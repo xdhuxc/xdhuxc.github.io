@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。">
 <meta itemprop="datePublished" content="2019-04-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="604">
+<meta itemprop="wordCount" content="662">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 604 字 </span>
+          <span class="more-meta"> 约 662 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -212,6 +212,16 @@ go get -u golang.org/x/tools/cmd/guru # 安装 guru
 <li>verify：验证依赖项具有预期的内容。</li>
 <li>why：解释需要该包或者模块的原因。</li>
 </ul>
+<p>4）<code>env</code> 用于修改 go 内置的环境变量，不能用于修改其他环境变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">go env -w GOPRIVATE=&#34;gitlab.xdhuxc.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>除 <code>GOPATH</code> 外，go 内置的环境变量不能使用 <code>export</code> 来进行修改</p>
 <h3 id="-make--go-">基于 make 编译 go 工程</h3>
 <p>1、进入 GOPATH 目录下</p>
 <div class="highlight"><div class="chroma">

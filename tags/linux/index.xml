@@ -67,11 +67,20 @@
     </item>
     
     <item>
+      <title>Linux 下 iptables 常用命令</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-firewall/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-firewall/</guid>
+      <description>&lt;p&gt;本篇博客记录了 iptables 常用命令，对于运维人员，会经常需要用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 中常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</link>
+      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
     </item>
     

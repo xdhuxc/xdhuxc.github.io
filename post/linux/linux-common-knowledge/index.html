@@ -198,8 +198,8 @@ CPU 时间：ulimit -t unlimited
 <p>超级用户和普通用户都可以扩大硬限制，但是超级用户可以缩小硬限制，普通用户则不能缩小硬限制。</p>
 <p>硬限制设定后，设定软限制时只能是小于或者等于硬限制。</p>
 <h4 id="heading-2">解除资源限制</h4>
-<p>1、解除 Linux 系统的最大进程数和最大文件打开数限制：
-在 <code>/etc/security/limits.conf</code> 中添加如下行：</p>
+<p>1、解除 Linux 系统的最大进程数和最大文件打开数限制：</p>
+<p>在 <code>/etc/security/limits.conf</code> 中添加如下行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -208,15 +208,15 @@ CPU 时间：ulimit -t unlimited
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">* soft noproc 11000
-* hard noproc 11000
-* soft nofile 4100
-* hard nofile 4100
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="k">*</span> soft noproc 11000
+<span class="k">*</span> hard noproc 11000
+<span class="k">*</span> soft nofile 4100
+<span class="k">*</span> hard nofile 4100
 </code></pre></td></tr></table>
 </div>
 </div><p>说明：* 代表针对所有用户，<code>noproc</code> 是代表最大进程数，<code>nofile</code> 是代表最大文件打开数。</p>
-<p>2、修改所有Linux用户的环境变量文件：
-在<code>/etc/profile</code>中添加如下内容</p>
+<p>2、修改所有Linux用户的环境变量文件：</p>
+<p>在<code>/etc/profile</code>中添加如下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -228,7 +228,7 @@ CPU 时间：ulimit -t unlimited
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">ulimit -u 10000
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ulimit -u 10000
 ulimit -n 4096
 ulimit -d unlimited
 ulimit -m unlimited
@@ -239,8 +239,8 @@ ulimit -v unlimited
 </div>
 </div><p>保存后运行<code>source /etc/profile</code> 使其生效。</p>
 <h4 id="heading-3">参考资料</h4>
-<p><a href="https://blog.csdn.net/csq_year/article/details/49304895">https://blog.csdn.net/csq_year/article/details/49304895</a>
-<a href="https://blog.csdn.net/fengspg/article/details/39646337">https://blog.csdn.net/fengspg/article/details/39646337</a></p>
+<p><a href="https://blog.csdn.net/csq_year/article/details/49304895">https://blog.csdn.net/csq_year/article/details/49304895</a></p>
+<p><a href="https://blog.csdn.net/fengspg/article/details/39646337">https://blog.csdn.net/fengspg/article/details/39646337</a></p>
 <h3 id="heading-4">僵尸进程和孤儿进程</h3>
 <p>在unix/linux中，正常情况下，子进程是通过父进程创建的，子进程在创建新的进程。子进程的结束和父进程的运行是一个异步过程,即父进程永远无法预测子进程 到底什么时候结束。 当一个 进程完成它的工作终止之后，它的父进程需要调用wait()或者waitpid()系统调用取得子进程的终止状态。
 	孤儿进程：一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。

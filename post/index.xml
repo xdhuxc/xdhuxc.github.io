@@ -702,10 +702,10 @@
     
     <item>
       <title>SpringBoot 应用启动报错，Unregistering JMX-exposed beans on shutdown</title>
-      <link>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</link>
+      <link>https://xdhuxc.github.io/post/programming/java/java-springboot-jmx/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/java/springboot-jmx/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/java/java-springboot-jmx/</guid>
       <description>&lt;p&gt;本篇文章介绍了使用 &lt;code&gt;Spring Boot&lt;/code&gt; 过程中遇到的一个错误及最终的解决方法，控制台输出的主要错误信息为：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -845,6 +845,15 @@
     </item>
     
     <item>
+      <title>Python 配置 pip 源</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-pip/</link>
+      <pubDate>Fri, 29 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-pip/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 python 开发过程中，经常需要配置 pip 源，以加快依赖包的下载速度，在构建 docker 镜像时，最好也指定 pip 源。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Redis 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
@@ -944,11 +953,20 @@
     </item>
     
     <item>
+      <title>Linux 下 iptables 常用命令</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-firewall/</link>
+      <pubDate>Tue, 07 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-firewall/</guid>
+      <description>&lt;p&gt;本篇博客记录了 iptables 常用命令，对于运维人员，会经常需要用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 中常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</link>
+      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
     </item>
     
