@@ -1269,6 +1269,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-command/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</loc>
     <lastmod>2018-03-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
