@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。">
 <meta itemprop="datePublished" content="2019-06-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1366">
+<meta itemprop="wordCount" content="1379">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1366 字 </span>
+          <span class="more-meta"> 约 1379 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -171,8 +171,8 @@
 </span><span class="gh"></span>wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
 <span class="gh"># 重命名该文件
 </span><span class="gh"></span>mv confd-0.16.0-linux-amd64 confd
-<span class="gh"># 移动至 PATH 路径下
-</span><span class="gh"></span>cp confd /usr/bin/
+<span class="gh"># 添加执行权限并移动至 PATH 路径下
+</span><span class="gh"></span>chmod +x confd &amp;&amp; cp confd /usr/bin/
 </code></pre></td></tr></table>
 </div>
 </div><p>也可自行根据 <a href="https://github.com/kelseyhightower/confd">confd 源码</a> 构建</p>
@@ -182,10 +182,14 @@
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /etc/confd/conf.d    // 存放 confd 使用的配置文件
-mkdir -p /etc/confd/templates // 用于存放模板文件，生成最终的配置文件
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 存放 confd 使用的配置文件
+</span><span class="gh"></span>mkdir -p /etc/confd/conf.d    
+<span class="gh"># 用于存放模板文件，生成最终的配置文件
+</span><span class="gh"></span>mkdir -p /etc/confd/templates
 </code></pre></td></tr></table>
 </div>
 </div><p>2、创建模板文件及其 confd 配置文件</p>
