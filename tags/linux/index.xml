@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux 中 systemd 的使用</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-systemd/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-systemd/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Linux 下 服务管理工具 systemd 的使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 下 RPM 的使用</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-rpm/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-rpm/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Linux 下 RPM 包管理工具的使用。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>在 Linux 发行版中安装工具包</title>
@@ -55,6 +73,24 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-common-operations/</guid>
       <description>&lt;p&gt;本篇博客记录了些 Linux 系统中的常用操作，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 中配置时间同步</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-ntp/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-ntp/</guid>
+      <description>&lt;p&gt;本篇博客记录了 Linux 系统中使用 NTP 进行时间同步的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 iptraf 观察端口网络流量</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-iptraf-network-flow/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-iptraf-network-flow/</guid>
+      <description>&lt;p&gt;本篇博客详细记录了在 Linux 系统中使用 iptraf 进行端口流量观察的方法，可以帮助我们分析应用程序端口的网络流入和网络流出。&lt;/p&gt;</description>
     </item>
     
     <item>

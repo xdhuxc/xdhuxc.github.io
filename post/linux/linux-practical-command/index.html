@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。">
 <meta itemprop="datePublished" content="2017-08-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="382">
+<meta itemprop="wordCount" content="648">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 382 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 648 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -199,26 +199,116 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>6、时间格式</p>
-<p>想要获得 <code>2018-05-27</code> 样式</p>
+<p>1）获得 <code>2018-04-19</code> 样式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">data_str=$(date +&#34;%Y-%m-%d&#34;)
-echo ${data_str}
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d&#34;
 </code></pre></td></tr></table>
 </div>
-</div><p>想要获得 <code>20180527</code> 样式</p>
+</div><p>执行效果如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">data_str=$(date +&#34;%Y%m%d&#34;)
-echo ${data_str}
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+2018-04-19
+</code></pre></td></tr></table>
+</div>
+</div><p>2）获得 <code>20180419</code> 样式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y%m%d&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+20180419
+</code></pre></td></tr></table>
+</div>
+</div><p>3）仅包含年月日的日期格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d&#34; 
+或 
+date -d today +&#34;%Y-%m-%d&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+2018-04-19
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d&#34;
+2018-04-19
+</code></pre></td></tr></table>
+</div>
+</div><p>4）包含日期和时间的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d %H:%M:%S&#34; 
+或 
+date +&#34;%Y-%m-%d %T&#34;
+或
+date -d today +&#34;%Y-%m-%d %T&#34; 
+或
+date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d %H:%M:%S&#34;
+2018-04-19 11:39:47
+[root@localhost ~]# date +&#34;%Y-%m-%d %T&#34;
+2018-04-19 11:39:59
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d %T&#34; 
+2018-04-19 11:40:07
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
+2018-04-19 11:40:16
 </code></pre></td></tr></table>
 </div>
 </div><p>7、修改系统时区
@@ -268,6 +358,35 @@ echo ${data_str}
 </code></pre></td></tr></table>
 </div>
 </div><p>但是不能删除 <code>.</code> 和 <code>..</code> 目录，所以该命令的返回值为 <code>1</code>。</p>
+<p>10、字符串替换</p>
+<p>1）将当前目录下所有文件中的 <code>127.0.0.1</code> 修改为 <code>172.20.15.29</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sed -i &#34;s/127.0.0.1/172.20.15.29/g&#34; ./*
+</code></pre></td></tr></table>
+</div>
+</div><p>2）将当前目录下所有文件中的 <code>127.0.0.1</code> 或 <code>localhost</code> 修改为 <code>172.20.15.29</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sed -i &#34;s/\(127.0.0.1\|localhost\)/172.20.15.29/g&#34; ./*
+</code></pre></td></tr></table>
+</div>
+</div><p>11、查找当前目录下所有以 <code>.sh</code>，<code>.service</code>，<code>.conf</code>，<code>.yaml</code> 结尾的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">find ./ -regex &#39;.*\.sh\|.*\.service\|.*\.conf\|.*\.yaml&#39;
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

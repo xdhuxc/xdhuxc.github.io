@@ -600,9 +600,36 @@
     <item>
       <title>Linux</title>
       <link>https://xdhuxc.github.io/tags/linux/</link>
-      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systemd</title>
+      <link>https://xdhuxc.github.io/tags/systemd/</link>
+      <pubDate>Tue, 23 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RPM</title>
+      <link>https://xdhuxc.github.io/tags/rpm/</link>
+      <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/rpm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VMware</title>
+      <link>https://xdhuxc.github.io/tags/vmware/</link>
+      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/vmware/</guid>
       <description></description>
     </item>
     
@@ -639,6 +666,24 @@
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/tags/centos7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iptraf</title>
+      <link>https://xdhuxc.github.io/tags/iptraf/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/iptraf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NTP</title>
+      <link>https://xdhuxc.github.io/tags/ntp/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/tags/ntp/</guid>
       <description></description>
     </item>
     

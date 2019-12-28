@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。">
 <meta itemprop="datePublished" content="2019-06-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1631">
+<meta itemprop="wordCount" content="1621">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1631 字 </span>
+          <span class="more-meta"> 约 1621 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -546,7 +546,7 @@ WantedBy=multi-user.target
 <li>&ndash;interval：后台轮询间隔，以秒为单位，默认值为：600；</li>
 <li>&ndash;profile：在使用 DynamoDB 作为数据源时，使用 AWS AccessKey 和 Secret Key 的 profile，防止和其他程序使用的 AccessKey 和 Secret Key 冲突，源代码中没有此选项，此处使用的是改造过的<a href="https://github.com/xdhuxc/confd">代码</a>；</li>
 <li>&ndash;log-level：confd 日志级别，默认为： info；</li>
-<li>&ndash;watch：启用 watch 功能，当 etcd（或 consul）中的数据发生变化时，会触发 confd 全量同步数据，近实时同步。</li>
+<li>&ndash;watch：启用 watch 功能，当 etcd 或 consul 中的数据发生变化时，会触发 confd 全量同步数据，近实时同步。</li>
 </ul>
 <p>添加如下 profile 到 ~/.aws/credentials 文件中</p>
 <div class="highlight"><div class="chroma">

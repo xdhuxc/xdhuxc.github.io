@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VMware on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/vmware/</link>
+    <description>Recent content in VMware on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Sat, 13 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/vmware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>给 VMware 中创建的虚拟机设置静态 IP</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-vmware-static-ip/</link>
+      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-vmware-static-ip/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了给在 VMware 中创建的虚拟机设置静态 IP 的步骤。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
