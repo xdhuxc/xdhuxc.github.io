@@ -31,12 +31,39 @@
     </item>
     
     <item>
+      <title>基于 docker 部署 MySQL</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 Docker 容器方式部署 Redis</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
       <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker 常用参数配置</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些使用 docker 的过程中经常使用的参数的配置，对于 docker 进阶使用会非常有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker 中常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-questions-and-solutions/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 docker 的过程中常见的问题及解决方法。&lt;/p&gt;</description>
     </item>
     
     <item>

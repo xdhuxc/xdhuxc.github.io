@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。">
 <meta itemprop="datePublished" content="2017-10-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-10-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="600">
+<meta itemprop="wordCount" content="767">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 600 字 </span>
+          <span class="more-meta"> 约 767 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -210,7 +210,7 @@ Environment=&#34;HOME=/root&#34;
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost mesos_install]# ./install.sh -h
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# ./install.sh -h
 -bash: ./install.sh: /bin/bash^M: bad interpreter: No such file or directory
 </code></pre></td></tr></table>
 </div>
@@ -220,7 +220,7 @@ Environment=&#34;HOME=/root&#34;
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum install -y dos2unix
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y dos2unix
 </code></pre></td></tr></table>
 </div>
 </div><p>使用方法：</p>
@@ -229,7 +229,7 @@ Environment=&#34;HOME=/root&#34;
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">dos2unix filename_1 filename_2 filename_3
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">dos2unix filename_1 filename_2 filename_3
 </code></pre></td></tr></table>
 </div>
 </div><p>5、使用curl命令从网络上下载文件时，报错如下：</p>
@@ -242,7 +242,7 @@ Environment=&#34;HOME=/root&#34;
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost ~]# curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
   0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0
@@ -256,7 +256,7 @@ curl: (35) Peer reports incompatible or unsupported protocol version.
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum update -y curl
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update -y curl
 </code></pre></td></tr></table>
 </div>
 </div><p>更新curl后还是报一样的错误</p>
@@ -266,7 +266,7 @@ curl: (35) Peer reports incompatible or unsupported protocol version.
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">yum update -y nss nspr nss-util
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update -y nss nspr nss-util
 </code></pre></td></tr></table>
 </div>
 </div><p>更新后问题得到解决。</p>
@@ -277,7 +277,61 @@ curl: (35) Peer reports incompatible or unsupported protocol version.
 </center>
 <p>将其中的 <code>ONBOOT</code> 修改为 <code>yes</code>，然后使用 <code>systemctl restart network</code> 命令重启网络</p>
 <p>注意：启动 <code>Windows</code> 下 <code>VMware</code> 相关的服务</p>
-<p>7、</p>
+<p>7、使用SSH无法登陆服务器，VNC操作命令提示“fork:cannot allocate memory”，或者，在已经登录至该服务器上的终端中执行命令，所有命令均无法执行，一直提示如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# free -h
+bash: fork: Cannot allocate memory
+</code></pre></td></tr></table>
+</div>
+</div><p>查看最大进程数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost /]# sysctl kernel.pid_max
+kernel.pid_max = 32768
+</code></pre></td></tr></table>
+</div>
+</div><p>查看进程数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# ps -eLf | wc -l
+1011
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：</p>
+<p>1）修改最大进程数，即时生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo 1000000 &gt; /proc/sys/kernel/pid_max
+</code></pre></td></tr></table>
+</div>
+</div><p>2）永久生效的方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;kernel.pid_max=1000000 &#34; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -305,8 +359,8 @@ curl: (35) Peer reports incompatible or unsupported protocol version.
             <span class="prev-text nav-default">Linux 下 iptables 常用命令</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/common/ssh-no-password-login/">
-            <span class="next-text nav-default">配置 SSH 免密登录</span>
+        <a class="next" href="/post/docker/docker-configuration-parameter/">
+            <span class="next-text nav-default">Docker 常用参数配置</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

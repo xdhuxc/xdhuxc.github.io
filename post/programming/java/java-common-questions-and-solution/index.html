@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。">
 <meta itemprop="datePublished" content="2018-11-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="525">
+<meta itemprop="wordCount" content="605">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 525 字 </span>
+          <span class="more-meta"> 约 605 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -143,6 +143,7 @@
     <li>
       <ul>
         <li><a href="#linux-">Linux 下验证码无法显示问题</a></li>
+        <li><a href="#webxml-is-missing-and-failonmissingwebxml-is-set-to-true">web.xml is missing and  is set to true</a></li>
       </ul>
     </li>
   </ul>
@@ -213,6 +214,47 @@
 }
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="webxml-is-missing-and-failonmissingwebxml-is-set-to-true">web.xml is missing and <failOnMissingWebXml> is set to true</h3>
+<p>使用 <code>maven</code> 构建工程时，<code>pom.xml</code> 报错如下，提示如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">web.xml is missing and &lt;failOnMissingWebXml&gt; is set to true
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>pom.xml</code> 文件中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
+            &lt;version&gt;3.2.0&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre></td></tr></table>
+</div>
 </div>
     </div>
 
@@ -236,9 +278,9 @@
           <a href="/tags/java/">Java</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/common/common-knowledge/">
+        <a class="prev" href="/post/programming/java/java-maven-configuration/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">一些计算机科学和技术中的概念区分</span>
+            <span class="prev-text nav-default">Maven 常用配置</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/kubernetes/kubernetes-questions-and-solutions/">

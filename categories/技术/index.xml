@@ -565,6 +565,15 @@
     </item>
     
     <item>
+      <title>Maven 常用配置</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-maven-configuration/</link>
+      <pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-maven-configuration/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 maven 时的一些常用的配置。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Java 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
@@ -709,6 +718,15 @@
     </item>
     
     <item>
+      <title>基于 docker 部署 MySQL</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MySQL 配置文件详解</title>
       <link>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
@@ -826,6 +844,15 @@
     </item>
     
     <item>
+      <title>Linux 中 Shell 脚本基础知识</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-shell-script/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-shell-script/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 CentOS 7 上安装 MongoDB 数据库</title>
       <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
@@ -934,6 +961,15 @@
     </item>
     
     <item>
+      <title>zookeeper 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/mixed/zookeeper/zookeeper-questions-and-solutions/</link>
+      <pubDate>Wed, 14 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/zookeeper/zookeeper-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 zookeeper 的过程中经常遇到的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 kubeadmin 安装 Kubernetes </title>
       <link>https://xdhuxc.github.io/post/kubernetes/kubernetes-installation/</link>
       <pubDate>Sat, 10 Mar 2018 00:00:00 +0000</pubDate>
@@ -988,6 +1024,15 @@
     </item>
     
     <item>
+      <title>Docker 常用参数配置</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些使用 docker 的过程中经常使用的参数的配置，对于 docker 进阶使用会非常有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>配置 SSH 免密登录</title>
       <link>https://xdhuxc.github.io/post/common/ssh-no-password-login/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
@@ -997,12 +1042,39 @@
     </item>
     
     <item>
+      <title>一些其他问题及解决方式</title>
+      <link>https://xdhuxc.github.io/post/mixed/mixed/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/mixed/</guid>
+      <description>&lt;p&gt;本篇博客记录了一些其他的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 常用命令总结</title>
       <link>https://xdhuxc.github.io/post/linux/linux-common-command/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux/linux-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常用的命令，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker 中常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-questions-and-solutions/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了在使用 docker 的过程中常见的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nginx 配置 marathon </title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-marathon/</link>
+      <pubDate>Sat, 26 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-marathon/</guid>
+      <description>&lt;p&gt;本篇博客记录了配置 nginx 转发 marathon 管理页面到其他地址的方法。&lt;/p&gt;</description>
     </item>
     
     <item>

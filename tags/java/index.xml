@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Maven 常用配置</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-maven-configuration/</link>
+      <pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-maven-configuration/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 maven 时的一些常用的配置。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Java 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
