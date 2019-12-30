@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。">
 <meta itemprop="datePublished" content="2019-04-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="662">
+<meta itemprop="wordCount" content="1128">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 662 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1128 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -146,6 +146,7 @@
         <li><a href="#heading-1">常用命令</a></li>
         <li><a href="#-make--go-">基于 make 编译 go 工程</a></li>
         <li><a href="#govendor-">govendor 的使用</a></li>
+        <li><a href="#heading-2">环境变量</a></li>
       </ul>
     </li>
   </ul>
@@ -304,6 +305,20 @@ govendor add +e
 </code></pre></td></tr></table>
 </div>
 </div><p>vendor.json：govendor 配置文件，记录依赖包列表</p>
+<h3 id="heading-2">环境变量</h3>
+<p>golang 环境变量</p>
+<ul>
+<li>
+<p>GOPRIVATE：指定不可公开获取的模块的路径，用作较低级别的 GONOPROXY 和 GONOSUMDB 变量的默认值，它们对通过代理获取并使用校验和数据库进行验证的模块提供了更细粒度的控制。</p>
+</li>
+<li>
+<p>GOPROXY：可以设置为以逗号分隔的代理 URL 列表或特殊令牌 <code>direct</code>，默认值为：<code>https://proxy.golang.org,direct</code>，当解析一个包路径到它所包含的模块时，go 命令将顺序尝试列表中每个代理上的所有候选的模块路径。除 <code>404</code> 和 <code>410</code> 之外的不可访问代理或 HTTP 状态码将终止搜索，而不会再向其他代理搜索。</p>
+</li>
+<li>
+<p>GOSUMDB：用于标识数据库的名称，以及可选的公用密钥和服务器URL，以查询尚未在主模块的 <code>go.sum</code> 文件中列出的模块的校验和。 如果 <code>GOSUMDB</code> 不包含显式 <code>URL</code>，则通过探测指示支持校验和数据库的端点的 <code>GOPROXY URL</code> 来选择 <code>URL</code>，如果任何代理均不支持直接连接到命名数据库，则选择 <code>URL</code>。 如果将 <code>GOSUMDB</code> 设置为 <code>off</code>，则不查询校验和数据库，仅验证 <code>go.sum</code> 文件中现有的校验和。</p>
+</li>
+</ul>
+<p>无法访问默认代理和校验数据库（例如，由于防火墙或沙河配置）的用户，可以通过将 GOPROXY 设置为 direct 和（或）将 GOSUMDB 设置为 off 来禁止其使用。</p>
     </div>
 
     <div class="post-copyright">
