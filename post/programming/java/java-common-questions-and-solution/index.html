@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。">
 <meta itemprop="datePublished" content="2018-11-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="605">
+<meta itemprop="wordCount" content="760">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 605 字 </span>
+          <span class="more-meta"> 约 760 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -144,6 +144,7 @@
       <ul>
         <li><a href="#linux-">Linux 下验证码无法显示问题</a></li>
         <li><a href="#webxml-is-missing-and-failonmissingwebxml-is-set-to-true">web.xml is missing and  is set to true</a></li>
+        <li><a href="#slf4j-failed-to-load-class-orgslf4jimplstaticloggerbinder">SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;.</a></li>
       </ul>
     </li>
   </ul>
@@ -253,6 +254,109 @@
         &lt;/plugin&gt;
     &lt;/plugins&gt;
 &lt;/build&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="slf4j-failed-to-load-class-orgslf4jimplstaticloggerbinder">SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;.</h3>
+<p>运行程序时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">SLF4J: Failed to load class &#34;org.slf4j.impl.StaticLoggerBinder&#34;.
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+</code></pre></td></tr></table>
+</div>
+</div><p>原因：<code>log4j</code> 和 <code>sl4j</code> 的版本不匹配，或是缺少 <code>jar</code> 包，使用下面这组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;slf4j-log4j12.version&gt;1.7.25&lt;/slf4j-log4j12.version&gt;
+&lt;slf4j-api.version&gt;1.7.25&lt;/slf4j-api.version&gt;
+&lt;log4j.version&gt;1.2.17&lt;/log4j.version&gt;
+&lt;slf4j-nop.version&gt;1.7.25&lt;/slf4j-nop.version&gt;
+&lt;slf4j-simple.version&gt;1.7.5&lt;/slf4j-simple.version&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j-log4j12.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;log4j&lt;/groupId&gt;
+    &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+    &lt;version&gt;${log4j.version}&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j-api.version}&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j-nop.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+    &lt;version&gt;${slf4j-simple.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre></td></tr></table>
 </div>
 </div>
