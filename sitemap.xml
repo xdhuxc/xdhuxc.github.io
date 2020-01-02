@@ -1416,6 +1416,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/svn/</loc>
+    <lastmod>2017-12-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/tools/tools-svn/</loc>
+    <lastmod>2017-12-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/windows/</loc>
     <lastmod>2017-11-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>

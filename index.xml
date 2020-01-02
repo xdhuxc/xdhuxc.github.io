@@ -1070,6 +1070,15 @@
     </item>
     
     <item>
+      <title>SVN 的安装，配置和使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-svn/</link>
+      <pubDate>Thu, 07 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-svn/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Windows 常用命令总结</title>
       <link>https://xdhuxc.github.io/post/mixed/windows-command-line/</link>
       <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
