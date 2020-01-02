@@ -979,6 +979,15 @@
     </item>
     
     <item>
+      <title>基于 Flask 开发 Python Web 程序</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-flask/</link>
+      <pubDate>Tue, 27 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-flask/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了一个使用 Flask 开发的 Python web 程序，可以作为使用 Flask 开发 web 程序的入门教程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 中 Shell 脚本示例</title>
       <link>https://xdhuxc.github.io/post/linux/linux-shell-code-example/</link>
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
