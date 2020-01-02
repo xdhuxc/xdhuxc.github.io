@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -933,7 +933,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/common/dns-bind/</loc>
+    <loc>https://xdhuxc.github.io/post/common/dns/dns-bind/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1024,7 +1024,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/common/dns-dnsmasq/</loc>
+    <loc>https://xdhuxc.github.io/post/common/dns/dns-dnsmasq/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1255,6 +1255,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/common/http/http-long-and-short-connection/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-shell-script/</loc>
     <lastmod>2018-09-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1271,6 +1278,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</loc>
     <lastmod>2018-07-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/common/http/http-basic-knowledge/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1340,6 +1354,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/ansible/</loc>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1479,6 +1500,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/nexus/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</loc>
     <lastmod>2017-10-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1495,6 +1530,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/common/ssh-no-password-login/</loc>
     <lastmod>2018-01-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/nexus/nexus-install-configuration/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1558,6 +1600,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-practical-command/</loc>
     <lastmod>2017-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</loc>
+    <lastmod>2017-08-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ansible on xdhuxc</title>
+    <title>Ansible on xdhuxc</title>
     <link>https://xdhuxc.github.io/tags/ansible/</link>
-    <description>Recent content in ansible on xdhuxc</description>
+    <description>Recent content in Ansible on xdhuxc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
@@ -14,11 +14,20 @@
     
     <item>
       <title>Ansible 学习之简单入门</title>
+      <link>https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Ansible Playbook 的使用方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/devops/ansible/ansible-simple-use/</link>
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-simple-use/</guid>
-      <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个</description>
+      <description>&lt;p&gt;本篇博客介绍了 Ansible 的特点，和 SaltStack 的对比及其原理。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,7 +36,7 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-common-model/</guid>
-      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
+      <description>&lt;p&gt;本篇博客详细介绍了 Ansible 常用模块的用法。&lt;/p&gt;</description>
     </item>
     
   </channel>

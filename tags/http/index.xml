@@ -21,5 +21,23 @@
       <description>&lt;p&gt;最近使用 axios 和 go-restful 分别作为前后端 API 开发时，出了个奇怪的 406 问题，记录下来，以备后需。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>HTTP 的长连接和短连接</title>
+      <link>https://xdhuxc.github.io/post/common/http/http-long-and-short-connection/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/http/http-long-and-short-connection/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 HTTP 协议中的长连接和短连接，算是 HTTP 协议中进阶的内容。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HTTP 协议基础知识</title>
+      <link>https://xdhuxc.github.io/post/common/http/http-basic-knowledge/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/http/http-basic-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客介绍了些 HTTP 协议的基本知识，可用于复习 HTTP 协议的基础知识。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

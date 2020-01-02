@@ -594,10 +594,10 @@
     
     <item>
       <title>BIND 的安装和配置</title>
-      <link>https://xdhuxc.github.io/post/common/dns-bind/</link>
+      <link>https://xdhuxc.github.io/post/common/dns/dns-bind/</link>
       <pubDate>Sun, 02 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/common/dns-bind/</guid>
+      <guid>https://xdhuxc.github.io/post/common/dns/dns-bind/</guid>
       <description>&lt;p&gt;本篇博客记录下 Bind 的安装和配置，以备后查。&lt;/p&gt;</description>
     </item>
     
@@ -675,10 +675,10 @@
     
     <item>
       <title>dnsmasq 的配置和使用</title>
-      <link>https://xdhuxc.github.io/post/common/dns-dnsmasq/</link>
+      <link>https://xdhuxc.github.io/post/common/dns/dns-dnsmasq/</link>
       <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/common/dns-dnsmasq/</guid>
+      <guid>https://xdhuxc.github.io/post/common/dns/dns-dnsmasq/</guid>
       <description>&lt;p&gt;本篇博客记录了 dnsmasq 的配置和使用，以备后查。&lt;/p&gt;</description>
     </item>
     
@@ -890,6 +890,15 @@
     </item>
     
     <item>
+      <title>HTTP 的长连接和短连接</title>
+      <link>https://xdhuxc.github.io/post/common/http/http-long-and-short-connection/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/http/http-long-and-short-connection/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 HTTP 协议中的长连接和短连接，算是 HTTP 协议中进阶的内容。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 中 Shell 脚本基础知识</title>
       <link>https://xdhuxc.github.io/post/linux/linux-shell-script/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
@@ -905,6 +914,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</guid>
       <description>MongoDB 简介 MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。 MongoDB 是一个介于关系数据库和非关系数据库</description>
+    </item>
+    
+    <item>
+      <title>HTTP 协议基础知识</title>
+      <link>https://xdhuxc.github.io/post/common/http/http-basic-knowledge/</link>
+      <pubDate>Mon, 02 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/common/http/http-basic-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客介绍了些 HTTP 协议的基本知识，可用于复习 HTTP 协议的基础知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -972,11 +990,20 @@
     
     <item>
       <title>Ansible 学习之简单入门</title>
+      <link>https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Ansible Playbook 的使用方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ansible 学习之简单入门</title>
       <link>https://xdhuxc.github.io/post/devops/ansible/ansible-simple-use/</link>
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-simple-use/</guid>
-      <description>Ansible 简介 Ansible 是一种集成IT系统的配置管理、应用部署、执行特定任务的运维工具。 Ansible 基于 Python 语言实现，由 Paramiko（由 Python 实现的高质量 OpenSSH 库） 和 PyYAML 两个</description>
+      <description>&lt;p&gt;本篇博客介绍了 Ansible 的特点，和 SaltStack 的对比及其原理。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -985,7 +1012,7 @@
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/ansible/ansible-common-model/</guid>
-      <description>模块相关命令 （1）列出 ansible 支持的模块 1 ansible-doc -l （2）查看该模块的帮助信息 1 ansible-doc ping # 查看 ping 模块的帮助信息 以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。 /etc/ansible/hosts</description>
+      <description>&lt;p&gt;本篇博客详细介绍了 Ansible 常用模块的用法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1088,6 +1115,15 @@
     </item>
     
     <item>
+      <title>基于 docker 容器部署 Nexus</title>
+      <link>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了使用 docker 容器部署 nexus 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker 常用参数配置</title>
       <link>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
@@ -1103,6 +1139,15 @@
       
       <guid>https://xdhuxc.github.io/post/common/ssh-no-password-login/</guid>
       <description>&lt;p&gt;本篇博客记录了配置多台机器 SSH 免密登录的详细过程，在管理多台服务器时会很有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Nexus 安装和自定义配置</title>
+      <link>https://xdhuxc.github.io/post/mixed/nexus/nexus-install-configuration/</link>
+      <pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nexus/nexus-install-configuration/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Nexus 的安装和配置。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1166,6 +1211,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-practical-command/</guid>
       <description>&lt;p&gt;本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker 基础知识</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Docker 的应用场景，优势及其相关的一些概念。&lt;/p&gt;</description>
     </item>
     
     <item>

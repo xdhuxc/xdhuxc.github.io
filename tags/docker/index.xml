@@ -49,6 +49,15 @@
     </item>
     
     <item>
+      <title>基于 docker 容器部署 Nexus</title>
+      <link>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</link>
+      <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了使用 docker 容器部署 nexus 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Docker 常用参数配置</title>
       <link>https://xdhuxc.github.io/post/docker/docker-configuration-parameter/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
@@ -82,6 +91,15 @@
       
       <guid>https://xdhuxc.github.io/post/docker/docker-common-command/</guid>
       <description>&lt;p&gt;本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>docker 基础知识</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Docker 的应用场景，优势及其相关的一些概念。&lt;/p&gt;</description>
     </item>
     
     <item>
