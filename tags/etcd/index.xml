@@ -31,12 +31,12 @@
     </item>
     
     <item>
-      <title>etcd 常用命令总结</title>
+      <title>etcd 常用命令和 API 总结</title>
       <link>https://xdhuxc.github.io/post/storage/etcd/etcd-command/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/etcd/etcd-command/</guid>
-      <description>&lt;p&gt;本篇博客介绍了 etcd 中常用的命令的用法。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍了 etcd 中常用的命令和 API 的用法。&lt;/p&gt;</description>
     </item>
     
   </channel>

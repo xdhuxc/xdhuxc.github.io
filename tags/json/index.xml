@@ -21,5 +21,14 @@
       <description>&lt;p&gt;本部分内容记录下使用 golang 将结构体序列化和反序列化为 JSON 时，需要注意的一些小问题。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>JSON 格式数据工具 JQ 的使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-json-jq/</link>
+      <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-json-jq/</guid>
+      <description>&lt;p&gt;本篇博客介绍下处理 JSON 格式数据的工具 JQ 的使用。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

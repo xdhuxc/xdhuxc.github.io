@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>ElasticSearch REST API 的使用</title>
+      <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-restful-api/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-restful-api/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 ElasticSearch API 的详细使用方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>ElasticSearch 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-questions-and-solutions/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>

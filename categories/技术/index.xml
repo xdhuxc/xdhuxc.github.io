@@ -502,6 +502,15 @@
     </item>
     
     <item>
+      <title>ElasticSearch REST API 的使用</title>
+      <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-restful-api/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-restful-api/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 ElasticSearch API 的详细使用方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>ElasticSearch 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-questions-and-solutions/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
@@ -660,7 +669,7 @@
       <pubDate>Wed, 07 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/tools/tools-vagrant/</guid>
-      <description>&lt;p&gt;本篇博客主要记录下 vagrant 常用的命令，以备后需。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客主要记录下 vagrant 常用的命令。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -691,12 +700,12 @@
     </item>
     
     <item>
-      <title>etcd 常用命令总结</title>
+      <title>etcd 常用命令和 API 总结</title>
       <link>https://xdhuxc.github.io/post/storage/etcd/etcd-command/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/etcd/etcd-command/</guid>
-      <description>&lt;p&gt;本篇博客介绍了 etcd 中常用的命令的用法。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍了 etcd 中常用的命令和 API 的用法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -979,6 +988,15 @@
     </item>
     
     <item>
+      <title>nginx 常用功能及配置详解</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 nginx 的常用功能和其配置的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Redis 常用命令总结</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-command/</link>
       <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
@@ -1006,12 +1024,30 @@
     </item>
     
     <item>
+      <title>JSON 格式数据工具 JQ 的使用</title>
+      <link>https://xdhuxc.github.io/post/tools/tools-json-jq/</link>
+      <pubDate>Wed, 07 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/tools/tools-json-jq/</guid>
+      <description>&lt;p&gt;本篇博客介绍下处理 JSON 格式数据的工具 JQ 的使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>基于 Flask 开发 Python Web 程序</title>
       <link>https://xdhuxc.github.io/post/programming/python/python-flask/</link>
       <pubDate>Tue, 27 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/programming/python/python-flask/</guid>
       <description>&lt;p&gt;本篇博客详细介绍了一个使用 Flask 开发的 Python web 程序，可以作为使用 Flask 开发 web 程序的入门教程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nginx 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-questions-and-solutions/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了 nginx 使用时常见的问题及解决方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1057,6 +1093,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-firewall/</guid>
       <description>&lt;p&gt;本篇博客记录了 iptables 常用命令，对于运维人员，会经常需要用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装 nginx</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-install/</link>
+      <pubDate>Thu, 26 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-install/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于源代码和 docker 容器方式部署 nginx 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>

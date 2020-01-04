@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Sat, 26 Aug 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Apr 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>nginx 常用功能及配置详解</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 nginx 的常用功能和其配置的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nginx 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-questions-and-solutions/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了 nginx 使用时常见的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装 nginx</title>
+      <link>https://xdhuxc.github.io/post/mixed/nginx/nginx-install/</link>
+      <pubDate>Thu, 26 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-install/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于源代码和 docker 容器方式部署 nginx 的方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>nginx 配置 marathon </title>

@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了在使用 ElasticSearch 的过程中常见的问题及解决方法。">
 <meta itemprop="datePublished" content="2019-01-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-02-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="646">
+<meta itemprop="wordCount" content="1287">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 646 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1287 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -340,6 +340,135 @@ chgrp -r 1000 es
 PUT index_name/document_type/document_id -T abc.json
 </code></pre></td></tr></table>
 </div>
+</div><p>3、ElasticSearch启动时报错，错误如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[2017-06-20T09:57:45,307][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [node-1] uncaught exception in thread [main]
+org.elasticsearch.bootstrap.StartupException: java.lang.RuntimeException: can not run elasticsearch as root
+</code></pre></td></tr></table>
+</div>
+</div><p>出于安全考虑，ElasticSearch不让使用root用户启动，解决方法：</p>
+<p>1）在启动命令中加入参数，在使用命令行启动ElasticSearch时，加入额外的参数启动，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/bin/elasticsearch -Des.insecure.allow.root=true
+</code></pre></td></tr></table>
+</div>
+</div><p>2）创建新用户，以新用户身份启动之</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">groupadd -g 700 elasticsearch                                                       # 创建elasticsearch用户组
+useradd -u 701 -g 700 elasticsearch                                                 # 创建用户elasticsearch
+passwd elasticsearch                                                                # 为用户elasticsearch设置密码
+gpasswd -a elasticsearch elasticsearch                                              # 将用户elasticsearch添加到用户组elasticsearch中，第一个参数表示用户名，第二个参数表示用户组名
+chown -R elasticsearch:elasticsearch /middleware/elasticsearch-2.4.1 # 为用户组elasticsearch和用户elasticsearch赋予权限
+</code></pre></td></tr></table>
+</div>
+</div><p>4、Elasticsearch 启动时报错，错误如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+</code></pre></td></tr></table>
+</div>
+</div><p>执行如下命令解决：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sysctl -w vm.max_map_count=262144
+</code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;vm.max_map_count=262144&#34; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre></td></tr></table>
+</div>
+</div><p>5、ElasticSearch 启动后，使用 <code>curl http://localhost:9200</code> 访问，控制台有内容输出，但是 <code>curl http://ip_address:9200</code> 控制台无内容输出，在浏览器中使用 <code>http://ip_address:9200</code> 也无法访问。</p>
+<p>修改 <code>elasticsearch.yml</code> 文件，修改 <code>network.host</code> 的值为：<code>0.0.0.0</code>，然后重新启动之，外网即可进行访问.</p>
+<p>6、elasticsearch状态为红色，原因为磁盘不足，腾出磁盘空间后，还是红色，执行如下命令：</p>
+<p>Elasticsearch 提供了专门的 <code>reroute API</code> 用于手工进行 <code>shard</code> 的移动、分配以及取消指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">POST /_cluster/reroute
+{
+  &#34;commands&#34;: [
+    {
+      &#34;move&#34;: {
+        &#34;index&#34;: &#34;xdhuxc-basedoc-ta_mysql-a0f921217f6d4a6aa348415411db6f7e&#34;,
+        &#34;shard&#34;: 0,
+        &#34;from_node&#34;: &#34;singlenode&#34;,
+        &#34;to_node&#34;: &#34;singlenode&#34;
+      }
+    }
+  ]
+}
+POST /_cluster/reroute
+{
+  &#34;commands&#34;: [
+    {
+      &#34;allocate&#34;: {
+        &#34;index&#34;: &#34;xdhuxc-basedoc-ta_mysql-a0f921217f6d4a6aa348415411db6f7e&#34;,
+        &#34;shard&#34;: 0,
+        &#34;node&#34;: &#34;singlenode&#34;,
+        &#34;allow_primary&#34;:true
+      }
+    }
+  ]
+}
+</code></pre></td></tr></table>
+</div>
 </div>
     </div>
 
@@ -364,9 +493,9 @@ PUT index_name/document_type/document_id -T abc.json
           <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/devops/prometheus/prometheus-monitor-etcd/">
+        <a class="prev" href="/post/storage/elasticsearch/elasticsearch-restful-api/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">使用 prometheus 监控 etcd</span>
+            <span class="prev-text nav-default">ElasticSearch REST API 的使用</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/human/human-world-preface/">
