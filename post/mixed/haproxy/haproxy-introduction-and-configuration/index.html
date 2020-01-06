@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>HAProxy 及其配置详解 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客主要介绍了 HAProxy 及其配置的详细含义。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/mixed/haproxy/haproxy-introduction-and-configuration/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="HAProxy 及其配置详解" />
+<meta property="og:description" content="本篇博客主要介绍了 HAProxy 及其配置的详细含义。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/mixed/haproxy/haproxy-introduction-and-configuration/" />
+<meta property="article:published_time" content="2019-05-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-05-14T00:00:00+00:00" />
+<meta itemprop="name" content="HAProxy 及其配置详解">
+<meta itemprop="description" content="本篇博客主要介绍了 HAProxy 及其配置的详细含义。">
+<meta itemprop="datePublished" content="2019-05-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2039">
+
+
+
+<meta itemprop="keywords" content="HAProxy," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HAProxy 及其配置详解"/>
+<meta name="twitter:description" content="本篇博客主要介绍了 HAProxy 及其配置的详细含义。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">HAProxy 及其配置详解</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-14 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 2039 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#haproxy">HAProxy</a></li>
+        <li><a href="#haproxy-">HAProxy 配置</a></li>
+        <li><a href="#heading-1">参考资料</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客主要介绍了 HAProxy 及其配置的详细含义。</p>
+<h3 id="haproxy">HAProxy</h3>
+<p>HAProxy 提供高可用性、负载均衡以及基于 TCP 和 HTTP 应用的代理，支持虚拟主机，是免费、快速并且可靠的一种解决方案。HAProxy特别适用于那些负载特大的 web 站点，这些站点通常又需要会话保持或七层处理。HAProxy 运行在当前的硬件上，完全可以支持数以万计的并发连接，并且它的运行模式使得它可以很简单、安全地整合进当前的架构中，同时可以保护 web 服务器不被暴露在网络上。</p>
+<h3 id="haproxy-">HAProxy 配置</h3>
+<h4 id="heading">配置部分</h4>
+<p>HAProxy 配置中分成五部分内容，分别如下：</p>
+<p>1、global：参数是进程级的，通常是和操作系统相关，这些参数一般只配置一次，如果配置无误，就不需要再次进行修改。</p>
+<p>2、defaults：配置默认参数，这些参数可以被用到 frontend、backend、Listen 组件。</p>
+<p>3、frontend：接收请求的前端虚拟节点，Frontend 可以更加规则直接指定具体使用后端的 backend。</p>
+<p>4、backend：后端服务集群的配置，是真实服务器，一个 Backend 对应于一个或者多个实体服务器。</p>
+<p>5、Listen：Frontend 和 backend 的组合体。</p>
+<h4 id="haproxycfg">haproxy.cfg</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gu">### 全局配置信息 ###
+</span><span class="gu"></span><span class="gh"># 参数是进程级的，通常和操作系统有关
+</span><span class="gh"></span>global 
+  maxconn 20480         # 默认最大连接数。
+  log 127.0.0.1 local3  # 定义 haproxy 日志级别，可以为：err、warning、info、debug。
+  chroot /var/haproxy   # chroot运行的路径。
+  uid 99                # 运行haproxy进程的用户ID。
+  gid 99                # 运行haproxy进程的用户组ID。
+  daemon                # 以守护进程方式运行haproxy。
+  nbproc 1              # 进程数量，可以设置为多个进程以提高性能。
+  pidfile /var/run/haproxy.pid # haproxy进程的pid存放路径，启动进程的用户必须有权限访问此文件。
+  ulimit -n 65535       # ulimit 的数量限制
+<span class="gu">### 默认配置选项 ###
+</span><span class="gu"></span><span class="gh"># 参数可以被配置到frontend、backend和listen组件。
+</span><span class="gh"></span>defaults
+  log global
+  mode http             # 所处理的类别，七层http，四层tcp。
+  maxconn 20480         # 最大连接数。
+  option httplog        # 日志类别，HTTP日志格式。
+  option httpclose      # 每次请求完毕后主动关闭 http 通道。
+  option dontlognull    # 不记录健康检查的日志信息。
+  option forwardfor     # 如果后端服务器需要获得客户端的真实IP需要配置的参数，可以从 Http Header 中获取客户端IP。
+  option redispatch     # serverId 对应的服务器挂掉后，强制定向到其他健康的服务器。
+  option abortonclose   # 当服务器负载很高的时候，自动结束掉当前队列处理比较久的连接。
+  stats refresh 30      # 统计页面刷新间隔。
+  retries 3             # 3 次连接失败就认为服务不可用，也可以通过 “后面” 设置。
+  balance roundrobin    # 设置默认的负载均衡方式，轮询方式。
+  # balance source      # 设置默认的负载均衡方式，类似于 nginx 的 IP_Hash。
+  # balance leastconn   # 设置默认的负载均衡方式，最小连接方式。
+  contimeout 5000       # 连接超时时间。
+  clitimeout 50000      # 客户端连接超时时间。
+  srvtimeout 50000      # 服务器超时时间。
+  timeout check 2000    # 心跳检测超时。
+  
+<span class="gu">### 监控页面设置 ###
+</span><span class="gu"></span>listen admin_status     # Fronted 和 Backend 的组合体，监控组的名称，按需求自定义名称。
+  bind 0.0.0.0:65535    # 监听端口。
+  mode http             <span class="ni">#http</span> 的七层模式。
+  log 127.0.0.1 local3 err # 错误日志记录。
+  stats refresh 5s      # 每隔5秒自动刷新监控页面。
+  stats uri /admin?stats # 监控页面的url。
+  stats realm xdhuxc\ xdhuxc # 监控页面显示信息。
+  stats auth admin:admin     # 监控页面的用户名和密码，可以设置多个用户名。
+  stats auth xdhuxc:xdhuxc   # 监控页面的用户名和密码xdhuxc/xdhuxc。
+  stats hide-version         # 隐藏统计页面上的HAproxy版本信息。
+  stats admin if TRUE        # 手工启用/禁用后端服务器（HAproxy-1.4.9以后版本）。
+  
+  errorfile 403 /etc/haproxy/errorfiles/403.http
+  errorfile 500 /etc/haproxy/errorfiles/500.http
+  errorfile 502 /etc/haproxy/errorfiles/502.http
+  errorfile 503 /etc/haproxy/errorfiles/503.http
+  errorfile 504 /etc/haproxy/errorfiles/504.http
+  
+  ### HAProxy 的日志记录内容设置
+  capture request header Host len 40
+  capture request header Content-Length len 10
+  capture request header Referer len 200
+  capture response header Server len 40
+  capture response header Content-Length len 10
+  capture response header Cache-Control len 8
+  
+  ### 网站监测 listen 配置
+  ### 主要是监控 haproxy 后端服务器的监控状态
+listen site_status
+  bind 0.0.0.0:9090         # 监听端口
+  mode http                 # http 的七层模式
+  log 127.0.0.1 local3 err  # 日志级别
+  monitor-uri /site_status  # 网站健康检查URL，用来检测HAproxy管理的网站是否可用，正常返回200，不正常返回503。
+  acl site_dead nbsrv(server_web) lt 2 # 定义网站down时的策略，当挂在负载均衡上的指定backend中有效机器数小于1台时返回true。
+  acl site_dead nbsrv(server_blog) lt 2
+  acl site_dead nbsrv(server_bbs) lt 2
+  monitor fail if site_dead  # 当满足策略的时候，返回503。
+  monitor-net 192.168.16.2/32 # 来自192.168.16.2的日志信息不会被记录和转发
+  monitor-net 129.168.16.3/32
+  
+  ### frontend 配置
+  ### frontend配置里可定义多个acl进行匹配操作
+frontend http_web_in
+  bind 0.0.0.0:80  # 监听端口，即haproxy提供web服务的端口，和lvs的VIP端口类似。
+  mode http        # http 的七层模式。
+  log global       # 应用全局的日志配置。
+  option httplog   # 启用http的log。
+  option httpclose # 每次请求完毕后主动关闭http通道，HAProxy不支持keep-alive模式。
+  option forwardfor # 如果后端服务器需要获得客户端的真实IP地址，需要配置此参数，将可以从Http header 中获得客户端IP。
+  
+  ### acl策略配置
+  acl is_a hdr_beg(host) -i www.xdhuxc.org   # 判断域名是不是 www.xdhuxc.org，是则给予 a 服务器集群服务。
+  acl is_b hdr_beg(host) -i www.xdhuxc.ocg # 判断域名是不是 www.xdhuxc.ocg，是则给予 b 服务器集群服务。
+  
+  use_backend a_server if is_a
+  use_backend b_server if is_b
+  
+backend a_server
+    mode http
+    stats uri /haproxy
+    balance roundrobin
+    cookie JSESSIONID prefix
+    stats hide-version
+    option httpclose
+    server web1 192.168.91.128:80 check
+    server web2 192.168.91.129:80 check
+    
+backend b_server
+    mode http
+    stats uri /haproxy
+    balance roundrobin
+    cookie JSESSIONID
+    stats hide-version
+    option httpclose
+    server web1 192.168.91.130 check
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-1">参考资料</h3>
+<p><a href="http://blog.51cto.com/itnihao/915537">http://blog.51cto.com/itnihao/915537</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/haproxy/">HAProxy</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/devops/prometheus/prometheus-alertmanager/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Prometheus 和 AlertManager 配合使用</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mixed/github_hugo_2/">
+            <span class="next-text nav-default">基于 Hugo 和 GitHub 搭建个人网站（二）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

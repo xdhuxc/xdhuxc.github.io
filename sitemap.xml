@@ -765,6 +765,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/haproxy/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/haproxy/haproxy-introduction-and-configuration/</loc>
+    <lastmod>2019-05-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/hugo/</loc>
     <lastmod>2019-05-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
