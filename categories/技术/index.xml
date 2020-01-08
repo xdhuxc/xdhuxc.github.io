@@ -239,10 +239,10 @@
     
     <item>
       <title>消息队列（一）</title>
-      <link>https://xdhuxc.github.io/post/mixed/message/message_queue/</link>
+      <link>https://xdhuxc.github.io/post/mixed/message/message-queue/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mixed/message/message_queue/</guid>
+      <guid>https://xdhuxc.github.io/post/mixed/message/message-queue/</guid>
       <description>&lt;p&gt;本部分内容为学习消息队列所做的笔记。&lt;/p&gt;</description>
     </item>
     
@@ -1003,6 +1003,15 @@
       
       <guid>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</guid>
       <description>&lt;p&gt;本篇博客介绍了 nginx 的常用功能和其配置的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kafka 的部署和常用命令</title>
+      <link>https://xdhuxc.github.io/post/mixed/message/message-queue-kafka-install-and-command/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/message/message-queue-kafka-install-and-command/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Kafka 的部署和常用命令。&lt;/p&gt;</description>
     </item>
     
     <item>

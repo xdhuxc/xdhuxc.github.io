@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录一些在软件开发过程中遇到的问题及思考，持续更新。。。">
 <meta itemprop="datePublished" content="2019-07-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2069">
+<meta itemprop="wordCount" content="2112">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 2069 字 </span>
+          <span class="more-meta"> 约 2112 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -207,6 +207,8 @@
 <p>3、考虑到这样一种常用的使用场景，也是我们自己最常用的新应用部署场景，将 <code>Deployment</code>、<code>Service</code>、<code>ConfigMap</code> 全部写在一个文件 <code>mainfest.yaml</code> 中，使用 <code>kubectl create -f mainfest.yaml</code> 来创建该应用及相关常用资源，完善新应用部署功能。目前只能部署单独的 <code>Deployment</code>，配置其相应的 <code>Service</code>。</p>
 <p>4、已有 <code>ConfigMap</code> 落库问题，目前只有通过页面增加的 <code>ConfigMap</code> 落库，其他已经手工创建的 <code>ConfigMap</code> 尚未落库，也不能在页面中修改。</p>
 <p>5、<code>Deployment</code>，<code>Service</code>，<code>ConfigMap</code> 等资源定期落库。</p>
+<h4 id="20200108">2020年01月08日</h4>
+<p>1、基于 AlertManager 的报警数据落库问题，为后续统计数据和优化提供数据支撑。</p>
 <h3 id="heading-7">诡异问题记录</h3>
 <h4 id="20190103">2019年01月03日</h4>
 <p>公司的内部系统用户认证突然出了问题，直接使用 LDAP 协议的第三方系统中有些不能访问，修改密码后，可以访问，原因是密码过期。但是使用我们自己开发的 LDAP 接口的第三方系统，却还是不能访问。</p>

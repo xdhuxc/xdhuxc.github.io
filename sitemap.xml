@@ -457,7 +457,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/mixed/message/message_queue/</loc>
+    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1418,6 +1418,20 @@
   <url>
     <loc>https://xdhuxc.github.io/post/mixed/nginx/nginx-function-and-configuration/</loc>
     <lastmod>2018-10-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/kafka/</loc>
+    <lastmod>2018-04-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue-kafka-install-and-command/</loc>
+    <lastmod>2018-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
