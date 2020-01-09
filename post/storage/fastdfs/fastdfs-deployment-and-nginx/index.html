@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。">
 <meta itemprop="datePublished" content="2018-09-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1900">
+<meta itemprop="wordCount" content="1868">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1900 字 </span>
+          <span class="more-meta"> 约 1868 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -337,7 +337,7 @@ http.server_port=6666
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_trackerd.service /usr/lib/systemd/system/
 </code></pre></td></tr></table>
 </div>
-</div><p>因为 fdfs_trackerd 等命令在 <code>/usr/local/bin</code> 中并没有，而是在 <code>/usr/bin</code> 路径下：</p>
+</div><p>因为 <code>fdfs_trackerd</code> 等命令在 <code>/usr/local/bin</code> 中并没有，而是在 <code>/usr/bin</code> 路径下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -377,8 +377,8 @@ ln -s /usr/bin/restart.sh /usr/local/bin
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_trackerd
 </code></pre></td></tr></table>
 </div>
-</div><p>6、配置storage服务器（172.20.15.75）</p>
-<p>首先是创建Storage服务器的文件目录，需要注意的是多建了一个目录，因为Storage还需要一个文件存储路径，用于存放接收的文件：</p>
+</div><p>6、配置 <code>storage</code> 服务器（172.20.15.75）</p>
+<p>首先是创建 <code>storage</code> 服务器的文件目录，需要注意的是多建了一个目录，因为 <code>storage</code> 还需要一个文件存储路径，用于存放接收的文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -389,7 +389,7 @@ ln -s /usr/bin/restart.sh /usr/local/bin
 mkdir -p /data/fastdfs/storage_data
 </code></pre></td></tr></table>
 </div>
-</div><p>修改 storage 的配置文件 <code>/etc/fdfs/storage.conf</code>，修改如下部分：</p>
+</div><p>修改 <code>storage</code> 的配置文件 <code>/etc/fdfs/storage.conf</code>，修改如下部分：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -412,7 +412,7 @@ tracker_server=172.20.15.73:22122
 http.server_port=8888
 </code></pre></td></tr></table>
 </div>
-</div><p>拷贝 tracker 的 systemd 文件至 <code>/usr/lib/systemd/system/</code>：</p>
+</div><p>拷贝 <code>tracker</code> 的 <code>systemd</code> 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -421,7 +421,7 @@ http.server_port=8888
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_storaged.service /usr/lib/systemd/system/
 </code></pre></td></tr></table>
 </div>
-</div><p>配置完成后同样要为 Storage 服务器的启动脚本设置软引用：</p>
+</div><p>配置完成后同样要为 <code>storage</code> 服务器的启动脚本设置软引用：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -430,7 +430,7 @@ http.server_port=8888
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /usr/bin/fdfs_storaged /usr/local/bin
 </code></pre></td></tr></table>
 </div>
-</div><p>重启 systemd：</p>
+</div><p>重启 <code>systemd</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -439,7 +439,7 @@ http.server_port=8888
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table>
 </div>
-</div><p>启动tracker：</p>
+</div><p>启动 <code>tracker</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -457,7 +457,7 @@ http.server_port=8888
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_storaged
 </code></pre></td></tr></table>
 </div>
-</div><p>查看 storage 服务器是否已经登记到 tracker 服务器（也可以理解为 tracker 与 storage 是否整合成功），运行以下命令：</p>
+</div><p>查看 <code>storage</code> 服务器是否已经登记到 <code>tracker</code> 服务器（也可以理解为 <code>tracker</code> 与 <code>storage</code> 是否整合成功），运行以下命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -467,10 +467,10 @@ http.server_port=8888
 </code></pre></td></tr></table>
 </div>
 </div><p>看到 <code>tracker server is 172.20.15.73:22122</code>，tracker 服务器正常启动。</p>
-<p>看到 <code>172.20.15.75 ACTIVE</code> 字样即可说明 storage 服务器已经成功注册到了 tracker 服务器。</p>
+<p>看到 <code>172.20.15.75 ACTIVE</code> 字样即可说明 <code>storage</code> 服务器已经成功注册到了 <code>tracker</code> 服务器。</p>
 <h3 id="-nginx">安装并配置 Nginx</h3>
 <h4 id="-tracker--nginx">安装配置 tracker 的 nginx</h4>
-<p>安装 nginx 依赖包，并安装 nginx：</p>
+<p>安装 <code>nginx</code> 依赖包，并安装 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -481,7 +481,7 @@ http.server_port=8888
 rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-rpm/*
 </code></pre></td></tr></table>
 </div>
-</div><p>将tracker的nginx的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9988</code>：</p>
+</div><p>将 <code>tracker</code> 的 <code>nginx</code> 的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9988</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -510,7 +510,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /var/lib/nginx/tmp /data/log/nginx
 </code></pre></td></tr></table>
 </div>
-</div><p>拷贝 nginx 的 systemd 文件至 <code>/usr/lib/systemd/system/</code>：</p>
+</div><p>拷贝 <code>nginx</code> 的 <code>systemd</code> 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -519,7 +519,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/nginx.service /usr/lib/systemd/system/
 </code></pre></td></tr></table>
 </div>
-</div><p>重启 systemd：</p>
+</div><p>重启 <code>systemd</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -528,7 +528,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table>
 </div>
-</div><p>启动 nginx：</p>
+</div><p>启动 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -547,7 +547,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="-storage--nginx">安装并配置 storage 的 nginx</h4>
-<p>安装nginx依赖包：</p>
+<p>安装 <code>nginx</code> 依赖包：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -599,7 +599,7 @@ else
 fi
 </code></pre></td></tr></table>
 </div>
-</div><p>增加依赖包并安装 nginx：</p>
+</div><p>增加依赖包并安装 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -616,7 +616,7 @@ fi
 make &amp;&amp; make install
 </code></pre></td></tr></table>
 </div>
-</div><p>将 nginx 的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9999</code>：</p>
+</div><p>将 <code>nginx</code> 的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9999</code>：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -700,7 +700,7 @@ store_path_count=1
 store_path0=/data/fastdfs/storage_data
 </code></pre></td></tr></table>
 </div>
-</div><p>建立 M00 至存储目录的符号连接：</p>
+</div><p>建立 <code>M00</code> 至存储目录的符号连接：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
