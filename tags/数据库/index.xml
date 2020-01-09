@@ -58,6 +58,15 @@
     </item>
     
     <item>
+      <title>FastDFS 安装和 Nginx 代理的使用</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>MySQL 配置文件详解</title>
       <link>https://xdhuxc.github.io/post/storage/mysql/mysql-configuration/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>

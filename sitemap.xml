@@ -1157,6 +1157,27 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/fastdfs/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/nginx/</loc>
+    <lastmod>2018-10-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1264,6 +1285,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/mixed/git/git-gitlab/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-knowledge/</loc>
+    <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1404,13 +1432,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/programming/python/python-code-example/</loc>
     <lastmod>2018-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/nginx/</loc>
-    <lastmod>2018-10-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

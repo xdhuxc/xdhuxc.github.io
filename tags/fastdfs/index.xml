@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FastDFS on xdhuxc</title>
+    <link>https://xdhuxc.github.io/tags/fastdfs/</link>
+    <description>Recent content in FastDFS on xdhuxc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>xdhuxc 版权所有</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://xdhuxc.github.io/tags/fastdfs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FastDFS 安装和 Nginx 代理的使用</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

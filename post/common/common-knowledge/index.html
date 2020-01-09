@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了些计算机科学和技术中常见的概念的差别，属于基础知识。">
 <meta itemprop="datePublished" content="2018-12-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="613">
+<meta itemprop="wordCount" content="793">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 613 字 </span>
+          <span class="more-meta"> 约 793 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -144,6 +144,7 @@
       <ul>
         <li><a href="#uriurlurn">URI，URL和URN的区别</a></li>
         <li><a href="#web-">Web 服务器和应用服务器</a></li>
+        <li><a href="#127001--localhost">127.0.0.1 和 localhost</a></li>
       </ul>
     </li>
   </ul>
@@ -167,6 +168,21 @@
 <p>Web服务器的基本功能就是提供Web信息浏览服务。它只需支持HTTP协议、HTML文档格式及URL，与客户端的网络浏览器配合，只能发送静态页面的内容。因为Web服务器主要支持的协议就是HTTP，所以通常情况下HTTP服务器和WEB服务器是相等的。Web服务器包括Nginx，Apache，IIS等</p>
 <p>2）应用服务器</p>
 <p>应用程序服务器让多个用户可以同时使用应用程序，通常是客户创建的应用程序。应用服务器包括WebLogic，JBoss，Tomcat，websphere等。</p>
+<h3 id="127001--localhost">127.0.0.1 和 localhost</h3>
+<p>1、含义不同：</p>
+<ul>
+<li><code>localhost</code> 也叫 <code>local</code> ，是一个域名，可以调用 gethostname() 解析出对应的 IP 地址，其值为：<code>hosts</code> 文件中的值，正确的解释是: 本地服务器</li>
+<li><code>127.0.0.1</code>，是一个 IPv4 的地址， 在 <code>windows</code> 等系统的正确解释是: 本机地址(本机服务器)</li>
+</ul>
+<p>2、与防火墙和网卡的关系</p>
+<ul>
+<li>
+<p><code>localhost</code> 是不经网卡传输！这点很重要，它不受网络防火墙和网卡相关的的限制。</p>
+</li>
+<li>
+<p><code>127.0.0.1</code> 是通过网卡传输，依赖网卡，并受到网络防火墙和网卡相关的限制。</p>
+</li>
+</ul>
     </div>
 
     <div class="post-copyright">

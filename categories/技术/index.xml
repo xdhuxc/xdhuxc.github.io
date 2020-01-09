@@ -736,6 +736,15 @@
     </item>
     
     <item>
+      <title>FastDFS 安装和 Nginx 代理的使用</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-deployment-and-nginx/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>基于 docker 部署 MySQL</title>
       <link>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
@@ -850,6 +859,15 @@
       
       <guid>https://xdhuxc.github.io/post/mixed/git/git-gitlab/</guid>
       <description>&lt;p&gt;本篇博客记录了使用 GitLab 时遇到的若干问题及解决方法，以备后需。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL 基础知识总结</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-knowledge/</link>
+      <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。&lt;/p&gt;</description>
     </item>
     
     <item>

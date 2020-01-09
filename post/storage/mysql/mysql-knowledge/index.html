@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>基于 docker 部署 MySQL - xdhuxc</title>
+  <title>MySQL 基础知识总结 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.61.0 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-docker/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-knowledge/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="基于 docker 部署 MySQL" />
-<meta property="og:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。" />
+<meta property="og:title" content="MySQL 基础知识总结" />
+<meta property="og:description" content="本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/storage/mysql/mysql-docker/" />
-<meta property="article:published_time" content="2018-09-19T00:00:00+00:00" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/storage/mysql/mysql-knowledge/" />
+<meta property="article:published_time" content="2018-07-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-10-22T00:00:00+00:00" />
-<meta itemprop="name" content="基于 docker 部署 MySQL">
-<meta itemprop="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。">
-<meta itemprop="datePublished" content="2018-09-19T00:00:00&#43;00:00" />
+<meta itemprop="name" content="MySQL 基础知识总结">
+<meta itemprop="description" content="本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。">
+<meta itemprop="datePublished" content="2018-07-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-10-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="107">
+<meta itemprop="wordCount" content="443">
 
 
 
-<meta itemprop="keywords" content="MySQL,Docker," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基于 docker 部署 MySQL"/>
-<meta name="twitter:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。"/>
+<meta itemprop="keywords" content="MySQL," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL 基础知识总结"/>
+<meta name="twitter:description" content="本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">基于 docker 部署 MySQL</h1>
+      <h1 class="post-title">MySQL 基础知识总结</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-09-19 </span>
+        <span class="post-time"> 2018-07-19 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 107 字 </span>
+          <span class="more-meta"> 约 443 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,7 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-mysql-">启动 MySQL 容器</a></li>
+        <li><a href="#mysql--127001--localhost-">MySQL 主机 127.0.0.1 与 localhost 的区别</a></li>
       </ul>
     </li>
   </ul>
@@ -150,8 +150,12 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客记录了基于 docker 容器方式部署 MySQL 的配置和方式。</p>
-<h3 id="-mysql-">启动 MySQL 容器</h3>
+      <p>本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。</p>
+<h3 id="mysql--127001--localhost-">MySQL 主机 127.0.0.1 与 localhost 的区别</h3>
+<p>1、<code>mysql -h 127.0.0.1</code> 的时候，使用 <code>TCP/IP</code> 连接，<code>mysql</code> 服务器认为该连接来自于 <code>127.0.0.1</code> 或者是 <code>localhost.localdomain</code></p>
+<p>2、<code>mysql -h localhost</code> 的时候，使用 <code>Unix Socket</code> 连接，不是使用 <code>TCP/IP</code> 连接，不受网络防火墙和网卡相关的的限制，此时，<code>mysql</code> 服务器认为该客户端是来自 <code>localhost</code></p>
+<p>3、mysql 权限管理中的 <code>localhost</code> 有特定含义。</p>
+<p>虽然两者连接方式有所区别，但当 <code>localhost</code> 为默认的 <code>127.0.0.1</code> 时，两种连接方式使用的权限记录都是以下的1.row的记录（因为记录在前，先被匹配）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -162,21 +166,33 @@
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d \
-    --restart=always \
-    --privileged=true \
-    -p 3306:3306 \
-    -e MYSQL_ROOT_PASSWORD=Xdhuxc123 \
-    -v /data/mysql_data:/var/lib/mysql \
-    -v /data/disc/script/sql:/docker-entrypoint-initdb.d \
-    --name mysql \
-    mysql:5.7.21
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">*************************** 1. row <span class="gs">**</span><span class="gs">**</span>***********************
+                Host: localhost
+                User: root
+......
+
+<span class="gs">**</span><span class="gs">**</span>*********************** 2. row <span class="gs">**</span><span class="gs">**</span>***********************
+                Host: 127.0.0.1
+                User: root
 </code></pre></td></tr></table>
 </div>
-</div><p>该启动命令包括初始化 <code>root</code> 用户、初始化数据库（将待导入的 <code>sql</code> 文件放入 <code>/data/disc/script/sql</code> 目录下）和持久化数据目录。</p>
+</div><h4 id="innodb-">InnoDB 引擎</h4>
+<p>InnoDB 引擎为独立表空间模式，每个数据库的每个表都会生成一个数据空间。</p>
+<p>独立表空间的优点：</p>
+<ul>
+<li>每个表都有自己独立的表空间。</li>
+<li>每个表的数据和索引都会存在自己的表空间中。</li>
+<li>可以实现单表在不同的数据库中移动。</li>
+<li>空间可以回收（除 drop table 操作外，表空间不能自己回收）</li>
+</ul>
+<p>独立表空间的缺点：</p>
+<ul>
+<li>单表增加过大，如超过100G。</li>
+</ul>
+<p>结论：</p>
+<p>共享表空间在 insert 操作上稍有优势，其他都没独立表空间表现好。当启用独立表空间时，需要合理调整 innodb_open_files 参数的值。</p>
     </div>
 
     <div class="post-copyright">
@@ -197,16 +213,15 @@
 <footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/mysql/">MySQL</a>
-          <a href="/tags/docker/">Docker</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/storage/fastdfs/fastdfs-deployment-and-nginx/">
+        <a class="prev" href="/post/mixed/git/git-gitlab/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">FastDFS 安装和 Nginx 代理的使用</span>
+            <span class="prev-text nav-default">GitLab 常见问题及解决</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/storage/mysql/mysql-configuration/">
-            <span class="next-text nav-default">MySQL 配置文件详解</span>
+        <a class="next" href="/post/linux/linux-common-operations/">
+            <span class="next-text nav-default">Linux 常用操作总结</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
