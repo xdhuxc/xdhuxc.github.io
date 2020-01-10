@@ -14,20 +14,29 @@
     
     <item>
       <title>消息队列（一）</title>
-      <link>https://xdhuxc.github.io/post/mixed/message/message-queue/</link>
+      <link>https://xdhuxc.github.io/post/message/message-queue/</link>
       <pubDate>Wed, 10 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mixed/message/message-queue/</guid>
+      <guid>https://xdhuxc.github.io/post/message/message-queue/</guid>
       <description>&lt;p&gt;本部分内容为学习消息队列所做的笔记。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>消息队列简介</title>
-      <link>https://xdhuxc.github.io/post/mixed/message/message-queue-model/</link>
+      <link>https://xdhuxc.github.io/post/message/message-queue-model/</link>
       <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/mixed/message/message-queue-model/</guid>
+      <guid>https://xdhuxc.github.io/post/message/message-queue-model/</guid>
       <description>&lt;p&gt;本篇博客简单介绍下消息中间件，其特点及消息传递模型。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>RabbitMQ 常用命令总结</title>
+      <link>https://xdhuxc.github.io/post/message/rabbitmq/rabbitmq-common-command/</link>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/message/rabbitmq/rabbitmq-common-command/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 RabbitMq 的常用命令。&lt;/p&gt;</description>
     </item>
     
   </channel>

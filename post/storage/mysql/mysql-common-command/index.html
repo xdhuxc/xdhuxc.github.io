@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些 MySQL 常用命令，方便查找。">
 <meta itemprop="datePublished" content="2018-07-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="758">
+<meta itemprop="wordCount" content="971">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 758 字 </span>
+          <span class="more-meta"> 约 971 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -146,6 +146,7 @@
         <li><a href="#heading-1">字段操作</a></li>
         <li><a href="#heading-2">键操作</a></li>
         <li><a href="#heading-3">数据导出命令</a></li>
+        <li><a href="#heading-4">数据导入命令</a></li>
       </ul>
     </li>
   </ul>
@@ -399,6 +400,52 @@ mysqldump -uroot -t xdhuxc &gt; /tmp/xdhuxc.sql
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">mysqldump -uroot -pAdmin369  -t xdhuxc users &gt; /tmp/xdhuxc_users.sql
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading-4">数据导入命令</h3>
+<p>1、在命令行 <code>mysql&gt; </code> 中使用命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">source mysql_script_path
+</code></pre></td></tr></table>
+</div>
+</div><p>2、将sql脚本导入MySQL数据库</p>
+<p>1）创建一个空数据库，使用命令为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">create database xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><p>2）将表结构和数据导入数据库</p>
+<p>方式一：使用 <code>source</code> 命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">use database_name             # 选择数据库
+set names utf8                # 设置数据库编码
+source /tmp/database_name.sql # 导入数据库表结构和数据
+</code></pre></td></tr></table>
+</div>
+</div><p>方式二：直接使用命令实现，使用命令为：</p>
+<blockquote>
+<p>使用–default-character-set = utf8指定编码以避免出现乱码。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql -u user_name -p password database_name &lt; /tmp/database_name.sql –default-character-set = utf8
 </code></pre></td></tr></table>
 </div>
 </div>

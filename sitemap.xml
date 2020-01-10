@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -457,7 +457,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue/</loc>
+    <loc>https://xdhuxc.github.io/post/message/message-queue/</loc>
     <lastmod>2019-07-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1052,7 +1052,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue-model/</loc>
+    <loc>https://xdhuxc.github.io/post/message/message-queue-model/</loc>
     <lastmod>2018-11-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1178,7 +1178,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-docker/</loc>
+    <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-docker-and-original-deployment/</loc>
     <lastmod>2018-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1243,6 +1243,20 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</loc>
     <lastmod>2019-03-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/message/rabbitmq/rabbitmq-questions-and-solutions/</loc>
+    <lastmod>2018-10-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/message/rabbitmq/rabbitmq-docker-deployment/</loc>
+    <lastmod>2018-10-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1423,6 +1437,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/message/rabbitmq/rabbitmq-common-command/</loc>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/devops/ansible/ansible-common-model/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1451,7 +1472,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/mixed/message/message-queue-kafka-install-and-command/</loc>
+    <loc>https://xdhuxc.github.io/post/message/kafka/message-queue-kafka-install-and-command/</loc>
     <lastmod>2018-04-17T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
