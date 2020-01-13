@@ -1262,6 +1262,20 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/redis/redis-cluster/</loc>
+    <lastmod>2018-09-27T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-common-knowledge/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>

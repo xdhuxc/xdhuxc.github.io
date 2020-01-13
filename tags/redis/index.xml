@@ -22,6 +22,24 @@
     </item>
     
     <item>
+      <title>Redis 安装和配置详解</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 集群部署</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-cluster/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-cluster/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的集群部署。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Redis 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-questions-and-solutions/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
