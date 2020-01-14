@@ -157,6 +157,15 @@
     </item>
     
     <item>
+      <title>使用 docker 容器方式部署 FastDFS</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 docker 容器方式部署 FastDFS 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 CentOS 7 上安装 MongoDB 数据库</title>
       <link>https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/</link>
       <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
@@ -190,6 +199,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-summary/</guid>
       <description>&lt;p&gt;本篇博客主要介绍 Redis 的特点及优势，还有它和其他键值数据库的区别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -953,6 +953,15 @@
     </item>
     
     <item>
+      <title>使用 docker 容器方式部署 FastDFS</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 docker 容器方式部署 FastDFS 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>GitLab 常见问题及解决</title>
       <link>https://xdhuxc.github.io/post/mixed/git/git-gitlab/</link>
       <pubDate>Thu, 19 Jul 2018 00:00:00 +0000</pubDate>
@@ -1052,12 +1061,30 @@
     </item>
     
     <item>
+      <title>使用 docker 容器方式部署 zookeeper</title>
+      <link>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 docker 容器方式部署 zookeeper 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 docker 容器部署 Tomcat</title>
       <link>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</guid>
       <description>&lt;p&gt;本篇博客记录了使用 docker 部署 tomcat 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>部署 Zookeeper 集群</title>
+      <link>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-cluster-deployment/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-cluster-deployment/</guid>
+      <description>&lt;p&gt;本篇博客记录了 部署 zookeeper 集群的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1085,6 +1112,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-iptraf-network-flow/</guid>
       <description>&lt;p&gt;本篇博客详细记录了在 Linux 系统中使用 iptraf 进行端口流量观察的方法，可以帮助我们分析应用程序端口的网络流入和网络流出。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1363,7 +1399,7 @@
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
-      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍了 &lt;code&gt;Dockerfile&lt;/code&gt; 各种命令的使用方法，对于构建 &lt;code&gt;docker&lt;/code&gt; 镜像及运行 &lt;code&gt;Docker&lt;/code&gt; 容器都是不可不知的。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1409,6 +1445,15 @@
       
       <guid>https://xdhuxc.github.io/post/docker/docker-network-mode/</guid>
       <description>&lt;p&gt;本篇博客详细介绍了 Docker 的四种网络模式，在使用 docker 容器时，必须知道容器是以哪种网络模式启动，这对于访问容器中的应用和排查问题都非常重要。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker Registry 的搭建和配置</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-original-registry/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-original-registry/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Docker Registry 的搭建和配置。&lt;/p&gt;</description>
     </item>
     
     <item>

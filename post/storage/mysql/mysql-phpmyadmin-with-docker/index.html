@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Harbor 镜像仓库的安装和使用 - xdhuxc</title>
+  <title>基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.61.0 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-registry-harbor/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Harbor 镜像仓库的安装和使用" />
-<meta property="og:description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。" />
+<meta property="og:title" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin" />
+<meta property="og:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/docker/docker-registry-harbor/" />
-<meta property="article:published_time" content="2017-07-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-08-20T00:00:00+00:00" />
-<meta itemprop="name" content="Harbor 镜像仓库的安装和使用">
-<meta itemprop="description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。">
-<meta itemprop="datePublished" content="2017-07-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2017-08-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="886">
+<meta property="og:url" content="https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/" />
+<meta property="article:published_time" content="2018-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-29T00:00:00+00:00" />
+<meta itemprop="name" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin">
+<meta itemprop="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。">
+<meta itemprop="datePublished" content="2018-06-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="722">
 
 
 
-<meta itemprop="keywords" content="Docker,Harbor," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Harbor 镜像仓库的安装和使用"/>
-<meta name="twitter:description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。"/>
+<meta itemprop="keywords" content="MySQL,phpMyAdmin,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin"/>
+<meta name="twitter:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Harbor 镜像仓库的安装和使用</h1>
+      <h1 class="post-title">基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2017-07-10 </span>
+        <span class="post-time"> 2018-06-12 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 886 字 </span>
+          <span class="more-meta"> 约 722 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">安装环境</a></li>
-        <li><a href="#heading-1">安装配置</a></li>
-        <li><a href="#heading-2">基本使用</a></li>
+        <li><a href="#phpmyadmin">phpmyadmin</a></li>
+        <li><a href="#-phpmyadmin-">将 phpMyAdmin 嵌入其他页面</a></li>
+        <li><a href="#heading">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -152,30 +152,127 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客详细介绍了 Harbor 的安装，配置和使用过程。</p>
-<h3 id="heading">安装环境</h3>
-<blockquote>
-<p>CentOS 7，Minimal模式安装</p>
-</blockquote>
-<p>1、Python 2.7 及以上版本</p>
-<p>2、Docker engine 1.10 及以上版本</p>
-<p>3、Docker Compose 1.6.0 及以上版本</p>
-<h3 id="heading-1">安装配置</h3>
-<p>1、从 <code>https://github.com/vmware/harbor</code> 上下载 <code>habor</code> 的离线安装版并解压</p>
+      <p>本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。</p>
+<h3 id="phpmyadmin">phpmyadmin</h3>
+<p><code>phpmyadmin</code> 是一个 <code>MySQL</code> 数据库管理工具，使用 <code>phpmyadmin</code> 实现在网页中连接、操作数据库，实现数据迁移。使用前，必须确保主机上数据库 <code>mysqld</code> 服务已经启动。</p>
+<p>1、拉取 phpMyAdmin 镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull phpmyadmin/phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>2、启动 phpMyAdmin 镜像</p>
+<p>连接单个数据库时启动 phpmyadmin 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run --name=myadmin -p 8080:80 -e PMA_HOST=192.168.244.128 -e MYSQL_ROOT_PASSWORD=286X326_h -d phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://github.com/vmware/harbor/releases/download/v1.2.2/harbor-offline-installer-v1.2.2.tgz
-tar -xvf harbor-offline-installer-v1.2.2.tgz
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">PMA_HOST：待连接的 MySQL 数据库服务器所在主机；
+MYSQL_ROOT_PASSWORD：MySQL 数据库 root 用户密码；
 </code></pre></td></tr></table>
 </div>
-</div><p>2、修改配置文件</p>
-<blockquote>
-<p>修改habor.cfg，将hostname改为本机IP地址（192.168.244.135）和自定义端口号（8090）</p>
-</blockquote>
+</div><p>3、在同一个页面中连接多个数据库时启动 phpmyadmin 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run --name=myadmin -p 8080:80 -e PMA_HOSTS=192.168.244.128,192.168.244.134 -e PMA_ARBITRARY=1 -d phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">PMA_HOSTS：待连接的 MySQL 数据库所在主机 IP 地址，多个 IP 地址以 <span class="sb">`,`</span> 分隔；
+PMA_ARBITRARY：允许连接多个 MySQL 数据库；
+</code></pre></td></tr></table>
+</div>
+</div><p>在</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/* Arbitrary server connection */                                     
+if (isset($_ENV[&#39;PMA_ARBITRARY&#39;]) &amp;&amp; $_ENV[&#39;PMA_ARBITRARY&#39;] === &#39;1&#39;) {                              
+    $cfg[&#39;AllowArbitraryServer&#39;] = true;                                                            
+} 
+</code></pre></td></tr></table>
+</div>
+</div><p>4、访问 phpMyAdmin</p>
+<p>访问地址为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.1.161:8080
+</code></pre></td></tr></table>
+</div>
+</div><p>在启动容器时，更改端口后访问地址为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.1.161:8090/
+或
+http://172.20.1.161:8090/index.php
+</code></pre></td></tr></table>
+</div>
+</div><p>在MySQL服务器所在主机上，以root用户登陆进去，执行如下命令，为用户赋予远程访问权限：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">GRANT ALL PRIVILEGES ON <span class="ge">*.*</span> TO &#39;root&#39;@&#39;172.17.0.2&#39; IDENTIFIED BY &#39;286X326_h&#39; WITH GRANT OPTION;
+</code></pre></td></tr></table>
+</div>
+</div><p>286X326_h为数据库root用户密码</p>
+<h3 id="-phpmyadmin-">将 phpMyAdmin 嵌入其他页面</h3>
+<p>进入容器中，复制 <code>/www/libraries/config.default.php</code> 到 <code>/www</code> 目录下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /www/libraries/config.default.php /www/config.inc.php
+</code></pre></td></tr></table>
+</div>
+</div><p>更改 <code>/www/config.inc.php</code> 的配置参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$cfg[&#39;AllowThirdPartyFraming&#39;] = true; 
+</code></pre></td></tr></table>
+</div>
+</div><p>修改 <code>/www/libraries/Header.php</code> 文件中的 sendHttpHeaders 函数，将 <code>X-Frame-Options </code>由 <code>deny</code> 改为 <code>ALLOW-FROM</code>，并加入待嵌入页面的地址，例如：<code>ALLOW-FROM http://123.103.9.208:6081/#outer/index/28</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -185,16 +282,14 @@ tar -xvf harbor-offline-installer-v1.2.2.tgz
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gu">## Harbor的配置文件
-</span><span class="gu"></span>
-<span class="gh">#The IP address or hostname to access admin UI and registry service.
-</span><span class="gh"></span><span class="gh">#DO NOT use localhost or 127.0.0.1, because Harbor needs to be accessed by external clients.
-</span><span class="gh"></span>hostname = 192.168.244.135:8090
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"> if (! $GLOBALS[&#39;cfg&#39;][&#39;AllowThirdPartyFraming&#39;]) {                                          
+            header(                                                                                 
+                &#39;X-Frame-Options: ALLOW-FROM http://123.103.9.208:6081/#outer/index/28&#39;             
+            );                                                                                      
+        }             
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>修改docker-compose.yml，将 nginx 的代理端口映射由 <code>80:80</code> 改为 <code>8090:80</code></p>
-</blockquote>
+</div><p>修改 <code>/www/js/cross_framing_protection.js</code> 文件中的内容如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -213,162 +308,32 @@ tar -xvf harbor-offline-installer-v1.2.2.tgz
 </span><span class="lnt">14
 </span><span class="lnt">15
 </span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  proxy:
-    image: vmware/nginx-photon:1.11.13
-    container_name: nginx
-    restart: always
-    volumes:
-      - ./common/config/nginx:/etc/nginx:z
-    networks:
-      - harbor
-    ports:
-      - 8090:80
-      - 443:443
-      - 4443:4443
-    depends_on:
-      - mysql
-      - registry
-      - ui
-      - log
-    logging:
-      driver: &#34;syslog&#34;
-      options:
-        syslog-address: &#34;tcp://127.0.0.1:1514&#34;
-        tag: &#34;proxy&#34;
-networks:
-  harbor:
-    external: false
-</code></pre></td></tr></table>
-</div>
-</div><p>3、初始化安装脚本和配置文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">./prepare
-</code></pre></td></tr></table>
-</div>
-</div><p>4、执行安装脚本，使用root用户执行的，因为默认的模板中有很多文件目录权限只有root用户才有权限。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">./install.sh
-</code></pre></td></tr></table>
-</div>
-</div><p>5、访问，使用默认的用户名和密码：admin/Harbor12345</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://192.168.244.135:8090
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="heading-2">基本使用</h3>
-<h4 id="heading-3">注意事项</h4>
-<p>1、在 <code>harbor.cfg</code> 中将 <code>self_registration</code> 属性设置为 <code>off</code>，那么普通用户将无法自己实现注册，只能由管理员创建用户，否则在页面上可以看到注册按钮。</p>
-<p>2、只有项目管理员及开发人员的角色才可以 <code>push</code> 镜像，其他角色的人员只有 <code>pull</code> 镜像的权限。</p>
-<h4 id="-habor-">上传镜像到 Habor 仓库</h4>
-<p>1、登录到待上传镜像所在的主机，为待上传镜像打上标签，名称按照如下格式：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">habor_registry_ip_address[:port_number]/project_name/image_name[:tag]
-</code></pre></td></tr></table>
-</div>
-</div><p>使用如下命令登录时，出现了错误：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_1 ~]# docker login -u admin -p Habor12345 192.168.244.135:8090
-Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: server gave HTTP response to HTTPS client
-</code></pre></td></tr></table>
-</div>
-</div><p>解决：修改docker镜像所在主机的<code>/etc/docker/daemon.json</code>文件，在文件中增加如下内容：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{
-        # 192.168.244.135：搭建的Registry所在主机IP地址
-        # 8090：搭建的Registry的端口号
-	&#34;insecure-registries&#34;:[&#34;192.168.244.135:8090&#34;]
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/* vim: set expandtab sw=4 ts=4 sts=4: <span class="ge">*/
+</span><span class="ge">/*</span>*
+ <span class="k">*</span> Conditionally included if framing is not allowed
+ */
+if (self == top) {
+    document.documentElement.style.display = &#39;block&#39;;
+    //var style_element = document.getElementById(&#34;cfs-style&#34;);
+    // check if style_element has already been removed
+    // to avoid frequently reported js error
+    //if (typeof(style_element) != &#39;undefined&#39; &amp;&amp; style_element != null) {
+    //    style_element.parentNode.removeChild(style_element);
+    //}
+} else {
+    //top.location = self.location;
+    document.documentElement.style.display = &#39;block&#39;;
 }
 </code></pre></td></tr></table>
 </div>
-</div><p>然后重新启动docker守护进程</p>
-<p>登录时可能会报如下错误：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Error response from daemon: Get http://192.168.244.135:8090/v2/: unauthorized: authentication required
-</code></pre></td></tr></table>
-</div>
-</div><p>解决：使用正确的用户名和密码登录，直接将密码写在命令行中</p>
-<p>使用如下命令登录到 Habor registry</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker login -u admin -p Harbor12345 192.168.244.135:8090
-</code></pre></td></tr></table>
-</div>
-</div><p>1、为待上传镜像打上标签</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker tag docker.io/phpmyadmin/phpmyadmin:latest 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div><p>2、推送镜像到Habor Registry</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker push 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="-habor--1">从 Habor 仓库拉取镜像</h4>
-<p>使用命令直接拉取即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div>
+</div><h3 id="heading">参考资料</h3>
+<p>phpmyadmin同步功能 <a href="http://www.360doc.com/content/12/1204/15/1440938_252069458.shtml">http://www.360doc.com/content/12/1204/15/1440938_252069458.shtml</a></p>
+<p>嵌入其他页面，需要修改配置 <a href="http://blog.csdn.net/l6807718/article/details/51179507">http://blog.csdn.net/l6807718/article/details/51179507</a></p>
+<p>解决问题的 <a href="http://vps.gl/vps/161.html">http://vps.gl/vps/161.html</a></p>
+<p>官方文档 <a href="https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker">https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker</a></p>
+<p>在centos中安装phpmyadmin，包括安装httpd，php <a href="http://www.cnblogs.com/xjxz/p/6550397.html">http://www.cnblogs.com/xjxz/p/6550397.html</a></p>
     </div>
 
     <div class="post-copyright">
@@ -379,7 +344,7 @@ Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: se
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2017-08-20
+        2018-07-29
         
     </span>
   </p>
@@ -388,17 +353,18 @@ Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: se
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/docker/">Docker</a>
-          <a href="/tags/harbor/">Harbor</a>
+          <a href="/tags/mysql/">MySQL</a>
+          <a href="/tags/phpmyadmin/">phpMyAdmin</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/docker/docker-original-registry/">
+        <a class="prev" href="/post/linux/linux-iptraf-network-flow/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Docker Registry 的搭建和配置</span>
+            <span class="prev-text nav-default">使用 iptraf 观察端口网络流量</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/docker/docker-practical-command/">
-            <span class="next-text nav-default">Docker 实用命令总结</span>
+        <a class="next" href="/post/linux/linux-ntp/">
+            <span class="next-text nav-default">Linux 中配置时间同步</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

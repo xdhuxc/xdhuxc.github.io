@@ -21,5 +21,14 @@
       <description>&lt;p&gt;本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>使用 docker 容器方式部署 FastDFS</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 docker 容器方式部署 FastDFS 的方法。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

@@ -27,7 +27,7 @@
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
-      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍了 &lt;code&gt;Dockerfile&lt;/code&gt; 各种命令的使用方法，对于构建 &lt;code&gt;docker&lt;/code&gt; 镜像及运行 &lt;code&gt;Docker&lt;/code&gt; 容器都是不可不知的。&lt;/p&gt;</description>
     </item>
     
   </channel>

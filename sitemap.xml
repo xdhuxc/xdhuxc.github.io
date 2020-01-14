@@ -1332,6 +1332,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</loc>
+    <lastmod>2018-01-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/mixed/git/git-gitlab/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1416,6 +1423,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/zookeeper/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/redis/redis-docker/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1423,7 +1437,21 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-docker/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</loc>
+    <lastmod>2018-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-cluster-deployment/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1453,6 +1481,20 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-iptraf-network-flow/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/phpmyadmin/</loc>
+    <lastmod>2018-07-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</loc>
+    <lastmod>2018-07-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1544,13 +1586,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/redis/redis-data-type/</loc>
     <lastmod>2018-06-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/zookeeper/</loc>
-    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1789,6 +1824,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/docker/docker-network-mode/</loc>
     <lastmod>2017-08-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-original-registry/</loc>
+    <lastmod>2017-08-20T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -93,5 +93,14 @@
       <description>&lt;p&gt;本篇博客记录了 MySQL 的常用基础知识，可用于日常学习。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin</title>
+      <link>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-phpmyadmin-with-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

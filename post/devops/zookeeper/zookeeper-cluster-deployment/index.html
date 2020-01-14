@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Harbor 镜像仓库的安装和使用 - xdhuxc</title>
+  <title>部署 Zookeeper 集群 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了 部署 zookeeper 集群的方法。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.61.0 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-registry-harbor/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-cluster-deployment/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Harbor 镜像仓库的安装和使用" />
-<meta property="og:description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。" />
+<meta property="og:title" content="部署 Zookeeper 集群" />
+<meta property="og:description" content="本篇博客记录了 部署 zookeeper 集群的方法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/docker/docker-registry-harbor/" />
-<meta property="article:published_time" content="2017-07-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2017-08-20T00:00:00+00:00" />
-<meta itemprop="name" content="Harbor 镜像仓库的安装和使用">
-<meta itemprop="description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。">
-<meta itemprop="datePublished" content="2017-07-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2017-08-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="886">
+<meta property="og:url" content="https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-cluster-deployment/" />
+<meta property="article:published_time" content="2018-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-28T00:00:00+00:00" />
+<meta itemprop="name" content="部署 Zookeeper 集群">
+<meta itemprop="description" content="本篇博客记录了 部署 zookeeper 集群的方法。">
+<meta itemprop="datePublished" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="850">
 
 
 
-<meta itemprop="keywords" content="Docker,Harbor," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Harbor 镜像仓库的安装和使用"/>
-<meta name="twitter:description" content="本篇博客详细介绍了 Harbor 的安装，配置和使用过程。"/>
+<meta itemprop="keywords" content="Zookeeper,DevOps," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="部署 Zookeeper 集群"/>
+<meta name="twitter:description" content="本篇博客记录了 部署 zookeeper 集群的方法。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Harbor 镜像仓库的安装和使用</h1>
+      <h1 class="post-title">部署 Zookeeper 集群</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2017-07-10 </span>
+        <span class="post-time"> 2018-06-28 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 886 字 </span>
+          <span class="more-meta"> 约 850 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,9 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">安装环境</a></li>
-        <li><a href="#heading-1">安装配置</a></li>
-        <li><a href="#heading-2">基本使用</a></li>
+        <li><a href="#zookeeper">Zookeeper集群搭建</a></li>
+        <li><a href="#heading">相关问题及解决</a></li>
       </ul>
     </li>
   </ul>
@@ -152,30 +151,59 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客详细介绍了 Harbor 的安装，配置和使用过程。</p>
-<h3 id="heading">安装环境</h3>
-<blockquote>
-<p>CentOS 7，Minimal模式安装</p>
-</blockquote>
-<p>1、Python 2.7 及以上版本</p>
-<p>2、Docker engine 1.10 及以上版本</p>
-<p>3、Docker Compose 1.6.0 及以上版本</p>
-<h3 id="heading-1">安装配置</h3>
-<p>1、从 <code>https://github.com/vmware/harbor</code> 上下载 <code>habor</code> 的离线安装版并解压</p>
+      <p>本篇博客记录了 部署 zookeeper 集群的方法。</p>
+<h3 id="zookeeper">Zookeeper集群搭建</h3>
+<p>三台虚拟机情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>虚拟机名称</th>
+<th>IP地址</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>centos_3</td>
+<td>192.168.244.129</td>
+<td>zk_master</td>
+</tr>
+<tr>
+<td>centos_4</td>
+<td>192.168.244.135</td>
+<td>zk_slave1</td>
+</tr>
+<tr>
+<td>centos_6</td>
+<td>192.168.244.136</td>
+<td>zk_slave2</td>
+</tr>
+<tr>
+<td>均已经安装了java 1.8.0_144</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>1、在 zk_master 机器上下载 <code>zookeeper-3.4.10.tar.gz</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://github.com/vmware/harbor/releases/download/v1.2.2/harbor-offline-installer-v1.2.2.tgz
-tar -xvf harbor-offline-installer-v1.2.2.tgz
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
 </code></pre></td></tr></table>
 </div>
-</div><p>2、修改配置文件</p>
-<blockquote>
-<p>修改habor.cfg，将hostname改为本机IP地址（192.168.244.135）和自定义端口号（8090）</p>
-</blockquote>
+</div><p>2、解压 <code>zookeeper-3.4.10.tar.gz</code> 文件，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">tar -zxf zookeeper-3.4.10.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p>3、创建所需文件和目录</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -185,16 +213,189 @@ tar -xvf harbor-offline-installer-v1.2.2.tgz
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gu">## Harbor的配置文件
-</span><span class="gu"></span>
-<span class="gh">#The IP address or hostname to access admin UI and registry service.
-</span><span class="gh"></span><span class="gh">#DO NOT use localhost or 127.0.0.1, because Harbor needs to be accessed by external clients.
-</span><span class="gh"></span>hostname = 192.168.244.135:8090
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir /data
+mkidr -p /data/zookpeer
+mkdir -p /data/zookeper/data
+mkdir -p /data/zookeeper/log
+touch /data/zookeeper/data/myid
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>修改docker-compose.yml，将 nginx 的代理端口映射由 <code>80:80</code> 改为 <code>8090:80</code></p>
-</blockquote>
+</div><p>4、进入 <code>zookeeper-3.4.10/conf</code> 目录下，复制配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp zoo_sample.cfg zoo.cfg
+</code></pre></td></tr></table>
+</div>
+</div><p>5、修改以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">tickTime=2000 # 单位毫秒，服务器之间或者客户端与服务器之间的心跳间隔
+initLimit=10  # 初始化Follower最长时间：10 <span class="ge">* 2000 ms
+</span><span class="ge">syncLimit=5   # Leader与Follower之间发送消息请求和应答时间长度：5 *</span> 2000 ms
+dataDir=/data/zookeeper/data # 日志存储路径
+dataLogDir=/data/zookeeper/log # 事务日志存储路径
+clientPort=52181 # 客户端端口
+server.1=192.168.244.129:12888:13888    
+server.2=192.168.244.135:12888:13888    
+server.3=192.168.244.136:12888:13888  
+
+autopurge.snapRetainCount=15 # 每次清除日志后保留的文件数目
+autopurge.purgeInterval=1 # 清除日志频率，单位小时
+</code></pre></td></tr></table>
+</div>
+</div><p>server.A=B:C:D
+A 是一个数字,表示这个是第几号服务器,
+B 是这个服务器的ip地址
+C 第一个端口用来集群成员的信息交换,表示的是这个服务器与集群中的Leader服务器交换信息的端口
+D 是在leader挂掉时专门用来进行选举leader所用</p>
+<p>6、向 <code>/data/zookeeper/data/myid</code> 中写入服务标识</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;1&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>7、将 zk_master 中的 zookeeper-3.4.10 复制到 zk_slave1 和 zk_slave2 机器上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">scp -r /home/application/zookeeper-3.4.10 root@192.168.244.135:/home/application/
+scp -r /home/application/zookeeper-3.4.10 root@192.168.244.136:/home/application/
+</code></pre></td></tr></table>
+</div>
+</div><p>8、在 zk_slave1 和 zk_slave2 上创建 myid 文件并写入内容
+在 zk_slave1 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">touch /data/zookeeper/data/myid
+echo &#34;2&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave2 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">touch /data/zookeeper/data/myid
+echo &#34;3&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>9、在三台机器上都开放防火墙端口<code>52181</code>，<code>12888</code>，<code>13888</code>，并重新启动防火墙。</p>
+<p>10、在三台机器上分别启动Zookeeper</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_3 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_3 bin]# ./zkServer.sh start
+
+[root@centos_4 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_4 bin]# ./zkServer.sh start
+
+[root@centos_6 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_6 bin]# ./zkServer.sh start
+</code></pre></td></tr></table>
+</div>
+</div><p>11、查看 zookeeper 的启动状态
+在 zk_master 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_3 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: follower
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave1 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_4 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: leader
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave2 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_6 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: follower
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="heading">相关问题及解决</h3>
+<p>1、启动 zookeeper 节点后出现如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_6 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Error contacting service. It is probably not running.
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：</p>
+<p>查看 <code>/home/application/zookeeper-3.4.10/bin</code> 目录下的 <code>zookeeper.out</code> 文件，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -211,164 +412,25 @@ tar -xvf harbor-offline-installer-v1.2.2.tgz
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">  proxy:
-    image: vmware/nginx-photon:1.11.13
-    container_name: nginx
-    restart: always
-    volumes:
-      - ./common/config/nginx:/etc/nginx:z
-    networks:
-      - harbor
-    ports:
-      - 8090:80
-      - 443:443
-      - 4443:4443
-    depends_on:
-      - mysql
-      - registry
-      - ui
-      - log
-    logging:
-      driver: &#34;syslog&#34;
-      options:
-        syslog-address: &#34;tcp://127.0.0.1:1514&#34;
-        tag: &#34;proxy&#34;
-networks:
-  harbor:
-    external: false
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">017-10-10 16:06:47,701 [myid:1] - WARN  [WorkerSender[myid=1]:QuorumCnxManager@588] - Cannot open channel to 3 at election address /192.168.244.136:13888
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.zookeeper.server.quorum.QuorumCnxManager.connectOne(QuorumCnxManager.java:562)
+	at org.apache.zookeeper.server.quorum.QuorumCnxManager.toSend(QuorumCnxManager.java:538)
+	at org.apache.zookeeper.server.quorum.FastLeaderElection$Messenger$WorkerSender.process(FastLeaderElection.java:452)
+	at org.apache.zookeeper.server.quorum.FastLeaderElection$Messenger$WorkerSender.run(FastLeaderElection.java:433)
+	at java.lang.Thread.run(Thread.java:748)
+2017-10-10 16:06:47,705 [myid:1] - INFO  [WorkerSender[myid=1]:QuorumPeer$QuorumServer@167] - Resolved hostname: 192.168.244.136 to address: /192.168.244.136
 </code></pre></td></tr></table>
 </div>
-</div><p>3、初始化安装脚本和配置文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">./prepare
-</code></pre></td></tr></table>
-</div>
-</div><p>4、执行安装脚本，使用root用户执行的，因为默认的模板中有很多文件目录权限只有root用户才有权限。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">./install.sh
-</code></pre></td></tr></table>
-</div>
-</div><p>5、访问，使用默认的用户名和密码：admin/Harbor12345</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://192.168.244.135:8090
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="heading-2">基本使用</h3>
-<h4 id="heading-3">注意事项</h4>
-<p>1、在 <code>harbor.cfg</code> 中将 <code>self_registration</code> 属性设置为 <code>off</code>，那么普通用户将无法自己实现注册，只能由管理员创建用户，否则在页面上可以看到注册按钮。</p>
-<p>2、只有项目管理员及开发人员的角色才可以 <code>push</code> 镜像，其他角色的人员只有 <code>pull</code> 镜像的权限。</p>
-<h4 id="-habor-">上传镜像到 Habor 仓库</h4>
-<p>1、登录到待上传镜像所在的主机，为待上传镜像打上标签，名称按照如下格式：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">habor_registry_ip_address[:port_number]/project_name/image_name[:tag]
-</code></pre></td></tr></table>
-</div>
-</div><p>使用如下命令登录时，出现了错误：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_1 ~]# docker login -u admin -p Habor12345 192.168.244.135:8090
-Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: server gave HTTP response to HTTPS client
-</code></pre></td></tr></table>
-</div>
-</div><p>解决：修改docker镜像所在主机的<code>/etc/docker/daemon.json</code>文件，在文件中增加如下内容：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{
-        # 192.168.244.135：搭建的Registry所在主机IP地址
-        # 8090：搭建的Registry的端口号
-	&#34;insecure-registries&#34;:[&#34;192.168.244.135:8090&#34;]
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>然后重新启动docker守护进程</p>
-<p>登录时可能会报如下错误：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Error response from daemon: Get http://192.168.244.135:8090/v2/: unauthorized: authentication required
-</code></pre></td></tr></table>
-</div>
-</div><p>解决：使用正确的用户名和密码登录，直接将密码写在命令行中</p>
-<p>使用如下命令登录到 Habor registry</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker login -u admin -p Harbor12345 192.168.244.135:8090
-</code></pre></td></tr></table>
-</div>
-</div><p>1、为待上传镜像打上标签</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker tag docker.io/phpmyadmin/phpmyadmin:latest 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div><p>2、推送镜像到Habor Registry</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker push 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="-habor--1">从 Habor 仓库拉取镜像</h4>
-<p>使用命令直接拉取即可</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull 192.168.244.135:8090/core/phpmyadmin:1.0.0
-</code></pre></td></tr></table>
-</div>
-</div>
+</div><p>分别在三台虚拟机上开放 <code>52181</code>、<code>12888</code>、<code>13888</code> 三个端口，重新启动，即可正常启动。</p>
     </div>
 
     <div class="post-copyright">
@@ -379,7 +441,7 @@ Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: se
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2017-08-20
+        2018-06-28
         
     </span>
   </p>
@@ -388,17 +450,17 @@ Error response from daemon: Get https://192.168.244.135:8090/v1/users/: http: se
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/docker/">Docker</a>
-          <a href="/tags/harbor/">Harbor</a>
+          <a href="/tags/zookeeper/">Zookeeper</a>
+          <a href="/tags/devops/">DevOps</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/docker/docker-original-registry/">
+        <a class="prev" href="/post/devops/tomcat/tomcat-docker/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Docker Registry 的搭建和配置</span>
+            <span class="prev-text nav-default">使用 docker 容器部署 Tomcat</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/docker/docker-practical-command/">
-            <span class="next-text nav-default">Docker 实用命令总结</span>
+        <a class="next" href="/post/storage/redis/redis-summary/">
+            <span class="next-text nav-default">Redis 概述</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

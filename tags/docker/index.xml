@@ -49,12 +49,30 @@
     </item>
     
     <item>
+      <title>使用 docker 容器方式部署 FastDFS</title>
+      <link>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/fastdfs/fastdfs-docker/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 docker 容器方式部署 FastDFS 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 Docker 容器方式部署 Redis</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
       <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 docker 容器方式部署 zookeeper</title>
+      <link>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/zookeeper/zookeeper-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 docker 容器方式部署 zookeeper 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -99,7 +117,7 @@
       <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/docker/docker-dockerfile/</guid>
-      <description>&lt;p&gt;本篇博客讲解下 Dockerfile 的各种命令的使用方法，对于构架 docker 镜像及运行 Docker 容器都是不可不知的。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍了 &lt;code&gt;Dockerfile&lt;/code&gt; 各种命令的使用方法，对于构建 &lt;code&gt;docker&lt;/code&gt; 镜像及运行 &lt;code&gt;Docker&lt;/code&gt; 容器都是不可不知的。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -136,6 +154,15 @@
       
       <guid>https://xdhuxc.github.io/post/docker/docker-network-mode/</guid>
       <description>&lt;p&gt;本篇博客详细介绍了 Docker 的四种网络模式，在使用 docker 容器时，必须知道容器是以哪种网络模式启动，这对于访问容器中的应用和排查问题都非常重要。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker Registry 的搭建和配置</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-original-registry/</link>
+      <pubDate>Thu, 13 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-original-registry/</guid>
+      <description>&lt;p&gt;本篇博客详细介绍了 Docker Registry 的搭建和配置。&lt;/p&gt;</description>
     </item>
     
     <item>
