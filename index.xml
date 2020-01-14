@@ -463,6 +463,15 @@
     </item>
     
     <item>
+      <title>Vue 集成 CodeMirror</title>
+      <link>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</guid>
+      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Go Template 的使用</title>
       <link>https://xdhuxc.github.io/post/programming/golang/golang-template/</link>
       <pubDate>Thu, 23 May 2019 00:00:00 +0000</pubDate>
@@ -908,12 +917,30 @@
     </item>
     
     <item>
+      <title>Redis 其他知识和技术</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-others/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-others/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的其他知识和技术，包括HyperLogLog、发布/订阅、事务等。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Redis 安装和配置详解</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</link>
       <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</guid>
       <description>&lt;p&gt;本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 进阶知识及操作</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-advanced/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-advanced/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1043,12 +1070,30 @@
     </item>
     
     <item>
+      <title>Tomcat 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/devops/tomcat/tomcat-questions-and-solutions/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/tomcat/tomcat-questions-and-solutions/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>使用 Docker 容器方式部署 Redis</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-docker/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-docker/</guid>
       <description>&lt;p&gt;本篇博客主要介绍以 docker 容器方式部署 Redis 的操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用 docker 容器部署 Tomcat</title>
+      <link>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 docker 部署 tomcat 的方法。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1157,6 +1202,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-command/</guid>
       <description>&lt;p&gt;本篇博客主要介绍了 redis 常用的命令。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 常用数据类型总结</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-data-type/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-data-type/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 redis 的常用数据类型。&lt;/p&gt;</description>
     </item>
     
     <item>

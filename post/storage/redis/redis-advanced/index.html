@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Redis 进阶知识及操作 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.61.0 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/storage/redis/redis-advanced/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Redis 进阶知识及操作" />
+<meta property="og:description" content="本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/storage/redis/redis-advanced/" />
+<meta property="article:published_time" content="2018-08-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-27T00:00:00+00:00" />
+<meta itemprop="name" content="Redis 进阶知识及操作">
+<meta itemprop="description" content="本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。">
+<meta itemprop="datePublished" content="2018-08-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2258">
+
+
+
+<meta itemprop="keywords" content="Redis,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis 进阶知识及操作"/>
+<meta name="twitter:description" content="本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Redis 进阶知识及操作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-04 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 2258 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#redis-">Redis 数据备份与恢复</a></li>
+        <li><a href="#redis--3">Redis 安全</a></li>
+        <li><a href="#redis--4">Redis 性能测试</a></li>
+        <li><a href="#redis--5">Redis 客户端连接</a></li>
+        <li><a href="#redis--6">Redis 管道技术</a></li>
+        <li><a href="#redis--7">Redis 分区</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。</p>
+<h3 id="redis-">Redis 数据备份与恢复</h3>
+<h4 id="redis--1">Redis 数据备份</h4>
+<p>Redis 的 save 命令用于创建当前数据库的备份</p>
+<p>使用 <code>redis save</code> 命令来备份 redis 数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; save
+OK
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令将在 <code>redis</code> 安装目录中创建 <code>dump.rdb</code> 文件</p>
+<p>创建 redis 备份文件也可以使用命令 bgsave，该命令在后台执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; bgsave
+Background saving started
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="redis--2">Redis 数据恢复</h4>
+<p>如果需要恢复数据，只需将备份文件 <code>dump.rdb</code> 移动到 redis 安装目录并启动服务即可。</p>
+<p>获取 <code>redis</code> 目录可以使用 <code>config</code> 命令，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; config get dir
+1) &#34;dir&#34;
+2) &#34;/usr/local/redis/bin&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>config get dir</code> 输出的 <code>redis</code> 安装目录为：<code>/usr/local/redis/bin</code></p>
+<h3 id="redis--3">Redis 安全</h3>
+<p>可以通过 redis 的配置文件设置密码参数，这样客户端连接到 redis 服务就需要密码验证，这样可以让 redis 服务更安全。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; config get requirepass
+1) &#34;require&#34;
+2) &#34;&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>默认情况下 requirepass 参数是空的，这就意味着无需通过密码验证就可以连接到 redis 服务。
+可以通过以下命令来修改该参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; config set requirepass &#34;abcdef&#34;
+OK
+127.0.0.1:6379&gt; config get requirepass
+1) &#34;requirepass&#34;
+2) &#34;abcdef&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>设置密码后，客户端连接 redis 服务就需要密码验证，否则无法执行命令。</p>
+<p>auth 命令基本语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; auth password
+</code></pre></td></tr></table>
+</div>
+</div><p>示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; auth &#34;abcdef&#34;
+OK
+127.0.0.1:6379&gt; set xkey &#34;MyValue&#34;
+OK
+127.0.0.1:6379&gt; get xkey
+&#34;MyValue&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="redis--4">Redis 性能测试</h3>
+<blockquote>
+<p>Redis 性能测试是通过同时执行多个命令实现的。</p>
+</blockquote>
+<p>redis 性能测试的基本命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis-benchmark [option] [option value]
+</code></pre></td></tr></table>
+</div>
+</div><p>同时执行 10000 个请求来检测性能</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis-benchmark -n 10000
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Redis 性能测试工具可选参数如下所示：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选项</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-h</td>
+<td>指定服务器主机名</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-p</td>
+<td>指定服务器端口</td>
+<td>6379</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-s</td>
+<td>指定服务器 socket</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>-c</td>
+<td>指定并发连接数</td>
+<td>50</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-n</td>
+<td>指定请求数</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-d</td>
+<td>以字节的形式指定 SET/GET 值的数据大小</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-k</td>
+<td>1=keep alive 0=reconnect</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-r</td>
+<td>SET/GET/INCR 使用随机 key, SADD 使用随机值</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>-P</td>
+<td>通过管道传输 <numreq> 请求</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-q</td>
+<td>强制退出 redis。仅显示 query/sec 值</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>&ndash;csv</td>
+<td>以 CSV 格式输出</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>-l</td>
+<td>生成循环，永久执行测试</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>-t</td>
+<td>仅运行以逗号分隔的测试命令列表</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>-L</td>
+<td>Idle 模式。仅打开 N 个 idle 连接并等待</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>使用多个参数来测试 redis 的性能</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 10000 -q
+SET: 2131.74 requests per second
+LPUSH: 2257.34 requests per second
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="redis--5">Redis 客户端连接</h3>
+<p>Redis 通过监听一个 TCP 端口或者 Unix socket 的方式来接收来自客户端的连接，当一个连接建立后，Redis 内部会进行以下一些操作：</p>
+<ul>
+<li>首先，客户端 socket 会被设置为非阻塞模式，因为 Redis 在网络事件处理上采用的是非阻塞多路复用模型。</li>
+<li>然后为这个 socket 设置 TCP_NODELAY 属性，禁用 Nagle 算法</li>
+<li>然后创建一个可读的文件事件用于监听这个客户端 socket 的数据发送</li>
+</ul>
+<p>最大连接数 maxclients 的默认值是 10000，也可以在 redis.conf 中进行设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">config get maxclients 
+1) &#34;maxclients&#34;
+2) &#34;10000&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>在服务启动时设置最大连接数为 100000</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis-server --maxclients 10000
+</code></pre></td></tr></table>
+</div>
+</div><p>客户端命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>client list</td>
+<td>返回连接到 redis 服务的客户端列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td>client setname</td>
+<td>设置当前连接的名称</td>
+</tr>
+<tr>
+<td>3</td>
+<td>client getname</td>
+<td>获取通过 CLIENT SETNAME 命令设置的服务名称</td>
+</tr>
+<tr>
+<td>4</td>
+<td>client pause</td>
+<td>挂起客户端连接，指定挂起的时间以毫秒计</td>
+</tr>
+<tr>
+<td>5</td>
+<td>client kill</td>
+<td>关闭客户端连接</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis--6">Redis 管道技术</h3>
+<p>Redis 是一种基于客户端-服务端模型以及请求/响应协议的 TCP 服务，这意味着通常情况下一个请求会遵循以下步骤：</p>
+<ul>
+<li>客户端向服务端发送一个查询请求，并监听 socket 返回，通常是以阻塞模式，等待服务端响应。</li>
+<li>服务端处理命令，并将结果返回给客户端。</li>
+</ul>
+<p>Redis 管道技术可以在服务端未响应时，客户端可以继续向服务端发送请求，并最终一次性读取所有服务端的响应。</p>
+<p>示例
+查看 redis 管道，只需要启动 redis 实例并输入以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$(echo -en &#34;ping\r\n SET x_key redis\r\nGET runoobkey\r\nINCR visitor\r\nINCR visitor\r\nINCR visitor\r\n&#34;; sleep 10) | nc localhost 6379
+
++PONG
++OK
+redis
+:1
+:2
+:3
+</code></pre></td></tr></table>
+</div>
+</div><p>以上示例中，通过使用 ping 命令查看redis服务是否可用，之后设置了 x_key 的值为 redis，然后获取 x_key 的值并使得 visitor 自增 3 次。
+在返回的结果中，可以看到这些命令一次性向 redis 服务提交，并最终一次性读取所有服务端的响应</p>
+<p>管道技术最显著的优势是提高了 redis 服务的性能。</p>
+<h3 id="redis--7">Redis 分区</h3>
+<p>分区是分割数据到多个 Redis 实例的处理过程，因此每个实例只保存 key 的一个子集。</p>
+<h4 id="heading">分区的优势和不足</h4>
+<p>1、分区的优势</p>
+<ul>
+<li>通过利用多台计算机内存的和值，允许我们构造更大的数据库。</li>
+<li>通过多核和多台计算机，允许我们扩展计算能力</li>
+<li>通过多台计算机和网络适配器，允许我们扩展网络带宽。</li>
+</ul>
+<p>2、分区的不足</p>
+<blockquote>
+<p>redis的一些特性在分区方面表现的不是很好：</p>
+</blockquote>
+<ul>
+<li>涉及多个 key 的操作通常是不被支持的。举例来说，当两个 set 映射到不同的 redis 实例上时，你就不能对这两个 set 执行交集操作</li>
+<li>涉及多个 key 的 redis 事务不能使用</li>
+<li>当使用分区时，数据处理较为复杂，比如你需要处理多个 rdb/aof 文件，并且从多个实例和主机备份持久化文件</li>
+<li>增加或删除容量也比较复杂。redis 集群大多数支持在运行时增加、删除节点的透明数据平衡的能力，但是类似于客户端分区、代理等其他系统则不支持这项特性。然而，一种叫做 presharding 的技术对此是有帮助的</li>
+</ul>
+<h4 id="heading-1">分区类型</h4>
+<blockquote>
+<p>Redis 有两种类型分区。 假设有4个Redis实例 R0，R1，R2，R3，和类似user:1，user:2这样的表示用户的多个key，对既定的key有多种不同方式来选择这个key存放在哪个实例中。也就是说，有不同的系统来映射某个key到某个Redis服务。</p>
+</blockquote>
+<p>1、范围分区</p>
+<p>最简单的分区方式是按范围分区，就是映射一定范围的对象到特定的Redis实例。</p>
+<p>比如，ID 从 0 到 10000 的用户会保存到实例 R0，ID 从 10001 到 20000 的用户会保存到 R1，以此类推。</p>
+<p>这种方式是可行的，并且在实际中使用，不足就是要有一个区间范围到实例的映射表。这个表要被管理，同时还需要各 种对象的映射表，通常对Redis来说并非是好的方法。</p>
+<p>2、哈希分区</p>
+<p>hash分区，这对任何key都适用，也无需是object_name:这种形式，描述如下：</p>
+<ul>
+<li>
+<p>用一个hash函数将key转换为一个数字，比如使用 <code>crc32</code> hash函数。对key foobar执行crc32(foobar)会输出类似93024922的整数。</p>
+</li>
+<li>
+<p>对这个整数取模，将其转化为0-3之间的数字，就可以将这个整数映射到4个Redis实例中的一个了。93024922 % 4 = 2，就是说key foobar应该被存到R2实例中。注意：取模操作是取除的余数，通常在多种编程语言中用%操作符实现。</p>
+</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-09-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/redis/">Redis</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/storage/redis/redis-install-and-configuration/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Redis 安装和配置详解</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/storage/redis/redis-cluster/">
+            <span class="next-text nav-default">Redis 集群部署</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

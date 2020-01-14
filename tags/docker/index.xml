@@ -58,6 +58,15 @@
     </item>
     
     <item>
+      <title>使用 docker 容器部署 Tomcat</title>
+      <link>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 docker 部署 tomcat 的方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>基于 docker 容器部署 Nexus</title>
       <link>https://xdhuxc.github.io/post/mixed/nexus/nexus-docker/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>

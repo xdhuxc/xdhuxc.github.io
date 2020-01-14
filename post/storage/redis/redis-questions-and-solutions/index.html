@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录下使用 redis 的过程中出现的问题及解决。">
 <meta itemprop="datePublished" content="2018-06-28T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="186">
+<meta itemprop="wordCount" content="342">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 186 字 </span>
+          <span class="more-meta"> 约 342 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -156,6 +156,31 @@ F0910 14:17:00.304868    2673 router.go:50] ERR SELECT is not allowed in cluster
 </div>
 </div><p>在单机模式下，redis.conf 配置文件中默认的数据库数量是 16 个；但在集群模式下，redis 不支持多数据库，只有一个数据库，默认是 select 0。集群从节点默认是不支持读写操作的，但是在执行过 readonly 命令后可以执行读操作。</p>
 <p>所以，将指定 db 的地方指定为 0 即可解决此问题。</p>
+<p>2、增大 redis 的客户端连接数</p>
+<p>1）redis.conf 中 maxClients 参数的限制，默认为：10000，设置为 0 表示不作限制，但是优先受到 redis 进程能打开的最大文件描述符的限制，为该值减去 32，因为 redis 内部也需要一些文件描述符。</p>
+<p>2）如果需要支持更高的连接数，还需要更改系统的相关配置，比如 ulimit 数目</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ulimit -n 65536 
+</code></pre></td></tr></table>
+</div>
+</div><p>3）更改网络的并发连接数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">net.ipv4.netfilter.ip_conntrack_max
+net.nf_conntrack_max
+net.netfilter.nf_conntrack_max
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -184,8 +209,8 @@ F0910 14:17:00.304868    2673 router.go:50] ERR SELECT is not allowed in cluster
             <span class="prev-text nav-default">Python 配置 pip 源</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/storage/redis/redis-docker/">
-            <span class="next-text nav-default">使用 Docker 容器方式部署 Redis</span>
+        <a class="next" href="/post/devops/tomcat/tomcat-questions-and-solutions/">
+            <span class="next-text nav-default">Tomcat 常见问题及解决</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

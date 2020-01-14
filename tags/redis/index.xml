@@ -22,12 +22,30 @@
     </item>
     
     <item>
+      <title>Redis 其他知识和技术</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-others/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-others/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的其他知识和技术，包括HyperLogLog、发布/订阅、事务等。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Redis 安装和配置详解</title>
       <link>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</link>
       <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/</guid>
       <description>&lt;p&gt;本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 进阶知识及操作</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-advanced/</link>
+      <pubDate>Sat, 04 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-advanced/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -73,6 +91,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/redis/redis-command/</guid>
       <description>&lt;p&gt;本篇博客主要介绍了 redis 常用的命令。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis 常用数据类型总结</title>
+      <link>https://xdhuxc.github.io/post/storage/redis/redis-data-type/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/redis/redis-data-type/</guid>
+      <description>&lt;p&gt;本篇博客主要介绍了 redis 的常用数据类型。&lt;/p&gt;</description>
     </item>
     
   </channel>

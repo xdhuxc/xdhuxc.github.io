@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>DevOps · xdhuxc</title>
+  <title>使用 docker 容器部署 Tomcat - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了使用 docker 部署 tomcat 的方法。
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,9 +27,7 @@
 <meta name="generator" content="Hugo 0.61.0 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/tags/devops/" />
-  <link href="https://xdhuxc.github.io/tags/devops/index.xml" rel="alternate" type="application/rss+xml" title="xdhuxc" />
-  <link href="https://xdhuxc.github.io/tags/devops/index.xml" rel="feed" type="application/rss+xml" title="xdhuxc" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,15 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="DevOps" />
-<meta property="og:description" content="Hugo theme even example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xdhuxc.github.io/tags/devops/" />
-<meta property="og:updated_time" content="2019-10-10T00:00:00+00:00" />
-<meta itemprop="name" content="DevOps">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DevOps"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta property="og:title" content="使用 docker 容器部署 Tomcat" />
+<meta property="og:description" content="本篇博客记录了使用 docker 部署 tomcat 的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/" />
+<meta property="article:published_time" content="2018-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-28T00:00:00+00:00" />
+<meta itemprop="name" content="使用 docker 容器部署 Tomcat">
+<meta itemprop="description" content="本篇博客记录了使用 docker 部署 tomcat 的方法。">
+<meta itemprop="datePublished" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="231">
+
+
+
+<meta itemprop="keywords" content="Tomcat,DevOps,Docker," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 docker 容器部署 Tomcat"/>
+<meta name="twitter:description" content="本篇博客记录了使用 docker 部署 tomcat 的方法。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -112,101 +119,130 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="archive" class="archive">
-  <div class="archive-title tag">
-        <h2 class="archive-name">DevOps</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用 docker 容器部署 Tomcat</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-06-28 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 231 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-  <div class="archive-post">
-      <span class="archive-post-time">
-        2019-10-10
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/prometheus/prometheus-grafana-clickhouse/" class="archive-post-link">
-          使用 Grafana 监控 Clickhouse
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2019-06-17
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/jenkins/jenkins-gitlab-trigger/" class="archive-post-link">
-          在 Jenkins 中配置 gitlab 触发器
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2019-05-17
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/prometheus/prometheus-alertmanager/" class="archive-post-link">
-          Prometheus 和 AlertManager 配合使用
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2019-05-10
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/prometheus/prometheus-native-docker-install/" class="archive-post-link">
-          使用原生方式和基于 docker 容器方式部署 prometheus
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2018-06-28
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/tomcat/tomcat-docker/" class="archive-post-link">
-          使用 docker 容器部署 Tomcat
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2018-06-28
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/tomcat/tomcat-questions-and-solutions/" class="archive-post-link">
-          Tomcat 常见问题及解决
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2018-05-14
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/ansible/ansible-simple-use/" class="archive-post-link">
-          Ansible 学习之简单入门
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2018-05-14
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/ansible/ansible-playbook/" class="archive-post-link">
-          Ansible 学习之简单入门
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2018-05-02
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/ansible/ansible-common-model/" class="archive-post-link">
-          Ansible 学习之常用模块
-        </a>
-      </span>
-    </div>
-</section>
-
-<nav class="pagination">
-  
-  
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tomcat">启动Tomcat容器</a></li>
+        <li><a href="#-war-tomcat">挂载配置文件和 War 包方式启动Tomcat容器</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客记录了使用 docker 部署 tomcat 的方法。</p>
+<h3 id="tomcat">启动Tomcat容器</h3>
+<p>使用如下命令启动 <code>Tomcat</code> 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d \
+    --privileged=true \
+    --restart=always \
+    -p 8080:8080 \
+    --name=tomcat \
+    tomcat:9.0.1
+</code></pre></td></tr></table>
+</div>
+</div><p>在浏览器地址栏中输入：<code>http://192.168.244.128:8080</code>，可访问到 <code>Tomcat</code> 的首页</p>
+<h3 id="-war-tomcat">挂载配置文件和 War 包方式启动Tomcat容器</h3>
+<p>根目录为：<code>/usr/local/tomcat/</code>，<code>conf</code>、<code>webapps</code>、<code>bin</code> 等目录均在该目录下</p>
+<p>创建 <code>/home/xdhuxc/tomcat</code> 目录，在其下创建 <code>conf</code> 和 <code>webapps</code> 目录，</p>
+<p>使用如下命令启动 <code>tomcat</code> 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d \
+    --privileged=true \
+    --restart=always \
+    -p 8080:8080 \
+    -v /home/xdhuxc/tomcat/webapps:/usr/local/tomcat/webapps \
+    -v /home/xdhuxc/tomcat/conf:/usr/local/tomcat/conf \
+    --name=tomcat \
+    tomcat:9.0.1
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-06-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/tomcat/">Tomcat</a>
+          <a href="/tags/devops/">DevOps</a>
+          <a href="/tags/docker/">Docker</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/storage/redis/redis-docker/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用 Docker 容器方式部署 Redis</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/storage/redis/redis-summary/">
+            <span class="next-text nav-default">Redis 概述</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
