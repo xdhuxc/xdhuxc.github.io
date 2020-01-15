@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Golang 常用命令 - xdhuxc</title>
+  <title>Golang 常用命令和操作总结 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-command/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-command-and-operation/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,22 +39,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Golang 常用命令" />
+<meta property="og:title" content="Golang 常用命令和操作总结" />
 <meta property="og:description" content="本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/programming/golang/golang-command/" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/programming/golang/golang-command-and-operation/" />
 <meta property="article:published_time" content="2019-04-29T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-08-29T00:00:00+00:00" />
-<meta itemprop="name" content="Golang 常用命令">
+<meta itemprop="name" content="Golang 常用命令和操作总结">
 <meta itemprop="description" content="本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。">
 <meta itemprop="datePublished" content="2019-04-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1128">
+<meta itemprop="wordCount" content="1344">
 
 
 
 <meta itemprop="keywords" content="Golang," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Golang 常用命令"/>
+<meta name="twitter:title" content="Golang 常用命令和操作总结"/>
 <meta name="twitter:description" content="本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。"/>
 
 <!--[if lte IE 9]>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Golang 常用命令</h1>
+      <h1 class="post-title">Golang 常用命令和操作总结</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2019-04-29 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1128 字 </span>
+          <span class="more-meta"> 约 1344 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -147,6 +147,7 @@
         <li><a href="#基于-make-编译-go-工程">基于 make 编译 go 工程</a></li>
         <li><a href="#govendor-的使用">govendor 的使用</a></li>
         <li><a href="#环境变量">环境变量</a></li>
+        <li><a href="#引用本地-gitlab-中的包">引用本地 gitlab 中的包</a></li>
       </ul>
     </li>
   </ul>
@@ -319,6 +320,25 @@ govendor add +e
 </li>
 </ul>
 <p>无法访问默认代理和校验数据库（例如，由于防火墙或沙河配置）的用户，可以通过将 GOPROXY 设置为 direct 和（或）将 GOSUMDB 设置为 off 来禁止其使用。</p>
+<h3 id="引用本地-gitlab-中的包">引用本地 gitlab 中的包</h3>
+<p>在最开始搭建项目的时候，将公司内部的一些公用包放到了 github 上，项目中引用 github 上的公共包，现在需要改造为引用公司内部 gitlab 上的。</p>
+<p>经过一番探索，总结出步骤如下：</p>
+<p>1、修改 <code>go</code> 环境变量：<code>go env -w GOPRIVATE=&quot;gitlab.ushareit.me&quot;</code>（<code>GOPRIVATE</code> 指定不可公开获取的模块的路径）</p>
+<p>2、在代码中使用 <code>gitlab.xdhuxc.com/xdhuxc/xdhuxc-common</code> 全文替换 <code>github.com/xdhuxc/xdhuxc-common</code></p>
+<p>3、删除 <code>go.mod</code> 文件，重新生成之，依次执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">go mod init
+go mod tidy
+go mod vendor
+</code></pre></td></tr></table>
+</div>
+</div><p>4、使用 <code>make build</code> 命令进行测试</p>
     </div>
 
     <div class="post-copyright">

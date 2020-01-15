@@ -86,10 +86,10 @@
     
     <item>
       <title>Golang 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-questions-and-solutions/</link>
       <pubDate>Mon, 05 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-questions-and-solutions/</guid>
       <description>&lt;p&gt;本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -139,11 +139,11 @@
     </item>
     
     <item>
-      <title>Golang 常用命令</title>
-      <link>https://xdhuxc.github.io/post/programming/golang/golang-command/</link>
+      <title>Golang 常用命令和操作总结</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-command-and-operation/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/golang/golang-command/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-command-and-operation/</guid>
       <description>&lt;p&gt;本篇博客记录下 golang 中常用的命令，在开发过程经常会用到。&lt;/p&gt;</description>
     </item>
     

@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-questions-and-solutions/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -42,7 +42,7 @@
 <meta property="og:title" content="Golang 常见问题及解决" />
 <meta property="og:description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/programming/golang/golang-common-questions-and-solutions/" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/programming/golang/golang-questions-and-solutions/" />
 <meta property="article:published_time" content="2019-08-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-08-05T00:00:00+00:00" />
 <meta itemprop="name" content="Golang 常见问题及解决">
@@ -198,9 +198,9 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:scmp-transform wanghuan$ make build
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:xdhuxc-transform wanghuan$ make build
 &gt;&gt; go build ...
-build command-line-arguments: cannot load gitlab.xdhuxc.me/sgt/devops/scmp-transform/src/apis: git ls-remote -q ssh://git@gitlab.xdhuxc.me/sgt/devops.git in /Users/wanghuan/GolandProjects/GoPath/pkg/mod/cache/vcs/32878bb63a0c857fed210744986dde9a48418788fe89eee3f24d5b73f5abcd2a: exit status 128:
+build command-line-arguments: cannot load gitlab.xdhuxc.com/xdhuxc/xdhuxc-transform/src/apis: git ls-remote -q ssh://git@gitlab.xdhuxc.com/xdhuxc.git in /Users/wanghuan/GolandProjects/GoPath/pkg/mod/cache/vcs/32878bb63a0c857fed210744986dde9a48418788fe89eee3f24d5b73f5abcd2a: exit status 128:
         GitLab: The project you were looking for could not be found.
         fatal: Could not read from remote repository.
         
@@ -224,12 +224,12 @@ make: *** [build] Error 1
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:hawkeye wanghuan$ make build
 &gt;&gt; go build ...
 <span class="gh"># gitlab.ushareit.org/SGT/DevOps/hawkeye/src/apis
-</span><span class="gh"></span>src/apis/base.go:55:38: cannot use req (type <span class="ge">*&#34;gitlab.ushareit.org/SGT/DevOps/hawkeye/vendor/github.com/emicklei/go-restful&#34;.Request) as type *</span>&#34;github.com/emicklei/go-restful&#34;.Request in argument to b.auth.GetCustomValue
-src/apis/router.go:54:46: cannot use baseController.auth.Auth (type func(*&#34;github.com/emicklei/go-restful&#34;.Request, <span class="ge">*&#34;github.com/emicklei/go-restful&#34;.Response, *</span>&#34;github.com/emicklei/go-restful&#34;.FilterChain)) as type &#34;gitlab.ushareit.org/SGT/DevOps/hawkeye/vendor/github.com/emicklei/go-restful&#34;.FilterFunction in argument to baseController.ws.Filter
+</span><span class="gh"></span>src/apis/base.go:55:38: cannot use req (type <span class="ge">*&#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.Request) as type *</span>&#34;github.com/emicklei/go-restful&#34;.Request in argument to b.auth.GetCustomValue
+src/apis/router.go:54:46: cannot use baseController.auth.Auth (type func(*&#34;github.com/emicklei/go-restful&#34;.Request, <span class="ge">*&#34;github.com/emicklei/go-restful&#34;.Response, *</span>&#34;github.com/emicklei/go-restful&#34;.FilterChain)) as type &#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.FilterFunction in argument to baseController.ws.Filter
 make: *** [build] Error 2
 </code></pre></td></tr></table>
 </div>
-</div><p>解决：删除本地项目中 <code>gitlab.ushareit.org/SGT/DevOps/hawkeye/vendor/github.com/emicklei/go-restful</code> 目录，重新编译。</p>
+</div><p>解决：删除本地项目中 <code>gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful</code> 目录，重新编译。</p>
 <h3 id="向-map-中写入键值对时报错-panicassignment-to-entry-in-nil-map">向 map 中写入键值对时，报错 <code>panic：assignment to entry in nil map</code></h3>
 <p>因为该 map 的初始化方式不对，当仅写 <code>var map[keyType]ValueType</code> 时，会得到 nil map，此时向 map 中插入键值对时，会报上述错误。</p>
 <p>一旦使用 make() 函数进行初始化，就不是 nil map 了。</p>
