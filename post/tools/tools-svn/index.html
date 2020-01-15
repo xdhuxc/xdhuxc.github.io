@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/tools/tools-svn/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#svn-">SVN 安装和配置</a></li>
-        <li><a href="#svn--1">svn 使用</a></li>
-        <li><a href="#svn--2">SVN 命令行</a></li>
-        <li><a href="#heading-2">常见问题及解决</a></li>
+        <li><a href="#svn-安装和配置">SVN 安装和配置</a></li>
+        <li><a href="#svn-使用">svn 使用</a></li>
+        <li><a href="#svn-命令行">SVN 命令行</a></li>
+        <li><a href="#常见问题及解决">常见问题及解决</a></li>
       </ul>
     </li>
   </ul>
@@ -154,8 +154,8 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。</p>
-<h3 id="svn-">SVN 安装和配置</h3>
-<h4 id="-svn-">安装 <code>svn</code> 服务器</h4>
+<h3 id="svn-安装和配置">SVN 安装和配置</h3>
+<h4 id="安装-svn-服务器">安装 <code>svn</code> 服务器</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -164,7 +164,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y subversion
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading">查看版本</h4>
+</div><h4 id="查看版本">查看版本</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -177,7 +177,7 @@
 <center>
 <img src="/image/tools/svn/WechatIMG651.jpeg" width="800px" height="300px" />
 </center>
-<h4 id="heading-1">创建版本库</h4>
+<h4 id="创建版本库">创建版本库</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -207,7 +207,7 @@ Subversion目录说明：</p>
 <li>passwd：账号密码文件</li>
 <li>svnserve.conf：SVN服务配置文件</li>
 </ul>
-<h4 id="subversion-">subversion 配置</h4>
+<h4 id="subversion-配置">subversion 配置</h4>
 <p>1、设置账号密码</p>
 <p>修改 <code>conf/passwd</code> 文件，在 <code>[users]</code> 块中添加用户和密码，格式为：username=password</p>
 <center>
@@ -250,7 +250,7 @@ realm = /root/svn/xdhuxc # 认证空间名，版本库所在目录
 <center>
 <img src="/image/tools/svn/WechatIMG655.jpeg" width="800px" height="300px" />
 </center>
-<h4 id="-svn--1">启动 svn 版本库</h4>
+<h4 id="启动-svn-版本库">启动 svn 版本库</h4>
 <p>启动 <code>svn</code> 版本库，并查看 <code>svn</code> 服务是否开启，默认监听在 <code>3690</code> 端口</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -267,7 +267,7 @@ ps -ef|grep svn
 <li>-d：表示后台运行svn服务</li>
 <li>-r：指定svn目录</li>
 </ul>
-<h4 id="-svn--2">停止 svn 命令</h4>
+<h4 id="停止-svn-命令">停止 svn 命令</h4>
 <p>使用如下命令停止 svn 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -277,7 +277,7 @@ ps -ef|grep svn
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">killall svnserve
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="svn--1">svn 使用</h3>
+</div><h3 id="svn-使用">svn 使用</h3>
 <p>1、下载并安装 <code>TorwoiseSVN</code> 测试</p>
 <p>2、创建空目录 <code>xdhuxc-svn</code>，右键并选择 <code>SVN Checkout</code>，<code>checkout</code> 就是把 <code>SVN</code> 服务器上的文件下载到本地工作目录内的操作，输入 <code>SVN</code> 服务器地址，导出文件存放目录 <code>xdhuxc-svn</code>，点击 <code>OK</code></p>
 <center>
@@ -306,7 +306,7 @@ ps -ef|grep svn
 <img src="/image/tools/svn/WechatIMG661.jpeg" width="800px" height="300px" />
 </center>
 可到 `linux` 服务器下验证提交结果。
-<h3 id="svn--2">SVN 命令行</h3>
+<h3 id="svn-命令行">SVN 命令行</h3>
 <p>1、使用Linux的SVN命令进行checkout操作</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -366,7 +366,7 @@ svn update
 <center>
 <img src="/image/tools/svn/WechatIMG664.png" width="800px" height="300px" />
 </center>
-<h3 id="heading-2">常见问题及解决</h3>
+<h3 id="常见问题及解决">常见问题及解决</h3>
 <p>1、点击 <code>Checkout</code> 后，报错如下：</p>
 <center>
 <img src="/image/tools/svn/WechatIMG665.jpeg" width="800px" height="300px" />

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#linux-namespace-">Linux namespace 概念</a></li>
-        <li><a href="#docker--linux-namespace-">docker 容器使用 linux namespace 做运行环境隔离</a></li>
+        <li><a href="#linux-namespace-概念">Linux namespace 概念</a></li>
+        <li><a href="#docker-容器使用-linux-namespace-做运行环境隔离">docker 容器使用 linux namespace 做运行环境隔离</a></li>
         <li><a href="#linux-control-groups">Linux control groups</a></li>
-        <li><a href="#docker--cgroup-">docker 使用 cgroup 限制容器进程资源的使用</a></li>
+        <li><a href="#docker-使用-cgroup-限制容器进程资源的使用">docker 使用 cgroup 限制容器进程资源的使用</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。</p>
-<h3 id="linux-namespace-">Linux namespace 概念</h3>
+<h3 id="linux-namespace-概念">Linux namespace 概念</h3>
 <p>Linux 内核从版本 2.4.19 开始陆续引入了 namespace 的概念，其目的是将某个特定的全局系统资源，通过抽象的方式，使得 namespace 中的进程看起来拥有它们自己的隔离的全局系统资源实例。</p>
 <p>Linux 内核中实现了六种 namespace，按照引入的先后顺序，列表如下：
 命名空间名称 | 引入的相关内核版本 | 被隔离的全局系统资源 | 在容器语境下的隔离效果
@@ -166,7 +166,7 @@ PID 命名空间 | Linux 2.6.24 | 进程 ID 数字空间（process ID number spa
 Network 命名空间| 始于 Linux 2.6.24，完成于 Linux 2.6.29 | 网络相关的系统资源 | 每个容器拥有其独立的网络设备、IP地址、IP路由表、/proc/net 目录、端口号等等。这也使得一个主机上多个容器内的同一个应用都可以绑定到各自容器的 80 端口上。
 User 命名空间 | 始于 Linux 2.6.23，完成于 Linux 3.8 | 用户和组 ID 空间 | 在 user namespace 中的进程的用户和组 ID 可以和在宿主机上不同；每个容器可以有不同的用户和组ID，一个主机上的非特权用户可以成为 user namespace 中的特权用户。</p>
 <p>简单来讲，处于某个命名空间中的进程，能看到独立的它自己的隔离的某些特定系统资源。</p>
-<h3 id="docker--linux-namespace-">docker 容器使用 linux namespace 做运行环境隔离</h3>
+<h3 id="docker-容器使用-linux-namespace-做运行环境隔离">docker 容器使用 linux namespace 做运行环境隔离</h3>
 <p>当 docker 创建一个容器时，它会创建新的以上六种 namespace 的实例，然后把容器中的所有进程放到这些 namespace 之中，使得 docker 容器中的进程只能看到隔离的系统资源。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -194,7 +194,7 @@ lrwxrwxrwx 1 1000 1000 0 Jul 11 09:00 user -&gt; user:[4026531837]
 lrwxrwxrwx 1 1000 1000 0 Jul 11 08:47 uts -&gt; uts:[4026532174]
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="pid-">PID 命名空间</h4>
+</div><h4 id="pid-命名空间">PID 命名空间</h4>
 <p>创建容器 zookeeper</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -268,7 +268,7 @@ root      3363 21666  0 22:53 ?        00:00:00 docker-containerd-shim -namespac
 </ul>
 <p>因此，容器中的主应用在宿主机上的父进程是 containerd-shim，是它通过工具 runC 来启动这些进程的。</p>
 <p>这也能看出来，pid 命名空间通过将宿主机上 PID 映射为容器内的 PID，使得容器内的进程看起来有个独立的 PID 空间。</p>
-<h4 id="uts-">UTS 命名空间</h4>
+<h4 id="uts-命名空间">UTS 命名空间</h4>
 <p>容器可以有自己的 hostname 和 domainname</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -284,7 +284,7 @@ xdhuxc             # 宿主机的主机名
 81cae3d22fd7       # zookeeper 容器的主机名
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="user-">user 命名空间</h4>
+</div><h4 id="user-命名空间">user 命名空间</h4>
 <p>在 docker 1.10 版本之前，是不支持 user 命名空间的，也就是说，默认地，容器内的进程的运行用户就是宿主机上的 root 用户。这样的话，当宿主机上的文件或者目录作为挂载卷被映射到容器以后，容器内的进程其实是有 root 的几乎所有权限去修改这些宿主机上的目录的，这会有很大的安全问题。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -342,7 +342,7 @@ uid=0(root) gid=0(root)
 </div>
 </div><p>则进程的用户在容器内和容器外都是 <code>root</code>，它可以在容器内对宿主机上的 <code>/bin</code> 目录做任意操作，非常不安全。</p>
 <p><code>docker</code> 1.10 中引入的 <code>user</code> 命名空间就可以让容器有一个“假”的 <code>root</code> 用户，它在容器内是 <code>root</code>，在容器外是一个非 <code>root</code> 用户。也就是说，<code>user</code> 命名空间实现了宿主机 <code>users</code> 和 容器内 <code>users</code> 之间的映射。</p>
-<h4 id="network-">network 命名空间</h4>
+<h4 id="network-命名空间">network 命名空间</h4>
 <p>默认情况下，当 docker 实例被创建出来后，使用 <code>ip netns</code> 命令无法看到容器实例对应的 network 命名空间，这是因为 ip netns 命令 是从 /var/run/netns 目录中读取内容的。</p>
 <p>操作步骤：
 1、找到容器的主进程 ID</p>
@@ -464,7 +464,7 @@ zookeeper (id: 0)
        valid_lft forever preferred_lft forever
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="docker-run--namespace-">docker run 命令中 namespace 相关参数</h4>
+</div><h4 id="docker-run-命令中-namespace-相关参数">docker run 命令中 namespace 相关参数</h4>
 <p>docker run 命令中如下几个参数和 namespace 相关：</p>
 <ul>
 <li>&ndash;ipc string 指定使用的 IPC 命名空间</li>
@@ -777,7 +777,7 @@ drwxr-xr-x 5 root root  0 Jul 11 20:05 systemd
 <li>hugetlb：该子系统主要针对于 HugeTLB 系统进行限制，这是一个大页文件系统。</li>
 </ul>
 <p>在 CentOS 7.2.1511 系统中，默认看不到 net_prio 目录</p>
-<h4 id="-cgroup--cpu">通过 cgroup 限制进程的 CPU</h4>
+<h4 id="通过-cgroup-限制进程的-cpu">通过 cgroup 限制进程的 CPU</h4>
 <p>编写如下 C 语言程序</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -952,7 +952,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem
 </code></pre></td></tr></table>
 </div>
 </div><p>可见，两个进程比较平均地分享了 CPU 时间。</p>
-<h4 id="-cgroup-">通过 cgroup 限制进程的内存</h4>
+<h4 id="通过-cgroup-限制进程的内存">通过 cgroup 限制进程的内存</h4>
 <p>类似的，我们针对它占用的内存做如下操作：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -977,7 +977,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem
 </code></pre></td></tr></table>
 </div>
 </div><p>上面的步骤会把进程ID为 18110 的进程占用的内存阈值设置为 128M，超过的话，它会被杀掉。</p>
-<h4 id="-cgroup--io">通过 cgroup 限制进程的 I/O</h4>
+<h4 id="通过-cgroup-限制进程的-io">通过 cgroup 限制进程的 I/O</h4>
 <p>运行命令：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1030,7 +1030,7 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 </div>
 </div><p>似乎对 /dev/vda 设备的IO速度控制不起作用。</p>
 <p>可能只对sda设备起作用，也可能用法不对。</p>
-<h4 id="heading">术语</h4>
+<h4 id="术语">术语</h4>
 <p>cgroups 的术语包括：</p>
 <ul>
 <li>任务：Tasks，就是系统的一个进程。</li>
@@ -1038,7 +1038,7 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 <li>层级：Hierarchy，控制组可以组织成hierarchy的形式，即一棵控制组的树形结构（目录结构），控制组树上的子节点继承父节点的属性，简单来说，hierarchy就是在一个或多个子系统上的cgroup目录树。</li>
 <li>子系统：Subsystem，一个子系统就是一个资源控制器，比如CPU子系统就是控制CPU时间分配的一个控制器。子系统必须附加到一个层级上才能起作用，一个子系统附加到某个层级以后，这个层级上的所有控制组群都受到这个子系统的控制。cgroup的子系统可以有很多，也在不断地增加中。</li>
 </ul>
-<h3 id="docker--cgroup-">docker 使用 cgroup 限制容器进程资源的使用</h3>
+<h3 id="docker-使用-cgroup-限制容器进程资源的使用">docker 使用 cgroup 限制容器进程资源的使用</h3>
 <p>环境信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1679,7 +1679,7 @@ drwxr-xr-x 5 root root  0 Jul  4 08:52 systemd
 ./systemd/docker/bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-1">限制容器的网络流量</h4>
+</div><h4 id="限制容器的网络流量">限制容器的网络流量</h4>
 <p>net_cls 和 tc 一起使用可用于限制进程发出的网络包所使用的网络带宽。当使用 cgroup network controll net_cls 后，指定进程发出的所有网络包都会被加一个标签，然后就可以使用其他工具，比如 iptables 或者 traffic controller（TC）来根据网络包上的标签进行流量控制。</p>
 <p>关于 classid，它的格式是：0xAAAABBBB，其中，AAAA 是十六进制的主 ID（major number），BBBB 是十六进制的次 ID（minor number）。因此，0x10001 表示 10:1 ，而 0x00010001 表示 1:!</p>
 <p>1、首先，在宿主机的网卡 eth0 上做如下设置：</p>
@@ -1745,7 +1745,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 <li>后两条说使用的 tc class 规则是 tc class add dev eth0 parent 10: classid 10:1 htb rate 1500kbit ceil 15kbit burst 10k</li>
 <li>前两条所使用的 tc class 规则是 tc class add dev eth0 parent 10: classid 10:1 htb rate 1500kbit ceil 10Mbit burst 10k</li>
 </ul>
-<h4 id="docker-run--cgroup-">docker run 命令中 cgroup 相关命令</h4>
+<h4 id="docker-run-命令中-cgroup-相关命令">docker run 命令中 cgroup 相关命令</h4>
 <p>block IO:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

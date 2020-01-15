@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/redis/redis-data-type/" />
@@ -142,11 +142,11 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">字符串</a></li>
-        <li><a href="#heading-1">散列/哈希</a></li>
-        <li><a href="#heading-2">列表</a></li>
-        <li><a href="#heading-3">集合</a></li>
-        <li><a href="#heading-4">有序集合</a></li>
+        <li><a href="#字符串">字符串</a></li>
+        <li><a href="#散列哈希">散列/哈希</a></li>
+        <li><a href="#列表">列表</a></li>
+        <li><a href="#集合">集合</a></li>
+        <li><a href="#有序集合">有序集合</a></li>
       </ul>
     </li>
   </ul>
@@ -155,7 +155,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客主要介绍了 redis 的常用数据类型。</p>
-<h3 id="heading">字符串</h3>
+<h3 id="字符串">字符串</h3>
 <p>Redis 中的字符串是一个字节序列，并且字符串是二进制安全的，这意味着它们的长度不由任何特殊的终止字符决定，因此，可以在一个字符串中存储高达 <code>512MB</code> 的任何内容。</p>
 <p>Redis 字符串数据类型的相关命令用于管理 Redis 字符串值。基本语法格式为：</p>
 <div class="highlight"><div class="chroma">
@@ -278,7 +278,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="heading-1">散列/哈希</h3>
+<h3 id="散列哈希">散列/哈希</h3>
 <p>Redis 散列/哈希（Hash）是键值对的集合。Redis 散列/哈希是字符串字段和字符串值之间的映射。因此，哈希/散列特别适合用于存储对象。每个散列/哈希可以存储多达 <code>2^32-1</code> 个键值对。</p>
 <p>Redis 哈希的基本命令：</p>
 <table>
@@ -357,7 +357,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="heading-2">列表</h3>
+<h3 id="列表">列表</h3>
 <p>Redis 列表只是字符串列表，按插入顺序排序。您可以向 Redis 列表的头部或尾部添加元素。列表的最大长度为<code>2^32-1</code>个元素。</p>
 <p>Redis 列表的基本命令：</p>
 <table>
@@ -456,7 +456,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="heading-3">集合</h3>
+<h3 id="集合">集合</h3>
 <p>Redis集合是字符串的无序集合。集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。根据集合内元素的唯一性，第二次插入的元素将被忽略。集合中最大的元素个数为 <code>$ 2^{32}-1 $</code> 个。</p>
 <p>Redis 集合常用命令：</p>
 <table>
@@ -545,7 +545,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="heading-4">有序集合</h3>
+<h3 id="有序集合">有序集合</h3>
 <p>Redis 有序集合类似于 Redis 集合，是不重复的字符集合， 不同之处在于，有序集合的每个成员都与分数相关联，这个分数用于 <code>按最小分数到最大分数</code> 来排序的有序集合。虽然元素是唯一的，但元素的分数值可以重复。</p>
 <p>Redis 有序集合基本命令：</p>
 <table>

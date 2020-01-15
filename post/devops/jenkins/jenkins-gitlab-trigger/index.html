@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/jenkins/jenkins-gitlab-trigger/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">操作和配置</a></li>
-        <li><a href="#heading-1">常见问题及解决</a></li>
+        <li><a href="#操作和配置">操作和配置</a></li>
+        <li><a href="#常见问题及解决">常见问题及解决</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了在 Jenkins 中配置 Gitlab 触发器的过程，从而使得当我们向 gitlab 提交代码时，打上标签，就可以直接触发构建。</p>
-<h3 id="heading">操作和配置</h3>
+<h3 id="操作和配置">操作和配置</h3>
 <p>1、在 Jenkins 和 Gitlab 之间配置触发构建，希望在 Gitlab 上提交代码时，打上标签提交时，触发该工程在 Jenkins 中的构建。</p>
 <p>1）在 GitLab 中使用管理员账户，生成 GitLab API Token，</p>
 <center>
@@ -227,7 +227,7 @@ fi
 </center>
 <p>4、从 Jenkins 向需要授权的 docker registry 中推送镜像
 安装 docker-commons 插件，在 系统管理 中，在 docker 部分，添加 docker 镜像仓库的地址，并使用任意有权限的的账户和密码创建 credentials，保存之，即可从 shell 脚本中直接向需要认证的 docker 镜像仓库中推送镜像。</p>
-<h3 id="heading-1">常见问题及解决</h3>
+<h3 id="常见问题及解决">常见问题及解决</h3>
 <p>1、在 GitLab 中某项目的 <code>设置</code> -&gt; <code>集成</code> 中配置 Jenkins webhook，配置完成后点击 <code>Test</code>，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

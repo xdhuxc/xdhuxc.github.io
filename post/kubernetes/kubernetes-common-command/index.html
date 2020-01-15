@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/kubernetes/kubernetes-common-command/" />
@@ -140,26 +140,26 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">常用命令</a>
+    <li><a href="#常用命令">常用命令</a>
       <ul>
-        <li><a href="#heading-1">集群信息</a></li>
-        <li><a href="#heading-2">标签操作</a></li>
-        <li><a href="#heading-3">资源操作</a></li>
-        <li><a href="#heading-4">日志查看</a></li>
+        <li><a href="#集群信息">集群信息</a></li>
+        <li><a href="#标签操作">标签操作</a></li>
+        <li><a href="#资源操作">资源操作</a></li>
+        <li><a href="#日志查看">日志查看</a></li>
       </ul>
     </li>
-    <li><a href="#heading-5">组合命令</a></li>
+    <li><a href="#组合命令">组合命令</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <p>本篇博客记录了在 Kubernetes 中常用的命令，以备后需。</p>
-<h2 id="heading">常用命令</h2>
+<h2 id="常用命令">常用命令</h2>
 <blockquote>
 <p>以下操作均假设在含 kubelet 的节点上执行命令</p>
 </blockquote>
-<h3 id="heading-1">集群信息</h3>
+<h3 id="集群信息">集群信息</h3>
 <p>1、查看集群信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -215,7 +215,7 @@ kubernetes-admin@kubernetes
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl cluster-info
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">标签操作</h3>
+</div><h3 id="标签操作">标签操作</h3>
 <p>1、给 master 节点打标签</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -234,7 +234,7 @@ kubernetes-admin@kubernetes
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl label nodes k8s-172.20.27.215 node-role.kubernetes.io/ingress=
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">资源操作</h3>
+</div><h3 id="资源操作">资源操作</h3>
 <p>1、查看所有的 deployment</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -481,7 +481,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW5
 </code></pre></td></tr></table>
 </div>
 </div><p>该命令也可以用于强制删除其他 kubernetes 资源。</p>
-<h3 id="heading-4">日志查看</h3>
+<h3 id="日志查看">日志查看</h3>
 <p>1）查看指定行数的日志</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -500,7 +500,7 @@ eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW5
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl logs --since=1h dingtalk-callback-5ff4757745-g448n -n xdhuxc
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-5">组合命令</h2>
+</div><h2 id="组合命令">组合命令</h2>
 <p>1）删除状态为 Error 的 Pod</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

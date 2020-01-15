@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-dockerfile/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#dockerfile-">Dockerfile 简介</a></li>
-        <li><a href="#dockerfile--1">Dockerfile 基本结构</a></li>
-        <li><a href="#heading">指令</a></li>
+        <li><a href="#dockerfile-简介">Dockerfile 简介</a></li>
+        <li><a href="#dockerfile-基本结构">Dockerfile 基本结构</a></li>
+        <li><a href="#指令">指令</a></li>
       </ul>
     </li>
   </ul>
@@ -153,10 +153,10 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了 <code>Dockerfile</code> 各种命令的使用方法，对于构建 <code>docker</code> 镜像及运行 <code>Docker</code> 容器都是不可不知的。</p>
-<h3 id="dockerfile-">Dockerfile 简介</h3>
+<h3 id="dockerfile-简介">Dockerfile 简介</h3>
 <p><code>Dockerfile</code> 是一个文本格式的配置文件，可以使用 <code>Dockerfile</code> 快速创建自定义镜像</p>
 <p>Dockerfile官方网址：https://github.com/docker-library</p>
-<h3 id="dockerfile--1">Dockerfile 基本结构</h3>
+<h3 id="dockerfile-基本结构">Dockerfile 基本结构</h3>
 <p><code>Dockerfile</code> 由一行行命令语句组成，并且支持以 “#” 开头的注释行。</p>
 <p>一般而言，<code>Dockerfile</code> 分为四个部分：</p>
 <ul>
@@ -208,7 +208,7 @@ RUN echo &#34;\ndaemon off;&#34; &gt;&gt; /etc/nginx/nginx.conf
 </span><span class="gh"></span>CMD /usr/sbin/nginx
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">指令</h3>
+</div><h3 id="指令">指令</h3>
 <p>指令的一般格式为：INSTRUCTION arguments，指令包括：FROM、MAINTAINER、RUN等。</p>
 <h4 id="from">FROM</h4>
 <p>格式为：</p>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/redis/redis-install-and-configuration/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-linux--redis">在 Linux 中安装 Redis</a></li>
-        <li><a href="#-windows--redis">在 Windows 下安装 Redis</a></li>
-        <li><a href="#-redis-">在命令行中查询配置 Redis 参数</a></li>
+        <li><a href="#在-linux-中安装-redis">在 Linux 中安装 Redis</a></li>
+        <li><a href="#在-windows-下安装-redis">在 Windows 下安装 Redis</a></li>
+        <li><a href="#在命令行中查询配置-redis-参数">在命令行中查询配置 Redis 参数</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。</p>
-<h3 id="-linux--redis">在 Linux 中安装 Redis</h3>
+<h3 id="在-linux-中安装-redis">在 Linux 中安装 Redis</h3>
 <p>1、使用如下命令下载并解压Redis安装包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -375,7 +375,7 @@ redis&gt; get abc
 &#34;def&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-windows--redis">在 Windows 下安装 Redis</h3>
+</div><h3 id="在-windows-下安装-redis">在 Windows 下安装 Redis</h3>
 <p>1、Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 <code>Redis-x64-xxx.zip</code> 压缩包到C盘，解压后，将文件夹重新命名为 redis。
 <img src="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg" alt=""></p>
 <p>2、打开一个 cmd 窗口 使用 cd 命令切换目录到 <code>C:\redis</code> 运行 <code>redis-server.exe redis.windows.conf</code>。如果想方便的话，可以把 redis 的路径加到系统的环境变量里，这样就省得再输路径了，后面的那个 <code>redis.windows.conf</code> 可以省略，如果省略，会启用默认的。输入之后，会显示如下界面：
@@ -383,7 +383,7 @@ redis&gt; get abc
 <p>3、此时另启一个 cmd 窗口，原来的不要关闭，否则就无法访问服务端了。
 切换到 redis 目录下运行 <code>redis-cli.exe -h 127.0.0.1 -p 6379</code>。
 <img src="http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt=""></p>
-<h3 id="-redis-">在命令行中查询配置 Redis 参数</h3>
+<h3 id="在命令行中查询配置-redis-参数">在命令行中查询配置 Redis 参数</h3>
 <blockquote>
 <p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。</p>
 </blockquote>
@@ -686,7 +686,7 @@ redis 127.0.0.1:6379&gt; config get loglevel
 2) &#34;notice&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h1 id="redishttpwwwrunoobcomredisredis-confhtml">四、<a href="http://www.runoob.com/redis/redis-conf.html">Redis参数说明</a></h1>
+</div><h1 id="四redis参数说明httpwwwrunoobcomredisredis-confhtml">四、<a href="http://www.runoob.com/redis/redis-conf.html">Redis参数说明</a></h1>
 <p>redis.conf配置项说明如下：</p>
 <ul>
 <li>daemonize no：Redis 默认不是以守护进程的方式运行，可以通过该配置项修改，使用 yes 启用守护进程</li>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/git/git-common-command/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#git-">Git 命令</a></li>
-        <li><a href="#heading">从功能到命令</a></li>
+        <li><a href="#git-命令">Git 命令</a></li>
+        <li><a href="#从功能到命令">从功能到命令</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了一些 git 使用过程中常用的命令，方便查看。</p>
-<h3 id="git-">Git 命令</h3>
+<h3 id="git-命令">Git 命令</h3>
 <h4 id="tag">tag</h4>
 <blockquote>
 <p>tag 命令用于创建一个标签，表示一个提交点，默认情况下，基于本地当前分支的最后一个提交创建标签。</p>
@@ -303,8 +303,8 @@ wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
 <p>可以查看提交历史，包括提交的时间，作者，和提交是的说明（即-m 命令后的内容），以便确定要回退到哪个版本。</p>
 <h4 id="relog">relog</h4>
 <p>查看命令历史，查到每次提交的id号，即commit id,以及提交时的说明，以便确定要回到未来的哪个版本。</p>
-<h3 id="heading">从功能到命令</h3>
-<h4 id="heading-1">切换分支</h4>
+<h3 id="从功能到命令">从功能到命令</h3>
+<h4 id="切换分支">切换分支</h4>
 <p>1、使用本地 git 命令创建新分支</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -332,7 +332,7 @@ wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">git push origin xdhuxc
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="git--1">git 将一个本地工程推向多个远程仓库</h4>
+</div><h4 id="git-将一个本地工程推向多个远程仓库">git 将一个本地工程推向多个远程仓库</h4>
 <p>推送时，可以同时推送至多个远程仓库
 1、添加另外一个远程仓库</p>
 <div class="highlight"><div class="chroma">
@@ -352,7 +352,7 @@ wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">git push origin master:master
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="ssh-key">生成SSH-key</h4>
+</div><h4 id="生成ssh-key">生成SSH-key</h4>
 <p>github的SSH配置如下：</p>
 <p>1、设置GitHub用户的用户名和邮箱
 设置命令为：</p>

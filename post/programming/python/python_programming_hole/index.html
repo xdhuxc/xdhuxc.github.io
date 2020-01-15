@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python_programming_hole/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-list-">小心 list 元素的组织</a></li>
-        <li><a href="#-sys-">加载 sys 模块，设置编码的原因</a></li>
+        <li><a href="#小心-list-元素的组织">小心 list 元素的组织</a></li>
+        <li><a href="#加载-sys-模块设置编码的原因">加载 sys 模块，设置编码的原因</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。</p>
-<h3 id="-list-">小心 list 元素的组织</h3>
+<h3 id="小心-list-元素的组织">小心 list 元素的组织</h3>
 <p>如果我们有一个这样的 list，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -215,7 +215,7 @@ print(s)
 </div>
 </div><p>虽然不知道为什么，但是 python 确实是这么设计的，没有错误提示，也没有错误，将空格当成了字符串连接符来使用了。</p>
 <p>填补此坑花了我将近三个小时的时间，要谨记此错误！</p>
-<h3 id="-sys-">加载 sys 模块，设置编码的原因</h3>
+<h3 id="加载-sys-模块设置编码的原因">加载 sys 模块，设置编码的原因</h3>
 <p>以下代码中，先重新加载sys模块，再设置编码，而不是先设置编码，再加载sys模块的原因：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/vue/vue-element-ui-verify/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">普通输入框的校验</a></li>
-        <li><a href="#heading-3">参考资料</a></li>
+        <li><a href="#普通输入框的校验">普通输入框的校验</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>使用 vue 和 element-ui 开发的前端工程，进行资源创建时，需要在前端页面对表单进行校验，特此记录，以备后需。</p>
-<h3 id="heading">普通输入框的校验</h3>
+<h3 id="普通输入框的校验">普通输入框的校验</h3>
 <p>普通输入框的校验，可以直接使用默认的校验器进行校验，示例如下：</p>
 <p>1）对数据模型添加 rules 规则</p>
 <div class="highlight"><div class="chroma">
@@ -267,7 +267,7 @@
 <li>hex：必须是一个 hex 类型。</li>
 <li>email：必须是一个 email 类型。</li>
 </ul>
-<h4 id="heading-1">数值类型的校验</h4>
+<h4 id="数值类型的校验">数值类型的校验</h4>
 <p>对于数值类型的校验，可以使用默认的 <code>number</code> 类型校验，但是我们的数值在业务逻辑上有其特殊性，其实是个端口号，所以就有以下要求：</p>
 <ul>
 <li>用户必须输入数值，不能提交空字符串。</li>
@@ -423,7 +423,7 @@ export default {
 </code></pre></td></tr></table>
 </div>
 </div><p>通过 validator 字段指定自定义校验函数 validatePort，触发条件为：blur。</p>
-<h4 id="heading-2">复杂数据结构的校验</h4>
+<h4 id="复杂数据结构的校验">复杂数据结构的校验</h4>
 <p>对于复杂数据结构的校验，采取的方式是编写自定义的校验函数，将校验逻辑封装到校验函数中，校验通过则放行，不通过则返回错误提示，但是需要注意的是，每次执行校验函数时，需要先清除上次的校验结果，否则校验效果就比较滑稽了。</p>
 <p>比如我们的项目中，需要校验键值对，采用了如下的方式：</p>
 <div class="highlight"><div class="chroma">
@@ -614,7 +614,7 @@ export default {
 </div>
 </div><p>弹出框中是一个表单，表单中有个标签项，每项均是键值对，需要每项同时都配置键值对，如果没有同时配置，需要在页面给出提示，可以在并列显示的标签后面点击按钮删除当前标签。我们将校验逻辑写在自定义校验函数中，然后加入到校验规则里，就可以起作用了。</p>
 <p>需要注意的是，每次校验前，需要使用表单的 clearValidate() 函数清理上次的校验结果，如果没有这一步，表单校验的结果就会显得错乱。</p>
-<h3 id="heading-3">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://github.com/yiminghe/async-validator">https://github.com/yiminghe/async-validator</a></p>
     </div>
 

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/vue/vue-common-question-and-solution/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">通过父组件向子组件传值时，报错如下</a></li>
+        <li><a href="#通过父组件向子组件传值时报错如下">通过父组件向子组件传值时，报错如下</a></li>
         <li><a href="#error-in-nexttick-typeerror-cannot-read-property-clearvalidate-of-undefined">Error in nextTick: &ldquo;TypeError: Cannot read property &lsquo;clearValidate&rsquo; of undefined&rdquo;</a></li>
-        <li><a href="#-compression-webpack-plugin-">使用 compression-webpack-plugin 压缩文件时报错</a></li>
+        <li><a href="#使用-compression-webpack-plugin-压缩文件时报错">使用 compression-webpack-plugin 压缩文件时报错</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。</p>
-<h3 id="heading">通过父组件向子组件传值时，报错如下</h3>
+<h3 id="通过父组件向子组件传值时报错如下">通过父组件向子组件传值时，报错如下</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -334,7 +334,7 @@ vue.runtime.esm.js:1737 TypeError: Cannot read property &#39;clearValidate&#39; 
 </code></pre></td></tr></table>
 </div>
 </div><p>原因是，<code>this.dialogDeploymentVisible = true</code> 执行后，才会创建表单 deploymentForm，正是因为执行 <code>this.$refs['deploymentForm'].clearValidate()</code> 时，<code>this.dialogDeploymentVisible = true</code> 还没有执行，表单还没有创建，所以才会抛出上面的错误。</p>
-<h3 id="-compression-webpack-plugin-">使用 compression-webpack-plugin 压缩文件时报错</h3>
+<h3 id="使用-compression-webpack-plugin-压缩文件时报错">使用 compression-webpack-plugin 压缩文件时报错</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1

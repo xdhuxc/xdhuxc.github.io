@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-template/" />
@@ -142,7 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#if-else-">if-else 语句</a></li>
+        <li><a href="#if-else-语句">if-else 语句</a></li>
       </ul>
     </li>
   </ul>
@@ -151,7 +151,7 @@
 </div>
     <div class="post-content">
       <p>本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。</p>
-<h3 id="if-else-">if-else 语句</h3>
+<h3 id="if-else-语句">if-else 语句</h3>
 <p>在我们的项目中，需要动态渲染 alertmanager 的配置文件。我们选择了 confd 作为工具来获取后台数据并渲染数据到模板中。</p>
 <p>在模板渲染中，使用 if-else 语句的时候，当需要判断和某个字符串相等的时候，不能使用常用的 <code>==</code>，而是要使用 <code>eq</code> 函数，编写模板如下：</p>
 <div class="highlight"><div class="chroma">

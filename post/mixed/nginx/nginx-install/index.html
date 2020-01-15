@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/nginx/nginx-install/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-nginx">基于源码安装 nginx</a></li>
-        <li><a href="#-docker--nginx">基于 docker 容器部署 nginx</a></li>
-        <li><a href="#nginx-">nginx 常用命令</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#基于源码安装-nginx">基于源码安装 nginx</a></li>
+        <li><a href="#基于-docker-容器部署-nginx">基于 docker 容器部署 nginx</a></li>
+        <li><a href="#nginx-常用命令">nginx 常用命令</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了基于源代码和 docker 容器方式部署 nginx 的方法。</p>
-<h3 id="-nginx">基于源码安装 nginx</h3>
+<h3 id="基于源码安装-nginx">基于源码安装 nginx</h3>
 <p>1、下载 nginx安装包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -191,8 +191,8 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">whereis nginx
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-docker--nginx">基于 docker 容器部署 nginx</h3>
-<h4 id="heading">最简单的使用方法</h4>
+</div><h3 id="基于-docker-容器部署-nginx">基于 docker 容器部署 nginx</h3>
+<h4 id="最简单的使用方法">最简单的使用方法</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -211,7 +211,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>即可访问 nginx 欢迎页面</p>
-<h4 id="-nginx-">在后台运行 nginx 容器</h4>
+<h4 id="在后台运行-nginx-容器">在后台运行 nginx 容器</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -221,7 +221,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>如果不加端口映射，能启动容器，但是在终端和浏览器中无法访问，可能是没有默认配置或者默认配置没起作用。</p>
-<h4 id="-nginx--1">使用自定义配置文件启动 nginx 容器</h4>
+<h4 id="使用自定义配置文件启动-nginx-容器">使用自定义配置文件启动 nginx 容器</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -245,7 +245,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>/etc/nginx/nginx.conf 为容器内 nginx 的配置文件，ro 是 readonly 的意思</p>
-<h3 id="nginx-">nginx 常用命令</h3>
+<h3 id="nginx-常用命令">nginx 常用命令</h3>
 <p>1、检测nginx配置文件 nginx.conf 格式是否正确</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -282,7 +282,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">nginx -s stop
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p>Nginx中文文档 <a href="http://www.nginx.cn/doc/">http://www.nginx.cn/doc/</a></p>
     </div>
 

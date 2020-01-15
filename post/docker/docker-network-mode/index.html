@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-network-mode/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">单节点网络模式</a></li>
-        <li><a href="#-docker-">多节点 docker 网络</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#单节点网络模式">单节点网络模式</a></li>
+        <li><a href="#多节点-docker-网络">多节点 docker 网络</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -153,8 +153,8 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了 Docker 的四种网络模式，在使用 docker 容器时，必须知道容器是以哪种网络模式启动，这对于访问容器中的应用和排查问题都非常重要。</p>
-<h3 id="heading">单节点网络模式</h3>
-<h4 id="bridge-">bridge 网络模式</h4>
+<h3 id="单节点网络模式">单节点网络模式</h3>
+<h4 id="bridge-网络模式">bridge 网络模式</h4>
 <p>docker 容器默认使用 bridge 网络模式，其特点如下：</p>
 <ul>
 <li>使用一个 linux 网桥，默认为 docker0。</li>
@@ -184,7 +184,7 @@ MASQUERADE  all  --  172.17.0.0/16        0.0.0.0/0
 MASQUERADE  all  --  172.18.0.0/16        0.0.0.0/0
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="host-">host 网络模式</h4>
+</div><h4 id="host-网络模式">host 网络模式</h4>
 <p>host 模式并没有为容器创建一个隔离的网络环境。之所以称之为 host 模式，是因为该模式下的 docker 容器会和宿主机共享同一个网络命名空间，因此 docker 容器可以和宿主机一样，使用宿主机的 eth0，实现和外界的通信。换句话说，docker 容器的 IP 地址即为宿主机 eth0 的 IP 地址。</p>
 <center>
 <img src="/image/docker/docker-host.jpg" width="800px" height="300px" />
@@ -197,20 +197,20 @@ MASQUERADE  all  --  172.18.0.0/16        0.0.0.0/0
 <li>需要注意容器中服务的端口号不能与 docker 宿主机上已经使用的端口号相冲突。</li>
 <li>host 模式能够与其他模式共存。</li>
 </ul>
-<h4 id="none-">none 网络模式</h4>
+<h4 id="none-网络模式">none 网络模式</h4>
 <p>网络模式为 none，即不为 docker 容器构造任何网络环境。一旦 docker 容器采用了 none 网络模式，那么容器内部就只能使用 loopback 网络设备，不会再有其他的网络资源。docker 容器的 none 网络模式意味着不给该容器创建任何网络环境，容器只能使用 127.0.0.1 的本机网络。</p>
 <h4 id="macvlan">macvlan</h4>
 <p><a href="https://blog.csdn.net/CloudMan6/article/details/77186548">https://blog.csdn.net/CloudMan6/article/details/77186548</a>
 <a href="https://blog.csdn.net/cloudman6/article/details/77338515">https://blog.csdn.net/cloudman6/article/details/77338515</a></p>
 <p><a href="https://blog.csdn.net/cloudvtech/article/details/79830887">https://blog.csdn.net/cloudvtech/article/details/79830887</a></p>
 <p><a href="https://blog.csdn.net/cloudvtech/article/details/79830887">https://blog.csdn.net/cloudvtech/article/details/79830887</a></p>
-<h3 id="-docker-">多节点 docker 网络</h3>
+<h3 id="多节点-docker-网络">多节点 docker 网络</h3>
 <p>docker 多节点网络模式可以分为两类：</p>
 <ul>
 <li><code>docker</code> 在 1.19 版本中引入的基于 <code>VxLAN</code> 的对跨节点网络的原生支持。</li>
 <li>通过插件方式引入的第三方实现方案，比如 <code>flannel</code>，<code>calico</code> 等。</li>
 </ul>
-<h4 id="docker--overlay-">docker 原生 overlay 网络</h4>
+<h4 id="docker-原生-overlay-网络">docker 原生 overlay 网络</h4>
 <p><code>docker</code> 1.19 版本中增加了对 <code>overlay</code> 网络的原生支持。</p>
 <p><code>docker</code> 支持 <code>consul</code>，<code>etcd</code>和<code>zookeeper</code> 三种分布式的 key-value 存储。</p>
 <p>其中，etcd 是一个高可用的分布式 key-value 存储系统，使用 etcd 的场景默认处理的数据都是控制数据，对于应用数据，只推荐数据量很小，但是更新、访问频繁的情况。</p>
@@ -726,7 +726,7 @@ udp6       0      0 :::31602                :::*                                
 <li>overlay 网络中的容器处于一个虚拟的大二层网络中。</li>
 </ul>
 <p>从 <code>over-128</code> ping <code>over-130</code> 不通，升级内核到4.20以上就可以了。</p>
-<h3 id="heading-1">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="http://www.cnblogs.com/sammyliu/p/5894191.html">http://www.cnblogs.com/sammyliu/p/5894191.html</a></p>
     </div>
 

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">赋权操作</a></li>
-        <li><a href="#heading-1">忘记密码修改密码</a></li>
-        <li><a href="#heading-2">修改默认时区</a></li>
+        <li><a href="#赋权操作">赋权操作</a></li>
+        <li><a href="#忘记密码修改密码">忘记密码修改密码</a></li>
+        <li><a href="#修改默认时区">修改默认时区</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。</p>
-<h3 id="heading">赋权操作</h3>
+<h3 id="赋权操作">赋权操作</h3>
 <p>1、创建只读账户</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -193,8 +193,8 @@ mysql&gt; flush privileges;
 </code></pre></td></tr></table>
 </div>
 </div><p>通过此命令也可以修改 MySQL 用户的密码</p>
-<h3 id="heading-1">忘记密码修改密码</h3>
-<h4 id="linux-">Linux 系统</h4>
+<h3 id="忘记密码修改密码">忘记密码修改密码</h3>
+<h4 id="linux-系统">Linux 系统</h4>
 <p>1、停止数据库服务。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -240,7 +240,7 @@ mysql&gt; quit
 </code></pre></td></tr></table>
 </div>
 </div><p>5、注释掉 skip-grant-tables，重启 mysqld 服务。</p>
-<h4 id="windows-">Windows 系统</h4>
+<h4 id="windows-系统">Windows 系统</h4>
 <p>1、关闭 MySQL 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -314,8 +314,8 @@ set authentication_string=password(&#39;123456&#39;)
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">net start mysql57
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">修改默认时区</h3>
-<h4 id="heading-3">方法一</h4>
+</div><h3 id="修改默认时区">修改默认时区</h3>
+<h4 id="方法一">方法一</h4>
 <p>1、查看 mysql 系统时间</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -374,7 +374,7 @@ mysql&gt; select now();
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">flush privileges;
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-4">方法二</h4>
+</div><h4 id="方法二">方法二</h4>
 <p>或者直接在 my.cnf 文件中添加如下内容：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

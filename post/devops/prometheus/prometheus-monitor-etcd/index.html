@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/prometheus/prometheus-monitor-etcd/" />
@@ -142,7 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-prometheus--etcd-">使用 prometheus 监控 etcd 及报警</a></li>
+        <li><a href="#使用-prometheus-监控-etcd-及报警">使用 prometheus 监控 etcd 及报警</a></li>
       </ul>
     </li>
   </ul>
@@ -151,12 +151,12 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了使用 prometheus 监控 etcd 的配置方法，还包括在 grafana 中显示 etcd 指标图标，以及基于 AlertManager 的报警配置。</p>
-<h3 id="-prometheus--etcd-">使用 prometheus 监控 etcd 及报警</h3>
-<h4 id="heading">前提条件</h4>
+<h3 id="使用-prometheus-监控-etcd-及报警">使用 prometheus 监控 etcd 及报警</h3>
+<h4 id="前提条件">前提条件</h4>
 <p>1、已经部署好 etcd 环境（单节点或集群）</p>
 <p>2、已经部署好 prometheus</p>
 <p>3、已经部署好 grafana 并配置了数据源，数据源类型为：Prometheus，数据源名称为：prometheus</p>
-<h4 id="-etcd">监控 etcd</h4>
+<h4 id="监控-etcd">监控 etcd</h4>
 <p>grafana dashboard 配置：</p>
 <p>使用 <a href="https://grafana.com/api/dashboards/3070/revisions/3/download">etcd_rev3.json</a>文件，修改其中的 datasource 为 Prometheus 数据源的名称，在 grafana 中导入该文件，可以将该 dashboard 命名为：etcd-monitor</p>
 <p>在 etcd 中未配置证书的情况下，在 prometheus.yml 文件中增加如下配置内容：</p>
@@ -227,7 +227,7 @@ scrape_configs:
 </code></pre></td></tr></table>
 </div>
 </div><p>重启 prometheus</p>
-<h4 id="etcd-">etcd 报警配置</h4>
+<h4 id="etcd-报警配置">etcd 报警配置</h4>
 <p>在 prometheus.yml 中添加 <a href="https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/etcd3_alert.rules.yml">etcd3_alert.yml</a> 文件路径</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

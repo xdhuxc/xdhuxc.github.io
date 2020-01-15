@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/redis/redis-advanced/" />
@@ -142,12 +142,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#redis-">Redis 数据备份与恢复</a></li>
-        <li><a href="#redis--3">Redis 安全</a></li>
-        <li><a href="#redis--4">Redis 性能测试</a></li>
-        <li><a href="#redis--5">Redis 客户端连接</a></li>
-        <li><a href="#redis--6">Redis 管道技术</a></li>
-        <li><a href="#redis--7">Redis 分区</a></li>
+        <li><a href="#redis-数据备份与恢复">Redis 数据备份与恢复</a></li>
+        <li><a href="#redis-安全">Redis 安全</a></li>
+        <li><a href="#redis-性能测试">Redis 性能测试</a></li>
+        <li><a href="#redis-客户端连接">Redis 客户端连接</a></li>
+        <li><a href="#redis-管道技术">Redis 管道技术</a></li>
+        <li><a href="#redis-分区">Redis 分区</a></li>
       </ul>
     </li>
   </ul>
@@ -156,8 +156,8 @@
 </div>
     <div class="post-content">
       <p>本篇博客主要介绍了 Redis 的部分高级技术，包括数据备份和恢复、安全、性能测试、分区等。</p>
-<h3 id="redis-">Redis 数据备份与恢复</h3>
-<h4 id="redis--1">Redis 数据备份</h4>
+<h3 id="redis-数据备份与恢复">Redis 数据备份与恢复</h3>
+<h4 id="redis-数据备份">Redis 数据备份</h4>
 <p>Redis 的 save 命令用于创建当前数据库的备份</p>
 <p>使用 <code>redis save</code> 命令来备份 redis 数据：</p>
 <div class="highlight"><div class="chroma">
@@ -182,7 +182,7 @@ OK
 Background saving started
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="redis--2">Redis 数据恢复</h4>
+</div><h4 id="redis-数据恢复">Redis 数据恢复</h4>
 <p>如果需要恢复数据，只需将备份文件 <code>dump.rdb</code> 移动到 redis 安装目录并启动服务即可。</p>
 <p>获取 <code>redis</code> 目录可以使用 <code>config</code> 命令，如下所示：</p>
 <div class="highlight"><div class="chroma">
@@ -198,7 +198,7 @@ Background saving started
 </code></pre></td></tr></table>
 </div>
 </div><p><code>config get dir</code> 输出的 <code>redis</code> 安装目录为：<code>/usr/local/redis/bin</code></p>
-<h3 id="redis--3">Redis 安全</h3>
+<h3 id="redis-安全">Redis 安全</h3>
 <p>可以通过 redis 的配置文件设置密码参数，这样客户端连接到 redis 服务就需要密码验证，这样可以让 redis 服务更安全。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -259,7 +259,7 @@ OK
 &#34;MyValue&#34;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="redis--4">Redis 性能测试</h3>
+</div><h3 id="redis-性能测试">Redis 性能测试</h3>
 <blockquote>
 <p>Redis 性能测试是通过同时执行多个命令实现的。</p>
 </blockquote>
@@ -393,7 +393,7 @@ SET: 2131.74 requests per second
 LPUSH: 2257.34 requests per second
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="redis--5">Redis 客户端连接</h3>
+</div><h3 id="redis-客户端连接">Redis 客户端连接</h3>
 <p>Redis 通过监听一个 TCP 端口或者 Unix socket 的方式来接收来自客户端的连接，当一个连接建立后，Redis 内部会进行以下一些操作：</p>
 <ul>
 <li>首先，客户端 socket 会被设置为非阻塞模式，因为 Redis 在网络事件处理上采用的是非阻塞多路复用模型。</li>
@@ -459,7 +459,7 @@ LPUSH: 2257.34 requests per second
 </tr>
 </tbody>
 </table>
-<h3 id="redis--6">Redis 管道技术</h3>
+<h3 id="redis-管道技术">Redis 管道技术</h3>
 <p>Redis 是一种基于客户端-服务端模型以及请求/响应协议的 TCP 服务，这意味着通常情况下一个请求会遵循以下步骤：</p>
 <ul>
 <li>客户端向服务端发送一个查询请求，并监听 socket 返回，通常是以阻塞模式，等待服务端响应。</li>
@@ -493,9 +493,9 @@ redis
 </div><p>以上示例中，通过使用 ping 命令查看redis服务是否可用，之后设置了 x_key 的值为 redis，然后获取 x_key 的值并使得 visitor 自增 3 次。
 在返回的结果中，可以看到这些命令一次性向 redis 服务提交，并最终一次性读取所有服务端的响应</p>
 <p>管道技术最显著的优势是提高了 redis 服务的性能。</p>
-<h3 id="redis--7">Redis 分区</h3>
+<h3 id="redis-分区">Redis 分区</h3>
 <p>分区是分割数据到多个 Redis 实例的处理过程，因此每个实例只保存 key 的一个子集。</p>
-<h4 id="heading">分区的优势和不足</h4>
+<h4 id="分区的优势和不足">分区的优势和不足</h4>
 <p>1、分区的优势</p>
 <ul>
 <li>通过利用多台计算机内存的和值，允许我们构造更大的数据库。</li>
@@ -512,7 +512,7 @@ redis
 <li>当使用分区时，数据处理较为复杂，比如你需要处理多个 rdb/aof 文件，并且从多个实例和主机备份持久化文件</li>
 <li>增加或删除容量也比较复杂。redis 集群大多数支持在运行时增加、删除节点的透明数据平衡的能力，但是类似于客户端分区、代理等其他系统则不支持这项特性。然而，一种叫做 presharding 的技术对此是有帮助的</li>
 </ul>
-<h4 id="heading-1">分区类型</h4>
+<h4 id="分区类型">分区类型</h4>
 <blockquote>
 <p>Redis 有两种类型分区。 假设有4个Redis实例 R0，R1，R2，R3，和类似user:1，user:2这样的表示用户的多个key，对既定的key有多种不同方式来选择这个key存放在哪个实例中。也就是说，有不同的系统来映射某个key到某个Redis服务。</p>
 </blockquote>

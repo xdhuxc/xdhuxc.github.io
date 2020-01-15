@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-cronjob/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">定时任务</a></li>
-        <li><a href="#heading-1">示例</a></li>
-        <li><a href="#heading-2">注意事项</a></li>
-        <li><a href="#heading-3">参考资料</a></li>
+        <li><a href="#定时任务">定时任务</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>我们有时需要用到定时任务来备份数据或者发送邮件，此时，一般会使用 Linux 系统中的 crontab 来实现。其他各种系统的定时任务使用的定时策略描述方式与 Linux 系统的 crontab 基本一样。</p>
-<h3 id="heading">定时任务</h3>
+<h3 id="定时任务">定时任务</h3>
 <p>1、命令格式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -206,7 +206,7 @@
 <li>-：表示一段时间范围，例如：<code>30 7-10 * * * command</code> 表示从七点到十点的每个小时的30分钟都执行 command；</li>
 <li>/n：n 代表数字，表示每个 n 单位间隔，例如：<code>*/5 * * * * command</code> 表示每隔 5 分钟执行一次 command；</li>
 </ul>
-<h3 id="heading-1">示例</h3>
+<h3 id="示例">示例</h3>
 <p>1、每周一至周五早上10点和下午5点各执行一次</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -283,7 +283,7 @@
 systemctl restart crond
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">注意事项</h3>
+</div><h3 id="注意事项">注意事项</h3>
 <p>1、脚本中涉及文件路径时需要绝对路径；</p>
 <p>2、脚本执行时要用到环境变量时，通过 source 命令引入环境变量；</p>
 <div class="highlight"><div class="chroma">
@@ -313,7 +313,7 @@ systemctl restart crond
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">0 <span class="ge">* *</span> * * /bin/sh /home/xdhuxc/abc.sh &gt;/dev/null 2&gt;&amp;1
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html</a></p>
 <p><a href="https://code.kpman.cc/2015/02/11/%E5%88%A9%E7%94%A8-crontab-%E4%BE%86%E5%81%9A-Linux-%E5%9B%BA%E5%AE%9A%E6%8E%92%E7%A8%8B/">https://code.kpman.cc/2015/02/11/%E5%88%A9%E7%94%A8-crontab-%E4%BE%86%E5%81%9A-Linux-%E5%9B%BA%E5%AE%9A%E6%8E%92%E7%A8%8B/</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Cron">https://en.wikipedia.org/wiki/Cron</a></p>

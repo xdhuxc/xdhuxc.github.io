@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-excel/" />
@@ -142,12 +142,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">示例代码</a></li>
-        <li><a href="#-excel-">读取 excel 文件</a></li>
-        <li><a href="#heading-1">组织数据</a></li>
-        <li><a href="#-excel--1">写 excel 文件</a></li>
-        <li><a href="#heading-2">合并单元格</a></li>
-        <li><a href="#heading-3">参考资料</a></li>
+        <li><a href="#示例代码">示例代码</a></li>
+        <li><a href="#读取-excel-文件">读取 excel 文件</a></li>
+        <li><a href="#组织数据">组织数据</a></li>
+        <li><a href="#写-excel-文件">写 excel 文件</a></li>
+        <li><a href="#合并单元格">合并单元格</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -157,7 +157,7 @@
     <div class="post-content">
       <p>使用 golang 操作 excel 表格，写了些示例代码，封装了几个常用的函数，特此记录，以备后查。</p>
 <p>使用 excelize 库 来进行 excel 的操作，项目地址为：https://github.com/360EntSecGroup-Skylar/excelize</p>
-<h3 id="heading">示例代码</h3>
+<h3 id="示例代码">示例代码</h3>
 <p>以下代码演示了创建 excel 表格并向其中添加数据的方法，其中用到的函数见下文。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -271,7 +271,7 @@ func main() {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-excel-">读取 excel 文件</h3>
+</div><h3 id="读取-excel-文件">读取 excel 文件</h3>
 <p>以下代码为读取 excel 表格的代码，要求：文件路径需要是绝对路径，excel 表格中不包含合并的单元格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -333,7 +333,7 @@ func main() {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">组织数据</h3>
+</div><h3 id="组织数据">组织数据</h3>
 <p>我们将数据组织成 map 数组格式，每个数组元素为 excel 表格中的一行，map 中的每个键表示 excel 中的一个位置，比如A1，B2，C3等，其值为需要填充到该单元格中的值，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -381,7 +381,7 @@ func main() {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-excel--1">写 excel 文件</h3>
+</div><h3 id="写-excel-文件">写 excel 文件</h3>
 <p>将组织好的 map 数组写入文件中</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -441,7 +441,7 @@ func Write2File(fileName string, sheetName string, data []map[string]interface{}
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">合并单元格</h3>
+</div><h3 id="合并单元格">合并单元格</h3>
 <p>使用 MergeCell 方法可以合并单元格</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -458,7 +458,7 @@ if err != nil {
 </code></pre></td></tr></table>
 </div>
 </div><p>以上代码将合并 A1~A5 的单元格，并以单元格 A5 的内容填充合并后的单元格。</p>
-<h3 id="heading-3">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://github.com/360EntSecGroup-Skylar/excelize">https://github.com/360EntSecGroup-Skylar/excelize</a></p>
     </div>
 

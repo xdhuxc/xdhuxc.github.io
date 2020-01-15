@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-redis/" />
@@ -142,12 +142,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-redis-">创建 Redis 客户端</a></li>
-        <li><a href="#heading">创建键值对</a></li>
-        <li><a href="#heading-1">删除键值对</a></li>
-        <li><a href="#heading-2">删除数据库</a></li>
-        <li><a href="#heading-3">查询键值数据</a></li>
-        <li><a href="#heading-4">参考资料</a></li>
+        <li><a href="#创建-redis-客户端">创建 Redis 客户端</a></li>
+        <li><a href="#创建键值对">创建键值对</a></li>
+        <li><a href="#删除键值对">删除键值对</a></li>
+        <li><a href="#删除数据库">删除数据库</a></li>
+        <li><a href="#查询键值数据">查询键值数据</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -157,7 +157,7 @@
     <div class="post-content">
       <p>本篇博客记录了使用 golang 操作单点 redis 时的一些示例代码，可以经过改造应用到程序中去。</p>
 <p>我们基于 golang-redis 这个库封装了一些函数，作为代码示例，也方便使用。</p>
-<h3 id="-redis-">创建 Redis 客户端</h3>
+<h3 id="创建-redis-客户端">创建 Redis 客户端</h3>
 <p>使用以下代码创建一个 Redis 客户端，需要提供 redis 的地址（IP:Port），密码和数据库索引</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -183,7 +183,7 @@
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">创建键值对</h3>
+</div><h3 id="创建键值对">创建键值对</h3>
 <p>创建永不过期的 key-value</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -211,7 +211,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>对于 redis，创建和更新的操作效果一样</p>
-<h3 id="heading-1">删除键值对</h3>
+<h3 id="删除键值对">删除键值对</h3>
 <p>删除一个 key-value</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -238,7 +238,7 @@
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">删除数据库</h3>
+</div><h3 id="删除数据库">删除数据库</h3>
 <p>删除 redis 数据库所有数据，使用异步删除，主线程会把删除任务交给异步线程来完成删除任务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -265,7 +265,7 @@
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">查询键值数据</h3>
+</div><h3 id="查询键值数据">查询键值数据</h3>
 <p>获取 key-value</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -355,7 +355,7 @@
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-4">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p>官方 Github 仓库地址</p>
 <p><a href="https://github.com/go-redis/redis">https://github.com/go-redis/redis</a></p>
     </div>

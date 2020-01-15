@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-docker-">拉取 docker 镜像</a></li>
-        <li><a href="#-influxdb-">启动 influxDB 容器</a></li>
-        <li><a href="#heading">测试数据的读写</a></li>
+        <li><a href="#拉取-docker-镜像">拉取 docker 镜像</a></li>
+        <li><a href="#启动-influxdb-容器">启动 influxDB 容器</a></li>
+        <li><a href="#测试数据的读写">测试数据的读写</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了基于 docker 容器方式部署 influxdb 的详细过程。</p>
-<h3 id="-docker-">拉取 docker 镜像</h3>
+<h3 id="拉取-docker-镜像">拉取 docker 镜像</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -162,7 +162,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull influxdb:latest
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-influxdb-">启动 influxDB 容器</h3>
+</div><h3 id="启动-influxdb-容器">启动 influxDB 容器</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -189,7 +189,7 @@
       influxdb
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">测试数据的读写</h3>
+</div><h3 id="测试数据的读写">测试数据的读写</h3>
 <p>1）创建数据库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -295,7 +295,7 @@ Date: Thu, 10 Jan 2019 01:52:49 GMT
 }
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-1">参考资料</h4>
+</div><h4 id="参考资料">参考资料</h4>
 <p><a href="https://hub.docker.com/_/influxdb/?tab=description">https://hub.docker.com/_/influxdb/?tab=description</a></p>
 <p><a href="https://docs.influxdata.com/influxdb/v1.7/guides/writing_data/">https://docs.influxdata.com/influxdb/v1.7/guides/writing_data/</a></p>
 <p><a href="https://docs.influxdata.com/influxdb/v1.7/guides/querying_data/">https://docs.influxdata.com/influxdb/v1.7/guides/querying_data/</a></p>

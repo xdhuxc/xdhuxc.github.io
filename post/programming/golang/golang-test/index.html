@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-test/" />
@@ -142,12 +142,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">单元测试</a></li>
-        <li><a href="#heading-1">代码示例</a></li>
-        <li><a href="#golang-">Golang 单元测试使用规则</a></li>
-        <li><a href="#heading-2">表组测试</a></li>
-        <li><a href="#heading-3">模型层数据测试</a></li>
-        <li><a href="#heading-4">参考资料</a></li>
+        <li><a href="#单元测试">单元测试</a></li>
+        <li><a href="#代码示例">代码示例</a></li>
+        <li><a href="#golang-单元测试使用规则">Golang 单元测试使用规则</a></li>
+        <li><a href="#表组测试">表组测试</a></li>
+        <li><a href="#模型层数据测试">模型层数据测试</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -156,9 +156,9 @@
 </div>
     <div class="post-content">
       <p>本部分内容记录下 golang 中的单元测试的简单用法。</p>
-<h3 id="heading">单元测试</h3>
+<h3 id="单元测试">单元测试</h3>
 <p>单元测试的重点在于测试代码的逻辑、场景等，以便尽可能地测试全面，保证代码质量。</p>
-<h3 id="heading-1">代码示例</h3>
+<h3 id="代码示例">代码示例</h3>
 <blockquote>
 <p>编写简单的代码说明下单元测试的基本使用方法
 编写主程序文件 test/main.go</p>
@@ -247,13 +247,13 @@ PASS
 ok      github.com/xdhuxc/xgoland/test  0.005s
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="golang-">Golang 单元测试使用规则</h3>
+</div><h3 id="golang-单元测试使用规则">Golang 单元测试使用规则</h3>
 <p>1、含有单元测试代码的 go 文件必须以 <code>_test.go</code> 结尾，比如测试 <code>main.go</code> 的单元测试文件命名为 <code>main_test.go</code> ，Go 语言测试工具只认符合该规则的文件。</p>
 <p>2、单元测试文件名 <code>_test.go</code> 前面的部分最好是被测试的方法所在 go 文件的文件名，比如 <code>main_test.go</code>，因为我们要测试的 Add 函数在 <code>main.go</code> 文件里</p>
 <p>3、单元测试的函数名必须以 <code>Test</code> 开头，是可导出的公共函数。</p>
 <p>4、测试函数的签名必须接收一个指向 testing.T 类型的指针，并且不能返回任何值。</p>
 <p>5、函数名建议命名为 Test 加要测试的方法函数名，表示要测试该函数。</p>
-<h3 id="heading-2">表组测试</h3>
+<h3 id="表组测试">表组测试</h3>
 <p>表组测试指的是一次测试中很多个输入输出场景的测试，例如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -292,7 +292,7 @@ ok      github.com/xdhuxc/xgoland/test  0.005s
 </code></pre></td></tr></table>
 </div>
 </div><p>我们为待测试函数 Add() 准备了两组测试数据 10、20 和 1024、2048，这样就可以测试多个输入场景下的测试效果了。</p>
-<h3 id="heading-3">模型层数据测试</h3>
+<h3 id="模型层数据测试">模型层数据测试</h3>
 <p>将各个测试函数共用的变量定义为全局变量，在 init() 函数中进行初始化，在各个测试函数中进行使用。</p>
 <p>编写测试代码如下：user_test.go</p>
 <div class="highlight"><div class="chroma">
@@ -386,7 +386,7 @@ func Test_UserService_List(t <span class="ge">*testing.T) {
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">go test --run Test_UserService_List
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-4">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://www.jianshu.com/p/1adc69468b6f">https://www.jianshu.com/p/1adc69468b6f</a></p>
 <p><a href="https://www.flysnow.org/2017/05/16/go-in-action-go-unit-test.html">https://www.flysnow.org/2017/05/16/go-in-action-go-unit-test.html</a></p>
     </div>

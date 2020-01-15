@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/mongodb/mongodb-simple-use/" />
@@ -141,9 +141,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">配置文件参数修改</a></li>
-        <li><a href="#-mongodb-shell-">使用 MongoDB shell 操作数据库</a></li>
-        <li><a href="#heading-6">官方文档</a></li>
+        <li><a href="#配置文件参数修改">配置文件参数修改</a></li>
+        <li><a href="#使用-mongodb-shell-操作数据库">使用 MongoDB shell 操作数据库</a></li>
+        <li><a href="#官方文档">官方文档</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>安装好 MongoDB 数据库后，接下来我们演示下通过命令行来操纵 MongoDB 数据库。</p>
-<h3 id="heading">配置文件参数修改</h3>
+<h3 id="配置文件参数修改">配置文件参数修改</h3>
 <p>MongoDB 数据库的配置文件为：<code>/etc/mongod.conf</code>。
 为了使外部应用能够连接本机（使用 VMware Workstation 创建的虚拟机）安装的 MongoDB 数据库，需要修改 <code>/etc/mongod.conf</code> 文件中的 <code>127.0.0.1</code> 为本机IP地址。比如，修改<code>127.0.0.1</code> 为本虚拟机IP地址 <code>192.168.91.128</code>，连接端口保持默认的 <code>27017</code> 即可，如下所示：</p>
 <div class="highlight"><div class="chroma">
@@ -169,8 +169,8 @@
   bindIp: 192.168.91.128  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-mongodb-shell-">使用 MongoDB shell 操作数据库</h3>
-<h5 id="-mongodb-">连接 MongoDB 数据库</h5>
+</div><h3 id="使用-mongodb-shell-操作数据库">使用 MongoDB shell 操作数据库</h3>
+<h5 id="连接-mongodb-数据库">连接 MongoDB 数据库</h5>
 <p>使用的命令为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -231,7 +231,7 @@ Server has startup warnings:
 &gt;
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-1">创建数据库</h5>
+</div><h5 id="创建数据库">创建数据库</h5>
 <p>使用如下命令创建数据库：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -273,7 +273,7 @@ local   0.000GB
 </code></pre></td></tr></table>
 </div>
 </div><p>在 MongoDB 中，默认的数据库是 <code>test</code>，如果没有创建任何数据库，那么创建的集合和文档将存储在 <code>test</code> 数据库中。</p>
-<h5 id="heading-2">创建集合</h5>
+<h5 id="创建集合">创建集合</h5>
 <p>在创建的 <code>xdhuxc</code> 数据库中创建 <code>person</code> 集合，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -299,7 +299,7 @@ local   0.000GB
 &gt;
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-3">插入数据</h5>
+</div><h5 id="插入数据">插入数据</h5>
 <p>要将数据插入到 MongoDB 集合中，可以使用 MongoDB 的 <code>insert()</code> 方法，其基本语法如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -406,7 +406,7 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看出，在 MongoDB 中，是以文档的形式来组织非结构化数据的，文档的结构可由使用者自己定义，和 关系型数据库有很大的区别。</p>
-<h5 id="heading-4">删除文档</h5>
+<h5 id="删除文档">删除文档</h5>
 <p>使用如下命令删除文档：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -422,7 +422,7 @@ WriteResult({ &#34;nInserted&#34; : 1 })
 </span><span class="ge"></span>&gt;
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="heading-5">删除数据库</h5>
+</div><h5 id="删除数据库">删除数据库</h5>
 <p>① 切换到待删除数据库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -475,7 +475,7 @@ local   0.000GB
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看到，数据库 xdhuxc 已经被删除。</p>
-<h3 id="heading-6">官方文档</h3>
+<h3 id="官方文档">官方文档</h3>
 <p>MongoDB 的官方文档网址：http://www.mongoing.com/docs/mongo.html</p>
 <p>更多详细的有关 MongoDB的知识，大家可以去 MongoDB 的官方网站学习。</p>
 

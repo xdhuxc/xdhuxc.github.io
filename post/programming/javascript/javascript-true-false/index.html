@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/javascript/javascript-true-false/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#javascript-">JavaScript 中的真值</a></li>
-        <li><a href="#javascript--1">JavaScript 中的假值</a></li>
-        <li><a href="#heading">参考资料</a></li>
+        <li><a href="#javascript-中的真值">JavaScript 中的真值</a></li>
+        <li><a href="#javascript-中的假值">JavaScript 中的假值</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。</p>
-<h3 id="javascript-">JavaScript 中的真值</h3>
+<h3 id="javascript-中的真值">JavaScript 中的真值</h3>
 <p>在 JavaScript 中，真值指的是在布尔值上下文中转换后的值为真的值。</p>
 <p>所有值都是真值，除非它们被定义为假值，即被定义为<code>false</code>，<code>0</code>，<code>&quot;&quot;</code>，<code>null</code>，<code>undefined</code>，<code>NaN</code>。</p>
 <p>JavaScript 在布尔值上下文中使用强制类型转换。</p>
@@ -186,7 +186,7 @@ if (Infinity)
 if (-Infinity)  
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="javascript--1">JavaScript 中的假值</h3>
+</div><h3 id="javascript-中的假值">JavaScript 中的假值</h3>
 <p>在 JavaScript 中，假值是在布尔值上下文中已认定可转换为假的值。</p>
 <p>JavaScript 在需要用到布尔类型值得上下文中使用强制类型转换将值转换为布尔值，比如在条件语句或者循环语句中。</p>
 <p>JavaScript 中的假值示例如下（通过 if 代码段将 falsy 值转换为 false）：</p>
@@ -214,7 +214,7 @@ if (document.all)
 </div>
 </div><p>document.all 在过去被用于浏览器检测，是 HTML 规范在此定义了故意与 ECMAScript 标准相违背的，以保持与历史代码得兼容性。</p>
 <p>document.all 虽然是一个对象，但其转换为布尔值后是 false。</p>
-<h3 id="heading">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy</a></p>
     </div>

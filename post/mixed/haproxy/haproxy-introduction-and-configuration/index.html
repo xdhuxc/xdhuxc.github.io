@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/haproxy/haproxy-introduction-and-configuration/" />
@@ -143,8 +143,8 @@
     <li>
       <ul>
         <li><a href="#haproxy">HAProxy</a></li>
-        <li><a href="#haproxy-">HAProxy 配置</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#haproxy-配置">HAProxy 配置</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -155,8 +155,8 @@
       <p>本篇博客主要介绍了 HAProxy 及其配置的详细含义。</p>
 <h3 id="haproxy">HAProxy</h3>
 <p>HAProxy 提供高可用性、负载均衡以及基于 TCP 和 HTTP 应用的代理，支持虚拟主机，是免费、快速并且可靠的一种解决方案。HAProxy特别适用于那些负载特大的 web 站点，这些站点通常又需要会话保持或七层处理。HAProxy 运行在当前的硬件上，完全可以支持数以万计的并发连接，并且它的运行模式使得它可以很简单、安全地整合进当前的架构中，同时可以保护 web 服务器不被暴露在网络上。</p>
-<h3 id="haproxy-">HAProxy 配置</h3>
-<h4 id="heading">配置部分</h4>
+<h3 id="haproxy-配置">HAProxy 配置</h3>
+<h4 id="配置部分">配置部分</h4>
 <p>HAProxy 配置中分成五部分内容，分别如下：</p>
 <p>1、global：参数是进程级的，通常是和操作系统相关，这些参数一般只配置一次，如果配置无误，就不需要再次进行修改。</p>
 <p>2、defaults：配置默认参数，这些参数可以被用到 frontend、backend、Listen 组件。</p>
@@ -390,7 +390,7 @@ backend b_server
     server web1 192.168.91.130 check
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="http://blog.51cto.com/itnihao/915537">http://blog.51cto.com/itnihao/915537</a></p>
     </div>
 

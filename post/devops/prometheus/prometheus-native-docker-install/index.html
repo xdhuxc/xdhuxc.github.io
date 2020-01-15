@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/prometheus/prometheus-native-docker-install/" />
@@ -142,7 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">原生方式部署</a></li>
+        <li><a href="#原生方式部署">原生方式部署</a></li>
       </ul>
     </li>
   </ul>
@@ -151,8 +151,8 @@
 </div>
     <div class="post-content">
       <p>本篇博客分别介绍了使用原生方式和基于 docker 容器方式部署 prometheus 的方法。</p>
-<h3 id="heading">原生方式部署</h3>
-<h4 id="heading-1">下载安装包</h4>
+<h3 id="原生方式部署">原生方式部署</h3>
+<h4 id="下载安装包">下载安装包</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -165,7 +165,7 @@ wget https://github.com/prometheus/node_exporter/releases/download/v0.16.0/node_
 wget https://github.com/prometheus/alertmanager/releases/download/v0.15.3/alertmanager-0.15.3.linux-amd64.tar.gz
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-2">启动服务</h4>
+</div><h4 id="启动服务">启动服务</h4>
 <p>1、 启动 prometheus</p>
 <p>prometheus.yml</p>
 <div class="highlight"><div class="chroma">
@@ -320,7 +320,7 @@ wget https://github.com/prometheus/alertmanager/releases/download/v0.15.3/alertm
 </div>
 </div><p>以 <code>admin/admin</code> 登录进去</p>
 <p>然后添加数据源，将 prometheus 相关信息填写进去。</p>
-<h4 id="heading-3">容器方式部署</h4>
+<h4 id="容器方式部署">容器方式部署</h4>
 <p>1、启动 prometheus 容器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

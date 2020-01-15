@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/common/dns/dns-dnsmasq/" />
@@ -142,13 +142,13 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">简介</a></li>
-        <li><a href="#heading-1">安装</a></li>
-        <li><a href="#heading-2">配置</a></li>
-        <li><a href="#heading-3">启动服务</a></li>
-        <li><a href="#-iptables-">修改 iptables 配置</a></li>
-        <li><a href="#dnsmasq-">dnsmasq 优化</a></li>
-        <li><a href="#heading-4">参考资料</a></li>
+        <li><a href="#简介">简介</a></li>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#配置">配置</a></li>
+        <li><a href="#启动服务">启动服务</a></li>
+        <li><a href="#修改-iptables-配置">修改 iptables 配置</a></li>
+        <li><a href="#dnsmasq-优化">dnsmasq 优化</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -157,9 +157,9 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了 dnsmasq 的配置和使用，以备后查。</p>
-<h3 id="heading">简介</h3>
+<h3 id="简介">简介</h3>
 <p>dnsmasq 是一个小巧且方便地用于配置 DNS 和 DHCP 的工具，适用于小型网络，相比于 bind 和 dhcpd，配置起来更简单。dnsmasq 能够提供本地解析和外部 DNS 服务器代理，通常将其作为一个 DNS 中继代理。</p>
-<h3 id="heading-1">安装</h3>
+<h3 id="安装">安装</h3>
 <p>可以通过 yum 命令直接安装 dnsmasq，命令如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -170,7 +170,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>安装完成后，可以通过 <code>dnsmasq --help</code> 或者 <code>man dnsmasq</code> 查看支持的配置。</p>
-<h3 id="heading-2">配置</h3>
+<h3 id="配置">配置</h3>
 <p>配置文件位置为：<code>/etc/dnsmasq.conf</code>，默认情况下，dnsmasq.conf 中只开启了最后的 include 项，可以在 /etc/dnsmasq.d 中编写任意名称的配置文件。</p>
 <p>dnsmasq.conf 文件内容如下：</p>
 <div class="highlight"><div class="chroma">
@@ -313,7 +313,7 @@ address=/.abc.com/1.1.1.1
 address=/ipv6.xdhuxc.com/fe80::4d7:a0ff:fe00:f9b
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">启动服务</h3>
+</div><h3 id="启动服务">启动服务</h3>
 <p>启动 dnsmasq 服务</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -370,7 +370,7 @@ www.xdhuxc.com.		0	IN	A	127.0.0.1
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-iptables-">修改 iptables 配置</h3>
+</div><h3 id="修改-iptables-配置">修改 iptables 配置</h3>
 <p>1、允许本机的 53 端口可对外访问</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -425,8 +425,8 @@ iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-port 53
 systemctl restart iptables
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="dnsmasq-">dnsmasq 优化</h3>
-<h4 id="-dns-">选择最快的上游 DNS 服务器</h4>
+</div><h3 id="dnsmasq-优化">dnsmasq 优化</h3>
+<h4 id="选择最快的上游-dns-服务器">选择最快的上游 DNS 服务器</h4>
 <p>经常会有这样的情形，dnsmasq 服务器配置了很多上游域名服务器，转发本地的 DNS 请求，但 dnsmasq 实际上是只挑选了一个上游 DNS 服务器来查询并转发结果，这样如果选错服务器的话就会导致 DNS 响应变慢。
 解决方法：
 修改 dnsmasq.conf 的配置</p>
@@ -443,7 +443,7 @@ server=114.114.114.114
 </code></pre></td></tr></table>
 </div>
 </div><p>all-servers 表示对以下设置的所有 server 发起查询，选择回应最快的一条作为查询结果返回。上面设置了两个域名服务器，会同时查询这两个域名服务器，询问 DNS 地址，谁返回快，就采用谁的结果。</p>
-<h4 id="dnsmasq-china-list-">dnsmasq-china-list 项目</h4>
+<h4 id="dnsmasq-china-list-项目">dnsmasq-china-list 项目</h4>
 <p>dnsmasq-china-list 项目维护了一张国内常用但是通过国外 DNS 会解析错误的网站域名的列表，保证列表中的国内域名全部走国内 DNS 服务器解析。</p>
 <p>项目地址：https://github.com/felixonmars/dnsmasq-china-list</p>
 <p>操作步骤：</p>
@@ -459,7 +459,7 @@ server=114.114.114.114
 </div>
 </div><p>3、将 <code>accelerated-domains.china.conf</code>, <code>bogus-nxdomain.china.conf,google.china.conf</code> （可选）放到 /etc/dnsmasq.d/ 目录下</p>
 <p>4、将 <code>dnsmasq-update-china-list</code> 放到 <code>/usr/bin/</code> 目录下，这是一个批量修改 DNS 服务器的工具。</p>
-<h4 id="dnsmasq--1">dnsmasq 性能优化</h4>
+<h4 id="dnsmasq-性能优化">dnsmasq 性能优化</h4>
 <p>bind 在不配合数据库的情况下，经常需要重新载入并读取配置文件，这是造成性能低下的原因。因此，我们可以考虑不读取 /etc/hosts 文件，而是另外指定一个在共享内存里的文件，比如 /dev/shm/dnsrecord.txt，这样就可以提高 DNS 解析速度了。又由于内存是易失性的存储器，重启后就会消失，可以定期同步硬盘上的某个文件内容到内存中。</p>
 <p>操作步骤：
 1、配置 /etc/dnsmasq.conf</p>
@@ -494,7 +494,7 @@ addn-hosts=/dev/shm/dnsrecord.txt
 <span class="ge">*/10 *</span> * <span class="ge">* *</span> cat /etc/hosts &gt; /dev/shm/dnsrecord.txt 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-4">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="http://chuansong.me/n/471642951828">http://chuansong.me/n/471642951828</a></p>
 <p><a href="https://blog.csdn.net/zhu_tianwei/article/details/72632078">https://blog.csdn.net/zhu_tianwei/article/details/72632078</a></p>
     </div>
@@ -525,8 +525,8 @@ addn-hosts=/dev/shm/dnsrecord.txt
             <span class="prev-text nav-default">Calico 常见问题及解决</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/message/message-queue-model/">
-            <span class="next-text nav-default">消息队列简介</span>
+        <a class="next" href="/post/docker/docker-storage-drive/">
+            <span class="next-text nav-default">Docker 存储驱动 overlay 和 overlay2 介绍</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

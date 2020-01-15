@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-shell-execute/" />
@@ -152,7 +152,7 @@
     <div class="post-content">
       <p>在 Linux 系统中，Shell 脚本的执行其实还有几种不同的方式，知道这些不同的执行方式对于我们学习脚本和编写脚本很有帮助。</p>
 <p>在 Linux 系统中，Shell 脚本的执行方式通常有如下三种：</p>
-<h4 id="-bash--sh-">通过解释器 <code>bash</code> 或 <code>sh</code> 执行</h4>
+<h4 id="通过解释器-bash-或-sh-执行">通过解释器 <code>bash</code> 或 <code>sh</code> 执行</h4>
 <p>通过解释器时的命令格式为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -225,7 +225,7 @@ Hello Shell.
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看出，命令已经成功执行。</p>
-<h4 id="heading">指定路径执行</h4>
+<h4 id="指定路径执行">指定路径执行</h4>
 <p>指定路径执行 shell 脚本时的命令格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -290,7 +290,7 @@ Hello Shell.
 </code></pre></td></tr></table>
 </div>
 </div><p>可以看出，两种方式都能正确执行脚本。在实际脚本的编写过程中，一般都是使用相对路径来执行脚本，这样写成的脚本作为一个整体的程序，可以复制到其他目录或者机器上直接运行，而不必担心脚本内部调用的路径问题。因此，一般要先给脚本添加执行权限，然后使用相对路径的方式来执行。</p>
-<h4 id="source---">source 或者 &ldquo;.&rdquo; 执行脚本</h4>
+<h4 id="source-或者--执行脚本">source 或者 &ldquo;.&rdquo; 执行脚本</h4>
 <p>source 或者 &ldquo;.&rdquo; 执行 shell 脚本时的命令格式为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

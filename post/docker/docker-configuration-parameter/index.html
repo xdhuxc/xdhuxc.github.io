@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-configuration-parameter/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">配置文件</a></li>
-        <li><a href="#heading-1">常用配置</a></li>
+        <li><a href="#配置文件">配置文件</a></li>
+        <li><a href="#常用配置">常用配置</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客整理了一些使用 docker 的过程中经常使用的参数的配置，对于 docker 进阶使用会非常有帮助。</p>
-<h3 id="heading">配置文件</h3>
+<h3 id="配置文件">配置文件</h3>
 <h4 id="dockerservice">docker.service</h4>
 <p>1、<code>docker.service</code> 文件路径</p>
 <div class="highlight"><div class="chroma">
@@ -296,8 +296,8 @@ WantedBy=multi-user.target
 </code></pre></td></tr></table>
 </div>
 </div><p>4、Docker默认空间大小分为两个，一个是池空间大小，默认为100G；另一个是容器空间大小，默认为10G。</p>
-<h3 id="heading-1">常用配置</h3>
-<h4 id="heading-2">限制日志文件大小和保留文件个数</h4>
+<h3 id="常用配置">常用配置</h3>
+<h4 id="限制日志文件大小和保留文件个数">限制日志文件大小和保留文件个数</h4>
 <p>在 <code>docker run</code> 命令中增加如下参数，限制生成的 <code>json.log</code> 单个文件大小和保留文件个数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -321,7 +321,7 @@ WantedBy=multi-user.target
 </code></pre></td></tr></table>
 </div>
 </div><p>当生成 <code>3</code> 个文件，每个文件达到 <code>100M</code> 时，会循环写入新的日志。</p>
-<h4 id="-cgroup-driver-">指定 Cgroup Driver 的类型</h4>
+<h4 id="指定-cgroup-driver-的类型">指定 Cgroup Driver 的类型</h4>
 <p>在 <code>/usr/lib/system/system/docker.service</code> 中给 <code>docker</code> 进程启动命令中增加如下参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

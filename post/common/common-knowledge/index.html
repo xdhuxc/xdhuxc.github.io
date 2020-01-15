@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/common/common-knowledge/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#uriurlurn">URI，URL和URN的区别</a></li>
-        <li><a href="#web-">Web 服务器和应用服务器</a></li>
-        <li><a href="#127001--localhost">127.0.0.1 和 localhost</a></li>
+        <li><a href="#uriurl和urn的区别">URI，URL和URN的区别</a></li>
+        <li><a href="#web-服务器和应用服务器">Web 服务器和应用服务器</a></li>
+        <li><a href="#127001-和-localhost">127.0.0.1 和 localhost</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了些计算机科学和技术中常见的概念的差别，属于基础知识。</p>
-<h3 id="uriurlurn">URI，URL和URN的区别</h3>
+<h3 id="uriurl和urn的区别">URI，URL和URN的区别</h3>
 <p>1）URI</p>
 <p>URI 是 uniform resource identifier 的首字母大写，即统一资源标识符，用来唯一地标识一个资源。</p>
 <p>2）URL</p>
@@ -163,12 +163,12 @@
 <p>也就是说，URI 是以一种抽象的、高层次概念定义统一资源标识，而URL和URN则是具体的资源标识方式，URL 和 URN 都是一种 URI。</p>
 <p>在 Java 的 URI 中，一个 URI 实例可以代表绝对的，也可以是相对的，只要其符合 URI 的语法规则。</p>
 <p>而 URL 类则不仅符合语义，还包含了定位该资源的信息，因此它不能是相对的，schema 必须被指定。</p>
-<h3 id="web-">Web 服务器和应用服务器</h3>
+<h3 id="web-服务器和应用服务器">Web 服务器和应用服务器</h3>
 <p>1）Web服务器</p>
 <p>Web服务器的基本功能就是提供Web信息浏览服务。它只需支持HTTP协议、HTML文档格式及URL，与客户端的网络浏览器配合，只能发送静态页面的内容。因为Web服务器主要支持的协议就是HTTP，所以通常情况下HTTP服务器和WEB服务器是相等的。Web服务器包括Nginx，Apache，IIS等</p>
 <p>2）应用服务器</p>
 <p>应用程序服务器让多个用户可以同时使用应用程序，通常是客户创建的应用程序。应用服务器包括WebLogic，JBoss，Tomcat，websphere等。</p>
-<h3 id="127001--localhost">127.0.0.1 和 localhost</h3>
+<h3 id="127001-和-localhost">127.0.0.1 和 localhost</h3>
 <p>1、含义不同：</p>
 <ul>
 <li><code>localhost</code> 也叫 <code>local</code> ，是一个域名，可以调用 gethostname() 解析出对应的 IP 地址，其值为：<code>hosts</code> 文件中的值，正确的解释是: 本地服务器</li>

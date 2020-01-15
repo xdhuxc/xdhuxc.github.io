@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/mongodb/centos7-install-mongodb/" />
@@ -141,10 +141,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#mongodb-">MongoDB 简介</a></li>
-        <li><a href="#heading">准备工作</a></li>
-        <li><a href="#mongodb">安装MongoDB</a></li>
-        <li><a href="#mongodb-1">MongoDB进程管理命令</a></li>
+        <li><a href="#mongodb-简介">MongoDB 简介</a></li>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#安装mongodb">安装MongoDB</a></li>
+        <li><a href="#mongodb进程管理命令">MongoDB进程管理命令</a></li>
       </ul>
     </li>
   </ul>
@@ -152,10 +152,10 @@
   </div>
 </div>
     <div class="post-content">
-      <h3 id="mongodb-">MongoDB 简介</h3>
+      <h3 id="mongodb-简介">MongoDB 简介</h3>
 <p><code>MongoDB</code> 是一个基于分布式文件存储的数据库。由 <code>C++</code> 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。</p>
 <p><code>MongoDB</code> 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。</p>
-<h3 id="heading">准备工作</h3>
+<h3 id="准备工作">准备工作</h3>
 <p>（1）在 <code>/etc/yum.repos.d</code> 目录下创建文件 <code>mongodb-org-4.0.repo</code>，内容为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -184,7 +184,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">setenforce 0
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="mongodb">安装MongoDB</h3>
+</div><h3 id="安装mongodb">安装MongoDB</h3>
 <p>执行如下命令安装MongoDB</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -223,7 +223,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.8.asc
 </code></pre></td></tr></table>
 </div>
 </div><p>如果使用其他用户启动 <code>MongoDB</code> 进程，需要确保该用户对 <code>/var/log/mongodb</code>  和<code>/var/lib/mongo</code> 有访问权限。</p>
-<h3 id="mongodb-1">MongoDB进程管理命令</h3>
+<h3 id="mongodb进程管理命令">MongoDB进程管理命令</h3>
 <p>1、查看 <code>MongoDB</code> 的启动状态</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

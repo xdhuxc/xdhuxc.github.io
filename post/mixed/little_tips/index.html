@@ -25,7 +25,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/little_tips/" />
@@ -146,8 +146,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-markdown-">在 markdown 中首段缩进两个汉字</a></li>
-        <li><a href="#--">在句子中插入中 · 号</a></li>
+        <li><a href="#在-markdown-中首段缩进两个汉字">在 markdown 中首段缩进两个汉字</a></li>
+        <li><a href="#在句子中插入中--号">在句子中插入中 · 号</a></li>
       </ul>
     </li>
   </ul>
@@ -157,7 +157,7 @@
     <div class="post-content">
       <p>摘要：</p>
 <p>　　本篇博客主要介绍一些电子写作中常用的操作小技巧，或许会在日常写作或者撰写文档时用到。</p>
-<h3 id="-markdown-">在 markdown 中首段缩进两个汉字</h3>
+<h3 id="在-markdown-中首段缩进两个汉字">在 markdown 中首段缩进两个汉字</h3>
 <p>　　由于 markdown 标记语言是外国人发明的，英文写作首段不空字符，而我们使用 <code>markdown</code> 标记语言进行中文写作时，一般首段都要缩进两个汉字。于是，我们就有了这样一个需求，在使用 <code>markdown</code> 进行中文写作时，在首段缩进两个汉字的长度，但是由于 markdown 本身的特性，直接按空格键是不行的，需要采用特殊的方式才能实现。</p>
 <p>以下我们介绍两种方法</p>
 <p>1、使用 <code>&amp;nbsp;</code> 来实现，由于 markdown 最终是被转换成 HTML 来显示的，而且其本身也兼容 HTML，所以我们可以使用 HTML 中的 <code>&amp;nbsp;</code> 来实现缩进效果，大体上来看，8 个 <code>&amp;nbsp;</code> 可以实现两个汉字缩进的效果，如下所示：</p>
@@ -165,7 +165,7 @@
 <p>天人合一（已经左端对齐）</p>
 <p>这种方法比较麻烦，每段开头都要有　8 个 <code>&amp;nbsp;</code>，但是显示效果有保证。</p>
 <p>2、将输入法切换为　<code>全角</code>，然后使用空格键，按两次空格键，可以直接实现两个汉字的缩进效果，注意不要使用　Tab 键进行操作，可自行测试观察效果。这种方法比第一种方法简洁方便，但是有时效果不太理想。</p>
-<h3 id="--">在句子中插入中 <code>·</code> 号</h3>
+<h3 id="在句子中插入中--号">在句子中插入中 <code>·</code> 号</h3>
 <p>　　在文档中书写外国人名或者书名时，经常会用到中 <code>·</code> 号，但是键盘上 <code>1</code> 前面的中 <code>·</code> 需要使用快捷键配合打出，有时可能无法使用。这时，我们可以在中文输入法下，输入 <code>dian</code>，如下图所示：</p>
 <center>
 <img src="/image/point.png" width="800px" height="300px" />

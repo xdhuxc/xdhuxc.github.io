@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-original-registry/" />
@@ -142,22 +142,22 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-docker-registry">搭建基本的 Docker Registry</a></li>
-        <li><a href="#-docker-registry-2">带权限访问 Docker Registry</a></li>
-        <li><a href="#-api-docker-registry">使用 API 访问Docker Registry</a></li>
-        <li><a href="#-docker-httpblogcsdnnetdream-anarticledetails58005324">多用户 Docker 仓库创建安全认证和应用</a></li>
-        <li><a href="#heading-3">相关问题</a></li>
-        <li><a href="#nginx-docker-registry">使用Nginx代理，域名访问 Docker Registry</a></li>
+        <li><a href="#搭建基本的-docker-registry">搭建基本的 Docker Registry</a></li>
+        <li><a href="#带权限访问-docker-registry">带权限访问 Docker Registry</a></li>
+        <li><a href="#使用-api-访问docker-registry">使用 API 访问Docker Registry</a></li>
+        <li><a href="#多用户-docker-仓库创建安全认证和应用httpblogcsdnnetdream_anarticledetails58005324">多用户 Docker 仓库创建安全认证和应用</a></li>
+        <li><a href="#相关问题">相关问题</a></li>
+        <li><a href="#使用nginx代理域名访问-docker-registry">使用Nginx代理，域名访问 Docker Registry</a></li>
       </ul>
     </li>
-    <li><a href="#heading-4">参考资料</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了 Docker Registry 的搭建和配置。</p>
-<h3 id="-docker-registry">搭建基本的 Docker Registry</h3>
+<h3 id="搭建基本的-docker-registry">搭建基本的 Docker Registry</h3>
 <blockquote>
 <p>基于 Docker 镜像方式安装Docker Registry V2。</p>
 </blockquote>
@@ -167,7 +167,7 @@
 <blockquote>
 <p>开发端也为 CentOS 7 虚拟机，Minimal模式安装，IP地址为：192.168.91.129。</p>
 </blockquote>
-<h4 id="-docker">安装 docker</h4>
+<h4 id="安装-docker">安装 docker</h4>
 <p>依次执行如下命令，安装并启动 Docker</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -181,7 +181,7 @@ systemctl enable docker
 systemctl start docker
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="-docker-registry-">获取最新版本的 Docker Registry 容器</h4>
+</div><h4 id="获取最新版本的-docker-registry-容器">获取最新版本的 Docker Registry 容器</h4>
 <blockquote>
 <p>可去 <a href="https://store.docker.com/images/registry/plans/75b297cc-0ad7-4ccd-8e80-9a30e72ace7e?tab=tags">官网</a> 查找最新的版本号
 直接使用 docker 命令去官方公有镜像仓库中拉取</p>
@@ -194,7 +194,7 @@ systemctl start docker
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull registry:2.5.2
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading">运行容器</h4>
+</div><h4 id="运行容器">运行容器</h4>
 <blockquote>
 <p>V1 Registry 的仓库目录是：/tmp/registry</p>
 </blockquote>
@@ -210,7 +210,7 @@ systemctl start docker
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d -p 5000:5000 --restart=always -v /opt/registry:/var/lib/registry  --name=registry registry:2.5.2
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="-docker-registry-1">访问 Docker Registry</h4>
+</div><h4 id="访问-docker-registry">访问 Docker Registry</h4>
 <p>使用如下命令访问 Docker Registry</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -229,7 +229,7 @@ systemctl start docker
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">{&#34;repositories&#34;:[]}
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-1">推送镜像</h4>
+</div><h4 id="推送镜像">推送镜像</h4>
 <p>推送镜像时报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -278,7 +278,7 @@ The push refers to a repository [192.168.91.128:5000/busybox]
 latest: digest: sha256:91ef6c1c52b166be02645b8efee30d1ee65362024f7da41c404681561734c465 size: 527
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-2">拉取镜像</h4>
+</div><h4 id="拉取镜像">拉取镜像</h4>
 <p>直接使用 <code>docker pull</code> 命令拉取镜像即可，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -296,7 +296,7 @@ latest: Pulling from 192.168.91.128:5000/busybox
 Digest: sha256:030fcb92e1487b18c974784dcc110a93147c9fc402188370fbfd17efabffc6af
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-docker-registry-2">带权限访问 Docker Registry</h3>
+</div><h3 id="带权限访问-docker-registry">带权限访问 Docker Registry</h3>
 <blockquote>
 <p>控制registry的使用权限，使其只有在登录用户名和密码之后才能使用。</p>
 </blockquote>
@@ -487,7 +487,7 @@ Digest: sha256:030fcb92e1487b18c974784dcc110a93147c9fc402188370fbfd17efabffc6af
 </code></pre></td></tr></table>
 </div>
 </div><p>也可以通过宿主机浏览器访问镜像仓库，在弹出的认证对话框中输入正确的用户名和密码，登陆后即可看到所需信息。</p>
-<h3 id="-api-docker-registry">使用 API 访问Docker Registry</h3>
+<h3 id="使用-api-访问docker-registry">使用 API 访问Docker Registry</h3>
 <p>1、查询注册服务器中的仓库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -510,7 +510,7 @@ Digest: sha256:030fcb92e1487b18c974784dcc110a93147c9fc402188370fbfd17efabffc6af
 {&#34;name&#34;:&#34;busybox&#34;,&#34;tags&#34;:[&#34;latest&#34;,&#34;1.2.1&#34;]}
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-docker-httpblogcsdnnetdream-anarticledetails58005324"><a href="http://blog.csdn.net/dream_an/article/details/58005324">多用户 Docker 仓库创建安全认证和应用</a></h3>
+</div><h3 id="多用户-docker-仓库创建安全认证和应用httpblogcsdnnetdream_anarticledetails58005324"><a href="http://blog.csdn.net/dream_an/article/details/58005324">多用户 Docker 仓库创建安全认证和应用</a></h3>
 <p>1、安装 docker，下载 registry 镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -932,7 +932,7 @@ No JSON object could be decoded
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">相关问题</h3>
+</div><h3 id="相关问题">相关问题</h3>
 <p>1、如果没有在开发端 <code>/etc/hosts</code> 中添加 Docker Registry 所在主机IP地址和域名的对应关系，会报如下错误：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -964,7 +964,7 @@ Error response from daemon: Get https://store.xdhuxc.com:5000/v1/users/: x509: c
 </div>
 </div><p>可能是因为将自签署的CA证书放到了 <code>/etc/pki/ca-trust/source/anchors/</code> 目录下，然而，docker有自己的证书存放目录，路径为： <code>/etc/docker/certs.d/</code>。所以，将自签署的CA证书复制到开发端的 <code>/etc/docker/certs.d</code> 目录下，然后重启docker进程。
 另外，根据官方资料，可以在 <code>/etc/docker/certs.d</code> 目录下创建 <code>store.xdhuxc.com:5000</code> 目录，将CA证书复制到该目录下即可，无需重启docker进程。</p>
-<h3 id="nginx-docker-registry">使用Nginx代理，域名访问 Docker Registry</h3>
+<h3 id="使用nginx代理域名访问-docker-registry">使用Nginx代理，域名访问 Docker Registry</h3>
 <p>可以使用 <code>Nginx</code> 为 <code>docker</code> 私有仓库做反向代理，以便使其可以在外网访问</p>
 <p>启动 <code>registry</code> 容器的命令为：</p>
 <div class="highlight"><div class="chroma">
@@ -1133,7 +1133,7 @@ chunked_transfer_encoding on;  required to avoid HTTP 411: see Issue <span class
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="heading-4">参考资料</h2>
+</div><h2 id="参考资料">参考资料</h2>
 <p>1、https://docs.docker.com/registry/deploying/#basic-configuration</p>
 <p>2、http://blog.csdn.net/gqtcgq/article/details/51163558</p>
 <p>3、http://blog.csdn.net/dream_an/article/details/58005324</p>

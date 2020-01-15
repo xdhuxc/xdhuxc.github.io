@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/tools/tools-confd/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#confd-">confd 安装</a></li>
-        <li><a href="#confd--1">confd 配置及运行</a></li>
-        <li><a href="#-linux--confd">以 Linux 系统服务方式运行 confd</a></li>
-        <li><a href="#heading">参考资料</a></li>
+        <li><a href="#confd-安装">confd 安装</a></li>
+        <li><a href="#confd-配置及运行">confd 配置及运行</a></li>
+        <li><a href="#以-linux-系统服务方式运行-confd">以 Linux 系统服务方式运行 confd</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -155,7 +155,7 @@
     <div class="post-content">
       <p>本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。</p>
 <p>confd 可以从后台数据源拉取数据，以 golang 模板的方式编写配置文件，渲染到本地文件，这对于一些需要动态或定时更改配置文件的程序非常方便。但是，有些数据源具有发布/订阅的特性，可以向 confd 推送数据，另外一些，就只能采用定时拉取的方式了。</p>
-<h3 id="confd-">confd 安装</h3>
+<h3 id="confd-安装">confd 安装</h3>
 <p>下载二进制安装文件并复制到 PATH 目录下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -176,7 +176,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>也可自行根据 <a href="https://github.com/kelseyhightower/confd">confd 源码</a> 构建</p>
-<h3 id="confd--1">confd 配置及运行</h3>
+<h3 id="confd-配置及运行">confd 配置及运行</h3>
 <p>1、创建 confdir，用于存放 confd 的配置文件和模板文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -407,7 +407,7 @@ receivers:
     webhook_url: https://oapi.dingtalk.com/robot/send?access_token=238c10a8984980a1f34228cab29cbbdaaaceb80ef82ee125c96e3166628e2c44
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-linux--confd">以 Linux 系统服务方式运行 confd</h3>
+</div><h3 id="以-linux-系统服务方式运行-confd">以 Linux 系统服务方式运行 confd</h3>
 <p>以 Linux 系统服务方式部署 confd，每 5 分钟拉取一次配置文件，confd.service 文件内容为：（/usr/lib/systemd/system/confd.service）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -573,7 +573,7 @@ aws_secret_access_key = &#39;${AWS_SECRET_ACCESS_KEY}&#39;
 systemctl restart confd
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://github.com/kelseyhightower/confd">https://github.com/kelseyhightower/confd</a></p>
     </div>
 

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/common/http/http-basic-knowledge/" />
@@ -142,18 +142,18 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#http-">HTTP 简介</a></li>
-        <li><a href="#http--1">HTTP 工作原理</a></li>
-        <li><a href="#http--2">HTTP 特点</a></li>
-        <li><a href="#request">请求消息Request</a></li>
-        <li><a href="#response">响应消息Response</a></li>
-        <li><a href="#http--3">HTTP 请求方法</a></li>
-        <li><a href="#get--post-">GET 请求和 POST 请求的区别</a></li>
-        <li><a href="#heading-3">状态码含义</a></li>
+        <li><a href="#http-简介">HTTP 简介</a></li>
+        <li><a href="#http-工作原理">HTTP 工作原理</a></li>
+        <li><a href="#http-特点">HTTP 特点</a></li>
+        <li><a href="#请求消息request">请求消息Request</a></li>
+        <li><a href="#响应消息response">响应消息Response</a></li>
+        <li><a href="#http-请求方法">HTTP 请求方法</a></li>
+        <li><a href="#get-请求和-post-请求的区别">GET 请求和 POST 请求的区别</a></li>
+        <li><a href="#状态码含义">状态码含义</a></li>
         <li><a href="#curl">curl</a></li>
-        <li><a href="#http--4">HTTP 请求头</a></li>
-        <li><a href="#http--5">HTTP 响应头</a></li>
-        <li><a href="#heading-4">参考资料</a></li>
+        <li><a href="#http-请求头">HTTP 请求头</a></li>
+        <li><a href="#http-响应头">HTTP 响应头</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -162,10 +162,10 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了些 HTTP 协议的基本知识，可用于复习 HTTP 协议的基础知识。</p>
-<h3 id="http-">HTTP 简介</h3>
+<h3 id="http-简介">HTTP 简介</h3>
 <p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写，用于从万维网服务器传输超文本到本地浏览器的传送协议。</p>
 <p>HTTP 是一个基于TCP/IP协议来传输数据（HTML文件、图片文件等）的协议</p>
-<h3 id="http--1">HTTP 工作原理</h3>
+<h3 id="http-工作原理">HTTP 工作原理</h3>
 <p>HTTP 协议工作于客户端-服务器架构上，浏览器作为HTTP客户端通过URL向HTTP服务端发送所有请求，HTTP服务器根据接收到的请求，向客户端发送响应信息。</p>
 <p>一次 HTTP 操作称为一个事务，其工作过程可分为四步：</p>
 <p>1）首先，客户端与服务器需要建立连接，只要用户点击某个超链接，HTTP的工作就开始。</p>
@@ -173,7 +173,7 @@
 <p>3）服务器接收到请求后，给予相应的响应信息，其格式为：一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息，包括服务器信息、实体信息和可能的内容。</p>
 <p>4）客户端接收到服务器所返回的信息，通过浏览器显示在用户的显示屏上，然后客户端与服务器断开连接。</p>
 <p>如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，由显示屏输出。</p>
-<h3 id="http--2">HTTP 特点</h3>
+<h3 id="http-特点">HTTP 特点</h3>
 <ul>
 <li>HTTP是无连接的
 无连接的含义是限制每次连接只处理一个请求，服务器处理完客户的请求，并收到客户的应答后，即断开连接，采用这种方式可以节省传输时间。</li>
@@ -182,7 +182,7 @@
 <li>HTTP是无状态的
 无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
 </ul>
-<h3 id="request">请求消息Request</h3>
+<h3 id="请求消息request">请求消息Request</h3>
 <p>客户端发送一个HTTP请求到服务器的请求消息包括以下格式：
 请求行，请求头，空行和请求数据四个部分组成
 <img src="C:/Users/wanghuan/Desktop/%E7%94%B5%E5%AD%90%E4%B9%A6/http-request.png" alt="image"></p>
@@ -192,7 +192,7 @@
 <li>空行，请求头部后面的空行是必须的，即使第四部分的请求数据为空，也必须有空行。</li>
 <li>主体，即请求数据，可以添加任意的其他数据。</li>
 </ul>
-<h3 id="response">响应消息Response</h3>
+<h3 id="响应消息response">响应消息Response</h3>
 <p>一般情况下，服务器接收并处理客户端发过来的请求后会返回一个HTTP的响应消息。
 HTTP 响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。
 <img src="C:/Users/wanghuan/Desktop/%E7%94%B5%E5%AD%90%E4%B9%A6/http-response.jpg" alt="image"></p>
@@ -202,7 +202,7 @@ HTTP 响应也由四个部分组成，分别是：状态行、消息报头、空
 <li>空行，消息报头后面的空行是必须的。</li>
 <li>响应正文，服务器返回给客户端的文本信息。</li>
 </ul>
-<h3 id="http--3">HTTP 请求方法</h3>
+<h3 id="http-请求方法">HTTP 请求方法</h3>
 <p>根据HTTP标准，HTTP请求可以使用多种请求方法。
 HTTP 1.0 定义了三种请求方法：GET，POST和HEAD方法。
 HTTP 1.1 新增了五种请求方法：OPTIONS，PUT，DELETE，TRACE 和 CONNECT 方法。</p>
@@ -218,22 +218,22 @@ HTTP 1.1 新增了五种请求方法：OPTIONS，PUT，DELETE，TRACE 和 CONNEC
 <li>OPTIONS：允许客户端查看服务器的性能。</li>
 <li>TRACE：回显服务器收到的请求，主要用于测试或诊断。</li>
 </ul>
-<h3 id="get--post-">GET 请求和 POST 请求的区别</h3>
-<h4 id="heading">请求数据</h4>
+<h3 id="get-请求和-post-请求的区别">GET 请求和 POST 请求的区别</h3>
+<h4 id="请求数据">请求数据</h4>
 <p>GET请求，请求的数据会附在URL之后，即把数据放置在HTTP协议头中，以?分隔URL和传输数据，多个参数使用&amp;连接。</p>
 <p>POST请求，把提交的数据放置在HTTP包的包体中。</p>
 <p>因此，GET提交的数据会在浏览器地址栏中显示出来，而POST方式提交数据时，浏览器地址栏不会改变。</p>
-<h4 id="heading-1">传输数据大小</h4>
+<h4 id="传输数据大小">传输数据大小</h4>
 <p>首先，HTTP协议没有对传输的数据大小进行限制，HTTP协议规范也没有对URL长度进行限制。</p>
 <p>但在实际开发过程中，对于GET请求，特定的浏览器和服务器对URL的长度有限制，因此，在使用GET请求时，传输数据会受到URL长度的限制。</p>
 <p>对于POST请求，由于不是URL传值，理论上是不会受限制的，但是实际上各个服务器会规定对POST提交数据大小进行限制，Apache，IIS都有各自的配置。</p>
-<h4 id="heading-2">安全性</h4>
+<h4 id="安全性">安全性</h4>
 <p>POST的安全性比GET的高。这里的安全是指真正的安全，而不同于上面GET提到的安全方法中的安全，上面提到的安全仅仅是不修改服务器的数据。比如，在进行登录操作，通过GET请求，用户名和密码都会暴露再URL上，因为登录页面有可能被浏览器缓存以及其他人查看浏览器的历史记录的原因，此时的用户名和密码就很容易被他人拿到了。除此之外，GET请求提交的数据还可能会造成Cross-site request frogery攻击</p>
 <p>GET请求和POST请求本质上都是TCP连接，并无差别，但是由于HTTP的规定和浏览器/服务器的限制，导致它们在应用过程中体现出一些不同。</p>
 <p>GET请求产生一个TCP数据包，POST请求产生两个TCP数据包。具体来讲，对于GET请求，浏览器会把HTTP请求头部和请求数据一起发送出去，服务器端响应200，返回数据。</p>
 <p>对于POST请求，浏览器先发送请求头部，服务器响应100，continue，浏览器再发送数据，服务器端响应200，返回数据。</p>
 <p>根据研究，在网络环境好的情况下，发一次包的时间和发两次包的时间差别基本可以无视。而在网络环境差的情况下，两次包的TCP在验证数据包完整性上，有非常大的优点。</p>
-<h3 id="heading-3">状态码含义</h3>
+<h3 id="状态码含义">状态码含义</h3>
 <ul>
 <li>100：Continue，服务器仅接收到部分请求，但是一旦服务器并没有拒绝该请求，客户端应该继续发送其余的请求。</li>
 <li>200：OK，请求成功，一般用于GET和POST请求</li>
@@ -324,7 +324,7 @@ HTTP 1.1 新增了五种请求方法：OPTIONS，PUT，DELETE，TRACE 和 CONNEC
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">curl -G -d &#34;name=xdhuxc&amp;password=Xdhuxc163&#34; -F &#34;file=@/Users/fungleo/Downloads/401.png&#34; http://www.baidu.com
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="http--4">HTTP 请求头</h3>
+</div><h3 id="http-请求头">HTTP 请求头</h3>
 <table>
 <thead>
 <tr>
@@ -397,7 +397,7 @@ HTTP 1.1 新增了五种请求方法：OPTIONS，PUT，DELETE，TRACE 和 CONNEC
 </tbody>
 </table>
 <p><a href="https://blog.csdn.net/qq_30553235/article/details/79282113">https://blog.csdn.net/qq_30553235/article/details/79282113</a></p>
-<h3 id="http--5">HTTP 响应头</h3>
+<h3 id="http-响应头">HTTP 响应头</h3>
 <table>
 <thead>
 <tr>
@@ -474,7 +474,7 @@ HTTP 1.1 新增了五种请求方法：OPTIONS，PUT，DELETE，TRACE 和 CONNEC
 </tr>
 </tbody>
 </table>
-<h3 id="heading-4">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://blog.csdn.net/u012361288/article/details/54425689">https://blog.csdn.net/u012361288/article/details/54425689</a></p>
 <p><a href="https://www.cnblogs.com/wangning528/p/6388464.html">https://www.cnblogs.com/wangning528/p/6388464.html</a></p>
 <p><a href="http://www.runoob.com/http/http-status-codes.html">http://www.runoob.com/http/http-status-codes.html</a></p>

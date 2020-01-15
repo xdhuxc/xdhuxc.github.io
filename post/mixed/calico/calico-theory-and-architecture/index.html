@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/calico/calico-theory-and-architecture/" />
@@ -142,11 +142,11 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#calico-">calico 介绍</a></li>
-        <li><a href="#calico--1">calico 架构</a></li>
-        <li><a href="#calico--2">calico 网络通信模型</a></li>
-        <li><a href="#heading">注意事项</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#calico-介绍">calico 介绍</a></li>
+        <li><a href="#calico-架构">calico 架构</a></li>
+        <li><a href="#calico-网络通信模型">calico 网络通信模型</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -155,7 +155,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了 calico 的架构和网络通信模型。</p>
-<h3 id="calico-">calico 介绍</h3>
+<h3 id="calico-介绍">calico 介绍</h3>
 <p>Calico 是一个纯三层的数据中心网络方案，能够提供可控的虚拟机、容器、裸机之间的IP通信。</p>
 <p>通过将整个互联网的可扩展网络原则压缩到数据中心级别，calico在每一个计算节点利用Linux内核实现了一个高效的vRouter来负责数据转发，而每个vRouter通过BGP协议负责把自己上运行的workload的路由信息向整个calcio网络内广播。小规模部署时各计算节点可以直接互联，大规模部署时可通过指定的BGP route reflector来完成。
 这样保证最终所有的workload之间的数据流量都是通过IP路由的方式完成互联的。</p>
@@ -170,7 +170,7 @@
 </center>
 <p>如上图所示，这样保证这个方案的简单可控，而且没有封包解包，节约CPU计算资源的同时，提高了整个网络的性能。</p>
 <p>此外，calcio基于iptables还提供了丰富而灵活的网络策略，保证通过各个节点上的ACL2来提供计算节点的多租户隔离、安全组以及其他可达性限制等功能。</p>
-<h3 id="calico--1">calico 架构</h3>
+<h3 id="calico-架构">calico 架构</h3>
 <center>
 <img src="/image/mixed/calico/calico架构图.png" width="800px" height="300px" />
 图 3 · calico 架构
@@ -181,7 +181,7 @@
 <li>BGP Client（BIRD）：主要负责把 Felix 写入 Linux 内核的路由信息分发到当前calico网络，确保workload间通信的有效性。</li>
 <li>BGP Route Reflector（BIRD）：大规模部署时使用，摒弃所有节点互联的网格模式，通过一个或者多个BGP Route Reflector来完成集中式的路由分发。</li>
 </ul>
-<h3 id="calico--2">calico 网络通信模型</h3>
+<h3 id="calico-网络通信模型">calico 网络通信模型</h3>
 <p>在主机网络拓扑的组织上，calcio是在主机上启动虚拟机路由器，将每个主机作为路由器使用，组成互联互通的网络拓扑。</p>
 <p>每个主机上都部署了 calico node 作为虚拟路由器，并且可以通过 calico 将宿主机组织成任意的拓扑集群。当集群中的容器需要与外界通信时，就可以通过BGP协议将网关物理路由器加入到集群中，使外界可以直接访问容器IP，而不需要做任何NAT之类的复杂操作。
 当容器通过 calico 进行跨主机通信时，其网络通信模型如下图所示：</p>
@@ -199,10 +199,10 @@
 <p>1）calcio 目前只支持 TCP、UDP、ICMP、ICMPv6协议，如果使用其他四层协议（例如NetBIOS协议），建议使用weave、原生overlay等其他overlay网络实现。</p>
 <p>2）基于三层实现通信，在二层上没有任何加密包装，因此只能在私有的可靠网络上使用。</p>
 <p>3）流量隔离基于iptables实现，并且从etcd中获取需要生成的隔离规则，有一些性能上的隐患。</p>
-<h3 id="heading">注意事项</h3>
+<h3 id="注意事项">注意事项</h3>
 <p>1、部署 calcio workload 的各节点机的 hostname 最好全部不同，否则会导致写入 etcd 的数据发生覆盖，但是可以通过在启动 calcio node 时，指明 calico node 的名称来避免。</p>
 <p>2、calcio workload 的各节点机的 eth0 网卡的 IP 段和 calcio 的网段必须不同，可通过修改 calcio 网段解决。</p>
-<h3 id="heading-1">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://www.goodrain.com/docs/stable/operation-manual/network/calico.html#calico">https://www.goodrain.com/docs/stable/operation-manual/network/calico.html#calico</a></p>
 <p><a href="http://blog.51cto.com/dengaosky/2069666">http://blog.51cto.com/dengaosky/2069666</a></p>
     </div>

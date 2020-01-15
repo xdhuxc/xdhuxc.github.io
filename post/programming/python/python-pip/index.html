@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-pip/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-pip-">配置 pip 源</a></li>
-        <li><a href="#-python--requirementstxt">使用 Python 的 requirements.txt</a></li>
+        <li><a href="#配置-pip-源">配置 pip 源</a></li>
+        <li><a href="#使用-python-的-requirementstxt">使用 Python 的 requirements.txt</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了在 python 开发过程中，经常需要配置 pip 源，以加快依赖包的下载速度，在构建 docker 镜像时，最好也指定 pip 源。</p>
-<h3 id="-pip-">配置 pip 源</h3>
+<h3 id="配置-pip-源">配置 pip 源</h3>
 <p>在当前目录下建立~/.pip/pip.conf文件，添加如下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -171,7 +171,7 @@ trusted-host=mirrors.aliyun.com
 </code></pre></td></tr></table>
 </div>
 </div><p>在 <code>Windows</code> 系统中，在 <code>C:\Users\wanghuan\AppData\Local\pip</code> 目录下创建 <code>pip.ini</code> 文件，写入以上内容并保存即可。</p>
-<h3 id="-python--requirementstxt">使用 Python 的 requirements.txt</h3>
+<h3 id="使用-python-的-requirementstxt">使用 Python 的 requirements.txt</h3>
 <p>使用 pip 命令时，通过 <code>-i</code> 参数指定 pip 源</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

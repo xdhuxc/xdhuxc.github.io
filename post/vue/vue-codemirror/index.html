@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/vue/vue-codemirror/" />
@@ -142,11 +142,11 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#codemirror-">CodeMirror 简介</a></li>
-        <li><a href="#-codemirror">原生方式使用 CodeMirror</a></li>
-        <li><a href="#vue--codemirror">Vue 中集成 CodeMirror</a></li>
-        <li><a href="#heading">常见问题及解决</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#codemirror-简介">CodeMirror 简介</a></li>
+        <li><a href="#原生方式使用-codemirror">原生方式使用 CodeMirror</a></li>
+        <li><a href="#vue-中集成-codemirror">Vue 中集成 CodeMirror</a></li>
+        <li><a href="#常见问题及解决">常见问题及解决</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -155,11 +155,11 @@
 </div>
     <div class="post-content">
       <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
-<h3 id="codemirror-">CodeMirror 简介</h3>
+<h3 id="codemirror-简介">CodeMirror 简介</h3>
 <p>CodeMirror 是一个用于编辑文本框代码高亮的 JavaScript 插件，为各种编程语言实现关键字、函数、变量等代码高亮，丰富的 API 和可扩展功能以及多个主题样式、可以基本满足各种项目的需求。</p>
 <p>CodeMirror 支持各种编程语言、标记语言的语法高亮，包括 C、C++、Java、PHP、JavaScript、Python、Go、Ruby、SQL等，以及 LaTex、wiki、Markdown等，同时也支持 JSON、YAML、TOML等配置文件常用格式。此外，CodeMirror 还支持代码自动补全、搜索、替换、HTML预览、显示行号、选择/搜索结果高亮等功能。</p>
 <p>CodeMirror 目前已经被集成进各种应用程序中，例如 Adobe Brackets、Light Table等开发环境，经常被用于各种 SQL、JavaScript、JSON、YAML 等的在线编辑器的基础库来使用。</p>
-<h3 id="-codemirror">原生方式使用 CodeMirror</h3>
+<h3 id="原生方式使用-codemirror">原生方式使用 CodeMirror</h3>
 <p>本部分内容介绍如何使用 CodeMirror 插件。</p>
 <p>1、引入核心文件</p>
 <div class="highlight"><div class="chroma">
@@ -269,7 +269,7 @@ editor.getTextArea().value # 获取未经过转义的数据
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setOption(&#34;readOnly&#34;, true);
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="vue--codemirror">Vue 中集成 CodeMirror</h3>
+</div><h3 id="vue-中集成-codemirror">Vue 中集成 CodeMirror</h3>
 <p>当我们使用 Vue 来做我们的前端项目时，可以使用基于 CodeMirror 的 vue-codemirror 来完成 Web 代码编辑器。</p>
 <p>1、安装插件</p>
 <div class="highlight"><div class="chroma">
@@ -427,7 +427,7 @@ export default {
 <li>gutters：用来添加额外的 gutter，值为 CSS 名称数组，每一项定义了用于绘制 gutter 背景的宽度。</li>
 <li>theme：显示的主题，详情可参考：https://codemirror.net/demo/theme.html。</li>
 </ul>
-<h3 id="heading">常见问题及解决</h3>
+<h3 id="常见问题及解决">常见问题及解决</h3>
 <p>1、页面中报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -445,7 +445,7 @@ Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#
 </div>
 </div><p>可能的一种情况是：</p>
 <p>字符串内容为 YAML 格式，但是 mode 却为：<code>text/x-json</code>，将其改为：<code>text/x-yaml</code> 试下。</p>
-<h3 id="heading-1">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://codemirror.net/">https://codemirror.net/</a></p>
 <p><a href="https://www.itread01.com/content/1540634681.html">https://www.itread01.com/content/1540634681.html</a></p>
 <p><a href="https://www.cnblogs.com/onlyonely/p/4450029.html">https://www.cnblogs.com/onlyonely/p/4450029.html</a></p>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/prometheus/prometheus-alertmanager/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#prometheus-">prometheus 配置</a></li>
-        <li><a href="#alertmanager-">AlertManager 配置</a></li>
-        <li><a href="#-prometheus-">在 prometheus 模块中定义报警规则</a></li>
-        <li><a href="#promtool-">promtool 工具</a></li>
+        <li><a href="#prometheus-配置">prometheus 配置</a></li>
+        <li><a href="#alertmanager-配置">AlertManager 配置</a></li>
+        <li><a href="#在-prometheus-模块中定义报警规则">在 prometheus 模块中定义报警规则</a></li>
+        <li><a href="#promtool-工具">promtool 工具</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了 Prometheus 和 AlertManager 配合使用时的配置方式，以备后需。</p>
-<h3 id="prometheus-">prometheus 配置</h3>
+<h3 id="prometheus-配置">prometheus 配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -237,7 +237,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>需要启动 prometheus 进程时添加 &ndash;web.enable-lifecycle 参数</p>
-<h3 id="alertmanager-">AlertManager 配置</h3>
+<h3 id="alertmanager-配置">AlertManager 配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -340,7 +340,7 @@
       equal: [&#39;alertname&#39;, &#39;dev&#39;, &#39;instance&#39;]
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-prometheus-">在 prometheus 模块中定义报警规则</h3>
+</div><h3 id="在-prometheus-模块中定义报警规则">在 prometheus 模块中定义报警规则</h3>
 <p>alertmanager_rules.yml 示例如下：（与 prometheus 同目录下）</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -414,7 +414,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">curl http://localhost:8060/reload
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="promtool-">promtool 工具</h3>
+</div><h3 id="promtool-工具">promtool 工具</h3>
 <p>promtool 工具可以用来检测 prometheus 相关的配置文件的格式是否正确</p>
 <p>1）安装方式如下：</p>
 <div class="highlight"><div class="chroma">

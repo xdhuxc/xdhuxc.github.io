@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/tomcat/tomcat-docker/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#tomcat">启动Tomcat容器</a></li>
-        <li><a href="#-war-tomcat">挂载配置文件和 War 包方式启动Tomcat容器</a></li>
+        <li><a href="#启动tomcat容器">启动Tomcat容器</a></li>
+        <li><a href="#挂载配置文件和-war-包方式启动tomcat容器">挂载配置文件和 War 包方式启动Tomcat容器</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了使用 docker 部署 tomcat 的方法。</p>
-<h3 id="tomcat">启动Tomcat容器</h3>
+<h3 id="启动tomcat容器">启动Tomcat容器</h3>
 <p>使用如下命令启动 <code>Tomcat</code> 容器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -173,7 +173,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>在浏览器地址栏中输入：<code>http://192.168.244.128:8080</code>，可访问到 <code>Tomcat</code> 的首页</p>
-<h3 id="-war-tomcat">挂载配置文件和 War 包方式启动Tomcat容器</h3>
+<h3 id="挂载配置文件和-war-包方式启动tomcat容器">挂载配置文件和 War 包方式启动Tomcat容器</h3>
 <p>根目录为：<code>/usr/local/tomcat/</code>，<code>conf</code>、<code>webapps</code>、<code>bin</code> 等目录均在该目录下</p>
 <p>创建 <code>/home/xdhuxc/tomcat</code> 目录，在其下创建 <code>conf</code> 和 <code>webapps</code> 目录，</p>
 <p>使用如下命令启动 <code>tomcat</code> 容器</p>

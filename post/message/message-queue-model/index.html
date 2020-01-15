@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/message/message-queue-model/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">消息中间件</a></li>
-        <li><a href="#heading-1">消息中间件特点</a></li>
-        <li><a href="#heading-4">消息中间件的传递模型</a></li>
-        <li><a href="#heading-5">参考资料</a></li>
+        <li><a href="#消息中间件">消息中间件</a></li>
+        <li><a href="#消息中间件特点">消息中间件特点</a></li>
+        <li><a href="#消息中间件的传递模型">消息中间件的传递模型</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,20 +154,20 @@
 </div>
     <div class="post-content">
       <p>本篇博客简单介绍下消息中间件，其特点及消息传递模型。</p>
-<h3 id="heading">消息中间件</h3>
+<h3 id="消息中间件">消息中间件</h3>
 <p>消息中间件是在消息的传输过程中保存消息的容器。消息中间件在将消息从消息生产者传输到消息消费者的过程中充当中间人的角色。队列的主要目的是提供路由并保证消息的传送；如果发送消息时接收者不可用，消息队列会保存消息，直到可以成功地传递它为止。当然，消息队列保存消息也是有期限的。</p>
-<h3 id="heading-1">消息中间件特点</h3>
-<h4 id="heading-2">采用异步处理模式</h4>
+<h3 id="消息中间件特点">消息中间件特点</h3>
+<h4 id="采用异步处理模式">采用异步处理模式</h4>
 <p>消息发送者可以发送一个消息而无须等待响应。消息发送者将消息发送到一条虚拟的通道（主题或者队列）上，消息接收者则订阅或者监听该通道。一条消息可能最终转发给一个或者多个消息接收者，这些接收者都无需对消息发送者做出同步回应。整个过程是异步的。</p>
 <p>例如，用户注册账号，注册完成后发送邮件或者短信</p>
-<h4 id="heading-3">应用程序和应用程序调用关系为松耦合关系</h4>
+<h4 id="应用程序和应用程序调用关系为松耦合关系">应用程序和应用程序调用关系为松耦合关系</h4>
 <ul>
 <li>发送者和接收者不必要了解对方，只需要确认消息。</li>
 <li>发送者和接收者不必同时在线。</li>
 </ul>
 <p>比如，在线交易系统为了保证数据的最终一致，在支付系统处理完成后会把支付结果放到消息中间件里通知订单系统修改订单支付状态。两个系统通过消息中间件解耦。</p>
-<h3 id="heading-4">消息中间件的传递模型</h3>
-<h4 id="ptp">点对点模型（PTP）</h4>
+<h3 id="消息中间件的传递模型">消息中间件的传递模型</h3>
+<h4 id="点对点模型ptp">点对点模型（PTP）</h4>
 <p>点对点模型用于消息生产者和消息消费者之间点对点的通信。消息生产者将消息发送到由某个名称标识的特定消费者。这个名称实际上对应于消费服务中的一个队列，在消息传递给消费者之前，它会被存储在这个队列中。消息队列可以放在内存中，也可以是持久的，以保证在消息服务出现故障时仍然能够传递消息。</p>
 <p>点对点模型特性：</p>
 <ul>
@@ -176,7 +176,7 @@
 <li>接收者确认消息接收和处理成功；</li>
 </ul>
 <p><img src="F:/Visio/message-queue/point-to-point.jpg" alt="image"></p>
-<h4 id="pubsub">发布/订阅模型（Pub/Sub）</h4>
+<h4 id="发布订阅模型pubsub">发布/订阅模型（Pub/Sub）</h4>
 <p>发布者/订阅者模型支持向一个特定的消息主题生产消息。0或多个订阅者可能对接收来自特定消息主题的消息感兴趣。在这种模型下，发布者和订阅者彼此不知道对方。这种模式好比是匿名公告板。这种模式被概括为：多个消费者可以获得消息。在发布者和订阅者之间存在时间依赖性。发布者需要建立一个订阅，以便能够让消费者订阅。订阅者必须保持持续的活动状态以接收消息，除非订阅者建立了持久地订阅，在这种情况下，在订阅者未连接时发布的消息将在订阅者重新连接时重新发布。</p>
 <p>其实，消息中间件，像MySQL也可以作为消息中间件，只要把消息中间件的原理搞清楚，就会发现目前所有的存储，包括NoSQL，只要支持顺序性的东西，就可以作为一个消息中间件。就看我们如何去使用它，比如redis中的队列list，就可以作为一个消息队列。</p>
 <p>发布-订阅模型特性：</p>
@@ -191,7 +191,7 @@
 <p>（3）非持久订阅，订阅者为了接收消息，必须一直在线，当只有一个订阅者时，约等于点对点模式。</p>
 <p>大部分情况下会使用持久订阅。</p>
 <p>常用的消息队列有：Kafka、RabbitMQ、ActiveMQ、Metaq。</p>
-<h3 id="heading-5">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://www.cnblogs.com/zhaojiankai/p/7181910.html?utm_source=itdadao&amp;utm_medium=referral">https://www.cnblogs.com/zhaojiankai/p/7181910.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
     </div>
 
@@ -215,9 +215,9 @@
           <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/common/dns/dns-dnsmasq/">
+        <a class="prev" href="/post/docker/docker-storage-drive/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">dnsmasq 的配置和使用</span>
+            <span class="prev-text nav-default">Docker 存储驱动 overlay 和 overlay2 介绍</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/tools/tools-gotty/">

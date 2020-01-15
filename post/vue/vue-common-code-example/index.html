@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/vue/vue-common-code-example/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">获取当前语言</a></li>
-        <li><a href="#heading-1">刷新当前页面</a></li>
-        <li><a href="#heading-2">键值对数组增删</a></li>
-        <li><a href="#heading-3">动态数组增删</a></li>
+        <li><a href="#获取当前语言">获取当前语言</a></li>
+        <li><a href="#刷新当前页面">刷新当前页面</a></li>
+        <li><a href="#键值对数组增删">键值对数组增删</a></li>
+        <li><a href="#动态数组增删">动态数组增删</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>在使用 Vue 和 Element-UI 进行开发时的常用代码，方便后续使用。</p>
-<h3 id="heading">获取当前语言</h3>
+<h3 id="获取当前语言">获取当前语言</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -163,7 +163,7 @@
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">this.$i18n.locale;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">刷新当前页面</h3>
+</div><h3 id="刷新当前页面">刷新当前页面</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -174,7 +174,7 @@
 </div>
 </div><p>router.go(n)</p>
 <p>此方法的参数是一个整数，表示在 history 记录中向前或者后退多少步，类似 window.history.go(n)。</p>
-<h3 id="heading-2">键值对数组增删</h3>
+<h3 id="键值对数组增删">键值对数组增删</h3>
 <p>一个可以动态删减的键值对数组，可以用于各种键值对类型的数据的动态删减，比如环境变量，标签等。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -294,7 +294,7 @@ export default {
 &lt;/script&gt;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-3">动态数组增删</h3>
+</div><h3 id="动态数组增删">动态数组增删</h3>
 <p>一个可以动态增减的字符串数组，可用于一些场景下的参数增删，比如 kubernetes 中容器的命令和其参数的前端表单的开发</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

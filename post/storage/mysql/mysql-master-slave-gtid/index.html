@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-gtid-">配置 GTID 主从复制</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#配置-gtid-主从复制">配置 GTID 主从复制</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了基于 GTID 的 MySQL 主从复制的过程，留作后查。</p>
-<h3 id="-gtid-">配置 GTID 主从复制</h3>
+<h3 id="配置-gtid-主从复制">配置 GTID 主从复制</h3>
 <p>使用 docker 方式部署 MySQL 主从节点</p>
 <p>1、创建如下目录</p>
 <div class="highlight"><div class="chroma">
@@ -165,7 +165,7 @@
 mkdir mysql/master mysql/slave
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="master-">master 配置</h4>
+</div><h4 id="master-配置">master 配置</h4>
 <p>在 /data/mysql/master 目录下创建文件 mysql.cnf:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -288,7 +288,7 @@ grant replication slave on <span class="ge">*.*</span> to &#39;xdhuxc&#39;@&#39;
 flush privileges;
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="slave-">slave 配置</h4>
+</div><h4 id="slave-配置">slave 配置</h4>
 <p>在 /data/mysql/slave 目录下创建 mysql.cnf 文件：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -355,7 +355,7 @@ max_binlog_size = 100M
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">start slave;
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading">验证主从复制</h4>
+</div><h4 id="验证主从复制">验证主从复制</h4>
 <p>1、在 mysql-master 容器内</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -559,7 +559,7 @@ Query OK, 1 row affected (0.00 sec)
 5 rows in set (0.00 sec)
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://www.hi-linux.com/posts/47176.html">https://www.hi-linux.com/posts/47176.html</a></p>
 <p><a href="http://www.ywnds.com/?p=3898">http://www.ywnds.com/?p=3898</a></p>
     </div>

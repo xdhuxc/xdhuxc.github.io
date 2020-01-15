@@ -737,6 +737,15 @@
     </item>
     
     <item>
+      <title>Docker 存储驱动 overlay 和 overlay2 介绍</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-storage-drive/</link>
+      <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-storage-drive/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 docker 的存储驱动 overlay 和 overlay2，对于理解 docker 的文件系统非常有帮助。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>消息队列简介</title>
       <link>https://xdhuxc.github.io/post/message/message-queue-model/</link>
       <pubDate>Sat, 10 Nov 2018 00:00:00 +0000</pubDate>

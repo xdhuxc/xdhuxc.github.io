@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/kubernetes/kubernetes-ingress-access/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-ingress">部署应用及 Ingress</a></li>
-        <li><a href="#heading">访问链路</a></li>
-        <li><a href="#heading-1">参考资料</a></li>
+        <li><a href="#部署应用及-ingress">部署应用及 Ingress</a></li>
+        <li><a href="#访问链路">访问链路</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -153,7 +153,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了在使用 Kubernetes 的 Ingress 时，应用的访问链路，这可以为应用访问不通时排查问题提供帮助。</p>
-<h3 id="-ingress">部署应用及 Ingress</h3>
+<h3 id="部署应用及-ingress">部署应用及 Ingress</h3>
 <p>使用如下所示的 YAML 文件部署 nginx 及其 Service 和 Ingress</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -315,10 +315,10 @@ spec:
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">curl -Lv --resolve xdhuxc.com:80:172.31.40.84 xdhuxc.com
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">访问链路</h3>
+</div><h3 id="访问链路">访问链路</h3>
 <p>域名           主机                    ingress         service         pod/容器<br>
 xdhuxc.com -&gt; 172.20.26.150:80 -&gt; ingress-controller -&gt; [service] -&gt; 192.168.235.231:80</p>
-<h3 id="heading-1">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://blog.csdn.net/cj2580/article/details/80017904#comments">https://blog.csdn.net/cj2580/article/details/80017904#comments</a></p>
     </div>
 

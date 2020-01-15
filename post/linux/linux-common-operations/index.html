@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-common-operations/" />
@@ -142,12 +142,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-cache-">清理过大的 cache 内存</a></li>
-        <li><a href="#heading">挂载磁盘</a></li>
-        <li><a href="#heading-1">打包时的文件格式转换和赋权</a></li>
-        <li><a href="#curl">使用curl不产生输出</a></li>
-        <li><a href="#heading-2">调整进程优先级</a></li>
-        <li><a href="#-centos--dns">配置 CentOS 但需要不更新 DNS</a></li>
+        <li><a href="#清理过大的-cache-内存">清理过大的 cache 内存</a></li>
+        <li><a href="#挂载磁盘">挂载磁盘</a></li>
+        <li><a href="#打包时的文件格式转换和赋权">打包时的文件格式转换和赋权</a></li>
+        <li><a href="#使用curl不产生输出">使用curl不产生输出</a></li>
+        <li><a href="#调整进程优先级">调整进程优先级</a></li>
+        <li><a href="#配置-centos-但需要不更新-dns">配置 CentOS 但需要不更新 DNS</a></li>
       </ul>
     </li>
   </ul>
@@ -156,7 +156,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了些 Linux 系统中的常用操作，以备后需。</p>
-<h3 id="-cache-">清理过大的 cache 内存</h3>
+<h3 id="清理过大的-cache-内存">清理过大的 cache 内存</h3>
 <p>清理过大的cache内存，系统中运行大量容器，cache过大</p>
 <center>
 <img src="/image/linux/common-operations/cache-1.png" width="800px" height="300px" />
@@ -198,7 +198,7 @@
 <li>echo 2 &gt; /proc/sys/vm/drop_caches #清除目录项和inode</li>
 <li>echo 3 &gt; /proc/sys/vm/drop_caches #清除页面缓存，目录项和inode</li>
 </ul>
-<h3 id="heading">挂载磁盘</h3>
+<h3 id="挂载磁盘">挂载磁盘</h3>
 <p>1、使用 <code>fdisk –l</code>（查看当前系统所有硬盘及分区情况）， 找到待挂载的磁盘。</p>
 <center>
 <img src="/image/linux/common-operations/disk.png" width="800px" height="300px" />
@@ -239,7 +239,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">mount –a
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">打包时的文件格式转换和赋权</h3>
+</div><h3 id="打包时的文件格式转换和赋权">打包时的文件格式转换和赋权</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -250,7 +250,7 @@
 find ./ -regex &#39;.*\.sh$&#39; -or -regex &#39;.*\.exp$&#39; | xargs dos2unix -q
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="curl">使用curl不产生输出</h3>
+</div><h3 id="使用curl不产生输出">使用curl不产生输出</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -259,8 +259,8 @@ find ./ -regex &#39;.*\.sh$&#39; -or -regex &#39;.*\.exp$&#39; | xargs dos2unix 
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">curl -s http://www.baidu.com 2&gt;&amp;1 &gt; /dev/null
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">调整进程优先级</h3>
-<h4 id="nice-">nice 命令</h4>
+</div><h3 id="调整进程优先级">调整进程优先级</h3>
+<h4 id="nice-命令">nice 命令</h4>
 <p>nice 命令可以修改进程的优先级，进而调整进程的调度。nice 命令是在进程启动时调整进程的优先级。nice 值的范围为：[-20, 19]，-20 表示进程的最高优先级，19 表示进程的最低优先级。Linux 进程的默认 nice 值为：0。使用 nice 可调整进程的优先级，这样调度器就会依据进程优先级为其分配 CPU 资源。</p>
 <p>1、执行命令 <code>sleep 300 &amp;</code>，然后查看该进程</p>
 <center>
@@ -283,14 +283,14 @@ find ./ -regex &#39;.*\.sh$&#39; -or -regex &#39;.*\.exp$&#39; | xargs dos2unix 
 </center>
 <p>仅管理员可以在默认值的基础上 -n，调高进程的优先级，普通用户无权调高进程优先级。</p>
 <p>在实际应用中，如果要运行一个 CPU 密集型程序，就可以通过 nice 命令来启动它，这样可以保证其进程获得更高的优先级，即使服务器或者台式机在负载很重的情况下，也可以快速响应。</p>
-<h4 id="renice-">renice 命令</h4>
+<h4 id="renice-命令">renice 命令</h4>
 <p>renice 命令可以重新调整进程执行的优先级，可以指定群组或者用户名调整进程优先级等级，并修改隶属于该群组或用户的所有程序优先级。等级范围为：[-20, 19]，同样，只有管理员可以调高优先级，用于调整运行中的进程的优先级。</p>
 <p>使用方法和 nice 相同</p>
 <center>
 <img src="/image/linux/common-operations/renice.png" width="800px" height="300px" />
 </center>
 <p>一个紧急进程，需要更多的 CPU 资源时，可以调高运行中的该进程。</p>
-<h3 id="-centos--dns">配置 CentOS 但需要不更新 DNS</h3>
+<h3 id="配置-centos-但需要不更新-dns">配置 CentOS 但需要不更新 DNS</h3>
 <blockquote>
 <p>配置CentOS不更新DNS，即不刷新/etc/resolv.conf文件</p>
 </blockquote>

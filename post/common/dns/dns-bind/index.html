@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/common/dns/dns-bind/" />
@@ -153,7 +153,7 @@
       <p>本篇博客记录下 Bind 的安装和配置，以备后查。</p>
 <h3 id="bind">BIND</h3>
 <p>BIND 是 Berkeley Internet Name Domain 的首字母简写，是一款开源的 DNS 软件，可以使用 BIND 在内网中部署自己的 DNS。</p>
-<h4 id="heading">安装部署</h4>
+<h4 id="安装部署">安装部署</h4>
 <p>1、使用如下命令安装 BIND</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -172,7 +172,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart named
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-1">配置</h4>
+</div><h4 id="配置">配置</h4>
 <p>bind 的主配置文件位置：<code>/etc/named.conf</code>，内容如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -484,20 +484,20 @@ VALUE：由以下几个部分组成：</p>
 ）
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="ns-">NS 记录</h5>
+</div><h5 id="ns-记录">NS 记录</h5>
 <p>name：当前域的域名，可以写完全合格域名 FQDN，可以写 @ 占位，还可以省略不写，如果省略不写，则意味着该资源记录的名称与其上一条资源记录的名称相同。
 value：当前区域内被授权的域名服务器的 FQDN。</p>
 <p>注意：
 1、一个域中有多少台域名服务器，就需要写多少个 NS 资源记录。</p>
 <p>2、每个 NS 资源记录都必须要有一个 A 记录与之对应。</p>
-<h5 id="mx-">MX 记录</h5>
+<h5 id="mx-记录">MX 记录</h5>
 <p>name：当前域的域名，可以写完全合格域名 FQDN，可以写 @ 占位，还可以省略不写，如果省略不写，则意味着该资源记录的名称与其上一条资源记录的名称相同。
 RR_TYPE：MS Priority
 value：当前域中有效的邮件服务器的 FQDN。</p>
 <p>注意：
 1、一个域中，可以有多条 MX 资源记录，通过优先级的大小决定被使用的次序。</p>
 <p>2、每个 MX 资源记录都必须对应一条 A 记录。</p>
-<h5 id="a-">A 记录</h5>
+<h5 id="a-记录">A 记录</h5>
 <p>name：域中指定主机的 FQDN。
 value：该主机上真实有效的 IPV4 地址。</p>
 <p>例如：</p>
@@ -532,7 +532,7 @@ www            43200 IN A 192.168.1.1
 </code></pre></td></tr></table>
 </div>
 </div><p>通常，泛域名或直接域名都是为了防止用户写错域名而导致无法给出正确的解析结果。</p>
-<h5 id="cname-">CNAME 记录</h5>
+<h5 id="cname-记录">CNAME 记录</h5>
 <p>name：域中指定主机的别名。
 value：真正的主机的 FQDN。</p>
 <p>例如：</p>
@@ -546,7 +546,7 @@ value：真正的主机的 FQDN。</p>
 ftp [86400] IN CNAME www
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="ptr-">PTR 记录：</h5>
+</div><h5 id="ptr-记录">PTR 记录：</h5>
 <p>name：
 将 IP 地址的四个八位组反过来，将 IP 地址中的主机部分加上反向域的域名后缀</p>
 <p>如果 IP 地址是：172.16.1.100/16，其对应的域名的写法为：</p>
@@ -560,7 +560,7 @@ ftp [86400] IN CNAME www
 100.1.16.172.in-addr.arpa. IN PTR www.xdhuxc.com 
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading-2">参考资料</h4>
+</div><h4 id="参考资料">参考资料</h4>
 <p>1、queryperf 性能测试工具</p>
 <p><a href="https://blog.csdn.net/zhu_tianwei/article/details/45202899">https://blog.csdn.net/zhu_tianwei/article/details/45202899</a></p>
 <p>2、BIND 配置文件详解</p>

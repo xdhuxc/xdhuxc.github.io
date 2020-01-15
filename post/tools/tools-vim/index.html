@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/tools/tools-vim/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">常用命令</a></li>
-        <li><a href="#heading-1">常见问题及解决</a></li>
+        <li><a href="#常用命令">常用命令</a></li>
+        <li><a href="#常见问题及解决">常见问题及解决</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客主要介绍 Vim 的常用命令及技巧，以备后需。</p>
-<h3 id="heading">常用命令</h3>
+<h3 id="常用命令">常用命令</h3>
 <blockquote>
 <p>以下操作均在命令模式下进行</p>
 </blockquote>
@@ -228,7 +228,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">:25 # 回车后跳转到第 25 行
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">常见问题及解决</h3>
+</div><h3 id="常见问题及解决">常见问题及解决</h3>
 <p>1、将复制的代码粘贴到 vim 中时，代码缩进产生了混乱</p>
 <p>原因：终端处理粘贴的文本时，会存入键盘缓存。vim 处理时，会把这些内容作为用户键盘输入来处理。如果 vim 开启了自动缩进，那么在遇到换行符时，就会默认把上一行的缩进插入到下一行的开头。</p>
 <p>解决：vim 编辑模式中有一个 paste 模式，该模式下，可将文本保持原样粘贴到 vim 中，以避免一些格式错误。在 vim 中输入命令</p>

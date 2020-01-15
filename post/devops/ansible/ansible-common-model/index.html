@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/ansible/ansible-common-model/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">模块相关命令</a></li>
-        <li><a href="#heading-1">常用模块示例</a></li>
+        <li><a href="#模块相关命令">模块相关命令</a></li>
+        <li><a href="#常用模块示例">常用模块示例</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了 Ansible 常用模块的用法。</p>
-<h3 id="heading">模块相关命令</h3>
+<h3 id="模块相关命令">模块相关命令</h3>
 <p>（1）列出 ansible 支持的模块</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -273,8 +273,8 @@
 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">常用模块示例</h3>
-<h4 id="ping-">ping 模块</h4>
+</div><h3 id="常用模块示例">常用模块示例</h3>
+<h4 id="ping-模块">ping 模块</h4>
 <p>检查指定节点机器能否连通，如果主机在线，则回复pong。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -295,7 +295,7 @@
 [root@xdhuxc ~]#
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="commandscriptshell">远程命令模块（command、script、shell）</h5>
+</div><h5 id="远程命令模块commandscriptshell">远程命令模块（command、script、shell）</h5>
 <p>command 作为 ansible 的默认模块，可以运行远程权限范围所有的 shell 命令，不支持管道符。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -510,7 +510,7 @@ Hello World!
 
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="copy-">copy 模块</h5>
+</div><h5 id="copy-模块">copy 模块</h5>
 <p>copy 模块用于实现主控端向目标机器复制文件，类似于 scp 功能。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -595,7 +595,7 @@ xdhuxc.sh
 xdhuxc.sh
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="stat-">stat 模块</h5>
+</div><h5 id="stat-模块">stat 模块</h5>
 <p>stat 模块用于获取远程文件状态信息，atime/ctime/mtime/md5/uid/gid等信息。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -714,7 +714,7 @@ xdhuxc.sh
 </code></pre></td></tr></table>
 </div>
 </div><p>显示了 /etc/sysctl.conf 文件的所有状态信息。</p>
-<h5 id="get-url-">get_url 模块</h5>
+<h5 id="get_url-模块">get_url 模块</h5>
 <p>get_url 模块可以实现从远程主机下载指定 URL 到本地，支持 sha256sum 文件教验。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -778,7 +778,7 @@ ansible_EsBCHn
 index.html                              # 下载下来的文件
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="yum-">yum 模块</h5>
+</div><h5 id="yum-模块">yum 模块</h5>
 <p>yum 模块用于实现软件包管理。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -835,7 +835,7 @@ index.html                              # 下载下来的文件
 </code></pre></td></tr></table>
 </div>
 </div><p>从 msg 和 results 输出的信息可以看到，这就是一个 yum 安装软件包的过程。</p>
-<h5 id="cron-">cron 模块</h5>
+<h5 id="cron-模块">cron 模块</h5>
 <p>cron 模块用于配置远程主机 crontab
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -881,7 +881,7 @@ index.html                              # 下载下来的文件
 [root@xdhuxc ~]#
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="service-">service 模块</h5>
+</div><h5 id="service-模块">service 模块</h5>
 <p>service 模块可以用来管理远程主机的系统服务。
 例如：</p>
 <div class="highlight"><div class="chroma">
@@ -1565,7 +1565,7 @@ Jun 11 23:19:46 xdhuxc systemd[1]: Starting HAProxy Load Balancer...
 Jun 11 23:19:46 xdhuxc haproxy-systemd-wrapper[2351]: haproxy-systemd-wrapper: executing /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="user-">user 模块</h5>
+</div><h5 id="user-模块">user 模块</h5>
 <p>user 模块用来进行远程主机用户的管理。
 例如：</p>
 <div class="highlight"><div class="chroma">

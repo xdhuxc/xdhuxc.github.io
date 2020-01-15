@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/" />
@@ -143,13 +143,13 @@
     <li>
       <ul>
         <li><a href="#modulenotfounderror-no-module-named-crypto">ModuleNotFoundError: No module named &lsquo;Crypto&rsquo;</a></li>
-        <li><a href="#python--docker--print-">Python 环境的 Docker 容器看不到 print() 函数的输出</a></li>
-        <li><a href="#heading">脚本运行时间长</a></li>
+        <li><a href="#python-环境的-docker-容器看不到-print-函数的输出">Python 环境的 Docker 容器看不到 print() 函数的输出</a></li>
+        <li><a href="#脚本运行时间长">脚本运行时间长</a></li>
         <li><a href="#valueerror-embedded-null-byte">ValueError: embedded null byte</a></li>
         <li><a href="#xe8xb4xbexe5xbfx97xe7x8cx9b">\xe8\xb4\xbe\xe5\xbf\x97\xe7\x8c\x9b</a></li>
         <li><a href="#ascii-codec-cant-decode-byte-0xe4-in-position-40-ordinal-not-in-range128">&lsquo;ascii&rsquo; codec can't decode byte 0xe4 in position 40: ordinal not in range(128)</a></li>
-        <li><a href="#json-dumps-">json dumps 字典数据时出现乱码</a></li>
-        <li><a href="#docker-logs--print-">docker logs 命令却不见 print() 函数的输出内容</a></li>
+        <li><a href="#json-dumps-字典数据时出现乱码">json dumps 字典数据时出现乱码</a></li>
+        <li><a href="#docker-logs-命令却不见-print-函数的输出内容">docker logs 命令却不见 print() 函数的输出内容</a></li>
       </ul>
     </li>
   </ul>
@@ -201,13 +201,13 @@ ModuleNotFoundError: No module named &#39;Crypto&#39;
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">from Cryptodome.Cipher import AES
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="python--docker--print-">Python 环境的 Docker 容器看不到 print() 函数的输出</h3>
+</div><h3 id="python-环境的-docker-容器看不到-print-函数的输出">Python 环境的 Docker 容器看不到 print() 函数的输出</h3>
 <p>编写 python 脚本，使用 docker 容器运行，启动命令为 <code>ENTRYPOINT [&quot;python3&quot;, &quot;/usr/local/bin/test.py&quot;]</code>，容器启动正常，脚本执行正常，但是使用 <code>docker logs</code> 命令却不见 <code>print()</code> 函数的输出内容。
 原因：</p>
 <p>python 的缓存机制，stdout 和 stderr 默认都是指向屏幕的，但 stderr 是无缓存的，程序向 stderr 输出的字符，会直接打印到屏幕上。而 stdout 是有缓存的，只有遇到换行或积累到一定的大小，才会输出到屏幕上。</p>
 <p>解决：</p>
 <p>python 命令后面加上 <code>-u</code> （unbuffered）参数，强制其标准输出不通过缓存，直接打印到屏幕上。所以，将 <code>Dockerfile</code> 中的 <code>ENTRYPOINT</code> 命令改写为：<code>ENTRYPOINT [&quot;python3&quot;, &quot;-u&quot;, &quot;/usr/local/bin/test.py&quot;]</code></p>
-<h3 id="heading">脚本运行时间长</h3>
+<h3 id="脚本运行时间长">脚本运行时间长</h3>
 <p>python 程序运行时间特别长，一个脚本运行了一个小时才出结果，使用 line_profiler 进行分析，发现在迭代时使用了 hasattr() 进行属性存在判断，导致占用时间特别长。</p>
 <h3 id="valueerror-embedded-null-byte">ValueError: embedded null byte</h3>
 <p>执行脚本时，报错如下：</p>
@@ -275,7 +275,7 @@ ValueError: embedded null byte
 sys.setdefaultencoding(&#39;utf-8&#39;)  # 设置 &#39;utf-8&#39;
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="json-dumps-">json dumps 字典数据时出现乱码</h3>
+</div><h3 id="json-dumps-字典数据时出现乱码">json dumps 字典数据时出现乱码</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -287,7 +287,7 @@ otp\u3002&#34;, &#34;code&#34;: 4}
 </code></pre></td></tr></table>
 </div>
 </div><p>解决：添加 ensure_ascii=False 参数，ensure_ascii=True 保证 dumps() 之后的结果里所有的字符都能够被 ascii 表示，因此经过 dumps() 以后的str里，汉字会变成对应的 unicode。因此，当字典中含有中文时，一定要使用 ensure_ascii=False。</p>
-<h3 id="docker-logs--print-"><code>docker logs</code> 命令却不见 <code>print()</code> 函数的输出内容</h3>
+<h3 id="docker-logs-命令却不见-print-函数的输出内容"><code>docker logs</code> 命令却不见 <code>print()</code> 函数的输出内容</h3>
 <p>编写 python 脚本，使用 docker 容器运行，启动命令为 <code>ENTRYPOINT [&quot;python3&quot;, &quot;/usr/local/bin/test.py&quot;]</code>，容器启动正常，脚本执行正常，但是使用 <code>docker logs</code> 命令却不见 <code>print()</code> 函数的输出内容。</p>
 <p>原因：python 的缓存机制，stdout 和 stderr 默认都是指向屏幕的，但 stderr 是无缓存的，程序向 stderr 输出的字符，会直接打印到屏幕上。而 stdout 是有缓存的，只有遇到换行或积累到一定的大小，才会输出到屏幕上。</p>
 <p>解决：python 命令后面加上 <code>-u</code> （unbuffered）参数，强制其标准输出不通过缓存，直接打印到屏幕上。所以，将 <code>Dockerfile</code> 中的 <code>ENTRYPOINT</code> 命令改写为：<code>ENTRYPOINT [&quot;python3&quot;, &quot;-u&quot;, &quot;/usr/local/bin/test.py&quot;]</code></p>

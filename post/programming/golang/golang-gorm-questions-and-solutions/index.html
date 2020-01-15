@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-gorm-questions-and-solutions/" />
@@ -143,11 +143,11 @@
     <li>
       <ul>
         <li><a href="#error-1062-duplicate-entry-viewer-for-key-name">Error 1062: Duplicate entry &lsquo;viewer&rsquo; for key &lsquo;name&rsquo;</a></li>
-        <li><a href="#desc--mysql-">desc 是 MySQL 关键字</a></li>
-        <li><a href="#count-">Count 方法的使用</a></li>
-        <li><a href="#-restfulrequestreadentity--json-">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</a></li>
-        <li><a href="#range-">range 的数据复制</a></li>
-        <li><a href="#gorm-">GORM 注意事项</a></li>
+        <li><a href="#desc-是-mysql-关键字">desc 是 MySQL 关键字</a></li>
+        <li><a href="#count-方法的使用">Count 方法的使用</a></li>
+        <li><a href="#使用-restfulrequestreadentity-方法读取-json-格式数据到结构体中时出现如下错误">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</a></li>
+        <li><a href="#range-的数据复制">range 的数据复制</a></li>
+        <li><a href="#gorm-注意事项">GORM 注意事项</a></li>
       </ul>
     </li>
   </ul>
@@ -335,7 +335,7 @@ func (s *DB) Model(value interface{}) *DB {
 </code></pre></td></tr></table>
 </div>
 </div><p>从该方法的注释来看，如果使用 &amp;User{}，那么将会更新数据库的所有记录的相同字段为同样的值，如果设置某个字段为 unique，那么当记录数超过一条时，肯定会产生重复的字段值从而导致错误。而实际上，我们的目的是第二种，使用 &amp;user，以主键作为条件更新一条记录。所以，使用 GORM 的 Update 方法时，不要传入指向结构体的指针，而应该传入指向结构体变量的指针。</p>
-<h3 id="desc--mysql-">desc 是 MySQL 关键字</h3>
+<h3 id="desc-是-mysql-关键字">desc 是 MySQL 关键字</h3>
 <p>更新数据时，后台 API 返回的错误为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -365,7 +365,7 @@ func (s *DB) Model(value interface{}) *DB {
 </code></pre></td></tr></table>
 </div>
 </div><p>当然，设计数据库字段名称时，最好不要和 MySQL 数据库关键字冲突，但是如果已经使用了 MySQL 数据库关键字，可以使用反引号将该字段名称括起来，这样也可以操作成功。</p>
-<h3 id="count-">Count 方法的使用</h3>
+<h3 id="count-方法的使用">Count 方法的使用</h3>
 <p>Count() 方法一般用于分页时统计总记录数，但是和 Where() 方法连用时，情况会有些不同。对于如下代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -437,7 +437,7 @@ func (s *DB) Model(value interface{}) *DB {
 [4 rows affected or returned ] 
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-restfulrequestreadentity--json-">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</h3>
+</div><h3 id="使用-restfulrequestreadentity-方法读取-json-格式数据到结构体中时出现如下错误">使用 *restful.Request.ReadEntity 方法读取 JSON 格式数据到结构体中时，出现如下错误：</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -447,7 +447,7 @@ func (s *DB) Model(value interface{}) *DB {
 </code></pre></td></tr></table>
 </div>
 </div><p>原因：输入格式有错误，将 JSON 格式中 bool 值写成了 字符串 true，改为 JSON 格式的 bool 值即可解决该问题。</p>
-<h3 id="range-">range 的数据复制</h3>
+<h3 id="range-的数据复制">range 的数据复制</h3>
 <p>对关联的数据模型进行操作时，使用如下代码</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -508,7 +508,7 @@ for i := 0; i &lt; ugLength; i++ {
 </div>
 </div><p>则对 <code>user.RoleName</code> 的赋值在大括号外也有效。
 原因：使用 <code>range</code> 循环非指针型数组时，实际上是执行了深拷贝，在遍历复制出来的数据，原来的数据并没有改变。</p>
-<h3 id="gorm-">GORM 注意事项</h3>
+<h3 id="gorm-注意事项">GORM 注意事项</h3>
 <p>1、如果数据记录不存在，使用 Delete() 方法删除该记录，result.Error 返回值为 nil。</p>
 <p>2、GORM 中默认使用 id 为主键进行删除和修改，如果自定义数据库主键名称，可能会导致删除和修改操作失败。</p>
     </div>

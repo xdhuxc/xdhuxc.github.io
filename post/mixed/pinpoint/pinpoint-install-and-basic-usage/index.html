@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/pinpoint/pinpoint-install-and-basic-usage/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">前提条件</a></li>
-        <li><a href="#-pinpoint-">部署 Pinpoint 组件</a></li>
-        <li><a href="#heading-1">部署测试应用</a></li>
-        <li><a href="#heading-2">参考资料</a></li>
+        <li><a href="#前提条件">前提条件</a></li>
+        <li><a href="#部署-pinpoint-组件">部署 Pinpoint 组件</a></li>
+        <li><a href="#部署测试应用">部署测试应用</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,8 +154,8 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了 Pinpoint 的部署和使用。</p>
-<h1 id="-pinpoint">部署 Pinpoint</h1>
-<h3 id="heading">前提条件</h3>
+<h1 id="部署-pinpoint">部署 Pinpoint</h1>
+<h3 id="前提条件">前提条件</h3>
 <p>1、安装 JAVA，并配置 JAVA_HOME</p>
 <p>2、下载 pinpoint 安装包（https://github.com/naver/pinpoint/releases）</p>
 <ul>
@@ -174,8 +174,8 @@
 </ul>
 <p>5、机器配置：
 8C-16G-500G</p>
-<h3 id="-pinpoint-">部署 Pinpoint 组件</h3>
-<h4 id="-hbase">部署 hbase</h4>
+<h3 id="部署-pinpoint-组件">部署 Pinpoint 组件</h3>
+<h4 id="部署-hbase">部署 hbase</h4>
 <p>1）启动 hbase 并检查启动状态</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -245,7 +245,7 @@ hbase                 hbase-config.cmd  hbase-daemons.sh    local-regionservers.
 status &#39;detailed&#39;
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="-pinpoint-collector">部署 Pinpoint-collector</h4>
+</div><h4 id="部署-pinpoint-collector">部署 Pinpoint-collector</h4>
 <p>1）将 pinpoint-collector-1.8.0.war 复制到 apache-tomcat-9.0.12/webapps/ 目录下，修改 pinpoint-collector-1.8.0/WEB-INF/classes 目录下的文件 hbase.properties，
 修改如下内容：</p>
 <div class="highlight"><div class="chroma">
@@ -259,7 +259,7 @@ hbase.client.port=2181
 </code></pre></td></tr></table>
 </div>
 </div><p>指向 zookeeper 的地址和端口。如果是本机，localhost建议改为本地外网IP地址，端口默认，则这里无需更改。</p>
-<h4 id="-pinpoint-web">部署 Pinpoint-web</h4>
+<h4 id="部署-pinpoint-web">部署 Pinpoint-web</h4>
 <p>1）将 pinpoint-web-1.8.0.war 复制到 apache-tomcat-9.0.12/webapps/ 目录下，修改 pinpoint-web-1.8.0/WEB-INF/classes 目录下的文件 hbase.properties，
 修改如下内容：</p>
 <div class="highlight"><div class="chroma">
@@ -273,7 +273,7 @@ hbase.client.port=2181
 </code></pre></td></tr></table>
 </div>
 </div><p>指向 zookeeper 的地址和端口。如果是本机，localhost建议改为本机外网IP地址，端口默认，则这里无需更改。</p>
-<h4 id="-pinpoint-agent">部署 Pinpoint-Agent</h4>
+<h4 id="部署-pinpoint-agent">部署 Pinpoint-Agent</h4>
 <p>1）创建目录 pinpoint-agent 并解压 pinpoint-agent-1.8.0.tar.gz 到该目录下</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -295,7 +295,7 @@ hbase.client.port=2181
 </div><p>这是指 pinpoint-collector 的地址，如果是同一服务器，可保持默认，建议修改为本机外网IP地址。</p>
 <p>3）安装 pinpoint-collector 启动后，自动就开启了9994，9995，9996的端口了，这里默认即可。
 如果有端口需求，要去 pinpoint-collector 的配置文件 pinpoint-collector-1.8.0/WEB-INF/classes/pinpoint-collector.properties 中，修改这些端口。</p>
-<h3 id="heading-1">部署测试应用</h3>
+<h3 id="部署测试应用">部署测试应用</h3>
 <p>1）修改 tomcat 的 catalina.sh 文件，加入如下内容</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -327,7 +327,7 @@ CATALINA_OPTS=&#34;$CATALINA_OPTS -Dpinpoint.applicationName=XdhuxcAPP&#34;
 docs  examples  host-manager  jenkins  jenkins.war  manager  pinpoint-collector  pinpoint-web  ROOT
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="-spring-boot-">部署 spring boot 项目</h4>
+</div><h4 id="部署-spring-boot-项目">部署 spring boot 项目</h4>
 <p>如果是以 jar 包方式部署 spring boot 项目，直接在启动命令中添加启动参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -338,14 +338,14 @@ docs  examples  host-manager  jenkins  jenkins.war  manager  pinpoint-collector 
 </code></pre></td></tr></table>
 </div>
 </div><p>在 apache-tomcat-9.0.12/webapps 目录下放置要监控的应用程序 war 包，然后启动 tomcat。</p>
-<h4 id="-pinpoint--1">访问 Pinpoint 管理页面</h4>
+<h4 id="访问-pinpoint-管理页面">访问 Pinpoint 管理页面</h4>
 <p>访问如下路径：</p>
 <p>http://172.20.26.149:8080/pinpoint-web</p>
 <p>如下图所示：</p>
 <center>
 <img src="/image/mixed/pinpoint/pinpoint.png" width="800px" height="300px" />
 </center>
-<h3 id="heading-2">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="https://blog.csdn.net/heyeqingquan/article/details/74456591">https://blog.csdn.net/heyeqingquan/article/details/74456591</a></p>
 <p><a href="http://naver.github.io/pinpoint/1.8.0/main.html">http://naver.github.io/pinpoint/1.8.0/main.html</a></p>
     </div>

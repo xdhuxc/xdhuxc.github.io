@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-gb2312-to-utf8/" />
@@ -142,7 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">参考资料</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -199,7 +199,7 @@ func main() {
 </div>
 </div><p>注意，GBK 不要写为 GB2312，由于 GBK 兼容 GB2312，所以使用 GB2312 编码的汉字可以直接使用 GBK 进行解码。</p>
 <p>不要使用 <code>github.com/djimenez/iconv-go</code> 包，此包中使用了 C 库，在本地（macOS Mojave 10.14.6）可以运行，但在交叉编译时会出问题，其编写的程序到其他平台运行会比较麻烦。</p>
-<h3 id="heading">参考资料</h3>
+<h3 id="参考资料">参考资料</h3>
 <p><a href="http://www.haodaquan.com/94">http://www.haodaquan.com/94</a></p>
 <p><a href="https://github.com/axgle/mahonia">https://github.com/axgle/mahonia</a></p>
     </div>

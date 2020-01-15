@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-common-knowledge/" />
@@ -142,11 +142,11 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">文件和目录权限</a></li>
+        <li><a href="#文件和目录权限">文件和目录权限</a></li>
         <li><a href="#ulimit">ulimit</a></li>
-        <li><a href="#heading-4">僵尸进程和孤儿进程</a></li>
-        <li><a href="#heading-5">守护进程</a></li>
-        <li><a href="#heading-6">系统平均负载</a></li>
+        <li><a href="#僵尸进程和孤儿进程">僵尸进程和孤儿进程</a></li>
+        <li><a href="#守护进程">守护进程</a></li>
+        <li><a href="#系统平均负载">系统平均负载</a></li>
         <li><a href="#vmswappiness">vm.swappiness</a></li>
       </ul>
     </li>
@@ -156,9 +156,9 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录了些 Linux 系统的常用知识。</p>
-<h3 id="heading">文件和目录权限</h3>
+<h3 id="文件和目录权限">文件和目录权限</h3>
 <p>root 默认对所有文件具有读写权限，但默认没有执行权限。</p>
-<h4 id="heading-1">目录权限知识</h4>
+<h4 id="目录权限知识">目录权限知识</h4>
 <p>对于目录来说，
 r 查看目录中的内容
 w 可以在目录中创建、删除、修改、重命名文件。
@@ -190,14 +190,14 @@ CPU 时间：ulimit -t unlimited
 </div>
 </div><p>暂时地，适用于通过 ulimit 命令登录 shell 会话期间。
 永久地，通过将一个相应的 ulimit 语句添加到由登录 shell 读取的文件中， 即特定于 shell 的用户资源文件。</p>
-<h4 id="ulimit-">ulimit 的硬限制和软限制</h4>
+<h4 id="ulimit-的硬限制和软限制">ulimit 的硬限制和软限制</h4>
 <p>硬限制使用 -H 参数，软限制使用 -S 参数。</p>
 <p>ulimit -a 看到的是软限制，可以通过 ulimit -a -H 查看其硬限制。</p>
 <p>如果 ulimit 不限定使用 -H 或 -S，此时它会同时把两类限制都改掉的。</p>
 <p>软限制可以限制用户/组对资源的使用，硬限制的作用是控制软限制。</p>
 <p>超级用户和普通用户都可以扩大硬限制，但是超级用户可以缩小硬限制，普通用户则不能缩小硬限制。</p>
 <p>硬限制设定后，设定软限制时只能是小于或者等于硬限制。</p>
-<h4 id="heading-2">解除资源限制</h4>
+<h4 id="解除资源限制">解除资源限制</h4>
 <p>1、解除 Linux 系统的最大进程数和最大文件打开数限制：</p>
 <p>在 <code>/etc/security/limits.conf</code> 中添加如下行：</p>
 <div class="highlight"><div class="chroma">
@@ -238,10 +238,10 @@ ulimit -v unlimited
 </code></pre></td></tr></table>
 </div>
 </div><p>保存后运行<code>source /etc/profile</code> 使其生效。</p>
-<h4 id="heading-3">参考资料</h4>
+<h4 id="参考资料">参考资料</h4>
 <p><a href="https://blog.csdn.net/csq_year/article/details/49304895">https://blog.csdn.net/csq_year/article/details/49304895</a></p>
 <p><a href="https://blog.csdn.net/fengspg/article/details/39646337">https://blog.csdn.net/fengspg/article/details/39646337</a></p>
-<h3 id="heading-4">僵尸进程和孤儿进程</h3>
+<h3 id="僵尸进程和孤儿进程">僵尸进程和孤儿进程</h3>
 <p>在unix/linux中，正常情况下，子进程是通过父进程创建的，子进程在创建新的进程。子进程的结束和父进程的运行是一个异步过程,即父进程永远无法预测子进程 到底什么时候结束。 当一个 进程完成它的工作终止之后，它的父进程需要调用wait()或者waitpid()系统调用取得子进程的终止状态。
 	孤儿进程：一个父进程退出，而它的一个或多个子进程还在运行，那么那些子进程将成为孤儿进程。孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。
 	僵尸进程：一个进程使用fork创建子进程，如果子进程退出，而父进程并没有调用 wait 函数或 waitpid 函数获取子进程的状态信息，那么子进程的进程描述符仍然保存在系统中。这种进程称之为僵死进程。</p>
@@ -257,11 +257,11 @@ ulimit -v unlimited
 <p>Fork两次，原理是将子进程成为孤儿进程，从而其的父进程变为init进程，通过init进程可以处理僵尸进程。</p>
 </li>
 </ol>
-<h3 id="heading-5">守护进程</h3>
+<h3 id="守护进程">守护进程</h3>
 <p>守护进程（Daemon Process），是Linux中的后台服务进程，是一个生存期较长的进程，通常独立于控制终端并且周期性地执行某种任务或等待处理某些发生的事件。</p>
 <p>守护进程是个特殊的孤儿进程，这种进程脱离终端，为什么要脱离终端呢？之所以脱离于终端是为了避免进程被任何终端所产生的信息所打断，其在执行过程中的信息也不在任何终端上显示。由于在 linux 中，每一个系统与用户进行交流的界面称为终端，每一个从此终端开始运行的进程都会依附于这个终端，这个终端就称为这些进程的控制终端，当控制终端被关闭时，相应的进程都会自动关闭。</p>
 <p>Linux 的大多数服务器就是用守护进程实现的。比如，Internet 服务器 inetd，Web 服务器 httpd 等。</p>
-<h3 id="heading-6">系统平均负载</h3>
+<h3 id="系统平均负载">系统平均负载</h3>
 <p>系统平均负载被定义为在特定时间间隔内运行队列中的平均进程数。如果一个进程满足以下条件，则其就会位于运行队列中：</p>
 <ul>
 <li>没有在等待I/O操作的结果。</li>

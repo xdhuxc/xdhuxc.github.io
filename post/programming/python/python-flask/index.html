@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-flask/" />
@@ -142,8 +142,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-flask-">安装 Flask 环境</a></li>
-        <li><a href="#flask-">Flask 程序结构</a></li>
+        <li><a href="#安装-flask-环境">安装 Flask 环境</a></li>
+        <li><a href="#flask-程序结构">Flask 程序结构</a></li>
       </ul>
     </li>
   </ul>
@@ -152,7 +152,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客详细介绍了一个使用 Flask 开发的 Python web 程序，可以作为使用 Flask 开发 web 程序的入门教程。</p>
-<h3 id="-flask-">安装 Flask 环境</h3>
+<h3 id="安装-flask-环境">安装 Flask 环境</h3>
 <p>1、Flask 依赖两个外部库： Werkzeug 和 Jinja2 。Werkzeug 是一个 WSGI 套件。 WSGI 是 Web 应用与 多种服务器之间的标准 Python 接口，即用于开发，也用于部署。 Jinja2 是用于渲染 模板的。</p>
 <p>2、virtualenv的基本原理是为每个项目安装一套 Python ，多套 Python 并存。但它不是真正地安装多套独立的 Python 拷贝，而是使用了一种巧妙的方法让不同的项目处于各自独立的环境中。使用虚拟环境可以方便地安装 Flask 并且可以在系统的 Python 解释器中避免包的混乱和版本冲突。Python 3.3 以后原生支持虚拟环境，命令为：pyvenv。</p>
 <p>1）安装虚拟 <code>Python</code> 环境，在 <code>Linux</code> 或者 <code>Windows</code> 下，使用如下命令：</p>
@@ -223,7 +223,7 @@ sudo easy_install virtualenv
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">sudo pip install flask
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="flask-">Flask 程序结构</h3>
+</div><h3 id="flask-程序结构">Flask 程序结构</h3>
 <p>1、使用 PyCharm 新建 Flask 项目后，项目结构如下图所示：</p>
 <center>
 <img src="/image/programming/python/flask/WechatIMG667.png" width="300px" height="200px" />
@@ -639,7 +639,7 @@ if <span class="gs">__name</span><span class="gs">__</span> == &#39;__main__&#39
 <center>
 <img src="/image/programming/python/flask/WechatIMG672.png" width="500px" height="200px" />
 </center>
-<h4 id="-flask--1">一个 Flask 项目的标准结构</h4>
+<h4 id="一个-flask-项目的标准结构">一个 Flask 项目的标准结构</h4>
 <p>Flask 项目有四个顶级目录：</p>
 <ul>
 <li>app：Flask程序保存在此目录中。</li>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-docker--dynamodb">使用 docker 本地部署 DynamoDB</a></li>
-        <li><a href="#-dynamodb">使用命令行操作 DynamoDB</a></li>
-        <li><a href="#-golang--dynamodb">使用 golang 操作 DynamoDB</a></li>
-        <li><a href="#heading">参考资料</a></li>
+        <li><a href="#使用-docker-本地部署-dynamodb">使用 docker 本地部署 DynamoDB</a></li>
+        <li><a href="#使用命令行操作-dynamodb">使用命令行操作 DynamoDB</a></li>
+        <li><a href="#使用-golang-操作-dynamodb">使用 golang 操作 DynamoDB</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -155,7 +155,7 @@
     <div class="post-content">
       <p>本篇博客记录下使用 AWS DynamoDB 过程中用到的一些知识和技术点，以备后需。</p>
 <p>Amazon DynamoDB 是一个键/值和文档数据库，可以在任何规模的环境中提供个位数的毫秒级性能。它是一个完全托管的多区域多主数据库，具有适用于 Internet 规模的应用程序的内置安全性、备份和恢复和内存缓存。DynamoDB 每天可处理超过 10 万亿个请求，并可支持每秒超过 2000 万个请求的峰值。</p>
-<h3 id="-docker--dynamodb">使用 docker 本地部署 DynamoDB</h3>
+<h3 id="使用-docker-本地部署-dynamodb">使用 docker 本地部署 DynamoDB</h3>
 <p>使用 docker 容器本地部署 DynamoDB 实例</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -165,7 +165,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d -p 8000:8000 amazon/dynamodb-local
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-dynamodb">使用命令行操作 DynamoDB</h3>
+</div><h3 id="使用命令行操作-dynamodb">使用命令行操作 DynamoDB</h3>
 <p>执行 aws 命令前，需要在 ~/.aws/credentials 中配置访问 DynamoDB 的 Access Key 和 Secret Key，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -262,7 +262,7 @@ aws dynamodb put-item --table-name xdhuxc \
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">aws dynamodb scan --table-name xdhuxc --endpoint-url http://localhost:8000
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-golang--dynamodb">使用 golang 操作 DynamoDB</h3>
+</div><h3 id="使用-golang-操作-dynamodb">使用 golang 操作 DynamoDB</h3>
 <p>可以使用 AWS 提供的 golang SDK 来操作 DynamoDB，实现在我们的程序内部对 DynamoDB 的调用。</p>
 <p>注意，执行批量操作时，有数据量限制，每次只能增删 25 条数据，多余的将会报错（BatchLimit = 25）。</p>
 <p>1、创建 dynamodb 客户端，对 DynamoDB 的操作都要使用该客户端来进行。</p>
@@ -678,7 +678,7 @@ aws dynamodb put-item --table-name xdhuxc \
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://hub.docker.com/r/amazon/dynamodb-local">https://hub.docker.com/r/amazon/dynamodb-local</a></p>
 <p><a href="https://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html">https://docs.aws.amazon.com/zh_cn/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html</a></p>
 <p><a href="https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/">https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/</a></p>

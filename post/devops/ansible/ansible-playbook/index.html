@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/ansible/ansible-playbook/" />
@@ -162,7 +162,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">ansible-playbook ./xdhuxc-play.yaml # 执行 xdhuxc-play.yaml 文件
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="heading">简单示例</h4>
+</div><h4 id="简单示例">简单示例</h4>
 <p>下面是一个简单的 ansible-playbook 的示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -207,7 +207,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">user: name=&#34;{{user}}&#34; state=absent remove=yes
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="-playbook--apache-">通过 PlayBook 安装 Apache 示例</h4>
+</div><h4 id="通过-playbook-安装-apache-示例">通过 PlayBook 安装 Apache 示例</h4>
 <p>通过 ansible-playbook 实现对多台主机同时安装 apache。需要注意的是，多台被管理主机的操作系统可能不同，从而apache包名不同。假设同时存在 CentOS 和 Debian 两种操作系统。具体 PlayBook 内容如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -246,7 +246,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>以上 playbook 使用了 when 语句，同时也开启了 gather_facts setup 模块，这里的 ansible_os_family 变量就是直接使用 setup 模块获取的信息。如果有大量主机，就在运行的时候加上 -f 选项，然后指定一个合适的并发主机数量即可。</p>
-<h4 id="playbook-">PlayBook 的构成</h4>
+<h4 id="playbook-的构成">PlayBook 的构成</h4>
 <p>playbook 是由一个或多个 play 组成的列表，play 的主要功能在于将事先归并为一组的主机修饰成通过 ansible 中的 task 定义好的角色。从根本上来讲，task 其实就是调用 ansible 的一个 module。将多个 play 组织在一个 playbook 中，即可让他们联动起来按照事先编排的顺序共同完成任务。</p>
 <p>PlayBook 主要由以下四部分组成：</p>
 <ul>
@@ -263,7 +263,7 @@
 <li>files 文件</li>
 <li>template 模板</li>
 </ul>
-<h5 id="hosts--users">Hosts 和 Users</h5>
+<h5 id="hosts-和-users">Hosts 和 Users</h5>
 <p>PlayBook 中的每一个 play 的目的都是为了让某个或某些主机以某个指定的用户身份执行任务。</p>
 <ul>
 <li>hosts：用于指定要执行指定任务的主机，可以是一个或多个由冒号分隔的主机组。</li>
@@ -291,7 +291,7 @@
     sudo: yes
 </code></pre></td></tr></table>
 </div>
-</div><h5 id="-action">任务列表和 Action</h5>
+</div><h5 id="任务列表和-action">任务列表和 Action</h5>
 <p>play 的主体部分是任务列表。任务列表中的各任务按次序逐个在 hosts 中指定的所有主机上执行，即在所有主机上完成第一个任务后，再开始第二个。在自上而下运行某 playbook 时，如果中途发生错误，所有已执行任务都将回滚。因此，发生错误时，修正 playbook 后重新执行一次即可。</p>
 <p>task 的目的是使用指定的参数执行模块，而在模块参数中可以使用变量。模块执行是幂等的，这意味着多次执行是安全的，因为其结果均一致。每个 task 都应该有其 name，用于 playbook 的执行结果输出，建议其内容尽可能清晰地描述任务执行步骤。如果未提供 name，则 action 的结果将用于输出。</p>
 <p>定义 task 的可以使用 &ldquo;action: module options&rdquo; 或 &ldquo;module: options&rdquo; 的格式，推荐使用后者以实现向后兼容。如果 action 一行的内容过多，也可以使用在行首使用几个空白字符进行换行。</p>
@@ -404,7 +404,7 @@
 </div>
 </div><h5 id="tags">tags</h5>
 <p>tags 用于让用户选择运行或略过 playbook 中的部分代码。ansible 具有幂等性，因此会自动跳过没有变化的部分，即便如此，有些代码为测试其确实没有发生变化的时间依然会非常地长。此时，如果确信其没有变化就可以通过 tags 跳过这些代码片段。</p>
-<h5 id="-playbook-">完整的 PlayBook 示例</h5>
+<h5 id="完整的-playbook-示例">完整的 PlayBook 示例</h5>
 <p>/etc/ansible/hosts 文件配置如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

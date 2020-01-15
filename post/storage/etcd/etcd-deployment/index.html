@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/storage/etcd/etcd-deployment/" />
@@ -142,10 +142,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#-docker--etcd">基于 docker 方式部署 etcd</a></li>
-        <li><a href="#-yum--etcd">使用 yum 安装 etcd</a></li>
-        <li><a href="#-etcd">集群方式部署 etcd</a></li>
-        <li><a href="#heading">参考资料</a></li>
+        <li><a href="#基于-docker-方式部署-etcd">基于 docker 方式部署 etcd</a></li>
+        <li><a href="#使用-yum-安装-etcd">使用 yum 安装 etcd</a></li>
+        <li><a href="#集群方式部署-etcd">集群方式部署 etcd</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
 </div>
     <div class="post-content">
       <p>本篇博客介绍了几种常用的部署 etcd 的方法。</p>
-<h3 id="-docker--etcd">基于 docker 方式部署 etcd</h3>
+<h3 id="基于-docker-方式部署-etcd">基于 docker 方式部署 etcd</h3>
 <p>1、拉取 etcd 镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -205,7 +205,7 @@
     --initial-cluster-state new
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-yum--etcd">使用 yum 安装 etcd</h3>
+</div><h3 id="使用-yum-安装-etcd">使用 yum 安装 etcd</h3>
 <p>1、使用 yum 直接安装 etcd</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -233,7 +233,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl status etcd
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="-etcd">集群方式部署 etcd</h3>
+</div><h3 id="集群方式部署-etcd">集群方式部署 etcd</h3>
 <p>三台机器的基本信息</p>
 <table>
 <thead>
@@ -416,7 +416,7 @@ THIS_IP=${HOST_3_IP}
     --initial-advertise-peer-urls http://${THIS_IP}
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p>Github <a href="https://github.com/etcd-io/etcd/releases">https://github.com/etcd-io/etcd/releases</a></p>
 <p>镜像下载地址 <a href="https://quay.io/repository/coreos/etcd?tag=latest&amp;tab=tags">https://quay.io/repository/coreos/etcd?tag=latest&amp;tab=tags</a></p>
 <p>镜像使用地址 <a href="https://github.com/coreos/etcd/blob/master/Documentation/op-guide/container.md#docker">https://github.com/coreos/etcd/blob/master/Documentation/op-guide/container.md#docker</a></p>

@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.61.0 with theme even" />
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/golang/golang-glog/" />
@@ -142,9 +142,9 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#heading">基本使用</a></li>
-        <li><a href="#heading-1">注意事项</a></li>
-        <li><a href="#heading-2">参考资料</a></li>
+        <li><a href="#基本使用">基本使用</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+        <li><a href="#参考资料">参考资料</a></li>
       </ul>
     </li>
   </ul>
@@ -154,7 +154,7 @@
     <div class="post-content">
       <p>本篇博客记录下在 golang 中使用 glog 的方式，在一些项目中可能会用到，有些地方需要注意。</p>
 <p>golang/glog 是 google/glog 的 Go 版本实现，基本上实现了原生 glog 的日志格式。在 Kubernetes 中，glog 是默认日志库。</p>
-<h3 id="heading">基本使用</h3>
+<h3 id="基本使用">基本使用</h3>
 <p>glog 将日志级别分为 4 种，分别是：</p>
 <ul>
 <li>INFO：普通日志；</li>
@@ -229,7 +229,7 @@ func main() {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-1">注意事项</h3>
+</div><h3 id="注意事项">注意事项</h3>
 <p>1、默认的日志等级为 2，也就是错误日志及严重错误日志才会输出，因此本地运行时，INFO 和 WARNING 级别的日志不会输出，要想让其输出，需要加入如下参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -248,7 +248,7 @@ func main() {
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">CMD [&#34;xdhuxc-checker&#34;, &#34;--config&#34;, &#34;/etc/xdhuxc/config.prod.yaml&#34;, &#34;--v&#34;, &#34;2&#34;, &#34;--logtostderr&#34;, &#34;true&#34;]
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="heading-2">参考资料</h3>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://zhengyinyong.com/glog-internal.html">https://zhengyinyong.com/glog-internal.html</a></p>
     </div>
 
