@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Kubernetes 常见问题及解决 - xdhuxc</title>
+  <title>JVM 参数详解 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/kubernetes/kubernetes-questions-and-solutions/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/programming/java/java-jvm-parameter/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Kubernetes 常见问题及解决" />
-<meta property="og:description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。" />
+<meta property="og:title" content="JVM 参数详解" />
+<meta property="og:description" content="本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/kubernetes/kubernetes-questions-and-solutions/" />
-<meta property="article:published_time" content="2018-11-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2018-11-18T00:00:00+00:00" />
-<meta itemprop="name" content="Kubernetes 常见问题及解决">
-<meta itemprop="description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。">
-<meta itemprop="datePublished" content="2018-11-17T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-11-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="766">
+<meta property="og:url" content="https://xdhuxc.github.io/post/programming/java/java-jvm-parameter/" />
+<meta property="article:published_time" content="2018-11-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-12-22T00:00:00+00:00" />
+<meta itemprop="name" content="JVM 参数详解">
+<meta itemprop="description" content="本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。">
+<meta itemprop="datePublished" content="2018-11-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="791">
 
 
 
-<meta itemprop="keywords" content="Kubernetes," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Kubernetes 常见问题及解决"/>
-<meta name="twitter:description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。"/>
+<meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JVM 参数详解"/>
+<meta name="twitter:description" content="本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,14 +122,14 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Kubernetes 常见问题及解决</h1>
+      <h1 class="post-title">JVM 参数详解</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-11-17 </span>
+        <span class="post-time"> 2018-11-22 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 766 字 </span>
+          <span class="more-meta"> 约 791 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -138,89 +138,92 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#堆大小设置">堆大小设置</a></li>
+        <li><a href="#配置含义">配置含义</a></li>
+        <li><a href="#jvm参数">JVM参数</a></li>
+        <li><a href="#远程调试">远程调试</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。</p>
-<p>1、使用 kubectl 命令时，要求输入用户名和密码</p>
-<p>解决：删除 ~/.kube 目录下的 config 文件。</p>
-<p>2、kubernetes 禁用 Swap 的原因</p>
-<p>当前的 QOS 策略都是假定主机不启用内存 Swap。如果主机启用了 Swap，那么 QOS 策略可能会失效。</p>
-<p>例如，两个 Pod 都刚好达到了内存限制上限，由于内存 Swap 机制，它们还可以继续申请使用更多内存，如果 Swap 空间不足，那么最终这两个 Pod 中的进程可能会被杀掉。</p>
-<p>目前 Kubernetes 和 Docker 尚不支持内存 Swap 空间的隔离机制。</p>
-<p>3、在node节点上使用kubectl命令时，报错如下：</p>
+      <p>本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。</p>
+<h3 id="堆大小设置">堆大小设置</h3>
+<p>JVM中最大堆大小有三方面限制：</p>
+<p>1、相关操作系统的数据模型（32位机器还是64位机器）限制，32位系统下，一般限制在1.5G~2G，64位操作系统对内存无限制。
+2、系统的可用虚拟内存限制。
+3、系统的可用物理内存限制。</p>
+<h3 id="配置含义">配置含义</h3>
+<p>-server：服务器模式</p>
+<p>-Xms1024M 为 JVM 启动时分配的堆内存，一般和Xmx配置成一样，以避免每次GC后JVM重新分配内存。比如，-Xms200M，表示分配200M</p>
+<p>-Xmx1024 为 JVM 运行过程中分配的最大堆内存，按需分配。比如，-Xmx1024M，表示 JVM 进程最多只能够占用 1024M 内存。</p>
+<p>-Xss256K 为 JVM 启动的每个线程分配的堆栈内存大小，默认JDK1.4中是256K，JDK1.5+中是1M。</p>
+<p>-XX:+DisableExplicitGC：忽略手动调用GC，System.gc()的调用就会变成一个空调用，不会触发GC。</p>
+<h3 id="jvm参数">JVM参数</h3>
+<p>-XX 参数被称为不稳定参数，此类参数的设置很容易引起JVM性能上的差异</p>
+<p>不稳定参数语法规则：</p>
+<p>1、布尔类型</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-172 ~]# kubectl get nodes
-The connection to the server localhost:8080 was refused - did you specify the right host or port?
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">-XX:+&lt;option&gt; &#34;+&#34;表示启用该选项
+-XX:+&lt;option&gt; &#34;-&#34;表示关闭该选项
 </code></pre></td></tr></table>
 </div>
-</div><p>由提示可知，kubectl找不到master节点，所以，需要设置参数，让它找到master。</p>
-<p>解决：</p>
-<p>1）在node节点的/etc/profile文件中加入如下环境变量：</p>
+</div><p>2、数字类型</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">export KUBERNETES_MASTER=http://192.168.91.128:8080
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">-XX:&lt;option&gt;=&lt;number&gt; # 可跟随单位，例如，“m”或“M”表示兆字节，“k”或“K”表示千字节，“g”或“G”表示千兆字节。32K与32768是相同大小的。
 </code></pre></td></tr></table>
 </div>
-</div><p>然后执行 <code>source /etc/profile</code> 或 <code>. /etc/profile</code> 命令使配置生效。</p>
-<p>192.168.91.128为kubernetes集群master节点的IP地址。</p>
-<p>2）在执行kubectl命令时，在命令中指定master的IP地址，如下所示：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-172 ~]# kubectl -s http://172.20.27.207:8080 get nodes
-NAME                STATUS    ROLES     AGE       VERSION
-k8s-172.20.27.208   Ready     ingress   5h        v1.8.4
-k8s-master          Ready     master    1d        v1.8.4
-</code></pre></td></tr></table>
-</div>
-</div><p>3）在 ~/.kube/config 中配置 kubectl 访问 API server 的地址</p>
+</div><p>3、字符串类型</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir ~/.kube/ &amp;&amp; \cp -f /etc/kubernetes/admin.conf ~/.kube/config
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">-XX:&lt;option&gt;=&lt;string&gt; # 通常用于指定一个文件、路径或一系列命令列表，例如：-XX:HeapDumpPath=./dump.core
 </code></pre></td></tr></table>
 </div>
-</div><p>4）在 /etc/kubernetes/admin.conf 中配置 kubectl 访问 API server 的地址</p>
-<p>4、删除 pod 后，pod 一直处于 Terminating 状态，可以使用如下方法删除</p>
-<p>1）强制删除该 pod</p>
+</div><h3 id="远程调试">远程调试</h3>
+<p>远程调试时，添加如下JVM参数：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl delete pod aym91ga9-5c7c8ccc94-lfrfb -n c87e2267-1001-4c70-bb2a-ab41f3b81aa3 --grace-period=0 --force
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">-Xdebug -Xrunjdwp:transport:dt_socket,address=8899,server=y,suspend=n
 </code></pre></td></tr></table>
 </div>
-</div><p>2）删除该 pod 所在的 namespace</p>
+</div><p>参数说明：</p>
+<ul>
+<li>transport：debugee 与 debuger 调试时之间的通讯数据传输方式。</li>
+<li>server：是否监听 debuger 的调试请求。</li>
+<li>suspend：是否等待启动，也即，设置是否在 debuger 调试连接建立后才启动 debugee JVM。</li>
+<li>address：debugee的地址，用于 debuger 建立调试连接。</li>
+</ul>
+<p>远程调试时，JAVA_OPTS 设置示例：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl delete namespace c87e2267-1001-4c70-bb2a-ab41f3b81aa3
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">JAVA_OPTS=-server -Xms1400m -Xmx1400m -Xss4096K -XX:PermSize=128m -XX:MaxPermSize=256m -Duser.timezone=GMT+08 -Dfile.encoding=UTF8 -Dsun.jnu.encoding=UTF8 -Djava.awt.headless=true -XX:+DisableExplicitGC -Xdebug -Xrunjdwp:transport=dt_socket,address=8899,server=y,suspend=n
 </code></pre></td></tr></table>
 </div>
-</div><p>5、删除 namespace 后，提示删除成功，但是却一直处于 Terminating 状态，
-强制删除该 namespace 下的所有 pod，然后该 namespace 将会被系统自动删除。</p>
-<p>6、应用部署完毕后，状态全部正常，但是访问却 504，</p>
-<p>注意，不要使虚拟机的 IP 地址和 calico 的子网 IP 地址一样。如果有冲突，需要进行修改 calico.yaml 中环境变量 CALICO_IPV4POOL_CIDR 的值，修改为新的子网地址，然后删除原有的 calico，ingress 和 kube-dns，依次重新创建 calico，ingress，kube-dns</p>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -231,7 +234,7 @@ k8s-master          Ready     master    1d        v1.8.4
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2018-11-18
+        2018-12-22
         
     </span>
   </p>
@@ -240,16 +243,16 @@ k8s-master          Ready     master    1d        v1.8.4
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/kubernetes/">Kubernetes</a>
+          <a href="/tags/java/">Java</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/programming/java/java-install-maven/">
+        <a class="prev" href="/post/programming/java/java-questions-and-solution/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">安装 Maven</span>
+            <span class="prev-text nav-default">Java 常见问题及解决</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/mixed/calico/calico-command/">
-            <span class="next-text nav-default">Calico 常用命令</span>
+        <a class="next" href="/post/programming/java/java-install-maven/">
+            <span class="next-text nav-default">安装 Maven</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

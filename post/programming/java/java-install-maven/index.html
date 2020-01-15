@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Java 常见问题及解决 - xdhuxc</title>
+  <title>安装 Maven - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了安装 maven 的步骤。
 " /><meta name="keywords" content="Hugo, theme, even" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/programming/java/java-install-maven/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,23 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Java 常见问题及解决" />
-<meta property="og:description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。" />
+<meta property="og:title" content="安装 Maven" />
+<meta property="og:description" content="本篇博客介绍了安装 maven 的步骤。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/programming/java/java-install-maven/" />
 <meta property="article:published_time" content="2018-11-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-12-22T00:00:00+00:00" />
-<meta itemprop="name" content="Java 常见问题及解决">
-<meta itemprop="description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。">
+<meta itemprop="name" content="安装 Maven">
+<meta itemprop="description" content="本篇博客介绍了安装 maven 的步骤。">
 <meta itemprop="datePublished" content="2018-11-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="760">
+<meta itemprop="wordCount" content="287">
 
 
 
-<meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java 常见问题及解决"/>
-<meta name="twitter:description" content="本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。"/>
+<meta itemprop="keywords" content="Java,Maven," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="安装 Maven"/>
+<meta name="twitter:description" content="本篇博客介绍了安装 maven 的步骤。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,15 +122,15 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Java 常见问题及解决</h1>
+      <h1 class="post-title">安装 Maven</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-11-22 </span>
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 760 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 287 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -142,9 +142,7 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#linux-下验证码无法显示问题">Linux 下验证码无法显示问题</a></li>
-        <li><a href="#webxml-is-missing-and-failonmissingwebxml-is-set-to-true">web.xml is missing and  is set to true</a></li>
-        <li><a href="#slf4j-failed-to-load-class-orgslf4jimplstaticloggerbinder">SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;.</a></li>
+        <li><a href="#安装-maven">安装 maven</a></li>
       </ul>
     </li>
   </ul>
@@ -152,125 +150,20 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。</p>
-<h3 id="linux-下验证码无法显示问题">Linux 下验证码无法显示问题</h3>
-<p>现象：</p>
-<p>web 应用在 windows 和 开发 Linux 服务器验证码显示正常，部署到新的生产 Linux 服务器上，验证码无法显示</p>
-<p>异常日志：</p>
+      <p>本篇博客介绍了安装 <code>maven</code> 的步骤。</p>
+<h3 id="安装-maven">安装 maven</h3>
+<p>1、下载 <code>maven</code> 安装包，下载地址为：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Can&#39;t connect to X11 window server
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://maven.apache.org/download.cgi
 </code></pre></td></tr></table>
 </div>
-</div><p>问题原因：</p>
-<p>Java 在图形处理时调用了本地的图形处理库。在利用 Java 做图形处理（比如，图片缩放、图片签名、生成报表），如果运行在 windows 上不会出问题。如果将程序移植到 Linux/Unix 上，有可能出现图形不能显示的错误，这是由于 Linux 的图形处理需要一个 X server 服务器。</p>
-<p>问题解决方法：</p>
-<p>1、检查 JDK 版本，不能使用 OpenJDK。</p>
-<p>2、在 Tomcat 中，修改 catalina.sh，加入如下行：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">JAVA_OPTS=&#34;-Djava.awt.headless=True&#34;
-</code></pre></td></tr></table>
-</div>
-</div><p>如果名字为 java.awt.headless 的系统属性被设置为 True，那么 headless 工具包就会被使用。应用程序可以执行如下操作：</p>
-<ul>
-<li>创建轻量级组件。</li>
-<li>收集关于可用的字体、字体指标和字体设置的信息。</li>
-<li>设置颜色来渲染准备图片。</li>
-<li>创造和获取图像，为渲染准备图片。</li>
-<li>使用 java.awt.PrintJob，java.awt.print.* 和 javax.print.* 类里的打印方法。</li>
-</ul>
-<p>3、在 Jetty 中，修改 jetty.sh 中 JAVA_OPTIONS 参数，加入如下内容：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">JAVA_OPTIONS+=(&#34;-Djava.awt.headless=True&#34;)
-</code></pre></td></tr></table>
-</div>
-</div><p>4、终极解决
-一般是在程序开始激活 headless 模式，告诉程序，现在要工作在 Headless 模式下，就不要指望硬件帮忙了，得依靠系统的计算能力模拟出这些特性来</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">public void init(ServletConfig config) throws ServletException {
-    super.init(config);
-    height = Integer.parseInt(getServletConfig().getInitParameter(&#34;height&#34;));
-    width = Integer.parseInt(getServletConfig().getInitParameter(&#34;width&#34;));
-    System.setProperty(&#34;java.awt.headless&#34;, &#34;True&#34;);
-}
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="webxml-is-missing-and-failonmissingwebxml-is-set-to-true">web.xml is missing and <failOnMissingWebXml> is set to true</h3>
-<p>使用 <code>maven</code> 构建工程时，<code>pom.xml</code> 报错如下，提示如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">web.xml is missing and &lt;failOnMissingWebXml&gt; is set to true
-</code></pre></td></tr></table>
-</div>
-</div><p>在 <code>pom.xml</code> 文件中添加如下内容：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;
-            &lt;version&gt;3.2.0&lt;/version&gt;
-            &lt;configuration&gt;
-                &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="slf4j-failed-to-load-class-orgslf4jimplstaticloggerbinder">SLF4J: Failed to load class &ldquo;org.slf4j.impl.StaticLoggerBinder&rdquo;.</h3>
-<p>运行程序时，报错如下：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">SLF4J: Failed to load class &#34;org.slf4j.impl.StaticLoggerBinder&#34;.
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-</code></pre></td></tr></table>
-</div>
-</div><p>原因：<code>log4j</code> 和 <code>sl4j</code> 的版本不匹配，或是缺少 <code>jar</code> 包，使用下面这组：</p>
+</div><p>下载并解压之。</p>
+<p>2、检查并配置 <code>JAVA_HOME</code>，<code>MAVEN_HOME</code>。</p>
+<p>（1）查找 <code>java</code> 安装目录，并配置 <code>JAVA_HOME</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -288,75 +181,97 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;slf4j-log4j12.version&gt;1.7.25&lt;/slf4j-log4j12.version&gt;
-&lt;slf4j-api.version&gt;1.7.25&lt;/slf4j-api.version&gt;
-&lt;log4j.version&gt;1.2.17&lt;/log4j.version&gt;
-&lt;slf4j-nop.version&gt;1.7.25&lt;/slf4j-nop.version&gt;
-&lt;slf4j-simple.version&gt;1.7.5&lt;/slf4j-simple.version&gt;
-
-&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
-    &lt;version&gt;${slf4j-log4j12.version}&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-
-&lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;log4j&lt;/groupId&gt;
-    &lt;artifactId&gt;log4j&lt;/artifactId&gt;
-    &lt;version&gt;${log4j.version}&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
-    &lt;version&gt;${slf4j-api.version}&lt;/version&gt;
-&lt;/dependency&gt;
-
-&lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-    &lt;artifactId&gt;slf4j-nop&lt;/artifactId&gt;
-    &lt;version&gt;${slf4j-nop.version}&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
-    &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
-    &lt;version&gt;${slf4j-simple.version}&lt;/version&gt;
-&lt;/dependency&gt;
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc apache-maven-3.5.4]# find / -name java
+/usr/bin/java
+/usr/share/java
+/usr/lib/gcc/x86_64-redhat-linux/4.8.2/plugin/include/java
+/usr/lib/java
+/usr/java
+/usr/java/jdk1.8.0_171-amd64/bin/java     # 安装的官方 Java
+/usr/java/jdk1.8.0_171-amd64/jre/bin/java
+/var/lib/alternatives/java
+/var/lib/docker/overlay2/7f36ad36ff79b7cef239f31a147541b66652a320d05bc77737b797bba1d2c411/merged/usr/share/java
+/var/lib/docker/overlay2/0ccde8693a9840f6948d05e6d41238e8d0d993b6c15567f485e43038b09baa03/diff/usr/share/java
+/etc/alternatives/java
+/etc/pki/ca-trust/extracted/java
+/etc/pki/java
+/etc/java
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>/etc/profile</code> 中配置 <code>JAVA_HOME</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">export JAVA_HOME=/usr/java/jdk1.8.0_171-amd64
+export PATH=${JAVA_HOME}/bin:$PATH
+</code></pre></td></tr></table>
+</div>
+</div><p>执行 <code>. /etc/profile</code> 或 <code>source /etc/profile</code> 使配置生效。</p>
+<p>执行测试命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# java -version
+java version &#34;1.8.0_171&#34;
+Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.171-b11, mixed mode)
+</code></pre></td></tr></table>
+</div>
+</div><p>（2）配置 <code>MAVEN_HOME</code></p>
+<p><code>maven</code> 的安装目录为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc apache-maven-3.5.4]# pwd
+/root/xdhuxc/apache-maven-3.5.4
+[root@xdhuxc apache-maven-3.5.4]# ls
+bin  boot  conf  lib  LICENSE  NOTICE  README.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>在 <code>/etc/profile</code> 中配置 <code>MAVEN_HOME</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">export MAVEN_HOME=/root/xdhuxc/apache-maven-3.5.4
+export PATH=${JAVA_HOME}/bin:${MAVEN_HOME}/bin:$PATH
+</code></pre></td></tr></table>
+</div>
+</div><p>执行 <code>. /etc/profile</code> 或 <code>source /etc/profile</code> 使配置生效。</p>
+<p>执行测试命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mvn -v
+Apache Maven 3.5.4 (1edded0938998edf8bf061f1ceb3cfdeccf443fe; 2018-06-18T02:33:14+08:00)
+Maven home: /root/xdhuxc/apache-maven-3.5.4
+Java version: 1.8.0_171, vendor: Oracle Corporation, runtime: /usr/java/jdk1.8.0_171-amd64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: &#34;linux&#34;, version: &#34;3.10.0-327.28.3.el7.x86_64&#34;, arch: &#34;amd64&#34;, family: &#34;unix&#34;
 </code></pre></td></tr></table>
 </div>
 </div>
@@ -380,11 +295,12 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 <footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/java/">Java</a>
+          <a href="/tags/maven/">Maven</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/programming/java/java-maven-configuration/">
+        <a class="prev" href="/post/programming/java/java-jvm-parameter/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">Maven 常用配置</span>
+            <span class="prev-text nav-default">JVM 参数详解</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/kubernetes/kubernetes-questions-and-solutions/">

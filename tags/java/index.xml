@@ -32,11 +32,29 @@
     
     <item>
       <title>Java 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</link>
+      <link>https://xdhuxc.github.io/post/programming/java/java-questions-and-solution/</link>
       <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/java/java-questions-and-solution/</guid>
       <description>&lt;p&gt;本篇博客记录了些在 Java 开发过程中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM 参数详解</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-jvm-parameter/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-jvm-parameter/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 JVM 的一些参数，在 JVM 调优时需要用到。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安装 Maven</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-install-maven/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-install-maven/</guid>
+      <description>&lt;p&gt;本篇博客介绍了安装 &lt;code&gt;maven&lt;/code&gt; 的步骤。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,6 +73,24 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java 常用命令介绍</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-command/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-command/</guid>
+      <description>&lt;p&gt;本篇博客记录了 Java 中常用的命令。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在 Eclipse 中部署基于 Maven 构建的 Java Web 项目</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-eclipse-maven-web/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-eclipse-maven-web/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Eclipse 中部署基于 Maven 构建的 Java Web 项目的过程。&lt;/p&gt;</description>
     </item>
     
   </channel>

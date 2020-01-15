@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。">
 <meta itemprop="datePublished" content="2017-06-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-06-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="242">
+<meta itemprop="wordCount" content="327">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 242 字 </span>
+          <span class="more-meta"> 约 327 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -177,7 +177,27 @@ docker cp 980cfa7fa636:/xdhuxc/a.html ./a.html
 <span class="gh"># Docker容器启动时的root用户的密码是随机分配的。所以，通过这种方式就可以得到redmine容器的root用户的密码了
 </span></code></pre></td></tr></table>
 </div>
-</div><h3 id="常用组合命令">常用组合命令</h3>
+</div><p>3、获取容器状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker inspect --format=&#39;{{.State.Status}}&#39; ffbb1145d1d7/nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>4、获取容器的内部IP地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker inspect --format=&#39;{{.NetworkSettins.IPAddress}}&#39; ba24b244e370/redis
+</code></pre></td></tr></table>
+</div>
+</div><p>docker images 默认隐藏了中间状态的镜像，可以使用 docker images -a 命令来查看中间状态的镜像。</p>
+<p>docker history 命令可以查看该镜像中每一层的信息。</p>
+<h3 id="常用组合命令">常用组合命令</h3>
 <p>1、删除所有 docker 镜像</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

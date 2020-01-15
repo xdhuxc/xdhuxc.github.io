@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>docker 基础知识（二） - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 Docker 容器的一些基础知识和基本原理。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/docker/docker-basic-knowledge-two/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="docker 基础知识（二）" />
+<meta property="og:description" content="本篇博客介绍了 Docker 容器的一些基础知识和基本原理。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/docker/docker-basic-knowledge-two/" />
+<meta property="article:published_time" content="2017-07-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-08-25T00:00:00+00:00" />
+<meta itemprop="name" content="docker 基础知识（二）">
+<meta itemprop="description" content="本篇博客介绍了 Docker 容器的一些基础知识和基本原理。">
+<meta itemprop="datePublished" content="2017-07-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-08-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3343">
+
+
+
+<meta itemprop="keywords" content="Docker," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="docker 基础知识（二）"/>
+<meta name="twitter:description" content="本篇博客介绍了 Docker 容器的一些基础知识和基本原理。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">docker 基础知识（二）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-07-20 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 3343 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#docker-stop-和-docker-kill-命令的异同">docker stop 和 docker kill 命令的异同</a></li>
+        <li><a href="#docker-平台的基本构成">docker 平台的基本构成</a></li>
+        <li><a href="#docker-镜像">docker 镜像</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客介绍了 Docker 容器的一些基础知识和基本原理。</p>
+<p>使用 docker 时，要求 Linux 内核版本必须是 3.10 及以上版本。</p>
+<p>docker 容器的状态机：</p>
+<center>
+<img src="/image/docker/basic-knowledge-two/docker-status.jpg" width="800px" height="300px" />
+图1 · docker 容器的状态机
+</center>
+<p>一个容器在某个时刻可能处于以下几种状态之一：</p>
+<ul>
+<li>created：已经被创建（使用 docker ps -a 命令可以查看），但是还没有启动（使用 docker ps 命令还无法查看）。</li>
+<li>running：运行中。</li>
+<li>paused：容器的进程被暂停了。</li>
+<li>restarting：容器的进程正在重启过程中。</li>
+<li>exited：即 stopped 状态，表示容器之前运行过，但是现在处于停止状态，可以通过 start 命令使其重新进入 running 状态。区别于 created 状态，它是指一个新创建出来的尚未运行过的容器。</li>
+<li>destroyed：容器被删除了，再也不存在了。</li>
+</ul>
+<h3 id="docker-stop-和-docker-kill-命令的异同">docker stop 和 docker kill 命令的异同</h3>
+<h4 id="docker-stop">docker stop</h4>
+<p>在 docker stop 命令执行的时候，会先向容器中 PID 为 1 的进程（systemd）发送系统信号 SIGTERM，然后等待容器中的应用程序终止执行。如果等待时间达到设定的超时时间（默认为：10 秒，用户可以指定特定的超时时长），会继续发送 SIGKILL 的系统信号强行 KILL 掉进程。在容器中的应用程序，可以选择忽略和不处理 SIGTERM 信号，不过一旦达到超时时间，程序就会被系统强行 kill 掉，因为 SIGKILL 信号是直接发往系统内核的，应用程序没有机会去处理它。</p>
+<p>例如，运行 <code>docker stop mysql -t 20</code> 命令后：（使用 docker events 命令可以查看实时 docker 事件）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">2018-06-27T15:10:50.647582607+08:00 container kill 1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f (image=mysql:5.7.22, name=mysql, signal=15)
+2018-06-27T15:10:52.320188793+08:00 container die 1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f (exitCode=0, image=mysql:5.7.22, name=mysql)
+2018-06-27T15:10:52.456917929+08:00 network disconnect d007b6118f653475246dec898994a972d2f9a061d01ab5a339977cd70a6887bf (container=1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f, name=bridge, type=bridge)
+2018-06-27T15:10:52.524146055+08:00 volume unmount 845a3048d2138831a4e6e542dfd01794cb6524493839590a37f7936942890742 (container=1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f, driver=local)
+2018-06-27T15:10:52.537384805+08:00 container stop 1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f (image=mysql:5.7.22, name=mysql)
+</code></pre></td></tr></table>
+</div>
+</div><p>能看到：</p>
+<p>1、首先 docker 向容器发出 SIGTERM 信号（signal = 15）。</p>
+<p>2、等待 20 秒（01:18 到 01:38）。</p>
+<p>3、再发送 SIGKILL 系统信号（signal = 9）。</p>
+<p>4、然后容器就被杀死了（die）。</p>
+<h4 id="docker-kill">docker kill</h4>
+<p>而 docker kill 命令会直接发出 SIGKILL 的系统信号，以强行终止容器中程序的运行。</p>
+<p>运行 <code>docker kill mysql</code> 命令后：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">2018-06-27T15:22:41.785107639+08:00 container kill 1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f (image=mysql:5.7.22, name=mysql, signal=9)
+2018-06-27T15:22:42.003164753+08:00 container die 1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f (exitCode=137, image=mysql:5.7.22, name=mysql)
+2018-06-27T15:22:42.214308124+08:00 network disconnect d007b6118f653475246dec898994a972d2f9a061d01ab5a339977cd70a6887bf (container=1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f, name=bridge, type=bridge)
+2018-06-27T15:22:42.294946239+08:00 volume unmount 845a3048d2138831a4e6e542dfd01794cb6524493839590a37f7936942890742 (container=1cf29caed8786e1e165e5b3e3dadedf17d1846b40792e4330a6026ec03002a2f, driver=local)
+</code></pre></td></tr></table>
+</div>
+</div><p>可见直接发出的是 SIGKILL 信号，容器立刻就被杀掉了。</p>
+<h3 id="docker-平台的基本构成">docker 平台的基本构成</h3>
+<p>Docker 平台基本上由三部分组成：</p>
+<ul>
+<li>客户端：用户使用 docker 提供的工具（CLI 以及 API等）来构建、上传镜像并发布命令来创建和启动容器。</li>
+<li>docker 主机：从 docker 镜像仓库拉取镜像并启动容器。</li>
+<li>docker 镜像仓库：用于保存镜像，并提供镜像的上传和下载。</li>
+</ul>
+<h3 id="docker-镜像">docker 镜像</h3>
+<p>在传统环境中，软件在运行之前需要经过 代码开发 -&gt; 运行环境准备 -&gt; 安装软件 -&gt; 运行软件 等环节；</p>
+<p>在容器环境中，中间的两个环节被镜像制作过程代替了，也就是说，镜像的制作过程也包括运行环境准备和安装软件等两个主要环节，以及一些其他环节。</p>
+<p>镜像是动态的容器的静态表示，包括容器所要运行的应用代码以及运行时的配置。docker 镜像包括一个或多个只读层（read-only layers），因此，镜像一旦被创建就再也不能被修改了。一个运行着的 docker 容器是一个镜像的实例。从同一个镜像中运行的容器包含有相同的应用代码和运行时依赖。但是不像镜像是静态的，每个运行着的容器都有一个可写层（writable layer，也称为 container layer），位于底下的若干只读层之上，运行时的所有变化，包括对数据和文件的写和更新，都会保存在这个层中。因此，从同一个镜像运行的多个容器包含了不同的容器层。</p>
+<p>创建一个 docker 镜像的两种方式：</p>
+<ul>
+<li>创建一个容器，运行若干命令，然后使用 docker commit 命令来生成一个新的镜像。不建议使用这种方式。</li>
+<li>创建一个 Dockerfile，然后使用 docker build 命令来创建一个镜像。建议使用这种方式。</li>
+</ul>
+<p>docker build 命令的过程：</p>
+<ul>
+<li>容器镜像包括元数据和文件系统，其中文件系统是指对基础镜像的文件系统的修改，元数据不影响文件系统，只是会影响容器的配置。</li>
+<li>每个步骤都会生成一个新的镜像，新的镜像与上一次的镜像相比，要么元数据有了变化，要么文件系统有了变化，而多加了一层。</li>
+<li>docker 在需要执行指令时，通过创建临时镜像，运行指定的命令，再通过 docker commit 来生成新的镜像。</li>
+<li>docker 会将中间镜像都保存在缓存中，这样将来如果能直接使用的话，就不需要再从新创建了。</li>
+</ul>
+<h4 id="镜像分层和容器层">镜像分层和容器层</h4>
+<p>一个 docker 镜像是基于基础镜像的多层叠加，最终构成了容器的 rootfs（根文件系统）。当 docker 创建了一个容器时，它会在基础镜像的容器层之上添加一层新的薄薄的可写容器层。接下来，所有对容器的变化，比如写新的文件，修改已有文件和删除文件，都只会作用在这个容器层之中。因此，通过不复制完整的 rootfs，docker 减少了容器所占用的空间，以及减少了容器启动所需时间。</p>
+<h4 id="cow-和镜像大小">COW 和镜像大小</h4>
+<p>COW，copy-on-write，写时复制技术，一方面带来了容器启动的快捷，另一方也造成了容器镜像大小的增加。每一次 <code>RUN</code> 命令都会在镜像上增加一层，每一层都会占用磁盘空间。</p>
+<p>例如，在 Ubuntu 14.04 基础镜像中运行 <code>RUN apt-get upgrade</code> 会在保留基础层的同时再创建一个新层来放所有新的文件，而不是修改老的文件。因此，新的镜像大小会超过直接在老的文件系统上做更新时的文件大小。所以，为了减少镜像大小起见，所有文件相关的操作，比如删除、释放和移动等，都需要尽可能地放在一个 <code>RUN</code> 指令中进行。</p>
+<h4 id="镜像的内容">镜像的内容</h4>
+<p>容器镜像的内容，其实是一个 json 文件加上 tar 包。</p>
+<p>1、将镜像导出为 tar 文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker images|grep nginx
+nginx                                                        latest              3f8a4339aadd        6 months ago        108MB
+[root@xdhuxc xdhuxc]# docker save nginx:latest -o nginx.tar
+[root@xdhuxc xdhuxc]# ls
+nginx.tar
+</code></pre></td></tr></table>
+</div>
+</div><p>2、解压 nginx.tar 文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mkdir nginx
+[root@xdhuxc xdhuxc]# tar -xf nginx.tar -C nginx
+tar: manifest.json: implausibly old time stamp 1970-01-01 08:00:00
+tar: repositories: implausibly old time stamp 1970-01-01 08:00:00
+[root@xdhuxc xdhuxc]# ll nginx
+total 28
+-rw-r--r-- 1 root root 5835 Dec 27  2017 3f8a4339aadda5897b744682f5f774dc69991a81af8d715d37a616bb4c99edf5.json
+drwxr-xr-x 2 root root 4096 Dec 27  2017 ae57c7dd09b742b01fba1af0f40503e6f7e581a7cda614f0c36fa81af4a02129
+drwxr-xr-x 2 root root 4096 Dec 27  2017 b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa
+drwxr-xr-x 2 root root 4096 Dec 27  2017 b6eb01f37fe4e3091b0230a181e38d2fa37b4169daab10f85782b92e7437b027
+-rw-r--r-- 1 root root  355 Jan  1  1970 manifest.json
+-rw-r--r-- 1 root root   88 Jan  1  1970 repositories
+</code></pre></td></tr></table>
+</div>
+</div><p>其中的 repositories 文件的内容，就是镜像名称、版本、最上层的 layer 的名称。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cat nginx/repositories | python -m json.tool
+{
+    &#34;nginx&#34;: {
+        &#34;latest&#34;: &#34;b6eb01f37fe4e3091b0230a181e38d2fa37b4169daab10f85782b92e7437b027&#34;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>而 manifest.json 文件中保存的是镜像的元数据，包括真正包含元数据的 json 文件的名称及每一层的名称、标签等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cat nginx/manifest.json | python -m json.tool
+[
+    {
+        &#34;Config&#34;: &#34;3f8a4339aadda5897b744682f5f774dc69991a81af8d715d37a616bb4c99edf5.json&#34;,
+        &#34;Layers&#34;: [
+            &#34;b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa/layer.tar&#34;,
+            &#34;ae57c7dd09b742b01fba1af0f40503e6f7e581a7cda614f0c36fa81af4a02129/layer.tar&#34;,
+            &#34;b6eb01f37fe4e3091b0230a181e38d2fa37b4169daab10f85782b92e7437b027/layer.tar&#34;
+        ],
+        &#34;RepoTags&#34;: [
+            &#34;nginx:latest&#34;
+        ]
+    }
+]
+</code></pre></td></tr></table>
+</div>
+</div><p>3f8a4339aadda5897b744682f5f774dc69991a81af8d715d37a616bb4c99edf5.json 文件真正地包含镜像的所有元数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cat nginx/3f8a4339aadda5897b744682f5f774dc69991a81af8d715d37a616bb4c99edf5.json | python -m json.tool
+{
+    &#34;architecture&#34;: &#34;amd64&#34;,
+    &#34;config&#34;: {
+        &#34;ArgsEscaped&#34;: true,
+        &#34;AttachStderr&#34;: false,
+        &#34;AttachStdin&#34;: false,
+        &#34;AttachStdout&#34;: false,
+        &#34;Cmd&#34;: [
+            &#34;nginx&#34;,
+            &#34;-g&#34;,
+            &#34;daemon off;&#34;
+        ],
+        &#34;Domainname&#34;: &#34;&#34;,
+        &#34;Entrypoint&#34;: null,
+        &#34;Env&#34;: [
+            &#34;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&#34;,
+            &#34;NGINX_VERSION=1.13.8-1~stretch&#34;,
+            &#34;NJS_VERSION=1.13.8.0.1.15-1~stretch&#34;
+        ],
+        &#34;ExposedPorts&#34;: {
+            &#34;80/tcp&#34;: {}
+        },
+        &#34;Hostname&#34;: &#34;&#34;,
+        &#34;Image&#34;: &#34;sha256:dac2e319f33250a5b2eea74443b35d7fb05a382a95d21670f2628b92ffa023ce&#34;,
+        &#34;Labels&#34;: {
+            &#34;maintainer&#34;: &#34;NGINX Docker Maintainers &lt;docker-maint@nginx.com&gt;&#34;
+        },
+        &#34;OnBuild&#34;: [],
+        &#34;OpenStdin&#34;: false,
+        &#34;StdinOnce&#34;: false,
+        &#34;StopSignal&#34;: &#34;SIGTERM&#34;,
+        &#34;Tty&#34;: false,
+        &#34;User&#34;: &#34;&#34;,
+        &#34;Volumes&#34;: null,
+        &#34;WorkingDir&#34;: &#34;&#34;
+    },
+    &#34;container&#34;: &#34;71cc5766414f132cf702e88d8de29527bbc2e151f8499b14fcc3540fd853b86d&#34;,
+    &#34;container_config&#34;: {
+        &#34;ArgsEscaped&#34;: true,
+        &#34;AttachStderr&#34;: false,
+        &#34;AttachStdin&#34;: false,
+        &#34;AttachStdout&#34;: false,
+        &#34;Cmd&#34;: [
+            &#34;/bin/sh&#34;,
+            &#34;-c&#34;,
+            &#34;#(nop) &#34;,
+            &#34;CMD [\&#34;nginx\&#34; \&#34;-g\&#34; \&#34;daemon off;\&#34;]&#34;
+        ],
+        &#34;Domainname&#34;: &#34;&#34;,
+        &#34;Entrypoint&#34;: null,
+        &#34;Env&#34;: [
+            &#34;PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&#34;,
+            &#34;NGINX_VERSION=1.13.8-1~stretch&#34;,
+            &#34;NJS_VERSION=1.13.8.0.1.15-1~stretch&#34;
+        ],
+        &#34;ExposedPorts&#34;: {
+            &#34;80/tcp&#34;: {}
+        },
+        &#34;Hostname&#34;: &#34;71cc5766414f&#34;,
+        &#34;Image&#34;: &#34;sha256:dac2e319f33250a5b2eea74443b35d7fb05a382a95d21670f2628b92ffa023ce&#34;,
+        &#34;Labels&#34;: {
+            &#34;maintainer&#34;: &#34;NGINX Docker Maintainers &lt;docker-maint@nginx.com&gt;&#34;
+        },
+        &#34;OnBuild&#34;: [],
+        &#34;OpenStdin&#34;: false,
+        &#34;StdinOnce&#34;: false,
+        &#34;StopSignal&#34;: &#34;SIGTERM&#34;,
+        &#34;Tty&#34;: false,
+        &#34;User&#34;: &#34;&#34;,
+        &#34;Volumes&#34;: null,
+        &#34;WorkingDir&#34;: &#34;&#34;
+    },
+    &#34;created&#34;: &#34;2017-12-26T18:17:01.106799157Z&#34;,
+    &#34;docker_version&#34;: &#34;17.06.2-ce&#34;,
+    &#34;history&#34;: [
+        {
+            &#34;created&#34;: &#34;2017-12-12T01:44:43.599554271Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop) ADD file:f30a8b5b7cdc9ba33a250899308b490baa9f7a9b29d3a85bd16200aa0a28a04a in / &#34;
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-12T01:44:43.84546055Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  CMD [\&#34;bash\&#34;]&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-12T05:14:40.530307095Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  LABEL maintainer=NGINX Docker Maintainers &lt;docker-maint@nginx.com&gt;&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:14:42.009655355Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  ENV NGINX_VERSION=1.13.8-1~stretch&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:14:42.209098573Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  ENV NJS_VERSION=1.13.8.0.1.15-1~stretch&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:16:59.73279946Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c set -x \t&amp;&amp; apt-get update \t&amp;&amp; apt-get install --no-install-recommends --no-install-suggests -y gnupg1 \t&amp;&amp; \tNGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \tfound=&#39;&#39;; \tfor server in \t\tha.pool.sks-keyservers.net \t\thkp://keyserver.ubuntu.com:80 \t\thkp://p80.pool.sks-keyservers.net:80 \t\tpgp.mit.edu \t; do \t\techo \&#34;Fetching GPG key $NGINX_GPGKEY from $server\&#34;; \t\tapt-key adv --keyserver \&#34;$server\&#34; --keyserver-options timeout=10 --recv-keys \&#34;$NGINX_GPGKEY\&#34; &amp;&amp; found=yes &amp;&amp; break; \tdone; \ttest -z \&#34;$found\&#34; &amp;&amp; echo &gt;&amp;2 \&#34;error: failed to fetch GPG key $NGINX_GPGKEY\&#34; &amp;&amp; exit 1; \tapt-get remove --purge --auto-remove -y gnupg1 &amp;&amp; rm -rf /var/lib/apt/lists/* \t&amp;&amp; dpkgArch=\&#34;$(dpkg --print-architecture)\&#34; \t&amp;&amp; nginxPackages=\&#34; \t\tnginx=${NGINX_VERSION} \t\tnginx-module-xslt=${NGINX_VERSION} \t\tnginx-module-geoip=${NGINX_VERSION} \t\tnginx-module-image-filter=${NGINX_VERSION} \t\tnginx-module-njs=${NJS_VERSION} \t\&#34; \t&amp;&amp; case \&#34;$dpkgArch\&#34; in \t\tamd64|i386) \t\t\techo \&#34;deb http://nginx.org/packages/mainline/debian/ stretch nginx\&#34; &gt;&gt; /etc/apt/sources.list \t\t\t&amp;&amp; apt-get update \t\t\t;; \t\t*) \t\t\techo \&#34;deb-src http://nginx.org/packages/mainline/debian/ stretch nginx\&#34; &gt;&gt; /etc/apt/sources.list \t\t\t\t\t\t&amp;&amp; tempDir=\&#34;$(mktemp -d)\&#34; \t\t\t&amp;&amp; chmod 777 \&#34;$tempDir\&#34; \t\t\t\t\t\t&amp;&amp; savedAptMark=\&#34;$(apt-mark showmanual)\&#34; \t\t\t\t\t\t&amp;&amp; apt-get update \t\t\t&amp;&amp; apt-get build-dep -y $nginxPackages \t\t\t&amp;&amp; ( \t\t\t\tcd \&#34;$tempDir\&#34; \t\t\t\t&amp;&amp; DEB_BUILD_OPTIONS=\&#34;nocheck parallel=$(nproc)\&#34; \t\t\t\t\tapt-get source --compile $nginxPackages \t\t\t) \t\t\t\t\t\t&amp;&amp; apt-mark showmanual | xargs apt-mark auto &gt; /dev/null \t\t\t&amp;&amp; { [ -z \&#34;$savedAptMark\&#34; ] || apt-mark manual $savedAptMark; } \t\t\t\t\t\t&amp;&amp; ls -lAFh \&#34;$tempDir\&#34; \t\t\t&amp;&amp; ( cd \&#34;$tempDir\&#34; &amp;&amp; dpkg-scanpackages . &gt; Packages ) \t\t\t&amp;&amp; grep &#39;^Package: &#39; \&#34;$tempDir/Packages\&#34; \t\t\t&amp;&amp; echo \&#34;deb [ trusted=yes ] file://$tempDir ./\&#34; &gt; /etc/apt/sources.list.d/temp.list \t\t\t&amp;&amp; apt-get -o Acquire::GzipIndexes=false update \t\t\t;; \tesac \t\t&amp;&amp; apt-get install --no-install-recommends --no-install-suggests -y \t\t\t\t\t\t$nginxPackages \t\t\t\t\t\tgettext-base \t&amp;&amp; rm -rf /var/lib/apt/lists/* \t\t&amp;&amp; if [ -n \&#34;$tempDir\&#34; ]; then \t\tapt-get purge -y --auto-remove \t\t&amp;&amp; rm -rf \&#34;$tempDir\&#34; /etc/apt/sources.list.d/temp.list; \tfi&#34;
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:17:00.44958667Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c ln -sf /dev/stdout /var/log/nginx/access.log \t&amp;&amp; ln -sf /dev/stderr /var/log/nginx/error.log&#34;
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:17:00.662765942Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  EXPOSE 80/tcp&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:17:00.902045007Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  STOPSIGNAL [SIGTERM]&#34;,
+            &#34;empty_layer&#34;: true
+        },
+        {
+            &#34;created&#34;: &#34;2017-12-26T18:17:01.106799157Z&#34;,
+            &#34;created_by&#34;: &#34;/bin/sh -c #(nop)  CMD [\&#34;nginx\&#34; \&#34;-g\&#34; \&#34;daemon off;\&#34;]&#34;,
+            &#34;empty_layer&#34;: true
+        }
+    ],
+    &#34;os&#34;: &#34;linux&#34;,
+    &#34;rootfs&#34;: {
+        &#34;diff_ids&#34;: [
+            &#34;sha256:2ec5c0a4cb57c0af7c16ceda0b0a87a54f01f027ed33836a5669ca266cafe97a&#34;,
+            &#34;sha256:73e2bd4455140950d98430338783415109e4c4dcf955681d334b312b176d964a&#34;,
+            &#34;sha256:a103d141fc9823f04f30d1e71705001577eab94df7ac594e5e49f64e2e506c8b&#34;
+        ],
+        &#34;type&#34;: &#34;layers&#34;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>而剩余的三个目录则与该镜像的三个 layers 一一对应。（使用 docker inspect nginx:latest）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&#34;RootFS&#34;: {
+            &#34;Type&#34;: &#34;layers&#34;,
+            &#34;Layers&#34;: [
+                &#34;sha256:2ec5c0a4cb57c0af7c16ceda0b0a87a54f01f027ed33836a5669ca266cafe97a&#34;,
+                &#34;sha256:73e2bd4455140950d98430338783415109e4c4dcf955681d334b312b176d964a&#34;,
+                &#34;sha256:a103d141fc9823f04f30d1e71705001577eab94df7ac594e5e49f64e2e506c8b&#34;
+            ]
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>每个目录中的内容为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# ll nginx/b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa/
+total 57072
+-rw-r--r-- 1 root root      393 Dec 27  2017 json
+-rw-r--r-- 1 root root 58430976 Dec 27  2017 layer.tar
+-rw-r--r-- 1 root root        3 Dec 27  2017 VERSION
+</code></pre></td></tr></table>
+</div>
+</div><p>解压 layer.tar 文件，查看其内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cd nginx/b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa/
+[root@xdhuxc b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa]# mkdir layer
+[root@xdhuxc b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa]# tar -xf layer.tar -C layer
+[root@xdhuxc b539656cdce57ade73a3019a36addf1b80ae19cc951655ea264c2a6af56d1cfa]# ll layer/
+total 76
+drwxr-xr-x  2 root root 4096 Dec 10  2017 bin
+drwxr-xr-x  2 root root 4096 Nov 19  2017 boot
+drwxr-xr-x  2 root root 4096 Dec 10  2017 dev
+drwxr-xr-x 28 root root 4096 Dec 10  2017 etc
+drwxr-xr-x  2 root root 4096 Nov 19  2017 home
+drwxr-xr-x  8 root root 4096 Dec 10  2017 lib
+drwxr-xr-x  2 root root 4096 Dec 10  2017 lib64
+drwxr-xr-x  2 root root 4096 Dec 10  2017 media
+drwxr-xr-x  2 root root 4096 Dec 10  2017 mnt
+drwxr-xr-x  2 root root 4096 Dec 10  2017 opt
+drwxr-xr-x  2 root root 4096 Nov 19  2017 proc
+drwx------  2 root root 4096 Dec 10  2017 root
+drwxr-xr-x  4 root root 4096 Dec 10  2017 run
+drwxr-xr-x  2 root root 4096 Dec 10  2017 sbin
+drwxr-xr-x  2 root root 4096 Dec 10  2017 srv
+drwxr-xr-x  2 root root 4096 Nov 19  2017 sys
+drwxrwxrwt  2 root root 4096 Dec 10  2017 tmp
+drwxr-xr-x 10 root root 4096 Dec 10  2017 usr
+drwxr-xr-x 11 root root 4096 Dec 10  2017 var
+</code></pre></td></tr></table>
+</div>
+</div><p>从以上分析可见：</p>
+<ul>
+<li>docker 镜像中主要是 tar 文件包和元数据 json 文件。</li>
+<li>docker 镜像的打包过程，其实就是将每一层对应的文件打包过程，最后组成一个单一的 tar 文件。</li>
+<li>docker 镜像的使用过程，其实就是将一层层的 tar 文件载入到文件系统的过程。</li>
+</ul>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-08-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/docker/">Docker</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/docker/docker-basic-knowledge/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">docker 基础知识</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/docker/docker-namespace-and-cgroup/">
+            <span class="next-text nav-default">Linux 命名空间和 cgroup 在 docker 中的使用</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

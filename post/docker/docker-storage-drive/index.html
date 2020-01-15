@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍了 docker 的存储驱动 overlay 和 overlay2，对于理解 docker 的文件系统非常有帮助。">
 <meta itemprop="datePublished" content="2018-11-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1877">
+<meta itemprop="wordCount" content="1869">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1877 字 </span>
+          <span class="more-meta"> 约 1869 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -199,7 +199,7 @@
 <p>由上图可以看出，在一个容器中，容器层（container layer）也就是读写层对应于 OverlayFS 的 upperdir，容器使用的对象镜像对应于 OverlayFS 的 lowerdir，容器文件系统的挂载点对应merged。</p>
 <p>注意，镜像层和容器层可以有相同的文件，在这种情况下，upperdir 中的文件覆盖 lowerdir 中的文件</p>
 <p>OverlayFS 仅有两层，也就是说镜像中的每一层并不对应 OverlayFS中的层，而是镜像中的每一层对应 <code>/var/lib/docker/overlay</code> 中的一个目录，目录以该层的UUID命名。然后使用硬链接将下面层的文件引用到上层。这在一定程度上节省了磁盘空间。这样，OverlayFS中的lowerdir就对应镜像层的最上层，并且是只读的。在创建容器时，docker会新建一个目录作为OverlayFS的upperdir，它是可写的。</p>
-<p>OverlayFS中容器的读写操作</p>
+<p>OverlayFS 中容器的读写操作</p>
 <p>读：</p>
 <ul>
 <li>如果该文件在容器层不存在，即文件不存在upperdir中，则从lowerdir中读取。</li>

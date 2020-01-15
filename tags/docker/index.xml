@@ -148,6 +148,15 @@
     </item>
     
     <item>
+      <title>docker 基础知识（二）</title>
+      <link>https://xdhuxc.github.io/post/docker/docker-basic-knowledge-two/</link>
+      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/docker/docker-basic-knowledge-two/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Docker 容器的一些基础知识和基本原理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux 命名空间和 cgroup 在 docker 中的使用</title>
       <link>https://xdhuxc.github.io/post/docker/docker-namespace-and-cgroup/</link>
       <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>

@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍了 Dockerfile 各种命令的使用方法，对于构建 docker 镜像及运行 Docker 容器都是不可不知的。">
 <meta itemprop="datePublished" content="2017-08-22T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1525">
+<meta itemprop="wordCount" content="2820">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1525 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2820 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -145,6 +145,9 @@
         <li><a href="#dockerfile-简介">Dockerfile 简介</a></li>
         <li><a href="#dockerfile-基本结构">Dockerfile 基本结构</a></li>
         <li><a href="#指令">指令</a></li>
+        <li><a href="#主要指令">主要指令</a></li>
+        <li><a href="#构建-docker-镜像应该遵循的原则">构建 Docker 镜像应该遵循的原则</a></li>
+        <li><a href="#使用容器时需要避免的一些做法">使用容器时需要避免的一些做法</a></li>
       </ul>
     </li>
   </ul>
@@ -400,6 +403,102 @@ WORKDIR c
 </div>
 </div><p>配置当所创建的镜像作为其他新创建镜像的基础镜像时，所执行的操作指令。</p>
 <p>使用 <code>ONBUILD</code> 指令的镜像，推荐在标签中注明，例如 <code>ruby:1.9-onbuild</code>。</p>
+<h3 id="主要指令">主要指令</h3>
+<h4 id="add-和-copy">ADD 和 COPY</h4>
+<p>ADD：将主机上的文件复制到或者将网络上的文件下载到容器中的指定目录。</p>
+<p>COPY： 将本地目录中的文件复制到容器内的指定目录下面，从而在镜像中增加一个层。在未指定绝对路径的时候，会放到 WORKDIR 目录下面。</p>
+<p>ADD 和 COPY 之间的区别：</p>
+<ul>
+<li>ADD 多了两个功能，下载 URL 和对支持的压缩格式的包进行解压，其他都一样。比如，<code>ADD http://foo.com/bar.go /tmp/main.go</code> 会将文件从互联网上下载下来；<code>ADD /foo.tar.gz /tmp/</code> 会将压缩文件解压再 COPY 过去。</li>
+<li>如果不希望压缩文件复制到容器中后解压的话，那么使用 COPY。</li>
+<li>如果需要自动下载 URL 并复制到容器的话，那么使用 ADD。</li>
+</ul>
+<h4 id="expose-和-docker-run--p-之间的关系">EXPOSE 和 docker run -p 之间的关系</h4>
+<p>容器的端口必须被发布（publish）出来后才能被外界使用，Dockerfile 中的 EXPOSE 只是 <code>标记</code> 某个端口会被暴露出来，只有在使用了 <code>docker run -p</code> 或者 <code>docker run -P</code> 后，端口才会被 <code>发布</code> 出来，此时端口才能被使用。</p>
+<p>在 Dockerfile 中没有指定 EXPOSE port 时，</p>
+<p>使用 <code>-P</code> 参数，执行 <code>docker run -d --name no-exposed-port-xdhuxc -P xdhuxc:latest</code>，此时没有任何端口被发布，说明 docker 在使用了 <code>-P</code> 参数的情形下只是自动将 EXPOSE 的端口发布出来。</p>
+<p>使用 <code>-p</code> 加上一个不存在的端口，执行 <code>docker run -d --name no-exposed-port-xdhuxc -p 8888:9999 xdhuxc:latest</code>，此时，9999 端口会被暴露，但是没法使用，说明 <code>-p</code> 会将没有暴露的端口自动暴露出来。</p>
+<p>由此可见，</p>
+<ul>
+<li><code>EXPOSE</code> 或者 <code>--expose</code> 只是为其他命令提供所需信息的元数据，或者只是告诉容器操作人员有哪些已知选择，只是作为记录机制，也就是告诉用户哪些端口会提供服务。它保存在容器的元数据中。</li>
+<li>使用 <code>-p</code> 发布特定端口，如果该端口已经被暴露出来，则发布它；如果它还没有被暴露，则它会被暴露和发布。docker 不会检查容器端口的正确性。</li>
+<li>使用 <code>-P</code> 时，docker 会自动将所有已经被暴露的端口发布出来。</li>
+</ul>
+<h4 id="cmd-和-entrypoint">CMD 和 ENTRYPOINT</h4>
+<p>这两个指令都指定了运行容器时所执行的命令。以下是它们共存的一些规则：</p>
+<ul>
+<li>Dockerfile 至少需要指定一个 CMD 或者 ENTRYPOINT 指令。</li>
+<li>CMD 可以用来指定 ENTRYPOINT 指令的参数</li>
+</ul>
+<p>以下是两者共存时，实际执行命令的格式</p>
+<table>
+<thead>
+<tr>
+<th>CMD/ENTRYPOINT</th>
+<th>没有 ENTRYPOINT</th>
+<th>ENTRYPOINT entry_exec entry_p1</th>
+<th>ENTRYPOINT [&ldquo;entry_exec&rdquo;, &ldquo;entry_p1&rdquo;]</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>没有 CMD</td>
+<td>错误，不允许</td>
+<td>/bin/sh -c entry_exec entry_p1</td>
+<td>entry_exec entry_p1</td>
+<td></td>
+</tr>
+<tr>
+<td>CMD [&ldquo;cmd_exec&rdquo;, &ldquo;cmd_p1&rdquo;]</td>
+<td>cmd_exec cmd_p1</td>
+<td>/bin/sh -c entry_exec entry_p1 cmd_exec cmd_p1</td>
+<td>entry_exec entry_p1 cmd_exec cmd_p1</td>
+<td></td>
+</tr>
+<tr>
+<td>CMD [&ldquo;cmd_p1&rdquo;, &ldquo;cmd_p2&rdquo;]</td>
+<td>cmd_p1 cmd_p2</td>
+<td>/bin/sh -c entry_exec entry_p1 cmd_p1 cmd_p2</td>
+<td>entry_exec entry_p1 cmd_p1 cmd_p2</td>
+<td></td>
+</tr>
+<tr>
+<td>CMD cmd_exec cmd_p1</td>
+<td>/bin/sh -c cmd_exec cmd_p1</td>
+<td>/bin/sh -c entry_exec entry_p1 cmd_exec cmd_p1</td>
+<td>entry_exec entry_p1 cmd_exec cmd_p1</td>
+<td></td>
+</tr>
+<tr>
+<td>备注</td>
+<td>只有 CMD 时，执行 CMD 定义的指令</td>
+<td>CMD 和 ENTRYPOINT 都存在时，CMD 的指令作为 ENTRYPOINT 的参数。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="构建-docker-镜像应该遵循的原则">构建 Docker 镜像应该遵循的原则</h3>
+<p>整体原则上，尽量保持镜像功能的明确和内容的精简</p>
+<p>要点包括：</p>
+<p>1、尽量选取满足需求但较小的基础系统镜像；</p>
+<p>2、清理编译生成文件、安装包的缓存等临时文件；</p>
+<p>3、安装各个软件的时候要指定准确的版本号，并避免引入不需要的依赖；</p>
+<p>4、从安全角度考虑，应用要尽量使用系统的库和依赖；</p>
+<p>5、如果安装应用时需要配置一些特殊的环境变量，在安装后要还原不需要保持的变量值；</p>
+<p>6、使用Dockerfile创建镜像时，要添加 <code>.dockerignore</code> 文件或使用空的工作目录；</p>
+<h3 id="使用容器时需要避免的一些做法">使用容器时需要避免的一些做法</h3>
+<p>1、不要在容器中保存数据。</p>
+<p>2、将应用打包到镜像再部署，而不是更新到已有容器。</p>
+<p>3、不要产生过大的镜像。</p>
+<p>4、不要使用单层镜像。</p>
+<p>5、不要从运行着的容器上产生镜像。</p>
+<p>6、不要只是使用 <code>latest</code> 标签。</p>
+<p>7、不要在容器内运行超过一个的进程。</p>
+<p>8、不要在容器内保存 <code>credentials</code>，而是要从外部通过环境变量传入。</p>
+<p>9、不要使用 <code>root</code> 用户运行容器进程。</p>
+<p>10、不要依赖于 IP 地址，而是要从外部通过环境变量传入。</p>
     </div>
 
     <div class="post-copyright">

@@ -142,14 +142,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -983,7 +983,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/maven/</loc>
-    <lastmod>2018-11-25T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -996,7 +996,21 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/java/java-common-questions-and-solution/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-questions-and-solution/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-jvm-parameter/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-install-maven/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1236,6 +1250,20 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/influxdb/influxdb-install-with-docker/</loc>
     <lastmod>2019-01-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-command/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/java/java-eclipse-maven-web/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1816,6 +1844,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/docker/docker-basic-knowledge/</loc>
+    <lastmod>2017-08-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/docker/docker-basic-knowledge-two/</loc>
     <lastmod>2017-08-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

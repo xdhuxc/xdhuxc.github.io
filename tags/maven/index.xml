@@ -21,5 +21,23 @@
       <description>&lt;p&gt;本篇博客介绍了使用 maven 时的一些常用的配置。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>安装 Maven</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-install-maven/</link>
+      <pubDate>Thu, 22 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-install-maven/</guid>
+      <description>&lt;p&gt;本篇博客介绍了安装 &lt;code&gt;maven&lt;/code&gt; 的步骤。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在 Eclipse 中部署基于 Maven 构建的 Java Web 项目</title>
+      <link>https://xdhuxc.github.io/post/programming/java/java-eclipse-maven-web/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/java/java-eclipse-maven-web/</guid>
+      <description>&lt;p&gt;本篇博客记录了在 Eclipse 中部署基于 Maven 构建的 Java Web 项目的过程。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
