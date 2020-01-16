@@ -13,11 +13,11 @@
     
     
     <item>
-      <title>Linux 下 RPM 的使用</title>
-      <link>https://xdhuxc.github.io/post/linux/linux-rpm/</link>
+      <title>Linux 下 RPM 和 YUM 的使用</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-rpm-yum/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux/linux-rpm/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-rpm-yum/</guid>
       <description>&lt;p&gt;本篇博客介绍下 Linux 下 RPM 包管理工具的使用。&lt;/p&gt;</description>
     </item>
     

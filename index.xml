@@ -131,10 +131,10 @@
     
     <item>
       <title>Python 常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python-questions-and-solution/</link>
       <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python-questions-and-solution/</guid>
       <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中经常遇到的问题及其可能的解决方法，记录下来以备后需。&lt;/p&gt;</description>
     </item>
     
@@ -257,10 +257,10 @@
     
     <item>
       <title>Python 常见的坑及其解决方法</title>
-      <link>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python-programming-hole/</link>
       <pubDate>Sat, 27 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python-programming-hole/</guid>
       <description>&lt;p&gt;本篇博客主要记录一些在使用 Python 语言进行开发的过程中遇到的坑，也就是那些奇奇怪怪的语法带来的问题，这种问题往往比较隐蔽，在排查过程中会耗费大量时间，但是却给我们带来很大的困扰。&lt;/p&gt;</description>
     </item>
     
@@ -320,10 +320,10 @@
     
     <item>
       <title>Python virtualenv 的使用</title>
-      <link>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</link>
+      <link>https://xdhuxc.github.io/post/programming/python/python-virtualenv/</link>
       <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</guid>
+      <guid>https://xdhuxc.github.io/post/programming/python/python-virtualenv/</guid>
       <description>&lt;p&gt;在 Python 开发时，我们经常需要用到虚拟环境，为各个不同的工程提供指定的运行时环境，提供其需要的隔离的依赖包。使用 virtualenvwrapper 可以很方便地管理不同的虚拟环境。&lt;/p&gt;</description>
     </item>
     
@@ -638,6 +638,15 @@
     </item>
     
     <item>
+      <title>虚拟机的几种网络连接方式</title>
+      <link>https://xdhuxc.github.io/post/mixed/virtual-machine-network-mode/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/mixed/virtual-machine-network-mode/</guid>
+      <description>&lt;p&gt;本篇博客介绍了使用 &lt;code&gt;Virtual Box&lt;/code&gt; 或 &lt;code&gt;VMware Work station&lt;/code&gt; 创建虚拟机时的网络连接方式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>基于 GTID 的 MySQL 主从复制</title>
       <link>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</link>
       <pubDate>Fri, 07 Dec 2018 00:00:00 +0000</pubDate>
@@ -827,11 +836,11 @@
     </item>
     
     <item>
-      <title>Linux 下 RPM 的使用</title>
-      <link>https://xdhuxc.github.io/post/linux/linux-rpm/</link>
+      <title>Linux 下 RPM 和 YUM 的使用</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-rpm-yum/</link>
       <pubDate>Mon, 15 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux/linux-rpm/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-rpm-yum/</guid>
       <description>&lt;p&gt;本篇博客介绍下 Linux 下 RPM 包管理工具的使用。&lt;/p&gt;</description>
     </item>
     
@@ -878,6 +887,15 @@
       
       <guid>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</guid>
       <description>&lt;p&gt;本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 部分高级命令总结</title>
+      <link>https://xdhuxc.github.io/post/linux/linux-advanced-command/</link>
+      <pubDate>Tue, 11 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/linux/linux-advanced-command/</guid>
+      <description>&lt;p&gt;本篇博客整理了一些 Linux 系统中常用的高级命令，在一些复杂的运维工作中会用到。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -941,6 +959,15 @@
       
       <guid>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</guid>
       <description>&lt;p&gt;本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 常用基础知识</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-basic-knowledge/</link>
+      <pubDate>Wed, 08 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-basic-knowledge/</guid>
+      <description>&lt;p&gt;本篇博客介绍些 Python 常用的基础知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1084,7 +1111,7 @@
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/linux/linux-shell-script/</guid>
-      <description>&lt;p&gt;本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识，以备后需。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1395,10 +1422,10 @@
     
     <item>
       <title>Linux 中常见问题及解决</title>
-      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</link>
+      <link>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</link>
       <pubDate>Sun, 22 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</guid>
+      <guid>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</guid>
       <description>&lt;p&gt;本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。&lt;/p&gt;</description>
     </item>
     
@@ -1430,6 +1457,15 @@
     </item>
     
     <item>
+      <title>Python 面向对象</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-object-database-internet/</link>
+      <pubDate>Tue, 26 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-object-database-internet/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的面向对象，数据库和网络编程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Nexus 安装和自定义配置</title>
       <link>https://xdhuxc.github.io/post/mixed/nexus/nexus-install-configuration/</link>
       <pubDate>Fri, 22 Sep 2017 00:00:00 +0000</pubDate>
@@ -1439,12 +1475,84 @@
     </item>
     
     <item>
+      <title>Python 中的日期、时间、函数和模块</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-date-time/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-date-time/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的日期、时间、函数和模块。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的数据类型</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-data-type/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-data-type/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的数据类型。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的文件、输入输出流和异常</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-file-and-exception/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-file-and-exception/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的文件、输入输出流和异常。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 发送邮件</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-email/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-email/</guid>
+      <description>&lt;p&gt;本篇博客介绍下在 Python 邮件的发送。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的条件语句</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-condition/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-condition/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的条件语句。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 运算符</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-operator/</link>
+      <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-operator/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的运算符。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 基础语法</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-basic-programming-syntax/</link>
+      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-basic-programming-syntax/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 编程的基础语法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>一些其他问题及解决方式</title>
       <link>https://xdhuxc.github.io/post/mixed/mixed/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/mixed/mixed/</guid>
       <description>&lt;p&gt;本篇博客记录了一些其他的问题及解决方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 简介及开发环境搭建</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-introduction/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-introduction/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 及其开发环境搭建。&lt;/p&gt;</description>
     </item>
     
     <item>

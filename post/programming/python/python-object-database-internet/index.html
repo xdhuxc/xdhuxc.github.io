@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python 面向对象 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 Python 中的面向对象，数据库和网络编程。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-object-database-internet/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Python 面向对象" />
+<meta property="og:description" content="本篇博客介绍了 Python 中的面向对象，数据库和网络编程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/programming/python/python-object-database-internet/" />
+<meta property="article:published_time" content="2017-09-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-09-26T00:00:00+00:00" />
+<meta itemprop="name" content="Python 面向对象">
+<meta itemprop="description" content="本篇博客介绍了 Python 中的面向对象，数据库和网络编程。">
+<meta itemprop="datePublished" content="2017-09-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="8547">
+
+
+
+<meta itemprop="keywords" content="Python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 面向对象"/>
+<meta name="twitter:description" content="本篇博客介绍了 Python 中的面向对象，数据库和网络编程。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python 面向对象</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-09-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 8547 字 </span>
+          <span class="more-meta"> 预计阅读 18 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#面向对象技术">面向对象技术</a></li>
+        <li><a href="#对象销毁垃圾回收">对象销毁(垃圾回收)</a></li>
+        <li><a href="#类的继承">类的继承</a></li>
+        <li><a href="#正则表达式">正则表达式</a></li>
+        <li><a href="#操作数据库">操作数据库</a></li>
+        <li><a href="#网络编程">网络编程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客介绍了 Python 中的面向对象，数据库和网络编程。</p>
+<h3 id="面向对象技术">面向对象技术</h3>
+<ul>
+<li>类(Class): 用来描述具有相同的属性和方法的对象的集合。它定义了该集合中每个对象所共有的属性和方法。对象是类的实例。</li>
+<li>类变量：类变量在整个实例化的对象中是公用的。类变量定义在类中且在函数体之外。类变量通常不作为实例变量使用。</li>
+<li>数据成员：类变量或者实例变量用于处理类及其实例对象的相关的数据。</li>
+<li>方法重写：如果从父类继承的方法不能满足子类的需求，可以对其进行改写，这个过程叫方法的覆盖（override），也称为方法的重写。</li>
+<li>实例变量：定义在方法中的变量，只作用于当前实例的类。</li>
+<li>继承：即一个派生类继承基类的字段和方法。继承也允许把一个派生类的对象作为一个基类对象对待。</li>
+<li>实例化：创建一个类的实例，类的具体对象。</li>
+<li>方法：类中定义的函数。</li>
+<li>对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。</li>
+</ul>
+<h4 id="创建类">创建类</h4>
+<p>使用class语句来创建一个新类，class之后为类的名称并以冒号结尾，如下实例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">class ClassName:
+   &#39;类的帮助信息&#39;   <span class="ni">#类文档字符串</span>，帮助信息可以通过ClassName.__doc__查看。
+   class_suite  <span class="ni">#类体</span>，由类成员，方法，数据属性组成。
+</code></pre></td></tr></table>
+</div>
+</div><p>一个简单的Python类实例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span> 
+class Employee:
+   &#39;所有员工的基类&#39;
+   empCount = 0
+ 
+   def <span class="gs">__init</span><span class="gs">__</span>(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print &#34;Total Employee %d&#34; % Employee.empCount
+ 
+   def displayEmployee(self):
+      print &#34;Name : &#34;, self.name,  &#34;, Salary: &#34;, self.salary
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享。你可以在内部类或外部类使用 Employee.empCount 访问。</li>
+<li>第一种方法__init__()方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法</li>
+<li>self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。</li>
+</ul>
+<h4 id="self代表类的实例而非类">self代表类的实例，而非类</h4>
+<p>类的方法与普通的函数只有一个特殊的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">class Xdhuxc:
+    def xdhuxc(self):
+        print self
+        print self.__class__
+        print self.__doc__
+        print self.__module__
+
+x = Xdhuxc()
+x.xdhuxc()
+</code></pre></td></tr></table>
+</div>
+</div><p>以上程序执行结果为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;__main__.Xdhuxc instance at 0x02190940&gt;
+<span class="gs">__main</span><span class="gs">__</span>.Xdhuxc
+None
+<span class="gs">__main</span><span class="gs">__</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>从执行结果可以看出，self 代表的是类的实例，代表当前对象的地址，而 self.<strong>class</strong> 则指向类。
+self 不是 python 关键字，将它换成 xdhuxc 也是可以正常执行的</p>
+<h4 id="创建实例对象">创建实例对象</h4>
+<p>在 Python 中，类的实例化类似函数调用方式。使用类的名称 Employee 来实例化，并通过 <strong>init</strong> 方法接受参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34;创建 Employee 类的第一个对象&#34;
+emp1 = Employee(&#34;Zara&#34;, 2000)
+&#34;创建 Employee 类的第二个对象&#34;
+emp2 = Employee(&#34;Manni&#34;, 5000)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="访问属性">访问属性</h4>
+<p>可以使用点(.)来访问对象的属性。使用如下类的名称访问类变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">emp1.displayEmployee()
+emp2.displayEmployee()
+print &#34;Total Employee %d&#34; % Employee.empCount
+</code></pre></td></tr></table>
+</div>
+</div><p>可以添加，删除，修改类的属性，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">emp1.age = 7  # 添加一个 &#39;age&#39; 属性
+emp1.age = 8  # 修改 &#39;age&#39; 属性
+del emp1.age  # 删除 &#39;age&#39; 属性
+</code></pre></td></tr></table>
+</div>
+</div><p>可以使用以下函数的方式来访问属性：</p>
+<ul>
+<li>getattr(obj, name[, default]) : 访问对象的属性。</li>
+<li>hasattr(obj,name) : 检查是否存在一个属性。</li>
+<li>setattr(obj,name,value) : 设置一个属性。如果属性不存在，会创建一个新属性。</li>
+<li>delattr(obj, name) : 删除属性。
+使用方式如下所示：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">hasattr(emp1, &#39;age&#39;)    # 如果存在 &#39;age&#39; 属性返回 True。
+getattr(emp1, &#39;age&#39;)    # 返回 &#39;age&#39; 属性的值
+setattr(emp1, &#39;age&#39;, 8) # 添加属性 &#39;age&#39; 值为 8
+delattr(empl, &#39;age&#39;)    # 删除属性 &#39;age&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="内置类属性">内置类属性</h4>
+<ul>
+<li><strong>dict</strong> : 类的属性（包含一个字典，由类的数据属性组成）</li>
+<li><strong>doc</strong> :类的文档字符串</li>
+<li><strong>name</strong>: 类名</li>
+<li><strong>module</strong>: 类定义所在的模块（类的全名是&rsquo;<strong>main</strong>.className&rsquo;，如果类位于一个导入模块module_name中，那么className.<strong>module</strong> 等于 module_name）</li>
+<li><strong>bases</strong> : 类的所有父类构成元素（包含了一个由所有父类组成的元组）</li>
+</ul>
+<h3 id="对象销毁垃圾回收">对象销毁(垃圾回收)</h3>
+<p>Python 使用了引用计数这一简单技术来跟踪和回收垃圾。
+在 Python 内部记录着所有使用中的对象各有多少引用。
+一个内部跟踪变量，称为一个引用计数器。
+当对象被创建时， 就创建了一个引用计数， 当这个对象不再需要时， 也就是说， 这个对象的引用计数变为0 时， 它被垃圾回收。但是回收不是&quot;立即&quot;的， 由解释器在适当的时机，将垃圾对象占用的内存空间回收。</p>
+<p>垃圾回收机制不仅针对引用计数为0的对象，同样也可以处理循环引用的情况。循环引用指的是，两个对象相互引用，但是没有其他变量引用他们。这种情况下，仅使用引用计数是不够的。Python 的垃圾收集器实际上是一个引用计数器和一个循环垃圾收集器。作为引用计数的补充， 循环垃圾收集器也会留心被分配的总量很大（及未通过引用计数销毁的那些）的对象。 在这种情况下， 解释器会暂停下来， 试图清理所有未引用的循环。</p>
+<p>析构函数 <strong>del</strong> ，__del__在对象销毁的时候被调用，当对象不再被使用时，__del__方法运行。</p>
+<h3 id="类的继承">类的继承</h3>
+<p>面向对象的编程带来的主要好处之一是代码的重用，实现这种重用的方法之一是通过继承机制。继承完全可以理解成类之间的类型和子类型关系。</p>
+<p>需要注意的地方：继承语法 class 派生类名（基类名）：//&hellip; 基类名写在括号里，基本类是在类定义的时候，在元组之中指明的。</p>
+<p>Python 继承中的若干特点：</p>
+<ul>
+<li>在继承中基类的构造（<strong>init</strong>()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。</li>
+<li>在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别于在类中调用普通函数时并不需要带上self参数</li>
+<li>Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。</li>
+</ul>
+<p>如果在继承元组中列了一个以上的类，那么它就被称作&quot;多重继承&rdquo; 。
+派生类的声明，与他们的父类类似，继承的基类列表跟在类名之后，语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">class SubClassName (ParentClass1[, ParentClass2, ...]):
+   &#39;Optional class documentation string&#39;
+   class_suite
+</code></pre></td></tr></table>
+</div>
+</div><p>可以使用issubclass()或者isinstance()方法来检测。</p>
+<ul>
+<li>issubclass() - 布尔函数判断一个类是另一个类的子类或者子孙类，语法：issubclass(sub,sup)</li>
+<li>isinstance(obj, Class) 布尔函数如果obj是Class类的实例对象或者是一个Class子类的实例对象则返回true。</li>
+</ul>
+<h4 id="方法重写">方法重写</h4>
+<p>如果父类方法的功能不能满足需求，可以在子类重写父类的方法。</p>
+<p>基础重载方法：
+下表列出了一些通用的功能，你可以在自己的类重写：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>描述</th>
+<th>简单调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>init</strong> ( self [,args&hellip;] )</td>
+<td>构造函数</td>
+<td>简单的调用方法: obj = className(args)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>del</strong>( self )</td>
+<td>析构方法, 删除一个对象</td>
+<td>简单的调用方法 : del obj</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>repr</strong>( self )</td>
+<td>转化为供解释器读取的形式</td>
+<td>简单的调用方法 : repr(obj)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>str</strong>( self )</td>
+<td>用于将值转化为适于人阅读的形式</td>
+<td>简单的调用方法 : str(obj)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>cmp</strong> ( self, x )</td>
+<td>对象比较</td>
+<td>简单的调用方法 : cmp(obj, x)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="运算符重载">运算符重载</h4>
+<p>Python同样支持运算符重载，实例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span> 
+class Vector:
+   def <span class="gs">__init</span><span class="gs">__</span>(self, a, b):
+      self.a = a
+      self.b = b
+ 
+   def <span class="gs">__str</span><span class="gs">__</span>(self):
+      return &#39;Vector (%d, %d)&#39; % (self.a, self.b)
+   
+   def <span class="gs">__add</span><span class="gs">__</span>(self,other):
+      return Vector(self.a + other.a, self.b + other.b)
+ 
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print v1 + v2
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="类属性与方法">类属性与方法</h4>
+<h5 id="类的私有属性">类的私有属性</h5>
+<p>__private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.__private_attrs。</p>
+<h5 id="类的方法">类的方法</h5>
+<p>在类的内部，使用 def 关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数 self,且为第一个参数</p>
+<h5 id="类的私有方法">类的私有方法</h5>
+<p>__private_method：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 self.__private_methods</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span> 
+class JustCounter:
+    __secretCount = 0  # 私有变量
+    publicCount = 0    # 公开变量
+ 
+    def count(self):
+        self.__secretCount += 1
+        self.publicCount += 1
+        print self.__secretCount
+ 
+counter = JustCounter()
+counter.count()
+counter.count()
+print counter.publicCount
+print counter.__secretCount  # 报错，实例不能访问私有变量
+</code></pre></td></tr></table>
+</div>
+</div><p>Python不允许实例化的类访问私有数据，但可以使用 object._className__attrName 访问属性</p>
+<h4 id="单下划线双下划线头尾双下划线说明">单下划线、双下划线、头尾双下划线说明</h4>
+<ul>
+<li><strong>foo</strong>: 定义的是特列方法，类似 <strong>init</strong>() 之类的。</li>
+<li>_foo: 以单下划线开头的表示的是 protected 类型的变量，即保护类型只能允许其本身与子类进行访问，不能用于 from module import *</li>
+<li>__foo: 双下划线的表示的是私有类型(private)的变量, 只能是允许这个类本身进行访问了。</li>
+</ul>
+<h3 id="正则表达式">正则表达式</h3>
+<p>正则表达式是一个特殊的字符序列，它能方便地检查一个字符串是否与某种模式匹配。</p>
+<p>re 模块使 Python 语言拥有全部的正则表达式功能。</p>
+<p>compile 函数根据一个模式字符串和可选的标志参数生成一个正则表达式对象。该对象拥有一系列方法用于正则表达式匹配和替换。</p>
+<p>re 模块也提供了与这些方法功能完全一致的函数，这些函数使用一个模式字符串做为它们的第一个参数。</p>
+<h4 id="正则表达式修饰符---可选标志">正则表达式修饰符 - 可选标志</h4>
+<p>正则表达式可以包含一些可选标志修饰符来控制匹配的模式。修饰符被指定为一个可选的标志。多个标志可以通过按位 OR(|) 它们来指定。如 re.I | re.M 被设置成 I 和 M 标志：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>re.I</td>
+<td>使匹配对大小写不敏感</td>
+</tr>
+<tr>
+<td>re.L</td>
+<td>做本地化识别（locale-aware）匹配</td>
+</tr>
+<tr>
+<td>re.M</td>
+<td>多行匹配，影响 ^ 和 $</td>
+</tr>
+<tr>
+<td>re.S</td>
+<td>使 . 匹配包括换行在内的所有字符</td>
+</tr>
+<tr>
+<td>re.U</td>
+<td>根据Unicode字符集解析字符。这个标志影响 \w, \W, \b, \B.</td>
+</tr>
+<tr>
+<td>re.X</td>
+<td>该标志通过给予更灵活的格式以便将正则表达式写得更易于理解。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="正则表达式模式">正则表达式模式</h4>
+<p>模式字符串使用特殊的语法来表示一个正则表达式</p>
+<p>1、字母和数字表示他们自身。一个正则表达式模式中的字母和数字匹配同样的字符串。</p>
+<p>2、多数字母和数字前加一个反斜杠时会拥有不同的含义。</p>
+<p>3、标点符号只有被转义时才匹配自身，否则它们表示特殊的含义。</p>
+<p>4、反斜杠本身需要使用反斜杠转义。</p>
+<p>5、由于正则表达式通常都包含反斜杠，所以你最好使用原始字符串来表示它们。模式元素(如 r&rsquo;\t&rsquo;，等价于 &lsquo;\t&rsquo;)匹配相应的特殊字符。</p>
+<p>正则表达式模式语法中的特殊元素：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>匹配字符串的开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的末尾</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符</td>
+</tr>
+<tr>
+<td>[&hellip;]</td>
+<td>用来表示一组字符,单独列出：[amk] 匹配 &lsquo;a&rsquo;，&lsquo;m'或'k&rsquo;</td>
+</tr>
+<tr>
+<td>[^&hellip;]</td>
+<td>不在[]中的字符：[^abc] 匹配除了a,b,c之外的字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母数字及下划线</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配非字母数字及下划线</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意空白字符，等价于 [\t\n\r\f]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意非空字符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配任意数字，等价于 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>匹配字符串开始</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>匹配字符串结束，如果是存在换行，只匹配到换行前的结束字符串</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>匹配字符串结束</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>匹配最后匹配完成的位置</td>
+</tr>
+<tr>
+<td>re*</td>
+<td>匹配0个或多个的表达式</td>
+</tr>
+<tr>
+<td>re+</td>
+<td>匹配1个或多个的表达式</td>
+</tr>
+<tr>
+<td>re?</td>
+<td>匹配0个或1个由前面的正则表达式定义的片段，非贪婪方式</td>
+</tr>
+<tr>
+<td>re {n,}</td>
+<td>精确匹配n个前面表达式。</td>
+</tr>
+<tr>
+<td>re {n,m}</td>
+<td>匹配 n 到 m 次由前面的正则表达式定义的片段，贪婪方式</td>
+</tr>
+<tr>
+<td>a</td>
+<td>b</td>
+</tr>
+<tr>
+<td>(re)</td>
+<td>G匹配括号内的表达式，也表示一个组</td>
+</tr>
+<tr>
+<td>(?imx)</td>
+<td>正则表达式包含三种可选标志：i, m, 或 x 。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?-imx)</td>
+<td>正则表达式关闭 i, m, 或 x 可选标志。只影响括号中的区域。</td>
+</tr>
+<tr>
+<td>(?:re)</td>
+<td>类似 (&hellip;), 但是不表示一个组</td>
+</tr>
+<tr>
+<td>(?imx:re)</td>
+<td>在括号中使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?-imx:re)</td>
+<td>在括号中不使用i, m, 或 x 可选标志</td>
+</tr>
+<tr>
+<td>(?#&hellip;)</td>
+<td>注释</td>
+</tr>
+</tbody>
+</table>
+<h3 id="操作数据库">操作数据库</h3>
+<p>DB-API 是一个规范. 它定义了一系列必须的对象和数据库存取方式, 以便为各种各样的底层数据库系统和多种多样的数据库接口程序提供一致的访问接口 。</p>
+<p>Python的DB-API，为大多数的数据库实现了接口，使用它连接各数据库后，就可以用相同的方式操作各数据库。</p>
+<p>Python DB-API使用流程：</p>
+<ul>
+<li>引入 API 模块</li>
+<li>获取与数据库的连接</li>
+<li>执行SQL语句和存储过程</li>
+<li>关闭数据库连接</li>
+</ul>
+<h4 id="mysqldb">MySQLdb</h4>
+<p>MySQLdb 是用于Python连接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
+<h5 id="连接mysql数据库">连接MySQL数据库</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- conding: utf-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34;)
+
+<span class="gh"># 使用cursor()方法获取操作游标
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># 使用execute方法执行SQL语句
+</span><span class="gh"></span>cursor.execute(&#34;select version()&#34;)
+
+<span class="gh"># 使用fetchone()方法获取一条数据库记录
+</span><span class="gh"></span>data = cursor.fetchone()
+
+print &#34;Database version: %s&#34; % data
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="创建数据库表">创建数据库表</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># 如果数据表已经存在使用 execute() 方法删除表。
+</span><span class="gh"></span>cursor.execute(&#34;drop table if exists employee&#34;)
+
+<span class="gh"># 创建数据表SQL语句
+</span><span class="gh"></span>sql = &#34;&#34;&#34;create table employee (
+         first_name char(20) not null,
+         last_name  char(20),
+         age int,  
+         sex char(1),
+         income float 
+         )
+      &#34;&#34;&#34;
+<span class="gh"># 执行SQL语句
+</span><span class="gh"></span>cursor.execute(sql)
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="数据库插入操作">数据库插入操作</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 插入语句
+</span><span class="gh"></span>sql = &#34;&#34;&#34;
+         insert into employee(first_name,
+         last_name, age, sex, income)
+         values (&#39;Mac&#39;, &#39;Mohan&#39;, 20, &#39;M&#39;, 2000)
+      &#34;&#34;&#34;
+<span class="gh">#sql = &#34;&#34;&#34;
+</span><span class="gh"></span><span class="gh">#         insert into employee(first_name, \
+</span><span class="gh"></span><span class="gh">#         last_name, age, sex, income) \
+</span><span class="gh"></span><span class="gh">#         values (&#39;%s&#39;, &#39;%s&#39;, &#39;%d&#39;, &#39;%c&#39;, &#39;%d&#39; )&#34; % \
+</span><span class="gh"></span><span class="gh">#         (&#39;Mac&#39;, &#39;Mohan&#39;, 20, &#39;M&#39;, 2000)      
+</span><span class="gh"></span><span class="gh">#      &#34;&#34;&#34;
+</span><span class="gh"></span>      
+try:
+   # 执行sql语句
+   cursor.execute(sql)
+   # 提交到数据库执行
+   db.commit()
+except:
+   # 如果有错误，则回滚
+   db.rollback()
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><p>使用变量向SQL语句中传递参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">user_name = &#34;root&#34;
+password = &#34;root456&#34;
+
+cursor.execute(&#39;insert into login values (&#34;%s&#34;, &#34;%s&#34;)&#39; % (user_name, password))
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="数据库查询操作">数据库查询操作</h5>
+<p>Python查询Mysql使用 fetchone() 方法获取单条数据, 使用fetchall() 方法获取多条数据。</p>
+<ul>
+<li>fetchone(): 该方法获取下一个查询结果集，结果集是一个对象。</li>
+<li>fetchall():接收全部的返回结果行。</li>
+<li>rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。</li>
+</ul>
+<p>查询employee表中salary（工资）字段大于1000的所有数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 查询语句
+</span><span class="gh"></span>sql = &#34;select * from employee where income &gt; &#39;%d&#39;&#34; % (1000)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 获取所有记录列表
+   results = cursor.fetchall()
+   for row in results:
+      first_name = row[0]
+      last_name = row[1]
+      age = row[2]
+      sex = row[3]
+      income = row[4]
+      # 打印结果
+      print &#34;first_name=%s,last_name=%s,age=%d,sex=%s,income=%d&#34; % \
+             (first_name, last_name, age, sex, income )
+except:
+   print &#34;Error: unable to fecth data&#34;
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="数据库更新操作">数据库更新操作</h5>
+<p>更新操作用于更新数据表的的数据</p>
+<p>将 EMPLOYEE 表中的 SEX 字段为 &lsquo;M&rsquo; 的 AGE 字段递增 1：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 更新语句
+</span><span class="gh"></span>sql = &#34;update employee set age = age + 1 where sex = &#39;%c&#39;&#34; % (&#39;M&#39;)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 提交到数据库执行
+   db.commit()
+except:
+   # 发生错误时回滚
+   db.rollback()
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="删除操作">删除操作</h5>
+<p>删除操作用于删除数据表中的数据</p>
+<p>删除数据表 employee 中 age 大于 20 的所有数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34;)
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 删除语句
+</span><span class="gh"></span>sql = &#34;delete from employee where age &gt; &#39;%d&#39;&#34; % (20)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 提交修改
+   db.commit()
+except:
+   # 发生错误时回滚
+   db.rollback()
+
+<span class="gh"># 关闭连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="执行事务">执行事务</h5>
+<p>事务机制可以确保数据一致性。</p>
+<p>事务应该具有4个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为ACID特性。</p>
+<ul>
+<li>原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。</li>
+<li>一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。</li>
+<li>隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</li>
+<li>持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</li>
+</ul>
+<p>对于支持事务的数据库， 在Python数据库编程中，当游标建立之时，就自动开始了一个隐形的数据库事务。
+commit()方法提交当前游标的所有更新操作，rollback()方法回滚当前游标的所有操作。每一个方法都开始了一个新的事务。</p>
+<h5 id="错误处理">错误处理</h5>
+<p>DB API中定义了一些数据库操作的错误及异常</p>
+<p>下表列出了这些错误和异常：</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Warning</td>
+<td>当有严重警告时触发，例如插入数据是被截断等等。必须是 StandardError 的子类</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>警告以外所有其他错误类。必须是 StandardError 的子类</td>
+</tr>
+<tr>
+<td>InterfaceError</td>
+<td>当有数据库接口模块本身的错误（而不是数据库的错误）发生时触发。 必须是Error的子类</td>
+</tr>
+<tr>
+<td>DatabaseError</td>
+<td>和数据库有关的错误发生时触发。 必须是Error的子类</td>
+</tr>
+<tr>
+<td>DataError</td>
+<td>当有数据处理时的错误发生时触发，例如：除零错误，数据超范围等等。 必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>OperationalError</td>
+<td>指非用户控制的，而是操作数据库时发生的错误。例如：连接意外断开、 数据库名未找到、事务处理失败、内存分配错误等等操作数据库是发生的错误。 必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>IntegrityError</td>
+<td>完整性相关的错误，例如外键检查失败等。必须是DatabaseError子类</td>
+</tr>
+<tr>
+<td>InternalError</td>
+<td>数据库的内部错误，例如游标（cursor）失效了、事务同步失败等等。 必须是DatabaseError子类</td>
+</tr>
+<tr>
+<td>ProgrammingError</td>
+<td>程序错误，例如数据表（table）没找到或已存在、SQL语句语法错误、 参数数量错误等等。必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>NotSupportedError</td>
+<td>不支持错误，指使用了数据库不支持的函数或API等。例如在连接对象上 使用.rollback()函数，然而数据库并不支持事务或者事务已关闭。 必须是DatabaseError的子类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="网络编程">网络编程</h3>
+<p>Python 提供了两个级别访问的网络服务：</p>
+<ul>
+<li>低级别的网络服务支持基本的 Socket，提供了标准的 BSD Sockets API，可以访问底层操作系统Socket接口的全部方法。</li>
+<li>高级别的网络服务模块 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。</li>
+</ul>
+<h4 id="socket">Socket</h4>
+<p>Socket，又称“套接字”，应用程序通常通过“套接字”向网络发出请求或者应答网络请求，使主机间或者一台计算机上的进程间可以通讯。</p>
+<h4 id="socket函数">socket()函数</h4>
+<p>Python 中，我们用 socket（）函数来创建套接字，语法格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">socket.socket([family[, type[, proto]]])
+</code></pre></td></tr></table>
+</div>
+</div><p>参数：</p>
+<ul>
+<li>family: 套接字家族可以使AF_UNIX或者AF_INET</li>
+<li>type: 套接字类型可以根据是面向连接的还是非连接分为SOCK_STREAM或SOCK_DGRAM</li>
+<li>protocol: 一般不填默认为0.</li>
+</ul>
+<h4 id="socket-对象内建方法">Socket 对象(内建)方法</h4>
+<p>（1）服务端套接字</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s.bind()</td>
+<td>绑定地址（host,port）到套接字， 在AF_INET下,以元组（host,port）的形式表示地址。</td>
+</tr>
+<tr>
+<td>s.listen()</td>
+<td>开始TCP监听。backlog指定在拒绝连接之前，操作系统可以挂起的最大连接数量。该值至少为1，大部分应用程序设为5就可以了。</td>
+</tr>
+<tr>
+<td>s.accept()</td>
+<td>被动接受TCP客户端连接,(阻塞式)等待连接的到来</td>
+</tr>
+</tbody>
+</table>
+<p>（2）客户端套接字</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s.connect()</td>
+<td>主动初始化TCP服务器连接。一般address的格式为元组（hostname,port），如果连接出错，返回socket.error错误。</td>
+</tr>
+<tr>
+<td>s.connect_ex()</td>
+<td>connect()函数的扩展版本,出错时返回出错码,而不是抛出异常</td>
+</tr>
+</tbody>
+</table>
+<p>（3）公共用途的套接字函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s.recv()</td>
+<td>接收TCP数据，数据以字符串形式返回，bufsize指定要接收的最大数据量。flag提供有关消息的其他信息，通常可以忽略</td>
+</tr>
+<tr>
+<td>s.send()</td>
+<td>发送TCP数据，将string中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于string的字节大小</td>
+</tr>
+<tr>
+<td>s.sendall()</td>
+<td>完整发送TCP数据，完整发送TCP数据。将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回None，失败则抛出异常</td>
+</tr>
+<tr>
+<td>s.recvfrom()</td>
+<td>接收UDP数据，与recv()类似，但返回值是（data,address）。其中data是包含接收数据的字符串，address是发送数据的套接字地址</td>
+</tr>
+<tr>
+<td>s.sendto()</td>
+<td>发送UDP数据，将数据发送到套接字，address是形式为（ipaddr，port）的元组，指定远程地址。返回值是发送的字节数</td>
+</tr>
+<tr>
+<td>s.close()</td>
+<td>关闭套接字</td>
+</tr>
+<tr>
+<td>s.getpeername()</td>
+<td>返回连接套接字的远程地址。返回值通常是元组（ipaddr,port）</td>
+</tr>
+<tr>
+<td>s.getsockname()</td>
+<td>返回套接字自己的地址。通常是一个元组(ipaddr,port)</td>
+</tr>
+<tr>
+<td>s.setsockopt(level,optname,value)</td>
+<td>设置给定套接字选项的值</td>
+</tr>
+<tr>
+<td>s.getsockopt(level,optname[.buflen])</td>
+<td>返回套接字选项的值</td>
+</tr>
+<tr>
+<td>s.settimeout(timeout)</td>
+<td>设置套接字操作的超时期，timeout是一个浮点数，单位是秒。值为None表示没有超时期。一般，超时期应该在刚创建套接字时设置，因为它们可能用于连接的操作（如connect()）</td>
+</tr>
+<tr>
+<td>s.gettimeout()</td>
+<td>返回当前超时期的值，单位是秒，如果没有设置超时期，则返回None</td>
+</tr>
+<tr>
+<td>s.fileno()</td>
+<td>返回套接字的文件描述符</td>
+</tr>
+<tr>
+<td>s.setblocking(flag)</td>
+<td>如果flag为0，则将套接字设为非阻塞模式，否则将套接字设为阻塞模式（默认值）。非阻塞模式下，如果调用recv()没有发现任何数据，或send()调用无法立即发送数据，那么将引起socket.error异常</td>
+</tr>
+<tr>
+<td>s.makefile()</td>
+<td>创建一个与该套接字相关连的文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="示例">示例</h4>
+<h5 id="服务器端">服务器端</h5>
+<p>1、使用 socket 模块的 socket 函数来创建一个 socket 对象。socket 对象可以通过调用其他函数来设置一个 socket 服务。</p>
+<p>2、可以通过调用 bind(hostname, port) 函数来指定服务的 port(端口)。</p>
+<p>3、调用 socket 对象的 accept 方法。该方法等待客户端的连接，并返回 connection 对象，表示已连接到客户端。</p>
+<p>代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span><span class="gh"># 文件名：server.py
+</span><span class="gh"></span>
+import socket               # 导入 socket 模块
+
+s = socket.socket()         # 创建 socket 对象
+host = socket.gethostname() # 获取本地主机名
+port = 12345                # 设置端口
+s.bind((host, port))        # 绑定端口
+
+s.listen(5)                 # 等待客户端连接
+while True:
+    c, addr = s.accept()     # 建立客户端连接。
+    print &#39;连接地址：&#39;, addr
+    c.send(&#39;欢迎访问菜鸟教程！&#39;)
+    c.close()                # 关闭连接
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="客户端">客户端</h5>
+<p>一个简单的客户端实例连接到以上创建的服务。端口号为 12345。</p>
+<p>socket.connect(hosname, port ) 方法打开一个 TCP 连接到主机为 hostname 端口为 port 的服务商。连接后我们就可以从服务端后期数据，记住，操作完成后需要关闭连接。</p>
+<p>代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span><span class="gh"># 文件名：client.py
+</span><span class="gh"></span>
+import socket               # 导入 socket 模块
+
+s = socket.socket()         # 创建 socket 对象
+host = socket.gethostname() # 获取本地主机名
+port = 12345                # 设置端口好
+
+s.connect((host, port))
+print s.recv(1024)
+s.close()  
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="运行该程序">运行该程序</h5>
+<p>1、打开两个终端，第一个终端执行 server.py 文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python server.py
+</code></pre></td></tr></table>
+</div>
+</div><p>2、第二个终端执行 client.py 文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python client.py
+It is python language
+</code></pre></td></tr></table>
+</div>
+</div><p>3、再打开第一个终端，就会看到有以下信息输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">连接地址： (&#39;192.168.0.118&#39;, 62461)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="internet-模块">Internet 模块</h4>
+<p>Python网络编程的一些重要模块</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>功能</th>
+<th>端口号</th>
+<th>Python模块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>网页访问</td>
+<td>80</td>
+<td>httplib, urllib, xmlrpclib</td>
+</tr>
+<tr>
+<td>NNTP</td>
+<td>阅读和张贴新闻文章，俗称为&quot;帖子&rdquo;</td>
+<td>119</td>
+<td>nntplib</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>文件传输</td>
+<td>20</td>
+<td>ftplib, urllib</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>发送邮件</td>
+<td>25</td>
+<td>smtplib</td>
+</tr>
+<tr>
+<td>POP3</td>
+<td>接收邮件</td>
+<td>110</td>
+<td>poplib</td>
+</tr>
+<tr>
+<td>IMAP4</td>
+<td>获取邮件</td>
+<td>143</td>
+<td>imaplib</td>
+</tr>
+<tr>
+<td>Telnet</td>
+<td>命令行</td>
+<td>23</td>
+<td>telnetlib</td>
+</tr>
+<tr>
+<td>Gopher</td>
+<td>信息查找</td>
+<td>70</td>
+<td>gopherlib, urllib</td>
+</tr>
+</tbody>
+</table>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2017-09-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/python/">Python</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/common/ssh-no-password-login/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">配置 SSH 免密登录</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/mixed/nexus/nexus-install-configuration/">
+            <span class="next-text nav-default">Nexus 安装和自定义配置</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

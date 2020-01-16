@@ -255,13 +255,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/python/</loc>
-    <lastmod>2018-07-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-08-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/python/python_question_and_solutions/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-questions-and-solution/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -415,7 +415,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/python/python_programming_hole/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-programming-hole/</loc>
     <lastmod>2018-07-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -492,7 +492,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/programming/python/python_virtualenv/</loc>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-virtualenv/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -947,6 +947,27 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/virtualbox/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/vmware/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/mixed/virtual-machine-network-mode/</loc>
+    <lastmod>2019-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-master-slave-gtid/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1157,7 +1178,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/linux/linux-rpm/</loc>
+    <loc>https://xdhuxc.github.io/post/linux/linux-rpm-yum/</loc>
     <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1171,8 +1192,8 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/vmware/</loc>
-    <lastmod>2018-10-17T00:00:00+00:00</lastmod>
+    <loc>https://xdhuxc.github.io/tags/yum/</loc>
+    <lastmod>2018-12-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1222,6 +1243,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/linux/linux-alpine_tips/</loc>
     <lastmod>2018-09-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/linux/linux-advanced-command/</loc>
+    <lastmod>2018-09-11T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1285,6 +1313,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/storage/mysql/mysql-common-operations/</loc>
     <lastmod>2019-03-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-basic-knowledge/</loc>
+    <lastmod>2018-08-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1738,7 +1773,7 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solutions/</loc>
+    <loc>https://xdhuxc.github.io/post/linux/linux-questions-and-solution/</loc>
     <lastmod>2017-10-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1780,8 +1815,64 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-object-database-internet/</loc>
+    <lastmod>2017-09-26T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/post/mixed/nexus/nexus-install-configuration/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-date-time/</loc>
+    <lastmod>2017-09-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-data-type/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-file-and-exception/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-email/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-condition/</loc>
+    <lastmod>2017-09-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-operator/</loc>
+    <lastmod>2017-09-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-basic-programming-syntax/</loc>
+    <lastmod>2017-09-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1796,6 +1887,13 @@
   <url>
     <loc>https://xdhuxc.github.io/tags/%E6%9D%82%E9%A1%B9/</loc>
     <lastmod>2017-07-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/programming/python/python-introduction/</loc>
+    <lastmod>2017-09-08T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

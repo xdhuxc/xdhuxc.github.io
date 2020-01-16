@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。">
 <meta itemprop="datePublished" content="2017-12-10T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-12-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1466">
+<meta itemprop="wordCount" content="1493">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1466 字 </span>
+          <span class="more-meta"> 约 1493 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -152,6 +152,7 @@
         <li><a href="#替换某文件中的键值对">替换某文件中的键值对</a></li>
         <li><a href="#使用cat命令向文件中追加内容">使用cat命令向文件中追加内容</a></li>
         <li><a href="#expect-的使用">expect 的使用</a></li>
+        <li><a href="#获取当前脚本的路径">获取当前脚本的路径</a></li>
       </ul>
     </li>
   </ul>
@@ -613,6 +614,28 @@ if [ $(command -v expect) ] ; then
 	done
     done
 fi 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="获取当前脚本的路径">获取当前脚本的路径</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">current_path=$(cd &#34;$(dirname &#34;$0&#34;)&#34;; pwd)
+full_path=$(realpath $0)
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">/xdhuxc/script/tools
+/xdhuxc/script/tools/test.sh
 </code></pre></td></tr></table>
 </div>
 </div>

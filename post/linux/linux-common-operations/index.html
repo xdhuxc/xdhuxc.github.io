@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了些 Linux 系统中的常用操作，以备后需。">
 <meta itemprop="datePublished" content="2018-07-13T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1385">
+<meta itemprop="wordCount" content="1626">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1385 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1626 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -148,6 +148,7 @@
         <li><a href="#使用curl不产生输出">使用curl不产生输出</a></li>
         <li><a href="#调整进程优先级">调整进程优先级</a></li>
         <li><a href="#配置-centos-但需要不更新-dns">配置 CentOS 但需要不更新 DNS</a></li>
+        <li><a href="#升级-linux-内核">升级 Linux 内核</a></li>
       </ul>
     </li>
   </ul>
@@ -295,6 +296,96 @@ find ./ -regex &#39;.*\.sh$&#39; -or -regex &#39;.*\.exp$&#39; | xargs dos2unix 
 <p>配置CentOS不更新DNS，即不刷新/etc/resolv.conf文件</p>
 </blockquote>
 <p>修改配置 <code>/etc/NetworkManager/NetworkManager.conf</code>，添加 <code>dns=none</code>，修改完成后，使用 <code>systemctl restart NetworkManager</code> 命令重启 <code>NetworkManager</code></p>
+<h3 id="升级-linux-内核">升级 Linux 内核</h3>
+<p>1、导入ELRepo</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org (external link)
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm (external link)
+</code></pre></td></tr></table>
+</div>
+</div><p>2、列出可用的内核软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@wanghuan-private-test-5 yum.repos.d]# yum --disablerepo=&#34;*&#34; --enablerepo=&#34;elrepo-kernel&#34; list available
+Loaded plugins: fastestmirror
+elrepo-kernel                                                                                                                                   | 2.9 kB  00:00:00     
+elrepo-kernel/primary_db                                                                                                                        | 1.8 MB  00:00:13     
+Loading mirror speeds from cached hostfile
+ <span class="k">*</span> elrepo-kernel: mirrors.tuna.tsinghua.edu.cn
+Available Packages
+kernel-lt.x86_64                                                                   4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-devel.x86_64                                                             4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-doc.noarch                                                               4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-headers.x86_64                                                           4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-tools.x86_64                                                             4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-tools-libs.x86_64                                                        4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-lt-tools-libs-devel.x86_64                                                  4.4.142-1.el7.elrepo                                                   elrepo-kernel
+kernel-ml.x86_64                                                                   4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-devel.x86_64                                                             4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-doc.noarch                                                               4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-headers.x86_64                                                           4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-tools.x86_64                                                             4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-tools-libs.x86_64                                                        4.17.8-1.el7.elrepo                                                    elrepo-kernel
+kernel-ml-tools-libs-devel.x86_64                                                  4.17.8-1.el7.elrepo                                                    elrepo-kernel
+perf.x86_64                                                                        4.17.8-1.el7.elrepo                                                    elrepo-kernel
+python-perf.x86_64                                                                 4.17.8-1.el7.elrepo                                                    elrepo-kernel
+</code></pre></td></tr></table>
+</div>
+</div><p>3、安装最新的主线稳定内核</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum --enablerepo=elrepo-kernel install kernel-ml
+yum install -y kernel-ml.x86_64 --enablerepo=elrepo-kernel
+</code></pre></td></tr></table>
+</div>
+</div><p>4、设置GRUB默认的内核版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">grub2-set-default 0 # 设置GRUB初始化页面的第一个内核将作为默认内核。
+grub2-mkconfig -o /boot/grub2/grub.cfg # 重新创建内核配置。
+reboot  # 重新启动机器才能使新内核生效。
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

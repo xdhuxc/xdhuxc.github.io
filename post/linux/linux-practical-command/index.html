@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。">
 <meta itemprop="datePublished" content="2017-08-18T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="648">
+<meta itemprop="wordCount" content="1243">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 648 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1243 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -138,21 +138,51 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#杀死某个进程">杀死某个进程</a></li>
+        <li><a href="#查找占用某端口的进程">查找占用某端口的进程</a></li>
+        <li><a href="#置空文件">置空文件</a></li>
+        <li><a href="#切换到-root-用户">切换到 root 用户</a></li>
+        <li><a href="#查看进程及其子进程">查看进程及其子进程</a></li>
+        <li><a href="#时间格式">时间格式</a></li>
+        <li><a href="#修改系统时区">修改系统时区</a></li>
+        <li><a href="#获取-unix-时间戳">获取 UNIX 时间戳</a></li>
+        <li><a href="#删除文件和目录时不删除隐藏的文件和目录">删除文件和目录时不删除隐藏的文件和目录</a></li>
+        <li><a href="#字符串替换">字符串替换</a></li>
+        <li><a href="#按文件扩展名查找文件">按文件扩展名查找文件</a></li>
+        <li><a href="#jar-命令">jar 命令</a></li>
+        <li><a href="#关闭-selinux">关闭 selinux</a></li>
+        <li><a href="#firewalld-开放端口">firewalld 开放端口</a></li>
+        <li><a href="#查看指定进程的相关信息">查看指定进程的相关信息</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
       <p>本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。</p>
-<p>1、杀死某个进程</p>
+<h3 id="杀死某个进程">杀死某个进程</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">kill -9 $(ps -ef | grep -v grep | grep nginx | awk &#39;{print $2}&#39;)
+或
+ps -ef|grep nginx|grep -v grep|awk &#39;{print $2}&#39;|xargs kill             # 杀死所有Nginx相关进程
+或
+kill -9 $(netstat -tlnup | grep 80 | awk -F &#39; &#39; &#39;{print $7}&#39; | cut -d / -f1) # 杀死占用某个端口的命令
 </code></pre></td></tr></table>
 </div>
-</div><p>2、查找占用某端口的进程</p>
+</div><h3 id="查找占用某端口的进程">查找占用某端口的进程</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -161,7 +191,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat -tlnup|grep 35888|awk -F &#39; &#39; &#39;{print $7}&#39;|cut -d / -f2
 </code></pre></td></tr></table>
 </div>
-</div><p>3、置空文件</p>
+</div><h3 id="置空文件">置空文件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -174,7 +204,7 @@
 : &gt; abc.txt # abc.txt 文件内部没有空行
 </code></pre></td></tr></table>
 </div>
-</div><p>4、切换到 root 用户</p>
+</div><h3 id="切换到-root-用户">切换到 root 用户</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -183,7 +213,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">sudo su - # 由普通用户无密码切换到 root 用户
 </code></pre></td></tr></table>
 </div>
-</div><p>5、查看进程及其子进程</p>
+</div><h3 id="查看进程及其子进程">查看进程及其子进程</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -198,7 +228,7 @@
 </span><span class="gh"></span>pstree -a -l 3376
 </code></pre></td></tr></table>
 </div>
-</div><p>6、时间格式</p>
+</div><h3 id="时间格式">时间格式</h3>
 <p>1）获得 <code>2018-04-19</code> 样式</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -311,8 +341,8 @@ date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
 2018-04-19 11:40:16
 </code></pre></td></tr></table>
 </div>
-</div><p>7、修改系统时区
-修改当前机器时间为北京时间：</p>
+</div><h3 id="修改系统时区">修改系统时区</h3>
+<p>修改当前机器时间为北京时间：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -330,7 +360,7 @@ date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">timedatectl set-timezone Asia/Shanghai
 </code></pre></td></tr></table>
 </div>
-</div><p>8、获取 UNIX 时间戳</p>
+</div><h3 id="获取-unix-时间戳">获取 UNIX 时间戳</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -339,7 +369,7 @@ date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">date +%s
 </code></pre></td></tr></table>
 </div>
-</div><p>9、删除文件和目录时不删除隐藏的文件和目录</p>
+</div><h3 id="删除文件和目录时不删除隐藏的文件和目录">删除文件和目录时不删除隐藏的文件和目录</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -358,7 +388,7 @@ date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
 </code></pre></td></tr></table>
 </div>
 </div><p>但是不能删除 <code>.</code> 和 <code>..</code> 目录，所以该命令的返回值为 <code>1</code>。</p>
-<p>10、字符串替换</p>
+<h3 id="字符串替换">字符串替换</h3>
 <p>1）将当前目录下所有文件中的 <code>127.0.0.1</code> 修改为 <code>172.20.15.29</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -377,13 +407,178 @@ date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">sed -i &#34;s/\(127.0.0.1\|localhost\)/172.20.15.29/g&#34; ./*
 </code></pre></td></tr></table>
 </div>
-</div><p>11、查找当前目录下所有以 <code>.sh</code>，<code>.service</code>，<code>.conf</code>，<code>.yaml</code> 结尾的文件</p>
+</div><h3 id="按文件扩展名查找文件">按文件扩展名查找文件</h3>
+<p>查找当前目录下所有以 <code>.sh</code>，<code>.service</code>，<code>.conf</code>，<code>.yaml</code> 结尾的文件</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">find ./ -regex &#39;.*\.sh\|.*\.service\|.*\.conf\|.*\.yaml&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="jar-命令">jar 命令</h3>
+<p>1）将目录打包成war包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">jar -cvfM0 abc.war */ . # java cvf 打包文件名称 要打包的目录 打包文件保存路径 
+-c：创建war包；
+-v：显示打包过程；
+-f：指定 JAR 文件名，通常这个参数是必须的；
+-M：不产生所有项的清单（MANIFEST〕文件，此参数会忽略 -m 参数；
+-0：阿拉伯数字0，表示只打包不压缩；
+</code></pre></td></tr></table>
+</div>
+</div><p>2）解压war包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">jar -xvf abc.war # 解压war包
+或
+unzip abc.war -d abc/ <span class="ni">#解压war包到指定的目录abc</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭-selinux">关闭 selinux</h3>
+<p>到 <code>/etc/sysconfig</code> 目录下，修改 selinux 文件，设置 <code>SELINUX=&quot;enforcing&quot;</code> 为 <code>disabled</code> 并重启系统</p>
+<p>使用命令 <code>setenforce 0</code> 临时关闭 SElinux
+使用命令 <code>getenforce</code> 或 <code>sestatus -v </code>查看 SElinux 的状态</p>
+<p>注意：
+<code>/etc/sysconfig/selinux</code> 文件链接到了文件<code>/etc/selinux/config</code></p>
+<h3 id="firewalld-开放端口">firewalld 开放端口</h3>
+<p>使用如下命令开放端口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">firewall-cmd --zone=public --add-port=8004/tcp --permanent 
+<span class="gh"># --zone #作用域 --add-port=80/tcp  #添加端口，格式为：端口/通讯协议 --permanent  #永久生效，没有此参数重启后失效
+</span><span class="gh"></span>firewall-cmd --reload # 重启防火墙
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查看指定进程的相关信息">查看指定进程的相关信息</h3>
+<p>1、查看如下文件中的内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master ~]# cat /proc/4561/status
+Name:	java
+Umask:	0022
+State:	S (sleeping)
+Tgid:	4561
+Ngid:	4561
+Pid:	4561
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+VmPeak:	19751020 kB
+VmSize:	19751020 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	  207228 kB
+VmRSS:	  207228 kB
+RssAnon:	  192420 kB
+RssFile:	   14808 kB
+RssShmem:	       0 kB
+VmData:	19575744 kB
+VmStk:	     132 kB
+VmExe:	       4 kB
+VmLib:	   16344 kB
+VmPTE:	    2336 kB
+VmSwap:	       0 kB
+Threads:	273
+SigQ:	1/513396
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000003
+SigCgt:	2000000181005ccc
+CapInh:	0000000000000000
+CapPrm:	0000001fffffffff
+CapEff:	0000001fffffffff
+CapBnd:	0000001fffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Cpus_allowed:	ff,ffffffff,ffffffff
+Cpus_allowed_list:	0-71
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000003
+Mems_allowed_list:	0-1
+voluntary_ctxt_switches:	4
+nonvoluntary_ctxt_switches:	3
+</code></pre></td></tr></table>
+</div>
+</div><p>2、使用如下命令查看</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ps -T -p 4561          # 2561 为进程 ID。
 </code></pre></td></tr></table>
 </div>
 </div>

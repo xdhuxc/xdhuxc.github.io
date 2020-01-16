@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。">
 <meta itemprop="datePublished" content="2018-09-12T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-13T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="131">
+<meta itemprop="wordCount" content="169">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 131 字 </span>
+          <span class="more-meta"> 约 169 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -142,6 +142,7 @@
   <ul>
     <li>
       <ul>
+        <li><a href="#ubuntu">ubuntu</a></li>
         <li><a href="#alpine">alpine</a></li>
         <li><a href="#debain">debain</a></li>
       </ul>
@@ -152,11 +153,24 @@
 </div>
     <div class="post-content">
       <p>本篇博客记录下在一些 Linux 发行版中安装工具包的命令，在 docker 容器中排查问题时会有用。</p>
-<h3 id="alpine">alpine</h3>
+<h3 id="ubuntu">ubuntu</h3>
+<blockquote>
+<p>使用 apt-get 命令来安装软件包</p>
+</blockquote>
+<p>1）安装 ps 命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">apt-get install procps
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="alpine">alpine</h3>
 <blockquote>
 <p>使用 apk 命令来安装软件包</p>
 </blockquote>
-<p>1）安装 telnet</p>
+<p>1）安装 telnet 命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -165,7 +179,7 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">apk add busybox-extras
 </code></pre></td></tr></table>
 </div>
-</div><p>2）安装 make</p>
+</div><p>2）安装 make 命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -174,11 +188,20 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">apk add make
 </code></pre></td></tr></table>
 </div>
+</div><p>3）安装 ps 命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">apk add procps
+</code></pre></td></tr></table>
+</div>
 </div><h3 id="debain">debain</h3>
 <blockquote>
-<p>使用 apt-get 命令来安装工具包
-1）安装 nc 命令</p>
+<p>使用 apt-get 命令来安装工具包</p>
 </blockquote>
+<p>1）安装 nc 命令</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -237,8 +260,8 @@ apt-get update &amp;&amp; apt-get install net-tools
             <span class="prev-text nav-default">MySQL 配置文件详解</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/linux/linux-cronjob/">
-            <span class="next-text nav-default">Linux 中 crontab 的使用</span>
+        <a class="next" href="/post/linux/linux-advanced-command/">
+            <span class="next-text nav-default">Linux 部分高级命令总结</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
