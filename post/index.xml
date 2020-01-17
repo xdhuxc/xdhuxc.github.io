@@ -1421,12 +1421,48 @@
     </item>
     
     <item>
-      <title>Python 面向对象</title>
-      <link>https://xdhuxc.github.io/post/programming/python/python-object-database-internet/</link>
+      <title>Python 中的异常处理</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-exception/</link>
       <pubDate>Tue, 26 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/python/python-object-database-internet/</guid>
-      <description>&lt;p&gt;本篇博客介绍了 Python 中的面向对象，数据库和网络编程。&lt;/p&gt;</description>
+      <guid>https://xdhuxc.github.io/post/programming/python/python-exception/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的异常处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 数据库操作</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-database/</link>
+      <pubDate>Tue, 26 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-database/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的数据库操作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 面向对象</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-oriented-object/</link>
+      <pubDate>Tue, 26 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-oriented-object/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的面向对象 和网络编程。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的正则表达式</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-regular-expression/</link>
+      <pubDate>Mon, 25 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-regular-expression/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的正则表达式。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python 中的网络编程</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-network/</link>
+      <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/python/python-network/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 Python 中的网络编程。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1457,12 +1493,12 @@
     </item>
     
     <item>
-      <title>Python 中的文件、输入输出流和异常</title>
-      <link>https://xdhuxc.github.io/post/programming/python/python-file-and-exception/</link>
+      <title>Python 中的文件和输入输出流</title>
+      <link>https://xdhuxc.github.io/post/programming/python/python-file-and-directory/</link>
       <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://xdhuxc.github.io/post/programming/python/python-file-and-exception/</guid>
-      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的文件、输入输出流和异常。&lt;/p&gt;</description>
+      <guid>https://xdhuxc.github.io/post/programming/python/python-file-and-directory/</guid>
+      <description>&lt;p&gt;本篇博客介绍下 Python 语言中的文件和输入输出流。&lt;/p&gt;</description>
     </item>
     
     <item>

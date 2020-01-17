@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍下 Python 语言中的条件语句。">
 <meta itemprop="datePublished" content="2017-09-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-09-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2042">
+<meta itemprop="wordCount" content="1963">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 2042 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 1963 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -223,13 +223,13 @@ else:
 <img src="http://www.runoob.com/wp-content/uploads/2013/11/loop-over-python-list-animation.gif" alt="image"></p>
 <p>while 语句还有另外两个重要的命令 continue、break 来跳过循环，continue 用于跳过该次循环，break 则是用于退出循环，此外&quot;判断条件&quot;还可以是个常值，表示循环必定成立。</p>
 <p>如果条件判断语句永远为 true，循环将会无限的执行下去。</p>
-<p>注意：以上的无限循环你可以使用 CTRL+C 来中断循环。</p>
-<p>在 python 中，while … else 在循环条件为 false 时执行 else 语句块</p>
-<p>类似 if 语句的语法，如果你的 while 循环体中只有一条语句，你可以将该语句与while写在同一行中</p>
+<p>注意：以上的无限循环你可以使用 <code>CTRL+C</code> 来中断循环。</p>
+<p>在 python 中，<code>while … else</code> 在循环条件为 <code>false</code> 时执行 <code>else</code> 语句块</p>
+<p>类似 if 语句的语法，如果你的 while 循环体中只有一条语句，你可以将该语句与 while 写在同一行中</p>
 <h4 id="for循环">for循环</h4>
 <p>重复执行语句</p>
-<p>Python for循环可以遍历任何序列的项目，如一个列表或者一个字符串。</p>
-<p>for循环的语法格式如下：</p>
+<p>Python for 循环可以遍历任何序列的项目，如一个列表或者一个字符串。</p>
+<p>for 循环的语法格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -296,7 +296,7 @@ fruits = [&#39;banana&#39;, &#39;apple&#39;,  &#39;mango&#39;]
 print &#34;Good bye!&#34;
 </code></pre></td></tr></table>
 </div>
-</div><p>在 python 中，for … else 表示这样的意思，for 中的语句和普通的没有区别，else 中的语句会在循环正常执行完（即 for 不是通过 break 跳出而中断的）的情况下执行，while … else 也是一样。</p>
+</div><p>在 python 中，<code>for … else</code> 表示这样的意思，for 中的语句和普通的没有区别，else 中的语句会在循环正常执行完（即 for 不是通过 break 跳出而中断的）的情况下执行，<code>while … else</code> 也是一样。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -357,16 +357,16 @@ for num in range(10,20):  # 迭代 10 到 20 之间的数字
    statement(s)
 </code></pre></td></tr></table>
 </div>
-</div><p>可以在循环体内嵌入其他的循环体，如在while循环中可以嵌入for循环， 反之，你可以在for循环中嵌入while循环</p>
+</div><p>可以在循环体内嵌入其他的循环体，如在 while 循环中可以嵌入 for 循环， 反之，你可以在 for 循环中嵌入 while 循环</p>
 <h3 id="循环控制语句">循环控制语句</h3>
 <p>循环控制语句可以更改语句执行的顺序</p>
 <p>Python支持以下循环控制语句：</p>
 <h4 id="break语句">break语句</h4>
 <p>在语句块执行过程中终止循环，并且跳出整个循环</p>
-<p>break语句用来终止循环语句，即循环条件没有False条件或者序列还没被完全递归完，也会停止执行循环语句。</p>
-<p>break语句用在while和for循环中。</p>
-<p>如果使用嵌套循环，break语句将停止执行最深层的循环，并开始执行下一行代码。</p>
-<p>Python语言 break语句语法</p>
+<p>break 语句用来终止循环语句，即循环条件没有 False 条件或者序列还没被完全递归完，也会停止执行循环语句。</p>
+<p>break 语句用在 while 和 for 循环中。</p>
+<p>如果使用嵌套循环，break 语句将停止执行最深层的循环，并开始执行下一行代码。</p>
+<p>Python 语言 break 语句语法</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -375,21 +375,21 @@ for num in range(10,20):  # 迭代 10 到 20 之间的数字
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">break
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="continue语句">continue语句</h4>
+</div><h4 id="continue-语句">continue 语句</h4>
 <p>在语句块执行过程中终止当前循环，跳出该次循环，执行下一次循环</p>
-<p>Python continue 语句跳出本次循环，而break跳出整个循环。</p>
-<p>continue 语句用来告诉Python跳过当前循环的剩余语句，然后继续进行下一轮循环。</p>
-<p>continue语句用在while和for循环中。</p>
+<p>Python continue 语句跳出本次循环，而 break 跳出整个循环。</p>
+<p>continue 语句用来告诉 Python 跳过当前循环的剩余语句，然后继续进行下一轮循环。</p>
+<p>continue 语句用在 while 和 for 循环中。</p>
 <p>Python 语言 continue 语句语法格式如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">continue
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">continue
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="pass语句">pass语句</h4>
+</div><h4 id="pass-语句">pass 语句</h4>
 <p>pass是空语句，是为了保持程序结构的完整性</p>
 <p>Python pass是空语句，是为了保持程序结构的完整性。pass 不做任何事情，一般用做占位语句。</p>
 <p>Python 语言 pass 语句语法格式如下：</p>
