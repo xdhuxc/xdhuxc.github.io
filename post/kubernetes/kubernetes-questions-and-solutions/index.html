@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。">
 <meta itemprop="datePublished" content="2018-11-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-11-18T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="766">
+<meta itemprop="wordCount" content="891">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 766 字 </span>
+          <span class="more-meta"> 约 891 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -149,7 +149,7 @@
 <p>当前的 QOS 策略都是假定主机不启用内存 Swap。如果主机启用了 Swap，那么 QOS 策略可能会失效。</p>
 <p>例如，两个 Pod 都刚好达到了内存限制上限，由于内存 Swap 机制，它们还可以继续申请使用更多内存，如果 Swap 空间不足，那么最终这两个 Pod 中的进程可能会被杀掉。</p>
 <p>目前 Kubernetes 和 Docker 尚不支持内存 Swap 空间的隔离机制。</p>
-<p>3、在node节点上使用kubectl命令时，报错如下：</p>
+<p>3、在 <code>node</code> 节点上使用 <code>kubectl</code> 命令时，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -221,6 +221,8 @@ k8s-master          Ready     master    1d        v1.8.4
 强制删除该 namespace 下的所有 pod，然后该 namespace 将会被系统自动删除。</p>
 <p>6、应用部署完毕后，状态全部正常，但是访问却 504，</p>
 <p>注意，不要使虚拟机的 IP 地址和 calico 的子网 IP 地址一样。如果有冲突，需要进行修改 calico.yaml 中环境变量 CALICO_IPV4POOL_CIDR 的值，修改为新的子网地址，然后删除原有的 calico，ingress 和 kube-dns，依次重新创建 calico，ingress，kube-dns</p>
+<p>7、应用开发完毕后，本地启动没有问题，可以正常运行，但部署到 kubernetes 上后，web 服务总是启动不起来，进入 pod 中使用 netstat 查看后，发现有个需要连接的 IP 地址的状态为：syn_wait</p>
+<p>解决：当下游服务连接不通时，往往会导致 web 服务器启动不起来。经过运维同事打开安全组，服务终于正常运行了。</p>
     </div>
 
     <div class="post-copyright">
