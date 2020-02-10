@@ -395,7 +395,7 @@ kubectl create -f http://xdhuxc/xdhuxc.yaml
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl exec xdhuxc-message -- ls / #
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl exec -it xdhuxc-message -n kube-admin bash
 </code></pre></td></tr></table>
 </div>
 </div><p>18、将服务转发到端口</p>
