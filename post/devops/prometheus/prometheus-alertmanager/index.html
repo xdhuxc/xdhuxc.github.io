@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍了 Prometheus 和 AlertManager 配合使用时的配置方式，以备后需。">
 <meta itemprop="datePublished" content="2019-05-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1290">
+<meta itemprop="wordCount" content="1617">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1290 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1617 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -146,6 +146,7 @@
         <li><a href="#alertmanager-配置">AlertManager 配置</a></li>
         <li><a href="#在-prometheus-模块中定义报警规则">在 prometheus 模块中定义报警规则</a></li>
         <li><a href="#promtool-工具">promtool 工具</a></li>
+        <li><a href="#增加新的-alertmanager-报警方式">增加新的 AlertManager 报警方式</a></li>
       </ul>
     </li>
   </ul>
@@ -443,7 +444,24 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">promtool check prometheus.yml
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="增加新的-alertmanager-报警方式">增加新的 AlertManager 报警方式</h3>
+<p>1、在 <code>alertmanager/config/config.go</code> 文件中的结构体 <code>GlobalConfig</code> 中增加新的配置，此结构体对应于 alertmanager.yaml 中的全局配置；在结构体 <code>Receiver</code> 中增加具体报警接收者的配置，对应于 alertmanager.yaml 中的 receiver 部分的配置；在 <code>func (c *Config) UnmarshalYAML(unmarshal func(interface{}) error) error</code> 接口中为 Global 部分的配置赋予默认值。</p>
+<p>2、在 <code>alertmanager/notify</code> 目录下创建目录 <code>telephone</code>，可参照其他的报警通道，实现 <code>func New(c *config.TelephoneConfig, l log.Logger) (*Notifier, error)</code>函数和 <code>func (n *Notifier) Notify(ctx context.Context, as ...*types.Alert) (bool, error)</code>接口，完成业务代码的开发，</p>
+<p>3、在 <code>alertmanager/config/notifiers.go</code> 文件中增加结构体 <code>TelephoneConfig</code>，存储发送报警消息时的通用配置，实现其 <code>func (t *TelephoneConfig) UnmarshalYAML(unmarshal func(interface{}) error) error</code> 接口；在此文件最上方，定义默认的 <code>DefaultTelephoneConfig</code></p>
+<p>4、在 <code>alertmanager/cmd/alertmanager/main.go</code> 文件的 <code>func buildReceiverIntegrations(nc *config.Receiver, tmpl *template.Template, logger log.Logger) ([]notify.Integration, error)</code> 方法中，注册我们新编写的报警通知方式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">for i, c := range nc.TelephoneConfigs {
+		add(&#34;telephone&#34;, i, c, func(l log.Logger) (notify.Notifier, error) { return telephone.New(c, l) })
+}
+</code></pre></td></tr></table>
 </div>
+</div><p>5、在 <code>alertmanager/notify/notify.go</code> 文件中的 <code>func newMetrics(r prometheus.Registerer) *metrics</code> 函数中注册其指标信息。</p>
     </div>
 
     <div class="post-copyright">
