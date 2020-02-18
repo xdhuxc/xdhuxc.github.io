@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。">
 <meta itemprop="datePublished" content="2019-08-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="754">
+<meta itemprop="wordCount" content="823">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 754 字 </span>
+          <span class="more-meta"> 约 823 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -147,6 +147,7 @@
         <li><a href="#向-map-中写入键值对时报错-panicassignment-to-entry-in-nil-map">向 map 中写入键值对时，报错 panic：assignment to entry in nil map</a></li>
         <li><a href="#都是标签惹的祸">都是标签惹的祸</a></li>
         <li><a href="#使用-go-mod-tidy-命令报错">使用 go mod tidy 命令报错</a></li>
+        <li><a href="#使用-vscode-运行-golang-程序单元测试没有代码日志输出">使用 VSCode 运行 golang 程序单元测试，没有代码日志输出</a></li>
       </ul>
     </li>
   </ul>
@@ -319,6 +320,22 @@ go: modules disabled inside GOPATH/src by GO111MODULE=auto; see &#39;go help mod
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">export GO111MODULE=on
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="使用-vscode-运行-golang-程序单元测试没有代码日志输出">使用 VSCode 运行 golang 程序单元测试，没有代码日志输出</h3>
+<p>在 <code>.vscode/settings.json</code> 文件中，加入如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&#34;go.testFlags&#34;: [
+    &#34;-v&#34;
+],
+&#34;go.testTimeout&#34;: &#34;300s&#34;,  # 单元测试执行时间超过 300s，则直接结束该测试，
 </code></pre></td></tr></table>
 </div>
 </div>
