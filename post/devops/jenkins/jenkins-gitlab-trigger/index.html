@@ -49,11 +49,11 @@
 <meta itemprop="description" content="本篇博客详细介绍了在 Jenkins 中配置 Gitlab 触发器的过程，从而使得当我们向 gitlab 提交代码时，打上标签，就可以直接触发构建。">
 <meta itemprop="datePublished" content="2019-06-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1260">
+<meta itemprop="wordCount" content="1275">
 
 
 
-<meta itemprop="keywords" content="DevOps,Jenkins," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="DevOps,Jenkins,Gitlab," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="在 Jenkins 中配置 gitlab 触发器"/>
 <meta name="twitter:description" content="本篇博客详细介绍了在 Jenkins 中配置 Gitlab 触发器的过程，从而使得当我们向 gitlab 提交代码时，打上标签，就可以直接触发构建。"/>
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1260 字 </span>
+          <span class="more-meta"> 约 1275 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,7 +163,7 @@
 <img src="/image/devops/jenkins/WechatIMG72.jpeg" width="800px" height="300px" />
 </center>
 <p>使得 Jenkins 可以访问 GitLab 的 API 接口。</p>
-<p>2）在 Jenkins 中，选中 <code>Build when a change is pushed to GitLab</code>，将 <code>GitLab webhook URL</code> 地址</p>
+<p>2）在 Jenkins 中，选中 <code>Build when a change is pushed to GitLab</code>（此处需要使用插件 <code>Gitlab Hook</code>），将 <code>GitLab webhook URL</code> 地址</p>
 <center>
 <img src="/image/devops/jenkins/WechatIMG610.jpeg" width="800px" height="300px" />
 </center>
@@ -260,6 +260,7 @@ fi
       <div class="post-tags">
           <a href="/tags/devops/">DevOps</a>
           <a href="/tags/jenkins/">Jenkins</a>
+          <a href="/tags/gitlab/">Gitlab</a>
           </div>
       <nav class="post-nav">
         <a class="prev" href="/post/mixed/mac-tips/">
