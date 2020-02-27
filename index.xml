@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Fri, 22 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +19,15 @@
       
       <guid>https://xdhuxc.github.io/about/</guid>
       <description>此网站用于展示技术博客和个人文章！</description>
+    </item>
+    
+    <item>
+      <title>AlertManager 报警收敛的若干种方法</title>
+      <link>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-alerts-convergence/</link>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-alerts-convergence/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 AlertManager 报警收敛的若干种方法。&lt;/p&gt;</description>
     </item>
     
     <item>
