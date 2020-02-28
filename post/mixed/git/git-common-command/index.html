@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些 git 使用过程中常用的命令，方便查看。">
 <meta itemprop="datePublished" content="2018-06-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-06-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1099">
+<meta itemprop="wordCount" content="1139">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1099 字 </span>
+          <span class="more-meta"> 约 1139 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -284,10 +284,18 @@ git push origin newTagName
 origin
 </code></pre></td></tr></table>
 </div>
-</div><p>2、列出已经存在的远程分支的地址
-wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
-<a href="mailto:git@github.xdhuxc">git@github.xdhuxc</a>/xdhuxc.git</p>
-<p>3、添加远程仓库</p>
+</div><p>2、列出已经存在的远程分支的地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
+git@github.xdhuxc/xdhuxc.git
+</code></pre></td></tr></table>
+</div>
+</div><p>3、添加远程仓库</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -352,7 +360,17 @@ wanghuans-MacBook-Pro:xdhuxc wanghuan$ git remote get-url origin
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">git push origin master:master
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="生成ssh-key">生成SSH-key</h4>
+</div><h4 id="设置本地分支对应的远程分支">设置本地分支对应的远程分支</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">git branch --set-upstream-to=origin/s0.20.2 s0.20.2
+</code></pre></td></tr></table>
+</div>
+</div><p>此命令将本地分支 <code>s0.20.2</code> 对应的远程分支设置为 <code>s0.20.2</code></p>
+<h4 id="生成ssh-key">生成SSH-key</h4>
 <p>github的SSH配置如下：</p>
 <p>1、设置GitHub用户的用户名和邮箱
 设置命令为：</p>
