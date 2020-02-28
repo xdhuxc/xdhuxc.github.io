@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍了 AlertManager 报警收敛的若干种方法。">
 <meta itemprop="datePublished" content="2020-02-27T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-02-27T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1278">
+<meta itemprop="wordCount" content="1794">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1278 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 1794 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -225,11 +225,15 @@
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="其他方式">其他方式</h3>
-<p>我们也可以考虑把告警信息都收集起来，做统计分析。一来要求业务团队改造程序或结构，调整资源配置，比如有些代码写得性能特别差，资源占用高，导致告警信息频繁发送；二来可以作为我们设置各种资源阈值的统计参考数据，取代常用的经验值或习惯值，比如，根据历史报警数据的统计，采取百分位数，使得某告警在 <code>95%</code> 的情况下不再发送告警信息。</p>
+<p>我们也可以考虑把告警信息都收集起来，做统计分析，基于统计数据按周、月生成告警报告，比如，哪些应用在哪段时间里产生了最多的报警，哪些指标在哪段时间里产生了最多的报警，某个报警阈值的 90% 分位数、95%分位数、99%分位数，哪个部门产生了最多的报警数等等。一来要求业务团队改造程序或结构，调整资源配置，比如有些代码写得性能特别差，资源占用高，导致告警信息频繁发送；二来可以作为我们设置各种资源阈值的统计参考数据，取代常用的经验值或习惯值，比如，根据历史报警数据的统计，采取百分位数，使得某告警在 <code>95%</code> 的情况下不再发送告警信息。</p>
 <h3 id="总结和思考">总结和思考</h3>
 <p>做好告警的收敛是很有必要的，也有多种方法。借助于 <code>AlertManager</code>，我们可以通过分组、抑制、静默和延时等方法来做告警的收敛。</p>
 <p>就 <code>AlertManager</code> 而言，在告警抑制上，我们还可以考虑更多的告警抑制规则，比如，在多种告警级别（<code>critical</code>、<code>emergency</code>、<code>warning</code>等）的情况下，每一种高级别告警抑制所有比它低的级别的告警；在告警延时上，高级别告警的延时参数缩短，低级别告警的延时参数增长。</p>
 <p>另外，基于统计数据按周、月生成告警报告，改进应用程序和架构，合理设置阈值，更好和更准确地报警。</p>
+<p>考虑这样一种设计，我们想把 <code>AlertManager</code> 发送的报警收集起来，那么，由于 <code>AlertManager</code> 会把从 <code>Prometheus</code> 发送来的报警信息进行分组聚合，抑制等操作，从而导致实际产生的报警一般会多于发送出来的报警。如果我们想把 <code>AlertManager</code> 的报警信息收集起来，那么，我们是应该在 <code>AlertManager</code> 接收到报警的时候收集，还是在真正发送报警之前进行收集？</p>
+<p>如果是在接收到报警时收集，那么我们实际上会收集到所有产生的报警，数据量大，信息详尽。如果使用这些进行分析，进而改进代码、程序架构和资源配置，那么，将会从上游彻底地减少报警，并且促进整个研发运维的进步和系统的稳定性。</p>
+<p>如果是在实际发送时收集，那么我们收集到的数据量就会比较小，报警是经过聚合的，被抑制的报警不发送，经过分析优化后，将会使得接收到的报警数量减少，但是产生的报警（按原来的标准，这种情况下会产生报警）却可能增多，比如在不做上游改变的情况下，调整阈值，使得 <code>99%</code> 的报警不发送，问题则会堆积在 <code>Prometheus</code> 那边，不会向 <code>AlertManager</code> 发送报警。</p>
+<p>根据以上分析，我们选择在 <code>AlertManager</code> 接收到报警时即收集之。</p>
     </div>
 
     <div class="post-copyright">
