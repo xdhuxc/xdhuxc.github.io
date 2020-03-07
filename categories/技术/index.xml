@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Thu, 27 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Kibana 中制作 AlertManager 相关的图表</title>
+      <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-kibana-visualizations/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-kibana-visualizations/</guid>
+      <description>&lt;p&gt;本篇博客介绍下如何在 &lt;code&gt;Kibana&lt;/code&gt; 中制作图表，详细介绍其参数和方法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>将 AlertManager 的报警存储到 ElasticSearch 中</title>
+      <link>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-elasticsearch/</link>
+      <pubDate>Fri, 06 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-elasticsearch/</guid>
+      <description>&lt;p&gt;本篇博客介绍下将 &lt;code&gt;AlertManager&lt;/code&gt; 中的报警存储到 &lt;code&gt;ElasticSearch&lt;/code&gt; 中的方法，以便我们使用 &lt;code&gt;Kibana&lt;/code&gt; 等可视化工具将其做成各种图表进行分析。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch 的安装及配置和密码设置等</title>
+      <link>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-install-and-password/</link>
+      <pubDate>Tue, 03 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-install-and-password/</guid>
+      <description>&lt;p&gt;本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>AlertManager 报警收敛的若干种方法</title>
@@ -19,15 +46,6 @@
       
       <guid>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-alerts-convergence/</guid>
       <description>&lt;p&gt;本篇博客介绍了 &lt;code&gt;AlertManager&lt;/code&gt; 报警收敛的若干种方法。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>DNS 学习笔记（一）</title>
-      <link>https://xdhuxc.github.io/unfinished/common-dns/</link>
-      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/unfinished/common-dns/</guid>
-      <description>&lt;p&gt;本篇博客记录下 DNS 的知识点。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -355,15 +373,6 @@
     </item>
     
     <item>
-      <title>WebSocket 的使用</title>
-      <link>https://xdhuxc.github.io/unfinished/vue-go-websocket/</link>
-      <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/unfinished/vue-go-websocket/</guid>
-      <description>&lt;p&gt;最近项目中使用到了 WebSocket，&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>AWS DynamoDB 简单使用</title>
       <link>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</link>
       <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
@@ -414,15 +423,6 @@
       <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://xdhuxc.github.io/post/vue/vue-codemirror/</guid>
-      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Vue 集成 CodeMirror</title>
-      <link>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</link>
-      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</guid>
       <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     

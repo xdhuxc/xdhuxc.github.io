@@ -21,14 +21,5 @@
       <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>Vue 集成 CodeMirror</title>
-      <link>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</link>
-      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</guid>
-      <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
-    </item>
-    
   </channel>
 </rss>

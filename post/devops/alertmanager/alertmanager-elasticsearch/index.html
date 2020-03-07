@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>将 AlertManager 的报警存储到 ElasticSearch 中 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍下将 AlertManager 中的报警存储到 ElasticSearch 中的方法，以便我们使用 Kibana 等可视化工具将其做成各种图表进行分析。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-elasticsearch/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="将 AlertManager 的报警存储到 ElasticSearch 中" />
+<meta property="og:description" content="本篇博客介绍下将 AlertManager 中的报警存储到 ElasticSearch 中的方法，以便我们使用 Kibana 等可视化工具将其做成各种图表进行分析。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-elasticsearch/" />
+<meta property="article:published_time" content="2020-03-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-06T00:00:00+00:00" />
+<meta itemprop="name" content="将 AlertManager 的报警存储到 ElasticSearch 中">
+<meta itemprop="description" content="本篇博客介绍下将 AlertManager 中的报警存储到 ElasticSearch 中的方法，以便我们使用 Kibana 等可视化工具将其做成各种图表进行分析。">
+<meta itemprop="datePublished" content="2020-03-06T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-06-06T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3209">
+
+
+
+<meta itemprop="keywords" content="DevOps,AlertManager,ElasticSearch," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="将 AlertManager 的报警存储到 ElasticSearch 中"/>
+<meta name="twitter:description" content="本篇博客介绍下将 AlertManager 中的报警存储到 ElasticSearch 中的方法，以便我们使用 Kibana 等可视化工具将其做成各种图表进行分析。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">将 AlertManager 的报警存储到 ElasticSearch 中</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-06 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 3209 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#代码开发">代码开发</a></li>
+        <li><a href="#测试">测试</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客介绍下将 <code>AlertManager</code> 中的报警存储到 <code>ElasticSearch</code> 中的方法，以便我们使用 <code>Kibana</code> 等可视化工具将其做成各种图表进行分析。</p>
+<h3 id="背景">背景</h3>
+<p>当我们的监控-告警系统建立起来后，告警系统将会面临这样的问题：警报消息太多，接收人很容易麻木，不再继续理会，关键的告警常常被淹没。所以，我们需要做好告警的收敛工作。</p>
+<p>我们可以考虑把告警信息收集起来，做统计分析，基于统计数据按周、月生成告警报告，比如，哪些应用在哪段时间里产生了最多的报警，哪些指标在哪段时间里产生了最多的报警，某个报警阈值的 90% 分位数、95% 分位数、99% 分位数，哪个部门产生了最多的报警数等等。一来要求业务团队改造程序或结构，调整资源配置，比如有些代码写得性能特别差，资源占用高，导致告警信息频繁发送；二来可以作为我们设置各种资源阈值的统计参考数据，取代常用的经验值或习惯值，比如，根据历史报警数据的统计，采取百分位数，使得某告警在 <code>95%</code> 的情况下不再发送告警信息。</p>
+<p>我们决定使用 ElasticSearch 来存储报警信息，后续使用 Kibana 制作报警信息图表</p>
+<h3 id="代码开发">代码开发</h3>
+<h4 id="思考问题">思考问题</h4>
+<p>我们想把 <code>AlertManager</code> 发送的报警收集起来，那么，由于 <code>AlertManager</code> 会把从 <code>Prometheus</code> 发送来的报警信息进行分组聚合，抑制等操作，从而导致实际产生的报警一般会多于发送出来的报警。</p>
+<p>如果我们想把 <code>AlertManager</code> 的报警信息收集起来，那么，我们是应该在 <code>AlertManager</code> 接收到报警的时候收集，还是在真正发送报警之前进行收集？</p>
+<p>如果是在接收到报警时收集，那么我们实际上会收集到所有产生的报警，数据量大，信息详尽。如果使用这些进行分析，进而改进代码、程序架构和资源配置，那么，将会从上游彻底地减少报警，并且促进整个研发运维的进步和系统的稳定性。</p>
+<p>如果是在实际发送时收集，那么我们收集到的数据量就会比较小，报警是经过聚合的，被抑制的报警不发送，经过分析优化后，将会使得接收到的报警数量减少，但是产生的报警（按原来的标准，这种情况下会产生报警）却可能增多，比如在不做上游改变的情况下，调整阈值，使得 <code>99%</code> 的报警不发送，问题则会堆积在 <code>Prometheus</code> 那边，不会向 <code>AlertManager</code> 发送报警，造成更大的系统风险，使用不当时，会造成自自欺人的窘境。</p>
+<p>根据以上分析，我们选择在 <code>AlertManager</code> 接收到报警时即收集之。</p>
+<h4 id="代码">代码</h4>
+<p><code>Prometheus</code> 使用 <code>AlertManager</code> 的 <code>API</code> <code>v1</code> 来向 <code>AlertManager</code> 发送报警，所以我们先改造 <code>AlertManager</code> 的 <code>v1</code> 版本 <code>API</code>。</p>
+<p>1、在 <code>alertmanager/config/config.go</code> 中 <code>GlobalConfig</code> 结构体中加入如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">type GlobalConfig struct {
+    // ES
+    ESEnable            bool     <span class="sb">`yaml:&#34;es_enable,omitempty&#34; json:&#34;es_enable,omitempty&#34;`</span>
+    ESAddresses         []string <span class="sb">`yaml:&#34;es_addresses,omitempty&#34; json:&#34;es_addresses,omitempty&#34;`</span>
+    ESUserName          string   <span class="sb">`yaml:&#34;es_user_name,omitempty&#34; json:&#34;es_user_name,omitempty&#34;`</span>
+    ESPassword          string   <span class="sb">`yaml:&#34;es_password,omitempty&#34; json:&#34;es_password,omitempty&#34;`</span>
+    ESMaxRetries        int      <span class="sb">`yaml:&#34;es_max_retries,omitempty&#34; json:&#34;es_max_retries,omitempty&#34;`</span>
+    ESDisableRetry      bool     <span class="sb">`yaml:&#34;es_disable_retry,omitempty&#34; json:&#34;es_disable_retry,omitempty&#34;`</span>
+    ESEnableMetrics     bool     <span class="sb">`yaml:&#34;es_enable_metrics,omitempty&#34; json:&#34;es_enable_metrics,omitempty&#34;`</span>
+    ESEnableDebugLogger bool     <span class="sb">`yaml:&#34;es_enable_debug_logger,omitempty&#34; json:&#34;es_enable_debug_logger,omitempty&#34;`</span>
+    
+    // ES index
+    ESIndexName    string <span class="sb">`yaml:&#34;es_index_name,omitempty&#34; json:&#34;es_index_name,omitempty&#34;`</span>
+    ESIndexRefresh string <span class="sb">`yaml:&#34;es_index_refresh,omitempty&#34; json:&#34;es_index_refresh,omitempty&#34;`</span>
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>以上参数含义如下：</p>
+<ul>
+<li>ESEnable：是否启用存储报警信息到 ES 中功能，默认为：false</li>
+<li>ESAddresses：ES 节点地址数组，形式为：&ldquo;http://10.20.13.158:9200&rdquo;，必须指定</li>
+<li>ESUserName：ES 用户名，必须指定</li>
+<li>ESPassword：ES 密码，必须指定</li>
+<li>ESMaxRetries：请求 ES 服务器的最大重试次数，默认为：3</li>
+<li>ESDisableRetry：禁用请求重试功能，默认为：false</li>
+<li>ESEnableMetrics：允许收集指标，默认为：false</li>
+<li>ESEnableDebugLogger：允许 debug 级别日志，默认为：false</li>
+<li>ESIndexName：ES 索引名称，必须指定</li>
+<li>ESIndexRefresh：是否启用索引刷新，启用后，每次操作文档后，都会对相关分片及副本进行刷新，保证了数据操作的结果可以立刻被搜索到，在操作频率比较低时，可以设置为：&ldquo;true&rdquo;，默认为：&ldquo;false&rdquo;</li>
+</ul>
+<p>2、在 <code>alertmanager/api/v1/api.go</code> 中的 <code>API</code> 结构体中加入如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">package v1
+
+import &#34;github.com/elastic/go-elasticsearch/v7&#34;
+
+type API struct {
+	es       *elasticsearch.Client
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>3、创建 ES 客户端，修改 <code>alertmanager/api/v1/api.go</code> 文件中 <code>func (api *API) Update(cfg *config.Config)</code> 方法代码，加入如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">// Create ES client
+if cfg.Global.ESEnable {
+    esClient, err := elasticsearch.NewClient(elasticsearch.Config{
+        Addresses:         cfg.Global.ESAddresses,
+        Username:          cfg.Global.ESUserName,
+        Password:          cfg.Global.ESPassword,
+        DisableRetry:      cfg.Global.ESDisableRetry,
+        MaxRetries:        cfg.Global.ESMaxRetries,
+        EnableMetrics:     cfg.Global.ESEnableMetrics,
+        EnableDebugLogger: cfg.Global.ESEnableDebugLogger,
+    })
+    if err != nil {
+        level.Error(api.logger).Log(&#34;msg&#34;, &#34;Create ES client error&#34;, &#34;err&#34;, err)
+    } else {
+        // Ping
+        _, pingError := esClient.Ping()
+        if pingError == nil {
+            api.es = esClient
+        } else {
+            level.Error(api.logger).Log(&#34;msg&#34;, &#34;Ping ES service error&#34;, &#34;err&#34;, pingError)
+        }
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>4、由于 AlertManager 报警信息的数据格式的键值均为字符串，而实际的报警数据中，经常会用到数值类型，比如内存使用率，CPU 使用率，请求次数等等，考虑到以字符串表示的数值在 ES 中将会被当做字符串存储，无法进行某些统计，比如百分位数的计算。我们需要将以字符串表示的数值类型数据转为数值类型。</p>
+<p>在 <code>alertmanager/api</code> 目录下创建 <code>es</code> 目录，在其中创建 <code>alert.go</code> 文件，内容如下：（为了 v1 和 v2 版本代码均可引用此部分代码）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">package es
+
+import (
+	&#34;fmt&#34;
+	&#34;strconv&#34;
+	&#34;time&#34;
+
+	&#34;github.com/prometheus/alertmanager/types&#34;
+	&#34;github.com/prometheus/common/model&#34;
+)
+
+type LabelValue interface{}
+
+type LabelSet map[model.LabelName]LabelValue // 此处使用 Prometheus 中报警的 LabelSet 的键类型，不要使用 string 类型或自定义 string 类型，否则要进行非常麻烦的类型转换
+
+const (
+	labelNameValue model.LabelName = &#34;value&#34; // 在我们的报警中，数值类型的键名统一为：value，值为 CPU 使用率，内存使用率，请求数量等等
+)
+
+// for ES number type index
+type Alert struct {
+	// 使用自定义的 LabelSet 类型
+	Labels LabelSet <span class="sb">`json:&#34;labels&#34;`</span> 
+
+	// Extra key/value information which does not define alert identity.
+	Annotations model.LabelSet <span class="sb">`json:&#34;annotations&#34;`</span>
+
+	// The known time range for this alert. Both ends are optional.
+	StartsAt     time.Time <span class="sb">`json:&#34;startsAt,omitempty&#34;`</span>
+	EndsAt       time.Time <span class="sb">`json:&#34;endsAt,omitempty&#34;`</span>
+	GeneratorURL string    <span class="sb">`json:&#34;generatorURL&#34;`</span>
+
+	// The authoritative timestamp.
+	UpdatedAt time.Time
+	Timeout   bool
+}
+
+func Convert(alert *types.Alert) *Alert {
+	esAlert := new(Alert)
+
+	esAlert.EndsAt = alert.EndsAt
+	esAlert.StartsAt = alert.StartsAt
+	esAlert.Annotations = alert.Annotations
+	esAlert.GeneratorURL = alert.GeneratorURL
+	esAlert.Timeout = alert.Timeout
+	esAlert.UpdatedAt = alert.UpdatedAt
+	esls := make(LabelSet)
+	// 注意，此处不能使用反射将所有字符串数值都转换为数值类型，各个不同的报警中可能有相同的键名，而值的类型不同，可能是字符串，可能是字符串数值，如果转换过去了，向 ES 中创建索引时，就会因为类型而出现错误
+	for k, v := range alert.Labels {
+		if k == labelNameValue { // 处理数值类型
+			result, err = strconv.ParseFloat(fmt.Sprintf(&#34;%s&#34;, v), 32)
+			if err != nil {
+			    esls[k] = v
+			} else {
+			    esls[k] = result
+			}
+		} else {
+			esls[k] = v
+		}
+	}
+	esAlert.Labels = esls
+
+	return esAlert
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>5、编写代码向 ES 中插入数据，有两种方式可以实现，一种是常规的一条一条地插入数据，另一种是批量插入数据，向 <code>alertmanager/api/v1/api.go</code> 中添加如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import (
+    uuid &#34;github.com/satori/go.uuid&#34;
+    &#34;github.com/elastic/go-elasticsearch/v7/esapi&#34;
+)
+
+// 一条一条地插入数据
+func (api *API) Insert(alerts ...*types.Alert) error {
+	var total int
+	for <span class="ge">_, alert := range alerts {
+</span><span class="ge">		esAlert := es.Convert(alert)
+</span><span class="ge">		dataInBytes, err := json.Marshal(esAlert)
+</span><span class="ge">		if err != nil {
+</span><span class="ge">			total = total + 1
+</span><span class="ge">			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Marshal alerts to string error&#34;, &#34;err&#34;, err)
+</span><span class="ge">			continue
+</span><span class="ge">		}
+</span><span class="ge">		req := esapi.IndexRequest{
+</span><span class="ge">			Index:      api.config.Global.ESIndexName,
+</span><span class="ge">			DocumentID: uuid.NewV4().String(),       // 使用 UUID 作为文档 ID
+</span><span class="ge">			Body:       strings.NewReader(string(dataInBytes)),
+</span><span class="ge">			Refresh:    api.config.Global.ESIndexRefresh,
+</span><span class="ge">		}
+</span><span class="ge">
+</span><span class="ge">		_</span>, err = req.Do(context.Background(), api.es)
+		if err != nil {
+			total = total + 1
+			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Insert alerts to ES error&#34;, &#34;err&#34;, err)
+			continue
+		}
+	}
+
+	if total &gt; 0 {
+		return level.Error(api.logger).Log(&#34;msg&#34;, &#34;There are several errors&#34;, &#34;total&#34;, total)
+	}
+
+	return nil
+}
+
+// 批量插入数据
+func (api *API) Batch(alerts ...*types.Alert) error {
+	var buf bytes.Buffer
+	for _, alert := range alerts {
+	    // 将 AlertManager 的报警格式转化为 ES 需要的报警格式，差别在于数值类型数据的处理
+		esAlert := es.Convert(alert)
+
+		metadata := []byte(fmt.Sprintf(`{ &#34;index&#34; : { &#34;_id&#34; : &#34;%s&#34; } }%s`, uuid.NewV4().String(), &#34;\n&#34;))
+		data, err := json.Marshal(esAlert)
+		if err != nil {
+			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Marshal ESAlerts to string error&#34;, &#34;err&#34;, err)
+			continue
+		}
+
+		data = append(data, &#34;\n&#34;...)
+		buf.Grow(len(metadata) + len(data))
+		buf.Write(metadata)
+		buf.Write(data)
+	}
+
+	_, err := api.es.Bulk(bytes.NewReader(buf.Bytes()), api.es.Bulk.WithIndex(api.config.Global.ESIndexName), api.es.Bulk.WithRefresh(api.config.Global.ESIndexRefresh))
+	if err != nil {
+		level.Error(api.logger).Log(&#34;msg&#34;, &#34;doing ES Bulk API error&#34;, &#34;err&#34;, err)
+		return err
+	}
+
+	return nil
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>建议使用批量插入数据的方式，在我们的测试中，插入 1000 条数据，一条一条插入需要使用 197.13s，而使用批量插入仅需要 1.97s。</p>
+<p>6、将 AlertManager 接收到的报警数据存储到 ES 中，修改 <code>alertmanager/api/v1/api.go</code> 文件中的方法 <code>func (api *API) insertAlerts(w http.ResponseWriter, r *http.Request, alerts ...*types.Alert)</code>，将代码加到 <code>api.alerts.Put(validAlerts...)</code> 代码块之前</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">// insert alerts to ES
+if api.es != nil {
+    _ = api.Batch(validAlerts...)
+}
+
+// Put 方法用于合并报警到已有的报警之中
+if err := api.alerts.Put(validAlerts...); err != nil {
+    api.respondError(w, apiError{
+        typ: errorInternal,
+        err: err,
+    }, nil)
+    return
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>参照以上代码修改 API v2 的代码，由于 AlertManager 代码结构的问题，v1 和 v2 版本的 API 无法共用此部分代码。</p>
+<h3 id="测试">测试</h3>
+<p>编写单元测试进行测试，在文件 <code>alertmanager/api/v1/api_test.go</code> 中加入如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">func newAPIClient() *API {
+	apiClient := New(nil, nil, nil, nil, nil, nil)
+	cfg := &amp;config.Config{
+		Global: &amp;config.GlobalConfig{
+			ESEnable:            true,
+			ESAddresses:         []string{&#34;http://127.0.0.1:9200&#34;},
+			ESUserName:          &#34;elastics&#34;,
+			ESPassword:          &#34;AlertManager@2020&#34;,
+			ESMaxRetries:        3,
+			ESDisableRetry:      false,
+			ESEnableMetrics:     true,
+			ESEnableDebugLogger: true,
+			ESIndexName:         &#34;alertmanager-alerts&#34;,
+			ESIndexRefresh:      &#34;true&#34;,
+		},
+		Route: &amp;config.Route{
+			Receiver:   &#34;test&#34;,
+			GroupByAll: false,
+		},
+	}
+
+	apiClient.Update(cfg)
+
+	return apiClient
+}
+
+func generateAlerts() []*types.Alert {
+	groups := []string{&#34;A&#34;, &#34;B&#34;, &#34;C&#34;, &#34;D&#34;}
+	severities := []string{&#34;critical&#34;, &#34;warning&#34;}
+	alertNames := []string{&#34;the usage rate of container related to kube-admin greater than 80%&#34;, &#34;kafka was down&#34;}
+
+	var alerts []*types.Alert
+
+	for i := 0; i &lt; 1000; i++ {
+		ls := model.LabelSet{
+			model.LabelName(model.AlertNameLabel): model.LabelValue(alertNames[rand.Intn(len(alertNames))]),
+			model.LabelName(&#34;group&#34;):              model.LabelValue(groups[rand.Intn(len(groups))]),
+			model.LabelName(&#34;severity&#34;):           model.LabelValue(severities[rand.Intn(len(severities))]),
+			model.LabelName(&#34;value&#34;):              model.LabelValue(fmt.Sprintf(&#34;%.2f&#34;, rand.Float32()*100)),
+		}
+		alert := &amp;types.Alert{
+			Alert: model.Alert{
+				Labels:      ls,
+				Annotations: nil,
+				StartsAt:    time.Now(),
+				EndsAt:      time.Now(),
+			},
+			Timeout:   false,
+			UpdatedAt: time.Now(),
+		}
+		alerts = append(alerts, alert)
+	}
+
+	return alerts
+}
+
+func TestAPI_Insert(t *testing.T) {
+	apiClient := newAPIClient()
+	alerts := generateAlerts()
+
+	err := apiClient.Insert(alerts...)
+	require.NoError(t, err)
+}
+
+func TestAPI_Batch(t *testing.T) {
+	apiClient := newAPIClient()
+	alerts := generateAlerts()
+
+	err := apiClient.Batch(alerts...)
+	require.NoError(t, err)
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="总结">总结</h3>
+<p>至此，向 AlertManager 中添加存储报警信息到 ES 中的代码开发就完成了，有两点需要特别注意，一是我们是在 AlertManager 接收到发送来的报警信息时将其报警数据存储到 ES 中的（我们将时机选在了去除空标签及标签合法性验证和合并报警消息之间），不是报警从 AlertManager 发送出去时的报警信息；二是由于 AlertManager 代码本身的问题，我们无法复用一些代码，比如创建 ES 客户端的代码，向 ES 中写数据的代码等。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-06-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/devops/">DevOps</a>
+          <a href="/tags/alertmanager/">AlertManager</a>
+          <a href="/tags/elasticsearch/">ElasticSearch</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/storage/elasticsearch/elasticsearch-kibana-visualizations/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">在 Kibana 中制作 AlertManager 相关的图表</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/storage/elasticsearch/elasticsearch-install-and-password/">
+            <span class="next-text nav-default">ElasticSearch 的安装及配置和密码设置等</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -10,7 +10,91 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/alertmanager/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/categories/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/devops/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/elasticsearch/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/kibana/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-kibana-visualizations/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-elasticsearch/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2020-03-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-install-and-password/</loc>
+    <lastmod>2020-03-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -18,76 +102,6 @@
   <url>
     <loc>https://xdhuxc.github.io/post/devops/alertmanager/alertmanager-alerts-convergence/</loc>
     <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/categories/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/devops/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/post/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/dns/</loc>
-    <lastmod>2019-11-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/common-dns/</loc>
-    <lastmod>2019-11-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/golang/</loc>
-    <lastmod>2019-11-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/</loc>
-    <lastmod>2019-11-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -137,6 +151,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/vue/vue-develope-standard/</loc>
     <lastmod>2019-11-08T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/golang/</loc>
+    <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -332,13 +353,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/storage/sqlite/sqlite-basic-use/</loc>
-    <lastmod>2019-08-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2019-08-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -653,20 +667,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/websocket/</loc>
-    <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/vue-go-websocket/</loc>
-    <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/post/tools/tools-aws-dynamodb/</loc>
     <lastmod>2019-06-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -738,13 +738,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/vue/vue-codemirror/</loc>
-    <lastmod>2019-05-26T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/vue-admin-optimization/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -891,13 +884,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/elasticsearch/</loc>
-    <lastmod>2019-02-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/post/storage/elasticsearch/elasticsearch-restful-api/</loc>
     <lastmod>2019-02-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -990,6 +976,13 @@
   
   <url>
     <loc>https://xdhuxc.github.io/post/common/dns/dns-bind/</loc>
+    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/dns/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -2029,31 +2022,6 @@
     <lastmod>2017-06-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/go-vue-cors/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/mermaid/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/nodejs_yarn/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/python_logging_basic/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/unfinished/vue-web-terminal/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
