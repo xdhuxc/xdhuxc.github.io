@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍下如何在 Kibana 中制作图表，详细介绍其参数和方法。">
 <meta itemprop="datePublished" content="2020-03-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1788">
+<meta itemprop="wordCount" content="2105">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1788 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2105 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -287,7 +287,19 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <p>保存该图标，命名为：各报警随时间的变化情况</p>
 <h5 id="百分位图">百分位图</h5>
 <p>如果我们想给某给报警设置阈值，使得 95% 的报警都不发送，那么我们就需要计算这个报警的百分位数。百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
-<p>1、</p>
+<p>1、<code>Metrics</code> 中使用 <code>Percentiles</code> 聚合器，<code>Field</code> 选择 <code>labels.value</code>，注意，<code>labels.value</code> 必须是 <code>ES</code> 中的数值类型，否则不能用于计算百分位数，在 <code>Percents</code> 中分别填入 <code>90</code>，<code>95</code>，<code>99</code>，表示需要计算 <code>90% 分位数</code>，<code>95% 分位数</code>，<code>99% 分位数</code>。</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG769.png" width="800px" height="300px" />
+</center>
+<p>2、在 Bucket 的 Split series 中，此处使用 Filters 聚合器，查询条件为：<code>labels.alertname.keyword : &quot;kube-admin相关容器内存使用率大于80%&quot; and labels.severity.keyword : &quot;critical&quot; and labels.group.keyword : &quot;RST&quot;</code>，查询出待计算百分位数的报警，在 <code>Filter 1 label</code> 中填入 <code>kube-admin相关容器内存使用率大于80%</code></p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG770.png" width="800px" height="300px" />
+</center>
+<p>最后显示的百分位图为：</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG771.png" width="800px" height="300px" />
+</center>
+<p>保存该图，命名为：百分位图-kube-admin相关容器内存使用率大于80%</p>
 <h3 id="总结">总结</h3>
     </div>
 
