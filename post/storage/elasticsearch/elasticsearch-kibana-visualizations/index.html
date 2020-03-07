@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍下如何在 Kibana 中制作图表，详细介绍其参数和方法。">
 <meta itemprop="datePublished" content="2020-03-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="931">
+<meta itemprop="wordCount" content="1704">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 931 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1704 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -230,7 +230,7 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG755.png" width="800px" height="300px" />
 </center>
-<p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，Count 返回所选索引模式中元素的原始计数，<code>Custom label</code> 中填入这个 <code>Count</code> 的含义。</p>
+<p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，Count 返回所选索引模式中元素的原始计数，<code>Custom label</code> 中填入这个 <code>Count</code> 的含义，即报警总数。</p>
 <p>点击 <code>Add</code> 增加一个 <code>Bucket</code>（相当于 <code>SQL</code> 中的 <code>group by</code>），类型选择 <code>Split slices</code>，</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG756.png" width="800px" height="300px" />
@@ -251,6 +251,38 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG758.png" width="800px" height="300px" />
 </center>
+<p>保存该图标，命名为：各报警统计</p>
+<p>2、我们或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG760.png" width="800px" height="300px" />
+</center>
+<p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，<code>Custom label</code> 中填入 <code>报警总数</code>。</p>
+<p>接下来设置 X 轴，在 <code>Buckets</code> 中增加 <code>X-axis</code>，聚合器选择 <code>Date Histogram</code>，<code>Field</code> 选择 <code>startAt</code>，<code>Minimum interval</code> 填写 <code>1h</code>，<code>Custom label</code> 填写 <code>时间</code>，我们以报警发生的时间作为 X 轴数据，每小时的数据统计在一个点上。</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG761.png" width="800px" height="300px" />
+</center>
+<p>接下来继续增加 <code>Bucket</code>，选择 <code>Split series</code>，使用 <code>Terms</code> 聚合器，<code>Field</code> 字段选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 设置为：<code>50</code>，打开 <code>Group other values in separate bucket</code>（将所有不在报警名称之中的归入此类），在 <code>Label for other bucket</code> 下方填写 其他，<code>Custom label</code> 中填写 <code>报警名称</code></p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG764.png" width="800px" height="300px" />
+</center>
+<p>数据部分的工作做完了，接下来进行配置：</p>
+<p>1、设置 Y 轴，在 <code>Metrics &amp; axes</code> 中，<code>Chart type</code> 选择 <code>Line</code>，使用线图；<code>Line mode</code> 选择 <code>Smoothed</code>，使用平滑曲线；<code>Line width</code> 用来设置线宽，可自行设置。</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG765.png" width="800px" height="300px" />
+</center>
+<p>2、设置 X 轴，<code>Position</code> 为 <code>Bottom</code>，x 轴显示在图表下方；打开 <code>Show axis lines and labels</code>，否则将不显示 x 轴的标签；<code>Align</code> 使用 <code>Horizontal</code>，横向排列 x 轴标签。</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG766.png" width="800px" height="300px" />
+</center>
+<p>3、其他设置，在 <code>Panel settings</code> 中，打开 <code>Show tooltip</code>，这样当鼠标放到数据点上时，会显示该点的数据和标签；打开 Current time marker，将会以垂线的方式显示当前时间线；在 Grid 部分，打开 <code>Show X-axis lines</code>，<code>Y-axis lines</code> 选择 <code>LeftAxis-1</code>，这样会在坐标轴中显示网格线，更加直观。</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG767.png" width="800px" height="300px" />
+</center>
+<p>最后显示的折线图为：</p>
+<center>
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG768.png" width="800px" height="300px" />
+</center>
+<p>保存该图标，命名为：各报警随时间的变化情况</p>
 <h3 id="总结">总结</h3>
     </div>
 
