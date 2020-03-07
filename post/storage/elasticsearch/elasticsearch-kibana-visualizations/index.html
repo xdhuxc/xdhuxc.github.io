@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍下如何在 Kibana 中制作图表，详细介绍其参数和方法。">
 <meta itemprop="datePublished" content="2020-03-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2105">
+<meta itemprop="wordCount" content="2321">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 2105 字 </span>
+          <span class="more-meta"> 约 2321 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -248,10 +248,11 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <li>Show labels：是否显示标签，在此处对应于各报警的名称</li>
 <li>Show values：是否显示值，在此处对应于各报警所占百分比是否显示在标签后面的括号中。</li>
 </ul>
-<p>最后显示的饼图为：</p>
+<p>最后的饼图为：</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG758.png" width="800px" height="300px" />
 </center>
+<p>可以看到，在所有的报警中，各报警所占的比例。</p>
 <p>保存该图标，命名为：各报警统计</p>
 <h5 id="线图">线图</h5>
 <p>或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
@@ -280,27 +281,32 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG767.png" width="800px" height="300px" />
 </center>
-<p>最后显示的折线图为：</p>
+<p>最后的折线图为：</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG768.png" width="800px" height="300px" />
 </center>
+<p>可以看出，随着时间的变化，有些报警在减少，有些报警在迅速增加。</p>
 <p>保存该图标，命名为：各报警随时间的变化情况</p>
 <h5 id="百分位图">百分位图</h5>
-<p>如果我们想给某给报警设置阈值，使得 95% 的报警都不发送，那么我们就需要计算这个报警的百分位数。百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
+<p>如果我们想给某给报警设置阈值，使得 95% 的报警都不发送，那么我们就需要计算这个报警的百分位数。</p>
+<p>百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
 <p>1、<code>Metrics</code> 中使用 <code>Percentiles</code> 聚合器，<code>Field</code> 选择 <code>labels.value</code>，注意，<code>labels.value</code> 必须是 <code>ES</code> 中的数值类型，否则不能用于计算百分位数，在 <code>Percents</code> 中分别填入 <code>90</code>，<code>95</code>，<code>99</code>，表示需要计算 <code>90% 分位数</code>，<code>95% 分位数</code>，<code>99% 分位数</code>。</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG769.png" width="800px" height="300px" />
 </center>
-<p>2、在 Bucket 的 Split series 中，此处使用 Filters 聚合器，查询条件为：<code>labels.alertname.keyword : &quot;kube-admin相关容器内存使用率大于80%&quot; and labels.severity.keyword : &quot;critical&quot; and labels.group.keyword : &quot;RST&quot;</code>，查询出待计算百分位数的报警，在 <code>Filter 1 label</code> 中填入 <code>kube-admin相关容器内存使用率大于80%</code></p>
+<p>2、在 <code>Bucket</code> 的 <code>Split series</code> 中，此处使用 <code>Filters</code> 聚合器，查询条件为：<code>labels.alertname.keyword : &quot;kube-admin相关容器内存使用率大于80%&quot; and labels.severity.keyword : &quot;critical&quot; and labels.group.keyword : &quot;RST&quot;</code>，查询出待计算百分位数的报警，在 <code>Filter 1 label</code> 中填入 <code>kube-admin相关容器内存使用率大于80%</code></p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG770.png" width="800px" height="300px" />
 </center>
-<p>最后显示的百分位图为：</p>
+<p>最后的百分位图为：</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG771.png" width="800px" height="300px" />
 </center>
+<p>可以看到，在2020年03月05日5点时，kube-admin相关容器内存使用率大于80% 报警的 90% 分位数为 77.162，也就是 value 设置为 77.162 时，90% 的报警都不会发送出来。</p>
+<p>同时也应该注意，分位数是随着报警总数的增多而变化的，并非固定值。</p>
 <p>保存该图，命名为：百分位图-kube-admin相关容器内存使用率大于80%</p>
 <h3 id="总结">总结</h3>
+<p>Kibana 的图表制作还是很方便的，了解了基本的使用方法后，可以制作出来很多漂亮、实用的图表，为业务提供支持和建议。</p>
     </div>
 
     <div class="post-copyright">
