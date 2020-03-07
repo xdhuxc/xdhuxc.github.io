@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客介绍下如何在 Kibana 中制作图表，详细介绍其参数和方法。">
 <meta itemprop="datePublished" content="2020-03-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-03-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1704">
+<meta itemprop="wordCount" content="1788">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1704 字 </span>
+          <span class="more-meta"> 约 1788 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -226,7 +226,8 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 </div><p>然后保存。</p>
 <p>2、选择 <code>Kibana</code> 中的 <code>Index Patterns</code>，创建索引模式，名称为：<code>alertmanager-alerts*</code>，选择索引 <code>alertmanager-alerts</code>，完成后续步骤。</p>
 <h4 id="可视化图表">可视化图表</h4>
-<p>1、我们先制作一个按报警名称聚合的饼图，表示各个报警在报警总数中所占的比例。选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Pie</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
+<h5 id="饼图">饼图</h5>
+<p>先制作一个按报警名称聚合的饼图，表示各个报警在报警总数中所占的比例。选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Pie</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG755.png" width="800px" height="300px" />
 </center>
@@ -235,7 +236,7 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG756.png" width="800px" height="300px" />
 </center>
-<p>聚合器选择 <code>Terms</code>，<code>Field</code> 选择 <code>labels.alertname.keyword</code>，表示根据 field 字段的值相等来分组，<code>Order</code> 可以默认，<code>Size</code> 增大到 100，打开 <code>Group other values in separate bucket</code>，在 <code>Label for other bucket</code> 中填入 <code>其他</code>，<code>Custom label</code> 中填入 <code>报警名称</code></p>
+<p>聚合器选择 <code>Terms</code>，<code>Field</code> 选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 增大到 100，打开 <code>Group other values in separate bucket</code>，在 <code>Label for other bucket</code> 中填入 <code>其他</code>，<code>Custom label</code> 中填入 <code>报警名称</code></p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG757.png" width="800px" height="300px" />
 </center>
@@ -252,7 +253,8 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG758.png" width="800px" height="300px" />
 </center>
 <p>保存该图标，命名为：各报警统计</p>
-<p>2、我们或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
+<h5 id="线图">线图</h5>
+<p>或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
 <center>
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG760.png" width="800px" height="300px" />
 </center>
@@ -283,6 +285,9 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG768.png" width="800px" height="300px" />
 </center>
 <p>保存该图标，命名为：各报警随时间的变化情况</p>
+<h5 id="百分位图">百分位图</h5>
+<p>如果我们想给某给报警设置阈值，使得 95% 的报警都不发送，那么我们就需要计算这个报警的百分位数。百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
+<p>1、</p>
 <h3 id="总结">总结</h3>
     </div>
 
