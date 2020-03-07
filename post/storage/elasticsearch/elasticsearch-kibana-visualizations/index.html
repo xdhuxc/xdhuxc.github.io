@@ -228,17 +228,17 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <h4 id="可视化图表">可视化图表</h4>
 <h5 id="饼图">饼图</h5>
 <p>先制作一个按报警名称聚合的饼图，表示各个报警在报警总数中所占的比例。选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Pie</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
-<center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG755.png" width="800px" height="300px" />
-</center>
+<div align="center">
+    <img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG755.png" width="400px" height="300px" />
+</div>
 <p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，Count 返回所选索引模式中元素的原始计数，<code>Custom label</code> 中填入这个 <code>Count</code> 的含义，即报警总数。</p>
 <p>点击 <code>Add</code> 增加一个 <code>Bucket</code>（相当于 <code>SQL</code> 中的 <code>group by</code>），类型选择 <code>Split slices</code>，</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG756.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG756.png" width="400px" height="300px" />
 </center>
 <p>聚合器选择 <code>Terms</code>，<code>Field</code> 选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 增大到 100，打开 <code>Group other values in separate bucket</code>，在 <code>Label for other bucket</code> 中填入 <code>其他</code>，<code>Custom label</code> 中填入 <code>报警名称</code></p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG757.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG757.png" width="400px" height="300px" />
 </center>
 <p><code>Options</code> 中的参数说明如下：</p>
 <ul>
@@ -250,40 +250,40 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 </ul>
 <p>最后的饼图为：</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG758.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG758.png" width="600px" height="400px" />
 </center>
 <p>可以看到，在所有的报警中，各报警所占的比例。</p>
 <p>保存该图标，命名为：各报警统计</p>
 <h5 id="线图">线图</h5>
 <p>或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG760.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG760.png" width="400px" height="300px" />
 </center>
 <p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，<code>Custom label</code> 中填入 <code>报警总数</code>。</p>
 <p>接下来设置 X 轴，在 <code>Buckets</code> 中增加 <code>X-axis</code>，聚合器选择 <code>Date Histogram</code>，<code>Field</code> 选择 <code>startAt</code>，<code>Minimum interval</code> 填写 <code>1h</code>，<code>Custom label</code> 填写 <code>时间</code>，我们以报警发生的时间作为 X 轴数据，每小时的数据统计在一个点上。</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG761.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG761.png" width="400px" height="300px" />
 </center>
 <p>接下来继续增加 <code>Bucket</code>，选择 <code>Split series</code>，使用 <code>Terms</code> 聚合器，<code>Field</code> 字段选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 设置为：<code>50</code>，打开 <code>Group other values in separate bucket</code>（将所有不在报警名称之中的归入此类），在 <code>Label for other bucket</code> 下方填写 其他，<code>Custom label</code> 中填写 <code>报警名称</code></p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG764.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG764.png" width="400px" height="300px" />
 </center>
 <p>数据部分的工作做完了，接下来进行配置：</p>
 <p>1、设置 Y 轴，在 <code>Metrics &amp; axes</code> 中，<code>Chart type</code> 选择 <code>Line</code>，使用线图；<code>Line mode</code> 选择 <code>Smoothed</code>，使用平滑曲线；<code>Line width</code> 用来设置线宽，可自行设置。</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG765.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG765.png" width="400px" height="300px" />
 </center>
 <p>2、设置 X 轴，<code>Position</code> 为 <code>Bottom</code>，x 轴显示在图表下方；打开 <code>Show axis lines and labels</code>，否则将不显示 x 轴的标签；<code>Align</code> 使用 <code>Horizontal</code>，横向排列 x 轴标签。</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG766.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG766.png" width="400px" height="300px" />
 </center>
 <p>3、其他设置，在 <code>Panel settings</code> 中，打开 <code>Show tooltip</code>，这样当鼠标放到数据点上时，会显示该点的数据和标签；打开 Current time marker，将会以垂线的方式显示当前时间线；在 Grid 部分，打开 <code>Show X-axis lines</code>，<code>Y-axis lines</code> 选择 <code>LeftAxis-1</code>，这样会在坐标轴中显示网格线，更加直观。</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG767.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG767.png" width="400px" height="300px" />
 </center>
 <p>最后的折线图为：</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG768.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG768.png" width="600px" height="400px"/>
 </center>
 <p>可以看出，随着时间的变化，有些报警在减少，有些报警在迅速增加。</p>
 <p>保存该图标，命名为：各报警随时间的变化情况</p>
@@ -292,15 +292,15 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <p>百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
 <p>1、<code>Metrics</code> 中使用 <code>Percentiles</code> 聚合器，<code>Field</code> 选择 <code>labels.value</code>，注意，<code>labels.value</code> 必须是 <code>ES</code> 中的数值类型，否则不能用于计算百分位数，在 <code>Percents</code> 中分别填入 <code>90</code>，<code>95</code>，<code>99</code>，表示需要计算 <code>90% 分位数</code>，<code>95% 分位数</code>，<code>99% 分位数</code>。</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG769.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG769.png" width="400px" height="300px" />
 </center>
 <p>2、在 <code>Bucket</code> 的 <code>Split series</code> 中，此处使用 <code>Filters</code> 聚合器，查询条件为：<code>labels.alertname.keyword : &quot;kube-admin相关容器内存使用率大于80%&quot; and labels.severity.keyword : &quot;critical&quot; and labels.group.keyword : &quot;RST&quot;</code>，查询出待计算百分位数的报警，在 <code>Filter 1 label</code> 中填入 <code>kube-admin相关容器内存使用率大于80%</code></p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG770.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG770.png" width="400px" height="300px" />
 </center>
 <p>最后的百分位图为：</p>
 <center>
-<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG771.png" width="800px" height="300px" />
+<img src="/image/storage/elasticsearch/elasticsearch-kibana-visualizations/WechatIMG771.png" width="600px" height="400px" />
 </center>
 <p>可以看到，在2020年03月05日5点时，kube-admin相关容器内存使用率大于80% 报警的 90% 分位数为 77.162，也就是 value 设置为 77.162 时，90% 的报警都不会发送出来。</p>
 <p>同时也应该注意，分位数是随着报警总数的增多而变化的，并非固定值。</p>
