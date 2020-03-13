@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录一些 Mac 下常用的操作或功能，以备后需。">
 <meta itemprop="datePublished" content="2019-06-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-06-17T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="602">
+<meta itemprop="wordCount" content="674">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 602 字 </span>
+          <span class="more-meta"> 约 674 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -203,6 +203,16 @@ xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools
 <p><code>~/.bash_profile</code>, <code>~/.bash_login</code>，<code>~/.profile</code> 按照从前往后的顺序读取，如果 <code>~/.bash_profile</code> 文件存在，则后面几个文件就会被忽略；如果 <code>~/.bash_profile</code> 文件不存在，才会读取后面的文件，以此类推。<code>~/.bashrc</code> 没有上述规则，它是 <code>bash</code> <code>shell</code> 打开的时候载入的。</p>
 <p>解决：</p>
 <p>使用 <code>zsh</code> 后，我们在 ~/.zshrc 文件中写入环境变量，关闭当前终端，重新打开新的终端，即可看到写入的环境变量。</p>
+<p>3、有时候 Mac 从睡眠状态恢复之后没有声音，这是因为 Mac OS X 的核心音频守护进程（coreaudiod）出了问题，杀死该进程即可：（会自动重启）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sudo killall coreaudiod
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
