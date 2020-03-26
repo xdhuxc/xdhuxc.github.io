@@ -66,5 +66,14 @@
       <description>&lt;p&gt;当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Vue &#43; Element-UI 子组件表单校验功能</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/</link>
+      <pubDate>Mon, 26 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/</guid>
+      <description>&lt;p&gt;在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

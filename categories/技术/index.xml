@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Fri, 06 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Grafana 中制作 AlertManager 报警相关的图表</title>
+      <link>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</guid>
+      <description>&lt;p&gt;本篇博客介绍下如何在 &lt;code&gt;Grafana&lt;/code&gt; 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>在 Kibana 中制作 AlertManager 相关的图表</title>
@@ -1642,6 +1651,15 @@
       
       <guid>https://xdhuxc.github.io/post/docker/docker-practical-command/</guid>
       <description>&lt;p&gt;本篇博客整理了一些 docker 实用命令，包括一些组合命令，可以直接修改使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vue &#43; Element-UI 子组件表单校验功能</title>
+      <link>https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/</link>
+      <pubDate>Mon, 26 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/</guid>
+      <description>&lt;p&gt;在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。&lt;/p&gt;</description>
     </item>
     
   </channel>

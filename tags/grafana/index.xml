@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/grafana/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在 Grafana 中制作 AlertManager 报警相关的图表</title>
+      <link>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</guid>
+      <description>&lt;p&gt;本篇博客介绍下如何在 &lt;code&gt;Grafana&lt;/code&gt; 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用 Grafana 监控 Clickhouse</title>

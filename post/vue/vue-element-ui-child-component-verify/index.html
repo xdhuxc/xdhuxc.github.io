@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vue &#43; Element-UI 子组件表单校验功能 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。
+" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.62.2 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Vue &#43; Element-UI 子组件表单校验功能" />
+<meta property="og:description" content="在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/vue/vue-element-ui-child-component-verify/" />
+<meta property="article:published_time" content="2012-03-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-26T00:00:00+00:00" />
+<meta itemprop="name" content="Vue &#43; Element-UI 子组件表单校验功能">
+<meta itemprop="description" content="在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。">
+<meta itemprop="datePublished" content="2012-03-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="771">
+
+
+
+<meta itemprop="keywords" content="Vue,表单校验," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue &#43; Element-UI 子组件表单校验功能"/>
+<meta name="twitter:description" content="在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">博客</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">目录</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">博客</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">目录</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Vue &#43; Element-UI 子组件表单校验功能</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2012-03-26 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 771 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在使用 vue 和 element-ui 时，当项目比较复杂或某个功能经常使用时，我们会将其封装为组件，然后在其他组件中引用。这时，提交数据到后端 API 时，需要校验数据格式时，就需要从父组件中校验子组件的表单，本篇文章详细演示如何完成这项工作。</p>
+<p>1、子组件代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-form&gt;
+      &lt;el-form-item v-for=&#34;(parameter, index) in choiceParameters&#34; :key=&#34;&#39;parameter&#39; + index&#34;&gt;
+        &lt;el-card class=&#34;box-card&#34; style=&#34;width: 80%&#34;&gt;
+          &lt;div slot=&#34;header&#34; class=&#34;clearfix&#34;&gt;
+            &lt;span&gt;{{ $t(&#39;pipeline.choiceParameter&#39;) }}&lt;/span&gt;
+            &lt;el-button
+              v-if=&#34;choiceParameters.length &gt; 0&#34;
+              type=&#34;danger&#34;
+              size=&#34;mini&#34;
+              icon=&#34;el-icon-delete&#34;
+              circle
+              style=&#34;float: right&#34;
+              <span class="ni">@click</span>.prevent=&#34;removeParameter(index)&#34;/&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;el-form ref=&#34;choiceParameterForm&#34; :model=&#34;parameter&#34; :rules=&#34;choiceParameterFormRules&#34; label-position=&#34;left&#34; size=&#34;mini&#34;&gt;
+              &lt;el-form-item :label=&#34;$t(&#39;pipeline.parameterName&#39;)&#34; size=&#34;mini&#34; prop=&#34;name&#34;&gt;
+                &lt;el-input v-model=&#34;parameter.name&#34; :clearable=&#34;true&#34;/&gt;
+              &lt;/el-form-item&gt;
+              &lt;el-form-item :label=&#34;$t(&#39;pipeline.parameterValue&#39;)&#34; size=&#34;mini&#34; prop=&#34;defaultValue&#34;&gt;
+                &lt;el-input v-model=&#34;parameter.defaultValue&#34; :placeholder=&#34;$t(&#39;pipeline.choiceParameterOptions&#39;)&#34; :clearable=&#34;true&#34;/&gt;
+              &lt;/el-form-item&gt;
+              &lt;el-form-item :label=&#34;$t(&#39;pipeline.parameterDescription&#39;)&#34; size=&#34;mini&#34;&gt;
+                &lt;el-input v-model=&#34;parameter.description&#34; :clearable=&#34;true&#34; type=&#34;textarea&#34;/&gt;
+              &lt;/el-form-item&gt;
+            &lt;/el-form&gt;
+          &lt;/div&gt;
+        &lt;/el-card&gt;
+      &lt;/el-form-item&gt;
+      &lt;!--
+      &lt;span style=&#34;margin-left: 450px;&#34;&gt;
+        &lt;el-button
+          type=&#34;primary&#34;
+          size=&#34;mini&#34;
+          icon=&#34;el-icon-plus&#34;
+          circle
+          <span class="ni">@click</span>.prevent=&#34;addParameter()&#34;/&gt;
+      &lt;/span&gt;
+      --&gt;
+    &lt;/el-form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &#39;ChoiceParameters&#39;,
+  props: {
+    choiceParameters: {
+      type: Array,
+      required: false,
+      default() {
+        return [];
+      }
+    }
+  },
+  data() {
+    const validateChoiceParameters = (rule, value, callback) =&gt; {
+      if (value) {
+        if (value.indexOf(&#39;,&#39;) === -1) {
+          return callback(new Error(this.$t(&#39;pipeline.validateChoiceParameter&#39;)));
+        }
+        return callback();
+      } else {
+        return callback(new Error(this.$t(&#39;pipeline.nullWarning&#39;)));
+      }
+    };
+    return {
+      choiceParameterFormRules: {
+        name: [{
+          required: true, message: this.$t(&#39;pipeline.nullWarning&#39;), trigger: [&#39;change&#39;, &#39;blur&#39;]
+        }],
+        defaultValue: [
+          {
+            required: true, message: this.$t(&#39;pipeline.nullWarning&#39;), trigger: [&#39;change&#39;, &#39;blur&#39;]
+          },
+          {
+            validator: validateChoiceParameters, required: true, trigger: [&#39;change&#39;, &#39;blur&#39;]
+          }
+        ]
+      },
+    };
+  },
+  methods: {
+    validateForm() {
+      let flag = true;
+      for (let i = 0; i &lt; this.choiceParameters.length; i++) {
+        this.$refs.choiceParameterForm[i].validate((valid) =&gt; {
+          if (!valid) {
+            flag = false;
+          }
+        });
+      }
+      return flag;
+    },
+    addParameter() {
+      this.choiceParameters.push({
+        name: &#39;&#39;,
+        description: &#39;&#39;,
+        defaultValue: &#39;&#39;
+      });
+    },
+    removeParameter(index) {
+      this.choiceParameters.splice(index, 1);
+    }
+  }
+};
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>一个数组 choiceParameters 中包含了多个 choiceParameter，每个 choiceParameter 是个对象，在页面上是一个表单，我们需要校验每个表单。</p>
+<p>其他地方都是普通的单表单校验常规的代码，特殊之处在于 <code>validateForm()</code> 函数，我们需要在该函数中遍历每个表单，分别校验之，如果有一个校验未通过，返回 false，这样设计的目的是为了能够在父组件中获取到子组件中的表单校验结果。</p>
+<p>2、父组件中代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
+    &lt;el-form-item&gt;
+      &lt;choice-parameters ref=&#34;choice-parameters&#34; :choice-parameters=&#34;properties.choiceParameters&#34;&gt;&lt;/choice-parameters&gt;
+    &lt;/el-form-item&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: &#39;Pipeline&#39;,
+  components: {
+    &#39;choice-parameters&#39;: ChoiceParameters
+  },
+  data() {
+    return {}
+  }
+  methods: {
+    handle() {
+      if (this.$refs[&#39;choice-parameters&#39;].validateForm()) {
+          // do something     
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>以上代码中有两个地方需要特别注意，一是为了在代码中引用子组件而添加的 <code>ref</code> 属性，二是使用 <code>this.$refs['choice-parameters'].validateForm()</code> 获取子组件校验的结果，获得子组件校验的结果后，就可以进行相应的判断和操作了。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-03-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vue/">Vue</a>
+          <a href="/tags/%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C/">表单校验</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/docker/docker-practical-command/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Docker 实用命令总结</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:xdhuxc@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/xdhuxc" class="iconfont icon-github" title="github"></a>
+  <a href="https://xdhuxc.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139962821-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

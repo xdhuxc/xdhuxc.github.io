@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Grafana · xdhuxc</title>
+  <title>在 Grafana 中制作 AlertManager 报警相关的图表 - xdhuxc</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xdhuxc" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍下如何在 Grafana 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。
+" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,9 +27,7 @@
 <meta name="generator" content="Hugo 0.62.2 with theme even" />
 
 
-<link rel="canonical" href="https://xdhuxc.github.io/tags/grafana/" />
-  <link href="https://xdhuxc.github.io/tags/grafana/index.xml" rel="alternate" type="application/rss+xml" title="xdhuxc" />
-  <link href="https://xdhuxc.github.io/tags/grafana/index.xml" rel="feed" type="application/rss+xml" title="xdhuxc" />
+<link rel="canonical" href="https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,15 +39,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Grafana" />
-<meta property="og:description" content="Hugo theme even example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://xdhuxc.github.io/tags/grafana/" />
-<meta property="og:updated_time" content="2020-03-25T00:00:00+00:00" />
-<meta itemprop="name" content="Grafana">
-<meta itemprop="description" content="Hugo theme even example site."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Grafana"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta property="og:title" content="在 Grafana 中制作 AlertManager 报警相关的图表" />
+<meta property="og:description" content="本篇博客介绍下如何在 Grafana 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/" />
+<meta property="article:published_time" content="2020-03-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-25T00:00:00+00:00" />
+<meta itemprop="name" content="在 Grafana 中制作 AlertManager 报警相关的图表">
+<meta itemprop="description" content="本篇博客介绍下如何在 Grafana 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。">
+<meta itemprop="datePublished" content="2020-03-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="89">
+
+
+
+<meta itemprop="keywords" content="ElasticSearch,AlertManager,Grafana," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在 Grafana 中制作 AlertManager 报警相关的图表"/>
+<meta name="twitter:description" content="本篇博客介绍下如何在 Grafana 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -112,38 +119,81 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="archive" class="archive">
-  <div class="archive-title tag">
-        <h2 class="archive-name">Grafana</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">在 Grafana 中制作 AlertManager 报警相关的图表</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-25 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            </div>
+          <span class="more-meta"> 约 89 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-  <div class="archive-post">
-      <span class="archive-post-time">
-        2020-03-25
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/grafana/grafana-elasticsearch-visualizations/" class="archive-post-link">
-          在 Grafana 中制作 AlertManager 报警相关的图表
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2019-10-10
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/devops/prometheus/prometheus-grafana-clickhouse/" class="archive-post-link">
-          使用 Grafana 监控 Clickhouse
-        </a>
-      </span>
-    </div>
-</section>
-
-<nav class="pagination">
-  
-  
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#背景">背景</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本篇博客介绍下如何在 <code>Grafana</code> 中制作 AlertManager 报警相关的图表，详细介绍其参数和方法。</p>
+<h3 id="背景">背景</h3>
+<p>我们将 <code>AlertManager</code> 产生的报警存储到了 ES 中，接下来，需要制作报警图表，以可视化的方式观察报警的数量变化和各报警的比例。</p>
+<h3 id="heading"></h3>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xdhuxc</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-03-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/elasticsearch/">ElasticSearch</a>
+          <a href="/tags/alertmanager/">AlertManager</a>
+          <a href="/tags/grafana/">Grafana</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/storage/elasticsearch/elasticsearch-kibana-visualizations/">
+            <span class="next-text nav-default">在 Kibana 中制作 AlertManager 相关的图表</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
