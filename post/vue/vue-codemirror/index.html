@@ -49,7 +49,7 @@
 <meta itemprop="description" content="当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。">
 <meta itemprop="datePublished" content="2019-05-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-05-26T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1632">
+<meta itemprop="wordCount" content="1849">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1632 字 </span>
+          <span class="more-meta"> 约 1849 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -445,7 +445,109 @@ Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#
 </div>
 </div><p>可能的一种情况是：</p>
 <p>字符串内容为 YAML 格式，但是 mode 却为：<code>text/x-json</code>，将其改为：<code>text/x-yaml</code> 试下。</p>
-<h3 id="参考资料">参考资料</h3>
+<p>2、使用多个 CodeMirror 实例时，会发生数据不能及时更新，需要获取到焦点才会更新数据的情况，解决方法如下：</p>
+<p>引入 refresh 插件，在处理函数中使用定时任务刷新 CodeMirror 组件，代码示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
+   &lt;codemirror ref=&#34;jenkinsFileCode&#34; v-model=&#34;content&#34; :options=&#34;fileOptions&#34; class=&#34;json-editor&#34;&gt;&lt;/codemirror&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &#39;codemirror/addon/display/autorefresh.js&#39;;
+
+export default {
+  name: &#39;Pipeline&#39;,
+  data() {
+    return {
+      content: &#39;&#39;,
+      fileOptions: {
+        lineNumbers: true,
+        mode: &#39;text/x-yaml&#39;,
+        gutters: [&#39;CodeMirror-lint-markers&#39;],
+        theme: &#39;erlang-dark&#39;,
+        lint: true,
+        lineWrapping: true,
+        autoRefresh: true // 此属性是 autorefresh 的，需要引入 autorefresh.js
+      }
+    }
+  }
+  methods: {
+    handle() {
+      setInterval(() =&gt; {
+        this.$refs[&#39;jenkinsFileCode&#39;].refresh();
+      }, 1);
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+  .json-editor {
+    height: 100%;
+  }
+  .CodeMirror {
+    border: 1px solid <span class="ni">#eee</span>;
+    height: 950px;
+  }
+  .CodeMirror-scroll {
+    height: 950px;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+&lt;/style&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://codemirror.net/">https://codemirror.net/</a></p>
 <p><a href="https://www.itread01.com/content/1540634681.html">https://www.itread01.com/content/1540634681.html</a></p>
 <p><a href="https://www.cnblogs.com/onlyonely/p/4450029.html">https://www.cnblogs.com/onlyonely/p/4450029.html</a></p>
