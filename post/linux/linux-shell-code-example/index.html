@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-shell-code-example/" />
@@ -226,9 +226,9 @@ function set_kubernetes_prometheus() {
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
-</span><span class="gh"></span><span class="gh"># author：xdhuxc
-</span><span class="gh"></span><span class="gh"># time：2017-07-19
-</span><span class="gh"></span><span class="gh"># description：计算三个数中的最大数
+</span><span class="gh"># author：xdhuxc
+</span><span class="gh"># time：2017-07-19
+</span><span class="gh"># description：计算三个数中的最大数
 </span><span class="gh"></span>
 echo &#34;Please enter three numbers:&#34;
 	# -p，允许在read命令行中直接指定一个提示。
@@ -271,9 +271,9 @@ echo &#34;The maximum number is $max&#34;
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
-</span><span class="gh"></span><span class="gh"># author: xdhuxc
-</span><span class="gh"></span><span class="gh"># time: 2017-07-19
-</span><span class="gh"></span><span class="gh"># description：计算100以内的偶数的和
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-07-19
+</span><span class="gh"># description：计算100以内的偶数的和
 </span><span class="gh"></span>sum = 0
 for i in $(seq 1 100); do
 	if [ $[$i % 2] -eq 0 ]; then
@@ -323,11 +323,11 @@ echo &#34;The sum is $sum.&#34;
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
-</span><span class="gh"></span><span class="gh"># author: xdhuxc
-</span><span class="gh"></span><span class="gh"># time: 2017-12-04
-</span><span class="gh"></span><span class="gh"># description：在某个目录下的所有文件中查找关键字，输出匹配文件的全路径
-</span><span class="gh"></span><span class="gh"># parameter 1：根目录名
-</span><span class="gh"></span><span class="gh"># parameter 2：查找关键字
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：在某个目录下的所有文件中查找关键字，输出匹配文件的全路径
+</span><span class="gh"># parameter 1：根目录名
+</span><span class="gh"># parameter 2：查找关键字
 </span><span class="gh"></span>function traverse_dir(){
     local base_dir=$1
     local key=$2
@@ -381,9 +381,9 @@ traverse_dir $1 $2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
-</span><span class="gh"></span><span class="gh"># author: xdhuxc
-</span><span class="gh"></span><span class="gh"># time: 2017-12-04
-</span><span class="gh"></span><span class="gh"># description：加载当前目录下的tar格式镜像，更改镜像标签，再导出为tar格式镜像
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：加载当前目录下的tar格式镜像，更改镜像标签，再导出为tar格式镜像
 </span><span class="gh"></span>
 <span class="gh"># 加载当前目录下的镜像
 </span><span class="gh"></span>for tar_image in ./*.tar
@@ -427,9 +427,9 @@ done
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
-</span><span class="gh"></span><span class="gh"># author: xdhuxc
-</span><span class="gh"></span><span class="gh"># time: 2017-12-04
-</span><span class="gh"></span><span class="gh"># description：删除已经退出的docker镜像
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：删除已经退出的docker镜像
 </span><span class="gh"></span>
 <span class="gh"># 删除已经退出的容器
 </span><span class="gh"></span>docker ps -a | awk &#39;NR &gt; 1 {print $1}&#39; | while read container_id
@@ -496,10 +496,10 @@ done
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 替换某文件中的键值对
 </span><span class="gh"></span>
 <span class="gh"># 参数1：带文件路径的文件名
-</span><span class="gh"></span><span class="gh"># 参数2：键
-</span><span class="gh"></span><span class="gh"># 参数3：值
-</span><span class="gh"></span><span class="gh"># jdbc.url=jdbc.mysql
-</span><span class="gh"></span><span class="gh"># 描述：如果文件中没有该键，则添加该键值对；如果有，则更新键的值
+</span><span class="gh"># 参数2：键
+</span><span class="gh"># 参数3：值
+</span><span class="gh"># jdbc.url=jdbc.mysql
+</span><span class="gh"># 描述：如果文件中没有该键，则添加该键值对；如果有，则更新键的值
 </span><span class="gh"></span>
 function replace_text(){
     full_path_file=$1

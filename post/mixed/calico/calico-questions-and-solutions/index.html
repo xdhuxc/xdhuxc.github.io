@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/mixed/calico/calico-questions-and-solutions/" />
@@ -165,8 +165,8 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
-</span><span class="gh"></span><span class="gh">#重新安装calico (cnm)
-</span><span class="gh"></span><span class="gh"># 修改calico地址后，需要删除原来的tunl0等
+</span><span class="gh">#重新安装calico (cnm)
+</span><span class="gh"># 修改calico地址后，需要删除原来的tunl0等
 </span><span class="gh"></span>
 ip link set tunl0 down
 ifconfig|grep &#34;cali\|cni\|flannel&#34;|awk &#39;{printf(&#34;ip link delete %s\n&#34;, $1)}&#39;|sh

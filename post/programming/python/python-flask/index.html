@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-flask/" />
@@ -386,7 +386,7 @@ def index():
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">from flask import Blueprint
 
 <span class="gh"># 实例化 Blueprint 类，两个参数分别为蓝本的名字和蓝本所在包或模块，第二个通常填 __name__ 即可
-</span><span class="gh"></span>main = Blueprint(&#39;main&#39;, <span class="gs">__name</span><span class="gs">__</span>)
+</span><span class="gh"></span>main = Blueprint(&#39;main&#39;, <span class="gs">__name__</span>)
 
 
 from . import views, errors
@@ -596,7 +596,7 @@ def make_shell_context():
 manager.add_command(&#34;shell&#34;,Shell(make_context=make_shell_context))
 manager.add_command(&#39;db&#39;, MigrateCommand)
 
-if <span class="gs">__name</span><span class="gs">__</span> == &#39;__main__&#39;:
+if <span class="gs">__name__</span> == &#39;__main__&#39;:
     manager.run()
 </code></pre></td></tr></table>
 </div>

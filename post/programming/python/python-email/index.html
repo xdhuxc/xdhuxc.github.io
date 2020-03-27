@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-email/" />
@@ -222,7 +222,7 @@ smtpObj = smtplib.SMTP( [host [, port [, local_hostname]]] )
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.text import MIMEText
@@ -299,7 +299,7 @@ except smtplib.SMTPException:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.text import MIMEText
@@ -367,7 +367,7 @@ except smtplib.SMTPException:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.text import MIMEText
@@ -443,7 +443,7 @@ except smtplib.SMTPException:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.text import MIMEText
@@ -536,7 +536,7 @@ except smtplib.SMTPException:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.image import MIMEImage
@@ -620,7 +620,7 @@ except smtplib.SMTPException:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import smtplib
 from email.mime.text import MIMEText
@@ -702,7 +702,7 @@ else:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import thread
 import time
@@ -787,7 +787,7 @@ while 1:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import threading
 import time
@@ -795,7 +795,7 @@ import time
 exitFlag = 0
  
 class myThread (threading.Thread):   <span class="ni">#继承父类threading</span>.Thread
-    def <span class="gs">__init</span><span class="gs">__</span>(self, threadID, name, counter):
+    def <span class="gs">__init__</span>(self, threadID, name, counter):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
@@ -879,13 +879,13 @@ print &#34;Exiting Main Thread&#34;
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import threading
 import time
  
 class myThread (threading.Thread):
-    def <span class="gs">__init</span><span class="gs">__</span>(self, threadID, name, counter):
+    def <span class="gs">__init__</span>(self, threadID, name, counter):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
@@ -1009,7 +1009,7 @@ print &#34;Exiting Main Thread&#34;
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 import Queue
 import threading
@@ -1018,7 +1018,7 @@ import time
 exitFlag = 0
  
 class myThread (threading.Thread):
-    def <span class="gs">__init</span><span class="gs">__</span>(self, threadID, name, q):
+    def <span class="gs">__init__</span>(self, threadID, name, q):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name

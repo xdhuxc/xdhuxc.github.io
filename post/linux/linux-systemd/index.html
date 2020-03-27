@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/linux/linux-systemd/" />
@@ -214,8 +214,8 @@ ExecStart=/usr/sbin/NetworkManager --no-daemon
 EnvironmentFile=/etc/sysconfig/network/config
 ExecStartPre=/usr/bin/test &#34;x${NETWORKMANAGER}&#34; = xyes
 <span class="gh"># Suppress stderr to eliminate duplicated messages in syslog. NM calls openlog()
-</span><span class="gh"></span><span class="gh"># with LOG_PERROR when run in foreground. But systemd redirects stderr to
-</span><span class="gh"></span><span class="gh"># syslog by default, which results in logging each message twice.
+</span><span class="gh"># with LOG_PERROR when run in foreground. But systemd redirects stderr to
+</span><span class="gh"># syslog by default, which results in logging each message twice.
 </span><span class="gh"></span>StandardError=null
 
 [Install]

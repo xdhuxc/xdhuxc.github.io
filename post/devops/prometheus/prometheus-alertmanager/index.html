@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/devops/prometheus/prometheus-alertmanager/" />
@@ -332,7 +332,7 @@
       message: &#39;{{ template &#34;wechat.html&#34; }}&#39; # 发送消息模板的设置
 
 <span class="gh"># 覆盖规则
-</span><span class="gh"></span><span class="gh"># 一个 inhibit 规则是在与另一组匹配器匹配的警报存在的条件下，使匹配一组匹配器的警报失效的规则，两个警报必须具有一组相同的标签
+</span><span class="gh"># 一个 inhibit 规则是在与另一组匹配器匹配的警报存在的条件下，使匹配一组匹配器的警报失效的规则，两个警报必须具有一组相同的标签
 </span><span class="gh"></span>inhibit_rules:
   <span class="k">-</span> source_match:
       severity: &#39;critical&#39;

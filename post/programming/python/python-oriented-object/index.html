@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/programming/python/python-oriented-object/" />
@@ -204,13 +204,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 class Employee:
    &#39;所有员工的基类&#39;
    empCount = 0
  
-   def <span class="gs">__init</span><span class="gs">__</span>(self, name, salary):
+   def <span class="gs">__init__</span>(self, name, salary):
       self.name = name
       self.salary = salary
       Employee.empCount += 1
@@ -263,9 +263,9 @@ x.xdhuxc()
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;__main__.Xdhuxc instance at 0x02190940&gt;
-<span class="gs">__main</span><span class="gs">__</span>.Xdhuxc
+<span class="gs">__main__</span>.Xdhuxc
 None
-<span class="gs">__main</span><span class="gs">__</span>
+<span class="gs">__main__</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>从执行结果可以看出，self 代表的是类的实例，代表当前对象的地址，而 self.<strong>class</strong> 则指向类。
@@ -449,14 +449,14 @@ delattr(empl, &#39;age&#39;)    # 删除属性 &#39;age&#39;
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
 </span><span class="gh"></span> 
 class Vector:
-   def <span class="gs">__init</span><span class="gs">__</span>(self, a, b):
+   def <span class="gs">__init__</span>(self, a, b):
       self.a = a
       self.b = b
  
-   def <span class="gs">__str</span><span class="gs">__</span>(self):
+   def <span class="gs">__str__</span>(self):
       return &#39;Vector (%d, %d)&#39; % (self.a, self.b)
    
-   def <span class="gs">__add</span><span class="gs">__</span>(self,other):
+   def <span class="gs">__add__</span>(self,other):
       return Vector(self.a + other.a, self.b + other.b)
  
 v1 = Vector(2,10)
@@ -493,7 +493,7 @@ print v1 + v2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
-</span><span class="gh"></span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"># -*- coding: UTF-8 -*-
 </span><span class="gh"></span> 
 class JustCounter:
     __secretCount = 0  # 私有变量

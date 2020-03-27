@@ -24,7 +24,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.62.2 with theme even" />
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
 
 
 <link rel="canonical" href="https://xdhuxc.github.io/post/common/dns/dns-dnsmasq/" />
@@ -227,8 +227,8 @@
 local=/xdhuxc.com/
 
 <span class="gh"># 配置上游的 nameserver 解析文件 
-</span><span class="gh"></span><span class="gh">#resolv-file=/etc/dnsmasq.resolv.conf
-</span><span class="gh"></span><span class="gh"># 当 /etc/resolv.conf 或 resolv-file 文件变化时，不重新加载。
+</span><span class="gh">#resolv-file=/etc/dnsmasq.resolv.conf
+</span><span class="gh"># 当 /etc/resolv.conf 或 resolv-file 文件变化时，不重新加载。
 </span><span class="gh"></span>no-poll 
 <span class="gh"># 不使用上游 nameserver 配置文件（/etc/resolv.conf 和 resolv-file）
 </span><span class="gh"></span>no-resolv 
@@ -236,7 +236,7 @@ local=/xdhuxc.com/
 <span class="gh"># 配置本地解析的 hosts
 </span><span class="gh"></span>addn-hosts=/etc/dnsmasq.hosts
 <span class="gh"># 不使用 /etc/hosts，开启后 expand-hosts 不生效 
-</span><span class="gh"></span><span class="gh"># no-hosts 
+</span><span class="gh"># no-hosts 
 </span><span class="gh"></span>
 <span class="gh"># 按配置顺序查询上级 nameserver 服务器
 </span><span class="gh"></span>strict-order 
@@ -281,7 +281,7 @@ server=114.114.114.114
 <span class="gh"># 可以将特定的域名指定解析它的域名服务器，一般是其他的内部域名服务器。
 </span><span class="gh"></span>server=/baidu.com/61.135.165.235
 <span class="gh"># 指定反向 DNS 192.168.1/24 网段到 192.168.2.1 DNS 查询 
-</span><span class="gh"></span><span class="gh"># server=/192.168.1.in-addr.arpa/192.168.2.1
+</span><span class="gh"># server=/192.168.1.in-addr.arpa/192.168.2.1
 </span><span class="gh"></span>
 <span class="gh"># 给 *.apple.com 和 taobao.com 使用专用的 DNS
 </span><span class="gh"></span>server=/taobo.com/223.5.5.5

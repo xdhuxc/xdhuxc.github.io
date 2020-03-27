@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</loc>
     <lastmod>2020-03-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -198,14 +191,14 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
+    <loc>https://xdhuxc.github.io/categories/%E4%BA%BA%E9%97%B4%E4%B8%96/</loc>
     <lastmod>2019-11-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -228,6 +221,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/programming/golang/golang-excel/</loc>
     <lastmod>2019-10-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/java/</loc>
+    <lastmod>2019-10-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -570,7 +570,7 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/git/</loc>
-    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -990,13 +990,6 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/dns/</loc>
-    <lastmod>2018-12-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/tags/java/</loc>
     <lastmod>2018-12-22T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1957,6 +1950,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/docker/docker-dockerfile/</loc>
     <lastmod>2017-08-22T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2017-08-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
