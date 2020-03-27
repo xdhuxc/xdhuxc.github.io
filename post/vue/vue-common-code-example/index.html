@@ -49,7 +49,7 @@
 <meta itemprop="description" content="在使用 Vue 和 Element-UI 进行开发时的常用代码，方便后续使用。">
 <meta itemprop="datePublished" content="2019-07-24T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-24T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="476">
+<meta itemprop="wordCount" content="791">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 476 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 791 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -146,6 +146,7 @@
         <li><a href="#刷新当前页面">刷新当前页面</a></li>
         <li><a href="#键值对数组增删">键值对数组增删</a></li>
         <li><a href="#动态数组增删">动态数组增删</a></li>
+        <li><a href="#响应式数组">响应式数组</a></li>
       </ul>
     </li>
   </ul>
@@ -400,7 +401,70 @@ export default {
 &lt;/script&gt;
 </code></pre></td></tr></table>
 </div>
+</div><h3 id="响应式数组">响应式数组</h3>
+<p>由于 JavaScript 的限制，Vue 不能检测以下数组的变动：</p>
+<p>1、当利用索引直接设置一个数组项时，例如：<code>vm.items[3] = 'a'</code></p>
+<p>2、修改数组的长度时，例如，<code>vm.items.length = 10</code></p>
+<p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">var vm = new Vue({
+    data: {
+        items: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+    }
+})
+vm.items[3] = &#39;a&#39; // 不是响应式的
+vm.items.length = 20 // 不是响应式的
+</code></pre></td></tr></table>
 </div>
+</div><p>以上两种改变不是响应式的，因此无法直接在视图上显示出来。</p>
+<p>解决第一类问题的两种方法如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">// Vue.set
+Vue.set(vm.items, 3, &#39;a&#39;)
+// Array.prototype.splice
+vm.items.splice(3, 1, &#39;a&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>以上两种方法都可以实现和 <code>vm.items[3] = 'a'</code> 相同的效果，同时也将在响应式系统内触发状态更新。</p>
+<p>也可以使用 <code>vm.$set</code> 实例方法，该方法是全局方法 Vue.set 的一个别名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">vm.$set(vm.items, 3, &#39;a&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>可以使用 <code>splice</code> 方法可以解决第二类问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">vm.items.splice(10)
+</code></pre></td></tr></table>
+</div>
+</div><p>使用如上所示的方法更新数组后，视图将会和数组同步变化。</p>
+<p>参考资料：</p>
+<p><a href="https://cn.vuejs.org/v2/guide/list.html#%E6%9B%BF%E6%8D%A2%E6%95%B0%E7%BB%84">https://cn.vuejs.org/v2/guide/list.html#%E6%9B%BF%E6%8D%A2%E6%95%B0%E7%BB%84</a></p>
+<p><a href="https://cn.vuejs.org/v2/guide/reactivity.html">https://cn.vuejs.org/v2/guide/reactivity.html</a></p>
     </div>
 
     <div class="post-copyright">
