@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>golang 时间/日期 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-time/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-time/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 进行日期和时间处理时可能会用到的一些知识点。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 Grafana 中制作 AlertManager 报警相关的图表</title>
       <link>https://xdhuxc.github.io/post/devops/grafana/grafana-elasticsearch-visualizations/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>

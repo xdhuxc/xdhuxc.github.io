@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang 时间/日期 的使用</title>
+      <link>https://xdhuxc.github.io/post/programming/golang/golang-time/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/programming/golang/golang-time/</guid>
+      <description>&lt;p&gt;本篇博客记录了使用 golang 进行日期和时间处理时可能会用到的一些知识点。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>在 Grafana 中制作 AlertManager 报警相关的图表</title>
