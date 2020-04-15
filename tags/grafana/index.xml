@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/grafana/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Grafana 常见问题及解决</title>
+      <link>https://xdhuxc.github.io/post/devops/grafana/grafana-basic-use/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/grafana/grafana-basic-use/</guid>
+      <description>&lt;p&gt;本篇博客介绍下在使用 Grafana 的过程中经常遇到的问题及解决方法。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>在 Grafana 中制作 AlertManager 报警相关的图表</title>
