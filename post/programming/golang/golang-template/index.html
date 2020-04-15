@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录下使用 golang 的模板时，需要注意的一些小问题。">
 <meta itemprop="datePublished" content="2019-05-23T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-05-23T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="311">
+<meta itemprop="wordCount" content="386">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 311 字 </span>
+          <span class="more-meta"> 约 386 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -212,7 +212,8 @@
 </div>
 </div><p>数据部分以 JSON 格式向模板传递。</p>
 <h3 id="注意事项">注意事项</h3>
-<p>golang template 对于数组循环输出，空数组（数组长度为 0）不进行渲染</p>
+<p>1、golang template 对于数组循环输出，空数组（数组长度为 0）不进行渲染</p>
+<p>2、在 <code>range-end</code> 结构内部，如果要使用外部的变量，比如，<code>.Name</code>，需要写成 <code>$.Name</code>，即在外部变量名称前加 <code>$</code> 即可，单独的 <code>$</code> 等同于 <code>global</code>。</p>
     </div>
 
     <div class="post-copyright">
