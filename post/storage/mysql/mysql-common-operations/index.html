@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。">
 <meta itemprop="datePublished" content="2018-08-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-03-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="648">
+<meta itemprop="wordCount" content="681">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 648 字 </span>
+          <span class="more-meta"> 约 681 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -180,7 +180,7 @@ mysql&gt; flush privileges;
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">grant select, insert, update, delete on &#39;user.*&#39; to &#39;xdhuxc&#39;@&#39;%&#39;
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">grant select, insert, update, delete on user.* to &#39;xdhuxc&#39;@&#39;%&#39;
 </code></pre></td></tr></table>
 </div>
 </div><p>3、授予所有权限</p>
@@ -193,7 +193,24 @@ mysql&gt; flush privileges;
 </code></pre></td></tr></table>
 </div>
 </div><p>通过此命令也可以修改 MySQL 用户的密码</p>
-<h3 id="忘记密码修改密码">忘记密码修改密码</h3>
+<p>4、创建用户再授权</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">create user &#39;sonarqube&#39; identified by &#39;Shareit@2020&#39;;
+
+grant select, insert, update, delete on sonarqube.* to &#39;sonarqube&#39;@&#39;%&#39;;
+
+show grants for &#39;sonarqube&#39;@&#39;%&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="忘记密码修改密码">忘记密码修改密码</h3>
 <h4 id="linux-系统">Linux 系统</h4>
 <p>1、停止数据库服务。</p>
 <div class="highlight"><div class="chroma">

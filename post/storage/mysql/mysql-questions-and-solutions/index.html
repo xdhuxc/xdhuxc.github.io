@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些使用 MySQL 过程中常见的问题及解决方式，留作后查。">
 <meta itemprop="datePublished" content="2018-08-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="605">
+<meta itemprop="wordCount" content="1145">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 605 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1145 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -293,6 +293,27 @@ flush privileges;
 </code></pre></td></tr></table>
 </div>
 </div><p>原因：时间戳类型字段 CreateTime，UpdateTime 没有赋值，导致类型为 datetime类型，从而报错。</p>
+<p>8、使用用户名和密码连接 MySQL 时，可能会报如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">Unable to load authentication plugin &#39;caching_sha2_password&#39;.
+</code></pre></td></tr></table>
+</div>
+</div><p>这是 mysql 5.x 和 8.x 的区别，5.x 版本的认证插件是：default_authentication_plugin=mysql_native_password，8.x 的认证插件是：default_authentication_plugin=caching_sha2_password。mysql 驱动已经更新适配了caching_sha2_password 的密码规则，升级到最新版本即可。</p>
+<p>9、使用用户名和密码连接 MySQL 时，可能会报如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">public key retrieval is not allowed
+</code></pre></td></tr></table>
+</div>
+</div><p>在连接 MySQL 的参数中，设置 <code>allowPublicKeyRetrieval=true</code>，如果用户使用了 sha256_password 认证，密码在传输过程中必须使用 TLS 协议保护，但是如果 RSA 公钥不可用，可以使用服务器提供的公钥；可以在连接中通过 ServerRSAPublicKeyFile 指定服务器的 RSA 公钥，或者AllowPublicKeyRetrieval=True参数以允许客户端从服务器获取公钥；但是需要注意的是 AllowPublicKeyRetrieval=True可能会导致恶意的代理通过中间人攻击(MITM)获取到明文密码，所以默认是关闭的，必须显式开启。</p>
+<p>参考：https://mysqlconnector.net/connection-options/</p>
     </div>
 
     <div class="post-copyright">
