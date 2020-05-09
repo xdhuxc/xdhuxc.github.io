@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了一些 MySQL 常用命令，方便查找。">
 <meta itemprop="datePublished" content="2018-07-29T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-29T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="971">
+<meta itemprop="wordCount" content="984">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 971 字 </span>
+          <span class="more-meta"> 约 984 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -282,6 +282,15 @@ max_connections=200
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">ALTER TABLE <span class="sb">`users`</span> ADD <span class="sb">`country`</span> varchar(20) NOT NULL
+</code></pre></td></tr></table>
+</div>
+</div><p>5、删除字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ALTER TABLE <span class="sb">`users`</span> DROP COLUMN <span class="sb">`country`</span>;
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="键操作">键操作</h3>
