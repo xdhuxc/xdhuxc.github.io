@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本篇博客记录了在使用 docker 的过程中经常使用的一些命令，以备后需。">
 <meta itemprop="datePublished" content="2017-08-19T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-08-19T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="5699">
+<meta itemprop="wordCount" content="5716">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 5699 字 </span>
+          <span class="more-meta"> 约 5716 字 </span>
           <span class="more-meta"> 预计阅读 12 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -1347,7 +1347,7 @@ docker logout [options] [server]
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker build -t xdhuxc/mysql:5.7 .
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker build -t xdhuxc/mysql:5.7 .
 </code></pre></td></tr></table>
 </div>
 </div><p>2、使用 URL <code>github.com/creack/docker-firefox</code> 的 <code>Dockerfile</code> 创建镜像</p>
@@ -1356,7 +1356,16 @@ docker logout [options] [server]
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">docker build github.com/creack/docker-firefox
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker build github.com/creack/docker-firefox
+</code></pre></td></tr></table>
+</div>
+</div><p>3、指定 dockerfile 构建镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker build -t xdhuxc/go-build:v1.13.11 -f Dockerfile-local .
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="history">history</h3>
