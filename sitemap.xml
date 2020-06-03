@@ -17,13 +17,34 @@
   
   <url>
     <loc>https://xdhuxc.github.io/tags/kubernetes/</loc>
-    <lastmod>2020-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/kubernetes/kubernetes-configmap/</loc>
+    <lastmod>2020-05-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xdhuxc.github.io/post/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2020-06-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -37,22 +58,8 @@
   </url>
   
   <url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://xdhuxc.github.io/post/devops/sonarqube/sonarqube-deployment-and-use/</loc>
     <lastmod>2020-04-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -639,6 +646,13 @@
   </url>
   
   <url>
+    <loc>https://xdhuxc.github.io/tags/groovy/</loc>
+    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://xdhuxc.github.io/tags/jenkins/</loc>
     <lastmod>2019-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -655,6 +669,13 @@
   <url>
     <loc>https://xdhuxc.github.io/post/mixed/mac-tips/</loc>
     <lastmod>2019-06-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xdhuxc.github.io/post/devops/jenkins/jenkins-groovy-http/</loc>
+    <lastmod>2019-12-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

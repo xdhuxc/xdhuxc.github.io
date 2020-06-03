@@ -40,6 +40,16 @@
     </item>
     
     <item>
+      <title>在 Jenkins Pipeline 的 groovy 脚本中发送 HTTP 请求</title>
+      <link>https://xdhuxc.github.io/post/devops/jenkins/jenkins-groovy-http/</link>
+      <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://xdhuxc.github.io/post/devops/jenkins/jenkins-groovy-http/</guid>
+      <description>&lt;p&gt;本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。&lt;/p&gt;
+&lt;p&gt;在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>在 Jenkins 中配置 gitlab 触发器</title>
       <link>https://xdhuxc.github.io/post/devops/jenkins/jenkins-gitlab-trigger/</link>
       <pubDate>Mon, 17 Jun 2019 00:00:00 +0000</pubDate>
