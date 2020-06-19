@@ -52,7 +52,7 @@
 在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。">
 <meta itemprop="datePublished" content="2019-06-17T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-12-14T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="437">
+<meta itemprop="wordCount" content="660">
 
 
 
@@ -133,8 +133,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 437 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 660 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -193,12 +193,12 @@
                     def payload = &#34;&#34;&#34;
                         { &#34;app&#34;: &#34;xdhuxc-app&#34; }
                     &#34;&#34;&#34;
-                    
                     def authorization = &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTExNzkzNTYsInVzZXIiOiJ3YW5naHVhbnxbMTcgMyA0IDUgNiA3IDggOSAxMCAxMSAxMiAxMyAxNiAxOSAyMCAyMSAyMiAyMyAyNCAyNSAyNl18YWRtaW4ifQ.WR7GaFdm0y2SE3WHGYfE_VbTiXZovmm5hBojvhLn5NI&#34;
                     def app = &#34;xdhuxc-app&#34;
                     def response = httpRequest acceptType: &#39;APPLICATION_JSON&#39;, contentType: &#39;APPLICATION_JSON&#39;, httpMode: &#39;PUT&#39;, requestBody: payload, url: &#34;http://127.0.0.1:80/xdhuxc/apps?app=${app}&amp;authorization=${authorization}&#34;, validResponseCodes: &#34;100:511&#34;
-                    
-                    if (response.status != 200) {
+                    if (response.status == 200) {
+                        println(&#34;Http request to ${url} is successfully, the body is ${body}&#34;)
+                    } else {
                         throw new Exception(&#34;the request failed, the http response status is ${response.status}, content is ${response.content}&#34;)
                     }
                 }
@@ -218,10 +218,59 @@
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">def response = httpRequest customHeaders: [[name: &#39;cid&#39;, value: &#39;110&#39;]]
 </code></pre></td></tr></table>
 </div>
-</div><p>更多参数，参考：https://www.jenkins.io/doc/pipeline/steps/http_request/#http-request-plugin</p>
-<h3 id="参考资料">参考资料</h3>
+</div><p>默认情况下，会输出整个请求的信息，包括：URL、请求头、返回码等。如果请求中含有不希望显示的 token，可以修改 <code>quiet: true</code> 参数，不显示请求详情。</p>
+<p>有时，我们可能会在提交的数据中加入变量，这时可通过如下方式提交数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import groovy.json.JsonOutput
+
+stage(&#39;Deploy&#39;) {
+    steps {
+        container(&#39;golang-build-container&#39;) {
+            script {
+                ws(env.WORKSPACE) { 
+                    def url = &#39;http://127.0.0.1:8000/xdhuxc/apps?app=xdhuxc-cicd&#39;
+                    def body = JsonOutput.toJson([&#34;xdhuxc-cicd&#34;: env.image])
+                    def headers = [[name: &#39;authorization&#39;, value: &#39;Bearer zZXIiOiJzZ3QtamVua2lucy11cGRhdGUtaW1hZ2V8WzE3IDEwIDExIDEyIDEzIDE2IDE5IDIwIDIxIDIyIDIzIDI0IDMgNCA1IDYgNyA4IDldfG9wZW5hcGktc2d0LWplbmtpbnMtdXBkYXRlLWltYWdlIn0&#39;]]
+                    def response = httpRequest acceptType: &#39;APPLICATION_JSON&#39;, contentType: &#39;APPLICATION_JSON&#39;, customHeaders: headers, httpMode: &#39;PUT&#39;, requestBody: body, url: url, validResponseCodes: &#34;100:511&#34;, quiet: true
+                    if (response.status == 200) {
+                        println(&#34;Http request to ${url} is successfully, the body is ${body}&#34;)
+                    } else {
+                        throw new Exception(&#34;Deploy to kubernetes failed, the http response status is ${response.status}, content is ${response.content}&#34;)
+                    }
+                 }
+            }
+        }
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
 <p><a href="https://www.jenkins.io/doc/pipeline/steps/http_request/#httprequest-perform-an-http-request-and-return-a-response-object">https://www.jenkins.io/doc/pipeline/steps/http_request/#httprequest-perform-an-http-request-and-return-a-response-object</a></p>
-<p><a href="https://www.jenkins.io/doc/pipeline/steps/http_request/#http-request-plugin">https://www.jenkins.io/doc/pipeline/steps/http_request/#http-request-plugin</a></p>
+<p>http request 插件参数：https://www.jenkins.io/doc/pipeline/steps/http_request/#http-request-plugin</p>
 <p><a href="https://github.com/jenkinsci/http-request-plugin">https://github.com/jenkinsci/http-request-plugin</a></p>
     </div>
 
