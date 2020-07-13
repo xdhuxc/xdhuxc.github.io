@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录下 Vue 使用过程中的遇到的一些问题，方便后面再次遇到时解决。">
 <meta itemprop="datePublished" content="2019-08-02T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-02T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="905">
+<meta itemprop="wordCount" content="980">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 905 字 </span>
+          <span class="more-meta"> 约 980 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -145,6 +145,7 @@
         <li><a href="#通过父组件向子组件传值时报错如下">通过父组件向子组件传值时，报错如下</a></li>
         <li><a href="#error-in-nexttick-typeerror-cannot-read-property-clearvalidate-of-undefined">Error in nextTick: &ldquo;TypeError: Cannot read property &lsquo;clearValidate&rsquo; of undefined&rdquo;</a></li>
         <li><a href="#使用-compression-webpack-plugin-压缩文件时报错">使用 compression-webpack-plugin 压缩文件时报错</a></li>
+        <li><a href="#引用组件注意事项">引用组件注意事项</a></li>
       </ul>
     </li>
   </ul>
@@ -429,6 +430,35 @@ npm ERR!     /Users/wanghuan/.npm/_logs/2019-10-08T07_42_00_941Z-debug.log
 </div>
 </div><p>主要问题在于 webpack 和 compression-webpack-plugin 的版本的适配性问题，在不同的版本搭配下，compression-webpack-plugin 的配置写法不同。</p>
 <p>原来默认安装的 compression-webpack-plugin 的版本为 3.0.0，降低版本到 1.1.12，即可正常构建。</p>
+<h3 id="引用组件注意事项">引用组件注意事项</h3>
+<p>引用组件时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&#34;export &#39;InfoCard&#39; was not found in &#39;@/components/InfoCard/index.vue&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>可能是引用的方式不对，注意，引用组件是是引用默认的组件，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import InfoCard from &#39;@/components/InfoCard/index.vue&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>而不是命名的组件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import { InfoCard } from &#39;@/components/InfoCard/index.vue&#39;;
+</code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
