@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。">
 <meta itemprop="datePublished" content="2019-08-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="823">
+<meta itemprop="wordCount" content="962">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 823 字 </span>
+          <span class="more-meta"> 约 962 字 </span>
           <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -148,6 +148,7 @@
         <li><a href="#都是标签惹的祸">都是标签惹的祸</a></li>
         <li><a href="#使用-go-mod-tidy-命令报错">使用 <code>go mod tidy</code> 命令报错</a></li>
         <li><a href="#使用-vscode-运行-golang-程序单元测试没有代码日志输出">使用 VSCode 运行 golang 程序单元测试，没有代码日志输出</a></li>
+        <li><a href="#使用-git-拉取私有仓库代码时报错">使用 git 拉取私有仓库代码时，报错</a></li>
       </ul>
     </li>
   </ul>
@@ -224,7 +225,7 @@ make: *** [build] Error 1
 <td class="lntd">
 <pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:hawkeye wanghuan$ make build
 &gt;&gt; go build ...
-<span class="gh"># gitlab.ushareit.org/SGT/DevOps/hawkeye/src/apis
+<span class="gh"># gitlab.xdhuxc.org/SGT/DevOps/hawkeye/src/apis
 </span><span class="gh"></span>src/apis/base.go:55:38: cannot use req (type <span class="ge">*&#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.Request) as type *</span>&#34;github.com/emicklei/go-restful&#34;.Request in argument to b.auth.GetCustomValue
 src/apis/router.go:54:46: cannot use baseController.auth.Auth (type func(*&#34;github.com/emicklei/go-restful&#34;.Request, <span class="ge">*&#34;github.com/emicklei/go-restful&#34;.Response, *</span>&#34;github.com/emicklei/go-restful&#34;.FilterChain)) as type &#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.FilterFunction in argument to baseController.ws.Filter
 make: *** [build] Error 2
@@ -336,6 +337,48 @@ go: modules disabled inside GOPATH/src by GO111MODULE=auto; see &#39;go help mod
     &#34;-v&#34;
 ],
 &#34;go.testTimeout&#34;: &#34;300s&#34;,  # 单元测试执行时间超过 300s，则直接结束该测试，
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="使用-git-拉取私有仓库代码时报错">使用 git 拉取私有仓库代码时，报错</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">wanghuan</span><span class="err">@</span><span class="nx">wanghuans</span><span class="o">-</span><span class="nx">MBP</span> <span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">cicd</span> <span class="o">%</span> <span class="nx">make</span> <span class="nx">build</span>
+<span class="o">&gt;&gt;</span> <span class="k">go</span> <span class="nx">build</span> <span class="o">...</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">log</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">models</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">jenkins</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">pkg</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">src</span><span class="o">/</span><span class="nx">service</span>
+<span class="k">go</span><span class="p">:</span> <span class="nx">finding</span> <span class="nx">module</span> <span class="k">for</span> <span class="kn">package</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">event</span>
+<span class="nx">src</span><span class="o">/</span><span class="nx">apis</span><span class="o">/</span><span class="nx">base</span><span class="p">.</span><span class="k">go</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span> <span class="nx">module</span> <span class="nx">gitlab</span><span class="p">.</span><span class="nx">xdhuxc</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">sgt</span><span class="o">/</span><span class="nx">xdhuxc</span><span class="o">-</span><span class="nx">common</span><span class="o">/</span><span class="nx">event</span><span class="p">:</span> <span class="nx">git</span> <span class="nx">ls</span><span class="o">-</span><span class="nx">remote</span> <span class="o">-</span><span class="nx">q</span> <span class="nx">origin</span> <span class="nx">in</span> <span class="o">/</span><span class="nx">Users</span><span class="o">/</span><span class="nx">wanghuan</span><span class="o">/</span><span class="nx">GolandProjects</span><span class="o">/</span><span class="nx">GoPath</span><span class="o">/</span><span class="nx">pkg</span><span class="o">/</span><span class="nx">mod</span><span class="o">/</span><span class="nx">cache</span><span class="o">/</span><span class="nx">vcs</span><span class="o">/</span><span class="mi">28</span><span class="nx">da36e7c579b99f1d7066993405e1672802dc58e6f44b68d781fae79c0b54fb</span><span class="p">:</span> <span class="nx">exit</span> <span class="nx">status</span> <span class="mi">128</span><span class="p">:</span>
+        <span class="nx">fatal</span><span class="p">:</span> <span class="nx">could</span> <span class="nx">not</span> <span class="nx">read</span> <span class="nx">Username</span> <span class="k">for</span> <span class="err">&#39;</span><span class="nx">https</span><span class="p">:</span><span class="c1">//gitlab.xdhuxc.com&#39;: terminal prompts disabled
+</span><span class="c1"></span><span class="nx">Confirm</span> <span class="nx">the</span> <span class="kn">import</span> <span class="nx">path</span> <span class="nx">was</span> <span class="nx">entered</span> <span class="nx">correctly</span><span class="p">.</span>
+<span class="nx">If</span> <span class="nx">this</span> <span class="nx">is</span> <span class="nx">a</span> <span class="nx">private</span> <span class="nx">repository</span><span class="p">,</span> <span class="nx">see</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//golang.org/doc/faq#git_https for additional information.
+</span></code></pre></td></tr></table>
+</div>
+</div><p>参照 <a href="https://golang.org/doc/faq#git_https">https://golang.org/doc/faq#git_https</a> 中的方法，在 ~/.gitconfig 文件中加入如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[url &#34;ssh://git@gitlab.xdhuxc.com/&#34;]
+        insteadOf = https://gitlab.xdhuxc.com/
 </code></pre></td></tr></table>
 </div>
 </div>
