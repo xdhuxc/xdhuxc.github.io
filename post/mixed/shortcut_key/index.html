@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录了一些常用的快捷键，便于查询使用。">
 <meta itemprop="datePublished" content="2019-07-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-07-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1009">
+<meta itemprop="wordCount" content="1236">
 
 
 
@@ -129,7 +129,7 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 1009 字 </span>
+          <span class="more-meta"> 约 1236 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -154,7 +154,8 @@
         <li><a href="#notepad">Notepad++</a></li>
         <li><a href="#eclipse-快捷键">Eclipse 快捷键</a></li>
         <li><a href="#mindmaster">MindMaster</a></li>
-        <li><a href="#字体">字体</a></li>
+        <li><a href="#字体和段落">字体和段落</a></li>
+        <li><a href="#vs-code">VS Code</a></li>
       </ul>
     </li>
   </ul>
@@ -401,9 +402,22 @@
 </table>
 <h3 id="mindmaster">MindMaster</h3>
 <p>1、在 Topic 内换行，在光标所在位置，按 <code>Shift+Enter</code> 键</p>
-<h3 id="字体">字体</h3>
+<h3 id="字体和段落">字体和段落</h3>
 <p>字体：Monaco</p>
-<p>大小：12</p>
+<p>大小：12 pt</p>
+<p>在 word 中，段首空两个汉字，设置首行缩进 0.82 cm。</p>
+<h3 id="vs-code">VS Code</h3>
+<p>1、在代码中 <code>Go To Definition</code> 时，默认情况下会替换掉原来的页面。如果希望打开一个新页面，需要进行如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&#34;workbench.editor.enablePreview&#34;: false
+</code></pre></td></tr></table>
+</div>
+</div><p>通过配置 <code>workbench.editor.enablePreview</code> 为 <code>false</code> 来禁止编辑器的预览功能，这样在浏览代码时就会跳转到代码页面。</p>
+<p>实际上，VS Code 提供了 Peek 功能，用来在当前页面查看代码，无需跳转到新页面，不过这样会带来新问题：1、挤压了页面空间；2、需要查看的方法或函数还需进一步查看时，就不方便了。另外，对于习惯了跳转到新页面的工程师，还是喜欢用旧的方式。</p>
     </div>
 
     <div class="post-copyright">
