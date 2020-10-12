@@ -49,7 +49,7 @@
 <meta itemprop="description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。">
 <meta itemprop="datePublished" content="2019-08-05T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2019-08-05T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="962">
+<meta itemprop="wordCount" content="1091">
 
 
 
@@ -129,8 +129,8 @@
         <div class="post-category">
             <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             </div>
-          <span class="more-meta"> 约 962 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1091 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -149,6 +149,7 @@
         <li><a href="#使用-go-mod-tidy-命令报错">使用 <code>go mod tidy</code> 命令报错</a></li>
         <li><a href="#使用-vscode-运行-golang-程序单元测试没有代码日志输出">使用 VSCode 运行 golang 程序单元测试，没有代码日志输出</a></li>
         <li><a href="#使用-git-拉取私有仓库代码时报错">使用 git 拉取私有仓库代码时，报错</a></li>
+        <li><a href="#this-download-does-not-match-the-one-reported-by-the-checksum-server">This download does NOT match the one reported by the checksum server.</a></li>
       </ul>
     </li>
   </ul>
@@ -379,6 +380,47 @@ go: modules disabled inside GOPATH/src by GO111MODULE=auto; see &#39;go help mod
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">[url &#34;ssh://git@gitlab.xdhuxc.com/&#34;]
         insteadOf = https://gitlab.xdhuxc.com/
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="this-download-does-not-match-the-one-reported-by-the-checksum-server">This download does NOT match the one reported by the checksum server.</h3>
+<p>使用 <code>go mod tidy</code> 整理 golang 项目依赖时，控制台显示如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuan@wanghuans-MacBook-Pro scmp-common % go mod tidy
+github.com/panjf2000/ants@v1.2.0: verifying module: checksum mismatch
+        downloaded: h1:Ufw4aDz9RqH1RVblx2W9L9Uv5vSX5apbX5+peR7LQ5k=
+        sum.golang.org: h1:pMQ1/XpSgnWx3ro4y1xr/uA3jXUsTuAaU3Dm0JjwggE=
+
+SECURITY ERROR
+This download does NOT match the one reported by the checksum server.
+The bits may have been replaced on the origin server, or an attacker may
+have intercepted the download attempt.
+
+For more information, see &#39;go help module-auth&#39;.
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：先清理 mod 的缓存，然后再指定该命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">go clean -modcache
+go mod tidy
 </code></pre></td></tr></table>
 </div>
 </div>
