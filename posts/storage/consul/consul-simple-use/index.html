@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Consul 的基本使用 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 consul 的部署及配置和基本使用。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/storage/consul/consul-simple-use/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Consul 的基本使用" />
+<meta property="og:description" content="本篇博客介绍了 consul 的部署及配置和基本使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/storage/consul/consul-simple-use/" />
+<meta property="article:published_time" content="2019-08-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-02T09:57:04+08:00" />
+<meta itemprop="name" content="Consul 的基本使用">
+<meta itemprop="description" content="本篇博客介绍了 consul 的部署及配置和基本使用。">
+<meta itemprop="datePublished" content="2019-08-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-01-02T09:57:04&#43;08:00" />
+<meta itemprop="wordCount" content="539">
+
+
+
+<meta itemprop="keywords" content="Consul," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Consul 的基本使用"/>
+<meta name="twitter:description" content="本篇博客介绍了 consul 的部署及配置和基本使用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了 consul 的部署及配置和基本使用。</p>
+<h3 id="基于-docker-安装-consul">基于 docker 安装 consul</h3>
+<p>1、使用 docker 安装 consul</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull consul
+</code></pre></td></tr></table>
+</div>
+</div><p>2、启动容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d --name=consul --network=host -e CONSUL_BIND_INTERFACE=eth0 consul
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="原生方式安装-consul">原生方式安装 consul</h3>
+<p>1、下载 <a href="https://www.consul.io/downloads.html">安装包</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://releases.hashicorp.com/consul/1.6.2/consul_1.6.2_linux_amd64.zip
+</code></pre></td></tr></table>
+</div>
+</div><p>2、解压</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">unzip consul_1.6.2_linux_amd64.zip 
+</code></pre></td></tr></table>
+</div>
+</div><p>3、启动 consul</p>
+<p>1）添加执行权限并移动 consul 到 /usr/bin 目录下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">chmod +x consul &amp;&amp; cp consul /usr/bin
+</code></pre></td></tr></table>
+</div>
+</div><p>2）配置 consul.service（/usr/lib/systemd/system/consul.service），文件内容为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+Description=confd
+Documentation=http://www.consul.io/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/consul agent -dev -client 0.0.0.0 -ui
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></td></tr></table>
+</div>
+</div><p>agent 启动参数说明：</p>
+<ul>
+<li>-dev：以开发环境模式运行，这种模式下 consul节点既是 client，也是 server</li>
+<li>-client：指定客户端访问的地址，客户端通过 RPC，DNS，HTTP，gRPC 访问都需要用这个地址，可以指定其为：0.0.0.0 绑定所有客户端地址</li>
+<li>-ui：启动内置的 UI Web 服务</li>
+<li>-bind：指定 consul 集群节点之间通信的地址</li>
+<li>-data-dir：指定 consul 节点存放数据的目录</li>
+<li>-bootstrap-expect：指定期望的 server 节点数量</li>
+</ul>
+<p>3）启动 consul</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload &amp;&amp; systemctl restart consul
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="读写数据">读写数据</h3>
+<p>1）添加或更新数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">consul kv put xdhuxc/consul/1 dc1
+</code></pre></td></tr></table>
+</div>
+</div><p>2）查询数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">consul kv get xdhuxc/consul/1
+或
+consul kv get --detailed xdhuxc/consul/1
+或 
+consul kv get -recurse # 查询所有数据
+</code></pre></td></tr></table>
+</div>
+</div><p>3）删除数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">consul kv delete xdhuxc/consul/1
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="常用命令">常用命令</h3>
+<p>1、查看集群成员</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">consul members 
+</code></pre></td></tr></table>
+</div>
+</div><p>如果想知道更详细的信息，可以添加 <code>--detailed</code> 参数来获得</p>
+<p>2、停止 consul agent</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">consul leave
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
+<p>官方安装指南 <a href="https://www.consul.io/docs/install/index.html">https://www.consul.io/docs/install/index.html</a></p>
+<p><a href="https://www.jianshu.com/p/f4e2b2aabd21">https://www.jianshu.com/p/f4e2b2aabd21</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

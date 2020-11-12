@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Redis 常用数据类型总结 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客主要介绍了 redis 的常用数据类型。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/storage/redis/redis-data-type/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Redis 常用数据类型总结" />
+<meta property="og:description" content="本篇博客主要介绍了 redis 的常用数据类型。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/storage/redis/redis-data-type/" />
+<meta property="article:published_time" content="2018-04-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-28T00:00:00+00:00" />
+<meta itemprop="name" content="Redis 常用数据类型总结">
+<meta itemprop="description" content="本篇博客主要介绍了 redis 的常用数据类型。">
+<meta itemprop="datePublished" content="2018-04-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2332">
+
+
+
+<meta itemprop="keywords" content="Redis,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis 常用数据类型总结"/>
+<meta name="twitter:description" content="本篇博客主要介绍了 redis 的常用数据类型。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客主要介绍了 redis 的常用数据类型。</p>
+<h3 id="字符串">字符串</h3>
+<p>Redis 中的字符串是一个字节序列，并且字符串是二进制安全的，这意味着它们的长度不由任何特殊的终止字符决定，因此，可以在一个字符串中存储高达 <code>512MB</code> 的任何内容。</p>
+<p>Redis 字符串数据类型的相关命令用于管理 Redis 字符串值。基本语法格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; command_name key_name
+</code></pre></td></tr></table>
+</div>
+</div><p>常用的 Redis 字符串命令如下：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>set key_name value</td>
+<td>设置指定键的值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>get key_name</td>
+<td>获取指定键的值</td>
+</tr>
+<tr>
+<td>3</td>
+<td>getrange key_name start end</td>
+<td>获取存储在键上的字符串的子字符串</td>
+</tr>
+<tr>
+<td>4</td>
+<td>getset key_name value</td>
+<td>将给定键的值设置为value，并并返回键的旧值</td>
+</tr>
+<tr>
+<td>5</td>
+<td>getbit key_name offset</td>
+<td>对键所储存的字符串值，获取指定偏移量上的位</td>
+</tr>
+<tr>
+<td>6</td>
+<td>mget key_name_1, key_name_2, key_name_3,....</td>
+<td>获取一个或多个给定键的值</td>
+</tr>
+<tr>
+<td>7</td>
+<td>setbit key offset value</td>
+<td>对键所存储的字符串值，设置或清除指定偏移量上的位</td>
+</tr>
+<tr>
+<td>8</td>
+<td>setex key_name seconds value</td>
+<td>使用键和过期时间来设置值</td>
+</tr>
+<tr>
+<td>9</td>
+<td>setnx key_name value</td>
+<td>当键不存在时，设置键的值</td>
+</tr>
+<tr>
+<td>10</td>
+<td>setrange key_name offset value</td>
+<td>从指定偏移量开始，用value覆盖给定键所存储的字符串值</td>
+</tr>
+<tr>
+<td>11</td>
+<td>strlen key_name</td>
+<td>返回键所存储的字符串值的长度</td>
+</tr>
+<tr>
+<td>12</td>
+<td>mset key value [key value...]</td>
+<td>同时设置一个或多个key-value对</td>
+</tr>
+<tr>
+<td>13</td>
+<td>msetnx key value [key value...]</td>
+<td>同时设置一个或多个key-value对，当且仅当所有给定的键都不存在</td>
+</tr>
+<tr>
+<td>14</td>
+<td>psetex key_name milliseconds value</td>
+<td>设置键的值，以毫秒为单位设置过期时间</td>
+</tr>
+<tr>
+<td>15</td>
+<td>incr key_name</td>
+<td>将键中存储的整数值加1</td>
+</tr>
+<tr>
+<td>16</td>
+<td>incrby key_name increment</td>
+<td>将键的整数值按给定的数值增加</td>
+</tr>
+<tr>
+<td>17</td>
+<td>incrbyfloat key_name increment</td>
+<td>将键的浮点值按给定的数值增加</td>
+</tr>
+<tr>
+<td>18</td>
+<td>decr key_name</td>
+<td>将键的整数值减1</td>
+</tr>
+<tr>
+<td>19</td>
+<td>decrby key_name decrement</td>
+<td>按给定数值减少键的整数值</td>
+</tr>
+<tr>
+<td>20</td>
+<td>append key_name value</td>
+<td>将指定值附加到键</td>
+</tr>
+</tbody>
+</table>
+<h3 id="散列哈希">散列/哈希</h3>
+<p>Redis 散列/哈希（Hash）是键值对的集合。Redis 散列/哈希是字符串字段和字符串值之间的映射。因此，哈希/散列特别适合用于存储对象。每个散列/哈希可以存储多达 <code>2^32-1</code> 个键值对。</p>
+<p>Redis 哈希的基本命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>hdel key_name field_1 [field_2]</td>
+<td>删除一个或多个哈希表字段</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hexists key_name field</td>
+<td>判断是否存在散列字段</td>
+</tr>
+<tr>
+<td>3</td>
+<td>hget key_name field</td>
+<td>获取存储在指定键的哈希字段的值</td>
+</tr>
+<tr>
+<td>4</td>
+<td>hgetall key_name</td>
+<td>获取存储在指定键的哈希中的所有字段和值</td>
+</tr>
+<tr>
+<td>5</td>
+<td>hincrby key_name field increment</td>
+<td>将哈希字段的整数值按给定数字增加</td>
+</tr>
+<tr>
+<td>6</td>
+<td>hincrbyfloat key_name field increment</td>
+<td>将哈希字段的浮点值按给定数值增加</td>
+</tr>
+<tr>
+<td>7</td>
+<td>hkeys key_name</td>
+<td>获取哈希中的所有字段</td>
+</tr>
+<tr>
+<td>8</td>
+<td>hlen key_name</td>
+<td>获取散列中的字段数量</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hmget key_name field_1 [field_2]</td>
+<td>获取所有给定哈希字段的值</td>
+</tr>
+<tr>
+<td>10</td>
+<td>hmset key_name field_1 value_1 [field_2 value_2]</td>
+<td>为多个哈希字段分别设置它们的值</td>
+</tr>
+<tr>
+<td>11</td>
+<td>hset key_name field value</td>
+<td>设置散列字段的字符串值</td>
+</tr>
+<tr>
+<td>12</td>
+<td>hsetnx key_name field value</td>
+<td>仅当字段不存在时，才设置散列字段的值</td>
+</tr>
+<tr>
+<td>13</td>
+<td>hvals key_name</td>
+<td>获取哈希表中的所有值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="列表">列表</h3>
+<p>Redis 列表只是字符串列表，按插入顺序排序。您可以向 Redis 列表的头部或尾部添加元素。列表的最大长度为<code>2^32-1</code>个元素。</p>
+<p>Redis 列表的基本命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>blpop key_name_1 [key_name_2] timeout</td>
+<td>删除并获取列表中的第一个元素，或阻塞，直到有一个元素可用</td>
+</tr>
+<tr>
+<td>2</td>
+<td>brpop key_name_1 [key_name_2] timeout</td>
+<td>删除并获取列表中的最后一个元素，或阻塞，直到有一个元素可用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>brpoplpush source desitination timeout</td>
+<td>从列表中弹出值，将其推送到另一个列表并返回它; 或阻塞，直到一个可用</td>
+</tr>
+<tr>
+<td>4</td>
+<td>lindex key_name index</td>
+<td>通过其索引从列表获取元素</td>
+</tr>
+<tr>
+<td>5</td>
+<td>linsert key_name before/after pivot value</td>
+<td>在列表中的另一个元素之前或之后插入元素</td>
+</tr>
+<tr>
+<td>6</td>
+<td>llen key_name</td>
+<td>获取列表的长度</td>
+</tr>
+<tr>
+<td>7</td>
+<td>lpop key_name</td>
+<td>删除并获取列表中的第一个元素</td>
+</tr>
+<tr>
+<td>8</td>
+<td>lpush key_name value_1 [value_2]</td>
+<td>将一个或多个值添加到列表</td>
+</tr>
+<tr>
+<td>9</td>
+<td>lpushx key_name value</td>
+<td>仅当列表存在时，才向列表添加值</td>
+</tr>
+<tr>
+<td>10</td>
+<td>lrange key_name start stop</td>
+<td>从列表中获取一系列元素</td>
+</tr>
+<tr>
+<td>11</td>
+<td>lrem key_name count value</td>
+<td>从列表中删除元素</td>
+</tr>
+<tr>
+<td>12</td>
+<td>lset key_name index value</td>
+<td>通过索引在列表中设置元素的值</td>
+</tr>
+<tr>
+<td>13</td>
+<td>ltrim key_name start stop</td>
+<td>让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除</td>
+</tr>
+<tr>
+<td>14</td>
+<td>rpop key_name</td>
+<td>删除并获取列表中的最后一个元素</td>
+</tr>
+<tr>
+<td>15</td>
+<td>rpoplpush source desitination</td>
+<td>移除列表的最后一个元素，并将该元素添加到另一个列表并返回</td>
+</tr>
+<tr>
+<td>16</td>
+<td>rpush key_name value_1 [value_2]</td>
+<td>在列表中添加一个或多个值</td>
+</tr>
+<tr>
+<td>17</td>
+<td>rpushx key_name value</td>
+<td>为已存在的列表添加值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="集合">集合</h3>
+<p>Redis集合是字符串的无序集合。集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。根据集合内元素的唯一性，第二次插入的元素将被忽略。集合中最大的元素个数为 <code>$ 2^{32}-1 $</code> 个。</p>
+<p>Redis 集合常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>sadd key_name member_1 [member_2]</td>
+<td>向集合添加一个或多个成员</td>
+</tr>
+<tr>
+<td>2</td>
+<td>scard key_name</td>
+<td>获取集合的成员数</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sdiff key_name_1 [key_name_2]</td>
+<td>返回给定所有集合的差集</td>
+</tr>
+<tr>
+<td>4</td>
+<td>sdiffstore destination key_name_1 [key_name_2]</td>
+<td>返回给定所有集合的差集并存储在 destination 中</td>
+</tr>
+<tr>
+<td>5</td>
+<td>sinter key_name_1 [key_name_2]</td>
+<td>返回给定所有集合的交集</td>
+</tr>
+<tr>
+<td>6</td>
+<td>sinterstore destination key_name_1 [key_name_2]</td>
+<td>返回给定所有集合的交集并存储在 destination 中</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sismember key_name memeber</td>
+<td>判断member元素是否是集合key_name的成员</td>
+</tr>
+<tr>
+<td>8</td>
+<td>smembers key_name</td>
+<td>返回集合中的所有成员</td>
+</tr>
+<tr>
+<td>9</td>
+<td>smove source destination member</td>
+<td>将 member 元素从 source 集合移动到 destination 集合</td>
+</tr>
+<tr>
+<td>10</td>
+<td>spop key_name</td>
+<td>从集合中删除并返回随机成员</td>
+</tr>
+<tr>
+<td>11</td>
+<td>srandmember key_name [count]</td>
+<td>返回集合中一个或多个随机数</td>
+</tr>
+<tr>
+<td>12</td>
+<td>srem key_name member_1 [member_2]</td>
+<td>移除集合中一个或多个成员</td>
+</tr>
+<tr>
+<td>13</td>
+<td>sunion key_name_1 [key_name_2]</td>
+<td>返回所有给定集合的并集</td>
+</tr>
+<tr>
+<td>14</td>
+<td>sunionstore destination key_name_1 [key_name_2]</td>
+<td>所有给定集合的并集存储在 destination 集合中</td>
+</tr>
+<tr>
+<td>15</td>
+<td>sscan key_name cursor [match pattern][count count]</td>
+<td>迭代集合中的元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="有序集合">有序集合</h3>
+<p>Redis 有序集合类似于 Redis 集合，是不重复的字符集合， 不同之处在于，有序集合的每个成员都与分数相关联，这个分数用于 <code>按最小分数到最大分数</code> 来排序的有序集合。虽然元素是唯一的，但元素的分数值可以重复。</p>
+<p>Redis 有序集合基本命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>zadd key_name score_1 member_1 [score_2, member_2]</td>
+<td>向有序集合添加一个或多个成员，或者更新已存在成员的分数</td>
+</tr>
+<tr>
+<td>2</td>
+<td>zcard key_name</td>
+<td>获取有序集合的成员数</td>
+</tr>
+<tr>
+<td>3</td>
+<td>zcount key_name min max</td>
+<td>计算在有序集合中指定区间分数的成员数</td>
+</tr>
+<tr>
+<td>4</td>
+<td>zincrby key_name increment member</td>
+<td>有序集合中对指定成员的分数加上增量 increment</td>
+</tr>
+<tr>
+<td>5</td>
+<td>zinterstore destination numkeys key_name_1 [key_name_2...]</td>
+<td>计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 key 中</td>
+</tr>
+<tr>
+<td>6</td>
+<td>zlexcount key_name min max</td>
+<td>在有序集合中计算指定字典区间内成员数量</td>
+</tr>
+<tr>
+<td>7</td>
+<td>zrange key_name start stop [withscores]</td>
+<td>通过索引区间返回有序集合成指定区间内的成员</td>
+</tr>
+<tr>
+<td>8</td>
+<td>zrangebylex key_name min max [limit offset count]</td>
+<td>通过字典区间返回有序集合的成员</td>
+</tr>
+<tr>
+<td>9</td>
+<td>zrangebyscore key_name min max [withscores][limit]</td>
+<td>通过分数返回有序集合指定区间内的成员</td>
+</tr>
+<tr>
+<td>10</td>
+<td>zrank key_name member</td>
+<td>返回有序集合中指定成员的索引</td>
+</tr>
+<tr>
+<td>11</td>
+<td>zrem key_name member [member...]</td>
+<td>移除有序集合中的一个或多个成员</td>
+</tr>
+<tr>
+<td>12</td>
+<td>zremrangebylex key_name min max</td>
+<td>移除有序集合中给定的字典区间的所有成员</td>
+</tr>
+<tr>
+<td>13</td>
+<td>zremrangebyrank key_name start stop</td>
+<td>移除有序集合中给定的排名区间的所有成员</td>
+</tr>
+<tr>
+<td>14</td>
+<td>zremrangebyscore key_name min max</td>
+<td>移除有序集合中给定的分数区间的所有成员</td>
+</tr>
+<tr>
+<td>15</td>
+<td>zrevrange key_name start stop [withscores]</td>
+<td>返回有序集中指定区间内的成员，通过索引，分数从高到底</td>
+</tr>
+<tr>
+<td>16</td>
+<td>zrevrangebyscore key_name max min [withscores]</td>
+<td>返回有序集中指定分数区间内的成员，分数从高到低排序</td>
+</tr>
+<tr>
+<td>17</td>
+<td>zrevrank key_name member</td>
+<td>返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序</td>
+</tr>
+<tr>
+<td>18</td>
+<td>zscore key_name member</td>
+<td>返回有序集中，成员的分数值</td>
+</tr>
+<tr>
+<td>19</td>
+<td>zunionstore destination numkeys key_name_1 [key_name_2...]</td>
+<td>计算给定的一个或多个有序集的并集，并存储在新的 key 中</td>
+</tr>
+<tr>
+<td>20</td>
+<td>zscan key_name cursor [match pattern][count count]</td>
+<td>迭代有序集合中的元素（包括元素成员和元素分值）</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

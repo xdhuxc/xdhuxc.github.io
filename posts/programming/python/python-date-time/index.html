@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python 中的日期、时间、函数和模块 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍下 Python 语言中的日期、时间、函数和模块。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/programming/python/python-date-time/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Python 中的日期、时间、函数和模块" />
+<meta property="og:description" content="本篇博客介绍下 Python 语言中的日期、时间、函数和模块。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/programming/python/python-date-time/" />
+<meta property="article:published_time" content="2017-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-09-20T00:00:00+00:00" />
+<meta itemprop="name" content="Python 中的日期、时间、函数和模块">
+<meta itemprop="description" content="本篇博客介绍下 Python 语言中的日期、时间、函数和模块。">
+<meta itemprop="datePublished" content="2017-09-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="4856">
+
+
+
+<meta itemprop="keywords" content="Python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 中的日期、时间、函数和模块"/>
+<meta name="twitter:description" content="本篇博客介绍下 Python 语言中的日期、时间、函数和模块。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍下 Python 语言中的日期、时间、函数和模块。</p>
+<h1 id="一日期和时间">一、日期和时间</h1>
+<blockquote>
+<p>Python 程序能用很多方式处理日期和时间，转换日期格式是一个常见的功能。</p>
+</blockquote>
+<p>Python 提供了一个 time 和 calendar 模块可以用于格式化日期和时间。</p>
+<p>时间间隔是以秒为单位的浮点小数。</p>
+<p>每个时间戳都以自从1970年1月1日午夜（历元）经过了多长时间来表示。</p>
+<p>Python 的 time 模块下有很多函数可以转换常见日期格式。如函数time.time()用于获取当前时间戳, 如下所示：</p>
+<pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import time;  # 引入time模块
+
+ticks = time.time()
+print &quot;当前时间戳为:&quot;, ticks
+</code></pre><p>时间戳单位最适于做日期运算。但是1970年之前的日期就无法以此表示了。太遥远的日期也不行，UNIX和Windows只支持到2038年。</p>
+<h2 id="时间元组">时间元组</h2>
+<blockquote>
+<p>很多Python函数用一个元组装起来的9组数字处理时间</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>字段</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>四位数字年</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>1</td>
+<td>月</td>
+<td>1到12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>日</td>
+<td>1到31</td>
+</tr>
+<tr>
+<td>3</td>
+<td>小时</td>
+<td>0到23</td>
+</tr>
+<tr>
+<td>4</td>
+<td>分钟</td>
+<td>0到59</td>
+</tr>
+<tr>
+<td>5</td>
+<td>秒</td>
+<td>0到61（60或61是闰秒）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>一周的第几日</td>
+<td>0到6（0是周一）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>一年的第几日</td>
+<td>1到366（儒略历）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>夏令时</td>
+<td>-1, 0, 1, -1是决定是否为夏令时的旗帜</td>
+</tr>
+</tbody>
+</table>
+<p>上述也就是struct_time元组。这种结构具有如下属性：
+序号 | 属性 | 值
+---|---|---|
+0  | tm_year|2008
+1  | tm_mon | 1到12
+2  | tm_mday | 1到31
+3  | tm_hour| 0到23
+4  | tm_min| 0到59
+5  | tm_sec | 0到61（60或61是闰秒）
+6  | tm_wday|0到6（0是周一）
+7  | tm_yday|1到366（儒略历）
+8  | tm_isdst|-1, 0, 1, -1是决定是否为夏令时的旗帜</p>
+<h4 id="获取当前时间">获取当前时间</h4>
+<blockquote>
+<p>从返回浮点数的时间戳方式向时间元组转换，只要将浮点数传递给如localtime之类的函数。</p>
+</blockquote>
+<pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import time
+
+localtime = time.localtime(time.time())
+print &quot;本地时间为 :&quot;, localtime
+</code></pre><h4 id="获取格式化的时间">获取格式化的时间</h4>
+<blockquote>
+<p>可以根据需求选取各种格式，但是最简单的获取可读的时间模式的函数是asctime()。</p>
+</blockquote>
+<pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import time
+
+localtime = time.asctime( time.localtime(time.time()) )
+print &quot;本地时间为 :&quot;, localtime
+</code></pre><h4 id="格式化日期">格式化日期</h4>
+<blockquote>
+<p>可以使用 time 模块的 strftime 方法来格式化日期。</p>
+</blockquote>
+<pre><code>time.strftime(format[, t])
+</code></pre><pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import time
+
+# 格式化成2016-03-20 11:45:39形式
+print time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime()) 
+
+# 格式化成Sat Mar 28 22:24:24 2016形式
+print time.strftime(&quot;%a %b %d %H:%M:%S %Y&quot;, time.localtime()) 
+  
+# 将格式字符串转换为时间戳
+a = &quot;Sat Mar 28 22:24:24 2016&quot;
+print time.mktime(time.strptime(a,&quot;%a %b %d %H:%M:%S %Y&quot;))
+</code></pre><p>Python中时间日期格式化符号</p>
+<ul>
+<li>%y 两位数的年份表示（00-99）</li>
+<li>%Y 四位数的年份表示（000-9999）</li>
+<li>%m 月份（01-12）</li>
+<li>%d 月内中的一天（0-31）</li>
+<li>%H 24小时制小时数（0-23）</li>
+<li>%I 12小时制小时数（01-12）</li>
+<li>%M 分钟数（00=59）</li>
+<li>%S 秒（00-59）</li>
+<li>%a 本地简化星期名称</li>
+<li>%A 本地完整星期名称</li>
+<li>%b 本地简化的月份名称</li>
+<li>%B 本地完整的月份名称</li>
+<li>%c 本地相应的日期表示和时间表示</li>
+<li>%j 年内的一天（001-366）</li>
+<li>%p 本地A.M.或P.M.的等价符</li>
+<li>%U 一年中的星期数（00-53）星期天为星期的开始</li>
+<li>%w 星期（0-6），星期天为星期的开始</li>
+<li>%W 一年中的星期数（00-53）星期一为星期的开始</li>
+<li>%x 本地相应的日期表示</li>
+<li>%X 本地相应的时间表示</li>
+<li>%Z 当前时区的名称</li>
+<li>%% %号本身</li>
+</ul>
+<h4 id="获取某月日历">获取某月日历</h4>
+<blockquote>
+<p>Calendar模块有很广泛的方法用来处理年历和月历，例如打印某月的月历。</p>
+</blockquote>
+<pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import calendar
+
+cal = calendar.month(2016, 1)
+print &quot;以下输出2016年1月份的日历:&quot;
+print cal;
+</code></pre><h4 id="其他相关模块和函数">其他相关模块和函数</h4>
+<blockquote>
+<p>在Python中，其他处理日期和时间的模块还有:</p>
+</blockquote>
+<ul>
+<li>datetime模块</li>
+<li>pytz模块</li>
+<li>dateutil模块</li>
+</ul>
+<h1 id="二python函数">二、Python函数</h1>
+<blockquote>
+<p>函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段。</p>
+</blockquote>
+<p>函数能提高应用的模块性，和代码的重复利用率。Python提供了许多内建函数，比如print()。也可以自己创建函数，这被叫做用户自定义函数。</p>
+<h3 id="一定义一个函数">（一）定义一个函数</h3>
+<p>可以定义一个由自己想要功能的函数，以下是简单的规则：</p>
+<ul>
+<li>函数代码块以 def 关键词开头，后接函数标识符名称和圆括号()。</li>
+<li>任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参数。</li>
+<li>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</li>
+<li>函数内容以冒号起始，并且缩进。</li>
+<li>return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。</li>
+</ul>
+<h4 id="语法">语法</h4>
+<pre><code>def functionname( parameters ):
+   &quot;函数_文档字符串&quot;
+   function_suite
+   return [expression]
+</code></pre><p>默认情况下，参数值和参数名称是按函数声明中定义的的顺序匹配起来的。</p>
+<h3 id="二函数调用">（二）函数调用</h3>
+<blockquote>
+<p>定义一个函数只给了函数一个名称，指定了函数里包含的参数，和代码块结构。</p>
+</blockquote>
+<p>这个函数的基本结构完成以后，可以通过另一个函数调用执行，也可以直接从Python提示符执行。</p>
+<h3 id="三参数传递">（三）参数传递</h3>
+<blockquote>
+<p>在 python 中，类型属于对象，变量是没有类型的。</p>
+</blockquote>
+<pre><code>a=[1,2,3]
+a=&quot;Runoob&quot;
+</code></pre><p>[1,2,3] 是 List 类型，&quot;Runoob&quot; 是 String 类型，而变量 a 是没有类型，她仅仅是一个对象的引用（一个指针），可以是 List 类型对象，也可以指向 String 类型对象。</p>
+<h4 id="可更改mutable与不可更改immutable对象">可更改(mutable)与不可更改(immutable)对象</h4>
+<blockquote>
+<p>在 python 中，字符串, 元组, 和 数字 是不可更改的对象，而 列表,字典 等则是可以修改的对象。</p>
+</blockquote>
+<ul>
+<li>
+<p>不可变类型：变量赋值 a=5 后再赋值 a=10，这里实际是新生成一个 int 值对象 10，再让 a 指向它，而 5 被丢弃，不是改变a的值，相当于新生成了a。</p>
+</li>
+<li>
+<p>可变类型：变量赋值 la=[1,2,3,4] 后再赋值 la[2]=5 则是将 list la 的第三个元素值更改，本身la没有动，只是其内部的一部分值被修改了。</p>
+</li>
+</ul>
+<p>python 函数的参数传递：</p>
+<ul>
+<li>
+<p>不可变类型：类似 c++ 的值传递，如 整数、字符串、元组。如fun（a），传递的只是a的值，没有影响a对象本身。比如在 fun（a）内部修改 a 的值，只是修改另一个复制的对象，不会影响 a 本身。</p>
+</li>
+<li>
+<p>可变类型：类似 c++ 的引用传递，如 列表，字典。如 fun（la），则是将 la 真正的传过去，修改后fun外部的la也会受影响</p>
+</li>
+</ul>
+<p>python 中一切都是对象，严格意义我们不能说值传递还是引用传递，我们应该说传不可变对象和传可变对象。</p>
+<h3 id="四参数">（四）参数</h3>
+<p>调用函数时可使用的正式参数类型：</p>
+<ul>
+<li>必备参数</li>
+<li>关键字参数</li>
+<li>默认参数</li>
+<li>不定长参数</li>
+</ul>
+<h4 id="必备参数">必备参数</h4>
+<blockquote>
+<p>必备参数须以正确的顺序传入函数。调用时的数量必须和声明时的一样。</p>
+</blockquote>
+<h4 id="关键字参数">关键字参数</h4>
+<blockquote>
+<p>关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。
+使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为 Python 解释器能够用参数名匹配参数值。</p>
+</blockquote>
+<h4 id="缺省参数">缺省参数</h4>
+<blockquote>
+<p>调用函数时，缺省参数的值如果没有传入，则被认为是默认值。</p>
+</blockquote>
+<h4 id="不定长参数">不定长参数</h4>
+<blockquote>
+<p>可能需要一个函数能处理比当初声明时更多的参数，这些参数叫做不定长参数，声明时不会命名。</p>
+</blockquote>
+<p>基本语法如下：</p>
+<pre><code>def functionname([formal_args,] *var_args_tuple ):
+   &quot;函数_文档字符串&quot;
+   function_suite
+   return [expression]
+</code></pre><p>加了星号（*）的变量名会存放所有未命名的变量参数。选择不多传参数也可。</p>
+<h3 id="五匿名函数">（五）匿名函数</h3>
+<p>python 使用 lambda 来创建匿名函数</p>
+<ul>
+<li>lambda只是一个表达式，函数体比def简单很多。</li>
+<li>lambda的主体是一个表达式，而不是一个代码块。仅仅能在lambda表达式中封装有限的逻辑进去。</li>
+<li>lambda函数拥有自己的命名空间，且不能访问自有参数列表之外或全局命名空间里的参数。</li>
+<li>虽然lambda函数看起来只能写一行，却不等同于C++的内联函数，后者的目的是调用小函数时不占用栈内存从而增加运行效率。</li>
+</ul>
+<h4 id="语法-1">语法</h4>
+<p>lambda函数的语法只包含一个语句，如下：</p>
+<pre><code>lambda [arg1 [,arg2,.....argn]]:expression
+</code></pre><h3 id="六return语句">（六）return语句</h3>
+<blockquote>
+<p>return语句[表达式]退出函数，选择性地向调用方返回一个表达式。不带参数值的return语句返回None。</p>
+</blockquote>
+<h3 id="七变量作用域">（七）变量作用域</h3>
+<blockquote>
+<p>一个程序的所有的变量并不是在哪个位置都可以访问的。访问权限决定于这个变量是在哪里赋值的。
+变量的作用域决定了在哪一部分程序你可以访问哪个特定的变量名称。两种最基本的变量作用域如下：</p>
+</blockquote>
+<ul>
+<li>全局变量</li>
+<li>局部变量</li>
+</ul>
+<p>定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。
+局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。</p>
+<p>全局变量想作用于函数内，需加 global修饰
+1、global---将变量定义为全局变量。可以通过定义为全局变量，实现在函数内部改变变量值。
+2、一个global语句可以同时定义多个变量，如 global x, y, z。</p>
+<h1 id="三模块">三、模块</h1>
+<blockquote>
+<p>Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。</p>
+</blockquote>
+<p>模块能够有逻辑地组织Python代码段，把相关的代码分配到一个模块里能让代码更好用，更易懂。</p>
+<p>模块能定义函数，类和变量，模块里也能包含可执行的代码。</p>
+<h3 id="import语句">import语句</h3>
+<p>模块定义好后，我们可以使用 import 语句来引入模块，语法如下：</p>
+<pre><code>import module1[, module2[,... moduleN]
+</code></pre><p>要引用模块 math，就可以在文件最开始的地方用 import math 来引入。在调用 math 模块中的函数时，必须这样引用：</p>
+<pre><code>module_name.function_name
+</code></pre><p>当解释器遇到 import 语句，如果模块在当前的搜索路径就会被导入。
+搜索路径是一个解释器会先进行搜索的所有目录的列表。如想要导入模块 support.py，需要把命令放在脚本的顶端。</p>
+<p>一个模块只会被导入一次，不管执行了多少次import。这样可以防止导入模块被一遍又一遍地执行。</p>
+<h3 id="fromimport-语句">From…import 语句</h3>
+<blockquote>
+<p>Python 的 from 语句从模块中导入一个指定的部分到当前命名空间中。
+语法如下：</p>
+</blockquote>
+<pre><code>from modname import name1[, name2[, ... nameN]]
+</code></pre><p>要导入模块 fib 的 fibonacci 函数，使用如下语句：</p>
+<pre><code>from fib import fibonacci
+</code></pre><p>这个声明不会把整个 fib 模块导入到当前的命名空间中，它只会将 fib 里的 fibonacci 单个引入到执行这个声明的模块的全局符号表。</p>
+<h3 id="fromimport-语句-1">From…import* 语句</h3>
+<blockquote>
+<p>把一个模块的所有内容全都导入到当前的命名空间也是可行的。</p>
+</blockquote>
+<p>只需使用如下声明：</p>
+<pre><code>from modname import *
+</code></pre><p>这提供了一个简单的方法来导入一个模块中的所有项目。然而这种声明不该被过多地使用。
+例如我们想一次性引入 math 模块中所有的东西，语句如下：</p>
+<pre><code>from math import * 
+</code></pre><h3 id="搜索路径">搜索路径</h3>
+<p>当导入一个模块，Python 解析器对模块位置的搜索顺序是：
+1、当前目录
+2、如果不在当前目录，Python 则搜索在 shell 变量 PYTHONPATH 下的每个目录。
+3、如果都找不到，Python会查看默认路径。UNIX下，默认路径一般为/usr/local/lib/python/。</p>
+<p>模块搜索路径存储在 system 模块的 sys.path 变量中。变量里包含当前目录，PYTHONPATH和由安装过程决定的默认目录。</p>
+<h4 id="pythonpath-变量">PYTHONPATH 变量</h4>
+<blockquote>
+<p>作为环境变量，PYTHONPATH 由装在一个列表里的许多目录组成。PYTHONPATH 的语法和 shell 变量 PATH 的一样。</p>
+</blockquote>
+<p>在 Windows 系统，典型的 PYTHONPATH 如下：</p>
+<pre><code>set PYTHONPATH=c:\python27\lib;
+</code></pre><p>在 UNIX 系统，典型的 PYTHONPATH 如下：</p>
+<pre><code>set PYTHONPATH=/usr/local/lib/python
+</code></pre><h4 id="命名空间和作用域">命名空间和作用域</h4>
+<p>变量是拥有匹配对象的名字（标识符）。命名空间是一个包含了变量名称（键）和它们各自相应的对象（值）的字典。</p>
+<p>一个 Python 表达式可以访问局部命名空间和全局命名空间里的变量。如果一个局部变量和一个全局变量重名，则局部变量会覆盖全局变量。</p>
+<p>每个函数都有自己的命名空间。类的方法的作用域规则和通常函数的一样。</p>
+<p>Python 会智能地猜测一个变量是局部的还是全局的，它假设任何在函数内赋值的变量都是局部的。
+因此，如果要给函数内的全局变量赋值，必须使用 global 语句。</p>
+<p>global VarName 的表达式会告诉 Python， VarName 是一个全局变量，这样 Python 就不会在局部命名空间里寻找这个变量了。</p>
+<h3 id="dir函数">dir()函数</h3>
+<p>dir() 函数一个排好序的字符串列表，内容是一个模块里定义过的名字。
+返回的列表容纳了在一个模块里定义的所有模块，变量和函数。如下一个简单的实例：</p>
+<pre><code>#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+ 
+# 导入内置math模块
+import math
+ 
+content = dir(math)
+ 
+print content;
+</code></pre><p>以上实例输出结果：</p>
+<pre><code>['__doc__', '__file__', '__name__', 'acos', 'asin', 'atan', 
+'atan2', 'ceil', 'cos', 'cosh', 'degrees', 'e', 'exp', 
+'fabs', 'floor', 'fmod', 'frexp', 'hypot', 'ldexp', 'log',
+'log10', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 
+'sqrt', 'tan', 'tanh']
+</code></pre><p>在这里，特殊字符串变量__name__指向模块的名字，__file__指向该模块的导入文件名。</p>
+<h3 id="globals-和-locals-函数">globals() 和 locals() 函数</h3>
+<p>根据调用位置的不同，globals() 和 locals() 函数可被用来返回全局和局部命名空间里的名字。
+如果在函数内部调用 locals()，返回的是所有能在该函数里访问的命名。
+如果在函数内部调用 globals()，返回的是所有在该函数里能访问的全局名字。
+两个函数的返回类型都是字典。所以名字能用 keys() 函数获取。</p>
+<h3 id="reload函数">reload()函数</h3>
+<p>当一个模块被导入到一个脚本，模块顶层部分的代码只会被执行一次。
+因此，如果你想重新执行模块里顶层部分的代码，可以用 reload() 函数。该函数会重新导入之前导入过的模块。语法如下：</p>
+<pre><code>reload(module_name) # 在这里，module_name要直接放模块的名字，而不是一个字符串形式
+</code></pre><h3 id="python中的包">Python中的包</h3>
+<p>包是一个分层次的文件目录结构，它定义了一个由模块及子包，和子包下的子包等组成的 Python 的应用环境。</p>
+<p>简单来说，包就是文件夹，但该文件夹下必须存在 <strong>init</strong>.py 文件, 该文件的内容可以为空。<strong>int</strong>.py用于标识当前文件夹是一个包。</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

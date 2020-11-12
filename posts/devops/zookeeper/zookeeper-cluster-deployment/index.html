@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>部署 Zookeeper 集群 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了 部署 zookeeper 集群的方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/zookeeper/zookeeper-cluster-deployment/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="部署 Zookeeper 集群" />
+<meta property="og:description" content="本篇博客记录了 部署 zookeeper 集群的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/zookeeper/zookeeper-cluster-deployment/" />
+<meta property="article:published_time" content="2018-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-28T00:00:00+00:00" />
+<meta itemprop="name" content="部署 Zookeeper 集群">
+<meta itemprop="description" content="本篇博客记录了 部署 zookeeper 集群的方法。">
+<meta itemprop="datePublished" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="850">
+
+
+
+<meta itemprop="keywords" content="Zookeeper,DevOps," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="部署 Zookeeper 集群"/>
+<meta name="twitter:description" content="本篇博客记录了 部署 zookeeper 集群的方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了 部署 zookeeper 集群的方法。</p>
+<h3 id="zookeeper集群搭建">Zookeeper集群搭建</h3>
+<p>三台虚拟机情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>虚拟机名称</th>
+<th>IP地址</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>centos_3</td>
+<td>192.168.244.129</td>
+<td>zk_master</td>
+</tr>
+<tr>
+<td>centos_4</td>
+<td>192.168.244.135</td>
+<td>zk_slave1</td>
+</tr>
+<tr>
+<td>centos_6</td>
+<td>192.168.244.136</td>
+<td>zk_slave2</td>
+</tr>
+<tr>
+<td>均已经安装了java 1.8.0_144</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>1、在 zk_master 机器上下载 <code>zookeeper-3.4.10.tar.gz</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p>2、解压 <code>zookeeper-3.4.10.tar.gz</code> 文件，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">tar -zxf zookeeper-3.4.10.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><p>3、创建所需文件和目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir /data
+mkidr -p /data/zookpeer
+mkdir -p /data/zookeper/data
+mkdir -p /data/zookeeper/log
+touch /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>4、进入 <code>zookeeper-3.4.10/conf</code> 目录下，复制配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp zoo_sample.cfg zoo.cfg
+</code></pre></td></tr></table>
+</div>
+</div><p>5、修改以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">tickTime=2000 # 单位毫秒，服务器之间或者客户端与服务器之间的心跳间隔
+initLimit=10  # 初始化Follower最长时间：10 <span class="ge">* 2000 ms
+</span><span class="ge">syncLimit=5   # Leader与Follower之间发送消息请求和应答时间长度：5 *</span> 2000 ms
+dataDir=/data/zookeeper/data # 日志存储路径
+dataLogDir=/data/zookeeper/log # 事务日志存储路径
+clientPort=52181 # 客户端端口
+server.1=192.168.244.129:12888:13888    
+server.2=192.168.244.135:12888:13888    
+server.3=192.168.244.136:12888:13888  
+
+autopurge.snapRetainCount=15 # 每次清除日志后保留的文件数目
+autopurge.purgeInterval=1 # 清除日志频率，单位小时
+</code></pre></td></tr></table>
+</div>
+</div><p>server.A=B:C:D
+A 是一个数字,表示这个是第几号服务器,
+B 是这个服务器的ip地址
+C 第一个端口用来集群成员的信息交换,表示的是这个服务器与集群中的Leader服务器交换信息的端口
+D 是在leader挂掉时专门用来进行选举leader所用</p>
+<p>6、向 <code>/data/zookeeper/data/myid</code> 中写入服务标识</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;1&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>7、将 zk_master 中的 zookeeper-3.4.10 复制到 zk_slave1 和 zk_slave2 机器上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">scp -r /home/application/zookeeper-3.4.10 root@192.168.244.135:/home/application/
+scp -r /home/application/zookeeper-3.4.10 root@192.168.244.136:/home/application/
+</code></pre></td></tr></table>
+</div>
+</div><p>8、在 zk_slave1 和 zk_slave2 上创建 myid 文件并写入内容
+在 zk_slave1 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">touch /data/zookeeper/data/myid
+echo &#34;2&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave2 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">touch /data/zookeeper/data/myid
+echo &#34;3&#34; &gt; /data/zookeeper/data/myid
+</code></pre></td></tr></table>
+</div>
+</div><p>9、在三台机器上都开放防火墙端口<code>52181</code>，<code>12888</code>，<code>13888</code>，并重新启动防火墙。</p>
+<p>10、在三台机器上分别启动Zookeeper</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_3 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_3 bin]# ./zkServer.sh start
+
+[root@centos_4 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_4 bin]# ./zkServer.sh start
+
+[root@centos_6 bin]# cd /home/application/zookeeper-3.4.10/bin
+[root@centos_6 bin]# ./zkServer.sh start
+</code></pre></td></tr></table>
+</div>
+</div><p>11、查看 zookeeper 的启动状态
+在 zk_master 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_3 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: follower
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave1 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_4 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: leader
+</code></pre></td></tr></table>
+</div>
+</div><p>在 zk_slave2 上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_6 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Mode: follower
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="相关问题及解决">相关问题及解决</h3>
+<p>1、启动 zookeeper 节点后出现如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@centos_6 bin]# ./zkServer.sh status
+ZooKeeper JMX enabled by default
+Using config: /home/application/zookeeper-3.4.10/bin/../conf/zoo.cfg
+Error contacting service. It is probably not running.
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：</p>
+<p>查看 <code>/home/application/zookeeper-3.4.10/bin</code> 目录下的 <code>zookeeper.out</code> 文件，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">017-10-10 16:06:47,701 [myid:1] - WARN  [WorkerSender[myid=1]:QuorumCnxManager@588] - Cannot open channel to 3 at election address /192.168.244.136:13888
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.zookeeper.server.quorum.QuorumCnxManager.connectOne(QuorumCnxManager.java:562)
+	at org.apache.zookeeper.server.quorum.QuorumCnxManager.toSend(QuorumCnxManager.java:538)
+	at org.apache.zookeeper.server.quorum.FastLeaderElection$Messenger$WorkerSender.process(FastLeaderElection.java:452)
+	at org.apache.zookeeper.server.quorum.FastLeaderElection$Messenger$WorkerSender.run(FastLeaderElection.java:433)
+	at java.lang.Thread.run(Thread.java:748)
+2017-10-10 16:06:47,705 [myid:1] - INFO  [WorkerSender[myid=1]:QuorumPeer$QuorumServer@167] - Resolved hostname: 192.168.244.136 to address: /192.168.244.136
+</code></pre></td></tr></table>
+</div>
+</div><p>分别在三台虚拟机上开放 <code>52181</code>、<code>12888</code>、<code>13888</code> 三个端口，重新启动，即可正常启动。</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

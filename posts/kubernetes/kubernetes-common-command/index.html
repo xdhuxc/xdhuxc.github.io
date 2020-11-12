@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Kubernetes 常用命令总结 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了在 Kubernetes 中常用的命令，以备后需。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/kubernetes/kubernetes-common-command/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Kubernetes 常用命令总结" />
+<meta property="og:description" content="本篇博客记录了在 Kubernetes 中常用的命令，以备后需。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/kubernetes/kubernetes-common-command/" />
+<meta property="article:published_time" content="2018-11-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-11-17T00:00:00+00:00" />
+<meta itemprop="name" content="Kubernetes 常用命令总结">
+<meta itemprop="description" content="本篇博客记录了在 Kubernetes 中常用的命令，以备后需。">
+<meta itemprop="datePublished" content="2018-11-14T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-11-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="908">
+
+
+
+<meta itemprop="keywords" content="Kubernetes," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kubernetes 常用命令总结"/>
+<meta name="twitter:description" content="本篇博客记录了在 Kubernetes 中常用的命令，以备后需。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了在 Kubernetes 中常用的命令，以备后需。</p>
+<h2 id="常用命令">常用命令</h2>
+<blockquote>
+<p>以下操作均假设在含 kubelet 的节点上执行命令</p>
+</blockquote>
+<h3 id="集群信息">集群信息</h3>
+<p>1、查看集群信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master ~]# kubectl cluster-info
+Kubernetes master is running at https://172.20.26.150:6443
+KubeDNS is running at https://172.20.26.150:6443/api/v1/namespaces/kube-system/services/kube-dns/proxy
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+</code></pre></td></tr></table>
+</div>
+</div><p>2、查看当前上下文</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master ~]# kubectl config current-context
+kubernetes-admin@kubernetes
+</code></pre></td></tr></table>
+</div>
+</div><p>3、查看各组件状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl -s http://192.168.8.8:8080 get componentstatuses
+</code></pre></td></tr></table>
+</div>
+</div><p>4、获取 kubectl 版本信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl version
+</code></pre></td></tr></table>
+</div>
+</div><p>5、获取集群信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl cluster-info
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="标签操作">标签操作</h3>
+<p>1、给 master 节点打标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl label nodes xxxxxx node-role.kubernetes.io/master=
+</code></pre></td></tr></table>
+</div>
+</div><p>2、给 ingress 节点打标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl label nodes k8s-172.20.27.215 node-role.kubernetes.io/ingress=
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="资源操作">资源操作</h3>
+<p>1、查看所有的 deployment</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get deployment --all-namespaces
+</code></pre></td></tr></table>
+</div>
+</div><p>2、查看所有的命名空间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl -s http://172.20.27.207:8080 get pods --all-namespaces
+</code></pre></td></tr></table>
+</div>
+</div><p>3、查看当前节点状态</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get nodes
+</code></pre></td></tr></table>
+</div>
+</div><p>当 节点的 STATUS 为 ready 时，说明情况正常。</p>
+<p>4、查看所有 pod 信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get pod --all-namespaces
+</code></pre></td></tr></table>
+</div>
+</div><p>当 pod 的 STATUS 为 running 时，说明情况正常。</p>
+<p>5、查看指定命令空间下的pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get pod -n kube-system # 通过 -n 参数指定待查命名空间。
+</code></pre></td></tr></table>
+</div>
+</div><p>6、查看 pod 的详细情况
+假定pod的名称为：ai2yzbme-8f7c9f77f-66cwv，所属命名空间为：kube-system</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl describe pod ai2yzbme-8f7c9f77f-66cwv -n kube-system
+</code></pre></td></tr></table>
+</div>
+</div><p>7、查看 node 的情况
+假设node的名称为：k8s-master</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl describe node k8s-master
+</code></pre></td></tr></table>
+</div>
+</div><p>8、查看 ConfigMap</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get configMap -n kube-system
+</code></pre></td></tr></table>
+</div>
+</div><p>9、查看指定的 ConfigMap</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get configMap calico-config  -n kube-system -o yaml
+</code></pre></td></tr></table>
+</div>
+</div><p>10、创建资源对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl create -f ./xdhuxc.yaml
+kubectl create -f ./xdhuxc.yaml -f ./zabuqk.yaml
+kubectl create -f ./xdhuxc
+kubectl create -f http://xdhuxc/xdhuxc.yaml
+</code></pre></td></tr></table>
+</div>
+</div><p>11、显示带有标签 env=production 的所有 pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get pods -l env=production
+</code></pre></td></tr></table>
+</div>
+</div><p>12、列出所有的服务，并通过名称排序</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get services --sort-by=.metadata.name
+</code></pre></td></tr></table>
+</div>
+</div><p>13、给 pod 打标签</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl label pods xdhuxc-message new-label=xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><p>14、给 pod 添加注解</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl annotate pods xdhuxc-message icon-url=http://xdhuxc.com
+</code></pre></td></tr></table>
+</div>
+</div><p>15、扩容及缩容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl scale --replicas=3 deployment nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>16、在已有 pod 里面运行命令，pod 中含有多个容器的情况下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl exec xdhuxc-message -c xdhuxc-message -- ls /
+</code></pre></td></tr></table>
+</div>
+</div><p>17、在已运行的 pod 里面运行命令，仅有一个容器的情况下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl exec -it xdhuxc-message -n kube-admin bash
+</code></pre></td></tr></table>
+</div>
+</div><p>18、将服务转发到端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl port-forward xdhuxc-message 8080
+</code></pre></td></tr></table>
+</div>
+</div><p>19、将 Pod 的端口转发到本地机器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl port-forward web-port 8080
+</code></pre></td></tr></table>
+</div>
+</div><p>20、以交互式 shell 运行 pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl run -i --tty busybox --image=busybox -- sh
+</code></pre></td></tr></table>
+</div>
+</div><p>21、连接到运行着的容器里</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl attach -i xdhuxc-message
+</code></pre></td></tr></table>
+</div>
+</div><p>22、 DNS 查找</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl exec busybox -- nslookup kubernetes
+kubectl exec busybox -- nslookup kubernetes.default
+kubectl exec busybox -- nslookup kubernetes.default.svc.cluster.local
+</code></pre></td></tr></table>
+</div>
+</div><p>23、暴露服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl expose deployment nginx --port=80 --type=LoadBalancer
+</code></pre></td></tr></table>
+</div>
+</div><p>24、查看指定ServiceAccount的token</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master dashboard]# kubectl get ServiceAccount kubernetes-dashboard -n kube-system -o jsonpath=&#34;{.secrets[].name}&#34;
+kubernetes-dashboard-token-ncx5g
+[root@k8s-master dashboard]# kubectl get secret kubernetes-dashboard-token-ncx5g -o jsonpath=&#34;{.data.token}&#34;  -n kube-system  | base64 -d
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZC10b2tlbi1uY3g1ZyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjgxMTZmNDE3LTlkNDctMTFlOC04NDVlLTA2MjY2ODAwMWYxNSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTprdWJlcm5ldGVzLWRhc2hib2FyZCJ9.OnhxsBYnuC47R9j411bq8d2NZDRWGMqUysC9rpITIy3r-4eTKNFL6Hf9jMQzIHME29re3PpKZ6EvV4n-VPTtL-PYbatXu5pegyX4jewQwCHn6VMzqJFaBN-hwK9wbY-1Mp63vZGEYZdRQYqB832SRyWwPoGGX8YSDa5dwk7hOJUJUBl4iBYpNt2nxxSTHgkqeh2QhzpaGZhgBx7c5UhfdNFRZVeQYns-k7f10c_36TuPmT98X3WSe7UEyAV1AhFu0b0z7WqUAAEJvRwxxEI0aYze3UWWGO9wr0sqzt7ZkhPy1GIQsLWOLO_g1vnviVaQcqhLiQU8ZNNjX2UqitF_eQ
+</code></pre></td></tr></table>
+</div>
+</div><p>25、强制删除 pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl delete pod kubernetes-dashboard-55556f66c5-4zc77 -n kube-system --grace-period=0 --force
+</code></pre></td></tr></table>
+</div>
+</div><p>该命令也可以用于强制删除其他 kubernetes 资源。</p>
+<h3 id="日志查看">日志查看</h3>
+<p>1）查看指定行数的日志</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl logs --tail=5 dingtalk-callback-5ff4757745-g448n -n xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><p>2）查看指定时间段的日志</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl logs --since=1h dingtalk-callback-5ff4757745-g448n -n xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="组合命令">组合命令</h2>
+<p>1）删除状态为 Error 的 Pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl get pods -n xdhuxc | grep Error | awk &#39;{ print $1 }&#39;| xargs kubectl delete pod -n xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

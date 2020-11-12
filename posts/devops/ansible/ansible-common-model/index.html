@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Ansible 学习之常用模块 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客详细介绍了 Ansible 常用模块的用法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/ansible/ansible-common-model/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Ansible 学习之常用模块" />
+<meta property="og:description" content="本篇博客详细介绍了 Ansible 常用模块的用法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/ansible/ansible-common-model/" />
+<meta property="article:published_time" content="2018-05-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-05-02T00:00:00+00:00" />
+<meta itemprop="name" content="Ansible 学习之常用模块">
+<meta itemprop="description" content="本篇博客详细介绍了 Ansible 常用模块的用法。">
+<meta itemprop="datePublished" content="2018-05-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-05-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3175">
+
+
+
+<meta itemprop="keywords" content="Ansible,DevOps," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ansible 学习之常用模块"/>
+<meta name="twitter:description" content="本篇博客详细介绍了 Ansible 常用模块的用法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客详细介绍了 Ansible 常用模块的用法。</p>
+<h3 id="模块相关命令">模块相关命令</h3>
+<p>（1）列出 ansible 支持的模块</p>
+<pre><code>ansible-doc -l
+</code></pre><p>（2）查看该模块的帮助信息</p>
+<pre><code>ansible-doc ping # 查看 ping 模块的帮助信息
+</code></pre><blockquote>
+<p>以下实验均是在 IP 地址为： 192.168.91.128 的虚拟机上操作的。
+/etc/ansible/hosts 文件中配置如下：</p>
+</blockquote>
+<pre><code># This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
+[Client]
+192.168.91.130
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+## [dbservers]
+##
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+
+</code></pre><h3 id="常用模块示例">常用模块示例</h3>
+<h4 id="ping-模块">ping 模块</h4>
+<p>检查指定节点机器能否连通，如果主机在线，则回复pong。
+例如：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m ping
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+[root@xdhuxc ~]#
+</code></pre><h5 id="远程命令模块commandscriptshell">远程命令模块（command、script、shell）</h5>
+<p>command 作为 ansible 的默认模块，可以运行远程权限范围所有的 shell 命令，不支持管道符。
+例如：</p>
+<pre><code>ansible Client -m command -a &quot;free -h&quot; # 查看 Client 分组主机内存使用情况。
+</code></pre><p>执行结果为：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m command -a &quot;free -h&quot;
+192.168.91.130 | SUCCESS | rc=0 &gt;&gt;
+              total        used        free      shared  buff/cache   available
+Mem:           976M        153M        599M        6.7M        223M        638M
+Swap:          2.0G          0B        2.0G
+
+</code></pre><p>script 的功能是在远程主机执行主控端存储的 shell 脚本文件，相当于 scp + shell 组合。
+例如：</p>
+<pre><code>ansible Client -m script -a &quot;/root/xdhuxc.sh string buffer&quot;   # 远程执行本地脚本。
+</code></pre><p>xdhuxc.sh 脚本的内容为：</p>
+<pre><code>[root@xdhuxc ~]# pwd
+/root
+[root@xdhuxc ~]# ls
+xdhuxc.sh
+[root@xdhuxc ~]# cat xdhuxc.sh
+#!/usr/bin/env bash
+echo &quot;Hello Shell.&quot;
+echo $1
+echo $2 &gt;&gt; /root/abc.sh
+</code></pre><p>执行结果为：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m script -a &quot;/root/xdhuxc.sh string buffer&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;rc&quot;: 0,
+    &quot;stderr&quot;: &quot;Shared connection to 192.168.91.130 closed.\r\n&quot;,
+    &quot;stdout&quot;: &quot;Hello Shell.\r\nstring\r\n&quot;,
+    &quot;stdout_lines&quot;: [
+        &quot;Hello Shell.&quot;,
+        &quot;string&quot;
+    ]
+}
+</code></pre><p>在 192.168.91.130上，在 root 目录下，会产生 abc.sh 文件。</p>
+<pre><code>[root@xdhuxc ~]# pwd
+/root
+[root@xdhuxc ~]# ls
+abc.sh  anaconda-ks.cfg  ~None
+[root@xdhuxc ~]# cat abc.sh
+buffer
+[root@xdhuxc ~]#
+</code></pre><p>~None 目录下</p>
+<pre><code>[root@xdhuxc ~None]# pwd
+/root/~None
+[root@xdhuxc ~None]# tree -a
+.
+└── .ansible
+    └── tmp
+
+2 directories, 0 files
+</code></pre><p>shell 的功能是执行远程主机上的 shell 脚本文件，支持管道符。
+例如：</p>
+<pre><code>ansible Client -m shell -a &quot;/root/xdhuxc.sh&quot; # 执行远程机器上的脚本。
+</code></pre><p>在 root 目录下创建 xdhuxc.sh 文件，</p>
+<pre><code>[root@xdhuxc ~]# pwd
+/root
+[root@xdhuxc ~]# ll
+total 12
+-rw-r--r--  1 root root    7 Jun 11 22:19 abc.sh
+-rw-------. 1 root root 1424 Apr  9 21:56 anaconda-ks.cfg
+drwx------  3 root root   22 Jun 10 11:55 ~None
+-rw-r--r--  1 root root   43 Jun 11 22:34 xdhuxc.sh   # xdhuxc.sh 没有执行权限。
+[root@xdhuxc ~]# cat xdhuxc.sh
+#!/usr/bin/env bash
+echo -n &quot;Hello World!&quot;
+</code></pre><p>在 xdhuxc.sh 没有被赋予执行权限时，执行 ansible 命令。</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m shell -a &quot;/root/xdhuxc.sh&quot;
+192.168.91.130 | FAILED | rc=126 &gt;&gt;
+/bin/sh: /root/xdhuxc.sh: Permission deniednon-zero return code
+
+</code></pre><p>很明显，xdhuxc.sh 没有可执行权限导致的，修改该命令，重新执行，命令执行成功。</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m shell -a &quot;chmod +x /root/xdhuxc.sh ; /root/xdhuxc.sh&quot;
+ [WARNING]: Consider using the file module with mode rather than running chmod.  If you need to use command because
+file is insufficient you can add warn=False to this command task or set command_warnings=False in ansible.cfg to
+get rid of this message.
+
+192.168.91.130 | SUCCESS | rc=0 &gt;&gt;
+Hello World!
+
+</code></pre><h5 id="copy-模块">copy 模块</h5>
+<p>copy 模块用于实现主控端向目标机器复制文件，类似于 scp 功能。
+例如：</p>
+<pre><code>ansible Client -m copy -a &quot;src=/root/xdhuxc.sh dest=/tmp/ owner=root group=root mode=0755&quot; # 向 Client 组中主机复制 xdhuxc.sh 到 /tmp 目录下，文件属主、属组都为 root，权限为：0755
+</code></pre><p>执行结果如下：</p>
+<pre><code>[root@xdhuxc ~]# pwd
+/root
+[root@xdhuxc ~]# ls
+xdhuxc.sh
+[root@xdhuxc ~]# ansible Client -m copy -a &quot;src=/root/xdhuxc.sh dest=/tmp/ owner=root group=root mode=0755&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;checksum&quot;: &quot;406eb4b32e5fe321308cfd40365f765685d64d58&quot;,
+    &quot;dest&quot;: &quot;/tmp/xdhuxc.sh&quot;,
+    &quot;gid&quot;: 0,
+    &quot;group&quot;: &quot;root&quot;,
+    &quot;md5sum&quot;: &quot;1abf4cb799e8858ab96bb7035837f248&quot;,
+    &quot;mode&quot;: &quot;0755&quot;,
+    &quot;owner&quot;: &quot;root&quot;,
+    &quot;size&quot;: 72,
+    &quot;src&quot;: &quot;~None/.ansible/tmp/ansible-tmp-1528728245.0-152168028566440/source&quot;,
+    &quot;state&quot;: &quot;file&quot;,
+    &quot;uid&quot;: 0
+}
+</code></pre><p>在 192.168.91.130 机器上</p>
+<pre><code>[root@xdhuxc ~None]# pwd
+/root/~None
+[root@xdhuxc ~None]# tree -a
+.
+└── .ansible
+    └── tmp
+        └── ansible-tmp-1528728229.03-131422320501562
+
+3 directories, 0 files
+[root@xdhuxc ~None]# ls /tmp
+xdhuxc.sh
+</code></pre><h5 id="stat-模块">stat 模块</h5>
+<p>stat 模块用于获取远程文件状态信息，atime/ctime/mtime/md5/uid/gid等信息。
+例如：</p>
+<pre><code>ansible Client -m stat -a &quot;path=/etc/sysctl.conf&quot;
+</code></pre><p>执行结果如下：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m stat -a &quot;path=/etc/resolv.conf&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;stat&quot;: {
+        &quot;atime&quot;: 1528725838.9349997,
+        &quot;attr_flags&quot;: &quot;&quot;,
+        &quot;attributes&quot;: [],
+        &quot;block_size&quot;: 4096,
+        &quot;blocks&quot;: 8,
+        &quot;charset&quot;: &quot;us-ascii&quot;,
+        &quot;checksum&quot;: &quot;dfebfbbbb5ea787130ffb53eaab925c743f50a56&quot;,
+        &quot;ctime&quot;: 1528725836.281,
+        &quot;dev&quot;: 64768,
+        &quot;device_type&quot;: 0,
+        &quot;executable&quot;: false,
+        &quot;exists&quot;: true,
+        &quot;gid&quot;: 0,
+        &quot;gr_name&quot;: &quot;root&quot;,
+        &quot;inode&quot;: 17073255,
+        &quot;isblk&quot;: false,
+        &quot;ischr&quot;: false,
+        &quot;isdir&quot;: false,
+        &quot;isfifo&quot;: false,
+        &quot;isgid&quot;: false,
+        &quot;islnk&quot;: false,
+        &quot;isreg&quot;: true,
+        &quot;issock&quot;: false,
+        &quot;isuid&quot;: false,
+        &quot;mimetype&quot;: &quot;text/plain&quot;,
+        &quot;mode&quot;: &quot;0644&quot;,
+        &quot;mtime&quot;: 1528725836.281,
+        &quot;nlink&quot;: 1,
+        &quot;path&quot;: &quot;/etc/resolv.conf&quot;,
+        &quot;pw_name&quot;: &quot;root&quot;,
+        &quot;readable&quot;: true,
+        &quot;rgrp&quot;: true,
+        &quot;roth&quot;: true,
+        &quot;rusr&quot;: true,
+        &quot;size&quot;: 73,
+        &quot;uid&quot;: 0,
+        &quot;version&quot;: &quot;1617439728&quot;,
+        &quot;wgrp&quot;: false,
+        &quot;woth&quot;: false,
+        &quot;writeable&quot;: true,
+        &quot;wusr&quot;: true,
+        &quot;xgrp&quot;: false,
+        &quot;xoth&quot;: false,
+        &quot;xusr&quot;: false
+    }
+}
+</code></pre><p>显示了 /etc/sysctl.conf 文件的所有状态信息。</p>
+<h5 id="get_url-模块">get_url 模块</h5>
+<p>get_url 模块可以实现从远程主机下载指定 URL 到本地，支持 sha256sum 文件教验。
+例如：</p>
+<pre><code>ansible Client -m get_url -a &quot;url=http://www.baidu.com dest=/tmp/index.html mode=0440 force=yes&quot;
+</code></pre><p>执行命令的结果为：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m get_url -a &quot;url=http://www.baidu.com dest=/tmp/index.html mode=0440 force=yes&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;checksum_dest&quot;: &quot;69676fdd06a44063439b46a7df1e326eeae98ed4&quot;,
+    &quot;checksum_src&quot;: &quot;063ec2b31e5fa4d889076b948994ed4934d8ad62&quot;,
+    &quot;dest&quot;: &quot;/tmp/index.html&quot;,
+    &quot;gid&quot;: 0,
+    &quot;group&quot;: &quot;root&quot;,
+    &quot;md5sum&quot;: &quot;b4715e7fb51d60a983e29f3dc6d7a51a&quot;,
+    &quot;mode&quot;: &quot;0440&quot;,
+    &quot;msg&quot;: &quot;OK (unknown bytes)&quot;,
+    &quot;owner&quot;: &quot;root&quot;,
+    &quot;size&quot;: 117044,
+    &quot;src&quot;: &quot;/tmp/tmpXgrOKe&quot;,
+    &quot;state&quot;: &quot;file&quot;,
+    &quot;status_code&quot;: 200,
+    &quot;uid&quot;: 0,
+    &quot;url&quot;: &quot;http://www.baidu.com&quot;
+}
+[root@xdhuxc ~]# ansible Client -m command -a &quot;ls /tmp&quot;
+192.168.91.130 | SUCCESS | rc=0 &gt;&gt;
+ansible_EsBCHn
+index.html                              # 下载下来的文件
+</code></pre><h5 id="yum-模块">yum 模块</h5>
+<p>yum 模块用于实现软件包管理。
+例如：</p>
+<pre><code>ansible Client -m yum -a &quot;name=curl state=latest&quot;
+</code></pre><p>命令执行的结果为：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m yum -a &quot;name=curl state=latest&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;msg&quot;: &quot;Repository base is listed more than once in the configuration\nRepository updates is listed more than once in the configuration\nRepository extras is listed more than once in the configuration\nRepository centosplus is listed more than once in the configuration\nRepository base is listed more than once in the configuration\nRepository updates is listed more than once in the configuration\nRepository extras is listed more than once in the configuration\nRepository centosplus is listed more than once in the configuration\nRepository base is listed more than once in the configuration\nRepository updates is listed more than once in the configuration\nRepository extras is listed more than once in the configuration\nRepository centosplus is listed more than once in the configuration\nRepository base is listed more than once in the configuration\nRepository updates is listed more than once in the configuration\nRepository extras is listed more than once in the configuration\nRepository centosplus is listed more than once in the configuration\nRepository epel is listed more than once in the configuration\nRepository epel-debuginfo is listed more than once in the configuration\nRepository epel-source is listed more than once in the configuration\nhttps://mirrors.aliyun.com/centos/7.4.1708/virt/x86_64/kubernetes19/repodata/repomd.xml: [Errno 14] HTTPS Error 404 - Not Found\nTrying other mirror.\nTo address this issue please refer to the below knowledge base article \n\nhttps://access.redhat.com/articles/1320623\n\nIf above article doesn't help to resolve this issue please create a bug on https://bugs.centos.org/\n\n&quot;,
+    &quot;rc&quot;: 0,
+    &quot;results&quot;: [
+        &quot;Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * epel: mirrors.aliyun.com\nResolving Dependencies\n--&gt; Running transaction check\n---&gt; Package curl.x86_64 0:7.29.0-42.el7 will be updated\n---&gt; Package curl.x86_64 0:7.29.0-46.el7 will be an update\n--&gt; Processing Dependency: libcurl = 7.29.0-46.el7 for package: curl-7.29.0-46.el7.x86_64\n--&gt; Running transaction check\n---&gt; Package libcurl.x86_64 0:7.29.0-42.el7 will be updated\n---&gt; Package libcurl.x86_64 0:7.29.0-46.el7 will be an update\n--&gt; Finished Dependency Resolution\n\nDependencies Resolved\n\n================================================================================\n Package          Arch            Version                   Repository     Size\n================================================================================\nUpdating:\n curl             x86_64          7.29.0-46.el7             base          268 k\nUpdating for dependencies:\n libcurl          x86_64          7.29.0-46.el7             base          220 k\n\nTransaction Summary\n================================================================================\nUpgrade  1 Package (+1 Dependent package)\n\nTotal download size: 488 k\nDownloading packages:\nDelta RPMs disabled because /usr/bin/applydeltarpm not installed.\n--------------------------------------------------------------------------------\nTotal                                              960 kB/s | 488 kB  00:00     \nRunning transaction check\nRunning transaction test\nTransaction test succeeded\nRunning transaction\n  Updating   : libcurl-7.29.0-46.el7.x86_64                                 1/4 \n  Updating   : curl-7.29.0-46.el7.x86_64                                    2/4 \n  Cleanup    : curl-7.29.0-42.el7.x86_64                                    3/4 \n  Cleanup    : libcurl-7.29.0-42.el7.x86_64                                 4/4 \n  Verifying  : curl-7.29.0-46.el7.x86_64                                    1/4 \n  Verifying  : libcurl-7.29.0-46.el7.x86_64                                 2/4 \n  Verifying  : libcurl-7.29.0-42.el7.x86_64                                 3/4 \n  Verifying  : curl-7.29.0-42.el7.x86_64                                    4/4 \n\nUpdated:\n  curl.x86_64 0:7.29.0-46.el7                                                   \n\nDependency Updated:\n  libcurl.x86_64 0:7.29.0-46.el7                                                \n\nComplete!\n&quot;
+    ]
+}
+[root@xdhuxc ~]# ansible Client -m yum -a &quot;name=curl state=latest&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;msg&quot;: &quot;&quot;,
+    &quot;rc&quot;: 0,
+    &quot;results&quot;: [
+        &quot;All packages providing curl are up to date&quot;,
+        &quot;&quot;
+    ]
+}
+</code></pre><p>从 msg 和 results 输出的信息可以看到，这就是一个 yum 安装软件包的过程。</p>
+<h5 id="cron-模块">cron 模块</h5>
+<p>cron 模块用于配置远程主机 crontab
+例如：</p>
+<pre><code>ansible Client -m cron -a &quot;name='check' minute='1' job='ntpdate asia.pool.ntp.org'&quot;
+</code></pre><p>运行效果：</p>
+<pre><code>[root@xdhuxc ~]# ansible Client -m cron -a &quot;name='check' minute='1' job='ntpdate asia.pool.ntp.org'&quot;
+192.168.91.130 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;envs&quot;: [],
+    &quot;jobs&quot;: [
+        &quot;check&quot;
+    ]
+}
+[root@xdhuxc ~]# ansible Client -m command -a &quot;crontab -l&quot;
+192.168.91.130 | SUCCESS | rc=0 &gt;&gt;
+#Ansible: check
+1 * * * * ntpdate asia.pool.ntp.org
+
+[root@xdhuxc ~]#
+</code></pre><h5 id="service-模块">service 模块</h5>
+<p>service 模块可以用来管理远程主机的系统服务。
+例如：</p>
+<pre><code>ansible Client -m service -a &quot;name=haproxy state=stopped&quot;
+ansible Client -m service -a &quot;name=haproxy state=restarted&quot;
+ansible Client -m service -a &quot;name=haproxy state=reloaded&quot;
+</code></pre><p>命令执行的结果为：</p>
+<pre><code>[root@xdhuxc ~]# systemctl status haproxy
+● haproxy.service - HAProxy Load Balancer
+   Loaded: loaded (/usr/lib/systemd/system/haproxy.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2018-06-11 23:17:21 CST; 2s ago
+ Main PID: 2135 (haproxy-systemd)
+   Memory: 1.9M
+   CGroup: /system.slice/haproxy.service
+           ├─2135 /usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid
+           ├─2136 /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+           └─2137 /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+
+Jun 11 23:17:21 xdhuxc systemd[1]: Started HAProxy Load Balancer.
+Jun 11 23:17:21 xdhuxc systemd[1]: Starting HAProxy Load Balancer...
+Jun 11 23:17:21 xdhuxc haproxy-systemd-wrapper[2135]: haproxy-systemd-wrapper: executing /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+[root@xdhuxc ~]# ansible Client -m service -a &quot;name=haproxy state=stopped&quot;
+192.168.91.128 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;name&quot;: &quot;haproxy&quot;,
+    &quot;state&quot;: &quot;stopped&quot;,
+    &quot;status&quot;: {
+        &quot;ActiveEnterTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;ActiveEnterTimestampMonotonic&quot;: &quot;4444399885&quot;,
+        &quot;ActiveExitTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ActiveState&quot;: &quot;active&quot;,
+        &quot;After&quot;: &quot;basic.target system.slice network.target systemd-journald.socket syslog.target&quot;,
+        &quot;AllowIsolate&quot;: &quot;no&quot;,
+        &quot;AmbientCapabilities&quot;: &quot;0&quot;,
+        &quot;AssertResult&quot;: &quot;yes&quot;,
+        &quot;AssertTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;AssertTimestampMonotonic&quot;: &quot;4444398724&quot;,
+        &quot;Before&quot;: &quot;shutdown.target&quot;,
+        &quot;BlockIOAccounting&quot;: &quot;no&quot;,
+        &quot;BlockIOWeight&quot;: &quot;18446744073709551615&quot;,
+        &quot;CPUAccounting&quot;: &quot;no&quot;,
+        &quot;CPUQuotaPerSecUSec&quot;: &quot;infinity&quot;,
+        &quot;CPUSchedulingPolicy&quot;: &quot;0&quot;,
+        &quot;CPUSchedulingPriority&quot;: &quot;0&quot;,
+        &quot;CPUSchedulingResetOnFork&quot;: &quot;no&quot;,
+        &quot;CPUShares&quot;: &quot;18446744073709551615&quot;,
+        &quot;CanIsolate&quot;: &quot;no&quot;,
+        &quot;CanReload&quot;: &quot;yes&quot;,
+        &quot;CanStart&quot;: &quot;yes&quot;,
+        &quot;CanStop&quot;: &quot;yes&quot;,
+        &quot;CapabilityBoundingSet&quot;: &quot;18446744073709551615&quot;,
+        &quot;ConditionResult&quot;: &quot;yes&quot;,
+        &quot;ConditionTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;ConditionTimestampMonotonic&quot;: &quot;4444398724&quot;,
+        &quot;Conflicts&quot;: &quot;shutdown.target&quot;,
+        &quot;ControlGroup&quot;: &quot;/system.slice/haproxy.service&quot;,
+        &quot;ControlPID&quot;: &quot;0&quot;,
+        &quot;DefaultDependencies&quot;: &quot;yes&quot;,
+        &quot;Delegate&quot;: &quot;no&quot;,
+        &quot;Description&quot;: &quot;HAProxy Load Balancer&quot;,
+        &quot;DevicePolicy&quot;: &quot;auto&quot;,
+        &quot;EnvironmentFile&quot;: &quot;/etc/sysconfig/haproxy (ignore_errors=no)&quot;,
+        &quot;ExecMainCode&quot;: &quot;0&quot;,
+        &quot;ExecMainExitTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ExecMainPID&quot;: &quot;2135&quot;,
+        &quot;ExecMainStartTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;ExecMainStartTimestampMonotonic&quot;: &quot;4444399843&quot;,
+        &quot;ExecMainStatus&quot;: &quot;0&quot;,
+        &quot;ExecReload&quot;: &quot;{ path=/bin/kill ; argv[]=/bin/kill -USR2 $MAINPID ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }&quot;,
+        &quot;ExecStart&quot;: &quot;{ path=/usr/sbin/haproxy-systemd-wrapper ; argv[]=/usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid $OPTIONS ; ignore_errors=no ; start_time=[Mon 2018-06-11 23:17:21 CST] ; stop_time=[n/a] ; pid=2135 ; code=(null) ; status=0/0 }&quot;,
+        &quot;FailureAction&quot;: &quot;none&quot;,
+        &quot;FileDescriptorStoreMax&quot;: &quot;0&quot;,
+        &quot;FragmentPath&quot;: &quot;/usr/lib/systemd/system/haproxy.service&quot;,
+        &quot;GuessMainPID&quot;: &quot;yes&quot;,
+        &quot;IOScheduling&quot;: &quot;0&quot;,
+        &quot;Id&quot;: &quot;haproxy.service&quot;,
+        &quot;IgnoreOnIsolate&quot;: &quot;no&quot;,
+        &quot;IgnoreOnSnapshot&quot;: &quot;no&quot;,
+        &quot;IgnoreSIGPIPE&quot;: &quot;yes&quot;,
+        &quot;InactiveEnterTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;InactiveExitTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;InactiveExitTimestampMonotonic&quot;: &quot;4444399885&quot;,
+        &quot;JobTimeoutAction&quot;: &quot;none&quot;,
+        &quot;JobTimeoutUSec&quot;: &quot;0&quot;,
+        &quot;KillMode&quot;: &quot;mixed&quot;,
+        &quot;KillSignal&quot;: &quot;15&quot;,
+        &quot;LimitAS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitCORE&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitCPU&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitDATA&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitFSIZE&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitLOCKS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitMEMLOCK&quot;: &quot;65536&quot;,
+        &quot;LimitMSGQUEUE&quot;: &quot;819200&quot;,
+        &quot;LimitNICE&quot;: &quot;0&quot;,
+        &quot;LimitNOFILE&quot;: &quot;4096&quot;,
+        &quot;LimitNPROC&quot;: &quot;3818&quot;,
+        &quot;LimitRSS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitRTPRIO&quot;: &quot;0&quot;,
+        &quot;LimitRTTIME&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitSIGPENDING&quot;: &quot;3818&quot;,
+        &quot;LimitSTACK&quot;: &quot;18446744073709551615&quot;,
+        &quot;LoadState&quot;: &quot;loaded&quot;,
+        &quot;MainPID&quot;: &quot;2135&quot;,
+        &quot;MemoryAccounting&quot;: &quot;no&quot;,
+        &quot;MemoryCurrent&quot;: &quot;2060288&quot;,
+        &quot;MemoryLimit&quot;: &quot;18446744073709551615&quot;,
+        &quot;MountFlags&quot;: &quot;0&quot;,
+        &quot;Names&quot;: &quot;haproxy.service&quot;,
+        &quot;NeedDaemonReload&quot;: &quot;no&quot;,
+        &quot;Nice&quot;: &quot;0&quot;,
+        &quot;NoNewPrivileges&quot;: &quot;no&quot;,
+        &quot;NonBlocking&quot;: &quot;no&quot;,
+        &quot;NotifyAccess&quot;: &quot;none&quot;,
+        &quot;OOMScoreAdjust&quot;: &quot;0&quot;,
+        &quot;OnFailureJobMode&quot;: &quot;replace&quot;,
+        &quot;PermissionsStartOnly&quot;: &quot;no&quot;,
+        &quot;PrivateDevices&quot;: &quot;no&quot;,
+        &quot;PrivateNetwork&quot;: &quot;no&quot;,
+        &quot;PrivateTmp&quot;: &quot;no&quot;,
+        &quot;ProtectHome&quot;: &quot;no&quot;,
+        &quot;ProtectSystem&quot;: &quot;no&quot;,
+        &quot;RefuseManualStart&quot;: &quot;no&quot;,
+        &quot;RefuseManualStop&quot;: &quot;no&quot;,
+        &quot;RemainAfterExit&quot;: &quot;no&quot;,
+        &quot;Requires&quot;: &quot;basic.target&quot;,
+        &quot;Restart&quot;: &quot;no&quot;,
+        &quot;RestartUSec&quot;: &quot;100ms&quot;,
+        &quot;Result&quot;: &quot;success&quot;,
+        &quot;RootDirectoryStartOnly&quot;: &quot;no&quot;,
+        &quot;RuntimeDirectoryMode&quot;: &quot;0755&quot;,
+        &quot;SameProcessGroup&quot;: &quot;no&quot;,
+        &quot;SecureBits&quot;: &quot;0&quot;,
+        &quot;SendSIGHUP&quot;: &quot;no&quot;,
+        &quot;SendSIGKILL&quot;: &quot;yes&quot;,
+        &quot;Slice&quot;: &quot;system.slice&quot;,
+        &quot;StandardError&quot;: &quot;inherit&quot;,
+        &quot;StandardInput&quot;: &quot;null&quot;,
+        &quot;StandardOutput&quot;: &quot;journal&quot;,
+        &quot;StartLimitAction&quot;: &quot;none&quot;,
+        &quot;StartLimitBurst&quot;: &quot;5&quot;,
+        &quot;StartLimitInterval&quot;: &quot;10000000&quot;,
+        &quot;StartupBlockIOWeight&quot;: &quot;18446744073709551615&quot;,
+        &quot;StartupCPUShares&quot;: &quot;18446744073709551615&quot;,
+        &quot;StatusErrno&quot;: &quot;0&quot;,
+        &quot;StopWhenUnneeded&quot;: &quot;no&quot;,
+        &quot;SubState&quot;: &quot;running&quot;,
+        &quot;SyslogLevelPrefix&quot;: &quot;yes&quot;,
+        &quot;SyslogPriority&quot;: &quot;30&quot;,
+        &quot;SystemCallErrorNumber&quot;: &quot;0&quot;,
+        &quot;TTYReset&quot;: &quot;no&quot;,
+        &quot;TTYVHangup&quot;: &quot;no&quot;,
+        &quot;TTYVTDisallocate&quot;: &quot;no&quot;,
+        &quot;TasksAccounting&quot;: &quot;no&quot;,
+        &quot;TasksCurrent&quot;: &quot;18446744073709551615&quot;,
+        &quot;TasksMax&quot;: &quot;18446744073709551615&quot;,
+        &quot;TimeoutStartUSec&quot;: &quot;1min 30s&quot;,
+        &quot;TimeoutStopUSec&quot;: &quot;1min 30s&quot;,
+        &quot;TimerSlackNSec&quot;: &quot;50000&quot;,
+        &quot;Transient&quot;: &quot;no&quot;,
+        &quot;Type&quot;: &quot;simple&quot;,
+        &quot;UMask&quot;: &quot;0022&quot;,
+        &quot;UnitFilePreset&quot;: &quot;disabled&quot;,
+        &quot;UnitFileState&quot;: &quot;disabled&quot;,
+        &quot;Wants&quot;: &quot;system.slice&quot;,
+        &quot;WatchdogTimestamp&quot;: &quot;Mon 2018-06-11 23:17:21 CST&quot;,
+        &quot;WatchdogTimestampMonotonic&quot;: &quot;4444399872&quot;,
+        &quot;WatchdogUSec&quot;: &quot;0&quot;
+    }
+}
+[root@xdhuxc ~]# systemctl status haproxy
+● haproxy.service - HAProxy Load Balancer
+   Loaded: loaded (/usr/lib/systemd/system/haproxy.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)
+
+Jun 11 23:17:21 xdhuxc systemd[1]: Started HAProxy Load Balancer.
+Jun 11 23:17:21 xdhuxc systemd[1]: Starting HAProxy Load Balancer...
+Jun 11 23:17:21 xdhuxc haproxy-systemd-wrapper[2135]: haproxy-systemd-wrapper: executing /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+Jun 11 23:17:51 xdhuxc systemd[1]: Stopping HAProxy Load Balancer...
+Jun 11 23:17:51 xdhuxc haproxy-systemd-wrapper[2135]: haproxy-systemd-wrapper: SIGTERM -&gt; 2137.
+Jun 11 23:17:51 xdhuxc systemd[1]: Stopped HAProxy Load Balancer.
+Jun 11 23:17:51 xdhuxc haproxy-systemd-wrapper[2135]: haproxy-systemd-wrapper: exit, haproxy RC=0
+[root@xdhuxc ~]# ansible Client -m service -a &quot;name=haproxy state=restarted&quot;
+192.168.91.128 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;name&quot;: &quot;haproxy&quot;,
+    &quot;state&quot;: &quot;started&quot;,
+    &quot;status&quot;: {
+        &quot;ActiveEnterTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ActiveExitTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ActiveState&quot;: &quot;inactive&quot;,
+        &quot;After&quot;: &quot;network.target syslog.target systemd-journald.socket basic.target system.slice&quot;,
+        &quot;AllowIsolate&quot;: &quot;no&quot;,
+        &quot;AmbientCapabilities&quot;: &quot;0&quot;,
+        &quot;AssertResult&quot;: &quot;no&quot;,
+        &quot;AssertTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;Before&quot;: &quot;shutdown.target&quot;,
+        &quot;BlockIOAccounting&quot;: &quot;no&quot;,
+        &quot;BlockIOWeight&quot;: &quot;18446744073709551615&quot;,
+        &quot;CPUAccounting&quot;: &quot;no&quot;,
+        &quot;CPUQuotaPerSecUSec&quot;: &quot;infinity&quot;,
+        &quot;CPUSchedulingPolicy&quot;: &quot;0&quot;,
+        &quot;CPUSchedulingPriority&quot;: &quot;0&quot;,
+        &quot;CPUSchedulingResetOnFork&quot;: &quot;no&quot;,
+        &quot;CPUShares&quot;: &quot;18446744073709551615&quot;,
+        &quot;CanIsolate&quot;: &quot;no&quot;,
+        &quot;CanReload&quot;: &quot;yes&quot;,
+        &quot;CanStart&quot;: &quot;yes&quot;,
+        &quot;CanStop&quot;: &quot;yes&quot;,
+        &quot;CapabilityBoundingSet&quot;: &quot;18446744073709551615&quot;,
+        &quot;ConditionResult&quot;: &quot;no&quot;,
+        &quot;ConditionTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;Conflicts&quot;: &quot;shutdown.target&quot;,
+        &quot;ControlPID&quot;: &quot;0&quot;,
+        &quot;DefaultDependencies&quot;: &quot;yes&quot;,
+        &quot;Delegate&quot;: &quot;no&quot;,
+        &quot;Description&quot;: &quot;HAProxy Load Balancer&quot;,
+        &quot;DevicePolicy&quot;: &quot;auto&quot;,
+        &quot;EnvironmentFile&quot;: &quot;/etc/sysconfig/haproxy (ignore_errors=no)&quot;,
+        &quot;ExecMainCode&quot;: &quot;0&quot;,
+        &quot;ExecMainExitTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ExecMainPID&quot;: &quot;0&quot;,
+        &quot;ExecMainStartTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;ExecMainStatus&quot;: &quot;0&quot;,
+        &quot;ExecReload&quot;: &quot;{ path=/bin/kill ; argv[]=/bin/kill -USR2 $MAINPID ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }&quot;,
+        &quot;ExecStart&quot;: &quot;{ path=/usr/sbin/haproxy-systemd-wrapper ; argv[]=/usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid $OPTIONS ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }&quot;,
+        &quot;FailureAction&quot;: &quot;none&quot;,
+        &quot;FileDescriptorStoreMax&quot;: &quot;0&quot;,
+        &quot;FragmentPath&quot;: &quot;/usr/lib/systemd/system/haproxy.service&quot;,
+        &quot;GuessMainPID&quot;: &quot;yes&quot;,
+        &quot;IOScheduling&quot;: &quot;0&quot;,
+        &quot;Id&quot;: &quot;haproxy.service&quot;,
+        &quot;IgnoreOnIsolate&quot;: &quot;no&quot;,
+        &quot;IgnoreOnSnapshot&quot;: &quot;no&quot;,
+        &quot;IgnoreSIGPIPE&quot;: &quot;yes&quot;,
+        &quot;InactiveEnterTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;InactiveExitTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;JobTimeoutAction&quot;: &quot;none&quot;,
+        &quot;JobTimeoutUSec&quot;: &quot;0&quot;,
+        &quot;KillMode&quot;: &quot;mixed&quot;,
+        &quot;KillSignal&quot;: &quot;15&quot;,
+        &quot;LimitAS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitCORE&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitCPU&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitDATA&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitFSIZE&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitLOCKS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitMEMLOCK&quot;: &quot;65536&quot;,
+        &quot;LimitMSGQUEUE&quot;: &quot;819200&quot;,
+        &quot;LimitNICE&quot;: &quot;0&quot;,
+        &quot;LimitNOFILE&quot;: &quot;4096&quot;,
+        &quot;LimitNPROC&quot;: &quot;3818&quot;,
+        &quot;LimitRSS&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitRTPRIO&quot;: &quot;0&quot;,
+        &quot;LimitRTTIME&quot;: &quot;18446744073709551615&quot;,
+        &quot;LimitSIGPENDING&quot;: &quot;3818&quot;,
+        &quot;LimitSTACK&quot;: &quot;18446744073709551615&quot;,
+        &quot;LoadState&quot;: &quot;loaded&quot;,
+        &quot;MainPID&quot;: &quot;0&quot;,
+        &quot;MemoryAccounting&quot;: &quot;no&quot;,
+        &quot;MemoryCurrent&quot;: &quot;18446744073709551615&quot;,
+        &quot;MemoryLimit&quot;: &quot;18446744073709551615&quot;,
+        &quot;MountFlags&quot;: &quot;0&quot;,
+        &quot;Names&quot;: &quot;haproxy.service&quot;,
+        &quot;NeedDaemonReload&quot;: &quot;no&quot;,
+        &quot;Nice&quot;: &quot;0&quot;,
+        &quot;NoNewPrivileges&quot;: &quot;no&quot;,
+        &quot;NonBlocking&quot;: &quot;no&quot;,
+        &quot;NotifyAccess&quot;: &quot;none&quot;,
+        &quot;OOMScoreAdjust&quot;: &quot;0&quot;,
+        &quot;OnFailureJobMode&quot;: &quot;replace&quot;,
+        &quot;PermissionsStartOnly&quot;: &quot;no&quot;,
+        &quot;PrivateDevices&quot;: &quot;no&quot;,
+        &quot;PrivateNetwork&quot;: &quot;no&quot;,
+        &quot;PrivateTmp&quot;: &quot;no&quot;,
+        &quot;ProtectHome&quot;: &quot;no&quot;,
+        &quot;ProtectSystem&quot;: &quot;no&quot;,
+        &quot;RefuseManualStart&quot;: &quot;no&quot;,
+        &quot;RefuseManualStop&quot;: &quot;no&quot;,
+        &quot;RemainAfterExit&quot;: &quot;no&quot;,
+        &quot;Requires&quot;: &quot;basic.target&quot;,
+        &quot;Restart&quot;: &quot;no&quot;,
+        &quot;RestartUSec&quot;: &quot;100ms&quot;,
+        &quot;Result&quot;: &quot;success&quot;,
+        &quot;RootDirectoryStartOnly&quot;: &quot;no&quot;,
+        &quot;RuntimeDirectoryMode&quot;: &quot;0755&quot;,
+        &quot;SameProcessGroup&quot;: &quot;no&quot;,
+        &quot;SecureBits&quot;: &quot;0&quot;,
+        &quot;SendSIGHUP&quot;: &quot;no&quot;,
+        &quot;SendSIGKILL&quot;: &quot;yes&quot;,
+        &quot;Slice&quot;: &quot;system.slice&quot;,
+        &quot;StandardError&quot;: &quot;inherit&quot;,
+        &quot;StandardInput&quot;: &quot;null&quot;,
+        &quot;StandardOutput&quot;: &quot;journal&quot;,
+        &quot;StartLimitAction&quot;: &quot;none&quot;,
+        &quot;StartLimitBurst&quot;: &quot;5&quot;,
+        &quot;StartLimitInterval&quot;: &quot;10000000&quot;,
+        &quot;StartupBlockIOWeight&quot;: &quot;18446744073709551615&quot;,
+        &quot;StartupCPUShares&quot;: &quot;18446744073709551615&quot;,
+        &quot;StatusErrno&quot;: &quot;0&quot;,
+        &quot;StopWhenUnneeded&quot;: &quot;no&quot;,
+        &quot;SubState&quot;: &quot;dead&quot;,
+        &quot;SyslogLevelPrefix&quot;: &quot;yes&quot;,
+        &quot;SyslogPriority&quot;: &quot;30&quot;,
+        &quot;SystemCallErrorNumber&quot;: &quot;0&quot;,
+        &quot;TTYReset&quot;: &quot;no&quot;,
+        &quot;TTYVHangup&quot;: &quot;no&quot;,
+        &quot;TTYVTDisallocate&quot;: &quot;no&quot;,
+        &quot;TasksAccounting&quot;: &quot;no&quot;,
+        &quot;TasksCurrent&quot;: &quot;18446744073709551615&quot;,
+        &quot;TasksMax&quot;: &quot;18446744073709551615&quot;,
+        &quot;TimeoutStartUSec&quot;: &quot;1min 30s&quot;,
+        &quot;TimeoutStopUSec&quot;: &quot;1min 30s&quot;,
+        &quot;TimerSlackNSec&quot;: &quot;50000&quot;,
+        &quot;Transient&quot;: &quot;no&quot;,
+        &quot;Type&quot;: &quot;simple&quot;,
+        &quot;UMask&quot;: &quot;0022&quot;,
+        &quot;UnitFilePreset&quot;: &quot;disabled&quot;,
+        &quot;UnitFileState&quot;: &quot;disabled&quot;,
+        &quot;Wants&quot;: &quot;system.slice&quot;,
+        &quot;WatchdogTimestampMonotonic&quot;: &quot;0&quot;,
+        &quot;WatchdogUSec&quot;: &quot;0&quot;
+    }
+}
+[root@xdhuxc ~]# systemctl status haproxy
+● haproxy.service - HAProxy Load Balancer
+   Loaded: loaded (/usr/lib/systemd/system/haproxy.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2018-06-11 23:19:46 CST; 25s ago
+ Main PID: 2351 (haproxy-systemd)
+   Memory: 1.9M
+   CGroup: /system.slice/haproxy.service
+           ├─2351 /usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid
+           ├─2354 /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+           └─2355 /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+
+Jun 11 23:19:46 xdhuxc systemd[1]: Started HAProxy Load Balancer.
+Jun 11 23:19:46 xdhuxc systemd[1]: Starting HAProxy Load Balancer...
+Jun 11 23:19:46 xdhuxc haproxy-systemd-wrapper[2351]: haproxy-systemd-wrapper: executing /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -Ds
+</code></pre><h5 id="user-模块">user 模块</h5>
+<p>user 模块用来进行远程主机用户的管理。
+例如：</p>
+<pre><code>ansible Client -m user -a &quot;name=wang comment='user wang'&quot;     # 创建用户 wang
+ansible Client -m user -a &quot;name=wang state=absent remove=yes&quot; # 删除用户 wang
+</code></pre><p>执行命令结果如下：</p>
+<pre><code>[root@xdhuxc ~]# cat /etc/passwd | grep wang
+[root@xdhuxc ~]# ansible Client -m user -a &quot;name=wang comment='user wang'&quot;     # 创建用户 wang
+192.168.91.128 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;comment&quot;: &quot;user wang&quot;,
+    &quot;create_home&quot;: true,
+    &quot;group&quot;: 1001,
+    &quot;home&quot;: &quot;/home/wang&quot;,
+    &quot;name&quot;: &quot;wang&quot;,
+    &quot;shell&quot;: &quot;/bin/bash&quot;,
+    &quot;state&quot;: &quot;present&quot;,
+    &quot;system&quot;: false,
+    &quot;uid&quot;: 1001
+}
+[root@xdhuxc ~]# cat /etc/passwd | grep wang
+wang:x:1001:1001:user wang:/home/wang:/bin/bash
+[root@xdhuxc ~]# ansible Client -m user -a &quot;name=wang state=absent remove=yes&quot;  # 删除用户 wang
+192.168.91.128 | SUCCESS =&gt; {
+    &quot;changed&quot;: true,
+    &quot;force&quot;: false,
+    &quot;name&quot;: &quot;wang&quot;,
+    &quot;remove&quot;: true,
+    &quot;state&quot;: &quot;absent&quot;
+}
+[root@xdhuxc ~]# cat /etc/passwd | grep wang
+[root@xdhuxc ~]#
+</code></pre>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

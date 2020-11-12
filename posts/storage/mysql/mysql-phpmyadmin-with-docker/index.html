@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/storage/mysql/mysql-phpmyadmin-with-docker/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin" />
+<meta property="og:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/storage/mysql/mysql-phpmyadmin-with-docker/" />
+<meta property="article:published_time" content="2018-06-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-29T00:00:00+00:00" />
+<meta itemprop="name" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin">
+<meta itemprop="description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。">
+<meta itemprop="datePublished" content="2018-06-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-29T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="722">
+
+
+
+<meta itemprop="keywords" content="MySQL,phpMyAdmin,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin"/>
+<meta name="twitter:description" content="本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了基于 docker 容器方式部署 MySQL 数据库管理工具 phpMyAdmin 的方法。</p>
+<h3 id="phpmyadmin">phpmyadmin</h3>
+<p><code>phpmyadmin</code> 是一个 <code>MySQL</code> 数据库管理工具，使用 <code>phpmyadmin</code> 实现在网页中连接、操作数据库，实现数据迁移。使用前，必须确保主机上数据库 <code>mysqld</code> 服务已经启动。</p>
+<p>1、拉取 phpMyAdmin 镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker pull phpmyadmin/phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>2、启动 phpMyAdmin 镜像</p>
+<p>连接单个数据库时启动 phpmyadmin 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run --name=myadmin -p 8080:80 -e PMA_HOST=192.168.244.128 -e MYSQL_ROOT_PASSWORD=286X326_h -d phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">PMA_HOST：待连接的 MySQL 数据库服务器所在主机；
+MYSQL_ROOT_PASSWORD：MySQL 数据库 root 用户密码；
+</code></pre></td></tr></table>
+</div>
+</div><p>3、在同一个页面中连接多个数据库时启动 phpmyadmin 容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run --name=myadmin -p 8080:80 -e PMA_HOSTS=192.168.244.128,192.168.244.134 -e PMA_ARBITRARY=1 -d phpmyadmin
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">PMA_HOSTS：待连接的 MySQL 数据库所在主机 IP 地址，多个 IP 地址以 <span class="sb">`,`</span> 分隔；
+PMA_ARBITRARY：允许连接多个 MySQL 数据库；
+</code></pre></td></tr></table>
+</div>
+</div><p>在</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/* Arbitrary server connection */                                     
+if (isset($_ENV[&#39;PMA_ARBITRARY&#39;]) &amp;&amp; $_ENV[&#39;PMA_ARBITRARY&#39;] === &#39;1&#39;) {                              
+    $cfg[&#39;AllowArbitraryServer&#39;] = true;                                                            
+} 
+</code></pre></td></tr></table>
+</div>
+</div><p>4、访问 phpMyAdmin</p>
+<p>访问地址为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.1.161:8080
+</code></pre></td></tr></table>
+</div>
+</div><p>在启动容器时，更改端口后访问地址为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.1.161:8090/
+或
+http://172.20.1.161:8090/index.php
+</code></pre></td></tr></table>
+</div>
+</div><p>在MySQL服务器所在主机上，以root用户登陆进去，执行如下命令，为用户赋予远程访问权限：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">GRANT ALL PRIVILEGES ON <span class="ge">*.*</span> TO &#39;root&#39;@&#39;172.17.0.2&#39; IDENTIFIED BY &#39;286X326_h&#39; WITH GRANT OPTION;
+</code></pre></td></tr></table>
+</div>
+</div><p>286X326_h为数据库root用户密码</p>
+<h3 id="将-phpmyadmin-嵌入其他页面">将 phpMyAdmin 嵌入其他页面</h3>
+<p>进入容器中，复制 <code>/www/libraries/config.default.php</code> 到 <code>/www</code> 目录下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /www/libraries/config.default.php /www/config.inc.php
+</code></pre></td></tr></table>
+</div>
+</div><p>更改 <code>/www/config.inc.php</code> 的配置参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$cfg[&#39;AllowThirdPartyFraming&#39;] = true; 
+</code></pre></td></tr></table>
+</div>
+</div><p>修改 <code>/www/libraries/Header.php</code> 文件中的 sendHttpHeaders 函数，将 <code>X-Frame-Options </code>由 <code>deny</code> 改为 <code>ALLOW-FROM</code>，并加入待嵌入页面的地址，例如：<code>ALLOW-FROM http://123.103.9.208:6081/#outer/index/28</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"> if (! $GLOBALS[&#39;cfg&#39;][&#39;AllowThirdPartyFraming&#39;]) {                                          
+            header(                                                                                 
+                &#39;X-Frame-Options: ALLOW-FROM http://123.103.9.208:6081/#outer/index/28&#39;             
+            );                                                                                      
+        }             
+</code></pre></td></tr></table>
+</div>
+</div><p>修改 <code>/www/js/cross_framing_protection.js</code> 文件中的内容如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">/* vim: set expandtab sw=4 ts=4 sts=4: <span class="ge">*/
+</span><span class="ge">/*</span>*
+ <span class="k">*</span> Conditionally included if framing is not allowed
+ */
+if (self == top) {
+    document.documentElement.style.display = &#39;block&#39;;
+    //var style_element = document.getElementById(&#34;cfs-style&#34;);
+    // check if style_element has already been removed
+    // to avoid frequently reported js error
+    //if (typeof(style_element) != &#39;undefined&#39; &amp;&amp; style_element != null) {
+    //    style_element.parentNode.removeChild(style_element);
+    //}
+} else {
+    //top.location = self.location;
+    document.documentElement.style.display = &#39;block&#39;;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
+<p>phpmyadmin同步功能 <a href="http://www.360doc.com/content/12/1204/15/1440938_252069458.shtml">http://www.360doc.com/content/12/1204/15/1440938_252069458.shtml</a></p>
+<p>嵌入其他页面，需要修改配置 <a href="http://blog.csdn.net/l6807718/article/details/51179507">http://blog.csdn.net/l6807718/article/details/51179507</a></p>
+<p>解决问题的 <a href="http://vps.gl/vps/161.html">http://vps.gl/vps/161.html</a></p>
+<p>官方文档 <a href="https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker">https://docs.phpmyadmin.net/en/latest/setup.html#installing-using-docker</a></p>
+<p>在centos中安装phpmyadmin，包括安装httpd，php <a href="http://www.cnblogs.com/xjxz/p/6550397.html">http://www.cnblogs.com/xjxz/p/6550397.html</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

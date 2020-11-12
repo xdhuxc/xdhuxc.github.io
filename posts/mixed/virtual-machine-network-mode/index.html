@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>虚拟机的几种网络连接方式 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了使用 Virtual Box 或 VMware Work station 创建虚拟机时的网络连接方式。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/mixed/virtual-machine-network-mode/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="虚拟机的几种网络连接方式" />
+<meta property="og:description" content="本篇博客介绍了使用 Virtual Box 或 VMware Work station 创建虚拟机时的网络连接方式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/mixed/virtual-machine-network-mode/" />
+<meta property="article:published_time" content="2018-12-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-09T00:00:00+00:00" />
+<meta itemprop="name" content="虚拟机的几种网络连接方式">
+<meta itemprop="description" content="本篇博客介绍了使用 Virtual Box 或 VMware Work station 创建虚拟机时的网络连接方式。">
+<meta itemprop="datePublished" content="2018-12-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="431">
+
+
+
+<meta itemprop="keywords" content="VirtualBox,VMware," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="虚拟机的几种网络连接方式"/>
+<meta name="twitter:description" content="本篇博客介绍了使用 Virtual Box 或 VMware Work station 创建虚拟机时的网络连接方式。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了使用 <code>Virtual Box</code> 或 <code>VMware Work station</code> 创建虚拟机时的网络连接方式。</p>
+<p>VirtualBox中有四种网络连接方式：</p>
+<ul>
+<li>NAT 网络地址转换模式</li>
+<li>Bridged Adapter 桥接模式</li>
+<li>Intenal 内部网络模式</li>
+<li>Host-Only Adapter 主机模式</li>
+</ul>
+<p>VMWare 中有五种网络连接方式：</p>
+<ul>
+<li>NAT 模式</li>
+<li>桥接模式</li>
+<li>仅主机模式</li>
+<li>自定义（特定虚拟网络）</li>
+<li>LAN区段</li>
+</ul>
+<p>不同的虚拟交换机应用在不同的联网模式下：</p>
+<ul>
+<li>VMnet0：这是VMware用于虚拟桥接网络下的虚拟交换机；</li>
+<li>VMnet1：这是VMware用于虚拟Host-Only网络下的虚拟交换机；</li>
+<li>VMnet8：这是VMware用于虚拟NAT网络下的虚拟交换机；</li>
+<li>VMnet2~VMnet7及VMnet9：是VMware用于虚拟自定义custom网络下的虚拟交换机；</li>
+</ul>
+<p>VirtualBox中四种网络连接方式之间的区别：</p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>NAT</th>
+<th>Bridged Adapter</th>
+<th>Internal</th>
+<th>Host-only Adapter</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>虚拟机-&gt;主机</td>
+<td>V</td>
+<td>V</td>
+<td>X</td>
+<td>默认不能，需配置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>主机-&gt;虚拟机</td>
+<td>X</td>
+<td>V</td>
+<td>X</td>
+<td>默认不能，需配置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>虚拟机-&gt;其他主机</td>
+<td>V</td>
+<td>V</td>
+<td>X</td>
+<td>默认不能，需配置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>其他主机-&gt;虚拟机</td>
+<td>X</td>
+<td>V</td>
+<td>X</td>
+<td>默认不能，需配置</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>虚拟机之间</td>
+<td>X</td>
+<td>V</td>
+<td>同网络名下可以</td>
+<td>V</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://blog.csdn.net/carolzhang8406/article/details/19042569">https://blog.csdn.net/carolzhang8406/article/details/19042569</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

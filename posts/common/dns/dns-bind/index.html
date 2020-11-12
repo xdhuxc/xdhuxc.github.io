@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>BIND 的安装和配置 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录下 Bind 的安装和配置，以备后查。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/common/dns/dns-bind/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="BIND 的安装和配置" />
+<meta property="og:description" content="本篇博客记录下 Bind 的安装和配置，以备后查。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/common/dns/dns-bind/" />
+<meta property="article:published_time" content="2018-12-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-12-22T00:00:00+00:00" />
+<meta itemprop="name" content="BIND 的安装和配置">
+<meta itemprop="description" content="本篇博客记录下 Bind 的安装和配置，以备后查。">
+<meta itemprop="datePublished" content="2018-12-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2006">
+
+
+
+<meta itemprop="keywords" content="Bind,DNS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="BIND 的安装和配置"/>
+<meta name="twitter:description" content="本篇博客记录下 Bind 的安装和配置，以备后查。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录下 Bind 的安装和配置，以备后查。</p>
+<h3 id="bind">BIND</h3>
+<p>BIND 是 Berkeley Internet Name Domain 的首字母简写，是一款开源的 DNS 软件，可以使用 BIND 在内网中部署自己的 DNS。</p>
+<h4 id="安装部署">安装部署</h4>
+<p>1、使用如下命令安装 BIND</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y bind 
+</code></pre></td></tr></table>
+</div>
+</div><p>2、启动 BIND</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart named
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="配置">配置</h4>
+<p>bind 的主配置文件位置：<code>/etc/named.conf</code>，内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">//
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+// See the BIND Administrator&#39;s Reference Manual (ARM) for details about the
+// configuration located in /usr/share/doc/bind-{version}/Bv9ARM.html
+
+options {
+	listen-on port 53 { 127.0.0.1; };
+	listen-on-v6 port 53 { ::1; };
+	directory 	&#34;/var/named&#34;;
+	dump-file 	&#34;/var/named/data/cache_dump.db&#34;;
+	statistics-file &#34;/var/named/data/named_stats.txt&#34;;
+	memstatistics-file &#34;/var/named/data/named_mem_stats.txt&#34;;
+	allow-query     { localhost; };
+
+	/* 
+	 <span class="k">-</span> If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+	 <span class="k">-</span> If you are building a RECURSIVE (caching) DNS server, you need to enable 
+	   recursion. 
+	 <span class="k">-</span> If your recursive DNS server has a public IP address, you MUST enable access 
+	   control to limit queries to your legitimate users. Failing to do so will
+	   cause your server to become part of large scale DNS amplification 
+	   attacks. Implementing BCP38 within your network would greatly
+	   reduce such attack surface 
+	<span class="ge">*/
+</span><span class="ge">	recursion yes;
+</span><span class="ge">
+</span><span class="ge">	dnssec-enable yes;
+</span><span class="ge">	dnssec-validation yes;
+</span><span class="ge">
+</span><span class="ge">	/*</span> Path to ISC DLV key */
+	bindkeys-file &#34;/etc/named.iscdlv.key&#34;;
+
+	managed-keys-directory &#34;/var/named/dynamic&#34;;
+
+	pid-file &#34;/run/named/named.pid&#34;;
+	session-keyfile &#34;/run/named/session.key&#34;;
+};
+
+logging {
+        channel default_debug {
+                file &#34;data/named.run&#34;;
+                severity dynamic;
+        };
+};
+
+zone &#34;.&#34; IN {
+	type hint;
+	file &#34;named.ca&#34;;
+};
+
+include &#34;/etc/named.rfc1912.zones&#34;;
+include &#34;/etc/named.root.key&#34;;
+
+</code></pre></td></tr></table>
+</div>
+</div><p>选项含义：</p>
+<p>全局配置段：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">options {
+    # 在启动 DNS 服务时，named 进程所监听的套接字
+    listen-on port 53 {127.0.0.1; 10.10.24.32;};
+    
+    # 定义解析库（区域数据库文件）的根目录，在主配置文件中添加此配置语句之后，可以在后面定义区域数据库时使用相对路径
+    directory &#34;/var/named&#34;;
+    
+    # 访问控制语句，意思是允许本服务器处理那些主机发送来的解析查询请求，默认是localhost，即只允许本机以127.0.0.1发送查询请求
+    allow-query {localhost};
+    
+    # 允许本服务器为所有查询请求做递归查询
+    recursion yes;
+    
+    # 访问控制指令，允许这些客户端做递归查询
+    allow-recursion {172.16.1.74/16;};
+    
+    # 定义存放主进程 pid 文件的路径
+    pid-file &#34;/run/named/named.pid&#34;;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>区域配置段：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 声明一个区域名称，此名称要使用 FQDN 来表示，例如 xdhuxc.com
+</span><span class="gh"></span>zone &#34;FQDN&#34; IN {
+    # 区域的类型
+    type master;   # 主区域
+    type slave;    # 辅助区域
+    type hint;     # 提示区域，仅能在根域上设置
+    type forward;  # 转发区域 
+    
+    # 存放于该域有关的解析信息的数据库文件的路径；如果是相对路径，则相对于在主配置文件的全局配置端中的 “directory” 指令所定义的目录而言。
+    # 注意：文件的所有权和权限设置必须能够让 named 用户有读取权限。
+    file &#34;named.localhost&#34;;
+    
+    # 访问控制指令，允许这些客户端对数据库内容进行动态更新，主要用于 DDNS
+    allow-update {none;};
+    
+    # 访问控制指令，允许这些主机能够从当前服务器进行区域传送 
+    allow-transfer {172.16.0.0/16;};
+    
+    # 访问控制指令，允许这些客户端做递归查询 
+    allow-recursion {172.16.1.74/16;};
+    
+    # 访问控制指令，允许这些主机进行区域内的解析查询 
+    allow-query { address_match_element;...};
+    
+    # 访问控制指令，允许这些主机向当前服务器发送区域变更通知 
+    allow-update { address_match_element;...};
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>在修改完 bind 的配置文件之后，需要使用 named-checkconf 来检测文件的书写格式是否正确。</p>
+<p>在检测完后，配置文件的内容并不会立即生效，因此我们需要重新读取 named 程序，可以使用 systemctl 命令，也可以使用 rndc reload 来读取。</p>
+<p>区域配置文件示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">zone &#34;FQDN&#34; IN {
+    type master;
+    file &#34;FQDN.zone&#34;;
+    allow-update {none;};
+    allow-transfer {none;};
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>当区域配置文件配置完成之后，我们需要在其数据库 /var/named/named.localhost 中添加记录，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$TTL 1D
+@	IN SOA	@ rname.invalid. (
+					0	    ; serial
+					1D	    ; refresh
+					1H	    ; retry
+					1W	    ; expire
+					3H )	; minimum
+	NS	@
+	A	127.0.0.1
+	AAAA	::1
+</code></pre></td></tr></table>
+</div>
+</div><p>在数据库中，有各种记录书写的格式，简要介绍各种记录的书写格式：</p>
+<h5 id="soa">SOA</h5>
+<p>DN|FQDN：当前域的域名，例如 xdhuxc.com，或者使用 @ 代替域名，@ 符号会使用主配置文件中定义的域名来代替
+VALUE：由以下几个部分组成：</p>
+<ul>
+<li>当前域中的主域名服务器的 FQDN</li>
+<li>当前域的数据库管理员的邮箱地址，需要使用 . 来替代 @ ：root.xdhuxc.com</li>
+<li>主域名服务器进行区域传送的相关时间参数的定义：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">(Serial Refresh Retry Expeir TTL)
+（
+    Serial;
+    Refresh;
+    Retry;
+    Expeir;
+    TTL;
+）
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="ns-记录">NS 记录</h5>
+<p>name：当前域的域名，可以写完全合格域名 FQDN，可以写 @ 占位，还可以省略不写，如果省略不写，则意味着该资源记录的名称与其上一条资源记录的名称相同。
+value：当前区域内被授权的域名服务器的 FQDN。</p>
+<p>注意：
+1、一个域中有多少台域名服务器，就需要写多少个 NS 资源记录。</p>
+<p>2、每个 NS 资源记录都必须要有一个 A 记录与之对应。</p>
+<h5 id="mx-记录">MX 记录</h5>
+<p>name：当前域的域名，可以写完全合格域名 FQDN，可以写 @ 占位，还可以省略不写，如果省略不写，则意味着该资源记录的名称与其上一条资源记录的名称相同。
+RR_TYPE：MS Priority
+value：当前域中有效的邮件服务器的 FQDN。</p>
+<p>注意：
+1、一个域中，可以有多条 MX 资源记录，通过优先级的大小决定被使用的次序。</p>
+<p>2、每个 MX 资源记录都必须对应一条 A 记录。</p>
+<h5 id="a-记录">A 记录</h5>
+<p>name：域中指定主机的 FQDN。
+value：该主机上真实有效的 IPV4 地址。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">www.xdhuxc.com 43200 IN A 192.168.1.1
+www            43200 IN A 192.168.1.1
+</code></pre></td></tr></table>
+</div>
+</div><p>泛域名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">*.xdhuxc.com 43200 IN A 192.168.1.1
+<span class="k">*</span>            43200 IN A 192.168.1.1
+</code></pre></td></tr></table>
+</div>
+</div><p>直接域名解析：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">xdhuxc.com 43200 IN A 192.168.1.1
+</code></pre></td></tr></table>
+</div>
+</div><p>通常，泛域名或直接域名都是为了防止用户写错域名而导致无法给出正确的解析结果。</p>
+<h5 id="cname-记录">CNAME 记录</h5>
+<p>name：域中指定主机的别名。
+value：真正的主机的 FQDN。</p>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ftp.xdhuxc.com [86400] IN CNAME www.xdhuxc.com
+ftp [86400] IN CNAME www
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="ptr-记录">PTR 记录：</h5>
+<p>name：
+将 IP 地址的四个八位组反过来，将 IP 地址中的主机部分加上反向域的域名后缀</p>
+<p>如果 IP 地址是：172.16.1.100/16，其对应的域名的写法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">100.1 IN PTR www.xdhuxc.com 
+100.1.16.172.in-addr.arpa. IN PTR www.xdhuxc.com 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="参考资料">参考资料</h4>
+<p>1、queryperf 性能测试工具</p>
+<p><a href="https://blog.csdn.net/zhu_tianwei/article/details/45202899">https://blog.csdn.net/zhu_tianwei/article/details/45202899</a></p>
+<p>2、BIND 配置文件详解</p>
+<p><a href="http://blog.51cto.com/liujingyu/2102858">http://blog.51cto.com/liujingyu/2102858</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

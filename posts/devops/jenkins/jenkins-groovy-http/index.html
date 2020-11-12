@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>在 Jenkins Pipeline 的 groovy 脚本中发送 HTTP 请求 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。
+在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/jenkins/jenkins-groovy-http/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="在 Jenkins Pipeline 的 groovy 脚本中发送 HTTP 请求" />
+<meta property="og:description" content="本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。
+在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/jenkins/jenkins-groovy-http/" />
+<meta property="article:published_time" content="2019-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-14T00:00:00+00:00" />
+<meta itemprop="name" content="在 Jenkins Pipeline 的 groovy 脚本中发送 HTTP 请求">
+<meta itemprop="description" content="本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。
+在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。">
+<meta itemprop="datePublished" content="2019-06-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-12-14T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="660">
+
+
+
+<meta itemprop="keywords" content="DevOps,Jenkins,groovy," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="在 Jenkins Pipeline 的 groovy 脚本中发送 HTTP 请求"/>
+<meta name="twitter:description" content="本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。
+在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了在 Jenkins Pipeline 中 groovy 脚本发送 HTTP 请求的用法。</p>
+<p>在使用 Jenkins Pipeline 时，有时需要和外部系统以 HTTP 方式交互或集成，此时就需要发送 HTTP 请求给外部系统，并接收响应，继续进行处理，而 curl 等命令不太好处理接收到的响应，此时可以使用 groovy 脚本来处理。</p>
+<h3 id="使用方法">使用方法</h3>
+<p>1、使用 Jenkins 第一件事情，安装插件，groovy 脚本发送 HTTP 请求需要安装 <code>HTTP Request</code> 插件，插件 ID 为：</p>
+<p>2、在 pipeline 中编写代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">stage(&#39;Deploy&#39;) {
+    steps {
+        container(&#39;golang-build-container&#39;) {
+            script {
+                ws(projectPath) {  
+                    def payload = &#34;&#34;&#34;
+                        { &#34;app&#34;: &#34;xdhuxc-app&#34; }
+                    &#34;&#34;&#34;
+                    def authorization = &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTExNzkzNTYsInVzZXIiOiJ3YW5naHVhbnxbMTcgMyA0IDUgNiA3IDggOSAxMCAxMSAxMiAxMyAxNiAxOSAyMCAyMSAyMiAyMyAyNCAyNSAyNl18YWRtaW4ifQ.WR7GaFdm0y2SE3WHGYfE_VbTiXZovmm5hBojvhLn5NI&#34;
+                    def app = &#34;xdhuxc-app&#34;
+                    def response = httpRequest acceptType: &#39;APPLICATION_JSON&#39;, contentType: &#39;APPLICATION_JSON&#39;, httpMode: &#39;PUT&#39;, requestBody: payload, url: &#34;http://127.0.0.1:80/xdhuxc/apps?app=${app}&amp;authorization=${authorization}&#34;, validResponseCodes: &#34;100:511&#34;
+                    if (response.status == 200) {
+                        println(&#34;Http request to ${url} is successfully, the body is ${body}&#34;)
+                    } else {
+                        throw new Exception(&#34;the request failed, the http response status is ${response.status}, content is ${response.content}&#34;)
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>注意，需要加 <code>validResponseCodes: &quot;100:511&quot;</code>，默认的 <code>validResponseCodes</code> 为 <code>100:399</code>，这意味着响应状态码为 <code>400~511</code> 的请求会直接抛错，拿不到响应。</p>
+<p>此外，还可以添加自定义请求头：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">def response = httpRequest customHeaders: [[name: &#39;cid&#39;, value: &#39;110&#39;]]
+</code></pre></td></tr></table>
+</div>
+</div><p>默认情况下，会输出整个请求的信息，包括：URL、请求头、返回码等。如果请求中含有不希望显示的 token，可以修改 <code>quiet: true</code> 参数，不显示请求详情。</p>
+<p>有时，我们可能会在提交的数据中加入变量，这时可通过如下方式提交数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import groovy.json.JsonOutput
+
+stage(&#39;Deploy&#39;) {
+    steps {
+        container(&#39;golang-build-container&#39;) {
+            script {
+                ws(env.WORKSPACE) { 
+                    def url = &#39;http://127.0.0.1:8000/xdhuxc/apps?app=xdhuxc-cicd&#39;
+                    def body = JsonOutput.toJson([&#34;xdhuxc-cicd&#34;: env.image])
+                    def headers = [[name: &#39;authorization&#39;, value: &#39;Bearer zZXIiOiJzZ3QtamVua2lucy11cGRhdGUtaW1hZ2V8WzE3IDEwIDExIDEyIDEzIDE2IDE5IDIwIDIxIDIyIDIzIDI0IDMgNCA1IDYgNyA4IDldfG9wZW5hcGktc2d0LWplbmtpbnMtdXBkYXRlLWltYWdlIn0&#39;]]
+                    def response = httpRequest acceptType: &#39;APPLICATION_JSON&#39;, contentType: &#39;APPLICATION_JSON&#39;, customHeaders: headers, httpMode: &#39;PUT&#39;, requestBody: body, url: url, validResponseCodes: &#34;100:511&#34;, quiet: true
+                    if (response.status == 200) {
+                        println(&#34;Http request to ${url} is successfully, the body is ${body}&#34;)
+                    } else {
+                        throw new Exception(&#34;Deploy to kubernetes failed, the http response status is ${response.status}, content is ${response.content}&#34;)
+                    }
+                 }
+            }
+        }
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
+<p><a href="https://www.jenkins.io/doc/pipeline/steps/http_request/#httprequest-perform-an-http-request-and-return-a-response-object">https://www.jenkins.io/doc/pipeline/steps/http_request/#httprequest-perform-an-http-request-and-return-a-response-object</a></p>
+<p>http request 插件参数：https://www.jenkins.io/doc/pipeline/steps/http_request/#http-request-plugin</p>
+<p><a href="https://github.com/jenkinsci/http-request-plugin">https://github.com/jenkinsci/http-request-plugin</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

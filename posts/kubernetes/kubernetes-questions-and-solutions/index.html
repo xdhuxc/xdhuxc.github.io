@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Kubernetes 常见问题及解决 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/kubernetes/kubernetes-questions-and-solutions/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Kubernetes 常见问题及解决" />
+<meta property="og:description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/kubernetes/kubernetes-questions-and-solutions/" />
+<meta property="article:published_time" content="2018-11-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-11-18T00:00:00+00:00" />
+<meta itemprop="name" content="Kubernetes 常见问题及解决">
+<meta itemprop="description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。">
+<meta itemprop="datePublished" content="2018-11-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-11-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="891">
+
+
+
+<meta itemprop="keywords" content="Kubernetes," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kubernetes 常见问题及解决"/>
+<meta name="twitter:description" content="本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了在使用 Kubernetes 的过程中常见的问题及解决方法。</p>
+<p>1、使用 kubectl 命令时，要求输入用户名和密码</p>
+<p>解决：删除 ~/.kube 目录下的 config 文件。</p>
+<p>2、kubernetes 禁用 Swap 的原因</p>
+<p>当前的 QOS 策略都是假定主机不启用内存 Swap。如果主机启用了 Swap，那么 QOS 策略可能会失效。</p>
+<p>例如，两个 Pod 都刚好达到了内存限制上限，由于内存 Swap 机制，它们还可以继续申请使用更多内存，如果 Swap 空间不足，那么最终这两个 Pod 中的进程可能会被杀掉。</p>
+<p>目前 Kubernetes 和 Docker 尚不支持内存 Swap 空间的隔离机制。</p>
+<p>3、在 <code>node</code> 节点上使用 <code>kubectl</code> 命令时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-172 ~]# kubectl get nodes
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+</code></pre></td></tr></table>
+</div>
+</div><p>由提示可知，kubectl找不到master节点，所以，需要设置参数，让它找到master。</p>
+<p>解决：</p>
+<p>1）在node节点的/etc/profile文件中加入如下环境变量：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">export KUBERNETES_MASTER=http://192.168.91.128:8080
+</code></pre></td></tr></table>
+</div>
+</div><p>然后执行 <code>source /etc/profile</code> 或 <code>. /etc/profile</code> 命令使配置生效。</p>
+<p>192.168.91.128为kubernetes集群master节点的IP地址。</p>
+<p>2）在执行kubectl命令时，在命令中指定master的IP地址，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-172 ~]# kubectl -s http://172.20.27.207:8080 get nodes
+NAME                STATUS    ROLES     AGE       VERSION
+k8s-172.20.27.208   Ready     ingress   5h        v1.8.4
+k8s-master          Ready     master    1d        v1.8.4
+</code></pre></td></tr></table>
+</div>
+</div><p>3）在 ~/.kube/config 中配置 kubectl 访问 API server 的地址</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir ~/.kube/ &amp;&amp; \cp -f /etc/kubernetes/admin.conf ~/.kube/config
+</code></pre></td></tr></table>
+</div>
+</div><p>4）在 /etc/kubernetes/admin.conf 中配置 kubectl 访问 API server 的地址</p>
+<p>4、删除 pod 后，pod 一直处于 Terminating 状态，可以使用如下方法删除</p>
+<p>1）强制删除该 pod</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl delete pod aym91ga9-5c7c8ccc94-lfrfb -n c87e2267-1001-4c70-bb2a-ab41f3b81aa3 --grace-period=0 --force
+</code></pre></td></tr></table>
+</div>
+</div><p>2）删除该 pod 所在的 namespace</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kubectl delete namespace c87e2267-1001-4c70-bb2a-ab41f3b81aa3
+</code></pre></td></tr></table>
+</div>
+</div><p>5、删除 namespace 后，提示删除成功，但是却一直处于 Terminating 状态，
+强制删除该 namespace 下的所有 pod，然后该 namespace 将会被系统自动删除。</p>
+<p>6、应用部署完毕后，状态全部正常，但是访问却 504，</p>
+<p>注意，不要使虚拟机的 IP 地址和 calico 的子网 IP 地址一样。如果有冲突，需要进行修改 calico.yaml 中环境变量 CALICO_IPV4POOL_CIDR 的值，修改为新的子网地址，然后删除原有的 calico，ingress 和 kube-dns，依次重新创建 calico，ingress，kube-dns</p>
+<p>7、应用开发完毕后，本地启动没有问题，可以正常运行，但部署到 kubernetes 上后，web 服务总是启动不起来，进入 pod 中使用 netstat 查看后，发现有个需要连接的 IP 地址的状态为：syn_wait</p>
+<p>解决：当下游服务连接不通时，往往会导致 web 服务器启动不起来。经过运维同事打开安全组，服务终于正常运行了。</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

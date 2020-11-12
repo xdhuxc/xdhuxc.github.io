@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用 Grafana 监控 Clickhouse - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/prometheus/prometheus-grafana-clickhouse/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="使用 Grafana 监控 Clickhouse" />
+<meta property="og:description" content="公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/prometheus/prometheus-grafana-clickhouse/" />
+<meta property="article:published_time" content="2019-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-10T00:00:00+00:00" />
+<meta itemprop="name" content="使用 Grafana 监控 Clickhouse">
+<meta itemprop="description" content="公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。">
+<meta itemprop="datePublished" content="2019-10-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="459">
+
+
+
+<meta itemprop="keywords" content="Grafana,DevOps,clickhouse," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 Grafana 监控 Clickhouse"/>
+<meta name="twitter:description" content="公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>公司有业务使用到了 Clickhouse，需要使用 prometheus 监控 Clickhouse，展示 Clickhouse 集群的指标信息，于是进行了一番探索，特此记录。</p>
+<p>使用 github 上的 <a href="https://github.com/f1yegor/clickhouse_exporter">https://github.com/f1yegor/clickhouse_exporter</a> 项目提供的 clickhouse_exporter 来收集 Clickhouse 的指标信息。</p>
+<p>1、克隆 clickhouse_exporter 工程到本地</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">git clone https://github.com/f1yegor/clickhouse_exporter
+</code></pre></td></tr></table>
+</div>
+</div><p>2、编译</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">make build
+</code></pre></td></tr></table>
+</div>
+</div><p>注意使用交叉编译的方式编译目标操作系统上的可执行文件，给文件添加执行权限后，移动至 /usr/bin 目录下</p>
+<p>3、部署
+以 Linux 系统服务方式运行 <code>clickhouse_exporter</code>，<code>clickhouse_exporter.service</code>（<code>/usr/lib/systemd/system/clickhouse_exporter.service</code>）文件内容为：：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+Description=clickhouse_exporter
+Documentation=http://www.clickhouse_exporter.io/
+After=network.target
+
+[Service]
+Type=simple
+Environment=&#34;CLICKHOUSE_USER=default&#34;
+Environment=&#34;CLICKHOUSE_PASSWORD=&#34;
+ExecStart=/usr/bin/clickhouse_exporter -scrape_uri=http://192.168.33.10:8123/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</code></pre></td></tr></table>
+</div>
+</div><p>在非默认情况下，通过 <code>CLICKHOUSE_USER</code> 和 <code>CLICKHOUSE_PASSWORD</code> 环境变量指定 clickhouse 的认证信息；<code>http://192.168.33.10:8123/</code> 为 <code>clickhouse</code> 运行的端点</p>
+<p>4、在 prometheus.yaml 文件中增加如下内容并重启</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">global:
+  scrape_interval:     1s
+  evaluation_interval: 1s
+
+scrape_configs:
+  <span class="k">-</span> job_name: clickhouse
+    static_configs:
+      <span class="k">-</span> targets: [&#39;127.0.0.1:9116&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><p><code>127.0.0.1:9116</code> 为 <code>clickhouse_exporter</code> 运行的端点，如果有多个，以 yaml 格式数组书写在 <code>targets</code> 处</p>
+<p>5、向 grafana 中加入 clickhouse 仪表板</p>
+<p>参考以下链接处的文档向 grafana 中加入 clickhouse 仪表板</p>
+<p><a href="https://grafana.com/grafana/dashboards/882">https://grafana.com/grafana/dashboards/882</a></p>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://github.com/f1yegor/clickhouse_exporter">https://github.com/f1yegor/clickhouse_exporter</a></p>
+<p><a href="https://grafana.com/grafana/dashboards/882">https://grafana.com/grafana/dashboards/882</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

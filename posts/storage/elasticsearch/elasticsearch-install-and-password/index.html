@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ElasticSearch 的安装及配置和密码设置等 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/storage/elasticsearch/elasticsearch-install-and-password/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="ElasticSearch 的安装及配置和密码设置等" />
+<meta property="og:description" content="本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/storage/elasticsearch/elasticsearch-install-and-password/" />
+<meta property="article:published_time" content="2020-03-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-03T00:00:00+00:00" />
+<meta itemprop="name" content="ElasticSearch 的安装及配置和密码设置等">
+<meta itemprop="description" content="本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。">
+<meta itemprop="datePublished" content="2020-03-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="572">
+
+
+
+<meta itemprop="keywords" content="ElasticSearch,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ElasticSearch 的安装及配置和密码设置等"/>
+<meta name="twitter:description" content="本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了 ElasticSearch 的安装及配置，密码设置等配置要点。</p>
+<h3 id="安装-elasticsearch">安装 ElasticSearch</h3>
+<p>1、下载 <code>ElasticSearch</code> 的安装包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.1-x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>2、安装 <code>ElasticSearch</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh elasticsearch-7.6.1-x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>3、启动 ElasticSearch</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart elasticsearch
+</code></pre></td></tr></table>
+</div>
+</div><p>由于 <code>ElasticSearch</code> 的密码管理是用 <code>x-pack</code> 来实现的，安装时，x-pack 默认是不启用的，需要开启。</p>
+<p>在配置文件 <code>elasticsearch.yml</code>（默认路径为：<code>/etc/elasticsearch/elasticsearch.yml</code>） 中增加如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+</code></pre></td></tr></table>
+</div>
+</div><p>假设 <code>10.20.13.15</code> 为机器 IP 地址，需要在外部访问时，需要配置如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">network.host: 10.20.13.15
+http.port: 9200
+discovery.seed_hosts: [&#34;10.20.13.15&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>修改后重启 <code>ElasticSearch</code></p>
+<h3 id="设置密码">设置密码</h3>
+<p>进入 ElasticSearch 的二进制文件目录下，使用交互式命令行来设置密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost /usr/share/elasticsearch/bin]# ./elasticsearch-setup-passwords interactive
+Initiating the setup of passwords for reserved users elastic,apm_system,kibana,logstash_system,beats_system,remote_monitoring_user.
+You will be prompted to enter passwords as the process progresses.
+Please confirm that you would like to continue [y/N]y  # 输入 y
+
+
+Enter password for [elastic]:      # 为 elasticsearch 设置密码
+Reenter password for [elastic]:    # 再次输入 elasticsearch 的密码
+Enter password for [apm_system]:   # 为 apm 设置密码
+Reenter password for [apm_system]: # 再次输入 apm 的密码
+Enter password for [kibana]:       # 为 kibana 设置密码
+Reenter password for [kibana]:     # 再次输入 kibana 的密码
+Enter password for [logstash_system]:   # 为 logstash 设置密码
+Reenter password for [logstash_system]: # 再次输入 logstash 的密码
+Enter password for [beats_system]:      # 为 beats 设置密码
+Reenter password for [beats_system]:    # 再次输入 beats 的密码
+Enter password for [remote_monitoring_user]:   # 为 remote_monitoring_user 设置密码
+Reenter password for [remote_monitoring_user]: # 再次输入 remote_monitoring_user 的密码
+Changed password for user [apm_system]
+Changed password for user [kibana]
+Changed password for user [logstash_system]
+Changed password for user [beats_system]
+Changed password for user [remote_monitoring_user]
+Changed password for user [elastic]
+[root@sgt-devops-2-test /usr/share/elasticsearch/bin]# 
+</code></pre></td></tr></table>
+</div>
+</div><p>或者使用 API 来设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">curl -XPUT -u elastic &#39;http://10.20.13.15:9200/_xpack/security/user/elastic/_password&#39; -d &#39;{
+  &#34;password&#34; : &#34;yourpasswd&#34;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><code>ElasticSearch</code> 的默认账户为 <code>elastic</code> 默认密码为 <code>changme</code></p>
+<h3 id="可视化">可视化</h3>
+<p>使用 <code>ElasticHQ</code> 作为 <code>ElasticSearch</code> 的可视化工具</p>
+<p>启动 <code>ElasticHQ</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -p 5000:5000 -d elastichq/elasticsearch-hq
+</code></pre></td></tr></table>
+</div>
+</div><p>访问：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://10.20.13.15:5000
+</code></pre></td></tr></table>
+</div>
+</div><p>使用如下方式连接 <code>elasticsearch</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://elastic:PASSWORD@10.20.13.15:9200
+</code></pre></td></tr></table>
+</div>
+</div><p>参考资料：</p>
+<p><a href="https://github.com/ElasticHQ/elasticsearch-HQ">https://github.com/ElasticHQ/elasticsearch-HQ</a></p>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html">https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html</a></p>
+<p><a href="http://docs.elastichq.org">http://docs.elastichq.org</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

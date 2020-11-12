@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 中 Shell 脚本示例 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/linux/linux-shell-code-example/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Linux 中 Shell 脚本示例" />
+<meta property="og:description" content="本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/linux/linux-shell-code-example/" />
+<meta property="article:published_time" content="2017-12-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-12-19T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 中 Shell 脚本示例">
+<meta itemprop="description" content="本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。">
+<meta itemprop="datePublished" content="2017-12-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-12-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1491">
+
+
+
+<meta itemprop="keywords" content="Linux,Shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 中 Shell 脚本示例"/>
+<meta name="twitter:description" content="本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了些 Linux Shell 脚本的典型示例代码，以备后查。</p>
+<h3 id="读取输入">读取输入</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>
+function set_kubernetes_prometheus() {
+    while [ 0 ] ;
+    do
+        echo -n &#34;请输入三个参数（以空格分隔开）:&#34;
+        stty erase ^H
+        read P1 P2 P3
+        if [ -n &#34;${P1}&#34; -a -n &#34;${P2}&#34; -a -n &#34;${P3}&#34; ] ; then
+            break
+        fi
+    done
+
+    echo &#34;参数 1 为：${P1}&#34;
+    echo &#34;参数 2 为：${P2}&#34;
+    echo &#34;参数 3 为：${P3}&#34;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="计算三个数中的最大数">计算三个数中的最大数</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"># author：xdhuxc
+</span><span class="gh"># time：2017-07-19
+</span><span class="gh"># description：计算三个数中的最大数
+</span><span class="gh"></span>
+echo &#34;Please enter three numbers:&#34;
+	# -p，允许在read命令行中直接指定一个提示。
+	read -p &#34;The first number is :&#34; x
+	read -p &#34;The second number is :&#34; y
+	read -p &#34;The third number is : &#34; z
+max = $x
+if [ $y -ge $max ]; then
+   max = $y
+fi
+if [ $z -ge $max ]; then
+   max = $z
+fi
+echo &#34;The maximum number is $max&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="计算100以内的偶数的和">计算100以内的偶数的和</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-07-19
+</span><span class="gh"># description：计算100以内的偶数的和
+</span><span class="gh"></span>sum = 0
+for i in $(seq 1 100); do
+	if [ $[$i % 2] -eq 0 ]; then
+		let sum += $i
+	fi
+done
+echo &#34;The sum is $sum.&#34;
+
+sum = 0
+for ((i=1; i&lt;= 100; i++))
+do
+	if [ $[$i % 2] -eq 0 ]; then
+		let sum += $i
+	fi
+done
+echo &#34;The sum is $sum.&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="在某个目录下的所有文件中查找关键字">在某个目录下的所有文件中查找关键字</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：在某个目录下的所有文件中查找关键字，输出匹配文件的全路径
+</span><span class="gh"># parameter 1：根目录名
+</span><span class="gh"># parameter 2：查找关键字
+</span><span class="gh"></span>function traverse_dir(){
+    local base_dir=$1
+    local key=$2
+
+    <span class="ni">#set</span> -x
+    for file in $base_dir/*
+    do
+        if [ -d $file ]; then
+            traverse_dir $file $key
+        else
+            grep -w $key $file &gt; /dev/null
+            if [ $? -eq 0 ]; then
+                    echo -e $file
+            fi
+        fi
+    done
+}
+
+traverse_dir $1 $2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="加载-docker-镜像">加载 docker 镜像</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：加载当前目录下的tar格式镜像，更改镜像标签，再导出为tar格式镜像
+</span><span class="gh"></span>
+<span class="gh"># 加载当前目录下的镜像
+</span><span class="gh"></span>for tar_image in ./*.tar
+do
+	if [ -f $tar_image ]; then
+		docker load -i $tar_image
+	fi
+done
+
+<span class="gh"># 更改镜像标签
+</span><span class="gh"></span>docker images | awk &#39;NR &gt; 1 {print $1, $2}&#39; | while read old_image_name tag
+do
+	<span class="ni">#new_image_name</span>=${old_image_name//10.10.24.171/192.168.244.128}
+	new_image_name=${old_image_name#*\/}
+	# 修改镜像标签
+	docker tag $old_image_name:$tag $new_image_name:$tag
+	# 删除旧的标签
+	docker rmi -f $old_image_name:$tag
+        # 导出为tar格式镜像
+	tar_name=${new_image_name##*\/}-${tag}.tar
+	docker save $new_image_name:$tag -o $tar_name 
+done
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="删除已经退出的docker镜像">删除已经退出的docker镜像</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"># author: xdhuxc
+</span><span class="gh"># time: 2017-12-04
+</span><span class="gh"># description：删除已经退出的docker镜像
+</span><span class="gh"></span>
+<span class="gh"># 删除已经退出的容器
+</span><span class="gh"></span>docker ps -a | awk &#39;NR &gt; 1 {print $1}&#39; | while read container_id
+do
+    status=$(docker inspect --format={{.State.Status}} $container_id)
+	if [ &#34;$status&#34;x = &#34;exited&#34;x ]; then
+		docker rm -f $container_id &gt; /dev/null
+	fi
+done
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="删除所有镜像">删除所有镜像</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/bin/bash
+</span><span class="gh"></span>
+<span class="gh"># 更改镜像标签 yonyoucloud-middleware/mesos-master 1.4.0 
+</span><span class="gh"></span>docker images | awk &#39;NR &gt; 1 {print $1, $2}&#39; | while read old_image_name tag
+do
+	# 删除镜像
+	docker rmi $old_image_name:$tag
+done
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="替换某文件中的键值对">替换某文件中的键值对</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 替换某文件中的键值对
+</span><span class="gh"></span>
+<span class="gh"># 参数1：带文件路径的文件名
+</span><span class="gh"># 参数2：键
+</span><span class="gh"># 参数3：值
+</span><span class="gh"># jdbc.url=jdbc.mysql
+</span><span class="gh"># 描述：如果文件中没有该键，则添加该键值对；如果有，则更新键的值
+</span><span class="gh"></span>
+function replace_text(){
+    full_path_file=$1
+    key=$2
+    value=$3
+    grep &#34;${key}=&#34; ${full_path_file} &gt; /dev/null 2&gt;&amp;1
+    if [ &#34;$?&#34; == &#34;0&#34; ] ; then
+        # 获取 key-value所在的行
+
+        echo &#34;存在键${key}，其值为：${old_value}，替换其值为：${value}&#34;
+        <span class="ni">#sed</span> &#34;s/${key}=//g&#34; ${full_path_file}
+        sed &#34;s/${key}=${old_value}/${key}=${value}/g&#34; ${full_path_file}
+    else
+        echo &#34;不存在键 ${key}，添加键值对：${key}=${value}&#34;
+        echo &#34;${key}=${value}&#34; &gt;&gt; ${full_path_file}
+    fi
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="使用cat命令向文件中追加内容">使用cat命令向文件中追加内容</h3>
+<blockquote>
+<p>两个EOF之间的内容左端顶格，因为其之间的内容会原样追加到文件中</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>
+cat &gt;&gt; /etc/profile &lt;&lt; EOF
+export RUN_AS_USER=root
+export JAVA_HOME=${nexus_shell_dir}/jdk1.7.0_80
+export PATH=$JAVA_HOME/bin:$PATH
+EOF
+source /etc/profile
+echo ${RUN_AS_USER}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="expect-的使用">expect 的使用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>
+<span class="gh"># 安装 expect
+</span><span class="gh"></span>command -v expect &gt; /dev/null 2&gt;&amp;1
+if [ &#34;$?&#34; != &#34;0&#34; ] ; then
+    echo -e &#34;当前机器尚未安装 expect。&#34;
+    echo -e &#34;使用 yum 安装 except...&#34;
+    yum install -y expect 
+fi
+
+if [ $(command -v expect) ] ; then
+    # 生成 ssh key
+    chmod +x ssh-keygen.exp 
+    ./ssh-keygen.exp &gt; /dev/null 2&gt;&amp;1
+
+    # 复制 ssh key 到各机器
+    cat hosts | while read line
+    do
+        echo -e &#34;${line}&#34; &gt; ./host.tmp
+        cat host.tmp | awk -F &#39;[: ]&#39; &#39;{print $1, $2, $3, $4}&#39; | while read target_host username password port
+        do
+        	echo -e ${target_host}
+        	echo -e ${username}
+        	echo -e ${password}
+                echo -e ${port}
+        	if [ -n ${target_host} -a -n ${username} -a -n ${password} ] ; then
+            		./ssh-copy-id.exp ${target_host} ${username} ${password} ${port}
+        	fi
+	done
+    done
+fi 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="获取当前脚本的路径">获取当前脚本的路径</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">current_path=$(cd &#34;$(dirname &#34;$0&#34;)&#34;; pwd)
+full_path=$(realpath $0)
+</code></pre></td></tr></table>
+</div>
+</div><p>执行结果为：</p>
+<pre><code>/xdhuxc/script/tools
+/xdhuxc/script/tools/test.sh
+</code></pre>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

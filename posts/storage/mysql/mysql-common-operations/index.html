@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>MySQL 常用操作 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/storage/mysql/mysql-common-operations/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="MySQL 常用操作" />
+<meta property="og:description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/storage/mysql/mysql-common-operations/" />
+<meta property="article:published_time" content="2018-08-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-03-19T00:00:00+00:00" />
+<meta itemprop="name" content="MySQL 常用操作">
+<meta itemprop="description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。">
+<meta itemprop="datePublished" content="2018-08-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-03-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="671">
+
+
+
+<meta itemprop="keywords" content="MySQL,数据库," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL 常用操作"/>
+<meta name="twitter:description" content="本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了一些使用 MySQL 时经常会用到的操作，留作后查。</p>
+<h3 id="赋权操作">赋权操作</h3>
+<p>1、创建只读账户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; grant select on <span class="ge">*.*</span> to &#39;xdhuxc&#39;@&#39;%&#39; identified by &#39;Xdhuxc163&#39;;  # 创建只读账户xdhuxc，密码为：Xdhuxc63
+mysql&gt; flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><p>查看其权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; show grants for &#39;xdhuxc&#39;@&#39;%&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>2、授予权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">grant select, insert, update, delete on user.* to &#39;xdhuxc&#39;@&#39;%&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>3、授予所有权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">GRANT ALL PRIVILEGES ON <span class="ge">*.*</span> TO &#39;root&#39;@&#39;*&#39; IDENTIFIED BY &#39;Xdhuxc123&#39; WITH GRANT OPTION;
+</code></pre></td></tr></table>
+</div>
+</div><p>通过此命令也可以修改 MySQL 用户的密码</p>
+<p>4、创建用户再授权</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">create user &#39;sonarqube&#39; identified by &#39;Shareit@2020&#39;;
+
+grant select, insert, update, delete on sonarqube.* to &#39;sonarqube&#39;@&#39;%&#39;;
+
+show grants for &#39;sonarqube&#39;@&#39;%&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="忘记密码修改密码">忘记密码修改密码</h3>
+<h4 id="linux-系统">Linux 系统</h4>
+<p>1、停止数据库服务。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl stop mysqld
+</code></pre></td></tr></table>
+</div>
+</div><p>2、向 /etc/my.cnf 中添加如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[mysqld]
+skip-grant-tables
+</code></pre></td></tr></table>
+</div>
+</div><p>3、重启 mysql 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart mysqld
+</code></pre></td></tr></table>
+</div>
+</div><p>4、修改密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; use mysql;
+mysql&gt; update user set authentication_string=password(&#39;Xdhuxc163&#39;) where user=&#39;root&#39;;
+mysql&gt; flush privileges;
+mysql&gt; quit
+</code></pre></td></tr></table>
+</div>
+</div><p>5、注释掉 skip-grant-tables，重启 mysqld 服务。</p>
+<h4 id="windows-系统">Windows 系统</h4>
+<p>1、关闭 MySQL 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">net stop mysql57
+</code></pre></td></tr></table>
+</div>
+</div><p>2、进入 MySQL 的 bin 目录下，执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysqld --default-file=&#34;E:\Work\MySQL\MySQL Server 5.7 Data\my.ini&#34; --console --skip-grant-tables
+</code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<ul>
+<li>--default-file：启动 MySQL 服务时的配置文件；</li>
+<li>--skip-grant-tables：启动 MySQL 服务的时候跳过权限表认证；</li>
+</ul>
+<p>3、新打开 DOS 窗口，进入 MySQL 的 bin 目录下，执行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql -uroot -p # 回车后，让输入密码，直接回车
+</code></pre></td></tr></table>
+</div>
+</div><p>4、更改root用户密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># MySQL 5.7以前
+</span><span class="gh"></span>update mysql.user
+set password=password(&#39;123456&#39;)
+ where user=&#39;root&#39;;
+<span class="gh"># MySQL 5.7
+</span><span class="gh"></span>update mysql.user
+set authentication_string=password(&#39;123456&#39;)
+ where user=&#39;root&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>5、更新权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><p>6、退出当前MySQL回话并启动MySQL服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">net start mysql57
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改默认时区">修改默认时区</h3>
+<h4 id="方法一">方法一</h4>
+<p>1、查看 mysql 系统时间</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mysql&gt; show variables like &#39;%time_zone%&#39;;
++------------------+--------+
+| Variable_name    | Value  |
++------------------+--------+
+| system_time_zone | UTC    |
+| time_zone        | +08:00 |
++------------------+--------+
+2 rows in set
+
+mysql&gt; select now();
++---------------------+
+| now()               |
++---------------------+
+| 2018-07-09 13:59:16 |
++---------------------+
+1 row in set
+</code></pre></td></tr></table>
+</div>
+</div><p>mysql 的系统时区已经是东八区，系统时间也是当前时间了，</p>
+<p>2、设置时区为东八区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">set global time_zone = &#39;+8:00&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p>3、刷新权限</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">flush privileges;
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="方法二">方法二</h4>
+<p>或者直接在 my.cnf 文件中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[mysqld]
+default-time_zone = &#39;+8:00&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启 mysql 服务</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

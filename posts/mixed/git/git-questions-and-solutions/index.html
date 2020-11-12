@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Git 常见问题及解决 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录一些 git 使用过程中常见的问题及其解决方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/mixed/git/git-questions-and-solutions/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Git 常见问题及解决" />
+<meta property="og:description" content="本篇博客记录一些 git 使用过程中常见的问题及其解决方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/mixed/git/git-questions-and-solutions/" />
+<meta property="article:published_time" content="2019-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-19T00:00:00+00:00" />
+<meta itemprop="name" content="Git 常见问题及解决">
+<meta itemprop="description" content="本篇博客记录一些 git 使用过程中常见的问题及其解决方法。">
+<meta itemprop="datePublished" content="2019-06-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1122">
+
+
+
+<meta itemprop="keywords" content="Git,GitHub,GitLab," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git 常见问题及解决"/>
+<meta name="twitter:description" content="本篇博客记录一些 git 使用过程中常见的问题及其解决方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录一些 git 使用过程中常见的问题及其解决方法。</p>
+<p>1、使用 git 拉取大工程时，报错如下：</p>
+<pre><code>xdhuxc@DESKTOP-AFGTEDSW MINGW64 /d/PycharmProject
+$ git clone -b private git@github.com:xdhuxc/xpython.git                                                                                                               .git
+Cloning into 'xpython'...
+remote: Counting objects: 4608, done.
+remote: Compressing objects: 100% (71/71), done.
+fatal: pack has bad object at offset 10852763787: inflate returned 1
+fatal: index-pack failed
+</code></pre><p>解决方法如下：</p>
+<pre><code>$ git clone -b private --depth=1 git@github.com:xdhuxc/xpython.git
+Cloning into 'xpython'...
+remote: Counting objects: 913, done.
+remote: Compressing objects: 100% (756/756), done.
+remote: Total 913 (delta 143), reused 819 (delta 101)
+Receiving objects: 100% (913/913), 1.79 GiB | 10.33 MiB/s, done.
+Resolving deltas: 100% (143/143), done.
+Checking out files: 100% (798/798), done.
+</code></pre><p>2、使用 IDEA 复制 GitHub 上的代码时，提示错误如下：</p>
+<pre><code>Fetch failed: Could not read from remote repository.
+</code></pre><p>在 IDEA 中，点击 “File”，选择 “Settings”，找到 “Version Control”，选择 “Git”，修改 “SSH executable” 为 “Native”，重新拉取代码即可。</p>
+<p>3、git 添加远程仓库时报错</p>
+<pre><code>wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote add origin git@github.com:xdhuxc/xpython.git
+fatal: remote origin already exists.
+wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote rm origin
+wanghuans-MacBook-Pro:vue-admin-template wanghuan$ git remote add origin git@github.com:xdhuxc/xpython.git
+</code></pre><p>解决：先删除远程 Git 仓库，然后再添加远程 Git 仓库。</p>
+<p>4、拉取代码时，报错如下：</p>
+<pre><code>wanghuans-MacBook-Pro:k8s wanghuan$ git pull
+fatal: refusing to merge unrelated histories
+</code></pre><p>原因：本地仓库和远程仓库实际上是两个独立的仓库，可以在 <code>pull</code> 命令中加入 <code> --allow-unrelated-histories</code> 选项来解决该问题，该选项可以合并两个独立创建的仓库的历史。
+命令为：</p>
+<pre><code>wanghuans-MacBook-Pro:k8s wanghuan$ git pull origin master --allow-unrelated-histories
+From gitlab.ushareit.me:sgt/devops/k8s
+ * branch            master     -&gt; FETCH_HEAD
+Already up to date!
+Merge made by the 'recursive' strategy.
+</code></pre><p>5、使用eclipse，选取指定分支，拉取代码，报错如下：</p>
+<pre><code>Git repository clone failed.
+Java heap space
+</code></pre><p>解决：修改 <code>eclipse</code> 安装目录下的 <code>eclipse.ini</code> 文件中如下参数的值：</p>
+<pre><code>-Xms1024m
+-Xmx5120m
+</code></pre><p>在 <code>IDEA</code> 中，参照修改安装目录 <code>bin</code> 下的 <code>idea.exe.vmoptions</code> 或 <code>idea64.exe.vmoptions</code> 文件。</p>
+<p>6、拉取 github 上的代码时，报错如下：</p>
+<pre><code>warning: no common commits
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:xdhuxc/checklist
+ * branch            HEAD       -&gt; FETCH_HEAD
+fatal: refusing to merge unrelated histories
+</code></pre><p>添加参数<code>--allow-unrelated-histories</code>后重新拉取</p>
+<pre><code>git pull --allow-unrelated-histories git@github.com:xdhuxc/checklist.git
+</code></pre><p>6、本地修改文件后，拉取 gitlab 上的代码时，报错如下：</p>
+<pre><code>bash-3.2$ git pull origin master --allow-unrelated-histories -f
+From gitlab.ushareit.me:sgt/devops/share-ikc
+ * branch            master     -&gt; FETCH_HEAD
+error: Your local changes to the following files would be overwritten by merge:
+  .gitignore .idea/workspace.xml
+</code></pre><p>解决方法：</p>
+<pre><code>git stash
+git pull origin master
+git stash pop
+</code></pre><p>使用以上命令保留刚才本地修改的代码，并把git服务器上的代码pull到本地（本地刚才修改的代码将会被暂时封存起来</p>
+<p>7、克隆代码时，报错如下：</p>
+<pre><code>wanghuans-MacBook-Pro:PycharmProjects wanghuan$ git clone git@github.com:jumpserver/jumpserver.git
+Cloning into 'jumpserver'...
+remote: Enumerating objects: 83, done.
+remote: Counting objects: 100% (83/83), done.
+remote: Compressing objects: 100% (68/68), done.
+fatal: the remote end hung up unexpectedly55 MiB | 0 bytes/s
+fatal: early EOF
+Connection to github.com closed by remote host.
+fatal: index-pack failed
+</code></pre><p>解决方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ git config --global http.postBuffer 1048576000
+</code></pre></td></tr></table>
+</div>
+</div><p>8、由于公司代码仓库迁移，导致拉取代码时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">Update failed
+			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
+			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			The ECDSA host key for gitlab.xdhuxc.com has changed,
+			and the key for the corresponding IP address 192.168.19.121
+			is unknown. This could either mean that
+			DNS SPOOFING is happening or the IP address for the host
+			and its host key have changed at the same time.
+			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+			Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+			It is also possible that a host key has just been changed.
+			The fingerprint for the ECDSA key sent by the remote host is
+			SHA256:motujg8AdfKP+cphjzDnsmEykU4vqQi7joDXi3DL9MY.
+			Please contact your system administrator.
+			Add correct... (show balloon)
+</code></pre></td></tr></table>
+</div>
+</div><p>原因：第一次使用 SSH 连接时，会生成一个认证，存储在客户端的 known_hosts，但是如果服务器端重启，那么认证信息也会改变，用原来的客户端信息连接就会出现上述错误。因此，只要把客户端中的认证信息删除，此后连接时会重新生成认证信息，这样就正常了。</p>
+<p>在客户端输入命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ssh-keygen -R ${SERVER_IP}
+或
+ssh-keygen -R ${SERVER_DOMAIN}
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以直接删除 <code>~/.ssh/known_hosts</code> 文件</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

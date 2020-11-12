@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 实用命令总结 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/linux/linux-practical-command/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Linux 实用命令总结" />
+<meta property="og:description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/linux/linux-practical-command/" />
+<meta property="article:published_time" content="2017-08-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-08-19T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 实用命令总结">
+<meta itemprop="description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。">
+<meta itemprop="datePublished" content="2017-08-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-08-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1243">
+
+
+
+<meta itemprop="keywords" content="Linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 实用命令总结"/>
+<meta name="twitter:description" content="本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客整理了一些 Linux 系统中的实用命令，包括一些组合命令，可以直接修改使用。</p>
+<h3 id="杀死某个进程">杀死某个进程</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">kill -9 $(ps -ef | grep -v grep | grep nginx | awk &#39;{print $2}&#39;)
+或
+ps -ef|grep nginx|grep -v grep|awk &#39;{print $2}&#39;|xargs kill             # 杀死所有Nginx相关进程
+或
+kill -9 $(netstat -tlnup | grep 80 | awk -F &#39; &#39; &#39;{print $7}&#39; | cut -d / -f1) # 杀死占用某个端口的命令
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查找占用某端口的进程">查找占用某端口的进程</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat -tlnup|grep 35888|awk -F &#39; &#39; &#39;{print $7}&#39;|cut -d / -f2
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="置空文件">置空文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;&#34; &gt; abc.txt # abc.txt 文件内部会有一个空行
+或
+: &gt; abc.txt # abc.txt 文件内部没有空行
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="切换到-root-用户">切换到 root 用户</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sudo su - # 由普通用户无密码切换到 root 用户
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查看进程及其子进程">查看进程及其子进程</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># -l：不截断输出，显示整个进程或线程的启动命令
+</span><span class="gh"># 3376：要显示的进程 ID
+</span><span class="gh"># -a：显示命令行参数
+</span><span class="gh"></span>pstree -a -l 3376
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="时间格式">时间格式</h3>
+<p>1）获得 <code>2018-04-19</code> 样式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+2018-04-19
+</code></pre></td></tr></table>
+</div>
+</div><p>2）获得 <code>20180419</code> 样式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y%m%d&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+20180419
+</code></pre></td></tr></table>
+</div>
+</div><p>3）仅包含年月日的日期格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d&#34; 
+或 
+date -d today +&#34;%Y-%m-%d&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d&#34;
+2018-04-19
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d&#34;
+2018-04-19
+</code></pre></td></tr></table>
+</div>
+</div><p>4）包含日期和时间的格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +&#34;%Y-%m-%d %H:%M:%S&#34; 
+或 
+date +&#34;%Y-%m-%d %T&#34;
+或
+date -d today +&#34;%Y-%m-%d %T&#34; 
+或
+date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行效果如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# date +&#34;%Y-%m-%d %H:%M:%S&#34;
+2018-04-19 11:39:47
+[root@localhost ~]# date +&#34;%Y-%m-%d %T&#34;
+2018-04-19 11:39:59
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d %T&#34; 
+2018-04-19 11:40:07
+[root@localhost ~]# date -d today +&#34;%Y-%m-%d %H:%M:%S&#34;
+2018-04-19 11:40:16
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改系统时区">修改系统时区</h3>
+<p>修改当前机器时间为北京时间：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</code></pre></td></tr></table>
+</div>
+</div><p>修改EDT时区为CST时区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">timedatectl set-timezone Asia/Shanghai
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="获取-unix-时间戳">获取 UNIX 时间戳</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">date +%s
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="删除文件和目录时不删除隐藏的文件和目录">删除文件和目录时不删除隐藏的文件和目录</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rm -r ./*
+</code></pre></td></tr></table>
+</div>
+</div><p>想删除隐藏的目录或文件，需要使用如下的命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ls -a | xargs rm -r 
+</code></pre></td></tr></table>
+</div>
+</div><p>但是不能删除 <code>.</code> 和 <code>..</code> 目录，所以该命令的返回值为 <code>1</code>。</p>
+<h3 id="字符串替换">字符串替换</h3>
+<p>1）将当前目录下所有文件中的 <code>127.0.0.1</code> 修改为 <code>172.20.15.29</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sed -i &#34;s/127.0.0.1/172.20.15.29/g&#34; ./*
+</code></pre></td></tr></table>
+</div>
+</div><p>2）将当前目录下所有文件中的 <code>127.0.0.1</code> 或 <code>localhost</code> 修改为 <code>172.20.15.29</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">sed -i &#34;s/\(127.0.0.1\|localhost\)/172.20.15.29/g&#34; ./*
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="按文件扩展名查找文件">按文件扩展名查找文件</h3>
+<p>查找当前目录下所有以 <code>.sh</code>，<code>.service</code>，<code>.conf</code>，<code>.yaml</code> 结尾的文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">find ./ -regex &#39;.*\.sh\|.*\.service\|.*\.conf\|.*\.yaml&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="jar-命令">jar 命令</h3>
+<p>1）将目录打包成war包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">jar -cvfM0 abc.war */ . # java cvf 打包文件名称 要打包的目录 打包文件保存路径 
+-c：创建war包；
+-v：显示打包过程；
+-f：指定 JAR 文件名，通常这个参数是必须的；
+-M：不产生所有项的清单（MANIFEST〕文件，此参数会忽略 -m 参数；
+-0：阿拉伯数字0，表示只打包不压缩；
+</code></pre></td></tr></table>
+</div>
+</div><p>2）解压war包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">jar -xvf abc.war # 解压war包
+或
+unzip abc.war -d abc/ <span class="ni">#解压war包到指定的目录abc</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭-selinux">关闭 selinux</h3>
+<p>到 <code>/etc/sysconfig</code> 目录下，修改 selinux 文件，设置 <code>SELINUX=&quot;enforcing&quot;</code> 为 <code>disabled</code> 并重启系统</p>
+<p>使用命令 <code>setenforce 0</code> 临时关闭 SElinux
+使用命令 <code>getenforce</code> 或 <code>sestatus -v </code>查看 SElinux 的状态</p>
+<p>注意：
+<code>/etc/sysconfig/selinux</code> 文件链接到了文件<code>/etc/selinux/config</code></p>
+<h3 id="firewalld-开放端口">firewalld 开放端口</h3>
+<p>使用如下命令开放端口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">firewall-cmd --zone=public --add-port=8004/tcp --permanent 
+<span class="gh"># --zone #作用域 --add-port=80/tcp  #添加端口，格式为：端口/通讯协议 --permanent  #永久生效，没有此参数重启后失效
+</span><span class="gh"></span>firewall-cmd --reload # 重启防火墙
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查看指定进程的相关信息">查看指定进程的相关信息</h3>
+<p>1、查看如下文件中的内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master ~]# cat /proc/4561/status
+Name:	java
+Umask:	0022
+State:	S (sleeping)
+Tgid:	4561
+Ngid:	4561
+Pid:	4561
+PPid:	1
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	256
+Groups:	0 
+VmPeak:	19751020 kB
+VmSize:	19751020 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	  207228 kB
+VmRSS:	  207228 kB
+RssAnon:	  192420 kB
+RssFile:	   14808 kB
+RssShmem:	       0 kB
+VmData:	19575744 kB
+VmStk:	     132 kB
+VmExe:	       4 kB
+VmLib:	   16344 kB
+VmPTE:	    2336 kB
+VmSwap:	       0 kB
+Threads:	273
+SigQ:	1/513396
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000003
+SigCgt:	2000000181005ccc
+CapInh:	0000000000000000
+CapPrm:	0000001fffffffff
+CapEff:	0000001fffffffff
+CapBnd:	0000001fffffffff
+CapAmb:	0000000000000000
+Seccomp:	0
+Cpus_allowed:	ff,ffffffff,ffffffff
+Cpus_allowed_list:	0-71
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000003
+Mems_allowed_list:	0-1
+voluntary_ctxt_switches:	4
+nonvoluntary_ctxt_switches:	3
+</code></pre></td></tr></table>
+</div>
+</div><p>2、使用如下命令查看</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">ps -T -p 4561          # 2561 为进程 ID。
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

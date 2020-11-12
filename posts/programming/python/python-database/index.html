@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python 数据库操作 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 Python 中的数据库操作。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/programming/python/python-database/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Python 数据库操作" />
+<meta property="og:description" content="本篇博客介绍了 Python 中的数据库操作。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/programming/python/python-database/" />
+<meta property="article:published_time" content="2017-09-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-09-26T00:00:00+00:00" />
+<meta itemprop="name" content="Python 数据库操作">
+<meta itemprop="description" content="本篇博客介绍了 Python 中的数据库操作。">
+<meta itemprop="datePublished" content="2017-09-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-09-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2368">
+
+
+
+<meta itemprop="keywords" content="Python," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 数据库操作"/>
+<meta name="twitter:description" content="本篇博客介绍了 Python 中的数据库操作。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了 Python 中的数据库操作。</p>
+<p>DB-API 是一个规范，它定义了一系列必须的对象和数据库存取方式, 以便为各种各样的底层数据库系统和多种多样的数据库接口程序提供一致的访问接口 。</p>
+<p>Python 的 DB-API，为大多数的数据库实现了接口，使用它连接各数据库后，就可以用相同的方式操作各数据库。</p>
+<p>Python DB-API使用流程：</p>
+<ul>
+<li>引入 API 模块</li>
+<li>获取与数据库的连接</li>
+<li>执行SQL语句和存储过程</li>
+<li>关闭数据库连接</li>
+</ul>
+<h3 id="mysqldb">MySQLdb</h3>
+<p>MySQLdb 是用于Python连接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。</p>
+<h4 id="连接-mysql-数据库">连接 MySQL 数据库</h4>
+<p>以下代码演示了连接 MySQL 数据库的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- conding: utf-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34;)
+
+<span class="gh"># 使用cursor()方法获取操作游标
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># 使用execute方法执行SQL语句
+</span><span class="gh"></span>cursor.execute(&#34;select version()&#34;)
+
+<span class="gh"># 使用fetchone()方法获取一条数据库记录
+</span><span class="gh"></span>data = cursor.fetchone()
+
+print &#34;Database version: %s&#34; % data
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="创建数据库表">创建数据库表</h4>
+<p>以下代码演示了创建数据库表的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># 如果数据表已经存在使用 execute() 方法删除表。
+</span><span class="gh"></span>cursor.execute(&#34;drop table if exists employee&#34;)
+
+<span class="gh"># 创建数据表SQL语句
+</span><span class="gh"></span>sql = &#34;&#34;&#34;create table employee (
+         first_name char(20) not null,
+         last_name  char(20),
+         age int,  
+         sex char(1),
+         income float 
+         )
+      &#34;&#34;&#34;
+<span class="gh"># 执行SQL语句
+</span><span class="gh"></span>cursor.execute(sql)
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="数据库插入操作">数据库插入操作</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 插入语句
+</span><span class="gh"></span>sql = &#34;&#34;&#34;
+         insert into employee(first_name,
+         last_name, age, sex, income)
+         values (&#39;Mac&#39;, &#39;Mohan&#39;, 20, &#39;M&#39;, 2000)
+      &#34;&#34;&#34;
+<span class="gh">#sql = &#34;&#34;&#34;
+</span><span class="gh">#         insert into employee(first_name, \
+</span><span class="gh">#         last_name, age, sex, income) \
+</span><span class="gh">#         values (&#39;%s&#39;, &#39;%s&#39;, &#39;%d&#39;, &#39;%c&#39;, &#39;%d&#39; )&#34; % \
+</span><span class="gh">#         (&#39;Mac&#39;, &#39;Mohan&#39;, 20, &#39;M&#39;, 2000)      
+</span><span class="gh">#      &#34;&#34;&#34;
+</span><span class="gh"></span>      
+try:
+   # 执行sql语句
+   cursor.execute(sql)
+   # 提交到数据库执行
+   db.commit()
+except:
+   # 如果有错误，则回滚
+   db.rollback()
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><p>使用变量向 SQL 语句中传递参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">user_name = &#34;root&#34;
+password = &#34;root456&#34;
+
+cursor.execute(&#39;insert into login values (&#34;%s&#34;, &#34;%s&#34;)&#39; % (user_name, password))
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="数据库查询操作">数据库查询操作</h4>
+<p>Python 查询 MySQL 使用 <code>fetchone()</code> 方法获取单条数据, 使用 <code>fetchall()</code> 方法获取多条数据。</p>
+<ul>
+<li>fetchone(): 该方法获取下一个查询结果集，结果集是一个对象。</li>
+<li>fetchall():接收全部的返回结果行。</li>
+<li>rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。</li>
+</ul>
+<p>查询 employee 表中 salary 字段大于 1000 的所有数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;,&#34;root&#34;,&#34;root456&#34;,&#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 查询语句
+</span><span class="gh"></span>sql = &#34;select * from employee where income &gt; &#39;%d&#39;&#34; % (1000)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 获取所有记录列表
+   results = cursor.fetchall()
+   for row in results:
+      first_name = row[0]
+      last_name = row[1]
+      age = row[2]
+      sex = row[3]
+      income = row[4]
+      # 打印结果
+      print &#34;first_name=%s,last_name=%s,age=%d,sex=%s,income=%d&#34; % \
+             (first_name, last_name, age, sex, income )
+except:
+   print &#34;Error: unable to fecth data&#34;
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="数据库更新操作">数据库更新操作</h4>
+<p>更新操作用于更新数据表的的数据</p>
+<p>将 EMPLOYEE 表中的 SEX 字段为 'M' 的 AGE 字段递增 1：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34; )
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 更新语句
+</span><span class="gh"></span>sql = &#34;update employee set age = age + 1 where sex = &#39;%c&#39;&#34; % (&#39;M&#39;)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 提交到数据库执行
+   db.commit()
+except:
+   # 发生错误时回滚
+   db.rollback()
+
+<span class="gh"># 关闭数据库连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="删除操作">删除操作</h4>
+<p>删除操作用于删除数据表中的数据</p>
+<p>删除数据表 employee 中 age 大于 20 的所有数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/python
+</span><span class="gh"># -*- coding: UTF-8 -*-
+</span><span class="gh"></span>
+import MySQLdb
+
+<span class="gh"># 打开数据库连接
+</span><span class="gh"></span>db = MySQLdb.connect(&#34;localhost&#34;, &#34;root&#34;, &#34;root456&#34;, &#34;xdhuxc&#34;)
+
+<span class="gh"># 使用cursor()方法获取操作游标 
+</span><span class="gh"></span>cursor = db.cursor()
+
+<span class="gh"># SQL 删除语句
+</span><span class="gh"></span>sql = &#34;delete from employee where age &gt; &#39;%d&#39;&#34; % (20)
+try:
+   # 执行SQL语句
+   cursor.execute(sql)
+   # 提交修改
+   db.commit()
+except:
+   # 发生错误时回滚
+   db.rollback()
+
+<span class="gh"># 关闭连接
+</span><span class="gh"></span>db.close()
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="执行事务">执行事务</h4>
+<p>事务机制可以确保数据一致性。</p>
+<p>事务应该具有4个属性：原子性、一致性、隔离性、持久性。这四个属性通常称为ACID特性。</p>
+<ul>
+<li>原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。</li>
+<li>一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。</li>
+<li>隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</li>
+<li>持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</li>
+</ul>
+<p>对于支持事务的数据库， 在Python数据库编程中，当游标建立之时，就自动开始了一个隐形的数据库事务。
+commit() 方法提交当前游标的所有更新操作，rollback() 方法回滚当前游标的所有操作。每一个方法都开始了一个新的事务。</p>
+<h4 id="错误处理">错误处理</h4>
+<p>DB API中定义了一些数据库操作的错误及异常</p>
+<p>下表列出了这些错误和异常：</p>
+<table>
+<thead>
+<tr>
+<th>异常</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Warning</td>
+<td>当有严重警告时触发，例如插入数据是被截断等等。必须是 StandardError 的子类</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>警告以外所有其他错误类。必须是 StandardError 的子类</td>
+</tr>
+<tr>
+<td>InterfaceError</td>
+<td>当有数据库接口模块本身的错误（而不是数据库的错误）发生时触发。 必须是Error的子类</td>
+</tr>
+<tr>
+<td>DatabaseError</td>
+<td>和数据库有关的错误发生时触发。 必须是Error的子类</td>
+</tr>
+<tr>
+<td>DataError</td>
+<td>当有数据处理时的错误发生时触发，例如：除零错误，数据超范围等等。 必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>OperationalError</td>
+<td>指非用户控制的，而是操作数据库时发生的错误。例如：连接意外断开、 数据库名未找到、事务处理失败、内存分配错误等等操作数据库是发生的错误。 必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>IntegrityError</td>
+<td>完整性相关的错误，例如外键检查失败等。必须是DatabaseError子类</td>
+</tr>
+<tr>
+<td>InternalError</td>
+<td>数据库的内部错误，例如游标（cursor）失效了、事务同步失败等等。 必须是DatabaseError子类</td>
+</tr>
+<tr>
+<td>ProgrammingError</td>
+<td>程序错误，例如数据表（table）没找到或已存在、SQL语句语法错误、 参数数量错误等等。必须是DatabaseError的子类</td>
+</tr>
+<tr>
+<td>NotSupportedError</td>
+<td>不支持错误，指使用了数据库不支持的函数或API等。例如在连接对象上 使用.rollback()函数，然而数据库并不支持事务或者事务已关闭。 必须是DatabaseError的子类</td>
+</tr>
+</tbody>
+</table>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

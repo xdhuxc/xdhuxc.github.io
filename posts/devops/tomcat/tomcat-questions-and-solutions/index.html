@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Tomcat 常见问题及解决 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/tomcat/tomcat-questions-and-solutions/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Tomcat 常见问题及解决" />
+<meta property="og:description" content="本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/tomcat/tomcat-questions-and-solutions/" />
+<meta property="article:published_time" content="2018-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-06-28T00:00:00+00:00" />
+<meta itemprop="name" content="Tomcat 常见问题及解决">
+<meta itemprop="description" content="本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。">
+<meta itemprop="datePublished" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-06-28T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="455">
+
+
+
+<meta itemprop="keywords" content="Tomcat,DevOps," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tomcat 常见问题及解决"/>
+<meta name="twitter:description" content="本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了使用 Tomcat 的过程中经常出现的问题及其解决方法。</p>
+<p>1、tomcat 部署项目后，war 包是否可以删除？</p>
+<ul>
+<li>war 包不能在 tomcat 运行时删除，否则会删除自动解压的工程。</li>
+<li>可以停掉 tomcat 后，再删除 war 包，解压后的工程还会保留着。</li>
+<li>当重新部署的时候，如果有与 war 文件相同的目录，就不会重新部署。</li>
+</ul>
+<p>因为 tomcat 在运行期间会监控 webapps 目录下的 war 文件，如果有新增 war 文件，就解压；有删除 war 文件，就连同项目一起删除。</p>
+<p>2、tomcat 下 war 包和同名已解压项目，如何加载？</p>
+<p>当 tomcat 启动的时候，会去查看 webapps 目录下的所有 war 包，同时查看是否有该 war 包对应的已解压文件，如果已经存在，就不会再解压，也不会将已经修改的 jsp 覆盖掉。只有当删除 war 包对应的同名目录后，启动 tomcat 时才会再解压 war 文件。</p>
+<p>3、部署在 tomcat 中的应用，输出的日志是乱码</p>
+<p>中文乱码原因：</p>
+<p>Tomcat 默认是按 <code>ISO-8859-1</code> 进行 <code>URL</code> 解码，<code>ISO-8859-1</code> 并未包括中文字符，中文字符不能被正确解析导致产生乱码。</p>
+<p>解决：</p>
+<p>1、在 <code>server.xml</code> 文件，添加如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;Connector executor=&#34;tomcatThreadPool&#34;
+               port=&#34;8080&#34; protocol=&#34;HTTP/1.1&#34;
+               connectionTimeout=&#34;20000&#34;
+               redirectPort=&#34;8443&#34; URIEncoding=&#34;UTF-8&#34;/&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>指定了用于解码 <code>URI</code> 的字符编码为 <code>UTF-8</code>。</p>
+<p>2、设置当前系统编码，在 <code>/etc/profile</code> 文件中添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">export LANG=zh_CN.utf8
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

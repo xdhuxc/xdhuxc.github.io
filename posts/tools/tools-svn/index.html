@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>SVN 的安装，配置和使用 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/tools/tools-svn/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="SVN 的安装，配置和使用" />
+<meta property="og:description" content="本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/tools/tools-svn/" />
+<meta property="article:published_time" content="2017-12-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-12-17T00:00:00+00:00" />
+<meta itemprop="name" content="SVN 的安装，配置和使用">
+<meta itemprop="description" content="本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。">
+<meta itemprop="datePublished" content="2017-12-07T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-12-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1456">
+
+
+
+<meta itemprop="keywords" content="SVN," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SVN 的安装，配置和使用"/>
+<meta name="twitter:description" content="本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客详细介绍了版本控制管理工具 SVN 的安装，配置和使用。</p>
+<h3 id="svn-安装和配置">SVN 安装和配置</h3>
+<h4 id="安装-svn-服务器">安装 <code>svn</code> 服务器</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y subversion
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="查看版本">查看版本</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">svnserve --version
+</code></pre></td></tr></table>
+</div>
+</div><p>输出如下：</p>
+<center>
+<img src="/image/tools/svn/WechatIMG651.jpeg" width="800px" height="300px" />
+</center>
+<h4 id="创建版本库">创建版本库</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /root/svn   <span class="ni">#创建svn仓库目录</span>
+svnadmin create /root/svn/xdhuxc  <span class="ni">#使用svn管理员创建xdhuxc库</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>查看库中的文件</p>
+<center>
+<img src="/image/tools/svn/WechatIMG652.png" width="800px" height="300px" />
+</center>
+<p>出现上图中的文件，说明svn代码库已经创建成功。
+Subversion目录说明：</p>
+<ul>
+<li>db：所有版本控制的数据存放文件</li>
+<li>hooks：放置hook脚本文件的目录</li>
+<li>locks：用来放置subversion建库锁定数据的目录，用来追踪存取文件库的客户端</li>
+<li>format：是一个文本文件，里面只放了一个整数，表示当前文件库配置的版本号</li>
+<li>conf：是这个仓库的配置文件（仓库的用户访问账号、权限等）</li>
+</ul>
+<p>进入conf目录，该目录存放当前svn版本库的配置文件：</p>
+<ul>
+<li>authz：权限控制文件</li>
+<li>passwd：账号密码文件</li>
+<li>svnserve.conf：SVN服务配置文件</li>
+</ul>
+<h4 id="subversion-配置">subversion 配置</h4>
+<p>1、设置账号密码</p>
+<p>修改 <code>conf/passwd</code> 文件，在 <code>[users]</code> 块中添加用户和密码，格式为：username=password</p>
+<center>
+<img src="/image/tools/svn/WechatIMG653.png" width="800px" height="300px" />
+</center>
+<p>2、设置权限</p>
+<p>修改conf/authz文件，在末尾添加如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[/] <span class="ni">#指定svn仓库目录</span>，[/]代表根目录
+xdhuxc=rw  # 用户xdhuxc的权限，r：读；w：写
+</code></pre></td></tr></table>
+</div>
+</div><center>
+<img src="/image/tools/svn/WechatIMG654.png" width="800px" height="300px" />
+</center>
+<p>3、修改 <code>svnserve.conf</code> 文件</p>
+<p>打开下面几个注释：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">anon-access = read # 匿名用户可读
+auth-access = write # 授权用户可写
+password-db = passwd # 使用哪个文件作为账号文件
+authz-db = authz # 使用哪个文件作为权限文件
+realm = /root/svn/xdhuxc # 认证空间名，版本库所在目录
+</code></pre></td></tr></table>
+</div>
+</div><p>注意，红色箭头指向的参数，全部要定格写，即前面不能有空格</p>
+<center>
+<img src="/image/tools/svn/WechatIMG655.jpeg" width="800px" height="300px" />
+</center>
+<h4 id="启动-svn-版本库">启动 svn 版本库</h4>
+<p>启动 <code>svn</code> 版本库，并查看 <code>svn</code> 服务是否开启，默认监听在 <code>3690</code> 端口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">svnserve -d -r /root/svn/xdhuxc
+ps -ef|grep svn
+</code></pre></td></tr></table>
+</div>
+</div><p>参数说明：</p>
+<ul>
+<li>-d：表示后台运行svn服务</li>
+<li>-r：指定svn目录</li>
+</ul>
+<h4 id="停止-svn-命令">停止 svn 命令</h4>
+<p>使用如下命令停止 svn 服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">killall svnserve
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="svn-使用">svn 使用</h3>
+<p>1、下载并安装 <code>TorwoiseSVN</code> 测试</p>
+<p>2、创建空目录 <code>xdhuxc-svn</code>，右键并选择 <code>SVN Checkout</code>，<code>checkout</code> 就是把 <code>SVN</code> 服务器上的文件下载到本地工作目录内的操作，输入 <code>SVN</code> 服务器地址，导出文件存放目录 <code>xdhuxc-svn</code>，点击 <code>OK</code></p>
+<center>
+<img src="/image/tools/svn/WechatIMG656.jpeg" width="800px" height="300px" />
+</center>
+<p>第一次登陆时，需要输入认证信息 <code>xdhuxc/Xdhuxc1994</code>，点击 <code>OK</code></p>
+<center>
+<img src="/image/tools/svn/WechatIMG657.png" width="800px" height="300px" />
+</center>
+<p>如果不是空目录，就会出现下图的提示框，选择 <code>Checkout</code></p>
+<center>
+<img src="/image/tools/svn/WechatIMG658.jpeg" width="800px" height="300px" />
+</center>
+<p>登录成功后便可以在该工作目录里进行编辑或创建文件，操作完成后对该目录右键，选择 <code>Check commit</code> 提交，这个操作等于是上传到 <code>SVN</code> 服务器</p>
+<p>3、添加新文件</p>
+<p>将文件拖放至xdhuxc-svn目录下，右键，选择“TortoiseSVN”，选择“Repo browser”，右键点击“svn://192.168.91.128”，点击“Add file”</p>
+<center>
+<img src="/image/tools/svn/WechatIMG659.jpeg" width="800px" height="300px" />
+</center>
+选择要添加的文件 `abc.txt`，点击 `打开`
+<center>
+<img src="/image/tools/svn/WechatIMG660.jpeg" width="800px" height="300px" />
+</center>
+输入提交信息，点击 `OK`
+<center>
+<img src="/image/tools/svn/WechatIMG661.jpeg" width="800px" height="300px" />
+</center>
+可到 `linux` 服务器下验证提交结果。
+<h3 id="svn-命令行">SVN 命令行</h3>
+<p>1、使用Linux的SVN命令进行checkout操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">svn checkout svn://192.168.91.128 /svndir
+</code></pre></td></tr></table>
+</div>
+</div><p>第一次使用checkout命令时，需要输入用户名和密码，以后就不用输入用户名和密码了
+/svndir为svn仓库文件保存目录
+checkout下来的文件夹放到本地就叫做working copy，里面带着.svn目录，该目录是本地文件与svn服务器的连接文件，在这个目录里才能进行svn操作。svn添加文件，要先把要添加的文件放到working copy相应的目录下，执行add，再commit即可。</p>
+<p>2、创建一个文件并添加至SVN</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cd /svndir
+touch xyz.txt ; echo &#34;XYZ&#34; &gt;&gt; xyz.txt ; cat xyz.txt
+svn add xyz.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>如下图所示：</p>
+<center>
+<img src="/image/tools/svn/WechatIMG662.png" width="800px" height="300px" />
+</center>
+<p>3、提交该文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">svn commit -m &#34;XYZ commit&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>如下图所示：</p>
+<center>
+<img src="/image/tools/svn/WechatIMG663.png" width="800px" height="300px" />
+</center>
+<p>4、更新本地仓库文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">svn up
+或
+svn update
+</code></pre></td></tr></table>
+</div>
+</div><p>如下图所示：</p>
+<center>
+<img src="/image/tools/svn/WechatIMG664.png" width="800px" height="300px" />
+</center>
+<h3 id="常见问题及解决">常见问题及解决</h3>
+<p>1、点击 <code>Checkout</code> 后，报错如下：</p>
+<center>
+<img src="/image/tools/svn/WechatIMG665.jpeg" width="800px" height="300px" />
+</center>
+<p>原因：<code>CentOS 7</code> 默认不对外开放 <code>3690</code> 端口，因此，开放防火墙 <code>3690</code> 端口，重启防火墙即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">iptables -I INPUT -p tcp --dport 3690 -j ACCEPT
+systemctl restart iptables
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

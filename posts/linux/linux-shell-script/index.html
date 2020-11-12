@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 中 Shell 脚本基础知识 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/linux/linux-shell-script/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Linux 中 Shell 脚本基础知识" />
+<meta property="og:description" content="本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/linux/linux-shell-script/" />
+<meta property="article:published_time" content="2018-07-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-07T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 中 Shell 脚本基础知识">
+<meta itemprop="description" content="本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。">
+<meta itemprop="datePublished" content="2018-07-11T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3921">
+
+
+
+<meta itemprop="keywords" content="Linux,Shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 中 Shell 脚本基础知识"/>
+<meta name="twitter:description" content="本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍下 Linux Shell 脚本编写中常用的语法知识。</p>
+<h3 id="shell简介">Shell简介</h3>
+<p>Shell 是顺序执行的命令列表</p>
+<p><code>bash shell</code> 的命令分为两类：外部命令和内部命令。外部命令是通过系统调用或独立的程序实现的，如sed、awk等等。内部命令是由特殊的文件格式（.def）所实现，如cd、history、exec等等。</p>
+<h3 id="binbash的含义">#!/bin/bash的含义</h3>
+<p><code>#!/bin/bash</code> 指此脚本使用 <code>/bin/bash</code> 来解释执行，<code>#!</code> 是特殊的表示符，其后跟的是解释执行此脚本的 <code>shell</code> 的路径。</p>
+<h3 id="参数的含义">$参数的含义</h3>
+<ul>
+<li>$$  是脚本运行的当前进程ID号</li>
+<li>$#  表示传递给脚本的参数个数</li>
+<li>$!  是最后执行的后台命令的PID</li>
+<li>$0  是脚本本身的名字</li>
+<li>$1  是传递给该Shell脚本或函数的第一个参数</li>
+<li>$2  是传递给该Shell脚本或函数的第二个参数</li>
+<li>$n  是传递给该Shell脚本或函数的第n个参数</li>
+<li>$?  显示最后命令的退出状态，0表示没有错误，其他表示有错误</li>
+<li>$@  表示传递给该脚本或函数的所有参数的列表</li>
+<li>$*  是以一个单字符串显示所有向脚本传递的参数，与位置变量不同，参数可超过九个。</li>
+</ul>
+<p>关于 <code>@</code> 和 <code>*</code> 的异同：</p>
+<p>相同点：都是引用所有参数</p>
+<p>不同点：只有在双引号中体现出来。假设在脚本运行时写了三个参数，分别存储在1、2、3，则“@”等价于“1”、“2”、“3”（传递了三个参数）；而“*”表示“123”（传递了一个参数）</p>
+<h3 id="getopts-命令">getopts 命令</h3>
+<p>内部命令 getopts可以很方便地处理命令行参数，其一般格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">getopts options variable
+</code></pre></td></tr></table>
+</div>
+</div><p>getopts 的设计目标是在循环中运行，每次执行循环，getopts就检查下一个命令行参数，并判断它是否合法，即检查参数是否以“-”开头，后面跟一个包含在options中的字母。如果是，就把匹配的选项字母存储在指定的变量variable中，并返回退出状态0；如果“-”后面的字母没有包含在options中，就在variable中存入一个“？”，并返回退出状态0；如果命令行中已经没有参数，或者下一个参数不以“-”开头，就返回不为0的退出状态。</p>
+<p>注意以下几点：</p>
+<p>1、getopts允许把选项堆叠在一起（如-ms）。</p>
+<p>2、如果要带参数，须在对应选项后加“:”（如h后需要加参数h:ms），此时选项和参数之间至少有一个空白字符分隔，这样的选项不能堆叠。</p>
+<p>3、如果在需要参数的选项之后没有找到参数，它就在给定的变量中存入“?”，并向标准错误输出中写入错误信息；否则将实际参数写入特殊变量：OPTARG。</p>
+<p>4、另外一个特殊变量：OPTIND，反映下一个要处理的参数索引，初值是1，每次执行getopts时都会更新。</p>
+<h3 id="local">local</h3>
+<blockquote>
+<p>一般用于局部变量声明，多在函数内部使用。</p>
+</blockquote>
+<p>1、Shell脚本中定义的变量是全局变量，其作用域从被定义的地方开始，到Shell脚本结束或被显式删除处为止。</p>
+<p>2、Shell函数定义的变量默认是全局变量，其作用域从函数被调用时执行变量定义的地方开始，到Shell脚本结束或被显式删除处为止。函数定义的变量可以被显式定义成局部的，其作用域局限于函数内。但请注意，函数的参数是局部的。</p>
+<p>3、如果同名，Shell函数定义的局部变量会屏蔽脚本定义的全局变量。</p>
+<h3 id="shift">shift</h3>
+<p>shift 命令用于对参数的移动（左移），通常用于在不知道传入参数个数的情况下依次遍历每个参数，然后进行相应处理，常见于Linux中各种程序的启动脚本。</p>
+<h3 id="-devnull-21">&gt; /dev/null 2&gt;&amp;1</h3>
+<p>Linux 中的标准输入和输出包括：</p>
+<ul>
+<li>0，表示标准输入（stdin），即键盘输入。</li>
+<li>1，表示标准输出（stdout），即屏幕输出，系统默认是1。</li>
+<li>2，表示标准错误输出（stderr），即屏幕输出。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">nohup command &gt; /dev/null 2&gt;&amp;1
+</code></pre></td></tr></table>
+</div>
+</div><p>等价于</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">nohup command 1 &gt; /dev/null 2&gt;&amp;1
+</code></pre></td></tr></table>
+</div>
+</div><p>1）nohup：表示当前用户和系统的会话下的进程忽略响应hup消息，从而不挂断地运行命令。</p>
+<p>2）command：表示Shell命令或者为一个可执行的程序。</p>
+<p>3）&gt;：表示重定向到哪里。</p>
+<p>4）/dev/null：表示Linux的空设备文件。</p>
+<p>5）2：表示标准错误输出</p>
+<p>6）&amp;1：&amp;表示等同于的意思，2&gt;&amp;1，表示把标准错误输出定向到前一个（&amp;的作用）打开的文件中去。</p>
+<p>7）&amp;：命令最后面加一个&amp;，表示后台执行，即这条指令在后台运行。</p>
+<p><code>1 &gt; /dev/null</code>，表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，不显示任何信息。</p>
+<p><code>2 &gt; &amp;1</code>，表示标准错误输出重定向等同于标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。</p>
+<p><code>&gt;  /dev/null 2&gt;&amp;1</code>，常用来避免shell命令或程序等运行中有内容输出。</p>
+<h3 id="命令组">命令组</h3>
+<p>命令组是在括号中的命令列表，将会作为一个子shell来运行，一般格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">(cmd1,cmd2,cmd3)
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="命令执行控制">命令执行控制</h4>
+<p>1、<code>&amp;&amp;</code> 表示命令之间的关系为：与，格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cmd_1 &amp;&amp; cmd_2 # 如果命令cmd_1执行成功，则执行cmd_2，否则cmd_2不执行。
+</code></pre></td></tr></table>
+</div>
+</div><p>2、<code>||</code> 表示命令之间的关系为：或，格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cmd_1 || cmd_2 # 如果命令cmd_1执行成功，则不执行命令cmd_2，否则执行cmd_2。
+</code></pre></td></tr></table>
+</div>
+</div><p>3、<code>;</code> 表示命令之间的关系为：顺序，格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">cmd_1 ; cmd_2 # 无论cmd_1是否执行成功，都会执行cmd_2。
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="-与--">$() 与 ` `</h3>
+<p>在 bash 中，$() 与 ` `（反引号） 都是用来作命令替换的，先完成引号里面的命令，然后将其结果替换出来，再重组成新的命令。</p>
+<p>在操作上，这两者都能达到相应的效果，但是建议使用 $()</p>
+<ul>
+<li>` ` 很容易与''（单引号）搞混乱，惹来无端麻烦。</li>
+<li>在多层次的复合替换中，` ` 必须要做额外的转义处理，而 $() 比较直观。</li>
+<li>$() 的弊端是，并不是所有的类 unix 系统都支持这种方式，但是反引号是肯定支持的。</li>
+</ul>
+<p>$var 和 ${var}</p>
+<p>一般情况下，$var 和 ${var} 是没有区别的，但是用 ${}会比较精确地界定变量名称的范围。</p>
+<h3 id="退出状态码">退出状态码</h3>
+<p>shell 中运行的每个命令都使用退出状态码来告诉 shell 它完成了处理。退出状态码是一个 0~255 之间的整数值，在命令执行结束时由命令返回给 shell。</p>
+<p>典型的退出状态码及其意义：</p>
+<ul>
+<li>0：命令运行成功</li>
+<li>1：通知未知错误</li>
+<li>2：误用 shell 命令</li>
+<li>126：命令不可执行</li>
+<li>127：没有找到命令</li>
+<li>128：无效退出参数</li>
+<li>130：命令通过 Ctrl + C 终止</li>
+<li>255：退出状态码越界</li>
+<li>137：OOMKilld，内存溢出错误。</li>
+</ul>
+<p>exit 命令用于在 shell 脚本中指定退出状态码，退出状态码最大只能到 255，若其大于 255，则返回模除 256 后的余数。</p>
+<h3 id="shell脚本调试">Shell脚本调试</h3>
+<p>脚本调试的主要工作就是发现引发脚本错误的原因以及脚本源代码中定位错误。</p>
+<h4 id="通过-echo-方式">通过 echo 方式</h4>
+<p>功能描述：最简单也是最常用的调试方式，在任何怀疑出错的地方用 echo 打印变量</p>
+<p>使用场景：所有怀疑可能有问题的地方</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo $xdhuxc
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="通过选项方式">通过选项方式</h4>
+<h5 id="-n">-n</h5>
+<p>功能描述：读取 shell 脚本，但不实际执行。</p>
+<p>使用场景：用于测试 shell 脚本中是否存在语法错误。</p>
+<p>示例：<code>bash -n xdhuxc.sh</code></p>
+<p>xdhuxc.sh内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>function xdhuxc() {
+    echo &#34;bash function is called&#34;
+}
+echo &#34;xdhuxc start&#34;
+xdhuxc
+echo &#34;xdhuxc end&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="-c">-c</h5>
+<p>功能描述：使 shell 解释器从字符串而非文件中读取并执行命令。</p>
+<p>使用场景：当需要调试一小段脚本的执行结果时，非常方便。</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">bash -c &#39;a=2;b=3;let c=a+b;echo c=$c&#39;
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="-v">-v</h5>
+<p>功能描述：区别于 -x 参数，该选项打印命令行的原始内容，-x 参数打印出经过替换后的命令行的内容。</p>
+<p>使用场景：仅想显示命令行的原始内容。</p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">bash -v xdhuxc.sh
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="-x">-x</h5>
+<p>功能描述：提供跟踪执行信息，在执行脚本的过程中，把实际执行的每个命令显示出来，行首显示 +，+ 后面显示经过替换之后的命令行内容，有助于分析实际执行的是什么命令</p>
+<p>使用场景：是调试 shell 脚本的强有力工具，shell 脚本调试的首选手段。</p>
+<p>示例：</p>
+<p>1、在命令行提供参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">$sh -x xdhuxc.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>2、脚本开头提供参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash -x
+</span></code></pre></td></tr></table>
+</div>
+</div><p>3、在脚本中用 <code>set</code> 命令启用或禁用参数：其中 <code>set -x</code> 表示启用；<code>set +x</code> 表示禁用。</p>
+<h4 id="通过-test-的方式返回值为-0则为真返回值为1则为假">通过 test 的方式，返回值为 0，则为真；返回值为1，则为假。</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">test -f /etc/hosts
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="通过-trap-来调试">通过 trap 来调试</h4>
+<p>功能描述：用于捕获指定的信号并执行预定义的命令</p>
+<p>语法格式：<code>trap cmd signal</code></p>
+<p>说明：
+signal 是要捕获的信号</p>
+<p>cmd 是捕获到指定的信号，所要执行的命令，可以用 kill -l 命令查看系统中全部可用的信号名。捕获信号后所执行的命令，可以是一条或多条合法的 shell 语句，也可以是一个函数名。shell 脚本执行时，会产生三个伪信号（之所以称为伪信号，是因为这是 shell 自己产生的，而非操作系统产生的），通过使用 trap 捕获这三个伪信号并输出信息对调试有很大的帮助。</p>
+<p>shell 的三个伪信号：</p>
+<ul>
+<li>EXIT：从一个函数中退出或整个脚本执行完毕。</li>
+<li>ERR：当一个命令执行不成功，返回非 0 状态时。</li>
+<li>DEBUG：脚本中每一条命令执行之前。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#!/usr/bin/env bash
+</span><span class="gh"></span>
+errorTrap() {
+    echo &#34;[LINE : $1] Error: Command or function exited with status $?&#34;
+}
+
+hello() {
+    return 1;
+}
+trap $(errorTrap $LINENO) ERR
+xdhuxc
+hello
+</code></pre></td></tr></table>
+</div>
+</div><p>执行 xdhuxc.sh 脚本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">bash xdhuxc.sh
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="使用调试工具-bashdb">使用调试工具 bashdb</h4>
+<p>使用 shell 调试器 bashdb，可以实现对 shell 脚本的断点设置、单步执行和变量观察等许多功能。</p>
+<p>使用方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">bashdb -c xdhuxc.sh
+或者
+bashdb xdhuxc.sh
+或者
+bashdb --debug xdhuxc.sh
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="bash--x-xdhuxcsh">bash -x xdhuxc.sh</h4>
+<p>使用命令 <code>bash -x xdhuxc.sh</code> 调试脚本xdhuxc.sh，示例输出如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">++ cd ../..
+++ pwd
++ DCE_HOME=/yonyou/developercenter_enterprise
++ DCE_IP=192.168.244.133
++ echo -e /yonyou/developercenter_enterprise
+/yonyou/developercenter_enterprise
++ echo -e 192.168.244.133
+192.168.244.133
+</code></pre></td></tr></table>
+</div>
+</div><p>&quot;+&quot; 号后面显示的是经过了变量替换之后的命令行的内容，有助于分析实际执行的是什么命令</p>
+<p>带加号表示该条语句是Shell执行的。</p>
+<p>不带加号表示该语句是Shell产生的输出。</p>
+<h4 id="set--e">set -e</h4>
+<p>set -e 语句告诉 bash 如果任何语句的执行结果不是 true，则应该退出。这样做的好处是防止错误像滚雪球般变大而导致一个致命的错误，而这些错误本应该在之前就被处理掉。</p>
+<h3 id="字符串比较">字符串比较</h3>
+<p>字符串比较的作用：测试字符串是否相等，长度是否为零，字符串是否为NULL等
+常用的字符串比较符号如下：</p>
+<table>
+<thead>
+<tr>
+<th>比较符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>比较两个字符串是否相同，相同则为“是”</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>比较两个字符串是否不同，不同则为“是”</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>比较字符串的长度是否大于0，如果大于0则为“是”</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>比较字符串的长度是否等于0，如果等于0则为“是”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数字比较">数字比较</h3>
+<p>常用的数字比较符如下：</p>
+<table>
+<thead>
+<tr>
+<th>比较符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串测试">字符串测试</h3>
+<p>在编写 Shell 脚本时，经常需要进行判断，以下是一些测试字符串的方法：</p>
+<ul>
+<li>[ -z abc ] abc的值的长度为零则为真</li>
+<li>[ -n abc ] 如果字符串的长度不为零，则为真</li>
+<li>[ -a file_name ] 如果file_name存在，则为真</li>
+</ul>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

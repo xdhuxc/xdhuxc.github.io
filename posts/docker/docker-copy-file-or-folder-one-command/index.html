@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Docker 合并多条 COPY 命令 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/docker/docker-copy-file-or-folder-one-command/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Docker 合并多条 COPY 命令" />
+<meta property="og:description" content="在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/docker/docker-copy-file-or-folder-one-command/" />
+<meta property="article:published_time" content="2019-07-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-07-03T00:00:00+00:00" />
+<meta itemprop="name" content="Docker 合并多条 COPY 命令">
+<meta itemprop="description" content="在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。">
+<meta itemprop="datePublished" content="2019-07-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-07-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="341">
+
+
+
+<meta itemprop="keywords" content="Docker,Dockerfile," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker 合并多条 COPY 命令"/>
+<meta name="twitter:description" content="在编写 Dockerfile 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>在编写 <code>Dockerfile</code> 时，我们可能需要将多条指令合并成一行，这样语法简洁，并且可以减少镜像层数。</p>
+<h3 id="将多条-copy-指令合并为一条">将多条 COPY 指令合并为一条</h3>
+<p>比如，我们的 <code>Dockerfile</code> 里面有这样的语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">FROM python:2.7-stretch
+WORKDIR /xdhuxc/
+COPY dingtalk_callback.py /xdhuxc/
+COPY requirements.txt /xdhuxc/
+COPY settings.py /xdhuxc/
+RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+ENTRYPOINT [&#34;python&#34;, &#34;-u&#34;, &#34;/xdhuxc/dingtalk_callback.py&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>我们想把多个 <code>COPY</code> 指令合并成一条，可以改写该 <code>Dockerfile</code> 为如下形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">FROM python:2.7-stretch
+WORKDIR /xdhuxc/
+COPY dingtalk_callback.py requirements.txt settings.py /xdhuxc/
+RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+ENTRYPOINT [&#34;python&#34;, &#34;-u&#34;, &#34;/xdhuxc/dingtalk_callback.py&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">FROM python:2.7-stretch
+WORKDIR /xdhuxc/
+COPY [&#34;dingtalk_callback.py&#34;, &#34;requirements.txt&#34;, &#34;settings.py&#34;, &#34;/xdhuxc/&#34;]
+RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+ENTRYPOINT [&#34;python&#34;, &#34;-u&#34;, &#34;/xdhuxc/dingtalk_callback.py&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>路径中包含空格时，必须使用这种形式。</p>
+<p><code>COPY</code> 指令支持通配符，如果复制多个文件时，文件名称本身有规律，则可以使用通配符来实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">FROM python:2.7-stretch
+WORKDIR /xdhuxc/
+COPY dingtalk* /xdhuxc/ # 复制所有以 &#34;dingtalk&#34; 开头的文件到 /xdhuxc/ 目录下
+RUN pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+ENTRYPOINT [&#34;python&#34;, &#34;-u&#34;, &#34;/xdhuxc/dingtalk_callback.py&#34;]
+</code></pre></td></tr></table>
+</div>
+</div><p>但要注意，<code>COPY</code> 只能复制目录下的内容，不能复制目录，对于目录的复制，要这样写</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">COPY templates/ /scmp/templates
+</code></pre></td></tr></table>
+</div>
+</div><p>其中，<code>templates</code> 为目录名</p>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://codeday.me/bug/20171013/84355.html">https://codeday.me/bug/20171013/84355.html</a></p>
+<p><a href="https://docs.docker.com/engine/reference/builder/#copy">https://docs.docker.com/engine/reference/builder/#copy</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

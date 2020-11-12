@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 下 RPM 和 YUM 的使用 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍下 Linux 下 RPM 包管理工具的使用。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/linux/linux-rpm-yum/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Linux 下 RPM 和 YUM 的使用" />
+<meta property="og:description" content="本篇博客介绍下 Linux 下 RPM 包管理工具的使用。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/linux/linux-rpm-yum/" />
+<meta property="article:published_time" content="2018-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-12-07T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 下 RPM 和 YUM 的使用">
+<meta itemprop="description" content="本篇博客介绍下 Linux 下 RPM 包管理工具的使用。">
+<meta itemprop="datePublished" content="2018-10-15T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-12-07T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3241">
+
+
+
+<meta itemprop="keywords" content="Linux,RPM,YUM," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 下 RPM 和 YUM 的使用"/>
+<meta name="twitter:description" content="本篇博客介绍下 Linux 下 RPM 包管理工具的使用。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍下 Linux 下 RPM 包管理工具的使用。</p>
+<h3 id="rpm">rpm</h3>
+<p>rpm 命令是 RPM 软件包的管理工具。rpm 原本是 Red Hat Linux 发行版专门用来管理 Linux 各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM 套件管理方式的出现，让 Linux 易于安装，升级，间接提升了 Linux 的适用度。</p>
+<h4 id="rpm包管理的用途">rpm包管理的用途</h4>
+<p>1、可以安装、删除、升级和管理软件，当然也支持在线安装和升级软件；</p>
+<p>2、通过RPM包管理能知道软件包包含哪些文件，也能知道系统中的某个文件属于哪个软件包；</p>
+<p>3、可以在查询系统中的软件包是否安装以及其版本；</p>
+<p>4、作为开发者可以把自己的程序打包为RPM 包发布；</p>
+<p>5、软件包签名GPG和MD5的导入、验证和签名发布；</p>
+<p>6、依赖性的检查，查看是否有软件包由于不兼容而扰乱了系统；</p>
+<h4 id="rpm-的使用权限">rpm 的使用权限</h4>
+<p>RPM软件的安装、删除、更新只有 root 权限才能使用；</p>
+<p>对于查询功能任何用户都可以操作；</p>
+<p>如果普通用户拥有安装目录的权限，也可以进行安装；</p>
+<h4 id="rpm命令">rpm命令</h4>
+<h5 id="初始化-rpm-数据库">初始化 rpm 数据库</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm --initdb
+rpm --rebuilddb
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="软件包的安装升级和删除等">软件包的安装、升级和删除等</h5>
+<p>1、安装 docker 包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -vih docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+或
+rpm -ivh docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm --nodeps --force # 安装软件包时不检查依赖关系
+</code></pre></td></tr></table>
+</div>
+</div><p>2、升级 docker 包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -Uvh docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>3、删除软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -e docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="rpm-软件包管理的查询功能">rpm 软件包管理的查询功能</h5>
+<p>1、查询系统已经安装的软件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -q docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+或
+rpm --query docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>2、查看系统中所有已经安装的软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qa
+</code></pre></td></tr></table>
+</div>
+</div><p>3、查询一个已经安装的文件属于哪个软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qf file_absolute_path
+</code></pre></td></tr></table>
+</div>
+</div><p>4、查询已安装软件包的安装位置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ql docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+或
+rpm rpmquery -ql docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>5、查询一个已安装软件包的信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qi docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>6、查看已安装软件包的配置文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qc docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>7、查看某个rpm包的依赖关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qpR docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="rpm-包命名规则">rpm 包命名规则</h4>
+<p>1、RPM包的一般格式为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">name-version-arch.rpm
+name-version-arch.src.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>（1）name，如：httpd，是软件的名称</p>
+<p>（2）version，如:2.2.3 ,是软件的版本号。版本号的格式通常为“主版本号.次版本号.修正号”
+29，是发布版本号，表示这个RPM包是第几次编译生成的</p>
+<p>（3）arch,如:i386,表示包的适用的硬件平台，目前RPM支持的平台有：i386、i586、i686、sparc、alpha</p>
+<p>（4）.rpm或.src.rpm,是RPM包类型的后缀，.rpm是编译好的二进制包，可用rpm命令直接安装；.src.rpm表示是源代码包，需要安装源码包生成源码，并对源码编译生成.rpm格式的RPM包，就可以对这个RPM包进行安装了</p>
+<p>2、特殊名称</p>
+<p>（1）el*  表示这个软件包的发行商版本,el5表示这个软件包是在RHEL 5.x/CentOS 5.x下使用。</p>
+<p>（2）devel：表示这个RPM包是软件的开发包。</p>
+<p>（3）noarch：说明这样的软件包可以在任何平台上安装，不需要特定的硬件平台。在任何硬件平台上都可以运行。</p>
+<p>（4）manual 手册文档</p>
+<h3 id="yum">yum</h3>
+<p>全称为 <code>Yellow dog Updater, Modified</code>，是一个在<code>Fedora</code>和<code>RedHat</code>以及<code>SUSE</code>中的<code>Shell前端软件包管理器</code>。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。</p>
+<p>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+<p>yum的宗旨是自动化地升级，安装/移除rpm包，收集rpm包的相关信息，检查依赖性并自动提示用户解决</p>
+<p>yum的关键之处是要有可靠的仓库，这是软件的仓库，它可以是http或ftp站点， 也可以是本地软件池，但必须包含rpm的header， header包括了rpm包的各种信息，包括描述，功能，提供的文件，依赖性等.正是收集了这些 header并加以分析，才能自动化地完成余下的任务。</p>
+<h4 id="yum-的特点">yum 的特点</h4>
+<p>1、可以同时配置多个资源库(Repository)</p>
+<p>2、简洁的配置文件(/etc/yum.conf)</p>
+<p>3、自动解决增加或删除rpm包时遇到的倚赖性问题</p>
+<p>4、使用方便</p>
+<p>5、保持与RPM数据库的一致性</p>
+<h4 id="yum-的配置文件">yum 的配置文件</h4>
+<p>yum 的配置文件分为两部分：main 和repository：</p>
+<ul>
+<li>main 部分定义了全局配置选项，整个yum 配置文件应该只有一个main。常位于/etc/yum.conf 中。</li>
+<li>repository 部分定义了每个源/服务器的具体配置，可以有一到多个。常位于/etc/yum.repo.d 目录下的各文件中。</li>
+</ul>
+<p>yum.conf 文件一般位于/etc目录下，一般其中只包含main部分的配置选项。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[main]
+cachedir=/var/cache/yum     <span class="ni">#yum缓存的目录</span>，yum在此存储下载的rpm包和数据库，默认设置为：/var/cache/yum。
+
+keepcache=0                 <span class="ni">#安装完成后是否保留软件包</span>，0为不保留，1为保留，默认为0。
+
+debuglevel=2                <span class="ni">#Debug</span> 信息输出等级，范围为：0──10，默认为2。
+
+logfile=/var/log/yum.log    <span class="ni">#yum的日志文件</span>，默认为：/var/log/yum.log。
+
+pkgpolicy=newest            <span class="ni">#包的策略</span>。一共有两个选项，newest和last，这个作用是如果你设置了多个repository，而同一软件在不同的repository中同时存在，yum应该安装哪一个，如果是newest，则yum会安装最新的那个版本。如果是last，则yum会将服务器id以字母表排序，并选择最后的那个服务器上的软件安装。一般都是选newest。
+
+distroverpkg=redhat-release <span class="ni">#指定一个软件包</span>，yum会根据这个包判断你的发行版本，默认是redhat-release，也可以是安装的任何针对自己发行版的rpm包。
+
+tolerant=1                  <span class="ni">#有1和0两个选项</span>，表示yum是否容忍命令行发生与软件包有关的错误，比如你要安装1,2,3三个包，而其中3此前已经安装了，如果你设为1,则yum 不会出现错误信息。默认是0。
+　　
+exactarch=1                 <span class="ni">#有两个选项1和0</span>，设置为1，则yum只会安装和系统架构匹配的软件包，例如，yum不会将i686的软件包安装在适合i386的系统中。默认为1。
+
+retries=6                   <span class="ni">#网络连接发生错误后的重试次数</span>，如果设为0，则会无限重试。默认值为6。
+
+obsoletes=1                 <span class="ni">#这是一个update</span> 的参数，相当于upgrade，允许更新陈旧的RPM包。
+
+plugins=1                   <span class="ni">#是否启用插件</span>，默认1为允许，0表示不允许。我们一般会用yum-fastestmirror这个插件。
+
+exclude=selinux*            <span class="ni">#排除某些软件在升级名单之外</span>，可以用通配符，列表中各个项目要用空格隔开，
+
+gpgcheck=1                  <span class="ni">#有1和0两个选择</span>，分别代表是否是否进行gpg(GNU Private Guard)校验，以确定rpm包的来源是有效和安全的。这个选项如果设置在[main]部分，则对每个repository 都有效。默认值为0。
+
+metadata_expire=1800
+
+
+<span class="gh"># PUT YOUR REPOS HERE OR IN separate files named file.repo
+</span><span class="gh"># in /etc/yum.repos.d
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="yum-命令">yum 命令</h4>
+<p>yum命令的一般形式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum [options] [command] [package...]
+</code></pre></td></tr></table>
+</div>
+</div><p>options 是可选的，选项包括：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">-h：显示帮助信息。
+-y：当安装过程中提示选择时，全部为“yes”。
+-q：不显示安装的过程。
+-c：指定配置文件。
+-v：详细模式。
+-d：设置调试等级（0-10）。
+-e：设置错误等级（0-10）。
+-R：设置yum处理一个命令的最大等待时间。
+-C：完全从缓存中运行，而不去下载或者更新任何头文件。
+</code></pre></td></tr></table>
+</div>
+</div><p>command 为所要进行的操作</p>
+<p>package 是操作的对象</p>
+<p>常用的命令包括：</p>
+<p>1、自动搜索最快镜像插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install yum-fastestmirror
+</code></pre></td></tr></table>
+</div>
+</div><p>2、安装 yum 图形窗口插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install yumex
+</code></pre></td></tr></table>
+</div>
+</div><p>3、查看可能批量安装的列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum grouplist
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="yum-命令详解">yum 命令详解</h4>
+<p>1、全部安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install
+</code></pre></td></tr></table>
+</div>
+</div><p>2、安装指定的软件包 nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install nginx -y
+</code></pre></td></tr></table>
+</div>
+</div><p>3、安装程序组 kubernetes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum groupinstall kubernetes
+</code></pre></td></tr></table>
+</div>
+</div><p>4、安装指定版本的软件包 kubernetes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum list kubernetes
+<span class="gh"># 根据输出的软件包全名称进行安装
+</span><span class="gh"></span>yum install -y kubernetes-1.20.12.rpm
+</code></pre></td></tr></table>
+</div>
+</div><p>5、全部更新</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update
+</code></pre></td></tr></table>
+</div>
+</div><p>6、更新指定的程序包 nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>7、检查可更新的程序</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum check-update
+</code></pre></td></tr></table>
+</div>
+</div><p>8、升级指定软件包 nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum upgrade nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>9、升级指定程序组 kubernetes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum groupupdate kubernetes
+</code></pre></td></tr></table>
+</div>
+</div><p>10、显示安装包 nginx 的信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum info nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>11、显示所有已经安装和可以安装的软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum list
+</code></pre></td></tr></table>
+</div>
+</div><p>12、显示指定程序包 nginx 的安装情况</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum list nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>13、显示程序组 kubernetes 的信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum groupinfo kubernetes
+</code></pre></td></tr></table>
+</div>
+</div><p>14、根据关键字 keyword 查找安装包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum search keyword
+</code></pre></td></tr></table>
+</div>
+</div><p>15、删除软件包 nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum remove nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>16、删除程序包组 kubernetes</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum groupremove kubernetes
+</code></pre></td></tr></table>
+</div>
+</div><p>17、查看软件包 nginx 的依赖情况</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum deplist nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>18、清除缓存目录下的软件包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum clean nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>19、清除缓存目录下的headers</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum clean headers
+</code></pre></td></tr></table>
+</div>
+</div><p>20、清除缓存目录下旧的 headers</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum clean oldheaders
+</code></pre></td></tr></table>
+</div>
+</div><p>21、清除缓存目录下的软件包及旧的 headers</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum clean packages,yum clean oldheaders
+等价于
+yum clean,yum clean all
+</code></pre></td></tr></table>
+</div>
+</div><p>22、查看系统默认安装的 yum</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -qa|grep yum
+</code></pre></td></tr></table>
+</div>
+</div><p>23、查看 yum 的某一条命令属于哪一个软件包，然后就可以安装这个软件包了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum provides lssubsys 
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

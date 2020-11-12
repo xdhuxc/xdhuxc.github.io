@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>AlertManager 报警收敛的若干种方法 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客介绍了 AlertManager 报警收敛的若干种方法。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/devops/alertmanager/alertmanager-alerts-convergence/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="AlertManager 报警收敛的若干种方法" />
+<meta property="og:description" content="本篇博客介绍了 AlertManager 报警收敛的若干种方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/devops/alertmanager/alertmanager-alerts-convergence/" />
+<meta property="article:published_time" content="2020-02-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-27T00:00:00+00:00" />
+<meta itemprop="name" content="AlertManager 报警收敛的若干种方法">
+<meta itemprop="description" content="本篇博客介绍了 AlertManager 报警收敛的若干种方法。">
+<meta itemprop="datePublished" content="2020-02-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-02-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1794">
+
+
+
+<meta itemprop="keywords" content="DevOps,AlertManager," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AlertManager 报警收敛的若干种方法"/>
+<meta name="twitter:description" content="本篇博客介绍了 AlertManager 报警收敛的若干种方法。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客介绍了 <code>AlertManager</code> 报警收敛的若干种方法。</p>
+<h3 id="背景">背景</h3>
+<p>当一个监控-告警系统建立起来后，告警系统将会面临这样的问题：警报消息太多，接收人很容易麻木，不再继续理会，关键的告警常常被淹没。</p>
+<p>对于这一问题，<code>AlertManger</code> 提供了非常好的解决方案。<code>Prometheus</code> 把一条告警信息发送给了 <code>AlterManager</code>，<code>AlterManager</code> 并不是简简单单地直接发送出去，而是对告警信息进行了一些诸如分组、延时等收敛处理。</p>
+<p>对报警收敛的支持，<code>AlertManager</code> 提供了以下四种方式：</p>
+<ul>
+<li>分组</li>
+<li>抑制</li>
+<li>静默</li>
+<li>延时</li>
+</ul>
+<h3 id="告警分组">告警分组</h3>
+<p>告警分组是通过对具有相同属性值的告警进行分组聚合，可以有效的减少告警消息的数量。</p>
+<p>对应 <code>AlertManager</code> 的配置，通过 <code>route</code> 部分的 <code>group_by</code> 字段对具有相同属性的告警进行分组聚合。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">route:
+  # AlertManager 将会把具有相同 alertname 的告警分到相同的组  
+  group_by: [&#39;alertname&#39;]
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="告警抑制">告警抑制</h3>
+<p>当告警发出后，停止重复发送由此告警引发的其他告警。一般是由更高级别的告警抑制低级别的告警。这可以消除冗余的告警，仅发送关键警报，避免误导运维排查问题的方向。</p>
+<p>在 <code>AlertManager</code> 的配置中，通过 <code>inhibit_rules</code> 部分来配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">inhibit_rules:
+  <span class="k">-</span> source_match:        # source_match：匹配当前告警发生后其他告警抑制掉
+      severity: &#39;critical&#39;
+    target_match:        # target_match：抑制告警
+      severity: &#39;warning&#39;
+    equal: [&#39;alertname&#39;] # equal：只有包含指定标签才可成立规则
+</code></pre></td></tr></table>
+</div>
+</div><p>以上配置告诉 <code>AlertManager</code>，对于具有相同 <code>alertname</code> 的告警，含 <code>severity: 'critical'</code> 标签的告警将会抑制含 <code>severity: 'warning'</code> 标签的告警。</p>
+<h3 id="告警静默">告警静默</h3>
+<p>对可预期的告警，在特定时间段阻止告警的发送，比如，线上环境资源调整或上线，可能会导致告警，此时，可以增加告警静默，阻止相关的告警发送。</p>
+<p>可以在 <code>http://localhost:9093/#/silences</code> 中进行创建。</p>
+<h3 id="告警延时">告警延时</h3>
+<p>当故障发生时，若故障未能及时解决，频繁地发送告警是令人崩溃的。<code>group_wait</code> 把开始产生的告警收集起来，最后作为一条告警信息发送出来，<code>repeat_interval</code> 可以将重复的告警以更大的时间间隔发送。</p>
+<p>在 <code>AlertManager</code> 的配置中进行如下配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">route:
+  group_wait: 60s       # 分组等待的时间为 60 秒，收到告警后并不是马上发送出去，看是否还有具有 alertname 这个标签的报警发过来，如果有的话，一起发出报警
+  group_interval: 60s   # 上一组报警与下一组报警的间隔时间为 60 秒
+  repeat_interval: 15m  # 重复报警时间
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="其他方式">其他方式</h3>
+<p>我们也可以考虑把告警信息都收集起来，做统计分析，基于统计数据按周、月生成告警报告，比如，哪些应用在哪段时间里产生了最多的报警，哪些指标在哪段时间里产生了最多的报警，某个报警阈值的 90% 分位数、95%分位数、99%分位数，哪个部门产生了最多的报警数等等。一来要求业务团队改造程序或结构，调整资源配置，比如有些代码写得性能特别差，资源占用高，导致告警信息频繁发送；二来可以作为我们设置各种资源阈值的统计参考数据，取代常用的经验值或习惯值，比如，根据历史报警数据的统计，采取百分位数，使得某告警在 <code>95%</code> 的情况下不再发送告警信息。</p>
+<h3 id="总结和思考">总结和思考</h3>
+<p>做好告警的收敛是很有必要的，也有多种方法。借助于 <code>AlertManager</code>，我们可以通过分组、抑制、静默和延时等方法来做告警的收敛。</p>
+<p>就 <code>AlertManager</code> 而言，在告警抑制上，我们还可以考虑更多的告警抑制规则，比如，在多种告警级别（<code>critical</code>、<code>emergency</code>、<code>warning</code>等）的情况下，每一种高级别告警抑制所有比它低的级别的告警；在告警延时上，高级别告警的延时参数缩短，低级别告警的延时参数增长。</p>
+<p>另外，基于统计数据按周、月生成告警报告，改进应用程序和架构，合理设置阈值，更好和更准确地报警。</p>
+<p>考虑这样一种设计，我们想把 <code>AlertManager</code> 发送的报警收集起来，那么，由于 <code>AlertManager</code> 会把从 <code>Prometheus</code> 发送来的报警信息进行分组聚合，抑制等操作，从而导致实际产生的报警一般会多于发送出来的报警。如果我们想把 <code>AlertManager</code> 的报警信息收集起来，那么，我们是应该在 <code>AlertManager</code> 接收到报警的时候收集，还是在真正发送报警之前进行收集？</p>
+<p>如果是在接收到报警时收集，那么我们实际上会收集到所有产生的报警，数据量大，信息详尽。如果使用这些进行分析，进而改进代码、程序架构和资源配置，那么，将会从上游彻底地减少报警，并且促进整个研发运维的进步和系统的稳定性。</p>
+<p>如果是在实际发送时收集，那么我们收集到的数据量就会比较小，报警是经过聚合的，被抑制的报警不发送，经过分析优化后，将会使得接收到的报警数量减少，但是产生的报警（按原来的标准，这种情况下会产生报警）却可能增多，比如在不做上游改变的情况下，调整阈值，使得 <code>99%</code> 的报警不发送，问题则会堆积在 <code>Prometheus</code> 那边，不会向 <code>AlertManager</code> 发送报警。</p>
+<p>根据以上分析，我们选择在 <code>AlertManager</code> 接收到报警时即收集之。</p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linux 中常见问题及解决 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/linux/linux-questions-and-solution/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Linux 中常见问题及解决" />
+<meta property="og:description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/linux/linux-questions-and-solution/" />
+<meta property="article:published_time" content="2017-10-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-10-22T00:00:00+00:00" />
+<meta itemprop="name" content="Linux 中常见问题及解决">
+<meta itemprop="description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。">
+<meta itemprop="datePublished" content="2017-10-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2017-10-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="767">
+
+
+
+<meta itemprop="keywords" content="Linux," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux 中常见问题及解决"/>
+<meta name="twitter:description" content="本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>本篇博客记录了在 Linux 系统中常见的问题及解决方法，以备后查。</p>
+<p>1、从 Mac 的终端中 scp VirtualBox 虚拟机中的文件时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:clickhouse_exporter wanghuan$ scp root@192.168.33.10:/vagrant/clickhouse_exporter ./
+root@192.168.33.10: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：在虚拟机内部，修改 /etc/ssh/sshd_config 文件中如下参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">PermitRootLogin yes
+PasswordAuthentication yes
+PubkeyAuthentication yes
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启虚拟机内 sshd 服务。</p>
+<p>2、wget: unable to resolve host address
+问题：DNS解析的问题
+将以下内容加入<code>/etc/resolv.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">nameserver 8.8.8.8 <span class="ni">#google域名服务器</span>
+nameserver 8.8.4.4 <span class="ni">#google域名服务器</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3、使用 <code>Linux</code> 服务启动 <code>confd</code> 进程，启动时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">Mar 18 02:26:38 ip-172-27-124-70.ap-southeast-1.compute.internal confd[28240]: 2019-03-18T02:26:38Z ip-172-27-124-70.ap-southeast-1.compute.internal /usr/bin/confd[28240]: FATAL UserHomeNotFound: user home directory not found.
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：
+在 <code>confd.service</code> （<code>/usr/lib/systemd/system/confd.service</code>）中加入如下环境变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Service]
+Environment=&#34;HOME=/root&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>重启 <code>confd</code> 服务即可。</p>
+<p>4、在 <code>Linux</code> 下执行脚本，报如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# ./install.sh -h
+-bash: ./install.sh: /bin/bash^M: bad interpreter: No such file or directory
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：安装dos2unix，将DOS格式文本文件转换成Unix格式，使用如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum install -y dos2unix
+</code></pre></td></tr></table>
+</div>
+</div><p>使用方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">dos2unix filename_1 filename_2 filename_3
+</code></pre></td></tr></table>
+</div>
+</div><p>5、使用curl命令从网络上下载文件时，报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0
+curl: (35) Peer reports incompatible or unsupported protocol version.
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：</p>
+<p>（1）更新curl</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update -y curl
+</code></pre></td></tr></table>
+</div>
+</div><p>更新curl后还是报一样的错误</p>
+<p>（2）更新nss nspr</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">yum update -y nss nspr nss-util
+</code></pre></td></tr></table>
+</div>
+</div><p>更新后问题得到解决。</p>
+<p>仅更新（1）和仅更新（2）都不起作用</p>
+<p>6、<code>CentOS 7</code> 虚拟机有网卡，没有 <code>IP</code> 地址，进入 <code>/etc/sysconfig/network-scripts</code> 目录下，修改 <code>ifcfg-eth0</code> 文件</p>
+<center>
+<img src="/image/linux/questions-and-solutions/WechatIMG622.png" width="800px" height="300px" />
+</center>
+<p>将其中的 <code>ONBOOT</code> 修改为 <code>yes</code>，然后使用 <code>systemctl restart network</code> 命令重启网络</p>
+<p>注意：启动 <code>Windows</code> 下 <code>VMware</code> 相关的服务</p>
+<p>7、使用SSH无法登陆服务器，VNC操作命令提示“fork:cannot allocate memory”，或者，在已经登录至该服务器上的终端中执行命令，所有命令均无法执行，一直提示如下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# free -h
+bash: fork: Cannot allocate memory
+</code></pre></td></tr></table>
+</div>
+</div><p>查看最大进程数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost /]# sysctl kernel.pid_max
+kernel.pid_max = 32768
+</code></pre></td></tr></table>
+</div>
+</div><p>查看进程数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost ~]# ps -eLf | wc -l
+1011
+</code></pre></td></tr></table>
+</div>
+</div><p>解决：</p>
+<p>1）修改最大进程数，即时生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo 1000000 &gt; /proc/sys/kernel/pid_max
+</code></pre></td></tr></table>
+</div>
+</div><p>2）永久生效的方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;kernel.pid_max=1000000 &#34; &gt;&gt; /etc/sysctl.conf
+sysctl -p
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

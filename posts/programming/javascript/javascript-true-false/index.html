@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JavaScript 中的真值和假值问题 - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/programming/javascript/javascript-true-false/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="JavaScript 中的真值和假值问题" />
+<meta property="og:description" content="JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/programming/javascript/javascript-true-false/" />
+<meta property="article:published_time" content="2019-06-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-06-02T00:00:00+00:00" />
+<meta itemprop="name" content="JavaScript 中的真值和假值问题">
+<meta itemprop="description" content="JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。">
+<meta itemprop="datePublished" content="2019-06-02T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-06-02T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="457">
+
+
+
+<meta itemprop="keywords" content="JavaScript," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JavaScript 中的真值和假值问题"/>
+<meta name="twitter:description" content="JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>JavaScript 中的真值和假值经常用于判断语句和条件语句中，但是其真值和假值的确定和其他编程语言大不相同，如果对此理解有误，那么将会导致代码出现问题。</p>
+<h3 id="javascript-中的真值">JavaScript 中的真值</h3>
+<p>在 JavaScript 中，真值指的是在布尔值上下文中转换后的值为真的值。</p>
+<p>所有值都是真值，除非它们被定义为假值，即被定义为<code>false</code>，<code>0</code>，<code>&quot;&quot;</code>，<code>null</code>，<code>undefined</code>，<code>NaN</code>。</p>
+<p>JavaScript 在布尔值上下文中使用强制类型转换。</p>
+<p>JavaScript 中的真值示例如下（将被转换为 true，if后的代码段将被执行）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">if (true)
+if ({})
+if ([])
+if (42)
+if (&#34;foo&#34;)
+if (new Date())
+if (-42)
+if (3.14)
+if (-3.14)
+if (Infinity)
+if (-Infinity)  
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="javascript-中的假值">JavaScript 中的假值</h3>
+<p>在 JavaScript 中，假值是在布尔值上下文中已认定可转换为假的值。</p>
+<p>JavaScript 在需要用到布尔类型值得上下文中使用强制类型转换将值转换为布尔值，比如在条件语句或者循环语句中。</p>
+<p>JavaScript 中的假值示例如下（通过 if 代码段将 falsy 值转换为 false）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">if (false)
+if (null)
+if (undefined)
+if (0)
+if (NaN)
+if (&#39;&#39;)
+if (&#34;&#34;)
+if (document.all)
+</code></pre></td></tr></table>
+</div>
+</div><p>document.all 在过去被用于浏览器检测，是 HTML 规范在此定义了故意与 ECMAScript 标准相违背的，以保持与历史代码得兼容性。</p>
+<p>document.all 虽然是一个对象，但其转换为布尔值后是 false。</p>
+<h3 id="参考资料">参考资料</h3>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

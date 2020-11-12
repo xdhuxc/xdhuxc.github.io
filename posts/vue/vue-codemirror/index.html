@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vue 集成 CodeMirror - xdhuxc</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xdhuxc" /><meta name="description" content="当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。
+" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.68.3 with theme even" />
+
+
+<link rel="canonical" href="https://xdhuxc.github.io/posts/vue/vue-codemirror/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+
+
+<meta property="og:title" content="Vue 集成 CodeMirror" />
+<meta property="og:description" content="当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xdhuxc.github.io/posts/vue/vue-codemirror/" />
+<meta property="article:published_time" content="2019-05-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-05-26T00:00:00+00:00" />
+<meta itemprop="name" content="Vue 集成 CodeMirror">
+<meta itemprop="description" content="当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。">
+<meta itemprop="datePublished" content="2019-05-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-05-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1849">
+
+
+
+<meta itemprop="keywords" content="Vue,CodeMirror," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue 集成 CodeMirror"/>
+<meta name="twitter:description" content="当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xdhuxc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/posts/">
+        <li class="mobile-menu-item">文章</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a><a href="">
+        <li class="mobile-menu-item"></li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xdhuxc</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/posts/">文章</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href=""></a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
+<h3 id="codemirror-简介">CodeMirror 简介</h3>
+<p>CodeMirror 是一个用于编辑文本框代码高亮的 JavaScript 插件，为各种编程语言实现关键字、函数、变量等代码高亮，丰富的 API 和可扩展功能以及多个主题样式、可以基本满足各种项目的需求。</p>
+<p>CodeMirror 支持各种编程语言、标记语言的语法高亮，包括 C、C++、Java、PHP、JavaScript、Python、Go、Ruby、SQL等，以及 LaTex、wiki、Markdown等，同时也支持 JSON、YAML、TOML等配置文件常用格式。此外，CodeMirror 还支持代码自动补全、搜索、替换、HTML预览、显示行号、选择/搜索结果高亮等功能。</p>
+<p>CodeMirror 目前已经被集成进各种应用程序中，例如 Adobe Brackets、Light Table等开发环境，经常被用于各种 SQL、JavaScript、JSON、YAML 等的在线编辑器的基础库来使用。</p>
+<h3 id="原生方式使用-codemirror">原生方式使用 CodeMirror</h3>
+<p>本部分内容介绍如何使用 CodeMirror 插件。</p>
+<p>1、引入核心文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;script src=&#34;lib/codemirror.js&#34;&gt;&lt;/script&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;lib/codemirror.css&#34;&gt;
+&lt;script src=&#34;mode/javascript/javascript.js&#34;&gt;&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>codemirror.js 和 codemirror.css 是 CodeMirror 插件的核心文件，无论要高亮的代码是何种语言，都需要引入这两个文件。</p>
+<p>引入 mode/javascript/javascript.js 用于支持对 JavaScript 的语法高亮。</p>
+<p>2、创建编辑器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;html&gt;
+    &lt;body&gt;
+        &lt;textarea id=&#34;code&#34; name=&#34;code&#34;&gt;&lt;/textarea&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>创建 HTML 文本框元素，用于存放需要高亮显示的代码。</p>
+<p>在 JavaScript 代码中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;script&gt;
+    var editor = CodeMirror.fromTextArea(
+    document.getElementById(&#34;code&#34;), // 获取文本框元素
+    {
+        lineNumbers: true,
+        mode: &#39;text/x-yaml&#39;,
+        gutters: [&#39;CodeMirror-lint-markers&#39;],
+        theme: &#39;rubyblue&#39;,
+    });                             //设置选项参数
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>使用文本框元素和参数对象来创建 CodeMirror 对象，</p>
+<p>选项参数含义说明如下：</p>
+<ul>
+<li>lineNumbers：为 true 时在左侧显示行号，为 false 时不显示行号。</li>
+<li>mode：显示模式，也就是需要高亮显示的语言的标示，例如 text/x-yaml 表示将高亮显示 YAML 语言的内容。</li>
+<li>gutters：用来添加额外的 gutter，值为 CSS 名称数组，每一项定义了用于绘制 gutter 背景的宽度。</li>
+<li>theme：显示的主题，详情可参考：https://codemirror.net/demo/theme.html。</li>
+</ul>
+<p>3、获取及填充值</p>
+<p>使用如下方法获取 CodeMirror 的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.getValue() # 获取经过转义的数据
+editor.getTextArea().value # 获取未经过转义的数据
+</code></pre></td></tr></table>
+</div>
+</div><p>使用如下方法为 CodeMirror 赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setValue(&#34;Hello, World!&#34;)
+</code></pre></td></tr></table>
+</div>
+</div><p>4、设置文本框尺寸及选项</p>
+<p>可通过如下方法设置文本框尺寸</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setSize(&#34;600px&#34;, &#34;800px&#34;);
+</code></pre></td></tr></table>
+</div>
+</div><p>可在代码中通过如下方式设置 CodeMirror 属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setOption(&#34;readOnly&#34;, true);
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="vue-中集成-codemirror">Vue 中集成 CodeMirror</h3>
+<p>当我们使用 Vue 来做我们的前端项目时，可以使用基于 CodeMirror 的 vue-codemirror 来完成 Web 代码编辑器。</p>
+<p>1、安装插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 安装 codemirror 插件
+</span><span class="gh"></span>npm install codemirror
+<span class="gh"># 安装 vue-codemirror 插件
+</span><span class="gh"></span>npm install vue-codemirror
+</code></pre></td></tr></table>
+</div>
+</div><p>2、挂载 VueCodeMirror，在 main.js 中加入如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">import VueCodemirror from &#39;vue-codemirror&#39;;
+import &#39;codemirror/lib/codemirror.css&#39;;
+
+Vue.use(VueCodemirror);
+
+new Vue({
+  el: &#39;#app&#39;,
+  router,
+  store,
+  i18n,
+  render: h =&gt; h(App),
+});
+</code></pre></td></tr></table>
+</div>
+</div><p>3、在其他页面中使用该组件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
+    &lt;el-dialog
+        :visible.sync=&#34;dialogViewVisible&#34;
+        :title=&#34;CodeMirror&#34;
+        :show-close=&#34;true&#34;
+        :close-on-click-modal=&#34;false&#34;
+        :close-on-press-escape=&#34;false&#34;
+        width=&#34;620px&#34;&gt;
+        &lt;codemirror v-model=&#34;codeMirrorContent&#34; :options=&#34;cmOptions&#34; class=&#34;json-editor&#34;&gt;&lt;/codemirror&gt;
+    &lt;/el-dialog&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { codemirror } from &#39;vue-codemirror&#39;;
+import &#39;codemirror/addon/lint/lint.css&#39;;
+import &#39;codemirror/lib/codemirror.css&#39;;
+import &#39;codemirror/theme/rubyblue.css&#39;;
+require(&#39;script-loader!jsonlint&#39;);
+import &#39;codemirror/mode/javascript/javascript&#39;;
+import &#39;codemirror/addon/lint/lint&#39;;
+import &#39;codemirror/addon/lint/json-lint&#39;;
+
+export default {
+  name: &#39;CodeMirror&#39;,
+  data() {
+    return {
+      codeMirrorContent: &#39;&#39;,
+      dialogViewVisible: false,
+      cmOptions: {
+        lineNumbers: true,
+        mode: &#39;text/x-yaml&#39;,
+        gutters: [&#39;CodeMirror-lint-markers&#39;],
+        theme: &#39;rubyblue&#39;,
+        lint: true
+      }
+    };
+  },
+  methods: {
+      // 处理点击事件
+      handleView(index, app) {
+            this.codeMirrorContent = app.yaml;
+            this.dialogViewVisible = true;
+      }
+  }
+&lt;/script&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>注意：</p>
+<ul>
+<li>mode 用来指定显示代码的格式，可以是JSON，YAML，SQL等，详情可参考：https://codemirror.net/mode/index.html。</li>
+<li>codeMirrorContent 是字符串格式的内容，如果后台传递过来的数据不是字符串格式，需要转换为字符串格式，否则会出错。</li>
+<li>theme 是显示主题，可以显示不同的背景色，详细可参考：https://codemirror.net/demo/theme.html。</li>
+</ul>
+<p>选项参数含义说明如下：</p>
+<ul>
+<li>lineNumbers：为 true 时在左侧显示行号，为 false 时不显示行号。</li>
+<li>mode：显示模式，也就是需要高亮显示的语言的标示，例如 text/x-yaml 表示将高亮显示 YAML 语言的内容。</li>
+<li>gutters：用来添加额外的 gutter，值为 CSS 名称数组，每一项定义了用于绘制 gutter 背景的宽度。</li>
+<li>theme：显示的主题，详情可参考：https://codemirror.net/demo/theme.html。</li>
+</ul>
+<h3 id="常见问题及解决">常见问题及解决</h3>
+<p>1、页面中报错如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">Error: Parse error on line 1:
+
+^
+Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#39;FALSE&#39;, &#39;{&#39;, &#39;[&#39;, got &#39;EOF&#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>可能的一种情况是：</p>
+<p>字符串内容为 YAML 格式，但是 mode 却为：<code>text/x-json</code>，将其改为：<code>text/x-yaml</code> 试下。</p>
+<p>2、使用多个 CodeMirror 实例时，会发生数据不能及时更新，需要获取到焦点才会更新数据的情况，解决方法如下：</p>
+<p>引入 refresh 插件，在处理函数中使用定时任务刷新 CodeMirror 组件，代码示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
+   &lt;codemirror ref=&#34;jenkinsFileCode&#34; v-model=&#34;content&#34; :options=&#34;fileOptions&#34; class=&#34;json-editor&#34;&gt;&lt;/codemirror&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import &#39;codemirror/addon/display/autorefresh.js&#39;;
+
+export default {
+  name: &#39;Pipeline&#39;,
+  data() {
+    return {
+      content: &#39;&#39;,
+      fileOptions: {
+        lineNumbers: true,
+        mode: &#39;text/x-yaml&#39;,
+        gutters: [&#39;CodeMirror-lint-markers&#39;],
+        theme: &#39;erlang-dark&#39;,
+        lint: true,
+        lineWrapping: true,
+        autoRefresh: true // 此属性是 autorefresh 的，需要引入 autorefresh.js
+      }
+    }
+  }
+  methods: {
+    handle() {
+       setTimeout(() =&gt; {
+              this.$refs.jenkinsFileCode.refresh();
+       }, 50);
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+  .json-editor {
+    height: 100%;
+  }
+  .CodeMirror {
+    border: 1px solid <span class="ni">#eee</span>;
+    height: 950px;
+  }
+  .CodeMirror-scroll {
+    height: 950px;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+&lt;/style&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="参考资料">参考资料</h3>
+<p><a href="https://codemirror.net/">https://codemirror.net/</a></p>
+<p><a href="https://www.itread01.com/content/1540634681.html">https://www.itread01.com/content/1540634681.html</a></p>
+<p><a href="https://www.cnblogs.com/onlyonely/p/4450029.html">https://www.cnblogs.com/onlyonely/p/4450029.html</a></p>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    %!(EXTRA string=<a class="hexo-link" href="https://gohugo.io">Hugo</a>)
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+     - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+     - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xdhuxc 版权所有</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
