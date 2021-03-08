@@ -9,10 +9,28 @@
     <managingEditor>xdhuxc@163.com (xdhuxc)</managingEditor>
     <webMaster>xdhuxc@163.com (xdhuxc)</webMaster>
     <copyright>xdhuxc 版权所有</copyright>
-    <lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://xdhuxc.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>benchmark</title>
+      <link>https://xdhuxc.github.io/tags/benchmark/</link>
+      <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
+      <author>xdhuxc@163.com (xdhuxc)</author>
+      <guid>https://xdhuxc.github.io/tags/benchmark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://xdhuxc.github.io/tags/golang/</link>
+      <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
+      <author>xdhuxc@163.com (xdhuxc)</author>
+      <guid>https://xdhuxc.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Kubernetes</title>
@@ -38,15 +56,6 @@
       <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
       <author>xdhuxc@163.com (xdhuxc)</author>
       <guid>https://xdhuxc.github.io/tags/grafana/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://xdhuxc.github.io/tags/golang/</link>
-      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      <author>xdhuxc@163.com (xdhuxc)</author>
-      <guid>https://xdhuxc.github.io/tags/golang/</guid>
       <description></description>
     </item>
     
