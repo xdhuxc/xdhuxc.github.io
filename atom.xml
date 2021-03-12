@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">xdhuxc</title>
     <subtitle type="html">记录一些技术知识</subtitle>
-    <updated>2021-03-08T20:02:18&#43;08:00</updated>
+    <updated>2021-03-12T10:45:39&#43;08:00</updated>
     <id>https://xdhuxc.github.io/</id>
     <link rel="alternate" type="text/html" href="https://xdhuxc.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://xdhuxc.github.io/atom.xml" />
@@ -17,7 +17,7 @@
     <rights>xdhuxc 版权所有</rights>
     <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator>
         <entry>
-            <title type="text">Golang flag 包读取参数怪事</title>
+            <title type="text">Golang 基准测试的使用方法</title>
             <link rel="alternate" type="text/html" href="https://xdhuxc.github.io/posts/programming/golang/golang-benchmark/" />
             <id>https://xdhuxc.github.io/posts/programming/golang/golang-benchmark/</id>
             <updated>2021-03-08T00:00:00&#43;00:00</updated>
@@ -22751,7 +22751,7 @@ WantedBy=multi-user.target
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -23565,7 +23565,7 @@ yum clean,yum clean all
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -25412,7 +25412,7 @@ apt-get update &amp;amp;&amp;amp; apt-get install net-tools
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -26157,19 +26157,19 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;R：运行&lt;/td&gt;
+&lt;td&gt;R：运行，该进程目前正在运行，或者说可以被运行&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;S：睡眠&lt;/td&gt;
+&lt;td&gt;S：睡眠，该进程目前正在睡眠当中，可被某些信号唤醒&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;T：跟踪或停止&lt;/td&gt;
+&lt;td&gt;T：跟踪或停止，该进程目前正在侦测或被停止了&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Z：僵尸进程&lt;/td&gt;
+&lt;td&gt;Z：僵尸进程，该进程应该已经被终止，但其父进程却无法正常终止它，造成僵尸状态&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -26179,6 +26179,13 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;执行 &lt;code&gt;top&lt;/code&gt; 命令后，默认显示CPU整体情况，按左上角 &lt;code&gt;1&lt;/code&gt; 键，显示每个 &lt;code&gt;CPU&lt;/code&gt; 的负载情况&lt;/p&gt;
+&lt;p&gt;输入 top 命令，快捷键使用如下：&lt;/p&gt;
+&lt;p&gt;按 ‘X’ 键，再按 ‘B’ 键，默认按 CPU 使用率降序排列&lt;/p&gt;
+&lt;p&gt;按住 ‘Shift’ 键，再按 ‘P’ 键，是按 CPU使用率 降序排列。&lt;/p&gt;
+&lt;p&gt;按住 ‘Shift’ 键，再按 ‘M’ 键，是按 内存使用率 降序排列。&lt;/p&gt;
+&lt;p&gt;按住 ‘Shift’ 键，再按 ‘T’ 键，是按 进程运行时间 降序排列。&lt;/p&gt;
+&lt;p&gt;按 ‘F’ 键，进入字段管理页面，使用上下键控制光标移动，使用光标选中某字段，按 ‘D’ 或者空格，取消该列的显示，按 ‘q’ 或 ‘Esc’ 再次进入 top 命令页面，可以看到刚才选中的列已经不显示了。&lt;/p&gt;
+&lt;p&gt;在字段管理页面，使用光标选中某字段后，按 ‘S’ 键，可将该字段设置为排序字段，然后按 ‘Esc’ 或 ‘Q’ 键退出，默认按降序排列。若要改为升序排列，按住 ‘Shift’ 键，然后按 ‘R’ 键，即可按照排序字段升序排列。&lt;/p&gt;
 &lt;h3 id=&#34;uniq-命令&#34;&gt;uniq 命令&lt;/h3&gt;
 &lt;p&gt;uniq 命令用于报告或忽略文件中的重复行，一般与sort命令结合使用&lt;/p&gt;
 &lt;p&gt;选项如下：&lt;/p&gt;
@@ -26461,7 +26468,7 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -26667,7 +26674,7 @@ systemctl restart crond
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -27572,7 +27579,7 @@ Hello Shell.
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -31322,7 +31329,7 @@ softirq 3416731289 3 1574245130 526818 783196686 2384220 0 202 386807575 0 66957
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -32857,7 +32864,7 @@ reboot  # 重新启动机器才能使新内核生效。
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -33421,7 +33428,7 @@ bashdb --debug xdhuxc.sh
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -35562,7 +35569,7 @@ git config --global user.email &amp;#34;xdhuxc@163.com&amp;#34; &lt;span class=&
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -35922,7 +35929,7 @@ NTP synchronized: yes
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -40963,7 +40970,7 @@ full_path=$(realpath $0)
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -41730,7 +41737,7 @@ COMMIT
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                             
@@ -42141,7 +42148,7 @@ sysctl -p
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -49007,7 +49014,7 @@ sed &#39;s/book/books/g&#39; file
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -50745,7 +50752,7 @@ nonvoluntary_ctxt_switches:	3
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="Linux" label="Linux" />
+                                <category scheme="https://xdhuxc.github.io/tags/linux/" term="linux" label="linux" />
                             
                         
                     
