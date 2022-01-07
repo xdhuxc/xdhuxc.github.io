@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>ElasticSearch 常见问题及解决 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -267,11 +287,11 @@
             
 
             <nav class="contents"></nav><div class="post-body e-content">
-              <p>本篇博客记录了在使用 ElasticSearch 的过程中常见的问题及解决方法。</p>
+                <p>本篇博客记录了在使用 ElasticSearch 的过程中常见的问题及解决方法。</p>
 <p>1、启动 elasticsearch 容器时，直接映射文件或目录时，报权限错误</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -291,7 +311,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[2018-11-11T10:36:18,442][INFO ][o.e.n.Node               ] [] initializing ...
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[2018-11-11T10:36:18,442][INFO ][o.e.n.Node               ] [] initializing ...
 [2018-11-11T10:36:18,462][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [] uncaught exception in thread [main]
 Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/nodes
         at sun.nio.fs.UnixException.translateToIOException(UnixException.java:84) ~[?:?]
@@ -301,10 +321,10 @@ Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/no
         at java.nio.file.Files.createDirectory(Files.java:674) ~[?:1.8.0_92-internal]
         at java.nio.file.Files.createAndCheckIsDirectory(Files.java:781) ~[?:1.8.0_92-internal]
         at java.nio.file.Files.createDirectories(Files.java:767) ~[?:1.8.0_92-internal]
-        at org.elasticsearch.env.NodeEnvironment.&lt;init&gt;(NodeEnvironment.java:220) ~[elasticsearch-5.0.0.jar:5.0.0]
-        at org.elasticsearch.node.Node.&lt;init&gt;(Node.java:240) ~[elasticsearch-5.0.0.jar:5.0.0]
-        at org.elasticsearch.node.Node.&lt;init&gt;(Node.java:220) ~[elasticsearch-5.0.0.jar:5.0.0]
-        at org.elasticsearch.bootstrap.Bootstrap$5.&lt;init&gt;(Bootstrap.java:191) ~[elasticsearch-5.0.0.jar:5.0.0]
+        at org.elasticsearch.env.NodeEnvironment.<span class="p">&lt;</span><span class="nt">init</span><span class="p">&gt;</span>(NodeEnvironment.java:220) ~[elasticsearch-5.0.0.jar:5.0.0]
+        at org.elasticsearch.node.Node.<span class="p">&lt;</span><span class="nt">init</span><span class="p">&gt;</span>(Node.java:240) ~[elasticsearch-5.0.0.jar:5.0.0]
+        at org.elasticsearch.node.Node.<span class="p">&lt;</span><span class="nt">init</span><span class="p">&gt;</span>(Node.java:220) ~[elasticsearch-5.0.0.jar:5.0.0]
+        at org.elasticsearch.bootstrap.Bootstrap$5.<span class="p">&lt;</span><span class="nt">init</span><span class="p">&gt;</span>(Bootstrap.java:191) ~[elasticsearch-5.0.0.jar:5.0.0]
         at org.elasticsearch.bootstrap.Bootstrap.setup(Bootstrap.java:191) ~[elasticsearch-5.0.0.jar:5.0.0]
         at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:286) ~[elasticsearch-5.0.0.jar:5.0.0]
         at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:112) ~[elasticsearch-5.0.0.jar:5.0.0]
@@ -315,24 +335,24 @@ Caused by: java.nio.file.AccessDeniedException: /usr/share/elasticsearch/data/no
 <p>解决：先创建一个卷，然后再挂载该目录</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker volume create --opt device=/root/es/data --name=xdhuxc
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">docker volume create --opt device=/root/es/data --name=xdhuxc
 docker run -p 9200:9200 -v xdhuxc:/usr/share/elasticsearch/data docker.elastic.co/elasticsearch/elasticsearch:6.5.0
 </code></pre></td></tr></table></div>
 </div>
 </div><p>如果仍然出现错误，创建 elasticsearch 用户，给目录赋予权限，然后启动容器</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">groupadd -g 1000 elasticsearch
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">groupadd -g 1000 elasticsearch
 useradd -u 1000 -g 1000 elasticsearch
 chown -R 1000 es
 chgrp -r 1000 es
@@ -341,7 +361,7 @@ chgrp -r 1000 es
 </div><p>2、创建索引时，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -363,7 +383,7 @@ chgrp -r 1000 es
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ curl -H &#34;Content-Type: application/json&#34; -XPUT http://localhost:9200/xdhuxc_a -T ./a.json
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ curl -H &#34;Content-Type: application/json&#34; -XPUT http://localhost:9200/xdhuxc_a -T ./a.json
 {
     &#34;error&#34;:{
         &#34;root_cause&#34;:[
@@ -388,7 +408,7 @@ chgrp -r 1000 es
 </div><p>a.json 的内容如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -398,7 +418,7 @@ chgrp -r 1000 es
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{
     &#34;container_id&#34; : &#34;30855c6b7ea297a3e8ed2d62b7bc489d9712cd57e70d90b1d229e5c6932987a6&#34;,
     &#34;container_name&#34; : &#34;/is-live.1.yyk840n4mkd4x9fr53wt0tqh0&#34;,
     &#34;source&#34; : &#34;stdout&#34;,
@@ -411,16 +431,16 @@ chgrp -r 1000 es
 </div><p>原因：创建索引时丢失了 document type 和 document id，创建索引的格式为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">POST index_name/document_type/document_id -T abc.json
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">POST index_name/document_type/document_id -T abc.json
 </code></pre></td></tr></table></div>
 </div>
 </div><p>必须提供 document type 和 document id，文档 ID 在此处是可选的，如果不提供文档 ID，那么 elasticsearch 将会为其创建一个字母数字 ID。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -437,7 +457,7 @@ chgrp -r 1000 es
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ curl -H &#34;Content-Type: application/json&#34; -XPUT http://localhost:9200/yztc/xdhuxc/1 -T ./1.json
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:~ wanghuan$ curl -H &#34;Content-Type: application/json&#34; -XPUT http://localhost:9200/yztc/xdhuxc/1 -T ./1.json
 {
     &#34;_index&#34;:&#34;yztc&#34;,
     &#34;_type&#34;:&#34;xdhuxc&#34;,
@@ -457,22 +477,22 @@ chgrp -r 1000 es
 </div><p>其他几种方法创建一个索引：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">POST index_name/document_type -T abc.json
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">POST index_name/document_type -T abc.json
 PUT index_name/document_type/document_id -T abc.json
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、ElasticSearch启动时报错，错误如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[2017-06-20T09:57:45,307][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [node-1] uncaught exception in thread [main]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[2017-06-20T09:57:45,307][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [node-1] uncaught exception in thread [main]
 org.elasticsearch.bootstrap.StartupException: java.lang.RuntimeException: can not run elasticsearch as root
 </code></pre></td></tr></table></div>
 </div>
@@ -480,23 +500,23 @@ org.elasticsearch.bootstrap.StartupException: java.lang.RuntimeException: can no
 <p>1）在启动命令中加入参数，在使用命令行启动ElasticSearch时，加入额外的参数启动，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">/bin/elasticsearch -Des.insecure.allow.root=true
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">/bin/elasticsearch -Des.insecure.allow.root=true
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2）创建新用户，以新用户身份启动之</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">groupadd -g 700 elasticsearch                                                       # 创建elasticsearch用户组
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">groupadd -g 700 elasticsearch                                                       # 创建elasticsearch用户组
 useradd -u 701 -g 700 elasticsearch                                                 # 创建用户elasticsearch
 passwd elasticsearch                                                                # 为用户elasticsearch设置密码
 gpasswd -a elasticsearch elasticsearch                                              # 将用户elasticsearch添加到用户组elasticsearch中，第一个参数表示用户名，第二个参数表示用户组名
@@ -506,29 +526,29 @@ chown -R elasticsearch:elasticsearch /middleware/elasticsearch-2.4.1 # 为用户
 </div><p>4、Elasticsearch 启动时报错，错误如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 </code></pre></td></tr></table></div>
 </div>
 </div><p>执行如下命令解决：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">sysctl -w vm.max_map_count=262144
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">sysctl -w vm.max_map_count=262144
 </code></pre></td></tr></table></div>
 </div>
 </div><p>或者</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;vm.max_map_count=262144&#34; &gt;&gt; /etc/sysctl.conf
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">echo &#34;vm.max_map_count=262144&#34; &gt;&gt; /etc/sysctl.conf
 sysctl -p
 </code></pre></td></tr></table></div>
 </div>
@@ -538,7 +558,7 @@ sysctl -p
 <p>Elasticsearch 提供了专门的 <code>reroute API</code> 用于手工进行 <code>shard</code> 的移动、分配以及取消指令</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -566,7 +586,7 @@ sysctl -p
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">POST /_cluster/reroute
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">POST /_cluster/reroute
 {
   &#34;commands&#34;: [
     {
@@ -618,7 +638,13 @@ POST /_cluster/reroute
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -804,16 +830,19 @@ POST /_cluster/reroute
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -831,7 +860,7 @@ POST /_cluster/reroute
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -974,6 +1003,8 @@ POST /_cluster/reroute
 
         
 
+        
+
     
 
 
@@ -981,7 +1012,10 @@ POST /_cluster/reroute
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

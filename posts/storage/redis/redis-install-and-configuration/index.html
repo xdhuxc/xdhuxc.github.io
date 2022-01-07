@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>Redis 安装和配置详解 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -130,6 +133,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -157,7 +173,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -184,6 +200,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -278,18 +298,18 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。</p>
+                <p>本篇博客主要介绍了 Redis 的安装和配置参数的详细含义。</p>
 <h3 id="在-linux-中安装-redis"><a href="#在-linux-中安装-redis" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:在-linux-中安装-redis" class="headings">在 Linux 中安装 Redis</a></h3>
 <p>1、使用如下命令下载并解压Redis安装包</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ wget http://download.redis.io/releases/redis-4.0.1.tar.gz
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$ wget http://download.redis.io/releases/redis-4.0.1.tar.gz
 $ tar -zxf redis-4.0.1.tar.gz
 $ cd redis-4.0.1
 $ make
@@ -298,7 +318,7 @@ $ make
 </div><p>在 make 时，出现如下错误：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -312,8 +332,8 @@ $ make
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost redis-4.0.1]# make
-cd src &amp;&amp; make all
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost redis-4.0.1]# make
+cd src <span class="err">&amp;&amp;</span> make all
 make[1]: Entering directory <span class="sb">`/home/application/redis-4.0.1/src&#39;
 </span><span class="sb">    CC adlist.o
 </span><span class="sb">In file included from adlist.c:34:0:
@@ -323,13 +343,13 @@ make[1]: Entering directory <span class="sb">`/home/application/redis-4.0.1/src&
 </span><span class="sb">compilation terminated.
 </span><span class="sb">make[1]: *** [adlist.o] Error 1
 </span><span class="sb">make[1]: Leaving directory `</span>/home/application/redis-4.0.1/src&#39;
-make: *** [all] Error 2
+make: <span class="ge">**</span>* [all] Error 2
 </code></pre></td></tr></table></div>
 </div>
 </div><p>原因：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -347,7 +367,7 @@ make: *** [all] Error 2
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Allocator  
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Allocator  
 ---------  
  
 Selecting a non-default memory allocator when building Redis is done by setting  
@@ -369,52 +389,52 @@ To compile against jemalloc on Mac OS X systems, use:
 <p>使用如下命令进行make操作</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">make MALLOC=libc
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">make MALLOC=libc
 </code></pre></td></tr></table></div>
 </div>
 </div><p>之后在 make 的时候提示如下错误：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cc: error: ../deps/hiredis/libhiredis.a: No such file or directory
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cc: error: ../deps/hiredis/libhiredis.a: No such file or directory
 cc: error: ../deps/lua/src/liblua.a: No such file or directory
-make[1]: *** [redis-server] Error 1
+make[1]: <span class="ge">**</span>* [redis-server] Error 1
 make[1]: Leaving directory `/home/application/redis-4.0.1/src&#39;
-make: *** [all] Error 2
+make: <span class="ge">**</span>* [all] Error 2
 </code></pre></td></tr></table></div>
 </div>
 </div><p>解决：</p>
 <p>进入Redis安装目录下的deps目录下，执行如下命令：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">make lua hiredis linenoise
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">make lua hiredis linenoise
 </code></pre></td></tr></table></div>
 </div>
 </div><p>make之后，可以运行测试，确认Redis的功能是否正常，使用如下命令：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">make test
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">make test
 </code></pre></td></tr></table></div>
 </div>
 </div><p>出现如下报错：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -426,8 +446,8 @@ make: *** [all] Error 2
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost redis-4.0.1]# make test
-cd src &amp;&amp; make test
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost redis-4.0.1]# make test
+cd src <span class="err">&amp;&amp;</span> make test
 make[1]: Entering directory <span class="sb">`/home/application/redis-4.0.1/src&#39;
 </span><span class="sb">    CC Makefile.dep
 </span><span class="sb">make[1]: Leaving directory `</span>/home/application/redis-4.0.1/src&#39;
@@ -435,14 +455,14 @@ make[1]: Entering directory <span class="sb">`/home/application/redis-4.0.1/src&
 </span><span class="sb">You need tcl 8.5 or newer in order to run the Redis test
 </span><span class="sb">make[1]: *** [test] Error 1
 </span><span class="sb">make[1]: Leaving directory `</span>/home/application/redis-4.0.1/src&#39;
-make: *** [test] Error 2
+make: <span class="ge">**</span>* [test] Error 2
 </code></pre></td></tr></table></div>
 </div>
 </div><p>解决：</p>
 <p>根据提示安装tcl 8.5及以上版本</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -450,7 +470,7 @@ make: *** [test] Error 2
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
 tar -zxf tcl8.6.1-src.tar.gz
 cd /home/application/tcl8.6.1/unix/
 sudo ./configure
@@ -462,22 +482,22 @@ sudo make install
 启动redis服务：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
 $ ./redis-server
 </code></pre></td></tr></table></div>
 </div>
 </div><p>这种方式启动redis使用的是默认配置。也可以通过启动参数告诉redis使用指定配置文件使用下面命令启动。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
 $ ./redis-server redis.conf
 </code></pre></td></tr></table></div>
 </div>
@@ -485,7 +505,7 @@ $ ./redis-server redis.conf
 <p>3、启动 redis 服务进程后，就可以使用测试客户端程序 redis-cli 和 redis 服务交互了。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -493,7 +513,7 @@ $ ./redis-server redis.conf
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$ cd src
 $ ./redis-cli
 redis&gt; set abc def
 OK
@@ -503,12 +523,12 @@ redis&gt; get abc
 </div>
 </div><h3 id="在-windows-下安装-redis"><a href="#在-windows-下安装-redis" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:在-windows-下安装-redis" class="headings">在 Windows 下安装 Redis</a></h3>
 <p>1、Redis 支持 32 位和 64 位。这个需要根据你系统平台的实际情况选择，这里我们下载 <code>Redis-x64-xxx.zip</code> 压缩包到C盘，解压后，将文件夹重新命名为 redis。
-<img src="http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg" alt=""></p>
+<img src="https://xdhuxc.github.io/http://www.runoob.com/wp-content/uploads/2014/11/3B8D633F-14CE-42E3-B174-FCCD48B11FF3.jpg" alt=""></p>
 <p>2、打开一个 cmd 窗口 使用 cd 命令切换目录到 <code>C:\redis</code> 运行 <code>redis-server.exe redis.windows.conf</code>。如果想方便的话，可以把 redis 的路径加到系统的环境变量里，这样就省得再输路径了，后面的那个 <code>redis.windows.conf</code> 可以省略，如果省略，会启用默认的。输入之后，会显示如下界面：
-<img src="http://www.runoob.com/wp-content/uploads/2014/11/redis-install1.png" alt=""></p>
+<img src="https://xdhuxc.github.io/http://www.runoob.com/wp-content/uploads/2014/11/redis-install1.png" alt=""></p>
 <p>3、此时另启一个 cmd 窗口，原来的不要关闭，否则就无法访问服务端了。
 切换到 redis 目录下运行 <code>redis-cli.exe -h 127.0.0.1 -p 6379</code>。
-<img src="http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt=""></p>
+<img src="https://xdhuxc.github.io/http://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt=""></p>
 <h3 id="在命令行中查询配置-redis-参数"><a href="#在命令行中查询配置-redis-参数" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:在命令行中查询配置-redis-参数" class="headings">在命令行中查询配置 Redis 参数</a></h3>
 <blockquote>
 <p>Redis 的配置文件位于 Redis 安装目录下，文件名为 redis.conf。</p>
@@ -516,12 +536,12 @@ redis&gt; get abc
 <p>1、可以使用 <code>config</code> 命令查看或者设置配置项，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; config get loglevel
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; config get loglevel
 1) &#34;loglevel&#34;
 2) &#34;notice&#34;
 </code></pre></td></tr></table></div>
@@ -529,7 +549,7 @@ redis&gt; get abc
 </div><p>2、使用<code>*</code>获取所有配置项</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -662,7 +682,7 @@ redis&gt; get abc
 </span><span class="lnt">131
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; config get *
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">127.0.0.1:6379&gt; config get *
   1) &#34;dbfilename&#34;
   2) &#34;dump.rdb&#34;
   3) &#34;requirepass&#34;
@@ -798,14 +818,14 @@ redis&gt; get abc
 </div><p>3、可以通过修改<code>redis.conf</code>或者<code>config set</code>命令来修改配置</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; config set loglevel &#34;notice&#34;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">redis 127.0.0.1:6379&gt; config set loglevel &#34;notice&#34;
 OK
 redis 127.0.0.1:6379&gt; config get loglevel
 1) &#34;loglevel&#34;
@@ -827,12 +847,12 @@ redis 127.0.0.1:6379&gt; config get loglevel
 </ul>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">save 900 1
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">save 900 1
 save 300 10
 save 60 10000
 </code></pre></td></tr></table></div>
@@ -853,12 +873,12 @@ save 60 10000
 </ul>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">1、no：表示等操作系统进行数据缓存同步到磁盘（快） 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">1、no：表示等操作系统进行数据缓存同步到磁盘（快） 
 2、always：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全） 
 3、everysec：表示每秒同步一次（折衷，默认值）
 </code></pre></td></tr></table></div>
@@ -875,11 +895,11 @@ save 60 10000
 </ul>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">hash-max-zipmap-entries 64
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">hash-max-zipmap-entries 64
 hash-max-zipmap-value 512
 </code></pre></td></tr></table></div>
 </div>
@@ -910,7 +930,13 @@ hash-max-zipmap-value 512
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -1096,16 +1122,19 @@ hash-max-zipmap-value 512
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -1123,7 +1152,7 @@ hash-max-zipmap-value 512
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1266,6 +1295,8 @@ hash-max-zipmap-value 512
 
         
 
+        
+
     
 
 
@@ -1273,7 +1304,10 @@ hash-max-zipmap-value 512
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

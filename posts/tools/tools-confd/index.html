@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>配置拉取工具 confd 的使用及说明 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -278,13 +298,13 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。</p>
+                <p>本篇博客主要介绍配置拉取工具 confd 的使用，以备后需。</p>
 <p>confd 可以从后台数据源拉取数据，以 golang 模板的方式编写配置文件，渲染到本地文件，这对于一些需要动态或定时更改配置文件的程序非常方便。但是，有些数据源具有发布/订阅的特性，可以向 confd 推送数据，另外一些，就只能采用定时拉取的方式了。</p>
 <h3 id="confd-安装"><a href="#confd-安装" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:confd-安装" class="headings">confd 安装</a></h3>
 <p>下载二进制安装文件并复制到 PATH 目录下</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -292,12 +312,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 下载二进制文件
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 下载二进制文件
 </span><span class="gh"></span>wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
 <span class="gh"># 重命名该文件
 </span><span class="gh"></span>mv confd-0.16.0-linux-amd64 confd
 <span class="gh"># 添加执行权限并移动至 PATH 路径下
-</span><span class="gh"></span>chmod +x confd &amp;&amp; cp confd /usr/bin/
+</span><span class="gh"></span>chmod +x confd <span class="err">&amp;&amp;</span> cp confd /usr/bin/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>也可自行根据 <a href="https://github.com/kelseyhightower/confd" target="_blank" rel="noopener">confd 源码</a> 构建</p>
@@ -305,13 +325,13 @@
 <p>1、创建 confdir，用于存放 confd 的配置文件和模板文件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 存放 confd 使用的配置文件
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 存放 confd 使用的配置文件
 </span><span class="gh"></span>mkdir -p /etc/confd/conf.d    
 <span class="gh"># 用于存放模板文件，生成最终的配置文件
 </span><span class="gh"></span>mkdir -p /etc/confd/templates
@@ -321,7 +341,7 @@
 <p>模板文件 /etc/confd/templates/alertmanager.yaml.tmpl</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -355,7 +375,7 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">global:
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">global:
   resolve_timeout: 5m
 route:
   group_by: [&#39;alertname&#39;]
@@ -392,24 +412,24 @@ receivers:{{range gets &#34;/alertmanager/receivers/*&#34;}}{{$item := json .Val
 </div><p>在本地启动 DynamoDB 数据库实例，配置如下环境变量：（confd 需要使用这些环境变量）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">export AWS_REGION=ap-southeast-1
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">export AWS_REGION=ap-southeast-1
 export DYNAMODB_LOCAL=http://localhost:8000
 </code></pre></td></tr></table></div>
 </div>
 </div><p>存储在 DynamoDB 中的数据格式为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{
   &#34;key&#34;: &#34;/xdhuxc/alertmanager/receivers/10&#34;,
   &#34;value&#34;: &#34;{\&#34;name\&#34;:\&#34;send_to_dingding_bigdata\&#34;,\&#34;resolved\&#34;:false,\&#34;type\&#34;:\&#34;dingtalk\&#34;,\&#34;url\&#34;:\&#34;https://oapi.dingtalk.com/robot/send?access_token=238c10a8984980a1f34228cab29cbbdaaaceb80ef82ee125c96e3166628e2c44\&#34;}&#34;
 }
@@ -417,13 +437,13 @@ export DYNAMODB_LOCAL=http://localhost:8000
 </div>
 </div><div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{
   &#34;key&#34;: &#34;/xdhuxc/alertmanager/routes/25&#34;,
   &#34;value&#34;: &#34;{\&#34;receiver\&#34;:\&#34;send_to_dingding_business\&#34;,\&#34;match_re\&#34;:\&#34;{\\\&#34;namespace\\\&#34;: \\\&#34;business\\\&#34;}\&#34;}&#34;
 }
@@ -434,7 +454,7 @@ export DYNAMODB_LOCAL=http://localhost:8000
 <p>配置文件 /etc/confd/conf.d/alertmanager.yaml.toml</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -448,7 +468,7 @@ export DYNAMODB_LOCAL=http://localhost:8000
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[template]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[template]
 prefix = &#34;/xdhuxc&#34;
 src = &#34;alertmanager.yaml.tmpl&#34;
 dest = &#34;/tmp/alertmanager.yaml&#34;
@@ -465,16 +485,16 @@ reload_cmd = &#34;curl -X POST http://localhost:9093/-/reload&#34; # 更新配�
 </div><p>3、启动 confd 进程</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">confd -onetime -backend dynamodb -node http://localhost:8000 -table xdhuxc --log-level debug
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">confd -onetime -backend dynamodb -node http://localhost:8000 -table xdhuxc --log-level debug
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、最终渲染出来的配置文件内容为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -503,7 +523,7 @@ reload_cmd = &#34;curl -X POST http://localhost:9093/-/reload&#34; # 更新配�
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">global:
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">global:
   resolve_timeout: 5m
 route:
   group_by: [&#39;alertname&#39;]
@@ -536,7 +556,7 @@ receivers:
 <p>以 Linux 系统服务方式部署 confd，每 5 分钟拉取一次配置文件，confd.service 文件内容为：（/usr/lib/systemd/system/confd.service）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -553,7 +573,7 @@ receivers:
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
 Description=confd
 Documentation=http://www.confd.io/
 After=network.target
@@ -574,7 +594,7 @@ WantedBy=multi-user.target
 <p>当后端存储为 redis 时，confd.service（/usr/lib/systemd/system/confd.service）文件内容为：：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -588,7 +608,7 @@ WantedBy=multi-user.target
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
 Description=confd
 Documentation=http://www.confd.io/
 After=network.target
@@ -605,7 +625,7 @@ WantedBy=multi-user.target
 </div><p>当后端存储为 etcd 时，confd.service（/usr/lib/systemd/system/confd.service）文件内容为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -619,7 +639,7 @@ WantedBy=multi-user.target
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
 Description=confd
 Documentation=http://www.confd.io/
 After=network.target
@@ -636,7 +656,7 @@ WantedBy=multi-user.target
 </div><p>当后端存储为 consul 时，confd.service（/usr/lib/systemd/system/confd.service）文件内容为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -650,7 +670,7 @@ WantedBy=multi-user.target
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[Unit]
 Description=confd
 Documentation=http://www.confd.io/
 After=network.target
@@ -676,12 +696,12 @@ WantedBy=multi-user.target
 <p>添加如下 profile 到 ~/.aws/credentials 文件中</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[xdhuxc]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[xdhuxc]
 aws_access_key_id = &#39;${AWS_ACCESS_KEY_ID}&#39;
 aws_secret_access_key = &#39;${AWS_SECRET_ACCESS_KEY}&#39;
 </code></pre></td></tr></table></div>
@@ -690,11 +710,11 @@ aws_secret_access_key = &#39;${AWS_SECRET_ACCESS_KEY}&#39;
 <p>启动命令为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 systemctl restart confd
 </code></pre></td></tr></table></div>
 </div>
@@ -723,7 +743,13 @@ systemctl restart confd
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -814,18 +840,6 @@ systemctl restart confd
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/programming/golang/golang-redis/" class="related-link">golang 操作单点 Redis 代码示例</a>
-                    </li>
-                
-                    <li class="related-item">
-                        <a href="/posts/programming/golang/golang-number/" class="related-link">golang 数值处理</a>
-                    </li>
-                
-                    <li class="related-item">
-                        <a href="/posts/programming/golang/golang-excel/" class="related-link">使用 golang 操作 excel 表格</a>
-                    </li>
-                
-                    <li class="related-item">
                         <a href="/posts/programming/javascript/javascript-node-npm/" class="related-link">升级 NPM 和 Node</a>
                     </li>
                 
@@ -834,15 +848,27 @@ systemctl restart confd
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/programming/golang/golang-args/" class="related-link">Golang flag 包读取参数怪事</a>
-                    </li>
-                
-                    <li class="related-item">
-                        <a href="/posts/programming/golang/golang-gb2312-to-utf8/" class="related-link">Golang 将 GB2312编码的汉字 转为 UTF-8 编码的汉字</a>
-                    </li>
-                
-                    <li class="related-item">
                         <a href="/posts/programming/python/python-questions-and-solution/" class="related-link">Python 常见问题及解决</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/mixed/fireworks/" class="related-link">Happy 颖</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/storage/consul/consul-simple-use/" class="related-link">Consul 的基本使用</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/storage/sqlite/sqlite-basic-use/" class="related-link">sqlite 基本使用</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/tools/tools-vim/" class="related-link">Vim 常用命令及技巧</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/vue/vue-common-question-and-solution/" class="related-link">Vue 常见问题及解决</a>
                     </li>
                 
             </ul>
@@ -909,16 +935,19 @@ systemctl restart confd
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -936,7 +965,7 @@ systemctl restart confd
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1079,6 +1108,8 @@ systemctl restart confd
 
         
 
+        
+
     
 
 
@@ -1086,7 +1117,10 @@ systemctl restart confd
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>nginx 常用功能及配置详解 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -297,7 +317,7 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客介绍了 nginx 的常用功能和其配置的详细含义。</p>
+                <p>本篇博客介绍了 nginx 的常用功能和其配置的详细含义。</p>
 <h3 id="nginx-简介"><a href="#nginx-简介" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:nginx-简介" class="headings">nginx 简介</a></h3>
 <p>nginx 是一个轻量级高性能的 web 服务器，它是为快速响应大量静态文件请求和高效利用系统资源而设计的。与apache使用面向进程或线程的方式处理请求不同，nginx使用异步事件驱动模型在负载下性能更突出。</p>
 <p>nginx 功能丰富，可作为 HTTP 服务器，也可作为反向代理服务器和邮件服务器，支持FastCGI、SSL、Virtual Host、URL Rewrite、Gzip等功能，并且支持很多第三方的模块扩展。</p>
@@ -315,7 +335,7 @@
 <h4 id="nginx-配置文件结构"><a href="#nginx-配置文件结构" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:nginx-配置文件结构" class="headings">nginx 配置文件结构</a></h4>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -338,7 +358,7 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">...                           # 全局块
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">...                           # 全局块
 events {                      # events 块
     ...       
 }
@@ -375,7 +395,7 @@ http {                        # http 块
 <p>nginx.conf文件示例</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -421,7 +441,7 @@ http {                        # http 块
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">user administrator administrator; # 配置用户或者用户组，默认为nobody nobody。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">user administrator administrator; # 配置用户或者用户组，默认为nobody nobody。
 worker_processes 2;               # 允许生成的进程数，设置值和CPU核心数一致，默认为：1。在nginx1.3.8和1.2.5之后的版本开始支持auto，自动匹配进程数。
 pid /var/nginx/nginx.pid # 指定 nginx 进程运行文件存放地址。
 error_log /var/log/nginx/error.log debug # 指定错误日志存放路径及级别，该设置可以放入全局块、http块、server块，日志级别依次为：debug|info|notice|warn|error|crit|alert|emerg。
@@ -471,7 +491,7 @@ http {
 <p>1、log_format中参数的含义</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -481,7 +501,7 @@ http {
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">$remote_addr 和 $http_x_forwarded_for 用以记录客户端的IP地址。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">$remote_addr 和 $http_x_forwarded_for 用以记录客户端的IP地址。
 $remote_user 用来记录客户端用户名称。
 $time_local 用来记录访问时间与时区。
 $request 用来记录请求的url与http协议。
@@ -498,37 +518,37 @@ $http_user_agent 用来记录客户端浏览器的相关信息。
 <p>1、在 http 块中有如下配置：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">error_page 404 https://www.baidu.com # 设置错误页，当代理遇到状态码为404时，把错误页面导向百度。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">error_page 404 https://www.baidu.com # 设置错误页，当代理遇到状态码为404时，把错误页面导向百度。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>要想让该语句起作用，必须配合着下面的配置一起使用：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_intercept_errors on; # 如果被代理服务器返回的状态码为400或者大于400，设置的error_page配置起作用，默认为：off。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_intercept_errors on; # 如果被代理服务器返回的状态码为400或者大于400，设置的error_page配置起作用，默认为：off。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、如果我们的代理只允许接受get、post请求方法的一种，可进行如下配置：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_method get; # 支持客户端的请求方法，post/get。 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_method get; # 支持客户端的请求方法，post/get。 
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、设置支持的http协议版本</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_http_version 1.0; # nginx 服务器提供代理服务的http协议版本1.0、1.1，默认为：1.0版本。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_http_version 1.0; # nginx 服务器提供代理服务的http协议版本1.0、1.1，默认为：1.0版本。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、如果 nginx 服务器给两台 web 服务器做代理，负载均衡算法采用轮询。那么当一台服务器 web 程序不能访问时，nginx服务器分发请求还是会给这台不能访问的 web 服务器。如果这里的响应连接时间过长，就会导致客户端的页面一直在等待，严重影响客户体验。</p>
@@ -536,13 +556,13 @@ $http_user_agent 用来记录客户端浏览器的相关信息。
 <p>以下配置可以作为解决方案：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_connect_timeout 1; # nginx 服务器与被代理服务器建立连接的超时时间，默认为：60s。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_connect_timeout 1; # nginx 服务器与被代理服务器建立连接的超时时间，默认为：60s。
 proxy_read_timeout 1; # nginx 服务器向被代理服务器组发出 read 请求后，等待响应的超时时间，默认为：60s。
 proxy_send_timeout 1; # nginx 服务器向被代理服务器组发出 write 请求后，等待响应的超时时间，默认为：60s。
 proxy_ignore_client_abort on; # 客户端断网时，nginx 服务器是否中断对被代理服务器的请求，默认为：off。
@@ -551,19 +571,19 @@ proxy_ignore_client_abort on; # 客户端断网时，nginx 服务器是否中断
 </div><p>5、如果使用 upstream 指令配置了一组服务器作为被代理服务器，服务器中的访问算法遵循配置的负载均衡规则，同时可以使用该指令配置在发生哪些异常情况时，将请求顺次交由下一组服务器处理。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_next_upstream timeout; # 反向代理 upstream 中设置的服务器组，出现故障时，被代理服务器返回的状态值。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_next_upstream timeout; # 反向代理 upstream 中设置的服务器组，出现故障时，被代理服务器返回的状态值。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>可以设置为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">error | timeout | invalid_header | http_500 | http_502 | http_503 | http_504 | http_404 | off 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">error | timeout | invalid_header | http_500 | http_502 | http_503 | http_504 | http_404 | off 
 </code></pre></td></tr></table></div>
 </div>
 </div><ul>
@@ -576,12 +596,12 @@ proxy_ignore_client_abort on; # 客户端断网时，nginx 服务器是否中断
 <p>6、如果想通过 http 获取客户端的真实IP地址，而不是获取代理服务器的IP地址，那么需要做如下配置：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">proxy_set_header Host $host; # 只要用户在浏览器中访问的域名绑定了VIP，VIP下面有RS，则就用$host；host 是访问的URL中的域名和端口，比如，www.taobaoc.com:80
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">proxy_set_header Host $host; # 只要用户在浏览器中访问的域名绑定了VIP，VIP下面有RS，则就用$host；host 是访问的URL中的域名和端口，比如，www.taobaoc.com:80
 proxy_set_header X-Real-IP $remote_addr; # 把源IP（$remote_add，建立HTTP连接header里面的信息）赋值给X-Real-IP，这样在代码中，$X-Real-IP就可以获得源IP。
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # 在nginx 作为代理服务器时，设置的IP列表，会把经过的机器IP、代理机器IP都记录下来，用&#34;,&#34;隔开，代码中使用 <span class="sb">`echo $x-forwarded-for | awk -F, &#39;{print $1}&#39;`</span> 来作为源IP。
 </code></pre></td></tr></table></div>
@@ -589,7 +609,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # 在nginx 作为�
 </div><p>7、nginx 代理配置的配置文件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -611,7 +631,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # 在nginx 作为�
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">include       mime.types;                  # 文件扩展名与文件类型映射表
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">include       mime.types;                  # 文件扩展名与文件类型映射表
 default_type  application/octet-stream;    # 设置默认文件类型，默认为text/plain
 <span class="gh">#access_log off;                           # 取消服务日志    
 </span><span class="gh"></span>log_format main &#39; $remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for&#39;; <span class="ni">#自定义格式</span>
@@ -638,7 +658,7 @@ proxy_next_upstream timeout;               # 反向代理upstream中设置的服
 <p>1）、</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -650,7 +670,7 @@ proxy_next_upstream timeout;               # 反向代理upstream中设置的服
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080;
     server 192.168.91.129:8080;
 }
@@ -665,7 +685,7 @@ server {
 </div><p>2）、</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -677,7 +697,7 @@ server {
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server http://192.168.91.128:8080;
     server http://192.168.91.129:8080;
 }
@@ -693,13 +713,13 @@ server {
 <p>如果有两台服务器，当一台服务器发生故障时，才启用第二台服务器给用户提供服务。服务器处理请求的顺序：AAAA（突然A挂了）BBBBBBB...</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080;
     server 192.168.91.129:8080 backup; # 热备
 }
@@ -709,13 +729,13 @@ server {
 <p>nginx 默认就是轮询，其权重默认都为：1。服务器处理请求的顺序为：ABABABAB...</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080;
     server 192.168.91.129:8080;
 }
@@ -725,13 +745,13 @@ server {
 <p>nginx 根据配置的权重的大小而分发给不同服务器不同数量的请求。如果不设置，则默认为：1。服务器处理请求的顺序为：ABBABBABBABBABB...</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080 weight=1;
     server 192.168.91.129:8080 weight=2;
 }
@@ -741,14 +761,14 @@ server {
 <p>nginx 会让相同的客户端IP请求相同的服务器。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080;
     server 192.168.91.129:8080;
     ip_hash;
@@ -765,13 +785,13 @@ server {
 <p>示例如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">upstream xdhuxc {
     server 192.168.91.128:8080 weight=2 max_fails=2 fail_timeout=2;
     server 192.168.91.129:8080 weight=1 max_fails=2 fail_timeout=1;
 }
@@ -785,12 +805,12 @@ server {
 <h4 id="location-配置语法"><a href="#location-配置语法" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:location-配置语法" class="headings">location 配置语法</a></h4>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location [ = | ~ | ~* | ^~ ] uri {...}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location [ = | ~ | ~* | ^~ ] uri {...}
 或
 location <span class="ni">@name</span> {...}
 </code></pre></td></tr></table></div>
@@ -801,14 +821,14 @@ location <span class="ni">@name</span> {...}
 <h4 id="前缀含义"><a href="#前缀含义" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:前缀含义" class="headings">前缀含义</a></h4>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">=：精确匹配，必须全部相等。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">=：精确匹配，必须全部相等。
 ~：大小写敏感。
 ~*：忽略大小写。
 ^~：只需匹配 uri 部分。
@@ -819,12 +839,12 @@ location <span class="ni">@name</span> {...}
 <p>（1）=，精确匹配</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location = / {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location = / {
     # 规则
 }
 </code></pre></td></tr></table></div>
@@ -833,12 +853,12 @@ location <span class="ni">@name</span> {...}
 <p>（2）~，大小写敏感</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location ~ /getUser/ {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location ~ /getUser/ {
     # 规则
 }
 </code></pre></td></tr></table></div>
@@ -848,12 +868,12 @@ location <span class="ni">@name</span> {...}
 <p>（3）~*，大小写忽略</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location ~* /getUser/ {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location ~* /getUser/ {
     # 规则
 }
 </code></pre></td></tr></table></div>
@@ -864,12 +884,12 @@ location <span class="ni">@name</span> {...}
 <p>（4）^~，只匹配以 uri 开头</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location ^~ /image/ {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location ^~ /image/ {
     # 规则
 }
 </code></pre></td></tr></table></div>
@@ -880,7 +900,7 @@ location <span class="ni">@name</span> {...}
 <p>5、@，nginx 内部跳转</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -889,7 +909,7 @@ location <span class="ni">@name</span> {...}
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">location /image/ {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">location /image/ {
     error_page 404 <span class="ni">@image_error</span>;
 }
 
@@ -922,7 +942,13 @@ location <span class="ni">@image_error</span> {
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -1041,7 +1067,7 @@ location <span class="ni">@image_error</span> {
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/common/dns/dns-bind/" class="related-link">BIND 的安装和配置</a>
+                        <a href="/posts/common/common-knowledge/" class="related-link">一些计算机科学和技术中的概念区分</a>
                     </li>
                 
             </ul>
@@ -1100,16 +1126,19 @@ location <span class="ni">@image_error</span> {
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -1127,7 +1156,7 @@ location <span class="ni">@image_error</span> {
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1270,6 +1299,8 @@ location <span class="ni">@image_error</span> {
 
         
 
+        
+
     
 
 
@@ -1277,7 +1308,10 @@ location <span class="ni">@image_error</span> {
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

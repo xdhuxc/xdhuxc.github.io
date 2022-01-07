@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>将 AlertManager 的报警存储到 ElasticSearch 中 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -283,7 +303,7 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客介绍下将 <code>AlertManager</code> 中的报警存储到 <code>ElasticSearch</code> 中的方法，以便我们使用 <code>Kibana</code> 等可视化工具将其做成各种图表进行分析。</p>
+                <p>本篇博客介绍下将 <code>AlertManager</code> 中的报警存储到 <code>ElasticSearch</code> 中的方法，以便我们使用 <code>Kibana</code> 等可视化工具将其做成各种图表进行分析。</p>
 <h3 id="背景"><a href="#背景" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:背景" class="headings">背景</a></h3>
 <p>当我们的监控-告警系统建立起来后，告警系统将会面临这样的问题：警报消息太多，接收人很容易麻木，不再继续理会，关键的告警常常被淹没。所以，我们需要做好告警的收敛工作。</p>
 <p>我们可以考虑把告警信息收集起来，做统计分析，基于统计数据按周、月生成告警报告，比如，哪些应用在哪段时间里产生了最多的报警，哪些指标在哪段时间里产生了最多的报警，某个报警阈值的 90% 分位数、95% 分位数、99% 分位数，哪个部门产生了最多的报警数等等。一来要求业务团队改造程序或结构，调整资源配置，比如有些代码写得性能特别差，资源占用高，导致告警信息频繁发送；二来可以作为我们设置各种资源阈值的统计参考数据，取代常用的经验值或习惯值，比如，根据历史报警数据的统计，采取百分位数，使得某告警在 <code>95%</code> 的情况下不再发送告警信息。</p>
@@ -300,7 +320,7 @@
 <p>1、在 <code>alertmanager/config/config.go</code> 中 <code>GlobalConfig</code> 结构体中加入如下代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -317,7 +337,7 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">type GlobalConfig struct {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">type GlobalConfig struct {
     // ES
     ESEnable            bool     <span class="sb">`yaml:&#34;es_enable,omitempty&#34; json:&#34;es_enable,omitempty&#34;`</span>
     ESAddresses         []string <span class="sb">`yaml:&#34;es_addresses,omitempty&#34; json:&#34;es_addresses,omitempty&#34;`</span>
@@ -350,7 +370,7 @@
 <p>2、在 <code>alertmanager/api/v1/api.go</code> 中的 <code>API</code> 结构体中加入如下代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -359,7 +379,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">package v1
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">package v1
 
 import &#34;github.com/elastic/go-elasticsearch/v7&#34;
 
@@ -371,7 +391,7 @@ type API struct {
 </div><p>3、创建 ES 客户端，修改 <code>alertmanager/api/v1/api.go</code> 文件中 <code>func (api *API) Update(cfg *config.Config)</code> 方法代码，加入如下内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -396,7 +416,7 @@ type API struct {
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">// Create ES client
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">// Create ES client
 if cfg.Global.ESEnable {
     esClient, err := elasticsearch.NewClient(elasticsearch.Config{
         Addresses:         cfg.Global.ESAddresses,
@@ -425,7 +445,7 @@ if cfg.Global.ESEnable {
 <p>在 <code>alertmanager/api</code> 目录下创建 <code>es</code> 目录，在其中创建 <code>alert.go</code> 文件，内容如下：（为了 v1 和 v2 版本代码均可引用此部分代码）</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -491,7 +511,7 @@ if cfg.Global.ESEnable {
 </span><span class="lnt">64
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">package es
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">package es
 
 import (
 	&#34;fmt&#34;
@@ -560,7 +580,7 @@ func Convert(alert *types.Alert) *Alert {
 </div><p>5、编写代码向 ES 中插入数据，有两种方式可以实现，一种是常规的一条一条地插入数据，另一种是批量插入数据，向 <code>alertmanager/api/v1/api.go</code> 中添加如下代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -628,7 +648,7 @@ func Convert(alert *types.Alert) *Alert {
 </span><span class="lnt">66
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">import (
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">import (
     uuid &#34;github.com/satori/go.uuid&#34;
     &#34;github.com/elastic/go-elasticsearch/v7/esapi&#34;
 )
@@ -636,22 +656,22 @@ func Convert(alert *types.Alert) *Alert {
 // 一条一条地插入数据
 func (api *API) Insert(alerts ...*types.Alert) error {
 	var total int
-	for <span class="ge">_, alert := range alerts {
-</span><span class="ge">		esAlert := es.Convert(alert)
-</span><span class="ge">		dataInBytes, err := json.Marshal(esAlert)
-</span><span class="ge">		if err != nil {
-</span><span class="ge">			total = total + 1
-</span><span class="ge">			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Marshal alerts to string error&#34;, &#34;err&#34;, err)
-</span><span class="ge">			continue
-</span><span class="ge">		}
-</span><span class="ge">		req := esapi.IndexRequest{
-</span><span class="ge">			Index:      api.config.Global.ESIndexName,
-</span><span class="ge">			DocumentID: uuid.NewV4().String(),       // 使用 UUID 作为文档 ID
-</span><span class="ge">			Body:       strings.NewReader(string(dataInBytes)),
-</span><span class="ge">			Refresh:    api.config.Global.ESIndexRefresh,
-</span><span class="ge">		}
-</span><span class="ge">
-</span><span class="ge">		_</span>, err = req.Do(context.Background(), api.es)
+	for _, alert := range alerts {
+		esAlert := es.Convert(alert)
+		dataInBytes, err := json.Marshal(esAlert)
+		if err != nil {
+			total = total + 1
+			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Marshal alerts to string error&#34;, &#34;err&#34;, err)
+			continue
+		}
+		req := esapi.IndexRequest{
+			Index:      api.config.Global.ESIndexName,
+			DocumentID: uuid.NewV4().String(),       // 使用 UUID 作为文档 ID
+			Body:       strings.NewReader(string(dataInBytes)),
+			Refresh:    api.config.Global.ESIndexRefresh,
+		}
+
+		_, err = req.Do(context.Background(), api.es)
 		if err != nil {
 			total = total + 1
 			level.Error(api.logger).Log(&#34;msg&#34;, &#34;Insert alerts to ES error&#34;, &#34;err&#34;, err)
@@ -700,7 +720,7 @@ func (api *API) Batch(alerts ...*types.Alert) error {
 <p>6、将 AlertManager 接收到的报警数据存储到 ES 中，修改 <code>alertmanager/api/v1/api.go</code> 文件中的方法 <code>func (api *API) insertAlerts(w http.ResponseWriter, r *http.Request, alerts ...*types.Alert)</code>，将代码加到 <code>api.alerts.Put(validAlerts...)</code> 代码块之前</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -715,7 +735,7 @@ func (api *API) Batch(alerts ...*types.Alert) error {
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">// insert alerts to ES
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">// insert alerts to ES
 if api.es != nil {
     _ = api.Batch(validAlerts...)
 }
@@ -735,7 +755,7 @@ if err := api.alerts.Put(validAlerts...); err != nil {
 <p>编写单元测试进行测试，在文件 <code>alertmanager/api/v1/api_test.go</code> 中加入如下代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -808,10 +828,10 @@ if err := api.alerts.Put(validAlerts...); err != nil {
 </span><span class="lnt">71
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">func newAPIClient() *API {
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">func newAPIClient() *API {
 	apiClient := New(nil, nil, nil, nil, nil, nil)
-	cfg := &amp;config.Config{
-		Global: &amp;config.GlobalConfig{
+	cfg := <span class="err">&amp;</span>config.Config{
+		Global: <span class="err">&amp;</span>config.GlobalConfig{
 			ESEnable:            true,
 			ESAddresses:         []string{&#34;http://127.0.0.1:9200&#34;},
 			ESUserName:          &#34;elastics&#34;,
@@ -823,7 +843,7 @@ if err := api.alerts.Put(validAlerts...); err != nil {
 			ESIndexName:         &#34;alertmanager-alerts&#34;,
 			ESIndexRefresh:      &#34;true&#34;,
 		},
-		Route: &amp;config.Route{
+		Route: <span class="err">&amp;</span>config.Route{
 			Receiver:   &#34;test&#34;,
 			GroupByAll: false,
 		},
@@ -841,44 +861,44 @@ func generateAlerts() []*types.Alert {
 
 	var alerts []*types.Alert
 
-	for i := 0; i &lt; 1000; i++ {
-		ls := model.LabelSet{
-			model.LabelName(model.AlertNameLabel): model.LabelValue(alertNames[rand.Intn(len(alertNames))]),
-			model.LabelName(&#34;group&#34;):              model.LabelValue(groups[rand.Intn(len(groups))]),
-			model.LabelName(&#34;severity&#34;):           model.LabelValue(severities[rand.Intn(len(severities))]),
-			model.LabelName(&#34;value&#34;):              model.LabelValue(fmt.Sprintf(&#34;%.2f&#34;, rand.Float32()*100)),
-		}
-		alert := &amp;types.Alert{
-			Alert: model.Alert{
-				Labels:      ls,
-				Annotations: nil,
-				StartsAt:    time.Now(),
-				EndsAt:      time.Now(),
-			},
-			Timeout:   false,
-			UpdatedAt: time.Now(),
-		}
-		alerts = append(alerts, alert)
-	}
+	for i := 0; i <span class="p">&lt;</span> <span class="nt">1000</span><span class="err">;</span> <span class="na">i</span><span class="err">++</span> <span class="err">{</span>
+		<span class="na">ls</span> <span class="na">:</span><span class="o">=</span> <span class="s">model.LabelSet{</span>
+			<span class="na">model</span><span class="err">.</span><span class="na">LabelName</span><span class="err">(</span><span class="na">model</span><span class="err">.</span><span class="na">AlertNameLabel</span><span class="err">)</span><span class="na">:</span> <span class="na">model</span><span class="err">.</span><span class="na">LabelValue</span><span class="err">(</span><span class="na">alertNames</span><span class="err">[</span><span class="na">rand</span><span class="err">.</span><span class="na">Intn</span><span class="err">(</span><span class="na">len</span><span class="err">(</span><span class="na">alertNames</span><span class="err">))]),</span>
+			<span class="na">model</span><span class="err">.</span><span class="na">LabelName</span><span class="err">(&#34;</span><span class="na">group</span><span class="err">&#34;)</span><span class="na">:</span>              <span class="na">model</span><span class="err">.</span><span class="na">LabelValue</span><span class="err">(</span><span class="na">groups</span><span class="err">[</span><span class="na">rand</span><span class="err">.</span><span class="na">Intn</span><span class="err">(</span><span class="na">len</span><span class="err">(</span><span class="na">groups</span><span class="err">))]),</span>
+			<span class="na">model</span><span class="err">.</span><span class="na">LabelName</span><span class="err">(&#34;</span><span class="na">severity</span><span class="err">&#34;)</span><span class="na">:</span>           <span class="na">model</span><span class="err">.</span><span class="na">LabelValue</span><span class="err">(</span><span class="na">severities</span><span class="err">[</span><span class="na">rand</span><span class="err">.</span><span class="na">Intn</span><span class="err">(</span><span class="na">len</span><span class="err">(</span><span class="na">severities</span><span class="err">))]),</span>
+			<span class="na">model</span><span class="err">.</span><span class="na">LabelName</span><span class="err">(&#34;</span><span class="na">value</span><span class="err">&#34;)</span><span class="na">:</span>              <span class="na">model</span><span class="err">.</span><span class="na">LabelValue</span><span class="err">(</span><span class="na">fmt</span><span class="err">.</span><span class="na">Sprintf</span><span class="err">(&#34;%.</span><span class="na">2f</span><span class="err">&#34;,</span> <span class="na">rand</span><span class="err">.</span><span class="na">Float32</span><span class="err">()*</span><span class="na">100</span><span class="err">)),</span>
+		<span class="err">}</span>
+		<span class="na">alert</span> <span class="na">:</span><span class="o">=</span> <span class="s">&amp;types.Alert{</span>
+			<span class="na">Alert:</span> <span class="na">model</span><span class="err">.</span><span class="na">Alert</span><span class="err">{</span>
+				<span class="na">Labels:</span>      <span class="na">ls</span><span class="err">,</span>
+				<span class="na">Annotations:</span> <span class="na">nil</span><span class="err">,</span>
+				<span class="na">StartsAt:</span>    <span class="na">time</span><span class="err">.</span><span class="na">Now</span><span class="err">(),</span>
+				<span class="na">EndsAt:</span>      <span class="na">time</span><span class="err">.</span><span class="na">Now</span><span class="err">(),</span>
+			<span class="err">},</span>
+			<span class="na">Timeout:</span>   <span class="na">false</span><span class="err">,</span>
+			<span class="na">UpdatedAt:</span> <span class="na">time</span><span class="err">.</span><span class="na">Now</span><span class="err">(),</span>
+		<span class="err">}</span>
+		<span class="na">alerts </span><span class="o">=</span> <span class="s">append(alerts,</span> <span class="na">alert</span><span class="err">)</span>
+	<span class="err">}</span>
 
-	return alerts
-}
+	<span class="na">return</span> <span class="na">alerts</span>
+<span class="err">}</span>
 
-func TestAPI_Insert(t *testing.T) {
-	apiClient := newAPIClient()
-	alerts := generateAlerts()
+<span class="na">func</span> <span class="na">TestAPI_Insert</span><span class="err">(</span><span class="na">t</span> <span class="err">*</span><span class="na">testing</span><span class="err">.</span><span class="na">T</span><span class="err">)</span> <span class="err">{</span>
+	<span class="na">apiClient</span> <span class="na">:</span><span class="o">=</span> <span class="s">newAPIClient()</span>
+	<span class="na">alerts</span> <span class="na">:</span><span class="o">=</span> <span class="s">generateAlerts()</span>
 
-	err := apiClient.Insert(alerts...)
-	require.NoError(t, err)
-}
+	<span class="na">err</span> <span class="na">:</span><span class="o">=</span> <span class="s">apiClient.Insert(alerts...)</span>
+	<span class="na">require</span><span class="err">.</span><span class="na">NoError</span><span class="err">(</span><span class="na">t</span><span class="err">,</span> <span class="na">err</span><span class="err">)</span>
+<span class="err">}</span>
 
-func TestAPI_Batch(t *testing.T) {
-	apiClient := newAPIClient()
-	alerts := generateAlerts()
+<span class="na">func</span> <span class="na">TestAPI_Batch</span><span class="err">(</span><span class="na">t</span> <span class="err">*</span><span class="na">testing</span><span class="err">.</span><span class="na">T</span><span class="err">)</span> <span class="err">{</span>
+	<span class="na">apiClient</span> <span class="na">:</span><span class="o">=</span> <span class="s">newAPIClient()</span>
+	<span class="na">alerts</span> <span class="na">:</span><span class="o">=</span> <span class="s">generateAlerts()</span>
 
-	err := apiClient.Batch(alerts...)
-	require.NoError(t, err)
-}
+	<span class="na">err</span> <span class="na">:</span><span class="o">=</span> <span class="s">apiClient.Batch(alerts...)</span>
+	<span class="na">require</span><span class="err">.</span><span class="na">NoError</span><span class="err">(</span><span class="na">t</span><span class="err">,</span> <span class="na">err</span><span class="err">)</span>
+<span class="err">}</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="总结"><a href="#总结" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:总结" class="headings">总结</a></h3>
@@ -906,7 +926,13 @@ func TestAPI_Batch(t *testing.T) {
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -1100,16 +1126,19 @@ func TestAPI_Batch(t *testing.T) {
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -1127,7 +1156,7 @@ func TestAPI_Batch(t *testing.T) {
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1270,6 +1299,8 @@ func TestAPI_Batch(t *testing.T) {
 
         
 
+        
+
     
 
 
@@ -1277,7 +1308,10 @@ func TestAPI_Batch(t *testing.T) {
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>Golang 常见问题及解决 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -27,7 +30,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB&#43;Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Noto&#43;Serif&#43;SC:wght@400;500;700&amp;family=Source&#43;Code&#43;Pro:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" /></noscript>
 
-    <meta name="author" content="xdhuxc" /><meta name="description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。
+    <meta name="author" content="xdhuxc" /><meta name="description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法。
 ……" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -58,10 +61,10 @@
         "dateModified": "2019-08-05T00:00:00+00:00",
         "url": "https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/",
         "headline": "Golang 常见问题及解决",
-        "description": "本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。\n……",
+        "description": "本部分内容记录下 golang 开发时常见的一些问题及解决方法。\n……",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  1076 ,
+        "wordCount":  1071 ,
         "image": "https://xdhuxc.github.io/static/favicon.ico",
         "author": {
             "@type": "Person",
@@ -100,7 +103,7 @@
 
 
 <meta property="og:title" content="Golang 常见问题及解决" />
-<meta property="og:description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。
+<meta property="og:description" content="本部分内容记录下 golang 开发时常见的一些问题及解决方法。
 ……" />
 <meta property="og:url" content="https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/" />
 <meta property="og:site_name" content="xdhuxc" />
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -243,13 +263,13 @@
         
         
             
-                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-link p-category">技术</a></span>
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/golang/" class="category-link p-category">Golang</a></span>
             
         
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;1076</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;1071</span>
     
     
         
@@ -282,32 +302,32 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本部分内容记录下 golang 开发时常见的一些问题及解决方法，以备后需。</p>
+                <p>本部分内容记录下 golang 开发时常见的一些问题及解决方法。</p>
 <h3 id="x509-certificate-signed-by-unknown-authority"><a href="#x509-certificate-signed-by-unknown-authority" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:x509-certificate-signed-by-unknown-authority" class="headings">x509: certificate signed by unknown authority</a></h3>
 <p>编写代码请求华为云 API，使用 docker 容器部署，基础镜像为 <code>geekidea/alpine-a:3.9</code>，执行 do 方法时报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">E0807 05:11:19.285019       1 elb_job.go:67] Get https://elb.ap-southeast-3.myhuaweicloud.com/v2.0/lbaas/loadbalancers: x509: certificate signed by unknown authority
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">E0807 05:11:19.285019       1 elb_job.go:67] Get https://elb.ap-southeast-3.myhuaweicloud.com/v2.0/lbaas/loadbalancers: x509: certificate signed by unknown authority
 </code></pre></td></tr></table></div>
 </div>
 </div><p>在 Dockerfile 中加入如下内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">RUN apk update \
-        &amp;&amp; apk upgrade \
-        &amp;&amp; apk add --no-cache \
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">RUN apk update \
+        <span class="err">&amp;&amp;</span> apk upgrade \
+        <span class="err">&amp;&amp;</span> apk add --no-cache \
         ca-certificates \
-        &amp;&amp; update-ca-certificates 2&gt;/dev/null || true
+        <span class="err">&amp;&amp;</span> update-ca-certificates 2&gt;/dev/null || true
 </code></pre></td></tr></table></div>
 </div>
 </div><p>更新 <code>ca-certificates</code> 试试。</p>
@@ -315,7 +335,7 @@
 <p>1）使用 <code>make build</code> 进行构建时，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -326,7 +346,7 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:xdhuxc-transform wanghuan$ make build
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:xdhuxc-transform wanghuan$ make build
 &gt;&gt; go build ...
 build command-line-arguments: cannot load gitlab.xdhuxc.com/xdhuxc/xdhuxc-transform/src/apis: git ls-remote -q ssh://git@gitlab.xdhuxc.com/xdhuxc.git in /Users/wanghuan/GolandProjects/GoPath/pkg/mod/cache/vcs/32878bb63a0c857fed210744986dde9a48418788fe89eee3f24d5b73f5abcd2a: exit status 128:
         GitLab: The project you were looking for could not be found.
@@ -334,14 +354,14 @@ build command-line-arguments: cannot load gitlab.xdhuxc.com/xdhuxc/xdhuxc-transf
         
         Please make sure you have the correct access rights
         and the repository exists.
-make: *** [build] Error 1
+make: <span class="ge">**</span>* [build] Error 1
 </code></pre></td></tr></table></div>
 </div>
 </div><p>解决：以前是可以正常构建的，把 go 版本升级到 1.13 后，就变成这样了，该版本有问题，回退到 1.12 即可解决问题。</p>
 <p>2）使用 <code>make build</code> 进行构建时，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -349,12 +369,12 @@ make: *** [build] Error 1
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:hawkeye wanghuan$ make build
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:hawkeye wanghuan$ make build
 &gt;&gt; go build ...
 <span class="gh"># gitlab.xdhuxc.org/SGT/DevOps/hawkeye/src/apis
 </span><span class="gh"></span>src/apis/base.go:55:38: cannot use req (type <span class="ge">*&#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.Request) as type *</span>&#34;github.com/emicklei/go-restful&#34;.Request in argument to b.auth.GetCustomValue
 src/apis/router.go:54:46: cannot use baseController.auth.Auth (type func(*&#34;github.com/emicklei/go-restful&#34;.Request, <span class="ge">*&#34;github.com/emicklei/go-restful&#34;.Response, *</span>&#34;github.com/emicklei/go-restful&#34;.FilterChain)) as type &#34;gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful&#34;.FilterFunction in argument to baseController.ws.Filter
-make: *** [build] Error 2
+make: <span class="ge">**</span>* [build] Error 2
 </code></pre></td></tr></table></div>
 </div>
 </div><p>解决：删除本地项目中 <code>gitlab.xdhuxc.com/xdhuxc/hawkeye/vendor/github.com/emicklei/go-restful</code> 目录，重新编译。</p>
@@ -366,7 +386,7 @@ make: *** [build] Error 2
 <p>比如，如下的结构体：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -392,7 +412,7 @@ make: *** [build] Error 2
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">package main
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">package main
 
 import (
 	&#34;encoding/json&#34;
@@ -413,7 +433,7 @@ func main() {
 		Address: &#34;s&#34;,
 		Password: &#34;073#asd&#34;,
 	}
-	dataInBytes, _ := json.Marshal(&amp;user)
+	dataInBytes, _ := json.Marshal(<span class="err">&amp;</span>user)
 	fmt.Println(string(dataInBytes))
 }
 </code></pre></td></tr></table></div>
@@ -421,10 +441,10 @@ func main() {
 </div><p>输出结果如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">{&#34;id&#34;:&#34;abc&#34;,&#34;address&#34;:&#34;s&#34;}
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">{&#34;id&#34;:&#34;abc&#34;,&#34;address&#34;:&#34;s&#34;}
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将字段 Name 和 Password 的 JSON 标签设置为相同的后，两个字段在序列化后直接被去掉了。</p>
@@ -432,34 +452,34 @@ func main() {
 <p>使用 <code>go mod tidy</code> 命令时，报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:confd wanghuan$ go mod tidy
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuans-MacBook-Pro:confd wanghuan$ go mod tidy
 go: modules disabled inside GOPATH/src by GO111MODULE=auto; see &#39;go help modules&#39;
 </code></pre></td></tr></table></div>
 </div>
 </div><p>默认设置的 <code>GO111MODULE=auto</code> 导致 <code>modules</code> 默认在 <code>$GOPATH/src</code> 路径下是不启用的。如果需要在 <code>$GOPATH/src</code> 目录下也能使用 <code>modules</code>，需要把 <code>GO111MODULE</code> 环境变量设置为 <code>on</code>。</p>
-<pre><code>export GO111MODULE=on
+<pre tabindex="0"><code>export GO111MODULE=on
 </code></pre><h3 id="使用-vscode-运行-golang-程序单元测试没有代码日志输出"><a href="#使用-vscode-运行-golang-程序单元测试没有代码日志输出" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:使用-vscode-运行-golang-程序单元测试没有代码日志输出" class="headings">使用 VSCode 运行 golang 程序单元测试，没有代码日志输出</a></h3>
 <p>在 <code>.vscode/settings.json</code> 文件中，加入如下内容：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&#34;go.testFlags&#34;: [
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">&#34;go.testFlags&#34;: [
     &#34;-v&#34;
 ],
 &#34;go.testTimeout&#34;: &#34;300s&#34;,  # 单元测试执行时间超过 300s，则直接结束该测试，
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="使用-git-拉取私有仓库代码时报错"><a href="#使用-git-拉取私有仓库代码时报错" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:使用-git-拉取私有仓库代码时报错" class="headings">使用 git 拉取私有仓库代码时，报错</a></h3>
-<pre><code>wanghuan@wanghuans-MBP xdhuxc-cicd % make build
+<pre tabindex="0"><code>wanghuan@wanghuans-MBP xdhuxc-cicd % make build
 &gt;&gt; go build ...
 go: finding module for package gitlab.xdhuxc.com/sgt/xdhuxc-common/log
 go: finding module for package gitlab.xdhuxc.com/sgt/xdhuxc-common/src/models
@@ -472,13 +492,13 @@ src/apis/base.go:9:2: module gitlab.xdhuxc.com/sgt/xdhuxc-common/event: git ls-r
 Confirm the import path was entered correctly.
 If this is a private repository, see https://golang.org/doc/faq#git_https for additional information.
 </code></pre><p>参照 <a href="https://golang.org/doc/faq#git_https" target="_blank" rel="noopener">https://golang.org/doc/faq#git_https</a> 中的方法，在 ~/.gitconfig 文件中加入如下内容：</p>
-<pre><code>[url &quot;ssh://git@gitlab.xdhuxc.com/&quot;]
+<pre tabindex="0"><code>[url &quot;ssh://git@gitlab.xdhuxc.com/&quot;]
         insteadOf = https://gitlab.xdhuxc.com/
 </code></pre><h3 id="this-download-does-not-match-the-one-reported-by-the-checksum-server"><a href="#this-download-does-not-match-the-one-reported-by-the-checksum-server" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:this-download-does-not-match-the-one-reported-by-the-checksum-server" class="headings">This download does NOT match the one reported by the checksum server.</a></h3>
 <p>使用 <code>go mod tidy</code> 整理 golang 项目依赖时，控制台显示如下错误：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -491,7 +511,7 @@ If this is a private repository, see https://golang.org/doc/faq#git_https for ad
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wanghuan@wanghuans-MacBook-Pro scmp-common % go mod tidy
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wanghuan@wanghuans-MacBook-Pro scmp-common % go mod tidy
 github.com/panjf2000/ants@v1.2.0: verifying module: checksum mismatch
         downloaded: h1:Ufw4aDz9RqH1RVblx2W9L9Uv5vSX5apbX5+peR7LQ5k=
         sum.golang.org: h1:pMQ1/XpSgnWx3ro4y1xr/uA3jXUsTuAaU3Dm0JjwggE=
@@ -507,11 +527,11 @@ For more information, see &#39;go help module-auth&#39;.
 </div><p>解决：先清理 mod 的缓存，然后再指定该命令</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">go clean -modcache
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">go clean -modcache
 go mod tidy
 </code></pre></td></tr></table></div>
 </div>
@@ -539,7 +559,13 @@ go mod tidy
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -576,7 +602,7 @@ go mod tidy
             
                 <div class="share-item linkedin">
                     
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;title=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;summary=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%ef%bc%8c%e4%bb%a5%e5%a4%87%e5%90%8e%e9%9c%80%e3%80%82%0a%e2%80%a6%e2%80%a6&amp;source=xdhuxc" title="分享到「LinkedIn」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon linkedin-icon"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;title=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;summary=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%e3%80%82%0a%e2%80%a6%e2%80%a6&amp;source=xdhuxc" title="分享到「LinkedIn」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon linkedin-icon"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
                 </div>
             
 
@@ -592,14 +618,14 @@ go mod tidy
             
                 <div class="share-item douban">
                     
-                    <a href="https://www.douban.com/share/service?href=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;name=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;text=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%ef%bc%8c%e4%bb%a5%e5%a4%87%e5%90%8e%e9%9c%80%e3%80%82%0a%e2%80%a6%e2%80%a6" title="分享到「豆瓣」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon douban-icon"><path d="M.643.92v2.412h22.714V.92H.643zm1.974 4.926v9.42h18.764v-9.42H2.617zm2.72 2.408H18.69v4.605H5.338V8.254zm1.657 7.412l-2.512.938c1.037 1.461 1.87 2.825 2.512 4.091H0v2.385h24v-2.385h-6.678c.818-1.176 1.589-2.543 2.303-4.091l-2.73-.938a29.952 29.952 0 01-2.479 5.03h-4.75c-.786-1.962-1.677-3.641-2.672-5.03Z"/></svg></a>
+                    <a href="https://www.douban.com/share/service?href=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;name=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;text=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%e3%80%82%0a%e2%80%a6%e2%80%a6" title="分享到「豆瓣」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon douban-icon"><path d="M.643.92v2.412h22.714V.92H.643zm1.974 4.926v9.42h18.764v-9.42H2.617zm2.72 2.408H18.69v4.605H5.338V8.254zm1.657 7.412l-2.512.938c1.037 1.461 1.87 2.825 2.512 4.091H0v2.385h24v-2.385h-6.678c.818-1.176 1.589-2.543 2.303-4.091l-2.73-.938a29.952 29.952 0 01-2.479 5.03h-4.75c-.786-1.962-1.677-3.641-2.672-5.03Z"/></svg></a>
                 </div>
             
 
             
                 <div class="share-item qq">
                     
-                    <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;title=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;summary=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%ef%bc%8c%e4%bb%a5%e5%a4%87%e5%90%8e%e9%9c%80%e3%80%82%0a%e2%80%a6%e2%80%a6&amp;pics=https://xdhuxc.github.io/static/favicon.ico&amp;site=xdhuxc" title="分享到「QQ」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qq-icon"><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg></a>
+                    <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://xdhuxc.github.io/posts/programming/golang/golang-questions-and-solutions/&amp;title=Golang%20%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3&amp;summary=%e6%9c%ac%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9%e8%ae%b0%e5%bd%95%e4%b8%8b%20golang%20%e5%bc%80%e5%8f%91%e6%97%b6%e5%b8%b8%e8%a7%81%e7%9a%84%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95%e3%80%82%0a%e2%80%a6%e2%80%a6&amp;pics=https://xdhuxc.github.io/static/favicon.ico&amp;site=xdhuxc" title="分享到「QQ」" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon qq-icon"><path d="M433.754 420.445c-11.526 1.393-44.86-52.741-44.86-52.741 0 31.345-16.136 72.247-51.051 101.786 16.842 5.192 54.843 19.167 45.803 34.421-7.316 12.343-125.51 7.881-159.632 4.037-34.122 3.844-152.316 8.306-159.632-4.037-9.045-15.25 28.918-29.214 45.783-34.415-34.92-29.539-51.059-70.445-51.059-101.792 0 0-33.334 54.134-44.859 52.741-5.37-.65-12.424-29.644 9.347-99.704 10.261-33.024 21.995-60.478 40.144-105.779C60.683 98.063 108.982.006 224 0c113.737.006 163.156 96.133 160.264 214.963 18.118 45.223 29.912 72.85 40.144 105.778 21.768 70.06 14.716 99.053 9.346 99.704z"/></svg></a>
                 </div>
             
 
@@ -717,16 +743,19 @@ go mod tidy
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -744,7 +773,7 @@ go mod tidy
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -887,6 +916,8 @@ go mod tidy
 
         
 
+        
+
     
 
 
@@ -894,7 +925,10 @@ go mod tidy
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

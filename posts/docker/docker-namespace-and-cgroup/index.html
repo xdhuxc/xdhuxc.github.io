@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>Linux 命名空间和 cgroup 在 docker 中的使用 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -61,7 +64,7 @@
         "description": "本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。\n……",
         "inLanguage" : "zh-CN",
         "articleSection": "posts",
-        "wordCount":  9919 ,
+        "wordCount":  9897 ,
         "image": ["https://xdhuxc.github.io/image/docker/docker-runc.jpg"],
         "author": {
             "@type": "Person",
@@ -130,6 +133,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -157,7 +173,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -184,6 +200,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -244,13 +264,13 @@
         
         
             
-                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-link p-category">技术</a></span>
+                <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href="/categories/docker/" class="category-link p-category">Docker</a></span>
             
         
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;9919</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;9897</span>
     
     
         
@@ -305,24 +325,71 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。</p>
+                <p>本篇博客详细介绍了 Linux 系统中命名空间和 cgroup 在 docker 中的使用。docker 容器使用 linux namespace 隔离容器中应用的运行环境，使用 cgroup 来限制应用运行时的资源，这是 docker 容器的基础。</p>
 <h3 id="linux-namespace-概念"><a href="#linux-namespace-概念" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:linux-namespace-概念" class="headings">Linux namespace 概念</a></h3>
 <p>Linux 内核从版本 2.4.19 开始陆续引入了 namespace 的概念，其目的是将某个特定的全局系统资源，通过抽象的方式，使得 namespace 中的进程看起来拥有它们自己的隔离的全局系统资源实例。</p>
-<p>Linux 内核中实现了六种 namespace，按照引入的先后顺序，列表如下：
-命名空间名称 | 引入的相关内核版本 | 被隔离的全局系统资源 | 在容器语境下的隔离效果
----|---|---|---|---
-Mount 命名空间 | Linux 2.4.19 | 文件系统挂载点 | 每个容器能看到不同的文件系统层次结构
-UTS 命名空间 | Linux 2.6.19 | hostname 和 domainname | 每个容器可以有自己的 hostname 和 domainname
-IPC 命名空间 | Linux 2.6.19 | 特定的进程间通信资源，包括 System V IPC 和 POSIX message queues | 每个容器有其自己的 System V IPC 和 POSIX 消息队列文件系统。因此，只有在同一个 IPC namespace 中的进程之间才能相互通信。
-PID 命名空间 | Linux 2.6.24 | 进程 ID 数字空间（process ID number space）| 每个 PID namespace 中的进程可以有其独立的 PID；每个容器可以有其 PID 为 1 的 root 进程，也使得容器可以在不同的主机之间迁移，因为 namespace 中的进程 ID 与主机无关了，这也使得容器中的每个进程有两个 PID：容器中的 PID 和主机上的 PID。
-Network 命名空间| 始于 Linux 2.6.24，完成于 Linux 2.6.29 | 网络相关的系统资源 | 每个容器拥有其独立的网络设备、IP地址、IP路由表、/proc/net 目录、端口号等等。这也使得一个主机上多个容器内的同一个应用都可以绑定到各自容器的 80 端口上。
-User 命名空间 | 始于 Linux 2.6.23，完成于 Linux 3.8 | 用户和组 ID 空间 | 在 user namespace 中的进程的用户和组 ID 可以和在宿主机上不同；每个容器可以有不同的用户和组ID，一个主机上的非特权用户可以成为 user namespace 中的特权用户。</p>
+<p>Linux 内核中实现了六种 namespace，按照引入的先后顺序，列表如下：</p>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th>命名空间名称</th>
+<th>引入的相关内核版本</th>
+<th>被隔离的全局系统资源</th>
+<th>在容器语境下的隔离效果</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mount 命名空间</td>
+<td>Linux 2.4.19</td>
+<td>文件系统挂载点</td>
+<td>每个容器能看到不同的文件系统层次结构</td>
+<td></td>
+</tr>
+<tr>
+<td>UTS 命名空间</td>
+<td>Linux 2.6.19</td>
+<td>hostname 和 domainname</td>
+<td>每个容器可以有自己的 hostname 和 domainname</td>
+<td></td>
+</tr>
+<tr>
+<td>IPC 命名空间</td>
+<td>Linux 2.6.19</td>
+<td>特定的进程间通信资源，包括 System V IPC 和 POSIX message queues</td>
+<td>每个容器有其自己的 System V IPC 和 POSIX 消息队列文件系统。因此，只有在同一个 IPC namespace 中的进程之间才能相互通信。</td>
+<td></td>
+</tr>
+<tr>
+<td>PID 命名空间</td>
+<td>Linux 2.6.24</td>
+<td>进程 ID 数字空间（process ID number space）</td>
+<td>每个 PID namespace 中的进程可以有其独立的 PID；每个容器可以有其 PID 为 1 的 root 进程，也使得容器可以在不同的主机之间迁移，因为 namespace 中的进程 ID 与主机无关了，这也使得容器中的每个进程有两个 PID：容器中的 PID 和主机上的 PID。</td>
+<td></td>
+</tr>
+<tr>
+<td>Network 命名空间</td>
+<td>始于 Linux 2.6.24，完成于 Linux 2.6.29</td>
+<td>网络相关的系统资源</td>
+<td>每个容器拥有其独立的网络设备、IP地址、IP路由表、/proc/net 目录、端口号等等。这也使得一个主机上多个容器内的同一个应用都可以绑定到各自容器的 80 端口上。</td>
+<td></td>
+</tr>
+<tr>
+<td>User 命名空间</td>
+<td>始于 Linux 2.6.23，完成于 Linux 3.8</td>
+<td>用户和组 ID 空间</td>
+<td>在 user namespace 中的进程的用户和组 ID 可以和在宿主机上不同；每个容器可以有不同的用户和组ID，一个主机上的非特权用户可以成为 user namespace 中的特权用户。</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
 <p>简单来讲，处于某个命名空间中的进程，能看到独立的它自己的隔离的某些特定系统资源。</p>
 <h3 id="docker-容器使用-linux-namespace-做运行环境隔离"><a href="#docker-容器使用-linux-namespace-做运行环境隔离" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:docker-容器使用-linux-namespace-做运行环境隔离" class="headings">docker 容器使用 linux namespace 做运行环境隔离</a></h3>
 <p>当 docker 创建一个容器时，它会创建新的以上六种 namespace 的实例，然后把容器中的所有进程放到这些 namespace 之中，使得 docker 容器中的进程只能看到隔离的系统资源。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -334,7 +401,7 @@ User 命名空间 | 始于 Linux 2.6.23，完成于 Linux 3.8 | 用户和组 ID 
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ns]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ns]# pwd
 /proc/3300/ns          # 3300 为容器在宿主机上的进程ID
 [root@xdhuxc ns]# ll
 total 0
@@ -350,14 +417,14 @@ lrwxrwxrwx 1 1000 1000 0 Jul 11 08:47 uts -&gt; uts:[4026532174]
 <p>创建容器 zookeeper</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d \
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d \
     --privileged=true \
     --restart=always \
     --name zookeeper \
@@ -367,13 +434,13 @@ lrwxrwxrwx 1 1000 1000 0 Jul 11 08:47 uts -&gt; uts:[4026532174]
 </div><p>在容器内的 PID 是 1，PPID 为 0。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker exec -it zookeeper ps -ef
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker exec -it zookeeper ps -ef
 UID        PID  PPID  C STIME TTY          TIME CMD
 zookeep+     1     0  0 14:53 ?        00:00:01 /usr/lib/jvm/java-1.8-openjdk/jr
 root        47     0  0 14:57 pts/0    00:00:00 ps -ef
@@ -382,23 +449,23 @@ root        47     0  0 14:57 pts/0    00:00:00 ps -ef
 </div><p>在容器外的 PID 是 3391，PPID 是 3363，即 docker-containerd-shim 进程。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep zookeeper
 1000      3391  3363  0 22:53 ?        00:00:02 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3363 是 docker-containerd-shim 进程的 PID。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep 3363
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep 3363
 root      3363 21666  0 22:53 ?        00:00:00 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.linux/moby/81cae3d22fd7ce29c2b49292bce16ac52f0cca8ea26b21b8f34e551deb7faef2 -address /var/run/docker/containerd/docker-containerd.sock -containerd-binary /usr/bin/docker-containerd -runtime-root /var/run/docker/runtime-runc -systemd-cgroup
 1000      3391  3363  0 22:53 ?        00:00:02 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 </code></pre></td></tr></table></div>
@@ -410,7 +477,7 @@ root      3363 21666  0 22:53 ?        00:00:00 docker-containerd-shim -namespac
 </ul>
 <p>关于 containerd，containerd-shim 和 container 的关系：</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/docker/docker-runc.jpg" width="800px" height="300px" />
+<img src="https://xdhuxc.github.io/image/docker/docker-runc.jpg" width="800px" height="300px" />
 图1 · containerd，containerd-shim 和 container 之间的关系
 </center>
 <ul>
@@ -424,13 +491,13 @@ root      3363 21666  0 22:53 ?        00:00:00 docker-containerd-shim -namespac
 <p>容器可以有自己的 hostname 和 domainname</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# hostname
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# hostname
 xdhuxc             # 宿主机的主机名
 [root@xdhuxc ~]# docker exec -it zookeeper hostname
 81cae3d22fd7       # zookeeper 容器的主机名
@@ -440,13 +507,13 @@ xdhuxc             # 宿主机的主机名
 <p>在 docker 1.10 版本之前，是不支持 user 命名空间的，也就是说，默认地，容器内的进程的运行用户就是宿主机上的 root 用户。这样的话，当宿主机上的文件或者目录作为挂载卷被映射到容器以后，容器内的进程其实是有 root 的几乎所有权限去修改这些宿主机上的目录的，这会有很大的安全问题。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# id
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# id
 uid=0(root) gid=0(root) groups=0(root)
 [root@xdhuxc ~]# docker exec -it zookeeper id
 uid=0(root) gid=0(root)
@@ -455,16 +522,16 @@ uid=0(root) gid=0(root)
 </div><p>此时以如下命令启动一个容器</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d -v /bin:/host/bin --name zookeeper zookeeper:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">docker run -d -v /bin:/host/bin --name zookeeper zookeeper:latest
 </code></pre></td></tr></table></div>
 </div>
 </div><p>默认情况下，是这样子的：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -478,7 +545,7 @@ uid=0(root) gid=0(root)
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep zookeeper
 1000      3300  3284  0 08:37 ?        00:00:02 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 root      4323  1602  0 08:48 pts/1    00:00:00 grep --color=auto zookeeper
 [root@xdhuxc ~]# docker exec -it zookeeper ps -ef
@@ -500,51 +567,51 @@ uid=0(root) gid=0(root)
 1、找到容器的主进程 ID</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker inspect --format &#39;{{.State.Pid}}&#39; zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker inspect --format &#39;{{.State.Pid}}&#39; zookeeper
 3300
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、创建 /var/run/netns 目录及符号链接</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# mkdir /var/run/netns
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# mkdir /var/run/netns
 [root@xdhuxc ~]# ln -s /proc/3300/ns/net /var/run/netns/zookeeper 
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3300 是 zookeeper 容器在宿主机上的进程ID。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep 3300
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ps -ef | grep -v grep | grep 3300
 1000      3300  3284  0 08:37 ?        00:01:10 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 </code></pre></td></tr></table></div>
 </div>
 </div><p>而 1000 是容器内的 zookeeper 用户的用户ID</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">bash-4.4# cat /etc/passwd|grep 1000
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">bash-4.4# cat /etc/passwd|grep 1000
 zookeeper:x:1000:1000:Linux User,,,:/home/zookeeper:
 </code></pre></td></tr></table></div>
 </div>
 </div><p>说明在创建容器的时候，docker 自动在 /proc 目录下为每一个容器以其进程ID为目录名创建了存放包括cpu、内存、io、命名空间等各种资源的目录，删除容器时会自动删除该目录。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -553,7 +620,7 @@ zookeeper:x:1000:1000:Linux User,,,:/home/zookeeper:
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc 3300]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc 3300]# pwd
 /proc/3300
 [root@xdhuxc 3300]# ls
 attr       clear_refs       cpuset   fd       limits     mem         net        oom_score      projid_map  setgroups  statm    timers
@@ -565,7 +632,7 @@ cgroup     coredump_filter  exe      io       maps       mountstats  oom_adj    
 </div><p>3、此时，可以使用 ip netns 命令了。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -578,14 +645,14 @@ cgroup     coredump_filter  exe      io       maps       mountstats  oom_adj    
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ip netns
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# ip netns
 zookeeper (id: 0)
 [root@xdhuxc ~]# ip netns exec zookeeper ip addr           
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN 
+1: lo: <span class="p">&lt;</span><span class="nt">LOOPBACK</span><span class="err">,</span><span class="na">UP</span><span class="err">,</span><span class="na">LOWER_UP</span><span class="p">&gt;</span> mtu 65536 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-237: eth0@if238: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP 
+237: eth0@if238: <span class="p">&lt;</span><span class="nt">BROADCAST</span><span class="err">,</span><span class="na">MULTICAST</span><span class="err">,</span><span class="na">UP</span><span class="err">,</span><span class="na">LOWER_UP</span><span class="p">&gt;</span> mtu 1500 qdisc noqueue state UP 
     link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
     inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
        valid_lft forever preferred_lft forever
@@ -594,7 +661,7 @@ zookeeper (id: 0)
 </div><p>也就是容器内的网桥信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -605,12 +672,12 @@ zookeeper (id: 0)
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker exec -it zookeeper ip addr
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker exec -it zookeeper ip addr
+1: lo: <span class="p">&lt;</span><span class="nt">LOOPBACK</span><span class="err">,</span><span class="na">UP</span><span class="err">,</span><span class="na">LOWER_UP</span><span class="p">&gt;</span> mtu 65536 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-237: eth0@if238: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 1500 qdisc noqueue state UP 
+237: eth0@if238: <span class="p">&lt;</span><span class="nt">BROADCAST</span><span class="err">,</span><span class="na">MULTICAST</span><span class="err">,</span><span class="na">UP</span><span class="err">,</span><span class="na">LOWER_UP</span><span class="err">,</span><span class="na">M-DOWN</span><span class="p">&gt;</span> mtu 1500 qdisc noqueue state UP 
     link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff
     inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
        valid_lft forever preferred_lft forever
@@ -633,7 +700,7 @@ zookeeper (id: 0)
 <p>可以在启用了 user 命名空间的情况下，强制某个容器运行在宿主机 user 命名空间之中：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -642,7 +709,7 @@ zookeeper (id: 0)
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# ps -ef|grep zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# ps -ef|grep zookeeper
 1000      9575  9559  0 19:47 ?        00:00:01 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 root      9910  8341  0 19:51 pts/1    00:00:00 grep --color=auto zookeeper
 [root@xdhuxc xdhuxc]# whoami
@@ -656,7 +723,7 @@ root
 <p>可以指定容器使用 docker 宿主机 pid 命名空间。这样，在容器中的进程，可以看到宿主机上的所有进程。注意，此时不能启用 user 命名空间。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -689,7 +756,7 @@ root
 </span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker run -d --name zookeeper --pid host --userns host zookeeper:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker run -d --name zookeeper --pid host --userns host zookeeper:latest
 5b847849106c5d597e33f9f3c346ab2a5a5638f6978d7a3ac6c6e1f2a61e0971
 [root@xdhuxc xdhuxc]# docker exec -it zookeeper apk add procps
 fetch http://dl-cdn.alpinelinux.org/alpine/v3.7/main/x86_64/APKINDEX.tar.gz
@@ -727,7 +794,7 @@ root     10347 10185  0 11:54 ?        00:00:00 docker-runc --root /var/run/dock
 <p>一般情况下，创建的 docker 容器的 hostname 为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -748,7 +815,7 @@ root     10347 10185  0 11:54 ?        00:00:00 docker-runc --root /var/run/dock
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker run -d -v /bin:/host/bin --name nginx nginx:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker run -d -v /bin:/host/bin --name nginx nginx:latest
 35ec0c186dfc6746b343f784bfeafd87e75c8eb256a55f0d7fe91db73522f4a9
 [root@xdhuxc ~]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
@@ -773,7 +840,7 @@ root@35ec0c186dfc:/#
 <p>为新启动的容器应用宿主机的 uts 命名空间</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -789,7 +856,7 @@ root@35ec0c186dfc:/#
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker run -d --name zookeeper --uts host zookeeper:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker run -d --name zookeeper --uts host zookeeper:latest
 97cb004b489cbf5e0073a14931953c6b892cbdd4da9df4c06fa7e219727e6780
 [root@xdhuxc xdhuxc]# docker exec -it zookeeper hostname
 xdhuxc                         # zookeeper 容器的主机名
@@ -808,13 +875,13 @@ xdhuxc                         # 宿主机的主机名
 </div><p>但是，却存在这种情况，不知道是什么含义及原因。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker inspect --format=&#39;{{.HostConfig.UTSMode}}&#39; zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# docker inspect --format=&#39;{{.HostConfig.UTSMode}}&#39; zookeeper
 host
 [root@xdhuxc xdhuxc]# docker inspect --format=&#39;{{.Config.Hostname}}&#39; zookeeper
 97cb004b489c
@@ -841,7 +908,7 @@ host
 <p>在 linux 系统中，一切皆文件。为了方便用户使用，Linux 也将 cgroup 实现成了文件系统。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -878,7 +945,7 @@ host
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mount -t cgroup
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mount -t cgroup
 cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd)
 cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)
 cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)
@@ -933,7 +1000,7 @@ drwxr-xr-x 5 root root  0 Jul 11 20:05 systemd
 <p>编写如下 C 语言程序</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -943,7 +1010,7 @@ drwxr-xr-x 5 root root  0 Jul 11 20:05 systemd
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cat xdhuxc.cpp 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# cat xdhuxc.cpp 
 int main(void){
 	int i = 0;
 	for( ; ; ) {
@@ -956,18 +1023,18 @@ int main(void){
 </div><p>编译并运行</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# gcc xdhuxc.cpp -o xdhuxc.out
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# gcc xdhuxc.cpp -o xdhuxc.out
 [root@xdhuxc xdhuxc]# ./xdhuxc.out 
 </code></pre></td></tr></table></div>
 </div>
 </div><p>使用 top 命令查看 CPU 占用</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -976,7 +1043,7 @@ int main(void){
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 131 total,   2 running, 129 sleeping,   0 stopped,   0 zombie
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 131 total,   2 running, 129 sleeping,   0 stopped,   0 zombie
 %Cpu(s): 23.2 us,  0.1 sy,  0.0 ni, 76.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
 KiB Mem :  8010904 total,  4122568 free,   331844 used,  3556492 buff/cache
 KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014016 avail Mem 
@@ -988,7 +1055,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014016 avail Mem
 </div><p>接下来，我们使用 cgroup 限制其 CPU 占用，操作如下</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1002,7 +1069,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014016 avail Mem
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mkdir /sys/fs/cgroup/cpu/xdhuxc
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# mkdir /sys/fs/cgroup/cpu/xdhuxc
 [root@xdhuxc xdhuxc]# cd /sys/fs/cgroup/cpu/xdhuxc
 [root@xdhuxc xdhuxc]# ls
 cgroup.clone_children  cpuacct.stat          cpu.cfs_period_us  cpu.rt_runtime_us  notify_on_release
@@ -1029,7 +1096,7 @@ cgroup.procs           cpuacct.usage_percpu  cpu.rt_period_us   cpu.stat
 <p>然后再查看 CPU 占用</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1038,7 +1105,7 @@ cgroup.procs           cpuacct.usage_percpu  cpu.rt_period_us   cpu.stat
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 131 total,   2 running, 129 sleeping,   0 stopped,   0 zombie
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 131 total,   2 running, 129 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  4.6 us,  0.3 sy,  0.0 ni, 95.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.1 st
 KiB Mem :  8010904 total,  4123224 free,   331196 used,  3556484 buff/cache
 KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014740 avail Mem 
@@ -1051,7 +1118,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014740 avail Mem
 <p>此时加入另一个 xdhuxc.out</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1061,7 +1128,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014740 avail Mem
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 132 total,   3 running, 129 sleeping,   0 stopped,   0 zombie
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 132 total,   3 running, 129 sleeping,   0 stopped,   0 zombie
 %Cpu(s): 27.8 us,  0.2 sy,  0.0 ni, 71.8 id,  0.2 wa,  0.0 hi,  0.0 si,  0.1 st
 KiB Mem :  8010904 total,  4123328 free,   331072 used,  3556504 buff/cache
 KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014856 avail Mem 
@@ -1074,16 +1141,16 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014856 avail Mem
 </div><p>将此 xdhuxc.out 进程的 PID 加入 tasks 文件中，则这两个进程会共享设定的 CPU 限制</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# echo 19016 &gt;&gt; tasks 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# echo 19016 &gt;&gt; tasks 
 </code></pre></td></tr></table></div>
 </div>
 </div><p>使用 top 命令查看两个 xdhuxc.out 进程的 CPU 占用</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1093,7 +1160,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7014856 avail Mem
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 132 total,   3 running, 129 sleeping,   0 stopped,   0 zombie
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Tasks: 132 total,   3 running, 129 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  6.3 us,  1.6 sy,  0.0 ni, 91.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.3 st
 KiB Mem :  8010904 total,  4123656 free,   330696 used,  3556552 buff/cache
 KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem 
@@ -1108,7 +1175,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem
 <p>类似的，我们针对它占用的内存做如下操作：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1118,7 +1185,7 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc memory]# mkdir /sys/fs/cgroup/memory/xdhuxc
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc memory]# mkdir /sys/fs/cgroup/memory/xdhuxc
 [root@xdhuxc memory]# cd /sys/fs/cgroup/memory/xdhuxc
 [root@xdhuxc xdhuxc]# cat memory.limit_in_bytes 
 9223372036854775807
@@ -1133,23 +1200,23 @@ KiB Swap:  2096124 total,  2088680 free,     7444 used.  7015244 avail Mem
 <p>运行命令：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">sudo dd if=/dev/sda of=/dev/null
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">sudo dd if=/dev/sda of=/dev/null
 </code></pre></td></tr></table></div>
 </div>
 </div><p>使用 iotop 命令查看 IO（此时磁盘在快速转动），此时，其读速度为：3.21G/s：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Total DISK READ :      38.15 M/s | Total DISK WRITE :       0.00 B/s
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Total DISK READ :      38.15 M/s | Total DISK WRITE :       0.00 B/s
 Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
   TID  PRIO  USER     DISK READ  DISK WRITE  SWAPIN     IO&gt;    COMMAND                                                                                                     
 20322 be/4 root          5.18 G      0.00 B  0.00 % 75.31 % dd if=/dev/sda of=/dev/null
@@ -1159,13 +1226,13 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 </div><p>接着做下面的操作：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# mkdir /sys/fs/cgroup/blkio/xdhuxc
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# mkdir /sys/fs/cgroup/blkio/xdhuxc
 [root@xdhuxc ~]# cd /sys/fs/cgroup/blkio/xdhuxc
 [root@xdhuxc xdhuxc]# echo &#34;253:0 1048576&#34; &gt; blkio.throttle.read_bps_device # 253:0 对应主设备号和副设备号，可以通过 ls -l /dev/sda 查看
 [root@xdhuxc xdhuxc]# echo 20322 &gt; tasks 
@@ -1174,10 +1241,10 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 </div><p>再使用 iotop 命令查看，读速度已经降到了 1M/s 以下。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">20322 be/4 root      993.36 K/s    0.00 B/s  0.00 %  0.00 % dd if=/dev/sda of=/dev/null  
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">20322 be/4 root      993.36 K/s    0.00 B/s  0.00 %  0.00 % dd if=/dev/sda of=/dev/null  
 </code></pre></td></tr></table></div>
 </div>
 </div><p>似乎对 /dev/vda 设备的IO速度控制不起作用。</p>
@@ -1194,7 +1261,7 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 <p>环境信息：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1241,7 +1308,7 @@ Actual DISK READ:      38.15 M/s | Actual DISK WRITE:       0.00 B/s
 </span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker info
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker info
 Containers: 0
  Running: 0
  Paused: 0
@@ -1291,14 +1358,14 @@ Live Restore Enabled: false
 </div><p>docker 安装时，会在 /sys/fs/cgroup/ 目录下的各个资源目录下生成以 docker 为名字的目录，即docker控制组。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# pwd
 /sys/fs/cgroup/cpu,cpuacct/docker
 [root@xdhuxc docker]# ls
 cgroup.clone_children  cgroup.procs  cpuacct.usage         cpu.cfs_period_us  cpu.rt_period_us   cpu.shares  notify_on_release
@@ -1308,7 +1375,7 @@ cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cp
 </div><p>默认情况下，docker 每启动一个容器时，会在 /sys/fs/cgroup/cpu/docker/ 目录下，生成以 容器ID 为名字的目录，即当前容器的控制组，如下所示：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1330,7 +1397,7 @@ cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cp
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker run -d --name=zookeeper zookeeper:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# docker run -d --name=zookeeper zookeeper:latest
 c86c1335154d50b69a1133ef92baf56705bfdf76e7f2b7ed5d58279c764c1b9a
 [root@xdhuxc ~]# cd /sys/fs/cgroup/cpu/docker
 [root@xdhuxc docker]# ll
@@ -1355,13 +1422,13 @@ drwxr-xr-x 2 root root 0 Jul 15 10:03 c86c1335154d50b69a1133ef92baf56705bfdf76e7
 </div><p>此时，cpu.cfs_quota_us 的内容为：-1，表示默认情况下并没有限制容器的 CPU 使用。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc c86c1335154d50b69a1133ef92baf56705bfdf76e7f2b7ed5d58279c764c1b9a]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc c86c1335154d50b69a1133ef92baf56705bfdf76e7f2b7ed5d58279c764c1b9a]# pwd
 /sys/fs/cgroup/cpu/docker/c86c1335154d50b69a1133ef92baf56705bfdf76e7f2b7ed5d58279c764c1b9a
 [root@xdhuxc c86c1335154d50b69a1133ef92baf56705bfdf76e7f2b7ed5d58279c764c1b9a]# cat cpu.cfs_quota_us 
 -1
@@ -1371,7 +1438,7 @@ drwxr-xr-x 2 root root 0 Jul 15 10:03 c86c1335154d50b69a1133ef92baf56705bfdf76e7
 <p>接下来创建一个带资源限制的 zookeeper 容器</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1407,7 +1474,7 @@ drwxr-xr-x 2 root root 0 Jul 15 10:03 c86c1335154d50b69a1133ef92baf56705bfdf76e7
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# pwd
 /sys/fs/cgroup/cpu,cpuacct/docker
 [root@xdhuxc docker]# docker run -d --name zookeeper --cpu-quota 25000 --cpu-period 150000 --cpu-shares 30 zookeeper:latest
 61952fccaff947c1fab3f724e349cd8c3562b92d74e053826830b3d99a3060b6
@@ -1448,18 +1515,18 @@ cgroup.event_control   cpuacct.stat  cpuacct.usage_percpu  cpu.cfs_quota_us   cp
 在宿主机上查看进程</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# ps -ef | grep -v grep | grep zookeeper
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# ps -ef | grep -v grep | grep zookeeper
 xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/jre/bin/java -Dzookeeper.log.dir=. -Dzookeeper.root.logger=INFO,CONSOLE -cp /zookeeper-3.4.12/bin/../build/classes:/zookeeper-3.4.12/bin/../build/lib/*.jar:/zookeeper-3.4.12/bin/../lib/slf4j-log4j12-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/slf4j-api-1.7.25.jar:/zookeeper-3.4.12/bin/../lib/netty-3.10.6.Final.jar:/zookeeper-3.4.12/bin/../lib/log4j-1.2.17.jar:/zookeeper-3.4.12/bin/../lib/jline-0.9.94.jar:/zookeeper-3.4.12/bin/../lib/audience-annotations-0.5.0.jar:/zookeeper-3.4.12/bin/../zookeeper-3.4.12.jar:/zookeeper-3.4.12/bin/../src/java/lib/*.jar:/conf: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.local.only=false org.apache.zookeeper.server.quorum.QuorumPeerMain /conf/zoo.cfg
 </code></pre></td></tr></table></div>
 </div>
 </div><p>tasks 文件中的内容为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1477,7 +1544,7 @@ xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc 61952fccaff947c1fab3f724e349cd8c3562b92d74e053826830b3d99a3060b6]# cat tasks 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc 61952fccaff947c1fab3f724e349cd8c3562b92d74e053826830b3d99a3060b6]# cat tasks 
 2890                # 正是宿主机上zookeeper进程的PID
 2925
 2926
@@ -1499,7 +1566,7 @@ xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/
 <p>类似的，可以通过 docker run 中 mem 相关的参数对容器的内存使用进行限制：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1507,7 +1574,7 @@ xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">    --kernel-memory bytes            Kernel memory limit
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">    --kernel-memory bytes            Kernel memory limit
     --cpuset-mems string             MEMs in which to allow execution (0-3, 0,1)
 -m, --memory bytes                   Memory limit
     --memory-reservation bytes       Memory soft limit
@@ -1518,7 +1585,7 @@ xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/
 </div><p>例如，运行如下命令</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1605,7 +1672,7 @@ xdhuxc     2890   2879  0 10:20 ?        00:00:00 /usr/lib/jvm/java-1.8-openjdk/
 </span><span class="lnt">85
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# docker run -d --name zookeeper --blkio-weight 100 --memory 50M --cpu-quota 25000 --cpu-period 150000 --cpu-shares 30 zookeeper:latest
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc docker]# docker run -d --name zookeeper --blkio-weight 100 --memory 50M --cpu-quota 25000 --cpu-period 150000 --cpu-shares 30 zookeeper:latest
 bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da
 [root@xdhuxc docker]# docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                          NAMES
@@ -1695,7 +1762,7 @@ memory.force_empty     memory.kmem.tcp.failcnt         memory.limit_in_bytes    
 </div><p>查看 IO 限制</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1724,7 +1791,7 @@ memory.force_empty     memory.kmem.tcp.failcnt         memory.limit_in_bytes    
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da]# pwd
 /sys/fs/cgroup/blkio/docker/bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da
 [root@xdhuxc bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da]# ls
 blkio.io_merged                   blkio.io_serviced                blkio.leaf_weight                blkio.throttle.io_serviced        blkio.time_recursive   notify_on_release
@@ -1756,7 +1823,7 @@ blkio.io_service_bytes_recursive  blkio.io_wait_time_recursive     blkio.throttl
 </div><p>目录 cpu 和 目录 cpuacct 为符号链接文件，都链接到了 cpu,cpuacct 目录。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1776,7 +1843,7 @@ blkio.io_service_bytes_recursive  blkio.io_wait_time_recursive     blkio.throttl
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc cgroup]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc cgroup]# pwd
 /sys/fs/cgroup
 [root@xdhuxc cgroup]# ls
 blkio  cpu  cpuacct  cpu,cpuacct  cpuset  devices  freezer  hugetlb  memory  net_cls  perf_event  systemd
@@ -1799,7 +1866,7 @@ drwxr-xr-x 5 root root  0 Jul  4 08:52 systemd
 </div><p>从上面也可以看出，目前 docker 已经几乎支持了所有的 cgroup 资源，可以限制容器对包括 network、device、cpu 和 memory 在内的资源的使用。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1815,7 +1882,7 @@ drwxr-xr-x 5 root root  0 Jul  4 08:52 systemd
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc cgroup]# pwd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc cgroup]# pwd
 /sys/fs/cgroup
 [root@xdhuxc cgroup]# find ./ -name bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da
 ./blkio/docker/bf59ef7c32f2f9d3878e9ee9f013288031cbcfe9ec03d8efbb075c14150828da
@@ -1837,13 +1904,13 @@ drwxr-xr-x 5 root root  0 Jul  4 08:52 systemd
 <p>1、首先，在宿主机的网卡 eth0 上做如下设置：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">tc qdisc del dev eth0 root                         # 删除已有规则
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">tc qdisc del dev eth0 root                         # 删除已有规则
 tc qdisc add dev eth0 root handle 10: htb default 12
 tc class add dev eth0 parent 10: classid 10:1 htb rate 1500kbit ceil 1500kbit burst 10k    # 限速
 tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0xff flowid 10:1 # 只处理 ping 参数的网络包
@@ -1860,33 +1927,33 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 <p>设置 net_cls classid：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">echo 0x100001 &gt; net_cls.classid
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">echo 0x100001 &gt; net_cls.classid
 </code></pre></td></tr></table></div>
 </div>
 </div><p>然后在容器中启动一个 ping 进程，其 ID 也被加入到 tasks 文件中了。</p>
 <p>3、查看 tc 情况</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">tc -s -d class show dev eth0
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">tc -s -d class show dev eth0
 </code></pre></td></tr></table></div>
 </div>
 </div><p>可以看到 tc 已经在处理 ping 进程产生的数据包了。</p>
 <p>再看一下 net_cls 和 ts 合作的限速效果：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">10488 bytes from 192.168.1.1: icmp_seq=35 ttl=63 time=12.7 ms
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">10488 bytes from 192.168.1.1: icmp_seq=35 ttl=63 time=12.7 ms
 10488 bytes from 192.168.1.1: icmp_seq=36 ttl=63 time=15.2 ms
 10488 bytes from 192.168.1.1: icmp_seq=37 ttl=63 time=4805 ms
 10488 bytes from 192.168.1.1: icmp_seq=38 ttl=63 time=9543 ms
@@ -1901,12 +1968,12 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 <p>block IO:</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">    --blkio-weight uint16            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">    --blkio-weight uint16            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
     --blkio-weight-device list       Block IO weight (relative device weight) (default [])
     --cgroup-parent string           Optional parent cgroup for the container
 </code></pre></td></tr></table></div>
@@ -1914,7 +1981,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 </div><p>CPU:</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1924,7 +1991,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">    --cpu-period int                 Limit CPU CFS (Completely Fair Scheduler) period
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">    --cpu-period int                 Limit CPU CFS (Completely Fair Scheduler) period
     --cpu-quota int                  Limit CPU CFS (Completely Fair Scheduler) quota
     --cpu-rt-period int              Limit CPU real-time period in microseconds
     --cpu-rt-runtime int             Limit CPU real-time runtime in microseconds
@@ -1937,7 +2004,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 </div><p>Device:</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1945,7 +2012,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">    --device list                    Add a host device to the container
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">    --device list                    Add a host device to the container
     --device-cgroup-rule list        Add a rule to the cgroup allowed devices list
     --device-read-bps list           Limit read rate (bytes per second) from a device (default [])
     --device-read-iops list          Limit read rate (IO per second) from a device (default [])
@@ -1956,14 +2023,14 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 </div><p>Memory:</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">    --kernel-memory bytes            Kernel memory limit
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">    --kernel-memory bytes            Kernel memory limit
 -m, --memory bytes                   Memory limit
     --memory-reservation bytes       Memory soft limit
     --memory-swap bytes              Swap limit equal to memory plus swap: &#39;-1&#39; to enable unlimited swap
@@ -2004,7 +2071,13 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -2087,10 +2160,6 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
             <ul class="related-list">
                 
                     <li class="related-item">
-                        <a href="/posts/mixed/nexus/nexus-docker/" class="related-link">基于 docker 容器部署 Nexus</a>
-                    </li>
-                
-                    <li class="related-item">
                         <a href="/posts/docker/docker-configuration-parameter/" class="related-link">Docker 常用参数配置</a>
                     </li>
                 
@@ -2124,6 +2193,10 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
                 
                     <li class="related-item">
                         <a href="/posts/docker/docker-registry-harbor/" class="related-link">Harbor 镜像仓库的安装和使用</a>
+                    </li>
+                
+                    <li class="related-item">
+                        <a href="/posts/docker/docker-practical-command/" class="related-link">Docker 实用命令总结</a>
                     </li>
                 
             </ul>
@@ -2182,16 +2255,19 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -2209,7 +2285,7 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -2352,6 +2428,8 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
 
         
 
+        
+
     
 
 
@@ -2359,7 +2437,10 @@ tc filter add dev eth0 protocol ip parent 10:0 prio 1 u32 match ip protocol 1 0x
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

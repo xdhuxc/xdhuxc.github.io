@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>FastDFS 安装和 Nginx 代理的使用 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -284,7 +304,7 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。</p>
+                <p>本篇博客详细介绍了 FastDFS 的安装和其配合 Nginx 使用的步骤。</p>
 <h3 id="环境信息"><a href="#环境信息" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:环境信息" class="headings">环境信息</a></h3>
 <p>服务器信息：</p>
 <div class="table-container"><table>
@@ -340,14 +360,14 @@
 <p>将安装包考本到两台服务器的 <code>/usr/local/src</code>，并进入该目录，解压安装包：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src &amp;&amp; unzip fastdfs.zip -d /usr/local/src
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src <span class="err">&amp;&amp;</span> unzip fastdfs.zip -d /usr/local/src
 cd /usr/local/src/fastdfs
 ls | grep &#39;tar.gz&#39; | xargs -I {} tar -xzvf {} -C /usr/local/src/fastdfs
 cd /usr/local/src/fastdfs/nginx/
@@ -358,35 +378,35 @@ ls | grep &#39;tar.gz&#39; | xargs -I {} tar -xzvf {} -C /usr/local/src/fastdfs/
 <p>分别进入两台服务器的 <code>/usr/local/src/fastdfs/fastdfs-lib</code> 目录，安装相关依赖：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/fastdfs-lib/*
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/fastdfs-lib/*
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、安装 libfastcommon</p>
 <p>通过如下命令，在两台服务器上安装 <code>libfastcommon</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/libfastcommon-1.0.39/
-./make.sh &amp;&amp; ./make.sh install
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/libfastcommon-1.0.39/
+./make.sh <span class="err">&amp;&amp;</span> ./make.sh install
 </code></pre></td></tr></table></div>
 </div>
 </div><p>看到如下信息，说明安装成功：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">if [ ! -e /usr/lib/libfastcommon.so ]; then ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so; fi
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">if [ ! -e /usr/lib/libfastcommon.so ]; then ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so; fi
 </code></pre></td></tr></table></div>
 </div>
 </div><p>安装完毕之后，设置软连接：</p>
-<pre><code>ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
+<pre tabindex="0"><code>ln -s /usr/lib64/libfastcommon.so /usr/local/lib/libfastcommon.so
 ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 ln -s /usr/lib64/libfdfsclient.so /usr/local/lib/libfdfsclient.so
 ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
@@ -394,32 +414,32 @@ ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so
 <p>使用如下命令，在两台服务器上安装 fastdfs：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/fastdfs-5.11
-./make.sh &amp;&amp; ./make.sh install
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/fastdfs-5.11
+./make.sh <span class="err">&amp;&amp;</span> ./make.sh install
 </code></pre></td></tr></table></div>
 </div>
 </div><p>看到如下信息，则说明安装成功：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi
 </code></pre></td></tr></table></div>
 </div>
 </div><p>拷贝配置文件：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp /etc/fdfs/client.conf.sample /etc/fdfs/client.conf
 cp /etc/fdfs/storage.conf.sample /etc/fdfs/storage.conf
 cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf
 </code></pre></td></tr></table></div>
@@ -428,22 +448,22 @@ cp /etc/fdfs/tracker.conf.sample /etc/fdfs/tracker.conf
 <p>创建文件夹，用于存放 Tracker 服务器的相关文件：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/tracker
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/tracker
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 tracker 的配置文件 <code>/etc/fdfs/tracker.conf</code>，修改如下部分：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">disabled=false
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">disabled=false
 port=22122
 base_path=/data/fastdfs/tracker
 http.server_port=6666
@@ -452,21 +472,21 @@ http.server_port=6666
 </div><p>拷贝 tracker 的 systemd 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_trackerd.service /usr/lib/systemd/system/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_trackerd.service /usr/lib/systemd/system/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>因为 <code>fdfs_trackerd</code> 等命令在 <code>/usr/local/bin</code> 中并没有，而是在 <code>/usr/bin</code> 路径下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /usr/bin/fdfs_trackerd /usr/local/bin
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /usr/bin/fdfs_trackerd /usr/local/bin
 ln -s /usr/bin/stop.sh /usr/local/bin
 ln -s /usr/bin/restart.sh /usr/local/bin
 </code></pre></td></tr></table></div>
@@ -474,46 +494,46 @@ ln -s /usr/bin/restart.sh /usr/local/bin
 </div><p>重启 systemd</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table></div>
 </div>
 </div><p>启动 tracker：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart fdfs_trackerd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart fdfs_trackerd
 </code></pre></td></tr></table></div>
 </div>
 </div><p>设置开机启动</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_trackerd
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_trackerd
 </code></pre></td></tr></table></div>
 </div>
 </div><p>6、配置 <code>storage</code> 服务器（172.20.15.75）</p>
 <p>首先是创建 <code>storage</code> 服务器的文件目录，需要注意的是多建了一个目录，因为 <code>storage</code> 还需要一个文件存储路径，用于存放接收的文件：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/storage
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/storage
 mkdir -p /data/fastdfs/storage_data
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 <code>storage</code> 的配置文件 <code>/etc/fdfs/storage.conf</code>，修改如下部分：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -523,7 +543,7 @@ mkdir -p /data/fastdfs/storage_data
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">disabled=false
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">disabled=false
 group_name=group1
 port=23000
 base_path=/data/fastdfs/storage
@@ -536,55 +556,55 @@ http.server_port=8888
 </div><p>拷贝 <code>tracker</code> 的 <code>systemd</code> 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_storaged.service /usr/lib/systemd/system/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/fdfs_storaged.service /usr/lib/systemd/system/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>配置完成后同样要为 <code>storage</code> 服务器的启动脚本设置软引用：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /usr/bin/fdfs_storaged /usr/local/bin
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /usr/bin/fdfs_storaged /usr/local/bin
 </code></pre></td></tr></table></div>
 </div>
 </div><p>重启 <code>systemd</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table></div>
 </div>
 </div><p>启动 <code>tracker</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart fdfs_storaged
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart fdfs_storaged
 </code></pre></td></tr></table></div>
 </div>
 </div><p>设置开机启动</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_storaged
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable fdfs_storaged
 </code></pre></td></tr></table></div>
 </div>
 </div><p>查看 <code>storage</code> 服务器是否已经登记到 <code>tracker</code> 服务器（也可以理解为 <code>tracker</code> 与 <code>storage</code> 是否整合成功），运行以下命令：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">/usr/bin/fdfs_monitor /etc/fdfs/storage.conf
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">/usr/bin/fdfs_monitor /etc/fdfs/storage.conf
 </code></pre></td></tr></table></div>
 </div>
 </div><p>看到 <code>tracker server is 172.20.15.73:22122</code>，tracker 服务器正常启动。</p>
@@ -594,93 +614,93 @@ http.server_port=8888
 <p>安装 <code>nginx</code> 依赖包，并安装 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-lib/*
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-lib/*
 rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-rpm/*
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将 <code>tracker</code> 的 <code>nginx</code> 的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9988</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/conf/nginx-tracker.conf /etc/nginx/nginx.conf
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/conf/nginx-tracker.conf /etc/nginx/nginx.conf
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将 <code>/usr/local/src/fastdfs/fastdfs-5.11/conf</code> 中的 <code>http.conf</code> 和 <code>mime.types</code> 拷贝到 <code>/etc/fdfs</code> 目录下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/http.conf /etc/fdfs/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/http.conf /etc/fdfs/
 cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>创建 <code>/var/lib/nginx/tmp</code> 以及日志文件夹：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /var/lib/nginx/tmp /data/log/nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /var/lib/nginx/tmp /data/log/nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><p>拷贝 <code>nginx</code> 的 <code>systemd</code> 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/nginx.service /usr/lib/systemd/system/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/nginx.service /usr/lib/systemd/system/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>重启 <code>systemd</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table></div>
 </div>
 </div><p>启动 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><p>设置开机启动：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><h4 id="安装并配置-storage-的-nginx"><a href="#安装并配置-storage-的-nginx" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:安装并配置-storage-的-nginx" class="headings">安装并配置 storage 的 nginx</a></h4>
 <p>安装 <code>nginx</code> 依赖包：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-lib/*
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh --force /usr/local/src/fastdfs/nginx/nginx-lib/*
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 <code>/usr/local/src/fastdfs/nginx/fastdfs-nginx-module-1.20/src/config</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -700,7 +720,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">ngx_addon_name=ngx_http_fastdfs_module
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">ngx_addon_name=ngx_http_fastdfs_module
 
 if test -n &#34;${ngx_module_link}&#34;; then
     ngx_module_type=HTTP
@@ -723,53 +743,53 @@ fi
 </div><p>增加依赖包并安装 <code>nginx</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/nginx/nginx-1.12.2
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cd /usr/local/src/fastdfs/nginx/nginx-1.12.2
 
 ./configure --prefix=/usr/share/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --user=root --add-module=/usr/local/src/fastdfs/nginx/fastdfs-nginx-module-1.20/src
 
-make &amp;&amp; make install
+make <span class="err">&amp;&amp;</span> make install
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将 <code>nginx</code> 的配置文件拷贝到 <code>/etc/nginx</code>，端口为 <code>9999</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/conf/nginx-storage.conf /etc/nginx/nginx.conf
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/conf/nginx-storage.conf /etc/nginx/nginx.conf
 </code></pre></td></tr></table></div>
 </div>
 </div><p>将 <code>/usr/local/src/fastdfs/fastdfs-5.11/conf</code> 中的 <code>http.conf</code> 和 <code>mime.types</code> 拷贝到 <code>/etc/fdfs</code> 目录下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/http.conf /etc/fdfs/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/http.conf /etc/fdfs/
 cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>把 <code>/usr/local/src/fastdfs/nginx/fastdfs-nginx-module-1.20/src</code> 安装目录下的 <code>mod_fastdfs.conf</code> 也拷贝到 /etc/fdfs` 目录下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/nginx/fastdfs-nginx-module-1.20/src/mod_fastdfs.conf /etc/fdfs/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp -r /usr/local/src/fastdfs/nginx/fastdfs-nginx-module-1.20/src/mod_fastdfs.conf /etc/fdfs/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 <code>/etc/fdfs/mod_fastdfs.conf</code> 下面的部分：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -795,7 +815,7 @@ cp -r /usr/local/src/fastdfs/fastdfs-5.11/conf/mime.types /etc/fdfs/
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">base_path=/data/fastdfs/storage
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">base_path=/data/fastdfs/storage
 tracker_server=172.20.15.73:22122
 storage_server_port=23000
 url_have_group_name = true
@@ -824,76 +844,76 @@ store_path0=/data/fastdfs/storage_data
 </div><p>建立 <code>M00</code> 至存储目录的符号连接：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /data/fastdfs/storage_data/data /data/fastdfs/storage_data/data/M00
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">ln -s /data/fastdfs/storage_data/data /data/fastdfs/storage_data/data/M00
 </code></pre></td></tr></table></div>
 </div>
 </div><p>创建 <code>/var/lib/nginx/tmp</code> 以及日志文件夹：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /var/lib/nginx/tmp /data/log/nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /var/lib/nginx/tmp /data/log/nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><p>拷贝 nginx 的 systemd 文件至 <code>/usr/lib/systemd/system/</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/nginx.service /usr/lib/systemd/system/
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cp /usr/local/src/fastdfs/conf/systemd/nginx.service /usr/lib/systemd/system/
 </code></pre></td></tr></table></div>
 </div>
 </div><p>重启 systemd：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl daemon-reload
 </code></pre></td></tr></table></div>
 </div>
 </div><p>启动 nginx：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><p>设置开机启动：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nginx
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nginx
 </code></pre></td></tr></table></div>
 </div>
 </div><h4 id="以-172201523-作为-client-进行测试"><a href="#以-172201523-作为-client-进行测试" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:以-172201523-作为-client-进行测试" class="headings">以 172.20.15.23 作为 client 进行测试</a></h4>
 <p>创建 <code>/data/fastdfs/client</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/client
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">mkdir -p /data/fastdfs/client
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 <code>/etc/fdfs/client.conf</code>：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">base_path=/data/fastdfs/client
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">base_path=/data/fastdfs/client
 tracker_server=172.20.15.73:22122
 http.tracker_server_port=6666
 </code></pre></td></tr></table></div>
@@ -901,16 +921,16 @@ http.tracker_server_port=6666
 </div><p>上传文件：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">/usr/bin/fdfs_test /etc/fdfs/client.conf upload /usr/local/src/fastdfs/test/test.jpeg
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">/usr/bin/fdfs_test /etc/fdfs/client.conf upload /usr/local/src/fastdfs/test/test.jpeg
 </code></pre></td></tr></table></div>
 </div>
 </div><p>得到如下结果，说明上传成功：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -941,7 +961,7 @@ http.tracker_server_port=6666
 </span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">This is FastDFS client test program v5.11
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">This is FastDFS client test program v5.11
 
 Copyright (C) 2008, Happy Fish / YuQing
 
@@ -975,10 +995,10 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
 </div><p>根据 <code>/group1/M00/00/00/rBQPS1uP4OOAGfVuAAC0cbebd6Q04_big.jpeg</code>，在浏览器上查看已经上传的图片：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.15.73:9988/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0cbebd6Q15_big.jpeg
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">http://172.20.15.73:9988/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0cbebd6Q15_big.jpeg
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="参考资料"><a href="#参考资料" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考资料" class="headings">参考资料</a></h3>
@@ -1021,7 +1041,13 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -1215,16 +1241,19 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -1242,7 +1271,7 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1385,6 +1414,8 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
 
         
 
+        
+
     
 
 
@@ -1392,7 +1423,10 @@ example file url: http://172.20.15.75:6666/group1/M00/00/00/rBQPS1uRHe2AKqfAAAC0
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

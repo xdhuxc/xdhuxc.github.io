@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>在 Kibana 中制作 AlertManager 相关的图表 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -130,6 +133,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -157,7 +173,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -184,6 +200,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -291,39 +311,39 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客介绍下如何在 <code>Kibana</code> 中制作图表，详细介绍其参数和方法。</p>
+                <p>本篇博客介绍下如何在 <code>Kibana</code> 中制作图表，详细介绍其参数和方法。</p>
 <h3 id="背景"><a href="#背景" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:背景" class="headings">背景</a></h3>
 <p>我们将 <code>AlertManager</code> 中产生的报警存储到了 ES 中，接下来，需要制作报警图表，以可视化的方式观察报警的数量变化。</p>
 <h3 id="kibana-安装及配置"><a href="#kibana-安装及配置" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:kibana-安装及配置" class="headings">Kibana 安装及配置</a></h3>
 <p>1、下载 <code>Kibana</code> 安装包</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-x86_64.rpm
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">wget https://artifacts.elastic.co/downloads/kibana/kibana-7.6.1-x86_64.rpm
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、安装 <code>kibana</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh kibana-7.6.1-x86_64.rpm
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">rpm -ivh kibana-7.6.1-x86_64.rpm
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、修改 <code>Kibana</code> 配置，修改 <code>/etc/kibana/kibana.yml</code> 文件中的如下配置项：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">server.port: 5601                                  # 指定 Kibana 进程运行的端口号，默认为：5601
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">server.port: 5601                                  # 指定 Kibana 进程运行的端口号，默认为：5601
 server.host: &#34;10.20.13.15&#34;                         # 指定 Kibana 服务器绑定的主机
 elasticsearch.hosts: [&#34;http://10.20.13.15:9200&#34;]   # 指定 Kibana 要连接的 ES 的地址
 elasticsearch.username: &#34;elastic&#34;                  # 指定 Kibana 要连接的 ES 的用户名
@@ -333,10 +353,10 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 </div><p>4、启动 <code>Kibana</code></p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart kibana
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart kibana
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="图表制作"><a href="#图表制作" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:图表制作" class="headings">图表制作</a></h3>
@@ -346,19 +366,19 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <p>修改 <code>General</code> 中的 <code>Date format</code> 为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">YYYY-MM-DD HH:mm:ss.SSS
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">YYYY-MM-DD HH:mm:ss.SSS
 </code></pre></td></tr></table></div>
 </div>
 </div><p>修改 <code>General</code> 中的 <code>Date with nanoseconds format</code> 为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">YYYY-MM-DD HH:mm:ss.SSSSSSSSS
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">YYYY-MM-DD HH:mm:ss.SSSSSSSSS
 </code></pre></td></tr></table></div>
 </div>
 </div><p>然后保存。</p>
@@ -367,16 +387,16 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <h5 id="饼图"><a href="#饼图" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:饼图" class="headings">饼图</a></h5>
 <p>先制作一个按报警名称聚合的饼图，表示各个报警在报警总数中所占的比例。选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Pie</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
 <div align="center">
-    <img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG755.png" width="400px" height="300px" />
+    <img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG755.png" width="400px" height="300px" />
 </div>
 <p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，Count 返回所选索引模式中元素的原始计数，<code>Custom label</code> 中填入这个 <code>Count</code> 的含义，即报警总数。</p>
 <p>点击 <code>Add</code> 增加一个 <code>Bucket</code>（相当于 <code>SQL</code> 中的 <code>group by</code>），类型选择 <code>Split slices</code>，</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG756.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG756.png" width="400px" height="300px" />
 </center>
 <p>聚合器选择 <code>Terms</code>，<code>Field</code> 选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 增大到 100，打开 <code>Group other values in separate bucket</code>，在 <code>Label for other bucket</code> 中填入 <code>其他</code>，<code>Custom label</code> 中填入 <code>报警名称</code></p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG757.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG757.png" width="400px" height="300px" />
 </center>
 <p><code>Options</code> 中的参数说明如下：</p>
 <ul>
@@ -388,40 +408,40 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 </ul>
 <p>最后的饼图为：</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG758.png" width="600px" height="400px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG758.png" width="600px" height="400px" />
 </center>
 <p>可以看到，在所有的报警中，各报警所占的比例。</p>
 <p>保存该图标，命名为：各报警统计</p>
 <h5 id="线图"><a href="#线图" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:线图" class="headings">线图</a></h5>
 <p>或许还想观察各个报警的总数随时间的变化情况，此时，我们可以制作一个折线图，选择 <code>Visualize</code>，点击 <code>Create visualization</code>，点击 <code>Line</code>，选择索引模式 <code>alertmanager-alerts*</code>，来到图表编辑页面</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG760.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG760.png" width="400px" height="300px" />
 </center>
 <p>在 <code>Metrics</code> 下的 <code>Slice size</code> 中选择聚合器 <code>Count</code>，<code>Custom label</code> 中填入 <code>报警总数</code>。</p>
 <p>接下来设置 X 轴，在 <code>Buckets</code> 中增加 <code>X-axis</code>，聚合器选择 <code>Date Histogram</code>，<code>Field</code> 选择 <code>startAt</code>，<code>Minimum interval</code> 填写 <code>1h</code>，<code>Custom label</code> 填写 <code>时间</code>，我们以报警发生的时间作为 X 轴数据，每小时的数据统计在一个点上。</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG761.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG761.png" width="400px" height="300px" />
 </center>
 <p>接下来继续增加 <code>Bucket</code>，选择 <code>Split series</code>，使用 <code>Terms</code> 聚合器，<code>Field</code> 字段选择 <code>labels.alertname.keyword</code>，<code>Order by</code> 选择 <code>Metric：报警总数</code>，<code>Order</code> 默认即可，<code>Size</code> 设置为：<code>50</code>，打开 <code>Group other values in separate bucket</code>（将所有不在报警名称之中的归入此类），在 <code>Label for other bucket</code> 下方填写 其他，<code>Custom label</code> 中填写 <code>报警名称</code></p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG764.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG764.png" width="400px" height="300px" />
 </center>
 <p>数据部分的工作做完了，接下来进行配置：</p>
 <p>1、设置 Y 轴，在 <code>Metrics &amp; axes</code> 中，<code>Chart type</code> 选择 <code>Line</code>，使用线图；<code>Line mode</code> 选择 <code>Smoothed</code>，使用平滑曲线；<code>Line width</code> 用来设置线宽，可自行设置。</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG765.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG765.png" width="400px" height="300px" />
 </center>
 <p>2、设置 X 轴，<code>Position</code> 为 <code>Bottom</code>，x 轴显示在图表下方；打开 <code>Show axis lines and labels</code>，否则将不显示 x 轴的标签；<code>Align</code> 使用 <code>Horizontal</code>，横向排列 x 轴标签。</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG766.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG766.png" width="400px" height="300px" />
 </center>
 <p>3、其他设置，在 <code>Panel settings</code> 中，打开 <code>Show tooltip</code>，这样当鼠标放到数据点上时，会显示该点的数据和标签；打开 Current time marker，将会以垂线的方式显示当前时间线；在 Grid 部分，打开 <code>Show X-axis lines</code>，<code>Y-axis lines</code> 选择 <code>LeftAxis-1</code>，这样会在坐标轴中显示网格线，更加直观。</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG767.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG767.png" width="400px" height="300px" />
 </center>
 <p>最后的折线图为：</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG768.png" width="600px" height="400px"/>
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG768.png" width="600px" height="400px"/>
 </center>
 <p>可以看出，随着时间的变化，有些报警在减少，有些报警在迅速增加。</p>
 <p>保存该图标，命名为：各报警随时间的变化情况</p>
@@ -430,15 +450,15 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 <p>百分位数可以使用线图来绘制，也基本跟线图一样，区别在于以下两点：</p>
 <p>1、<code>Metrics</code> 中使用 <code>Percentiles</code> 聚合器，<code>Field</code> 选择 <code>labels.value</code>，注意，<code>labels.value</code> 必须是 <code>ES</code> 中的数值类型，否则不能用于计算百分位数，在 <code>Percents</code> 中分别填入 <code>90</code>，<code>95</code>，<code>99</code>，表示需要计算 <code>90% 分位数</code>，<code>95% 分位数</code>，<code>99% 分位数</code>。</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG769.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG769.png" width="400px" height="300px" />
 </center>
 <p>2、在 <code>Bucket</code> 的 <code>Split series</code> 中，此处使用 <code>Filters</code> 聚合器，查询条件为：<code>labels.alertname.keyword : &quot;kube-admin相关容器内存使用率大于80%&quot; and labels.severity.keyword : &quot;critical&quot; and labels.group.keyword : &quot;RST&quot;</code>，查询出待计算百分位数的报警，在 <code>Filter 1 label</code> 中填入 <code>kube-admin相关容器内存使用率大于80%</code></p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG770.png" width="400px" height="300px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG770.png" width="400px" height="300px" />
 </center>
 <p>最后的百分位图为：</p>
 <center>
-<img src="https://xdhuxc.github.ioimage/storage/elasticsearch/kibana-visualizations/WechatIMG771.png" width="600px" height="400px" />
+<img src="https://xdhuxc.github.io/image/storage/elasticsearch/kibana-visualizations/WechatIMG771.png" width="600px" height="400px" />
 </center>
 <p>可以看到，在2020年03月05日5点时，kube-admin相关容器内存使用率大于80% 报警的 90% 分位数为 77.162，也就是 value 设置为 77.162 时，90% 的报警都不会发送出来。</p>
 <p>同时也应该注意，分位数是随着报警总数的增多而变化的，并非固定值。</p>
@@ -471,7 +491,13 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -665,16 +691,19 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -692,7 +721,7 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -835,6 +864,8 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
 
         
 
+        
+
     
 
 
@@ -842,7 +873,10 @@ elasticsearch.password: &#34;AlertManager@2020&#34;        # 指定 kibana 要�
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

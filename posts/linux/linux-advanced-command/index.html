@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>Linux 部分高级命令总结 | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -293,15 +313,15 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>本篇博客整理了一些 Linux 系统中常用的高级命令，在一些复杂的运维工作中会用到。</p>
+                <p>本篇博客整理了一些 Linux 系统中常用的高级命令，在一些复杂的运维工作中会用到。</p>
 <h3 id="netstat"><a href="#netstat" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:netstat" class="headings">netstat</a></h3>
 <p>netstat 是一个监控 TCP/IP 网络的工具，可以显示路由表、实际的网络连接以及每一个网络接口设备的状态信息。其语法格式为：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat [options]
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">netstat [options]
 </code></pre></td></tr></table></div>
 </div>
 </div><p>参数如下：</p>
@@ -318,12 +338,12 @@
 <p>1、列出所有的端口，包括监听的和未监听的</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat -a   # 列出所有的端口
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">netstat -a   # 列出所有的端口
 netstat -au  # 列出所有的 TCP 端口
 netstat -at  # 列出所有的 UDP 端口
 </code></pre></td></tr></table></div>
@@ -331,13 +351,13 @@ netstat -at  # 列出所有的 UDP 端口
 </div><p>2、列出所有处于监听状态的 Socket</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat -l   # 只列出监听（即State 状态为 LISTENING）状况的端口，
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">netstat -l   # 只列出监听（即State 状态为 LISTENING）状况的端口，
 netstat -lt  # 只列出所有监听的 TCP 端口
 netstat -lu  # 只列出所有监听的 UDP 端口
 netstat -lx  # 只列出所有监听 UNIX 的
@@ -346,10 +366,10 @@ netstat -lx  # 只列出所有监听 UNIX 的
 </div><p>3、显示 pid 和进程名称</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">netstat -p
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">netstat -p
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="journalctl"><a href="#journalctl" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:journalctl" class="headings">journalctl</a></h3>
@@ -358,19 +378,19 @@ netstat -lx  # 只列出所有监听 UNIX 的
 <p>1）查看所有日志，默认情况下，只保存本次启动的日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2）查看内核日志，不显示应用日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -k
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -k
 </code></pre></td></tr></table></div>
 </div>
 </div><h4 id="查看指定时间的日志"><a href="#查看指定时间的日志" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:查看指定时间的日志" class="headings">查看指定时间的日志</a></h4>
@@ -379,79 +399,79 @@ netstat -lx  # 只列出所有监听 UNIX 的
 <p>1、显示 2018年07月11日，16点43分30秒到当前时间之间的所有日志信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since=&#34;2018-07-11 16:43:30&#34;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since=&#34;2018-07-11 16:43:30&#34;
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、获取昨天的日志信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since yesterday
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since yesterday
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、获取某一个时间段到当前时间的前一个小时的日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since 12:00 --until &#34;1 hour ago&#34;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since 12:00 --until &#34;1 hour ago&#34;
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、获取当前时间的前20分钟的日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since &#34;20 min ago&#34;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since &#34;20 min ago&#34;
 </code></pre></td></tr></table></div>
 </div>
 </div><p>5、获取某一天到某一个时间段的日志信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since &#34;2018-07-11&#34; --until &#34;2018-07-12 17:00:00&#34;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --since &#34;2018-07-11&#34; --until &#34;2018-07-12 17:00:00&#34;
 </code></pre></td></tr></table></div>
 </div>
 </div><p>6、查看 httpd 服务的日志信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -u httpd --since today # -u 选项指定待查看的单元
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -u httpd --since today # -u 选项指定待查看的单元
 </code></pre></td></tr></table></div>
 </div>
 </div><p>7、按照进程ID查看日志信息</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl _PID=1
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl _PID=1
 </code></pre></td></tr></table></div>
 </div>
 </div><p>8、按日志级别显示日志条目</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -p err # -p 选项显示特定优先级的信息，从而过滤掉优先级较低的信息。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -p err # -p 选项显示特定优先级的信息，从而过滤掉优先级较低的信息。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>这将只显示被标记为错误、严重、警告或者紧急级别的信息。我们也可以使用优先级名称或者其相关量化值，以下各数字为由最高到最低优先级：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -461,7 +481,7 @@ netstat -lx  # 只列出所有监听 UNIX 的
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">0:emerg
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">0:emerg
 1:alert
 2:crit
 3:err
@@ -474,46 +494,46 @@ netstat -lx  # 只列出所有监听 UNIX 的
 </div><p>9、显示近期的日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -n200  # 使用 -n 选项指定显示特定数量的记录，默认情况下只显示最后发生的10条日志记录。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -n200  # 使用 -n 选项指定显示特定数量的记录，默认情况下只显示最后发生的10条日志记录。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>10、追踪日志</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -f # 表示主动追踪当前正在输出的日志，只要不终止，会一直监控。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl -f # 表示主动追踪当前正在输出的日志，只要不终止，会一直监控。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>11、查看当前日志占用磁盘的空间的总大小</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --disk-usage
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --disk-usage
 </code></pre></td></tr></table></div>
 </div>
 </div><p>12、指定日志文件最大空间</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --vacuum-size=1G
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --vacuum-size=1G
 </code></pre></td></tr></table></div>
 </div>
 </div><p>13、指定日志文件保存时间</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --vacuum-time=1years
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">journalctl --vacuum-time=1years
 </code></pre></td></tr></table></div>
 </div>
 </div><p>参考资料：</p>
@@ -535,7 +555,7 @@ netstat -lx  # 只列出所有监听 UNIX 的
 <p>1、使用默认的域名服务器，根据域名查找 IP 地址</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -547,7 +567,7 @@ netstat -lx  # 只列出所有监听 UNIX 的
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup www.baidu.com
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup www.baidu.com
 Server:		10.10.24.11
 Address:	10.10.24.11#53
 
@@ -562,14 +582,14 @@ Address: 61.135.169.125
 </div><p>2、使用默认的域名服务器，根据 IP 地址查找域名</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup 10.10.24.11
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup 10.10.24.11
 Server:		10.10.24.11
 Address:	10.10.24.11#53
 
@@ -579,7 +599,7 @@ Address:	10.10.24.11#53
 </div><p>或者是这样</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -597,7 +617,7 @@ Address:	10.10.24.11#53
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup www.taobao.com
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup www.taobao.com
 Server:		10.10.24.11
 Address:	10.10.24.11#53
 
@@ -612,13 +632,13 @@ Address: 123.129.215.178
 Server:		10.10.24.11
 Address:	10.10.24.11#53
 
-** server can&#39;t find 178.215.129.123.in-addr.arpa.: NXDOMAIN
+<span class="ge">**</span> server can&#39;t find 178.215.129.123.in-addr.arpa.: NXDOMAIN
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、列出当前设置的默认选项</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -636,7 +656,7 @@ Address:	10.10.24.11#53
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc xdhuxc]# nslookup
 <span class="k">&gt; </span><span class="ge">set all
 </span><span class="ge"></span>Default server: 10.10.24.11
 Address: 10.10.24.11#53
@@ -660,108 +680,108 @@ Set options:
 <div class="table-container"><table>
 <thead>
 <tr>
-<th align="left">任务</th>
-<th align="left">旧指令</th>
-<th align="left">新指令</th>
+<th style="text-align:left">任务</th>
+<th style="text-align:left">旧指令</th>
+<th style="text-align:left">新指令</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">使某服务自动启动</td>
-<td align="left">chkconfig --level 3 httpd on</td>
-<td align="left">systemctl enable httpd.service</td>
+<td style="text-align:left">使某服务自动启动</td>
+<td style="text-align:left">chkconfig --level 3 httpd on</td>
+<td style="text-align:left">systemctl enable httpd.service</td>
 </tr>
 <tr>
-<td align="left">使某服务不自动启动</td>
-<td align="left">chkconfig --level 3 httpd off</td>
-<td align="left">systemctl disable httpd.service</td>
+<td style="text-align:left">使某服务不自动启动</td>
+<td style="text-align:left">chkconfig --level 3 httpd off</td>
+<td style="text-align:left">systemctl disable httpd.service</td>
 </tr>
 <tr>
-<td align="left">检查服务状态</td>
-<td align="left">service httpd status</td>
-<td align="left">systemctl status httpd.service(显示服务详细信息)systemctl is-active httpd.service(仅显示是否Active)</td>
+<td style="text-align:left">检查服务状态</td>
+<td style="text-align:left">service httpd status</td>
+<td style="text-align:left">systemctl status httpd.service(显示服务详细信息)systemctl is-active httpd.service(仅显示是否Active)</td>
 </tr>
 <tr>
-<td align="left">显示所有已启动的服务</td>
-<td align="left">chkconfig --list</td>
-<td align="left">systemctl list-units --type=service</td>
+<td style="text-align:left">显示所有已启动的服务</td>
+<td style="text-align:left">chkconfig --list</td>
+<td style="text-align:left">systemctl list-units --type=service</td>
 </tr>
 <tr>
-<td align="left">启动某服务</td>
-<td align="left">service httpd start</td>
-<td align="left">systemctl start httpd.service</td>
+<td style="text-align:left">启动某服务</td>
+<td style="text-align:left">service httpd start</td>
+<td style="text-align:left">systemctl start httpd.service</td>
 </tr>
 <tr>
-<td align="left">停止某服务</td>
-<td align="left">service httpd stop</td>
-<td align="left">systemctl stop httpd.service</td>
+<td style="text-align:left">停止某服务</td>
+<td style="text-align:left">service httpd stop</td>
+<td style="text-align:left">systemctl stop httpd.service</td>
 </tr>
 <tr>
-<td align="left">重启某服务</td>
-<td align="left">service httpd restart</td>
-<td align="left">systemctl restart httpd.service</td>
+<td style="text-align:left">重启某服务</td>
+<td style="text-align:left">service httpd restart</td>
+<td style="text-align:left">systemctl restart httpd.service</td>
 </tr>
 </tbody>
 </table></div>
 <p>1、启动nfs服务</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nfs-server.service
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl start nfs-server.service
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、设置开机自启动</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nfs-server.server
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl enable nfs-server.server
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、停止开机启动</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl disable nfs-server.service
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl disable nfs-server.service
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、查看服务当前状态</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl status nfs-server.service
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl status nfs-server.service
 </code></pre></td></tr></table></div>
 </div>
 </div><p>5、重新启动某服务</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart nfs-server.service
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl restart nfs-server.service
 </code></pre></td></tr></table></div>
 </div>
 </div><p>6、查看所有已启动的服务</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">systemctl list -units --type=service
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">systemctl list -units --type=service
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="top-命令"><a href="#top-命令" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:top-命令" class="headings">top 命令</a></h3>
 <p>top 命令是linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -779,7 +799,7 @@ Set options:
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">top - 08:50:33 up 4 days, 17:17,  4 users,  load average: 3.02, 2.95, 2.36
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">top - 08:50:33 up 4 days, 17:17,  4 users,  load average: 3.02, 2.95, 2.36
 Tasks: 106 total,   1 running, 105 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  0.0 us,  0.1 sy,  0.0 ni, 99.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
 KiB Mem :  8010904 total,  3164800 free,  1467176 used,  3378928 buff/cache
@@ -1068,16 +1088,16 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 <p>1、查看nginx日志中出现地IP数</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cat access.log | awk -F &#39;|&#39; &#39;{print $1}&#39; | sort | uniq -c | sort -k1nr | head -n 10
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cat access.log | awk -F &#39;|&#39; &#39;{print $1}&#39; | sort | uniq -c | sort -k1nr | head -n 10
 </code></pre></td></tr></table></div>
 </div>
 </div><p>示例如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1085,7 +1105,7 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost nginx]# cat xdhuxc.log | awk -F &#39;|&#39; &#39;{print $1}&#39; | sort | uniq -c | sort -k1nr| head -n 5
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@localhost nginx]# cat xdhuxc.log | awk -F &#39;|&#39; &#39;{print $1}&#39; | sort | uniq -c | sort -k1nr| head -n 5
    5522 172.20.26.127
    4873 172.20.13.111
    2426 172.20.26.128
@@ -1097,16 +1117,16 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 <p>1、查看进程下的线程</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">ps -T -p 4561          # 2561 为进程 ID。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">ps -T -p 4561          # 2561 为进程 ID。
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、查看进程树，并输出指定属性</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -1177,7 +1197,7 @@ KiB Swap:  2096124 total,  2096124 free,        0 used.  6235608 avail Mem
 </span><span class="lnt">69
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master kubepods]# ps xf -o pid,ppid,stat,args
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@k8s-master kubepods]# ps xf -o pid,ppid,stat,args
   PID  PPID STAT COMMAND
 ps xf -o pid,ppid,stat,args
 22013     1 Ssl  /usr/bin/dockerd --exec-opt native.cgroupdriver=cgroupfs --storage-driver=devicemapper --insecure-registry 0.0.0.0/0 --registry-mirror http://172.20.2
@@ -1252,44 +1272,44 @@ ps xf -o pid,ppid,stat,args
 <p>1、查看当前目录下的目录及文件详情</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">tree -a # 显示当前目录下的所有文件及目录
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">tree -a # 显示当前目录下的所有文件及目录
 </code></pre></td></tr></table></div>
 </div>
 </div><p>2、查看当前目录三级以内的文件及目录详情</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># -L：指定目录深度。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># -L：指定目录深度。
 </span><span class="gh"></span>tree -L 3 # 显示当前目录三级以内的文件及目录详情
 </code></pre></td></tr></table></div>
 </div>
 </div><p>3、查看当前目录三级以内的文件及目录详情及文件和目录的大小，并以可读的方式显示</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">tree -L --du -h # 显示当前目录三级以内的文件及目录详情，并以可读方式显示目录和文件的大小。
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">tree -L --du -h # 显示当前目录三级以内的文件及目录详情，并以可读方式显示目录和文件的大小。
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="w-命令"><a href="#w-命令" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:w-命令" class="headings">w 命令</a></h3>
 <p>w 命令用于显示已经登录系统的用户列表，并显示用户正在执行的命令。执行此命令可以知道目前登录进系统的用户以及他们正在执行的程序，还包括他们登录的 IP 地址。</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# w
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">[root@xdhuxc ~]# w
  16:04:06 up 27 days, 23 min,  2 users,  load average: 0.00, 0.01, 0.05
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 root     pts/1    10.6.198.249     Mon10   24:15m  0.13s  0.13s -bash
@@ -1300,10 +1320,10 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
 <p>指定分隔符截取文件内容，而不是默认的tab</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">cat /etc/passwd | cut -d &#34;:&#34; -f 1 # 查询linux系统中的所有用户 
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">cat /etc/passwd | cut -d &#34;:&#34; -f 1 # 查询linux系统中的所有用户 
 </code></pre></td></tr></table></div>
 </div>
 </div>
@@ -1330,7 +1350,13 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -1508,16 +1534,19 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -1535,7 +1564,7 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1678,6 +1707,8 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
 
         
 
+        
+
     
 
 
@@ -1685,7 +1716,10 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>

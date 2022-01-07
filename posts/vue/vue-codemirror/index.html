@@ -3,7 +3,10 @@
     <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
     <meta charset="UTF-8" />
 
-    <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
+    <meta name="generator" content="Hugo 0.88.1" /><meta name="theme-color" content="#fff" />
+    <meta name="color-scheme" content="light dark">
+
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
@@ -14,11 +17,11 @@
 
     <title>Vue 集成 CodeMirror | xdhuxc</title>
 
-    <link rel="stylesheet" href="/css/meme.min.f30cf7ed40d1013c889e2c79d54c37384b51b344c88672994a8861b13278c685.css"/>
+    <link rel="stylesheet" href="/css/meme.min.6389462c5dc2c940d51290a3bb5227e5cd2b1d89daa98ad65baaed5a626134e4.css"/>
 
     
     
-        <script src="/js/meme.min.ed0152d13f653ff21bf0e76a728fd6ae9b762c7a7bad8bc4eab82218fb602206.js"></script>
+        <script src="/js/meme.min.4194bf2034241e3757fbbbf5fe4db43d0ff17c81f4496e6bc931504f0978cbd2.js"></script>
 
     
 
@@ -129,6 +132,19 @@
 
 
 
+        
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+        <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+    
+    
 
     
 </head>
@@ -156,7 +172,7 @@
         
         
             
-                <li class="menu-item active"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
+                <li class="menu-item"><a href="/posts/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon archive"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg><span class="menu-item-name">文章</span></a>
                 </li>
             
         
@@ -183,6 +199,10 @@
                             <a id="theme-switcher" href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5l48.8-97.5a18 18 0 0128 0l48.8 97.5 103.4 -34.5a18 18 0 0119.8 19.8l-34.5 103.4l97.5 48.8a18 18 0 010 28l-97.5 48.8 34.5 103.4a18 18 0 01-19.8 19.8l-103.4-34.5-48.8 97.5a18 18 0 01-28 0l-48.8-97.5l-103.4 34.5a18 18 0 01-19.8-19.8l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8-34.5-103.4a18 18 0 0119.8-19.8zM256 128a128 128 0 10.01 0M256 160a96 96 0 10.01 0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412a256 256 0 10154-407a11.5 11.5 0 00-5 20a201.5 201.5 0 01-134 374a11.5 11.5 0 00-15 13"/></svg></a>
                         </li>
                     
+                
+            
+        
+            
                 
             
         
@@ -279,7 +299,7 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-              <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
+                <p>当我们需要在网页页面中输入不同编程语言代码并高亮显示时，可以使用 CodeMirror 来实现这种需求。</p>
 <h3 id="codemirror-简介"><a href="#codemirror-简介" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:codemirror-简介" class="headings">CodeMirror 简介</a></h3>
 <p>CodeMirror 是一个用于编辑文本框代码高亮的 JavaScript 插件，为各种编程语言实现关键字、函数、变量等代码高亮，丰富的 API 和可扩展功能以及多个主题样式、可以基本满足各种项目的需求。</p>
 <p>CodeMirror 支持各种编程语言、标记语言的语法高亮，包括 C、C++、Java、PHP、JavaScript、Python、Go、Ruby、SQL等，以及 LaTex、wiki、Markdown等，同时也支持 JSON、YAML、TOML等配置文件常用格式。此外，CodeMirror 还支持代码自动补全、搜索、替换、HTML预览、显示行号、选择/搜索结果高亮等功能。</p>
@@ -289,14 +309,14 @@
 <p>1、引入核心文件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;script src=&#34;lib/codemirror.js&#34;&gt;&lt;/script&gt;
-&lt;link rel=&#34;stylesheet&#34; href=&#34;lib/codemirror.css&#34;&gt;
-&lt;script src=&#34;mode/javascript/javascript.js&#34;&gt;&lt;/script&gt;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;lib/codemirror.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;lib/codemirror.css&#34;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;mode/javascript/javascript.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>codemirror.js 和 codemirror.css 是 CodeMirror 插件的核心文件，无论要高亮的代码是何种语言，都需要引入这两个文件。</p>
@@ -304,25 +324,25 @@
 <p>2、创建编辑器</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;html&gt;
-    &lt;body&gt;
-        &lt;textarea id=&#34;code&#34; name=&#34;code&#34;&gt;&lt;/textarea&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;code&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;code&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>创建 HTML 文本框元素，用于存放需要高亮显示的代码。</p>
 <p>在 JavaScript 代码中</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -334,16 +354,16 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;script&gt;
-    var editor = CodeMirror.fromTextArea(
-    document.getElementById(&#34;code&#34;), // 获取文本框元素
-    {
-        lineNumbers: true,
-        mode: &#39;text/x-yaml&#39;,
-        gutters: [&#39;CodeMirror-lint-markers&#39;],
-        theme: &#39;rubyblue&#39;,
-    });                             //设置选项参数
-&lt;/script&gt;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="kd">var</span> <span class="nx">editor</span> <span class="o">=</span> <span class="nx">CodeMirror</span><span class="p">.</span><span class="nx">fromTextArea</span><span class="p">(</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;code&#34;</span><span class="p">),</span> <span class="c1">// 获取文本框元素
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="nx">lineNumbers</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;text/x-yaml&#39;</span><span class="p">,</span>
+        <span class="nx">gutters</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;CodeMirror-lint-markers&#39;</span><span class="p">],</span>
+        <span class="nx">theme</span><span class="o">:</span> <span class="s1">&#39;rubyblue&#39;</span><span class="p">,</span>
+    <span class="p">});</span>                             <span class="c1">//设置选项参数
+</span><span class="c1"></span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>使用文本框元素和参数对象来创建 CodeMirror 对象，</p>
@@ -358,40 +378,40 @@
 <p>使用如下方法获取 CodeMirror 的值</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.getValue() # 获取经过转义的数据
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">editor.getValue() # 获取经过转义的数据
 editor.getTextArea().value # 获取未经过转义的数据
 </code></pre></td></tr></table></div>
 </div>
 </div><p>使用如下方法为 CodeMirror 赋值</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setValue(&#34;Hello, World!&#34;)
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">editor.setValue(&#34;Hello, World!&#34;)
 </code></pre></td></tr></table></div>
 </div>
 </div><p>4、设置文本框尺寸及选项</p>
 <p>可通过如下方法设置文本框尺寸</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setSize(&#34;600px&#34;, &#34;800px&#34;);
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">editor.setSize(&#34;600px&#34;, &#34;800px&#34;);
 </code></pre></td></tr></table></div>
 </div>
 </div><p>可在代码中通过如下方式设置 CodeMirror 属性</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">editor.setOption(&#34;readOnly&#34;, true);
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">editor.setOption(&#34;readOnly&#34;, true);
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="vue-中集成-codemirror"><a href="#vue-中集成-codemirror" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:vue-中集成-codemirror" class="headings">Vue 中集成 CodeMirror</a></h3>
@@ -399,13 +419,13 @@ editor.getTextArea().value # 获取未经过转义的数据
 <p>1、安装插件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 安装 codemirror 插件
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 安装 codemirror 插件
 </span><span class="gh"></span>npm install codemirror
 <span class="gh"># 安装 vue-codemirror 插件
 </span><span class="gh"></span>npm install vue-codemirror
@@ -414,7 +434,7 @@ editor.getTextArea().value # 获取未经过转义的数据
 </div><p>2、挂载 VueCodeMirror，在 main.js 中加入如下代码：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -428,7 +448,7 @@ editor.getTextArea().value # 获取未经过转义的数据
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">import VueCodemirror from &#39;vue-codemirror&#39;;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">import VueCodemirror from &#39;vue-codemirror&#39;;
 import &#39;codemirror/lib/codemirror.css&#39;;
 
 Vue.use(VueCodemirror);
@@ -445,7 +465,7 @@ new Vue({
 </div><p>3、在其他页面中使用该组件</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -492,51 +512,51 @@ new Vue({
 </span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
-    &lt;el-dialog
-        :visible.sync=&#34;dialogViewVisible&#34;
-        :title=&#34;CodeMirror&#34;
-        :show-close=&#34;true&#34;
-        :close-on-click-modal=&#34;false&#34;
-        :close-on-press-escape=&#34;false&#34;
-        width=&#34;620px&#34;&gt;
-        &lt;codemirror v-model=&#34;codeMirrorContent&#34; :options=&#34;cmOptions&#34; class=&#34;json-editor&#34;&gt;&lt;/codemirror&gt;
-    &lt;/el-dialog&gt;
-&lt;/template&gt;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">el-dialog</span>
+        <span class="na">:visible</span><span class="err">.</span><span class="na">sync</span><span class="o">=</span><span class="s">&#34;dialogViewVisible&#34;</span>
+        <span class="na">:title</span><span class="o">=</span><span class="s">&#34;CodeMirror&#34;</span>
+        <span class="na">:show-close</span><span class="o">=</span><span class="s">&#34;true&#34;</span>
+        <span class="na">:close-on-click-modal</span><span class="o">=</span><span class="s">&#34;false&#34;</span>
+        <span class="na">:close-on-press-escape</span><span class="o">=</span><span class="s">&#34;false&#34;</span>
+        <span class="na">width</span><span class="o">=</span><span class="s">&#34;620px&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">codemirror</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;codeMirrorContent&#34;</span> <span class="na">:options</span><span class="o">=</span><span class="s">&#34;cmOptions&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;json-editor&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">codemirror</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">el-dialog</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-&lt;script&gt;
-import { codemirror } from &#39;vue-codemirror&#39;;
-import &#39;codemirror/addon/lint/lint.css&#39;;
-import &#39;codemirror/lib/codemirror.css&#39;;
-import &#39;codemirror/theme/rubyblue.css&#39;;
-require(&#39;script-loader!jsonlint&#39;);
-import &#39;codemirror/mode/javascript/javascript&#39;;
-import &#39;codemirror/addon/lint/lint&#39;;
-import &#39;codemirror/addon/lint/json-lint&#39;;
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">codemirror</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;vue-codemirror&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/addon/lint/lint.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/lib/codemirror.css&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/theme/rubyblue.css&#39;</span><span class="p">;</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">&#39;script-loader!jsonlint&#39;</span><span class="p">);</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/mode/javascript/javascript&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/addon/lint/lint&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/addon/lint/json-lint&#39;</span><span class="p">;</span>
 
-export default {
-  name: &#39;CodeMirror&#39;,
-  data() {
-    return {
-      codeMirrorContent: &#39;&#39;,
-      dialogViewVisible: false,
-      cmOptions: {
-        lineNumbers: true,
-        mode: &#39;text/x-yaml&#39;,
-        gutters: [&#39;CodeMirror-lint-markers&#39;],
-        theme: &#39;rubyblue&#39;,
-        lint: true
-      }
-    };
-  },
-  methods: {
-      // 处理点击事件
-      handleView(index, app) {
-            this.codeMirrorContent = app.yaml;
-            this.dialogViewVisible = true;
-      }
-  }
-&lt;/script&gt;
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;CodeMirror&#39;</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">codeMirrorContent</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">dialogViewVisible</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">cmOptions</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">lineNumbers</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;text/x-yaml&#39;</span><span class="p">,</span>
+        <span class="nx">gutters</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;CodeMirror-lint-markers&#39;</span><span class="p">],</span>
+        <span class="nx">theme</span><span class="o">:</span> <span class="s1">&#39;rubyblue&#39;</span><span class="p">,</span>
+        <span class="nx">lint</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+      <span class="c1">// 处理点击事件
+</span><span class="c1"></span>      <span class="nx">handleView</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">app</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">codeMirrorContent</span> <span class="o">=</span> <span class="nx">app</span><span class="p">.</span><span class="nx">yaml</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dialogViewVisible</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><p>注意：</p>
@@ -556,13 +576,13 @@ export default {
 <p>1、页面中报错如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">Error: Parse error on line 1:
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">Error: Parse error on line 1:
 
 ^
 Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#39;FALSE&#39;, &#39;{&#39;, &#39;[&#39;, got &#39;EOF&#39;
@@ -574,7 +594,7 @@ Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#
 <p>引入 refresh 插件，在处理函数中使用定时任务刷新 CodeMirror 组件，代码示例如下：</p>
 <div class="highlight"><div class="chroma">
 <div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -623,53 +643,53 @@ Expecting &#39;STRING&#39;, &#39;NUMBER&#39;, &#39;NULL&#39;, &#39;TRUE&#39;, &#
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">&lt;template&gt;
-   &lt;codemirror ref=&#34;jenkinsFileCode&#34; v-model=&#34;content&#34; :options=&#34;fileOptions&#34; class=&#34;json-editor&#34;&gt;&lt;/codemirror&gt;
-&lt;/template&gt;
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">codemirror</span> <span class="na">ref</span><span class="o">=</span><span class="s">&#34;jenkinsFileCode&#34;</span> <span class="na">v-model</span><span class="o">=</span><span class="s">&#34;content&#34;</span> <span class="na">:options</span><span class="o">=</span><span class="s">&#34;fileOptions&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;json-editor&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">codemirror</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
-&lt;script&gt;
-import &#39;codemirror/addon/display/autorefresh.js&#39;;
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kr">import</span> <span class="s1">&#39;codemirror/addon/display/autorefresh.js&#39;</span><span class="p">;</span>
 
-export default {
-  name: &#39;Pipeline&#39;,
-  data() {
-    return {
-      content: &#39;&#39;,
-      fileOptions: {
-        lineNumbers: true,
-        mode: &#39;text/x-yaml&#39;,
-        gutters: [&#39;CodeMirror-lint-markers&#39;],
-        theme: &#39;erlang-dark&#39;,
-        lint: true,
-        lineWrapping: true,
-        autoRefresh: true // 此属性是 autorefresh 的，需要引入 autorefresh.js
-      }
-    }
-  }
-  methods: {
-    handle() {
-       setTimeout(() =&gt; {
-              this.$refs.jenkinsFileCode.refresh();
-       }, 50);
-    }
-  }
-}
-&lt;/script&gt;
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Pipeline&#39;</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+      <span class="nx">fileOptions</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">lineNumbers</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;text/x-yaml&#39;</span><span class="p">,</span>
+        <span class="nx">gutters</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;CodeMirror-lint-markers&#39;</span><span class="p">],</span>
+        <span class="nx">theme</span><span class="o">:</span> <span class="s1">&#39;erlang-dark&#39;</span><span class="p">,</span>
+        <span class="nx">lint</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">lineWrapping</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">autoRefresh</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// 此属性是 autorefresh 的，需要引入 autorefresh.js
+</span><span class="c1"></span>      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">handle</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">setTimeout</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+              <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">jenkinsFileCode</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+       <span class="p">},</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;style&gt;
-  .json-editor {
-    height: 100%;
-  }
-  .CodeMirror {
-    border: 1px solid <span class="ni">#eee</span>;
-    height: 950px;
-  }
-  .CodeMirror-scroll {
-    height: 950px;
-    overflow-y: hidden;
-    overflow-x: auto;
-  }
-&lt;/style&gt;
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="p">.</span><span class="nc">json-editor</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">.</span><span class="nc">CodeMirror</span> <span class="p">{</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="ni">#eee</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">950</span><span class="kt">px</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">.</span><span class="nc">CodeMirror-scroll</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">950</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">overflow-y</span><span class="p">:</span> <span class="kc">hidden</span><span class="p">;</span>
+    <span class="k">overflow-x</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </code></pre></td></tr></table></div>
 </div>
 </div><h3 id="参考资料"><a href="#参考资料" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:参考资料" class="headings">参考资料</a></h3>
@@ -699,7 +719,13 @@ export default {
 
         </article>
 
-        
+        <ins class="adsbygoogle" style="display:block; text-align:center;"
+    data-ad-client=""
+    data-ad-slot=""></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
         
     <div class="updated-badge-container">
@@ -810,15 +836,15 @@ export default {
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/programming/golang/golang-redis/" class="related-link">golang 操作单点 Redis 代码示例</a>
+                        <a href="/posts/programming/javascript/javascript-node-npm/" class="related-link">升级 NPM 和 Node</a>
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/programming/golang/golang-number/" class="related-link">golang 数值处理</a>
+                        <a href="/posts/devops/prometheus/prometheus-grafana-clickhouse/" class="related-link">使用 Grafana 监控 Clickhouse</a>
                     </li>
                 
                     <li class="related-item">
-                        <a href="/posts/programming/golang/golang-excel/" class="related-link">使用 golang 操作 excel 表格</a>
+                        <a href="/posts/programming/python/python-questions-and-solution/" class="related-link">Python 常见问题及解决</a>
                     </li>
                 
             </ul>
@@ -885,16 +911,19 @@ export default {
         
     
 
-        <div class="load-comments">
-            <div id="load-comments">加载评论</div>
-        </div>
-
+        
+            <div class="load-comments">
+                <div id="load-comments">加载评论</div>
+            </div>
         
 
         
 
         
 
+        
+
+        
     
 
 
@@ -912,7 +941,7 @@ export default {
             
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            <div class="site-info">©&nbsp;2017–2021&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
+            <div class="site-info">©&nbsp;2017–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;xdhuxc</div><div class="powered-by">Powered by <a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">Hugo</a> | Theme is <a href="https://github.com/reuixiy/hugo-theme-meme" target="_blank" rel="noopener">MemE</a></div><div class="site-copyright">xdhuxc 版权所有</div>
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id="busuanzi_value_site_uv"></span></span>&nbsp;|&nbsp;<span id="busuanzi_container_site_pv">本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"/></svg>&nbsp;<span id="busuanzi_value_site_pv"></span></span>
                 </div>
@@ -1055,6 +1084,8 @@ export default {
 
         
 
+        
+
     
 
 
@@ -1062,7 +1093,10 @@ export default {
     <script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
+    let imgNodes = document.querySelectorAll('div.post-body img');
+    imgNodes = Array.from(imgNodes).filter(node => node.parentNode.tagName !== "A");
+
+    mediumZoom(imgNodes, {
         background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
     })
 </script>
