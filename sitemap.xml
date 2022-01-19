@@ -5,10 +5,28 @@
     <loc>https://xdhuxc.github.io/about/</loc>
     <lastmod>2017-08-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xdhuxc.github.io/tags/benchmark/</loc>
-    <lastmod>2021-03-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://xdhuxc.github.io/categories/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/posts/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/tags/python/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/categories/python/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/tags/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/posts/programming/python/python-convert-to-exe/</loc>
+    <lastmod>2022-01-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/tags/benchmark/</loc>
     <lastmod>2021-03-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/golang/</loc>
@@ -18,15 +36,6 @@
     <lastmod>2021-03-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/posts/programming/golang/golang-benchmark/</loc>
-    <lastmod>2021-03-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/posts/</loc>
-    <lastmod>2021-03-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2021-03-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/</loc>
     <lastmod>2021-03-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/kubernetes/</loc>
@@ -169,9 +178,6 @@
   </url><url>
     <loc>https://xdhuxc.github.io/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/</loc>
     <lastmod>2019-09-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/tags/python/</loc>
-    <lastmod>2018-08-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/posts/programming/python/python-questions-and-solution/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>

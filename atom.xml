@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">xdhuxc</title>
     <subtitle type="html">记录一些技术知识</subtitle>
-    <updated>2022-01-07T09:23:01&#43;08:00</updated>
+    <updated>2022-01-19T09:31:02&#43;08:00</updated>
     <id>https://xdhuxc.github.io/</id>
     <link rel="alternate" type="text/html" href="https://xdhuxc.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://xdhuxc.github.io/atom.xml" />
@@ -16,6 +16,240 @@
             </author>
     <rights>xdhuxc 版权所有</rights>
     <generator uri="https://gohugo.io/" version="0.88.1">Hugo</generator>
+        <entry>
+            <title type="text">将 Python 脚本转换为可执行程序</title>
+            <link rel="alternate" type="text/html" href="https://xdhuxc.github.io/posts/programming/python/python-convert-to-exe/" />
+            <id>https://xdhuxc.github.io/posts/programming/python/python-convert-to-exe/</id>
+            <updated>2022-01-19T00:00:00&#43;00:00</updated>
+            <published>2022-01-19T00:00:00&#43;00:00</published>
+            <author>
+                    <name>xdhuxc</name>
+                    <uri>https://xdhuxc.github.io</uri>
+                    <email>xdhuxc@163.com</email>
+                    </author>
+            <rights>xdhuxc 版权所有</rights><summary type="html">&lt;p&gt;本篇博客介绍下将 Python 脚本转换为各类型操作系统上的可执行文件的方法。&lt;/p&gt;……</summary>
+            
+                <content type="html">&lt;p&gt;本篇博客介绍下将 Python 脚本转换为各类型操作系统上的可执行文件的方法。&lt;/p&gt;
+&lt;h3 id=&#34;编写-gui-程序&#34;&gt;编写 GUI 程序&lt;/h3&gt;
+&lt;p&gt;实验环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OS：Windows 10&lt;/li&gt;
+&lt;li&gt;Python：3.9.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们使用 PyQt 编写一个 GUI 程序，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;gh&#34;&gt;#!/usr/bin/env python
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# -*- coding: utf-8 -*-
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# author: wanghuan
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# date: 1/18/22
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# description:
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;&lt;/span&gt;
+import sys
+import random
+from PyQt5.Qt import *
+
+poems = [&amp;#34;问渠那得清如许，为有源头活水来&amp;#34;,
+         &amp;#34;泪眼问花花不语，乱红飞过秋千去&amp;#34;,
+         &amp;#34;莫等闲，白了少年头，空悲切&amp;#34;,
+         &amp;#34;不经一番彻骨寒，怎得梅花扑鼻香&amp;#34;,
+         &amp;#34;风萧萧兮易水寒，壮士一去兮不复还&amp;#34;,
+         &amp;#34;苟利国家生死以，岂因祸福避趋之&amp;#34;,
+         &amp;#34;人生自古谁无死？留取丹心照汗青&amp;#34;,
+         &amp;#34;落红不是无情物，化作春泥更护花&amp;#34;
+         &amp;#34;露从今夜白，月是故乡明&amp;#34;]
+
+
+&lt;span class=&#34;gh&#34;&gt;# 槽函数
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;&lt;/span&gt;def handle():
+    label.resize(250, 30)
+    label.setAlignment(Qt.AlignRight | Qt.AlignCenter)
+    label.setStyleSheet(&amp;#34;background-color:green&amp;#34;)
+    label.setWordWrap(True)
+    label.setText(poems[random.randint(0, len(poems)-1)])
+
+
+if &lt;span class=&#34;gs&#34;&gt;__name__&lt;/span&gt; == &amp;#39;__main__&amp;#39;:
+    app = QApplication(sys.argv)  # 实例对象
+
+    # 窗体大小
+    window = QWidget()
+    window.resize(500, 500)
+    window.setWindowTitle(&amp;#39;GUI 程序&amp;#39;)
+    window.move(400, 200)
+
+    # 标签
+    label = QLabel(window)
+    label.setText(&amp;#39;这里会显示一条信息&amp;#39;)
+    label.move(100, 100)
+
+    # 按钮1
+    button = QPushButton(window)
+    button.setText(&amp;#34;点击它&amp;#34;)
+    button.move(200, 200)
+    button.clicked.connect(handle)  # 信号与槽
+
+    # 显示窗体
+    window.show()
+    sys.exit(app.exec_())
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在 main.py 同目录下，使用如下命令创建一个虚拟环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;python -m venv venv
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后激活虚拟环境：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;.\venv\Scripts\activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装所需依赖包：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;pip install pywin32 PyInstaller PyQT5
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果不是 Windows 系统，则无需安装 pywin32。&lt;/p&gt;
+&lt;p&gt;接下来运行程序&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;python main.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;效果如下图所示：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://xdhuxc.github.io/image/programming/python/exe/WechatIMG1556.png&#34; width=&#34;500px&#34; height=&#34;500px&#34; /&gt;
+&lt;/center&gt;
+&lt;h3 id=&#34;转换为可执行程序&#34;&gt;转换为可执行程序&lt;/h3&gt;
+&lt;p&gt;在目标操作系统上，执行如下命令：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;pyinstaller -F -w main.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;PyInstaller 部分参数的含义:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-F：表示生成单个可执行文件&lt;/li&gt;
+&lt;li&gt;-w：表示去掉控制台窗口，这在 GUI 界面时非常有用，如果是命令行程序的话，不需要使用这个选项&lt;/li&gt;
+&lt;li&gt;-i：表示可执行文件的图标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;开始执行代码，运行完成之后，&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://xdhuxc.github.io/image/programming/python/exe/WechatIMG1557.png&#34; width=&#34;500px&#34; height=&#34;200px&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;在 main.py 文件的目录下会生成一个 dist 文件夹， 里面就有生成的 EXE 文件&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://xdhuxc.github.io/image/programming/python/exe/WechatIMG1558.png&#34; width=&#34;500px&#34; height=&#34;200px&#34; /&gt;
+&lt;/center&gt;
+&lt;p&gt;双击这个 main.exe，运行效果如下图所示：&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://xdhuxc.github.io/image/programming/python/exe/WechatIMG1559.png&#34; width=&#34;500px&#34; height=&#34;200px&#34; /&gt;
+&lt;/center&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/52654565&#34;&gt;https://zhuanlan.zhihu.com/p/52654565&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://code.py40.com/pyqt5/28.html&#34;&gt;http://code.py40.com/pyqt5/28.html&lt;/a&gt;&lt;/p&gt;</content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://xdhuxc.github.io/tags/python/" term="Python" label="Python" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Golang 基准测试的使用方法</title>
             <link rel="alternate" type="text/html" href="https://xdhuxc.github.io/posts/programming/golang/golang-benchmark/" />
@@ -5201,7 +5435,7 @@ otp\u3002&amp;#34;, &amp;#34;code&amp;#34;: 4}
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -8673,7 +8907,7 @@ sys.setdefaultencoding(&amp;#39;utf8&amp;#39;)
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -9938,7 +10172,7 @@ for (let i = 0; i &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span c
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -28006,7 +28240,7 @@ default-time_zone = &amp;#39;+8:00&amp;#39;
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -34037,7 +34271,7 @@ trusted-host=mirrors.aliyun.com
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -37589,7 +37823,7 @@ def func1():
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -40400,7 +40634,7 @@ if &lt;span class=&#34;gs&#34;&gt;__name__&lt;/span&gt; == &amp;#39;__main__&amp
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -43160,7 +43394,7 @@ except Networkerror,e:
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -43676,7 +43910,7 @@ commit() 方法提交当前游标的所有更新操作，rollback() 方法回滚
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -44082,7 +44316,7 @@ print counter.__secretCount  # 报错，实例不能访问私有变量
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -44295,7 +44529,7 @@ print counter.__secretCount  # 报错，实例不能访问私有变量
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -44649,7 +44883,7 @@ It is python language
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -45331,7 +45565,7 @@ print content;
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -45754,7 +45988,7 @@ dict = {&amp;#39;abc&amp;#39;:123, 98.6:23}
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -46065,7 +46299,7 @@ print &amp;#34;输入的内容是: &amp;#34;, xdhuxc
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -47210,7 +47444,7 @@ print text
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -47502,7 +47736,7 @@ for num in range(10,20):  # 迭代 10 到 20 之间的数字
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -47839,7 +48073,7 @@ not or and| 逻辑运算符&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -48175,7 +48409,7 @@ print &amp;#39;---------&amp;#39;
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
@@ -48428,7 +48662,7 @@ C:&amp;gt;python script_name.py # Windows/DOS
                             
                             
                             
-                                <category scheme="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="https://xdhuxc.github.io/categories/python/" term="Python" label="Python" />
                             
                         
                     
