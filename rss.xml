@@ -23,7 +23,7 @@
         
             <copyright>xdhuxc 版权所有</copyright>
         
-        <lastBuildDate>Wed, 19 Jan 2022 09:31:02 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sun, 23 Jan 2022 12:11:13 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://xdhuxc.github.io/rss.xml" />
         
@@ -252,6 +252,418 @@ if &lt;span class=&#34;gs&#34;&gt;__name__&lt;/span&gt; == &amp;#39;__main__&amp
                                 
                                 
                                     <category domain="https://xdhuxc.github.io/tags/python/">Python</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mac 下增加最大文件描述符数量</title>
+                <link>https://xdhuxc.github.io/posts/common/mac/mac-increase-maximum-fd/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/common/mac/mac-increase-maximum-fd/</guid>
+                <pubDate>Wed, 08 Dec 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;本篇文章记录了在 Mac 下增加进程最大文件描述符数量的方法。&lt;/p&gt;
+&lt;h3 id=&#34;背景&#34;&gt;背景&lt;/h3&gt;
+&lt;p&gt;开发了一个运行在 Mac 系统上的 agent，运行后向 metrics 系统上报指标时，日志中一直报 &amp;quot;too many open files&amp;quot; 错误，除去 agent 中使用的打点 SDK 本身没有使用批量上传的方式外，随着 agent 功能的增多，对文件描述符的占用也必然会增加。&lt;/p&gt;
+&lt;p&gt;然而，Mac 系统中默认的文件描述符是这样的：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;wanghuan@wanghuans-MBP ~ % launchctl limit maxfiles
+	maxfiles    256            unlimited
+wanghuan@wanghuans-MBP ~ % ulimit -n
+256
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;默认情况下，一个进程能打开的最大文件描述符数量只有 256 个，这显然不能满足程序日益增长的功能需要。&lt;/p&gt;
+&lt;p&gt;于是，我们需要将其调大，这样就有两种选择：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将系统的最大文件描述符调大；&lt;/li&gt;
+&lt;li&gt;将当前进程可使用的最大文件描述符调大；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面我们分别来介绍这两种方法&lt;/p&gt;
+&lt;h3 id=&#34;修改系统最大文件描述符限制&#34;&gt;修改系统最大文件描述符限制&lt;/h3&gt;
+&lt;p&gt;修改系统最大文件描述符限制地操作步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;/Library/LaunchDaemons&lt;/code&gt; 目录下创建 &lt;code&gt;limit.maxfiles.plist&lt;/code&gt; 文件，增加如下内容：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&lt;/span&gt;  
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE plist PUBLIC &amp;#34;-//Apple//DTD PLIST 1.0//EN&amp;#34;  
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;        &amp;#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;#34;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;plist&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;  
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Label&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;limit.maxfiles&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;ProgramArguments&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;launchctl&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;limit&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;maxfiles&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;64000&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;524288&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;RunAtLoad&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;ServiceIPC&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;dict&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;plist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;2、修改文件的权限&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo chown root:wheel /Library/LaunchDaemons/limit.maxfiles.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;3、加载新的配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo launchctl load -w /Library/LaunchDaemons/limit.maxfiles.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;卸载时使用的命令为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo launchctl unload /Library/LaunchDaemons/limit.maxfiles.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;4、检查设置的 limit 是否生效&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;launchctl limit maxfiles
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这样做会带来一个严重的问题，所有进程的最大文件描述符数量都会同步增大，而操作系统使用 limit 的本来意义就是限制单一进程所能使用的最大文件描述符数量，以防止某些进程不断地创建子进程或者创建网络连接，把系统资源给占尽了，其他进程无法工作。&lt;/p&gt;
+&lt;p&gt;所以，此方法可以作为临时方法救急和测试，绝不要在生产环境中使用。&lt;/p&gt;
+&lt;h3 id=&#34;修改当前进程可使用的最大文件描述符数量&#34;&gt;修改当前进程可使用的最大文件描述符数量&lt;/h3&gt;
+&lt;p&gt;在程序启动的时候，使用 cgo 调用 strlimit 来设置当前进程的最大文件描述符数量，这样就不会影响系统的设置了，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;package main
+
+import (
+    &amp;#34;os&amp;#34;
+    &amp;#34;syscall&amp;#34;
+
+    log &amp;#34;github.com/sirupsen/logrus&amp;#34;
+)
+
+func main() {
+    var limit syscall.Rlimit
+    err := syscall.Getrlimit(syscall.RLIMIT_NOFILE, &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt;limit)
+    if err != nil {
+        log.Errorf(&amp;#34;get rlimit error: %s&amp;#34;, err)
+        os.Exit(1)
+    }
+
+	log.Infof(&amp;#34;the rlimit current: %d, max: %d&amp;#34;, limit.Cur, limit.Max)
+	old := limit.Cur
+
+	limit.Cur = 1024
+	err = syscall.Setrlimit(syscall.RLIMIT_NOFILE, &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt;limit)
+	if err != nil {
+		log.Errorf(&amp;#34;set rlimit error: %s&amp;#34;, err)
+		os.Exit(1)
+	}
+	log.Infof(&amp;#34;change rlimit from %d to %d successfully&amp;#34;, old, limit.Cur)
+
+	err = syscall.Getrlimit(syscall.RLIMIT_NOFILE, &lt;span class=&#34;err&#34;&gt;&amp;amp;&lt;/span&gt;limit)
+	if err != nil {
+		log.Errorf(&amp;#34;get rlimit error: %s&amp;#34;, err)
+		os.Exit(1)
+	}
+	log.Infof(&amp;#34;after change, the rlimit cur: %d, max: %d&amp;#34;, limit.Cur, limit.Max)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;执行这段代码，结果如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;INFO[0000] the rlimit current: 10240, max: 9223372036854775807 
+INFO[0000] change rlimit from 10240 to 1024 successfully 
+INFO[0000] after change, the rlimit cur: 1024, max: 9223372036854775807
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;可以看到，经过修改后，程序访问到的 limit 值已经被修改了，可以实现既限制当前进程所能打开的最大文件描述符数量，又能保持系统原有的配置。&lt;/p&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://superuser.com/questions/302754/increase-the-maximum-number-of-open-file-descriptors-in-snow-leopard&#34;&gt;https://superuser.com/questions/302754/increase-the-maximum-number-of-open-file-descriptors-in-snow-leopard&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/mac/">Mac</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/mac/">Mac</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>brew 的使用</title>
+                <link>https://xdhuxc.github.io/posts/common/mac/mac-brew-install-and-usage/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/common/mac/mac-brew-install-and-usage/</guid>
+                <pubDate>Sun, 07 Nov 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;本篇文章记录了在 Mac 下使用 brew 的方法。&lt;/p&gt;
+&lt;h3 id=&#34;安装-brew&#34;&gt;安装 brew&lt;/h3&gt;
+&lt;p&gt;使用如下命令安装 brew：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;brew-常用命令&#34;&gt;brew 常用命令&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew install gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;默认情况下，每次安装软件时，brew 会更新 homebrew 管理的所有软件包并清理缓存，这可能会把一些软件不必要地升级到高版本，带来一些问题。&lt;/p&gt;
+&lt;p&gt;如果需要只安装软件而不更新 homebrew，可以导入如下环境变量到系统中：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;export HOMEBREW_NO_AUTO_UPDATE=true
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;卸载软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew uninstall gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;搜索软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew search gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;会显示搜索的软件的各种版本&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;➜  ~ brew search gcc
+==&amp;gt; Formulae
+gcc ✔             gcc@5             gcc@8             libgccjit         ghc ✔             ncc
+gcc@10            gcc@6             gcc@9             x86_64-elf-gcc    scc
+gcc@4.9           gcc@7             i686-elf-gcc      grc               tcc
+
+==&amp;gt; Casks
+gcc-arm-embedded
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;更新软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew upgrade gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;查看安装列表&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew list
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;更新 homebrew&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew update
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;安装指定版本的软件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew install gcc@7
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.jianshu.com/p/dff8c837b7dd&#34;&gt;https://www.jianshu.com/p/dff8c837b7dd&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/mac/">Mac</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/mac/">Mac</category>
                                 
                             
                         
@@ -10471,7 +10883,7 @@ ssh-keygen -R ${SERVER_DOMAIN}
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/git/">Git</category>
                                 
                             
                         
@@ -10595,7 +11007,7 @@ git merge upstream  # 合并主分支修改到本地分支。
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/git/">Git</category>
                                 
                             
                         
@@ -10621,8 +11033,8 @@ git merge upstream  # 合并主分支修改到本地分支。
         
             <item>
                 <title>Mac 功能指南</title>
-                <link>https://xdhuxc.github.io/posts/mixed/mac-tips/</link>
-                <guid isPermaLink="true">https://xdhuxc.github.io/posts/mixed/mac-tips/</guid>
+                <link>https://xdhuxc.github.io/posts/common/mac/mac-tips/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/common/mac/mac-tips/</guid>
                 <pubDate>Mon, 17 Jun 2019 00:00:00 &#43;0000</pubDate>
                 
                     <author>xdhuxc@163.com (xdhuxc)</author>
@@ -10630,8 +11042,65 @@ git merge upstream  # 合并主分支修改到本地分支。
                 <copyright>xdhuxc 版权所有</copyright>
                 
                     <description>&lt;p&gt;本篇博客记录一些 Mac 下常用的操作或功能，以备后需。&lt;/p&gt;
-&lt;h3 id=&#34;显示隐藏文件和目录&#34;&gt;显示隐藏文件和目录&lt;/h3&gt;
-&lt;p&gt;在终端中输入如下命令，即可显示隐藏文件和目录：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;更新系统之后，使用 &lt;code&gt;make&lt;/code&gt; 命令时，报如下错误：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;wanghuans-MacBook-Pro:scmp-cmdb wanghuan$ make build
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;解决：在命令行中输入如下命令安装命令行工具&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;关闭 MacOS 上的默认启动程序&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;解决：依次点击 &lt;code&gt;Finder&lt;/code&gt; -&amp;gt; &lt;code&gt;System Preferences&lt;/code&gt; -&amp;gt; &lt;code&gt;Users &amp;amp; Groups&lt;/code&gt;，在弹出的对话框中，点击 &lt;code&gt;Login Items&lt;/code&gt;，在下方的列表中删除不需要的自启动程序，再点击左下角的 &lt;code&gt;Click the lock to make changes&lt;/code&gt;。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Mac 系统将 &lt;code&gt;bash&lt;/code&gt; 更换为 &lt;code&gt;zsh&lt;/code&gt; 后，原来配置的很多环境变量不见了，程序运行出错。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Mac 系统的环境变量，加载顺序为：&lt;code&gt;/etc/profile&lt;/code&gt;，&lt;code&gt;/etc/paths&lt;/code&gt;，&lt;code&gt;~/.bash_profile&lt;/code&gt;， &lt;code&gt;~/.bash_login&lt;/code&gt;， &lt;code&gt;~/.profile&lt;/code&gt;， &lt;code&gt;~/.bashrc&lt;/code&gt;，其中，&lt;code&gt;/etc/profile&lt;/code&gt; 和 &lt;code&gt;/etc/paths&lt;/code&gt; 是系统级别的，系统启动时就会自动加载，其他几个是当前用户的环境变量。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;~/.bash_profile&lt;/code&gt;, &lt;code&gt;~/.bash_login&lt;/code&gt;，&lt;code&gt;~/.profile&lt;/code&gt; 按照从前往后的顺序读取，如果 &lt;code&gt;~/.bash_profile&lt;/code&gt; 文件存在，则后面几个文件就会被忽略；如果 &lt;code&gt;~/.bash_profile&lt;/code&gt; 文件不存在，才会读取后面的文件，以此类推。&lt;code&gt;~/.bashrc&lt;/code&gt; 没有上述规则，它是 &lt;code&gt;bash&lt;/code&gt; &lt;code&gt;shell&lt;/code&gt; 打开的时候载入的。&lt;/p&gt;
+&lt;p&gt;解决：&lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;zsh&lt;/code&gt; 后，我们在 ~/.zshrc 文件中写入环境变量，关闭当前终端，重新打开新的终端，即可看到写入的环境变量。&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;有时候 Mac 从睡眠状态恢复之后没有声音，这是因为 Mac OS X 的核心音频守护进程（coreaudiod）出了问题，杀死该进程即可：（会自动重启）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo killall coreaudiod
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;清除 DNS 缓存，使用如下命令清除 DNS 缓存&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo killall -HUP mDNSResponder
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;显示隐藏文件和目录
+在终端中输入如下命令，即可显示隐藏文件和目录：&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -10653,50 +11122,70 @@ killall Finder
 killall Finder
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;常见问题及解决&#34;&gt;常见问题及解决&lt;/h3&gt;
-&lt;p&gt;1、更新系统之后，使用 &lt;code&gt;make&lt;/code&gt; 命令时，报如下错误：&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;在 Mac 上打开目录&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;wanghuans-MacBook-Pro:scmp-cmdb wanghuan$ make build
-xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;open 目录路径
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;解决：在命令行中输入如下命令安装命令行工具&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;mac monitor activity 不显示各资源数值了，删除 &lt;code&gt;~/Library/Preferences/com.apple.ActivityMonitor.plist&lt;/code&gt; 文件，然后重启 ActivityMonitor 即可。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;xcode-select --install
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;rm -f ~/Library/Preferences/com.apple.ActivityMonitor.plist
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;2、关闭 MacOS 上的默认启动程序&lt;/p&gt;
-&lt;p&gt;解决：依次点击 &lt;code&gt;Finder&lt;/code&gt; -&amp;gt; &lt;code&gt;System Preferences&lt;/code&gt; -&amp;gt; &lt;code&gt;Users &amp;amp; Groups&lt;/code&gt;，在弹出的对话框中，点击 &lt;code&gt;Login Items&lt;/code&gt;，在下方的列表中删除不需要的自启动程序，再点击左下角的 &lt;code&gt;Click the lock to make changes&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;3、Mac 系统将 &lt;code&gt;bash&lt;/code&gt; 更换为 &lt;code&gt;zsh&lt;/code&gt; 后，原来配置的很多环境变量不见了，程序运行出错。&lt;/p&gt;
-&lt;p&gt;Mac 系统的环境变量，加载顺序为：&lt;code&gt;/etc/profile&lt;/code&gt;，&lt;code&gt;/etc/paths&lt;/code&gt;，&lt;code&gt;~/.bash_profile&lt;/code&gt;， &lt;code&gt;~/.bash_login&lt;/code&gt;， &lt;code&gt;~/.profile&lt;/code&gt;， &lt;code&gt;~/.bashrc&lt;/code&gt;，其中，&lt;code&gt;/etc/profile&lt;/code&gt; 和 &lt;code&gt;/etc/paths&lt;/code&gt; 是系统级别的，系统启动时就会自动加载，其他几个是当前用户的环境变量。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;~/.bash_profile&lt;/code&gt;, &lt;code&gt;~/.bash_login&lt;/code&gt;，&lt;code&gt;~/.profile&lt;/code&gt; 按照从前往后的顺序读取，如果 &lt;code&gt;~/.bash_profile&lt;/code&gt; 文件存在，则后面几个文件就会被忽略；如果 &lt;code&gt;~/.bash_profile&lt;/code&gt; 文件不存在，才会读取后面的文件，以此类推。&lt;code&gt;~/.bashrc&lt;/code&gt; 没有上述规则，它是 &lt;code&gt;bash&lt;/code&gt; &lt;code&gt;shell&lt;/code&gt; 打开的时候载入的。&lt;/p&gt;
-&lt;p&gt;解决：&lt;/p&gt;
-&lt;p&gt;使用 &lt;code&gt;zsh&lt;/code&gt; 后，我们在 ~/.zshrc 文件中写入环境变量，关闭当前终端，重新打开新的终端，即可看到写入的环境变量。&lt;/p&gt;
-&lt;p&gt;3、有时候 Mac 从睡眠状态恢复之后没有声音，这是因为 Mac OS X 的核心音频守护进程（coreaudiod）出了问题，杀死该进程即可：（会自动重启）&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;查看 xcode 版本&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo killall coreaudiod
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;xcodebuild -version
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;4、清除 DNS 缓存，使用如下命令清除 DNS 缓存&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;打开 iOS 开发中的描述文件。*.mobileprovision 是 iOS 开发中的设备描述文件，里面有证书信息、调试设备的 UUID 信息、bundle identifier 等，此文件是二进制格式，不能直接打开，可以使用命令行工具打开。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;sudo killall -HUP mDNSResponder
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;security cms -D -i m.mobileprovision
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;将 iOS 项目的 ruby 工具链安装到当前目录下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;bundle install --path=`pwd`
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;12&#34;&gt;
+&lt;li&gt;安装 iOS 项目依赖&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;bundle exec pod update --verbose
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
@@ -10711,7 +11200,7 @@ xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/mac/">Mac</category>
                                 
                             
                         
@@ -22709,7 +23198,7 @@ WantedBy=multi-user.target
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -23517,7 +24006,7 @@ yum clean,yum clean all
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -23583,7 +24072,7 @@ yum clean,yum clean all
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/vmware/">VMware</category>
                                 
                             
                         
@@ -25304,27 +25793,79 @@ write_buffer = 4M
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apk add procps
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;debain&#34;&gt;debain&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;使用 apt-get 命令来安装工具包&lt;/p&gt;
+&lt;p&gt;使用 apt 命令来安装工具包&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;1）安装 nc 命令&lt;/p&gt;
+&lt;h4 id=&#34;apt-命令的使用&#34;&gt;apt 命令的使用&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;安装软件包&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; install netcat
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt install pandoc
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;2）安装 ps 命令&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;清理缓存&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install procps
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt clean
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;3）安装 curl 命令&lt;/p&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;更新软件包索引数据库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt update
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;只升级某个软件包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt --only-upgrade install nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;一些常用软件包的安装方式&#34;&gt;一些常用软件包的安装方式&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;安装 nc 命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; install netcat
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;安装 ps 命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install procps
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;安装 curl 命令&lt;/li&gt;
+&lt;/ol&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -25332,12 +25873,23 @@ write_buffer = 4M
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install curl
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install curl
 或者
-apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get install net-tools
+apt update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install net-tools
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;安装 pandoc&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;apt install pandoc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装完成后，使用 &lt;code&gt;pandoc --version&lt;/code&gt; 来验证工具是否安装成功&lt;/p&gt;</description>
                 
                 
                 
@@ -25349,7 +25901,7 @@ apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; a
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -25360,6 +25912,12 @@ apt-get update &lt;span class=&#34;err&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; a
                                 
                                 
                                     <category domain="https://xdhuxc.github.io/tags/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/apt/">apt</category>
                                 
                             
                         
@@ -26402,7 +26960,7 @@ root     pts/4    10.4.100.45      09:32    6.00s  0.01s  0.00s w
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -26605,7 +27163,7 @@ systemctl restart crond
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -27495,7 +28053,13 @@ Hello Shell.
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/shell/">Shell</category>
                                 
                             
                         
@@ -31218,7 +31782,7 @@ softirq 3416731289 3 1574245130 526818 783196686 2384220 0 202 386807575 0 66957
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -32375,7 +32939,7 @@ local   0.000GB
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/git/">Git</category>
                                 
                             
                         
@@ -32732,7 +33296,7 @@ reboot  # 重新启动机器才能使新内核生效。
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -33290,7 +33854,13 @@ bashdb --debug xdhuxc.sh
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/shell/">Shell</category>
                                 
                             
                         
@@ -35185,7 +35755,19 @@ git@github.xdhuxc/xdhuxc.git
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;git push origin xdhuxc
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;git-将一个本地工程推向多个远程仓库&#34;&gt;git 将一个本地工程推向多个远程仓库&lt;/h4&gt;
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;返回当前分支的名称&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;git rev-parse --abbrev-ref HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;此命令会返回当前分支的名称，由于所有的代码肯定会在一个分支上，所以，此命令绝对不会出错。&lt;/p&gt;
+&lt;h4 id=&#34;git-将一个本地工程推向多个远程仓库&#34;&gt;git 将一个本地工程推向多个远程仓库&lt;/h4&gt;
 &lt;p&gt;推送时，可以同时推送至多个远程仓库
 1、添加另外一个远程仓库&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -35263,7 +35845,7 @@ git config --global user.email &amp;#34;xdhuxc@163.com&amp;#34; &lt;span class=&
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/git/">Git</category>
                                 
                             
                         
@@ -35395,7 +35977,7 @@ git config --global user.email &amp;#34;xdhuxc@163.com&amp;#34; &lt;span class=&
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -35749,7 +36331,7 @@ NTP synchronized: yes
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -40745,7 +41327,13 @@ full_path=$(realpath $0)
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/shell/">Shell</category>
                                 
                             
                         
@@ -41500,7 +42088,7 @@ COMMIT
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -41905,7 +42493,7 @@ sysctl -p
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -48796,7 +49384,7 @@ sed &#39;s/book/books/g&#39; file
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
@@ -50519,7 +51107,7 @@ nonvoluntary_ctxt_switches:	3
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/linux/">linux</category>
                                 
                             
                         
