@@ -23,10 +23,233 @@
         
             <copyright>xdhuxc 版权所有</copyright>
         
-        <lastBuildDate>Sun, 23 Jan 2022 12:11:13 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 24 Jan 2022 23:19:27 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://xdhuxc.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Vagrant 的基本使用</title>
+                <link>https://xdhuxc.github.io/posts/cloud/vagrant/vagrant-basic-usage/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/cloud/vagrant/vagrant-basic-usage/</guid>
+                <pubDate>Mon, 24 Jan 2022 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;使用 VirtualBox 来创建虚拟机并配置网络比较复杂，改用 Vagrant 来创建虚拟机，实现 &amp;quot;Code As Infrastructure&amp;quot;， 本篇博客就记录下使用 Vagrant 创建和配置虚拟机的方法。&lt;/p&gt;
+&lt;h3 id=&#34;基本使用&#34;&gt;基本使用&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Mac 上安装 vagrant&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;brew install vagrant
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;准备 box，其实就是定制的操作系统镜像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant box add devalone/ubuntu-20.04-server-x64-puppet
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;初始化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant init devalone/ubuntu-20.04-server-x64-puppet
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;会在当前目录下生成 Vagrantfile，记录着虚拟机的配置&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;启动虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant up
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;登录虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;进入虚拟机后，使用 &lt;code&gt;sudo su -&lt;/code&gt; 可以切换到 root 用户。&lt;/p&gt;
+&lt;p&gt;如果需要登录到指定虚拟机，使用如下命令&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant ssh devstack-controller
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;停止虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant halt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;查看虚拟机的状态&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;vagrant status
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;高级用法&#34;&gt;高级用法&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;需要增加内存或者 CPU 时，在 Vagrantfile 中增加如下内容：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;config.vm.provider &amp;#34;virtualbox&amp;#34; do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # vb.gui = false
+    # Customize the amount of memory on the VM:
+    vb.memory = 4096
+    vb.cpus = 4
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;然后使用 &lt;code&gt;vagrant reload&lt;/code&gt; 命令重新加载一下，才能使配置生效。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用如下 Vagrantfile 创建多个虚拟机&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;gh&#34;&gt;# -*- mode: ruby -*-
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# vi: set ft=ruby :
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;&lt;/span&gt;Vagrant.configure(&amp;#34;2&amp;#34;) do |config|
+  config.vm.boot_timeout = 1000
+  # 定义多个 VM
+    config.vm.define &amp;#34;devstack-controller&amp;#34; do |controller|
+        controller.vm.box = &amp;#34;devalone/ubuntu-20.04-server-x64-puppet&amp;#34;
+        controller.vm.hostname = &amp;#34;devstack-controller&amp;#34;
+        controller.vm.network &amp;#34;private_network&amp;#34;, ip: &amp;#34;192.168.56.10&amp;#34;
+        
+        controller.vm.provider &amp;#34;virtualbox&amp;#34; do |vb|
+          vb.memory = 4096
+          vb.cpus = 4
+        end
+    end
+
+    config.vm.define &amp;#34;devstack-computer-01&amp;#34; do |computer|
+        computer.vm.box = &amp;#34;devalone/ubuntu-20.04-server-x64-puppet&amp;#34;
+        computer.vm.hostname = &amp;#34;devstack-computer-01&amp;#34;
+        computer.vm.network &amp;#34;private_network&amp;#34;, ip: &amp;#34;192.168.56.11&amp;#34;
+        
+        computer.vm.provider &amp;#34;virtualbox&amp;#34; do |vb|
+          vb.memory = 1024
+          vb.cpus = 2
+        end
+    end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.vagrantbox.es/&#34;&gt;http://www.vagrantbox.es/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://app.vagrantup.com/boxes/search?order=desc&amp;amp;page=1&amp;amp;provider=virtualbox&amp;amp;q=ubuntu+server&amp;amp;sort=created&amp;amp;utf8=%E2%9C%93&#34;&gt;https://app.vagrantup.com/boxes/search?order=desc&amp;amp;page=1&amp;amp;provider=virtualbox&amp;amp;q=ubuntu+server&amp;amp;sort=created&amp;amp;utf8=%E2%9C%93&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://learn.hashicorp.com/tutorials/vagrant/getting-started-index?in=vagrant/getting-started&#34;&gt;https://learn.hashicorp.com/tutorials/vagrant/getting-started-index?in=vagrant/getting-started&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/xishuai/p/macos-use-vagrant-with-virtualbox.html&#34;&gt;https://www.cnblogs.com/xishuai/p/macos-use-vagrant-with-virtualbox.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeantenna.com/a/YXYhkTErAM&#34;&gt;https://codeantenna.com/a/YXYhkTErAM&lt;/a&gt;&lt;/p&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/vagrant/">Vagrant</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/vagrant/">Vagrant</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>将 Python 脚本转换为可执行程序</title>
@@ -664,6 +887,239 @@ gcc-arm-embedded
                                 
                                 
                                     <category domain="https://xdhuxc.github.io/tags/mac/">Mac</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>使用 Python 操作 excel 文档</title>
+                <link>https://xdhuxc.github.io/posts/programming/python/python-operate-excel/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/programming/python/python-operate-excel/</guid>
+                <pubDate>Sat, 18 Sep 2021 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;本篇博客介绍下使用 Python 操作 excel 表格的方法。&lt;/p&gt;
+&lt;h3 id=&#34;代码示例&#34;&gt;代码示例&lt;/h3&gt;
+&lt;p&gt;以下是使用 python 操作 excel 表格的示例代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;46
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;52
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;53
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;54
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;55
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;56
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;57
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;58
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;59
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;60
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;61
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;62
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;63
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;64
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;65
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;66
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;67
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;68
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;69
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;70
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;71
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;72
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;73
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;74
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;75
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;76
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;77
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;78
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;79
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;80
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;81
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;82
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;83
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;84
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;85
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;86
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;87
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;88
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;89
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;gh&#34;&gt;#!/usr/bin/env python
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# -*- coding: utf-8 -*-
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# author: wanghuan
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# date: 9/4/21
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;# description:
+&lt;/span&gt;&lt;span class=&#34;gh&#34;&gt;&lt;/span&gt;
+import os
+import xlrd
+import copy
+import xlwt
+
+def convert(value):
+    if not value:
+        return 0.00
+
+    if isinstance(value, float):
+        return value
+    else:
+        return float(value)
+
+def write(table):
+    book = xlwt.Workbook()
+    sheet = book.add_sheet(&amp;#39;汇总表&amp;#39;)
+    # 写入表头
+    headers = [&amp;#39;日期&amp;#39;, &amp;#39;销售金额&amp;#39;, &amp;#39;回款金额&amp;#39;, &amp;#39;库存金额（含税）&amp;#39;,	&amp;#39;应收账款余额&amp;#39;, &amp;#39;应付账款&amp;#39;,	&amp;#39;预付账款余额&amp;#39;, &amp;#39;占用资金总额&amp;#39;]
+    for i in range(len(headers)):
+        sheet.write(0, i, headers[i])
+
+    for i in range(len(table)):
+        for j in range(len(table[i])):
+            sheet.write(i+1, j, table[i][j])
+
+    book.save(&amp;#39;result.xlsx&amp;#39;)
+
+
+
+if &lt;span class=&#34;gs&#34;&gt;__name__&lt;/span&gt; == &amp;#39;__main__&amp;#39;:
+    table = list()
+    rows = [&amp;#39;&amp;#39;] + [0.00] * 7
+    for i in range(31):
+        table.append(rows)
+    count = 0
+    current_date = &amp;#39;&amp;#39;
+    for item in os.listdir():
+        if item.endswith(&amp;#39;.xlsx&amp;#39;) or item.endswith(&amp;#39;.xls&amp;#39;):
+            print(&amp;#39;current xlsx: &amp;#39;, item)
+            count = count + 1
+            # 打开 excel 表格
+            data = xlrd.open_workbook(item)
+            # 根据 sheet 索引获取 sheet
+            sheet = data.sheet_by_index(0)
+            for i in range(sheet.nrows):
+                if i == 0 or i == 1:
+                    continue
+                # print(sheet.row_values(i))
+                if sheet.cell(i, 0).ctype == 3: # 日期类型
+                    print(&amp;#39;current rows: &amp;#39;, sheet.row_values(i))
+                    # 处理第一列的日期
+                    cdate = xlrd.xldate.xldate_as_datetime(sheet.cell(i, 0).value, 0)
+                    current_date = cdate.strftime(&amp;#34;%Y/%m/%d&amp;#34;)
+                    # rows in table
+                    for idx in range(len(table)):
+                        if i-2 == idx:
+                            rit = copy.deepcopy(table[idx])
+                            if count == 1: # 直接填充数据
+                                rit[0] = current_date
+                                rit[1] = convert(sheet.cell(i, 1).value)
+                                rit[2] = convert(sheet.cell(i, 2).value)
+                                rit[3] = convert(sheet.cell(i, 3).value)
+                                rit[4] = convert(sheet.cell(i, 4).value)
+                                rit[5] = convert(sheet.cell(i, 5).value)
+                                rit[6] = convert(sheet.cell(i, 6).value)
+                                rit[7] = convert(sheet.cell(i, 7).value)
+                            else:
+                                if current_date == rit[0]:
+                                    rit[1] = rit[1] + convert(sheet.cell(i, 1).value)
+                                    rit[2] = rit[2] + convert(sheet.cell(i, 2).value)
+                                    rit[3] = rit[3] + convert(sheet.cell(i, 3).value)
+                                    rit[4] = rit[4] + convert(sheet.cell(i, 4).value)
+                                    rit[5] = rit[5] + convert(sheet.cell(i, 5).value)
+                                    rit[6] = rit[6] + convert(sheet.cell(i, 6).value)
+                                    rit[7] = rit[7] + convert(sheet.cell(i, 7).value)
+                            print(&amp;#39;current rows in table index {} -&amp;gt; {}&amp;#39;, idx, rit)
+                            table[idx] = rit
+                else:
+                    print(&amp;#39;the current cell type: {}, break&amp;#39;.format(sheet.cell(i, 0)))
+                    break
+    print(&amp;#39;the final data: {}&amp;#39;.format(table))
+    write(table)
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/python/">Python</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/python/">Python</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/excel/">Excel</category>
                                 
                             
                         
@@ -5094,7 +5550,7 @@ Your runtime supports 92% of ECMAScript 6
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/javascript/">JavaScript</category>
                                 
                             
                         
@@ -9745,7 +10201,7 @@ const expires = new Date(new Date().getTime() + 8 &lt;span class=&#34;ge&#34;&gt
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/javascript/">JavaScript</category>
                                 
                             
                         
@@ -9870,7 +10326,7 @@ for (let i = 0; i &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span c
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/javascript/">JavaScript</category>
                                 
                             
                         
@@ -13311,7 +13767,7 @@ if (document.all)
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/javascript/">JavaScript</category>
                                 
                             
                         
@@ -14854,8 +15310,7 @@ Expecting &amp;#39;STRING&amp;#39;, &amp;#39;NUMBER&amp;#39;, &amp;#39;NULL&amp;
                 
                 <copyright>xdhuxc 版权所有</copyright>
                 
-                    <description>&lt;p&gt;摘要：&lt;/p&gt;
-&lt;p&gt;　　本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;
+                    <description>&lt;p&gt;本篇博客主要介绍 JavaScript 中的日期时间与Unix时间戳的转换及日期的格式化，都是在前端开发中经常会用到技术。&lt;/p&gt;
 &lt;h3 id=&#34;日期时间与-unix-时间戳的转换&#34;&gt;日期时间与 Unix 时间戳的转换&lt;/h3&gt;
 &lt;p&gt;最近项目中使用到了 Prometheus，从前端页面向后端接口发送请求时，传递的参数中有查询 Prometheus 指标的起止时间范围，格式为 Unix 时间戳，这就需要使用 JavaScript 在前端页面获取当前时间，然后转换为 Unix 时间戳。&lt;/p&gt;
 &lt;p&gt;以下方法返回当前时间至 GMT 时间1970年1月1日00时00分00秒对应的毫秒数.&lt;/p&gt;
@@ -14985,7 +15440,7 @@ Date.parse(new Date())
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/javascript/">JavaScript</category>
                                 
                             
                         
@@ -20469,7 +20924,13 @@ ftp [86400] IN CNAME www
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/maven/">Maven</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
                                 
                             
                         
@@ -20733,7 +21194,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
                                 
                             
                         
@@ -20843,7 +21304,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
                                 
                             
                         
@@ -21007,7 +21468,13 @@ OS name: &amp;#34;linux&amp;#34;, version: &amp;#34;3.10.0-327.28.3.el7.x86_64&a
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/maven/">Maven</category>
                                 
                             
                         
@@ -22889,7 +23356,13 @@ vagrant box add centos7.4 https://vagrantcloud.com/centos/boxes/7/versions/1710.
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/springboot/">SpringBoot</category>
                                 
                             
                         
@@ -27470,7 +27943,7 @@ Date: Thu, 10 Jan 2019 01:52:49 GMT
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
                                 
                             
                         
@@ -27713,7 +28186,13 @@ Date: Thu, 10 Jan 2019 01:52:49 GMT
                                 
                                 
                                 
-                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="https://xdhuxc.github.io/categories/java/">Java</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/maven/">Maven</category>
                                 
                             
                         
