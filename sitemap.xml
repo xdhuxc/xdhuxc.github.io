@@ -5,14 +5,32 @@
     <loc>https://xdhuxc.github.io/about/</loc>
     <lastmod>2017-08-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/posts/devops/ansible/ansible-playbook-model/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/posts/devops/ansible/ansible-config/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://xdhuxc.github.io/categories/</loc>
-    <lastmod>2022-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/tags/devops/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/posts/</loc>
-    <lastmod>2022-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/</loc>
-    <lastmod>2022-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/vagrant/</loc>
     <lastmod>2022-01-24T00:00:00+00:00</lastmod>
@@ -21,9 +39,6 @@
     <lastmod>2022-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/posts/cloud/vagrant/vagrant-basic-usage/</loc>
-    <lastmod>2022-01-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/</loc>
     <lastmod>2022-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/python/</loc>
@@ -71,9 +86,6 @@
     <loc>https://xdhuxc.github.io/posts/kubernetes/kubernetes-configmap/</loc>
     <lastmod>2020-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://xdhuxc.github.io/tags/sonarqube/</loc>
     <lastmod>2020-04-28T00:00:00+00:00</lastmod>
   </url><url>
@@ -109,9 +121,6 @@
   </url><url>
     <loc>https://xdhuxc.github.io/posts/devops/grafana/grafana-elasticsearch-visualizations/</loc>
     <lastmod>2020-03-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/tags/devops/</loc>
-    <lastmod>2020-06-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/tags/kibana/</loc>
     <lastmod>2020-03-06T00:00:00+00:00</lastmod>
@@ -787,9 +796,6 @@
   </url><url>
     <loc>https://xdhuxc.github.io/tags/ntp/</loc>
     <lastmod>2018-08-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://xdhuxc.github.io/tags/ansible/</loc>
-    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://xdhuxc.github.io/posts/devops/ansible/ansible-playbook/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>

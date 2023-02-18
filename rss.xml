@@ -23,10 +23,352 @@
         
             <copyright>xdhuxc 版权所有</copyright>
         
-        <lastBuildDate>Mon, 24 Jan 2022 23:19:27 &#43;0800</lastBuildDate>
+        <lastBuildDate>Sat, 18 Feb 2023 22:55:46 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://xdhuxc.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Ansible Playbook 常用模块示例</title>
+                <link>https://xdhuxc.github.io/posts/devops/ansible/ansible-playbook-model/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/devops/ansible/ansible-playbook-model/</guid>
+                <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;本篇博客介绍了一些在 Ansible Playbook 中常用的模块的用法。&lt;/p&gt;
+&lt;p&gt;使用 ansible 的一个原则是将某个功能拆分成幂等的若干个步骤，每个步骤只完成一个幂等的小功能，这样，我们的 ansible playbook 就可以多次重复运行，有效保证任务运行结果。&lt;/p&gt;
+&lt;p&gt;接下来，我们介绍一些常用的 ansible playbook 模块，使用这些模块，可以协助我们完成各项运维功能。&lt;/p&gt;
+&lt;h3 id=&#34;shell&#34;&gt;shell&lt;/h3&gt;
+&lt;p&gt;shell 模块可能是使用最频繁的模块了，用于执行一段用户编写的 shell 脚本。&lt;/p&gt;
+&lt;p&gt;使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;clear current deploy&amp;#34;
+  shell: |
+    if [[ -f ansible.zip ]]; then
+        rm -f ansible.zip
+    fi
+    if [[ -d __MACOSX ]]; then
+        sudo rm -rf __MACOSX
+    fi
+  args:
+    chdir: /Users/xdhuxc
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;各字段说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：表示当前任务的名称&lt;/li&gt;
+&lt;li&gt;shell：说明当前使用 shell 模块，值为需要在机器上执行的 shell 脚本。&lt;/li&gt;
+&lt;li&gt;args：用来表示其他一些参数
+&lt;ul&gt;
+&lt;li&gt;chdir 表示在此目录下执行 shell 脚本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;stat&#34;&gt;stat&lt;/h3&gt;
+&lt;p&gt;stat 模块用来检测目标机器上的文件或目录状态，然后将其注入到一个变量中，在后面的任务中可以使用这个变量来作为任务是否执行的条件。&lt;/p&gt;
+&lt;p&gt;使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;check directory exists&amp;#34;
+  stat: 
+    path: &amp;#34;/var/lib/docker&amp;#34;
+  register: docker-data-dir
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;各字段说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：表示当前任务的名称&lt;/li&gt;
+&lt;li&gt;stat：表示当前任务使用 stat 模块
+&lt;ul&gt;
+&lt;li&gt;path 字段用来指定需要检测的目标机器上的文件或目录绝对路径&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;register：会将检测注入到此变量中，可以在之后的任务中使用此变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在此 stat 之后的任务中，我们可以增加 when 来作为任务是否执行的条件，比如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;create docker data directory&amp;#34;
+  become: true
+  shell: &amp;#34;mkdir -p /var/lib/docker&amp;#34;
+  environment:
+    SUDO_PASSWORD: &amp;#34;{{ ansible_become_pass }}&amp;#34;
+  when: docker-data-dir.stat.isdir is defined and docker-data-dir.stat.isdir and docker-data-dir.stat.exists == False
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;file&#34;&gt;file&lt;/h3&gt;
+&lt;p&gt;file 模块可以用来对文件或者目录进行操作，比如创建、删除等。&lt;/p&gt;
+&lt;p&gt;使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;delete old folder&amp;#34;
+  ansible.builtin.file:
+    path: &amp;#34;/var/lib/docker&amp;#34;
+    state: absent
+  when: docker-data-dir.stat.isdir is defined and docker-data-dir.stat.isdir and docker-data-dir.stat.exists == True  
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;各字段说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：表示当前任务的名称&lt;/li&gt;
+&lt;li&gt;ansible.builtin.file：表示当前任务使用 file 模块，也可以简写为 file，
+&lt;ul&gt;
+&lt;li&gt;path 用来指定目标机器上的目录或文件，&lt;/li&gt;
+&lt;li&gt;state 表示文件或者目录的预期状态，state 为 absent 用来删除文件或者目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;when：表示执行此任务的条件，在这个例子中，只有当目录存在时，我们才去删除它。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;get_url&#34;&gt;get_url&lt;/h3&gt;
+&lt;p&gt;get_url 模块用来从远程地址下载文件，压缩包等。&lt;/p&gt;
+&lt;p&gt;使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;download zip file&amp;#34;
+  ansible.builtin.get_url:
+    url: &amp;#34;http://8.9.10.11/xdhuxc/tomcat.zip&amp;#34;
+    dest: &amp;#34;/users/xdhuxc/java&amp;#34;
+    mode: &amp;#34;0755&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;各字段说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：表示当前任务的名称&lt;/li&gt;
+&lt;li&gt;ansible.builtin.get_url：表示当前任务使用 get_url 模块，也可以简写为 get_url
+&lt;ul&gt;
+&lt;li&gt;url：表示待下载的文件的远程地址&lt;/li&gt;
+&lt;li&gt;dest：下载文件后在本机的存储地址&lt;/li&gt;
+&lt;li&gt;mode：文件在机器上的权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;unarchive&#34;&gt;unarchive&lt;/h3&gt;
+&lt;p&gt;unarchive 用来解压文件，可以指定远程文件，也可以指定本地文件，还允许指定解压参数。&lt;/p&gt;
+&lt;p&gt;使用方法为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; name: &amp;#34;unarchive zip file&amp;#34;
+  ansible.builtin.unarchive:
+    src: &amp;#34;/users/xdhuxc/tomcat.zip&amp;#34;
+    dest: &amp;#34;/users/xdhuxc/java&amp;#34;
+    remote_src: yes
+    extra_opts:
+      &lt;span class=&#34;k&#34;&gt;-&lt;/span&gt; -q
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;各字段说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：表示当前任务的名称&lt;/li&gt;
+&lt;li&gt;ansible.builtin.unarchive：表示当前任务使用 unarchive 模块，也可以简写为 unarchive
+&lt;ul&gt;
+&lt;li&gt;src：表示待解压的文件的路径。&lt;/li&gt;
+&lt;li&gt;dest：表示解压后的目标目录。&lt;/li&gt;
+&lt;li&gt;remote_src：为 yes 时表示解压远程目标机器上的压缩文件&lt;/li&gt;
+&lt;li&gt;extra_opts：是一个字符串数组，可以填写一些解压缩时的参数，比如 -q，不向标准输出输出解压缩过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/ansible/">Ansible</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/devops/">DevOps</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Ansible 配置文件详解</title>
+                <link>https://xdhuxc.github.io/posts/devops/ansible/ansible-config/</link>
+                <guid isPermaLink="true">https://xdhuxc.github.io/posts/devops/ansible/ansible-config/</guid>
+                <pubDate>Sat, 18 Feb 2023 00:00:00 &#43;0000</pubDate>
+                
+                    <author>xdhuxc@163.com (xdhuxc)</author>
+                
+                <copyright>xdhuxc 版权所有</copyright>
+                
+                    <description>&lt;p&gt;本篇博客详细介绍了 Ansible 配置文件 ansible.cfg 中的常用项及其含义。&lt;/p&gt;
+&lt;p&gt;ansible 的配置文件为 ansible.cfg，默认路径为当前路径或者 &lt;code&gt;/etc/ansible/ansible.cfg&lt;/code&gt;，也可以通过环境变量 ANSIBLE_CONFIG 来指定路径。&lt;/p&gt;
+&lt;p&gt;其内容一般如下所示：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;[defaults]
+inventory = hosts
+library = /usr/share/ansible
+sudo_user = xdhuxc
+remote_port = 22
+host_key_checking = False
+timeout = 600
+log_path = ansible.log
+interpreter_python = /usr/bin/python3
+ansible_shell_type = zsh
+callbacks_enabled = profile_tasks
+
+[all:vars]
+ansible_connection = ssh
+ansible_user = xdhuxc
+ansible_ssh_user = xdhuxc
+ansible_ssh_pass = &lt;span class=&#34;ge&#34;&gt;**&lt;/span&gt;***
+ansible_become_pass = &lt;span class=&#34;ge&#34;&gt;**&lt;/span&gt;***
+ansible_ssh_common_args = &amp;#34;-o StrictHostKeyChecking=no&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;ansible.cfg 中 &lt;code&gt;[defaults]&lt;/code&gt; 各个字段的含义如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inventory：表示资源清单 inventory 文件的位置。&lt;/li&gt;
+&lt;li&gt;library：指向存放 ansible 模块的目录，支持多个目录的方式，只需要使用 &lt;code&gt;:&lt;/code&gt; 分隔开来即可。&lt;/li&gt;
+&lt;li&gt;sudo_user：设置默认执行命令的用户。&lt;/li&gt;
+&lt;li&gt;remote_port：指定连接被管理节点的管理端口，默认为 22 端口，建议修改，能够更加安全。&lt;/li&gt;
+&lt;li&gt;host_key_checking：设置是否检查 SSH 主机的秘钥，值为 True 或 False，关闭后第一次连接不会提示配置实例。&lt;/li&gt;
+&lt;li&gt;timeout：设置 SSH 连接的超时时间，单位为秒。&lt;/li&gt;
+&lt;li&gt;log_path: 指定一个存储 ansible 日志的文件，默认不记录日志。&lt;/li&gt;
+&lt;li&gt;interpreter_python：指定远程机器上 python 解释器的路径。&lt;/li&gt;
+&lt;li&gt;ansible_shell_type：指定 ansible 执行 shell 命令时使用的 shell 类型。&lt;/li&gt;
+&lt;li&gt;callbacks_enabled：指定加载的插件，这里使用 profile_tasks 来显示各个任务的执行时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ansible.cfg 中 &lt;code&gt;[all:vars]&lt;/code&gt; 部分指定各个 playbook 中共用的一些变量，其中包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ansible_connection：ansible 连接远程机器的方式，默认为 ssh。&lt;/li&gt;
+&lt;li&gt;ansible_user：ansible 连接远程机器的用户。&lt;/li&gt;
+&lt;li&gt;ansible_ssh_user：ansible 使用 ssh 连接远程机器的用户。&lt;/li&gt;
+&lt;li&gt;ansible_ssh_pass：ansible 使用 ssh 连接远程机器的用户密码。&lt;/li&gt;
+&lt;li&gt;ansible_become_pass：ansible 在远程机器上切换到 root 用户时使用的密码。&lt;/li&gt;
+&lt;li&gt;ansible_ssh_common_args：ansible 使用 ssh 方式连接远程机器的参数，也就是 ssh 连接机器的参数。&lt;/li&gt;
+&lt;/ul&gt;</description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/ansible/">Ansible</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://xdhuxc.github.io/tags/devops/">DevOps</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Vagrant 的基本使用</title>
